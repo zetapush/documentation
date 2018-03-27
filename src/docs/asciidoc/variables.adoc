@@ -1,0 +1,13 @@
+ifndef::relfileprefix[]
+:relfileprefix: {relative-path}
+endif::[]
+ifndef::images-dir[]
+:images-dir: {relative-path}images/
+endif::[]
+ifndef::user-manual-dir[]
+:user-manual-dir: {docdir}/user-manual/
+endif::[]
+ifndef::general-dir[]
+:general-dir: {docdir}/general/
+endif::[]
+

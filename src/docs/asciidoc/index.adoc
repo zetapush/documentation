@@ -1,0 +1,21 @@
+:relative-path: ./
+include::{docdir}/variables.adoc[]
+
+:toclevels: 2
+:sectnums:
+:sectnumlevels: 4
+
+
+= ZetaPush documentation
+{project-version}
+
+
+
+== Introduction
+
+include::{docdir}/introduction/introduction.adoc[leveloffset=+2]
+
+
+== Getting started
+
+include::{docdir}/getting-started/getting-started.adoc[leveloffset=+1]

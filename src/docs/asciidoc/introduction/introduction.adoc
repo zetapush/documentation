@@ -1,0 +1,12 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+Test
+
+////
+TODO: Présentation rapide de ZetaPush
+////
+
+= Toto
+
+= TITI
