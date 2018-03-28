@@ -1,0 +1,6 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+How work the deployment with ZetaPush Celtia ?
+
+How to configure the deployment ? CLI ?

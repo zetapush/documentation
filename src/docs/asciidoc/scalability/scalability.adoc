@@ -1,0 +1,6 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+How to manage the scalability of my application ?
+
+How to add / remove nodes ?

@@ -1,0 +1,28 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+We display the development cycle (Installation to Exploitation). For this we create a schema.
+
+= Vocabulary
+include::{docdir}/fondamentals/vocabulary.adoc[leveloffset=+1]
+
+= Installation
+include::{docdir}/fondamentals/installation.adoc[leveloffset=+1]
+
+= Initialisation
+include::{docdir}/fondamentals/init.adoc[leveloffset=+1]
+
+= Development
+include::{docdir}/fondamentals/development.adoc[leveloffset=+1]
+
+= Debug
+include::{docdir}/fondamentals/debug.adoc[leveloffset=+1]
+
+= Tests
+include::{docdir}/fondamentals/tests.adoc[leveloffset=+1]
+
+= Deployment
+include::{docdir}/fondamentals/deploy.adoc[leveloffset=+1]
+
+= Exploitation
+include::{docdir}/fondamentals/exploit.adoc[leveloffset=+1]

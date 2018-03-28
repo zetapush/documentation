@@ -12,10 +12,22 @@ include::{docdir}/variables.adoc[]
 
 
 == Introduction
-
 include::{docdir}/introduction/introduction.adoc[leveloffset=+2]
 
-
 == Getting started
+include::{docdir}/getting-started/getting-started.adoc[leveloffset=+2]
 
-include::{docdir}/getting-started/getting-started.adoc[leveloffset=+1]
+== Fondamentals
+include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+2]
+
+== Scalability
+include::{docdir}/scalability/scalability.adoc[leveloffset=+2]
+
+== SDK
+include::{docdir}/sdk/intro-sdk.adoc[leveloffset=+2]
+
+== Guidelines
+include::{docdir}/guidelines/intro-guidelines.adoc[leveloffset=+2]
+
+== Services
+include::{docdir}/services/intro-services.adoc[leveloffset=+2]

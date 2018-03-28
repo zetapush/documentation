@@ -1,0 +1,13 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+We explain how to start a project with ZetaPush Celtia.
+
+* Via the starter
+* Via the CLI
+* From scratch
+
+We need to attach many pictures to be sure that the process will be correctly understood.
+
+From the beginning we don't have any packages / dependencies (no npm / or node).
+The end of this part is when the user has an application with a "Hello world" made by a ZetaPush service call.
