@@ -1,0 +1,10 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= How to start with the wizard
+
+= How to start with the CLI
+
+= How to start from scratch
+
+= Description of each generated files

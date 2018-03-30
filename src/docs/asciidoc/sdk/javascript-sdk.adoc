@@ -1,4 +1,12 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-JavaScript SDK
+How to install it ?
+
+Quickstart
+
+API documentation
+
+How to create custom code for backend ?
+
+Difference between node and web context

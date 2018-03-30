@@ -15,7 +15,14 @@ Presentation of the project. What is it ? How to use it ? Why it is useful for y
 We can click on each section to go on
 
 |===
-| Getting Started | Fondamentals | Advanced use
-| Development cycle | Guidelines | SDK
-| Scalability | Vocabulary |
+| Tutorial | Fondamentals | Quickstart
+| Development cycle | Guidelines | SDK 
+| Scalability | Vocabulary | Services
 |===
+
+For each section we have a small description
+
+= Contact us
+
+- Link to contact us by email
+- Link to the GitHub page where there is specifications

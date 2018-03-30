@@ -1,6 +1,8 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-Cloud Service
+How to install it ?
 
-Cloud Function
+Quickstart
+
+API documentation

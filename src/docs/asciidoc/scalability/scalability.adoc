@@ -1,6 +1,6 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-How to manage the scalability of my application ?
+= Scalability with ZetaPush
 
-How to add / remove nodes ?
+= How to manage the scalability of my application ?

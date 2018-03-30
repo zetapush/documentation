@@ -14,8 +14,11 @@ include::{docdir}/variables.adoc[]
 == Introduction
 include::{docdir}/introduction/introduction.adoc[leveloffset=+2]
 
-== Getting started
-include::{docdir}/getting-started/getting-started.adoc[leveloffset=+2]
+== Quickstart
+include::{docdir}/quickstart/quickstart.adoc[leveloffset=+2]
+
+== Tutorial
+include::{docdir}/tutorial/tutorial.adoc[leveloffset=+2]
 
 == Fondamentals
 include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+2]

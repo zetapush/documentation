@@ -4,3 +4,17 @@ include::{docdir}/variables.adoc[]
 = Introduction
 
 Explain each service --> Reference documentation
+
+= Authentication
+include::{docdir}/services/authentification.adoc[leveloffset=+1]
+
+= Services
+
+For each service the same format
+
+== Users
+include::{docdir}/services/users.adoc[leveloffset=+2]
+
+= Custom cloud service
+include::{docdir}/services/custom.adoc[leveloffset=+1]
+

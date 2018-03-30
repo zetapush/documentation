@@ -6,6 +6,9 @@ We display the development cycle (Installation to Exploitation). For this we cre
 = Vocabulary
 include::{docdir}/fondamentals/vocabulary.adoc[leveloffset=+1]
 
+= Developpement cycle
+include::{docdir}/fondamentals/cycle.adoc[leveloffset=+1]
+
 = Installation
 include::{docdir}/fondamentals/installation.adoc[leveloffset=+1]
 
@@ -26,3 +29,6 @@ include::{docdir}/fondamentals/deploy.adoc[leveloffset=+1]
 
 = Exploitation
 include::{docdir}/fondamentals/exploit.adoc[leveloffset=+1]
+
+= Account management
+include::{docdir}/fondamentals/account.adoc[leveloffset=+1]
