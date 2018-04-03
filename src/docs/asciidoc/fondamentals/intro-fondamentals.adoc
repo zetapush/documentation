@@ -4,7 +4,7 @@ include::{docdir}/variables.adoc[]
 = Vocabulary
 include::{docdir}/fondamentals/vocabulary.adoc[leveloffset=+1]
 
-= Developpement cycle
+= Development cycle
 include::{docdir}/fondamentals/cycle.adoc[leveloffset=+1]
 
 = Installation
