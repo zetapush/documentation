@@ -1,4 +1,4 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Account management
+How to manage my account on the ZetaPush platform ?

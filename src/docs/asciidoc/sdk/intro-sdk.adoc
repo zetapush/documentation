@@ -21,3 +21,7 @@ include::{docdir}/sdk/java-sdk.adoc[leveloffset=+1]
 = Swift
 include::{docdir}/sdk/swift-sdk.adoc[leveloffset=+1]
 
+= HTTP
+include::{docdir}/sdk/http-sdk.adoc[leveloffset=+1]
+
+

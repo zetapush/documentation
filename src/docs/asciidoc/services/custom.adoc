@@ -1,6 +1,4 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Custom cloud service
-
 How to create custom cloud service

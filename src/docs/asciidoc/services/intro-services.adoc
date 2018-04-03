@@ -3,7 +3,9 @@ include::{docdir}/variables.adoc[]
 
 = Introduction
 
-Explain each service --> Reference documentation
+Explain each service --> Reference documentation.
+
+For each service we have a http verb with documentation and examples.
 
 = Authentication
 include::{docdir}/services/authentification.adoc[leveloffset=+1]
