@@ -1,7 +1,20 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-- Cloud Service
-- Custom Cloud Service
-- Cloud Function
-- ...
+= Cloud Service
+
+A _Cloud Service_ is a set of Cloud Functions link:#_cloud_function(see below) provided by ZetaPush.
+For example we a many Cloud Services like _Users management_, _real-time chat_, _data aggregation_, ...
+
+
+= Cloud Function
+
+To do a specific action with ZetaPush Celtia, we use a Cloud Function. For example, we can create an user with *createUser()*, from the users management cloud service.
+
+
+= Custom Cloud Service
+
+A _Custom Cloud Service_ is a _Cloud Service_ that you have created.
+If you need to add some business logic in your application, you can create a _Custom Cloud Service_ that regroup many _Cloud Functions_.
+After the deloyment, the _Custom Cloud Services_ are callable like _Cloud Service_.
+
