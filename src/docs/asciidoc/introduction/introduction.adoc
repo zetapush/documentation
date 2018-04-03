@@ -7,13 +7,23 @@ Short presentation of ZetaPush.
 
 = ZetaPush Celtia
 
-Presentation of the project.
+ZetaPush Celtia is the new version of the ZetaPush platform.
+The main features are the provision of more high-level services and the possibility to write your business logic backend side with JavaScript/TypeScript.
+The strength of ZetaPush Celtia is that the deployment is easy and with some steps you have a deployed application.
 
-- What is it ?
+Use ZetaPush Celtia help you to create your application in less time with more simplicity and comfort.
 
-- How to use it ? 
+When you create your business logic with ZetaPush Celtia, you create a *Custom Cloud Service*.
+It will be deployed on the ZetaPush platform and provisionned for your application, like a standard *Cloud Service*.
 
-- Why it is useful for you ?
+// Schéma de l'archi de Celtia
+
+
+You have 3 ways to create an application with ZetaPush Celtia :
+
+- From scratch, you create manually each file. link:#_start_from_scratch[Doc]
+- With the CLI, you generate a squeleton of your application. link:#_start_with_the_cli[Doc]
+- With the Wizard on link:https://console.zetapush.com[console.zetapush.com] that help you to select what do you need. link:#_start_with_the_starter[Doc]
 
 
 = Sections

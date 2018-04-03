@@ -4,6 +4,8 @@ include::{docdir}/variables.adoc[]
 :toclevels: 2
 :sectnums:
 :sectnumlevels: 4
+:sectlinks:
+:sectanchors:
 
 
 = ZetaPush documentation
