@@ -1,12 +1,14 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Introduction
+= Guidelines
+
+== Introduction
 
 Here we display 2 sections : The guidelines and the "how to".
 
-= guidelines
+== guidelines
 include::{docdir}/guidelines/guidelines.adoc[leveloffset=+1]
 
-= How to ?
+== How to ?
 include::{docdir}/guidelines/howto.adoc[leveloffset=+1]

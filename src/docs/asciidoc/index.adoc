@@ -1,38 +1,30 @@
 :relative-path: ./
 include::{docdir}/variables.adoc[]
 
+:toc:
 :toclevels: 2
 :sectnums:
 :sectnumlevels: 4
 :sectlinks:
 :sectanchors:
+:icons: font
 
 
 = ZetaPush documentation
 {project-version}
 
+include::{docdir}/introduction/introduction.adoc[leveloffset=+1]
 
+include::{docdir}/quickstart/quickstart.adoc[leveloffset=+1]
 
-== Introduction
-include::{docdir}/introduction/introduction.adoc[leveloffset=+2]
+include::{docdir}/tutorial/tutorial.adoc[leveloffset=+1]
 
-== Quickstart
-include::{docdir}/quickstart/quickstart.adoc[leveloffset=+2]
+include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+1]
 
-== Tutorial
-include::{docdir}/tutorial/tutorial.adoc[leveloffset=+2]
+include::{docdir}/scalability/scalability.adoc[leveloffset=+1]
 
-== Fondamentals
-include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+2]
+include::{docdir}/sdk/intro-sdk.adoc[leveloffset=+1]
 
-== Scalability
-include::{docdir}/scalability/scalability.adoc[leveloffset=+2]
+include::{docdir}/guidelines/intro-guidelines.adoc[leveloffset=+1]
 
-== SDK
-include::{docdir}/sdk/intro-sdk.adoc[leveloffset=+2]
-
-== Guidelines
-include::{docdir}/guidelines/intro-guidelines.adoc[leveloffset=+2]
-
-== Services
-include::{docdir}/services/intro-services.adoc[leveloffset=+2]
+include::{docdir}/services/intro-services.adoc[leveloffset=+1]

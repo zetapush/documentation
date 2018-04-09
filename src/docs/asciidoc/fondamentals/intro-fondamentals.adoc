@@ -1,32 +1,34 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Vocabulary
-include::{docdir}/fondamentals/vocabulary.adoc[leveloffset=+1]
+= Fondamentals
 
-= Development cycle
-include::{docdir}/fondamentals/cycle.adoc[leveloffset=+1]
+== Vocabulary
+include::{docdir}/fondamentals/vocabulary.adoc[leveloffset=+2]
 
-= Installation
-include::{docdir}/fondamentals/installation.adoc[leveloffset=+1]
+== Development cycle
+include::{docdir}/fondamentals/cycle.adoc[leveloffset=+2]
 
-= Initialisation
-include::{docdir}/fondamentals/init.adoc[leveloffset=+1]
+== Installation
+include::{docdir}/fondamentals/installation.adoc[leveloffset=+2]
 
-= Development
-include::{docdir}/fondamentals/development.adoc[leveloffset=+1]
+== Initialisation
+include::{docdir}/fondamentals/init.adoc[leveloffset=+2]
 
-= Debug
-include::{docdir}/fondamentals/debug.adoc[leveloffset=+1]
+== Development
+include::{docdir}/fondamentals/development.adoc[leveloffset=+2]
 
-= Tests
-include::{docdir}/fondamentals/tests.adoc[leveloffset=+1]
+== Debug
+include::{docdir}/fondamentals/debug.adoc[leveloffset=+2]
 
-= Deployment
-include::{docdir}/fondamentals/deploy.adoc[leveloffset=+1]
+== Tests
+include::{docdir}/fondamentals/tests.adoc[leveloffset=+2]
 
-= Exploitation
-include::{docdir}/fondamentals/exploit.adoc[leveloffset=+1]
+== Deployment
+include::{docdir}/fondamentals/deploy.adoc[leveloffset=+2]
 
-= Account management
-include::{docdir}/fondamentals/account.adoc[leveloffset=+1]
+== Exploitation
+include::{docdir}/fondamentals/exploit.adoc[leveloffset=+2]
+
+== Account management
+include::{docdir}/fondamentals/account.adoc[leveloffset=+2]

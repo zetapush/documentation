@@ -1,10 +1,12 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Scalability with ZetaPush
+= Scalability
+
+== Scalability with ZetaPush
 
 Explain how the scalability is with ZetaPush
 
-= How to manage the scalability of my application ?
+== How to manage the scalability of my application ?
 
 How can I scale up / down my application
