@@ -1,0 +1,7 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+* How to debug an application ?
+* Where is the logs ?
+* How to add more logs in my application ?
+* Which tools to debug ?

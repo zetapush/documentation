@@ -1,0 +1,8 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Presentation of the service
+
+= Description of each cloud function
+
+Example of code for each cloud function

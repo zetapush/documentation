@@ -1,21 +1,30 @@
 :relative-path: ./
 include::{docdir}/variables.adoc[]
 
+:toc:
 :toclevels: 2
 :sectnums:
 :sectnumlevels: 4
+:sectlinks:
+:sectanchors:
+:icons: font
 
 
 = ZetaPush documentation
 {project-version}
 
+include::{docdir}/introduction/introduction.adoc[leveloffset=+1]
 
+include::{docdir}/quickstart/quickstart.adoc[leveloffset=+1]
 
-== Introduction
+include::{docdir}/tutorial/tutorial.adoc[leveloffset=+1]
 
-include::{docdir}/introduction/introduction.adoc[leveloffset=+2]
+include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+1]
 
+include::{docdir}/scalability/scalability.adoc[leveloffset=+1]
 
-== Getting started
+include::{docdir}/sdk/intro-sdk.adoc[leveloffset=+1]
 
-include::{docdir}/getting-started/getting-started.adoc[leveloffset=+1]
+include::{docdir}/guidelines/intro-guidelines.adoc[leveloffset=+1]
+
+include::{docdir}/services/intro-services.adoc[leveloffset=+1]

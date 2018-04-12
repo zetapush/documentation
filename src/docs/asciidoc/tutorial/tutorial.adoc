@@ -1,0 +1,9 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Tutorial
+
+Creation of a mini project like "Angular Getting started". This tutorial shows how to create a project with ZetaPush Celtia and how to use it.
+For this, we will start from the CLI to create our project and we will deploy the application on the ZetaPush platform.
+
+link:tutorial/content/0-introduction.html[Start the tutorial]

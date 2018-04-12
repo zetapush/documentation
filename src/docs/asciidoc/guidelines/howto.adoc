@@ -1,6 +1,4 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-
-
-== TUTU
+How to examples

@@ -1,0 +1,29 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= SDK
+
+== Introduction
+
+Display each available SDK
+Section for each Language
+
+== JavaScript / TypeScript
+include::{docdir}/sdk/javascript-sdk.adoc[leveloffset=+1]
+
+== Python
+include::{docdir}/sdk/python-sdk.adoc[leveloffset=+1]
+
+== Android
+include::{docdir}/sdk/android-sdk.adoc[leveloffset=+1]
+
+== Java
+include::{docdir}/sdk/java-sdk.adoc[leveloffset=+1]
+
+== Swift
+include::{docdir}/sdk/swift-sdk.adoc[leveloffset=+1]
+
+== HTTP
+include::{docdir}/sdk/http-sdk.adoc[leveloffset=+1]
+
+

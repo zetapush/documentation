@@ -1,0 +1,24 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Services
+
+== Introduction
+
+Explain each service --> Reference documentation.
+
+For each service we have a http verb with documentation and examples.
+
+== Authentication
+include::{docdir}/services/authentification.adoc[leveloffset=+1]
+
+== Services
+
+For each service the same format
+
+=== Users
+include::{docdir}/services/users.adoc[leveloffset=+2]
+
+== Custom cloud service
+include::{docdir}/services/custom.adoc[leveloffset=+1]
+

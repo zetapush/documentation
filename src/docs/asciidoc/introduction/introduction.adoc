@@ -1,12 +1,73 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-Test
+= Introduction
 
-////
-TODO: Présentation rapide de ZetaPush
-////
+== ZetaPush presentation
 
-= Toto
+Short marketing presentation of ZetaPush. 
 
-= TITI
+== ZetaPush Celtia
+
+ZetaPush Celtia is the new version of the ZetaPush platform.
+The main features are the provision of more high-level services and the possibility to write your business logic on backend side with JavaScript/TypeScript.
+The strength of ZetaPush Celtia is that the deployment is easy. With some steps you have a deployed application.
+
+Using ZetaPush Celtia help you to create your application in less time with more simplicity and comfort. There are already many provided cloud services :
+[square]
+* Management of users
+* Chat
+* Upload of files
+* Data aggregation
+* ...
+
+When you create your business logic with ZetaPush Celtia, you create a *Custom Cloud Service*.
+It will be deployed on the ZetaPush platform and provisionned for your application, like a standard *Cloud Service*.
+
+
+image:schemas/archi-zetapush-celtia.png[]
+
+You have 3 ways to create an application with ZetaPush Celtia :
+
+- From scratch, you create manually each file. link:#_start_from_scratch[Doc]
+- With the CLI, you generate a squeleton of your application. link:#_start_with_the_cli[Doc]
+- With the Wizard on link:https://console.zetapush.com[console.zetapush.com] that help you to select what do you need. link:#_start_with_the_starter[Doc]
+
+
+== Sections
+
+[cols="3*^"]
+|===
+| link:#_tutorial[Tutorial] + 
+If you want to learn how to use ZetaPush Celtia, you can begin here
+
+| link:#_fondamentals[Fondamentals] + 
+Learn the basics of ZetaPush Celtia
+
+| link:#_quickstart[Quickstart] +
+Quickly learn how to start your application
+
+| link:#_development_cycle[Development cycle] +
+All process of development with ZetaPush Celtia
+
+| link:#_guidelines[Guidelines] + 
+Guidelines to write a better code
+
+| link:#_sdk[SDK] +
+Documentation of SDK
+
+| link:#_scalability[Scalability] + 
+How to scale my app ?
+
+| link:#_vocabulary[Vocabulary] +
+Vocabulary in the ZetaPush Celtia context
+
+| link:#_services[Cloud Services] +
+Documentation of Cloud Services
+|===
+
+== Contact us
+
+You can contact us at contact@zetapush.com.
+
+You can also follow our open specifications on GitHub : link:https://github.com/zetapush/zetapush-next-open-specification[Specs]

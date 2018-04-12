@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+[discrete]
+= Utilisation d'un _Custom Cloud Service_
+
+include::{docdir}/tutorial/content/back-button.adoc[leveloffset=+1]
+
+:current-step: 6
+include::{docdir}/tutorial/content/steps.adoc[leveloffset=+1]
