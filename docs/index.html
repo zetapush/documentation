@@ -1,1 +1,610 @@
-./target/generated-docs/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="author" content="0.0.1-SNAPSHOT">
+<title>ZetaPush documentation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=".//javascripts/steps.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/>
+<link rel="stylesheet" type="text/css" href=".//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>ZetaPush documentation</h1>
+<div class="details">
+<span id="author" class="author">0.0.1-SNAPSHOT</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_zetapush_presentation">1.1. ZetaPush presentation</a></li>
+<li><a href="#_zetapush_celtia">1.2. ZetaPush Celtia</a></li>
+<li><a href="#_sections">1.3. Sections</a></li>
+<li><a href="#_contact_us">1.4. Contact us</a></li>
+</ul>
+</li>
+<li><a href="#_quickstart">2. Quickstart</a>
+<ul class="sectlevel2">
+<li><a href="#_how_to_start_with_the_wizard">2.1. How to start with the wizard</a></li>
+<li><a href="#_how_to_start_with_the_cli">2.2. How to start with the CLI</a></li>
+<li><a href="#_how_to_start_from_scratch">2.3. How to start from scratch</a></li>
+<li><a href="#_description_of_each_generated_files">2.4. Description of each generated files</a></li>
+</ul>
+</li>
+<li><a href="#_tutorial">3. Tutorial</a></li>
+<li><a href="#_fondamentals">4. Fondamentals</a>
+<ul class="sectlevel2">
+<li><a href="#_vocabulary">4.1. Vocabulary</a></li>
+<li><a href="#_development_cycle">4.2. Development cycle</a></li>
+<li><a href="#_installation">4.3. Installation</a></li>
+<li><a href="#_initialisation">4.4. Initialisation</a></li>
+<li><a href="#_development">4.5. Development</a></li>
+<li><a href="#_debug">4.6. Debug</a></li>
+<li><a href="#_tests">4.7. Tests</a></li>
+<li><a href="#_deployment">4.8. Deployment</a></li>
+<li><a href="#_exploitation">4.9. Exploitation</a></li>
+<li><a href="#_account_management">4.10. Account management</a></li>
+</ul>
+</li>
+<li><a href="#_scalability">5. Scalability</a>
+<ul class="sectlevel2">
+<li><a href="#_scalability_with_zetapush">5.1. Scalability with ZetaPush</a></li>
+<li><a href="#_how_to_manage_the_scalability_of_my_application">5.2. How to manage the scalability of my application ?</a></li>
+</ul>
+</li>
+<li><a href="#_sdk">6. SDK</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction_4">6.1. Introduction</a></li>
+<li><a href="#_javascript_typescript">6.2. JavaScript / TypeScript</a></li>
+<li><a href="#_python">6.3. Python</a></li>
+<li><a href="#_android">6.4. Android</a></li>
+<li><a href="#_java">6.5. Java</a></li>
+<li><a href="#_swift">6.6. Swift</a></li>
+<li><a href="#_http">6.7. HTTP</a></li>
+</ul>
+</li>
+<li><a href="#_guidelines">7. Guidelines</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction_5">7.1. Introduction</a></li>
+<li><a href="#_guidelines_2">7.2. guidelines</a></li>
+<li><a href="#_how_to">7.3. How to ?</a></li>
+</ul>
+</li>
+<li><a href="#_services">8. Services</a>
+<ul class="sectlevel2">
+<li><a href="#_introduction_6">8.1. Introduction</a></li>
+<li><a href="#_authentication">8.2. Authentication</a></li>
+<li><a href="#_difference_between_each_type_of_connection">8.3. Difference between each type of connection</a></li>
+<li><a href="#_how_to_connect">8.4. How to connect ?</a></li>
+<li><a href="#_examples_of_code">8.5. Examples of code</a></li>
+<li><a href="#_services_2">8.6. Services</a></li>
+<li><a href="#_custom_cloud_service_2">8.7. Custom cloud service</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">1. Introduction</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_zetapush_presentation"><a class="anchor" href="#_zetapush_presentation"></a><a class="link" href="#_zetapush_presentation">1.1. ZetaPush presentation</a></h3>
+<div class="paragraph">
+<p>Short marketing presentation of ZetaPush.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zetapush_celtia"><a class="anchor" href="#_zetapush_celtia"></a><a class="link" href="#_zetapush_celtia">1.2. ZetaPush Celtia</a></h3>
+<div class="paragraph">
+<p>ZetaPush Celtia is the new version of the ZetaPush platform.
+The main features are the provision of more high-level services and the possibility to write your business logic on backend side with JavaScript/TypeScript.
+The strength of ZetaPush Celtia is that the deployment is easy. With some steps you have a deployed application.</p>
+</div>
+<div class="paragraph">
+<p>Using ZetaPush Celtia help you to create your application in less time with more simplicity and comfort. There are already many provided cloud services :</p>
+</div>
+<div class="ulist square">
+<ul class="square">
+<li>
+<p>Management of users</p>
+</li>
+<li>
+<p>Chat</p>
+</li>
+<li>
+<p>Upload of files</p>
+</li>
+<li>
+<p>Data aggregation</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When you create your business logic with ZetaPush Celtia, you create a <strong>Custom Cloud Service</strong>.
+It will be deployed on the ZetaPush platform and provisionned for your application, like a standard <strong>Cloud Service</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="schemas/archi-zetapush-celtia.png" alt="archi zetapush celtia"></span></p>
+</div>
+<div class="paragraph">
+<p>You have 3 ways to create an application with ZetaPush Celtia :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From scratch, you create manually each file. <a href="#_start_from_scratch">Doc</a></p>
+</li>
+<li>
+<p>With the CLI, you generate a squeleton of your application. <a href="#_start_with_the_cli">Doc</a></p>
+</li>
+<li>
+<p>With the Wizard on <a href="https://console.zetapush.com">console.zetapush.com</a> that help you to select what do you need. <a href="#_start_with_the_starter">Doc</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sections"><a class="anchor" href="#_sections"></a><a class="link" href="#_sections">1.3. Sections</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_tutorial">Tutorial</a><br>
+If you want to learn how to use ZetaPush Celtia, you can begin here</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_fondamentals">Fondamentals</a><br>
+Learn the basics of ZetaPush Celtia</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_quickstart">Quickstart</a><br>
+Quickly learn how to start your application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_development_cycle">Development cycle</a><br>
+All process of development with ZetaPush Celtia</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_guidelines">Guidelines</a><br>
+Guidelines to write a better code</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_sdk">SDK</a><br>
+Documentation of SDK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_scalability">Scalability</a><br>
+How to scale my app ?</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_vocabulary">Vocabulary</a><br>
+Vocabulary in the ZetaPush Celtia context</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_services">Cloud Services</a><br>
+Documentation of Cloud Services</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_contact_us"><a class="anchor" href="#_contact_us"></a><a class="link" href="#_contact_us">1.4. Contact us</a></h3>
+<div class="paragraph">
+<p>You can contact us at <a href="mailto:contact@zetapush.com">contact@zetapush.com</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also follow our open specifications on GitHub : <a href="https://github.com/zetapush/zetapush-next-open-specification">Specs</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quickstart"><a class="anchor" href="#_quickstart"></a><a class="link" href="#_quickstart">2. Quickstart</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We explain each process to start development with ZetaPush using differents tools.</p>
+</div>
+<div class="sect2">
+<h3 id="_how_to_start_with_the_wizard"><a class="anchor" href="#_how_to_start_with_the_wizard"></a><a class="link" href="#_how_to_start_with_the_wizard">2.1. How to start with the wizard</a></h3>
+<div class="paragraph">
+<p>The wizard help you to select each cloud service you need and put them together. After that, you download a zip with your generated application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_start_with_the_cli"><a class="anchor" href="#_how_to_start_with_the_cli"></a><a class="link" href="#_how_to_start_with_the_cli">2.2. How to start with the CLI</a></h3>
+<div class="paragraph">
+<p>With the CLI, you can create skeleton for your application (front and/or back).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_start_from_scratch"><a class="anchor" href="#_how_to_start_from_scratch"></a><a class="link" href="#_how_to_start_from_scratch">2.3. How to start from scratch</a></h3>
+<div class="paragraph">
+<p>Here you create manually each file. You only use the documentation to create your application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description_of_each_generated_files"><a class="anchor" href="#_description_of_each_generated_files"></a><a class="link" href="#_description_of_each_generated_files">2.4. Description of each generated files</a></h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tutorial"><a class="anchor" href="#_tutorial"></a><a class="link" href="#_tutorial">3. Tutorial</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creation of a mini project like "Angular Getting started". This tutorial shows how to create a project with ZetaPush Celtia and how to use it.
+For this, we will start from the CLI to create our project and we will deploy the application on the ZetaPush platform.</p>
+</div>
+<div class="paragraph">
+<p><a href="tutorial/content/0-introduction.html">Start the tutorial</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fondamentals"><a class="anchor" href="#_fondamentals"></a><a class="link" href="#_fondamentals">4. Fondamentals</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_vocabulary"><a class="anchor" href="#_vocabulary"></a><a class="link" href="#_vocabulary">4.1. Vocabulary</a></h3>
+<div class="sect3">
+<h4 id="_cloud_service"><a class="anchor" href="#_cloud_service"></a><a class="link" href="#_cloud_service">4.1.1. Cloud Service</a></h4>
+<div class="paragraph">
+<p>A <em>Cloud Service</em> is a set of Cloud Functions link:#<em>cloud_function(see below) provided by ZetaPush.
+For example we a many Cloud Services like _Users management</em>, <em>real-time chat</em>, <em>data aggregation</em>, &#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cloud_function"><a class="anchor" href="#_cloud_function"></a><a class="link" href="#_cloud_function">4.1.2. Cloud Function</a></h4>
+<div class="paragraph">
+<p>To do a specific action with ZetaPush Celtia, we use a Cloud Function. For example, we can create an user with <strong>createUser()</strong>, from the users management cloud service.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_custom_cloud_service"><a class="anchor" href="#_custom_cloud_service"></a><a class="link" href="#_custom_cloud_service">4.1.3. Custom Cloud Service</a></h4>
+<div class="paragraph">
+<p>A <em>Custom Cloud Service</em> is a <em>Cloud Service</em> that you have created.
+If you need to add some business logic in your application, you can create a <em>Custom Cloud Service</em> that regroup many <em>Cloud Functions</em>.
+After the deloyment, the <em>Custom Cloud Services</em> are callable like <em>Cloud Service</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_cycle"><a class="anchor" href="#_development_cycle"></a><a class="link" href="#_development_cycle">4.2. Development cycle</a></h3>
+<div class="paragraph">
+<p>We display the development cycle (Installation to Exploitation). (Schema)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">4.3. Installation</a></h3>
+<div class="paragraph">
+<p>We explain how to install the dependencies to use ZetaPush :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ZetaPush CLI</p>
+</li>
+<li>
+<p>ZetaPush SDKs</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initialisation"><a class="anchor" href="#_initialisation"></a><a class="link" href="#_initialisation">4.4. Initialisation</a></h3>
+<div class="paragraph">
+<p>We explain how to start a project with ZetaPush Celtia.</p>
+</div>
+<div class="paragraph">
+<p>We need to attach many pictures to be sure that the process will be correctly understood.</p>
+</div>
+<div class="paragraph">
+<p>From the beginning we have all dependencies.
+The end of this part is when the user has an application with a "Hello world" made by a ZetaPush service call.</p>
+</div>
+<div class="sect3">
+<h4 id="_start_with_the_starter"><a class="anchor" href="#_start_with_the_starter"></a><a class="link" href="#_start_with_the_starter">4.4.1. Start with the starter</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_start_with_the_cli"><a class="anchor" href="#_start_with_the_cli"></a><a class="link" href="#_start_with_the_cli">4.4.2. Start with the CLI</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_start_from_scratch"><a class="anchor" href="#_start_from_scratch"></a><a class="link" href="#_start_from_scratch">4.4.3. Start from scratch</a></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development"><a class="anchor" href="#_development"></a><a class="link" href="#_development">4.5. Development</a></h3>
+<div class="sect3">
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a><a class="link" href="#_introduction_2">4.5.1. Introduction</a></h4>
+<div class="paragraph">
+<p>Quick introduction about the development with ZetaPush Celtia</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_zetapush_services"><a class="anchor" href="#_zetapush_services"></a><a class="link" href="#_zetapush_services">4.5.2. ZetaPush services</a></h4>
+<div class="paragraph">
+<p>We describe all ZetaPush services and there is a link for each service to have more informations about it (Ref documentation).
+We display how to use a service, with a example of source code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_custom_services"><a class="anchor" href="#_custom_services"></a><a class="link" href="#_custom_services">4.5.3. Custom services</a></h4>
+<div class="paragraph">
+<p>We explain how to create a new custom service. There is a complete example of source code to create a custom service.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debug"><a class="anchor" href="#_debug"></a><a class="link" href="#_debug">4.6. Debug</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>How to debug an application ?</p>
+</li>
+<li>
+<p>Where is the logs ?</p>
+</li>
+<li>
+<p>How to add more logs in my application ?</p>
+</li>
+<li>
+<p>Which tools to debug ?</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tests"><a class="anchor" href="#_tests"></a><a class="link" href="#_tests">4.7. Tests</a></h3>
+<div class="sect3">
+<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a><a class="link" href="#_introduction_3">4.7.1. Introduction</a></h4>
+<div class="paragraph">
+<p>We explain testing in the ZetaPush Celtia context</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mock_zetapush_calls"><a class="anchor" href="#_mock_zetapush_calls"></a><a class="link" href="#_mock_zetapush_calls">4.7.2. Mock ZetaPush calls</a></h4>
+<div class="paragraph">
+<p>How to mock the ZetaPush services calls to test my front application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test_my_custom_services"><a class="anchor" href="#_test_my_custom_services"></a><a class="link" href="#_test_my_custom_services">4.7.3. Test my custom services</a></h4>
+<div class="paragraph">
+<p>How to create functionnal or unit test on my custom service ?</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deployment"><a class="anchor" href="#_deployment"></a><a class="link" href="#_deployment">4.8. Deployment</a></h3>
+<div class="paragraph">
+<p>How work the deployment with ZetaPush Celtia ?</p>
+</div>
+<div class="paragraph">
+<p>How to configure the deployment ? CLI ?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exploitation"><a class="anchor" href="#_exploitation"></a><a class="link" href="#_exploitation">4.9. Exploitation</a></h3>
+<div class="paragraph">
+<p>At this point we have a running application on the ZetaPush platform. (Need to have the possibility to clone a mock project from GitHub ?)</p>
+</div>
+<div class="paragraph">
+<p>We explain the differents metrics that my application returns.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_account_management"><a class="anchor" href="#_account_management"></a><a class="link" href="#_account_management">4.10. Account management</a></h3>
+<div class="paragraph">
+<p>How to manage my account on the ZetaPush platform ?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scalability"><a class="anchor" href="#_scalability"></a><a class="link" href="#_scalability">5. Scalability</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_scalability_with_zetapush"><a class="anchor" href="#_scalability_with_zetapush"></a><a class="link" href="#_scalability_with_zetapush">5.1. Scalability with ZetaPush</a></h3>
+<div class="paragraph">
+<p>Explain how the scalability is with ZetaPush</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_manage_the_scalability_of_my_application"><a class="anchor" href="#_how_to_manage_the_scalability_of_my_application"></a><a class="link" href="#_how_to_manage_the_scalability_of_my_application">5.2. How to manage the scalability of my application ?</a></h3>
+<div class="paragraph">
+<p>How can I scale up / down my application</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sdk"><a class="anchor" href="#_sdk"></a><a class="link" href="#_sdk">6. SDK</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a><a class="link" href="#_introduction_4">6.1. Introduction</a></h3>
+<div class="paragraph">
+<p>Display each available SDK
+Section for each Language</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_javascript_typescript"><a class="anchor" href="#_javascript_typescript"></a><a class="link" href="#_javascript_typescript">6.2. JavaScript / TypeScript</a></h3>
+<div class="paragraph">
+<p>How to install it ?</p>
+</div>
+<div class="paragraph">
+<p>Quickstart</p>
+</div>
+<div class="paragraph">
+<p>API documentation</p>
+</div>
+<div class="paragraph">
+<p>How to create custom code for backend ?</p>
+</div>
+<div class="paragraph">
+<p>Difference between node and web context</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_python"><a class="anchor" href="#_python"></a><a class="link" href="#_python">6.3. Python</a></h3>
+<div class="paragraph">
+<p>How to install it ?</p>
+</div>
+<div class="paragraph">
+<p>Quickstart</p>
+</div>
+<div class="paragraph">
+<p>API documentation</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_android"><a class="anchor" href="#_android"></a><a class="link" href="#_android">6.4. Android</a></h3>
+<div class="paragraph">
+<p>How to install it ?</p>
+</div>
+<div class="paragraph">
+<p>Quickstart</p>
+</div>
+<div class="paragraph">
+<p>API documentation</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java"><a class="anchor" href="#_java"></a><a class="link" href="#_java">6.5. Java</a></h3>
+<div class="paragraph">
+<p>How to install it ?</p>
+</div>
+<div class="paragraph">
+<p>Quickstart</p>
+</div>
+<div class="paragraph">
+<p>API documentation</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_swift"><a class="anchor" href="#_swift"></a><a class="link" href="#_swift">6.6. Swift</a></h3>
+<div class="paragraph">
+<p>How to install it ?</p>
+</div>
+<div class="paragraph">
+<p>Quickstart</p>
+</div>
+<div class="paragraph">
+<p>API documentation</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http"><a class="anchor" href="#_http"></a><a class="link" href="#_http">6.7. HTTP</a></h3>
+<div class="paragraph">
+<p>How to use HTTP request to call ZetaPush platform (Services).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guidelines"><a class="anchor" href="#_guidelines"></a><a class="link" href="#_guidelines">7. Guidelines</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_5"><a class="anchor" href="#_introduction_5"></a><a class="link" href="#_introduction_5">7.1. Introduction</a></h3>
+<div class="paragraph">
+<p>Here we display 2 sections : The guidelines and the "how to".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_guidelines_2"><a class="anchor" href="#_guidelines_2"></a><a class="link" href="#_guidelines_2">7.2. guidelines</a></h3>
+<div class="paragraph">
+<p>Guidelines
+Example : front and back in 2 separate folders</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to"><a class="anchor" href="#_how_to"></a><a class="link" href="#_how_to">7.3. How to ?</a></h3>
+<div class="paragraph">
+<p>How to examples</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_services"><a class="anchor" href="#_services"></a><a class="link" href="#_services">8. Services</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_6"><a class="anchor" href="#_introduction_6"></a><a class="link" href="#_introduction_6">8.1. Introduction</a></h3>
+<div class="paragraph">
+<p>Explain each service -&#8594; Reference documentation.</p>
+</div>
+<div class="paragraph">
+<p>For each service we have a http verb with documentation and examples.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authentication"><a class="anchor" href="#_authentication"></a><a class="link" href="#_authentication">8.2. Authentication</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_difference_between_each_type_of_connection"><a class="anchor" href="#_difference_between_each_type_of_connection"></a><a class="link" href="#_difference_between_each_type_of_connection">8.3. Difference between each type of connection</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_how_to_connect"><a class="anchor" href="#_how_to_connect"></a><a class="link" href="#_how_to_connect">8.4. How to connect ?</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_examples_of_code"><a class="anchor" href="#_examples_of_code"></a><a class="link" href="#_examples_of_code">8.5. Examples of code</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="_services_2"><a class="anchor" href="#_services_2"></a><a class="link" href="#_services_2">8.6. Services</a></h3>
+<div class="paragraph">
+<p>For each service the same format</p>
+</div>
+<div class="sect3">
+<h4 id="_users"><a class="anchor" href="#_users"></a><a class="link" href="#_users">8.6.1. Users</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_presentation_of_the_service"><a class="anchor" href="#_presentation_of_the_service"></a><a class="link" href="#_presentation_of_the_service">8.6.2. Presentation of the service</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_description_of_each_cloud_function"><a class="anchor" href="#_description_of_each_cloud_function"></a><a class="link" href="#_description_of_each_cloud_function">8.6.3. Description of each cloud function</a></h4>
+<div class="paragraph">
+<p>Example of code for each cloud function</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_cloud_service_2"><a class="anchor" href="#_custom_cloud_service_2"></a><a class="link" href="#_custom_cloud_service_2">8.7. Custom cloud service</a></h3>
+<div class="paragraph">
+<p>How to create custom cloud service</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-12 17:22:10 CEST
+</div>
+</div>
+</body>
+</html>

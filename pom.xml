@@ -106,6 +106,7 @@
 									<sourceHighlighter>coderay</sourceHighlighter>
 									<embedAssets>false</embedAssets>
 									<templateDir>${basedir}/src/docs/resources/templates</templateDir>
+									<outputDirectory>${basedir}/docs</outputDirectory>
 									<attributes>
 										<toc>left</toc>
 										<icons>font</icons>
@@ -139,7 +140,7 @@
 											<directory>src/docs/resources</directory>
 										</resource>
 									</resources>
-									<outputDirectory>${basedir}/target/generated-docs</outputDirectory>
+									<outputDirectory>${basedir}/docs</outputDirectory>
 								</configuration>
 							</execution>
 						</executions>
