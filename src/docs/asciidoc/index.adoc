@@ -21,6 +21,8 @@ include::{docdir}/tutorial/tutorial.adoc[leveloffset=+1]
 
 include::{docdir}/fondamentals/intro-fondamentals.adoc[leveloffset=+1]
 
+include::{docdir}/cli/cli.adoc[leveloffset=+1]
+
 include::{docdir}/scalability/scalability.adoc[leveloffset=+1]
 
 include::{docdir}/sdk/intro-sdk.adoc[leveloffset=+1]

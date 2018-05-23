@@ -1,0 +1,13 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= CLI
+
+== Init
+include::{docdir}/cli/init.adoc[leveloffset=+2]
+
+== Deploy
+include::{docdir}/cli/push.adoc[leveloffset=+2]
+
+== Run
+include::{docdir}/cli/run.adoc[leveloffset=+2]
