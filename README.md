@@ -2,9 +2,9 @@
 
 Repository for the documentation of the ZetaPush platform
 
+> Documentation available [here](https://zetapush.github.io/documentation/)
+
 ### What is this repository for?
-
-
 
 ### Usage
 

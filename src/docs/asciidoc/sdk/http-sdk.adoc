@@ -1,4 +1,0 @@
-:relative-path: ../
-include::{docdir}/variables.adoc[]
-
-How to use HTTP request to call ZetaPush platform (Services).

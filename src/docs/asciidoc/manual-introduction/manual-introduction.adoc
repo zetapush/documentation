@@ -1,6 +1,4 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-Run application in local with CLI.
-
-TODO
+= Manual introduction

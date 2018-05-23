@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.mvn": true,
+        "**/.vscode": true,
+        "**/target": true,
+        "**/.gitignore": true,
+        "**/mvnw": true,
+        "**/mvnw.cmd": true
+    }
+}
