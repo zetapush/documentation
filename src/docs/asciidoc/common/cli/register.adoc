@@ -3,7 +3,23 @@ include::{docdir}/variables.adoc[]
 
 = zeta register
 
-NOTE: This command is automatically called when you run the commands `zeta run` or `zeta deploy`. So, an anonymous account is created when you call these commands.
+There are 2 types of account on the ZetaPush platform : The *activated account* and the *anonymous account*. You can entirely use ZetaPush with one or the other type of account.
 
-There are 2 types of account on the ZetaPush platform : The *activated account* and the *anonymous account*.
+NOTE: This command is automatically called when you run the commands `zeta run` or `zeta deploy`. So, an anonymous account is created when you call these commands. (or activated account with `--email`)
+
+
+== Anonymous account
+
+The anonymous account is temporary. It is useful to test ZetaPush Celtia. This type of account expire 7 days after the creation.
+If you want to keep the data of your account after the expiry, you need to activate it.
+
+== Activate account
+
+This type of account is permanent. You can use ZetaPush Celtia whenever you want. 
+
+
+== How to use the CLI ?
+include::{docdir}/common/cli/details-register-cli.adoc[leveloffset=+2]
+
+
 

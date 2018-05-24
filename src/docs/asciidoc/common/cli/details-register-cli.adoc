@@ -1,0 +1,21 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+You can use the command `zeta register` in different contexts :
+
+= Create an anonymous account
+
+include::{docdir}/common/cli/create-anonymous-account.adoc[leveloffset=+1]
+
+= Create an account with activation 
+
+WARNING: This feature is work in progress
+
+include::{docdir}/common/cli/create-activated-account.adoc[leveloffset=+1]
+
+
+= Activate an anonymous account
+
+WARNING: This feature is work in progress
+
+include::{docdir}/common/cli/activate-account.adoc[leveloffset=+1]

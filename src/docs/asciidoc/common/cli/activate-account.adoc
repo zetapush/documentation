@@ -1,0 +1,20 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+To activate an existing anonymous account, you need to launch :
+
+[source,bash,linenums]
+----
+$ zeta register --login xsXnmWhi9
+----
+
+If an anonymous account exists with the login *xsXnmWhi9*, the command ask the user to type his email and send it a link to activate the account.
+
+You can also use `--email` :
+
+[source,bash,linenums]
+----
+$ zeta register --login xsXnmWhi9 --email user@gmail.com
+----
+
+If you launch `zeta register` and an anonymous account exists in the `.zetarc`, the command active it.

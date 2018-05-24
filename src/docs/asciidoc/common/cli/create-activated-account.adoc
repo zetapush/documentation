@@ -1,0 +1,14 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+You can automatically create a new activated account. For this you can launch :
+
+[source,bash,linenums]
+----
+$ zeta register --email user@gmail.com
+----
+
+When you use `--email`, you specify that you want to create a new activated account.
+The account is created and an email is sent to valid your account. 
+
+TIP: By default, the login is the email. You can specify it using `--login`

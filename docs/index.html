@@ -118,8 +118,180 @@ How to use the ZetaPush CLI</p></td>
 </div>
 <div class="sect2">
 <h3 id="_command_line_interface_cli"><a class="anchor" href="#_command_line_interface_cli"></a><a class="link" href="#_command_line_interface_cli">3.2. Command Line Interface (CLI)</a></h3>
+<div class="sect3">
+<h4 id="_zeta_register"><a class="anchor" href="#_zeta_register"></a><a class="link" href="#_zeta_register">3.2.1. zeta register</a></h4>
 <div class="paragraph">
-<p>Unresolved directive in common/cli/cli.adoc - include::/home/damien/workspace/celtia/documentation/src/docs/asciidoc/cli/register.adoc[leveloffset=+1]</p>
+<p>There are 2 types of account on the ZetaPush platform : The <strong>activated account</strong> and the <strong>anonymous account</strong>. You can entirely use ZetaPush with one or the other type of account.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command is automatically called when you run the commands <code>zeta run</code> or <code>zeta deploy</code>. So, an anonymous account is created when you call these commands. (or activated account with <code>--email</code>)
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_anonymous_account"><a class="anchor" href="#_anonymous_account"></a><a class="link" href="#_anonymous_account">3.2.1.1. Anonymous account</a></h5>
+<div class="paragraph">
+<p>The anonymous account is temporary. It is useful to test ZetaPush Celtia. This type of account expire 7 days after the creation.
+If you want to keep the data of your account after the expiry, you need to activate it.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_activate_account"><a class="anchor" href="#_activate_account"></a><a class="link" href="#_activate_account">3.2.1.2. Activate account</a></h5>
+<div class="paragraph">
+<p>This type of account is permanent. You can use ZetaPush Celtia whenever you want.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_the_cli"><a class="anchor" href="#_how_to_use_the_cli"></a><a class="link" href="#_how_to_use_the_cli">3.2.1.3. How to use the CLI ?</a></h5>
+<div class="paragraph">
+<p>You can use the command <code>zeta register</code> in different contexts :</p>
+</div>
+<div class="sect5">
+<h6 id="_create_an_anonymous_account"><a class="anchor" href="#_create_an_anonymous_account"></a><a class="link" href="#_create_an_anonymous_account">Create an anonymous account</a></h6>
+<div class="paragraph">
+<p>To create a new anonymous you just need to launch :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta register</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will create a new anonymous account on the ZetaPush platform with a new application and fill the <code>.zetarc</code> with the new informations.</p>
+</div>
+<div class="listingblock">
+<div class="title">.zetarc</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xsXnmWhi9WUx8F3J5kDyhRem2I6sUYpFsZjdW3SOjuA</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">va4RPi_rwKHcov9rQYtheXDvoU4RIPyJkUXz4_DzaL0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">XWPbrVVV</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">envName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Generated name of your application</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Environment of your application, not used yet</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_create_an_account_with_activation"><a class="anchor" href="#_create_an_account_with_activation"></a><a class="link" href="#_create_an_account_with_activation">Create an account with activation</a></h6>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This feature is work in progress
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can automatically create a new activated account. For this you can launch :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta register --email user@gmail.com</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you use <code>--email</code>, you specify that you want to create a new activated account.
+The account is created and an email is sent to valid your account.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+By default, the login is the email. You can specify it using <code>--login</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_activate_an_anonymous_account"><a class="anchor" href="#_activate_an_anonymous_account"></a><a class="link" href="#_activate_an_anonymous_account">Activate an anonymous account</a></h6>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This feature is work in progress
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To activate an existing anonymous account, you need to launch :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta register --login xsXnmWhi9</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If an anonymous account exists with the login <strong>xsXnmWhi9</strong>, the command ask the user to type his email and send it a link to activate the account.</p>
+</div>
+<div class="paragraph">
+<p>You can also use <code>--email</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta register --login xsXnmWhi9 --email user@gmail.com</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you launch <code>zeta register</code> and an anonymous account exists in the <code>.zetarc</code>, the command active it.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">

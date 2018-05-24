@@ -1,0 +1,13 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+To create a new anonymous you just need to launch :
+
+[source,bash,linenums]
+----
+$ zeta register
+----
+
+It will create a new anonymous account on the ZetaPush platform with a new application and fill the `.zetarc` with the new informations.
+
+include::{docdir}/common/code/zetarc-after-create-anonymous-account.adoc[leveloffset=+1]
