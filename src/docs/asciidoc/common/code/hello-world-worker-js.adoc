@@ -1,0 +1,30 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.worker/index.js
+[source,javascript,linenums]
+----
+module.exports = class Api {
+  /**
+   * Explicit injected platform services
+   * @returns {Object[]}
+   */
+  static get injected() {
+    return [];
+  }
+  /**
+   * Api constructor
+   */
+  constructor() {
+    console.log('Api:constructor')
+  }
+
+  /**
+   * Get an Hello World string with server side timestamp value
+   * @returns {string}
+   */
+  async hello() {
+    return `Hello World from JavaScript ${Date.now()}`;
+  }
+}
+----

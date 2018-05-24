@@ -1,0 +1,10 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+[source,console]
+----
+$ npm install --save @zetapush/platform
+$ npm install --save @zetapush/cli
+----
+
+include::{docdir}/common/code/needed-dependencies.adoc[]

@@ -1,0 +1,13 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+```console
+├── .zetarc
+├── .gitignore
+├── front
+│   ├── index.html
+│   └── index.js
+├── worker
+│   └── index.js
+└── package.json
+```

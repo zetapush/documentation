@@ -1,0 +1,26 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.front/index.js
+[source,javascript,linenums]
+----
+// Create new ZetaPush Client
+const client = new ZetaPush.WeakClient({
+  sandboxId: "yourappname",
+});
+
+const api = client.createProxyTaskService();
+
+client.connect().then(() => (
+  console.debug('onConnectionEstablished'),
+  [...document.querySelectorAll('button')].forEach((node) =>
+    node.removeAttribute('disabled'),
+  )
+));
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.js-Hello').addEventListener('click', (event) => {
+        console.log('Hello world', () => api.hello());
+    });
+});
+----

@@ -1,4 +1,6 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Command Line Interface (CLI)
+= Vocabulary
+
+==== Worker

@@ -1,0 +1,21 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.package.json
+[source,json,linenums]
+----
+{
+    "name": "myApp",
+    "main": "worker/index.js",
+    "dependencies": {
+        "@zetapush/platform": "^0.11.1",
+        "@zetapush/cli": "^0.11.1"
+    },
+    "zetapush": {
+        "front": "./front/dist", <1>
+        "worker": "./server" <2>
+    }
+}
+----
+<1> The front code to deploy is in the directory `front/dist`
+<2> The back code to deploy is in the directory `server`
