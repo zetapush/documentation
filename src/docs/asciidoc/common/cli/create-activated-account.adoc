@@ -9,6 +9,9 @@ $ zeta register --email user@gmail.com
 ----
 
 When you use `--email`, you specify that you want to create a new activated account.
-The account is created and an email is sent to valid your account. 
 
-TIP: By default, the login is the email. You can specify it using `--login`
+A prompt ask you to create a password for your account. Then an email is sent to confirm your account. You have 7 days for it.
+
+TIP: If you have an anonymous account in the `.zetarc`, the CLI ask you if you want to move your applications in the new accounts.
+
+WARNING: If you have an anonymous account in the `.zetarc` and you want to keep your data with the new account, you **need** to activate your account before the validity of anonymous account expires.

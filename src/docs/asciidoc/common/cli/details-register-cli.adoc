@@ -7,15 +7,9 @@ You can use the command `zeta register` in different contexts :
 
 include::{docdir}/common/cli/create-anonymous-account.adoc[leveloffset=+1]
 
-= Create an account with activation 
+= Create an activated account
 
 WARNING: This feature is work in progress
 
 include::{docdir}/common/cli/create-activated-account.adoc[leveloffset=+1]
 
-
-= Activate an anonymous account
-
-WARNING: This feature is work in progress
-
-include::{docdir}/common/cli/activate-account.adoc[leveloffset=+1]
