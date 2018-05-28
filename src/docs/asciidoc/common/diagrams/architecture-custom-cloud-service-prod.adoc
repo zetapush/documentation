@@ -1,0 +1,33 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Custom Cloud Service in production phase
+[plantuml, custom-cloud-service-prod, png]     
+....
+skinparam component {
+	ArrowFontName Impact
+    ArrowFontColor Black
+    ArrowFontSize 14
+}
+
+node "ZetaPush platform" {
+    rectangle "application" {
+        node "front"
+        node "worker"
+    }
+
+    note left of [worker]
+        Back code with
+        custom cloud services that
+        interacts with cloud services
+    end note
+
+    note right of [front]
+        Front code that use
+        only the deployed worker
+    end note
+
+    [worker] <.> [front] : (1)
+}
+....
+<1> The front code interacts *only* with the _custom cloud services_ that is running "locally"

@@ -1,0 +1,52 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Complete example custom cloud services
+[source, javascript, linenums]
+----
+const { Stack } = require('@zetapush/platform')
+
+class DateCustomService {
+    constructor() {}
+
+    formatDate(date) {
+        return date.toLocalDateString("fr-FR");
+    }
+}
+
+class SimpleStorageWithDate {
+    constructor(stack, dateCustomService) {
+        this.stack = stack;
+        this.dateCustomService = dateCustomService;
+    }
+    
+    async push(item) { <1>
+        const output = await this.stack.push({ <2>
+            stack: 'test', 
+            data: {
+                value: item,
+                date: this.dateService.formateDate(new Date()); <3>
+            }
+        });
+        return const;
+    }
+
+    async list() { <1>
+        const output = await this.stack.list({ stack: 'demo'});
+        return output;
+    }    
+}
+
+export default { <4>
+  exposed: {
+   simpleStorageWithDate: SimpleStorageWithDate,
+  },
+  internal: {
+   dateCustomService: DateCustomService
+  }
+}
+----
+<1> Async/Await context
+<2> Use the existing _cloud services_
+<3> Use an other _custom cloud service_
+<4> Register our _custom cloud services_ and expose only `SimpleStorageWithDate`

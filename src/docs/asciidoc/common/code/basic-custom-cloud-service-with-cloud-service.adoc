@@ -1,0 +1,37 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Basic custom cloud service with existing cloud service
+[source, javascript, linenums]
+----
+const { Stack } = require('@zetapush/platform') <1>
+
+class SimpleStorageWithDate {
+    constructor(stack) {
+        this.stack = stack; <2>
+    }
+    
+    async push(item) { <3>
+        const output = await this.stack.push({ <4>
+            stack: 'test', 
+            data: {
+                value: item,
+                date: Date.now()
+            }
+        });
+        return const;
+    }
+
+    async list() { <5>
+        const output = await this.stack.list({ stack: 'demo'});
+        return output;
+    }
+
+    
+}
+----
+<1> If you want to use an existing _cloud service_ you need to import it from `@zetapush/platform`
+<2> You inject the _cloud service_ into your _custom cloud service_ ("Stack" type)
+<3> _Cloud function_ to add an item in a stack with the associated timestamp
+<4> You case use the _async/await_ syntax in your _custom cloud services_
+<5> _Cloud function_ to return all items from the stack

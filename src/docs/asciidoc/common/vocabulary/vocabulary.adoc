@@ -1,0 +1,12 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Vocabulary
+
+==== Worker
+
+==== Cloud Function
+
+==== Cloud Service
+
+==== Custom Cloud Service

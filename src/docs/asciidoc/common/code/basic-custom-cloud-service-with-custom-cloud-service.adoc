@@ -1,0 +1,30 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Basic custom cloud service with other custom cloud service
+[source, javascript, linenums]
+----
+class DateCustomService { <1>
+    constructor() {}
+
+    formatDate(date) {
+        return date.toLocalDateString("fr-FR");
+    }
+
+
+}
+
+class HelloWorldService {
+    constructor(dateCustomService) { <2>
+        this.dateService = dateCustomService;
+    }
+
+    helloWorldWithDate() {
+        const date = this.dateService.formateDate(new Date()); <3>
+        return `Hello world at ${date}`;
+    }
+}
+----
+<1> First _custom cloud service_ only to manipulate dates
+<2> `dateCustomService` is an instance of `DateCustomService`
+<3> We use the `DateCustomService` in our `HelloWorldService`

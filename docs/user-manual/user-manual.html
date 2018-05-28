@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>User manual</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=".//javascripts/steps.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href=".//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>User manual</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_vocabulary">Vocabulary</a>
+<ul class="sectlevel4">
+<li><a href="#_worker">Worker</a></li>
+<li><a href="#_cloud_function">Cloud Function</a></li>
+<li><a href="#_cloud_service">Cloud Service</a></li>
+<li><a href="#_custom_cloud_service">Custom Cloud Service</a></li>
+</ul>
+</li>
+<li><a href="#_custom_cloud_service_2">Custom Cloud Service</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_a_em_custom_cloud_service_em">What is a <em>custom cloud service</em></a></li>
+<li><a href="#_how_to_create_a_em_custom_cloud_service_em">How to create a <em>custom cloud service</em></a></li>
+<li><a href="#_register_expose_my_em_custom_cloud_service_em">Register / expose my <em>custom cloud service</em></a></li>
+<li><a href="#_complete_example">Complete example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_vocabulary"><a class="anchor" href="#_vocabulary"></a>Vocabulary</h2>
+<div class="sectionbody">
+<div class="sect4">
+<h5 id="_worker"><a class="anchor" href="#_worker"></a>Worker</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_cloud_function"><a class="anchor" href="#_cloud_function"></a>Cloud Function</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_cloud_service"><a class="anchor" href="#_cloud_service"></a>Cloud Service</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_custom_cloud_service"><a class="anchor" href="#_custom_cloud_service"></a>Custom Cloud Service</h5>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_cloud_service_2"><a class="anchor" href="#_custom_cloud_service_2"></a>Custom Cloud Service</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a>What is a <em>custom cloud service</em></h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A <em>custom cloud service</em> combines many <a href="#_cloud_function">cloud functions</a> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
+Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_example"><a class="anchor" href="#_example"></a>Example</h5>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Your use-case is a basic real-time chat between <em>characters of Avengers</em> (See <a href="#_tutorial">tutorial</a>). You create the chat with the <em>cloud services</em> provided by ZetaPush and you want to add a new feature : Each <em>Avenger</em> has many skills/attacks and they can randomly use one of them on the chat.</p>
+</div>
+<div class="paragraph">
+<p>To add this business logic, you can create a <em>custom cloud service</em> named <em>AvengerService</em> and into this, you add a <em>cloud function</em> named <em>launchRandomAttack</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h4>
+<div class="sect4">
+<h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a>Development phase</h5>
+<div class="imageblock">
+<div class="content">
+<img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1055" height="399">
+</div>
+<div class="title">Figure 1. Custom Cloud Service in development phase</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The worker is running "locally" and interacts with the existing <em>cloud services</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a>Production phase</h5>
+<div class="imageblock">
+<div class="content">
+<img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="352" height="377">
+</div>
+<div class="title">Figure 2. Custom Cloud Service in production phase</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a>How to create a <em>custom cloud service</em></h3>
+<div class="sect3">
+<h4 id="_syntax_of_a_custom_cloud_service"><a class="anchor" href="#_syntax_of_a_custom_cloud_service"></a>Syntax of a Custom Cloud Service</h4>
+<div class="paragraph">
+<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
+</div>
+<div class="listingblock">
+<div class="title">Basic custom cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {
+    constructor() {} <i class="conum" data-value="1"></i><b>(1)</b>
+
+    helloWorld() { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You always need to add a constructor in a <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>helloWorld</code> is your first <em>cloud function</em> in your <em>custom cloud service</em> named <strong>HelloWorldAsCustomCloudService</strong></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In your <em>custom cloud service</em> you can also use the existing <em>cloud services</em> provided by ZetaPush :</p>
+</div>
+<div class="listingblock">
+<div class="title">Basic custom cloud service with existing cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td>
+  <td class="code"><pre>const { Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>) <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="reserved">class</span> SimpleStorageWithDate {
+    constructor(stack) {
+        <span class="local-variable">this</span>.stack = stack; <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+
+    async push(item) { <i class="conum" data-value="3"></i><b>(3)</b>
+        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="4"></i><b>(4)</b>
+            <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
+            <span class="key">data</span>: {
+                <span class="key">value</span>: item,
+                <span class="key">date</span>: Date.now()
+            }
+        });
+        <span class="keyword">return</span> const;
+    }
+
+    async list() { <i class="conum" data-value="5"></i><b>(5)</b>
+        const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
+        <span class="keyword">return</span> output;
+    }
+
+
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>If you want to use an existing <em>cloud service</em> you need to import it from <code>@zetapush/platform</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You inject the <em>cloud service</em> into your <em>custom cloud service</em> ("Stack" type)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><em>Cloud function</em> to add an item in a stack with the associated timestamp</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>You case use the <em>async/await</em> syntax in your <em>custom cloud services</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><em>Cloud function</em> to return all items from the stack</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dependencies"><a class="anchor" href="#_dependencies"></a>Dependencies</h4>
+<div class="paragraph">
+<p>If you use existing <em>cloud services</em> provided by ZetaPush, you need to import them from <code>@zetapush/platform</code>. So you need to install this dependency with :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/platform</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_custom_cloud_service_inside_another"><a class="anchor" href="#_use_custom_cloud_service_inside_another"></a>Use custom cloud service inside another</h4>
+<div class="paragraph">
+<p>Like using existing <em>cloud services</em>, you can use other <em>custom cloud services</em> into one of them. For that, you proceed like <em>cloud service</em> :</p>
+</div>
+<div class="listingblock">
+<div class="title">Basic custom cloud service with other custom cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> DateCustomService { <i class="conum" data-value="1"></i><b>(1)</b>
+    constructor() {}
+
+    formatDate(date) {
+        <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
+    }
+
+
+}
+
+<span class="reserved">class</span> HelloWorldService {
+    constructor(dateCustomService) { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="local-variable">this</span>.dateService = dateCustomService;
+    }
+
+    helloWorldWithDate() {
+        const date = <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="keyword">return</span> <span class="error">`</span>Hello world at <span class="predefined">$</span>{date}<span class="error">`</span>;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>First <em>custom cloud service</em> only to manipulate dates</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>dateCustomService</code> is an instance of <code>DateCustomService</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We use the <code>DateCustomService</code> in our <code>HelloWorldService</code></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_register_expose_my_em_custom_cloud_service_em"><a class="anchor" href="#_register_expose_my_em_custom_cloud_service_em"></a>Register / expose my <em>custom cloud service</em></h3>
+<div class="paragraph">
+<p>When you create a <em>custom cloud service</em> you need to register it. Then, if you want to use it on the client side, you need to expose it.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_2"><a class="anchor" href="#_example_2"></a>Example</h4>
+<div class="paragraph">
+<p>It is considered that we have 3 <em>custom cloud services</em> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Services exposed for the client side</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>MyCustomCloudService1</em></p>
+</li>
+<li>
+<p><em>MyCustomCloudService2</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Private service not exposed to the client (pur business logic)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>MyPrivateCustomCloudService</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You need to register <em>custom cloud services</em> in the file indicated by the property <strong>main</strong> in the <code>package.json</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { MyCustomCloudService1, MyCustomCloudService2, MyPrivateCustomCloudService } from <span class="string"><span class="delimiter">'</span><span class="content">./services.js</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">exposed</span>: { <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="key">myCustomCloudService1</span>: MyCustomCloudService1,
+   <span class="key">myCustomCloudService2</span>: MyCustomCloudService2
+  },
+  <span class="key">internal</span>: { <i class="conum" data-value="2"></i><b>(2)</b>
+   <span class="key">myPrivateCustomCloudService</span>: MyPrivateCustomCloudService
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>List of exposed <em>custom cloud services</em> with its names</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>List of no exposed <em>custom cloud services</em> with its names</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a>Complete example</h3>
+<div class="paragraph">
+<p>My configuration in the <code>package.json</code> is the following :</p>
+</div>
+<div class="listingblock">
+<div class="title">package.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.js</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./worker</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.12.0</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.12.0</span><span class="delimiter">&quot;</span></span>
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Complete example custom cloud services</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td>
+  <td class="code"><pre>const { Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)
+
+<span class="reserved">class</span> DateCustomService {
+    constructor() {}
+
+    formatDate(date) {
+        <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
+    }
+}
+
+<span class="reserved">class</span> SimpleStorageWithDate {
+    constructor(stack, dateCustomService) {
+        <span class="local-variable">this</span>.stack = stack;
+        <span class="local-variable">this</span>.dateCustomService = dateCustomService;
+    }
+
+    async push(item) { <i class="conum" data-value="1"></i><b>(1)</b>
+        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
+            <span class="key">data</span>: {
+                <span class="key">value</span>: item,
+                <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="3"></i><b>(3)</b>
+            }
+        });
+        <span class="keyword">return</span> const;
+    }
+
+    async list() { <i class="conum" data-value="1"></i><b>(1)</b>
+        const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
+        <span class="keyword">return</span> output;
+    }
+}
+
+<span class="reserved">export</span> <span class="keyword">default</span> { <i class="conum" data-value="4"></i><b>(4)</b>
+  <span class="key">exposed</span>: {
+   <span class="key">simpleStorageWithDate</span>: SimpleStorageWithDate,
+  },
+  <span class="key">internal</span>: {
+   <span class="key">dateCustomService</span>: DateCustomService
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Async/Await context</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the existing <em>cloud services</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Use an other <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Register our <em>custom cloud services</em> and expose only <code>SimpleStorageWithDate</code></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-05-28 09:40:03 CEST
+</div>
+</div>
+</body>
+</html>

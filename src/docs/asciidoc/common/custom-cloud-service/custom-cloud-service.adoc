@@ -1,0 +1,20 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Custom Cloud Service
+
+== What is a _custom cloud service_
+include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.adoc[leveloffset=+2]
+
+== How to create a _custom cloud service_
+include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+2]
+
+== Register / expose my _custom cloud service_
+include::{docdir}/common/custom-cloud-service/expose-custom-cloud-service.adoc[leveloffset=+2]
+
+== Complete example
+include::{docdir}/common/custom-cloud-service/complete-example-custom-cloud-service.adoc[leveloffset=+2]
+
+
+
+

@@ -1,0 +1,18 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+When you create a _custom cloud service_ you need to register it. Then, if you want to use it on the client side, you need to expose it.
+
+= Example
+
+It is considered that we have 3 _custom cloud services_ :
+
+* Services exposed for the client side
+    ** _MyCustomCloudService1_
+    ** _MyCustomCloudService2_
+* Private service not exposed to the client (pur business logic)
+    ** _MyPrivateCustomCloudService_
+
+NOTE: You need to register _custom cloud services_ in the file indicated by the property *main* in the `package.json`
+
+include::{docdir}/common/code/expose-register-custom-cloud-service.adoc[leveloffset=+1]

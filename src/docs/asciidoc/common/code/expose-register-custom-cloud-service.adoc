@@ -1,0 +1,20 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.worker/index.js
+[source, javascript, linenums]
+----
+import { MyCustomCloudService1, MyCustomCloudService2, MyPrivateCustomCloudService } from './services.js';
+
+export default {
+  exposed: { <1>
+   myCustomCloudService1: MyCustomCloudService1,
+   myCustomCloudService2: MyCustomCloudService2
+  },
+  internal: { <2>
+   myPrivateCustomCloudService: MyPrivateCustomCloudService
+  }
+}
+----
+<1> List of exposed _custom cloud services_ with its names
+<2> List of no exposed _custom cloud services_ with its names

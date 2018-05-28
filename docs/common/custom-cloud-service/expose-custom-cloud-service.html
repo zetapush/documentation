@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Example</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_example">Example</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you create a <em>custom cloud service</em> you need to register it. Then, if you want to use it on the client side, you need to expose it.</p>
+</div>
+</div>
+</div>
+<h1 id="_example" class="sect0"><a class="anchor" href="#_example"></a>Example</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>It is considered that we have 3 <em>custom cloud services</em> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Services exposed for the client side</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>MyCustomCloudService1</em></p>
+</li>
+<li>
+<p><em>MyCustomCloudService2</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Private service not exposed to the client (pur business logic)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>MyPrivateCustomCloudService</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You need to register <em>custom cloud services</em> in the file indicated by the property <strong>main</strong> in the <code>package.json</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { MyCustomCloudService1, MyCustomCloudService2, MyPrivateCustomCloudService } from <span class="string"><span class="delimiter">'</span><span class="content">./services.js</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">export</span> <span class="keyword">default</span> {
+  <span class="key">exposed</span>: { <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="key">myCustomCloudService1</span>: MyCustomCloudService1,
+   <span class="key">myCustomCloudService2</span>: MyCustomCloudService2
+  },
+  <span class="key">internal</span>: { <i class="conum" data-value="2"></i><b>(2)</b>
+   <span class="key">myPrivateCustomCloudService</span>: MyPrivateCustomCloudService
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>List of exposed <em>custom cloud services</em> with its names</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>List of no exposed <em>custom cloud services</em> with its names</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-05-28 15:53:31 CEST
+</div>
+</div>
+</body>
+</html>
