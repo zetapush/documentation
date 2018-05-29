@@ -15,11 +15,12 @@ My configuration in the `package.json` is the following :
         "worker": "./worker"
     },
     "dependencies": {
-        "@zetapush/core": "^0.12.0",
-        "@zetapush/plaform": "^0.12.0"
+        "@zetapush/core": "^0.14.1",
+        "@zetapush/plaform": "^0.14.1"
     }
 }
 ----
 
+And my back side code is :
 
 include::{docdir}/common/code/complete-example-custom-cloud-service.adoc[]

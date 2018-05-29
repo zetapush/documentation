@@ -61,16 +61,30 @@
 23
 24
 25
+26
+27
+28
+29
+30
+31
+32
 </pre></td>
-  <td class="code"><pre>const { Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>) <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>const { Inject, Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
 
 <span class="reserved">class</span> SimpleStorageWithDate {
-    constructor(stack) {
-        <span class="local-variable">this</span>.stack = stack; <i class="conum" data-value="2"></i><b>(2)</b>
+
+    <span class="reserved">static</span> get parameters() {
+        <span class="keyword">return</span> [
+            <span class="keyword">new</span> Inject(Stack) <i class="conum" data-value="3"></i><b>(3)</b>
+        ]
     }
 
-    async push(item) { <i class="conum" data-value="3"></i><b>(3)</b>
-        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="4"></i><b>(4)</b>
+    constructor(stack) {
+        <span class="local-variable">this</span>.stack = stack; <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+    async push(item) { <i class="conum" data-value="5"></i><b>(5)</b>
+        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="6"></i><b>(6)</b>
             <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
             <span class="key">data</span>: {
                 <span class="key">value</span>: item,
@@ -80,7 +94,7 @@
         <span class="keyword">return</span> const;
     }
 
-    async list() { <i class="conum" data-value="5"></i><b>(5)</b>
+    async list() {
         const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
         <span class="keyword">return</span> output;
     }
@@ -98,19 +112,23 @@
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>You inject the <em>cloud service</em> into your <em>custom cloud service</em> ("Stack" type)</td>
+<td>You need to import <code>Inject</code> to import others <em>services</em></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><em>Cloud function</em> to add an item in a stack with the associated timestamp</td>
+<td>You specify that you use a <code>Stack</code> service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>You case use the <em>async/await</em> syntax in your <em>custom cloud services</em></td>
+<td>You inject the <em>cloud service</em> into your <em>custom cloud service</em> ("Stack" type)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td><em>Cloud function</em> to return all items from the stack</td>
+<td><em>Cloud function</em> to add an item in a stack with the associated timestamp</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>You case use the <em>async/await</em> syntax in your <em>custom cloud services</em></td>
 </tr>
 </table>
 </div>
@@ -119,7 +137,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-28 15:51:36 CEST
+Last updated 2018-05-29 15:42:35 CEST
 </div>
 </div>
 </body>

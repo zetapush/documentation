@@ -4,17 +4,29 @@ include::{docdir}/variables.adoc[]
 .Basic custom cloud service with other custom cloud service
 [source, javascript, linenums]
 ----
+const { Inject } = require('@zetapush/platform');
+
 class DateCustomService { <1>
+
+    static get parameters {
+        return [];
+    }
+
     constructor() {}
 
     formatDate(date) {
         return date.toLocalDateString("fr-FR");
     }
-
-
 }
 
 class HelloWorldService {
+
+    static get parameters {
+        return [
+            new Inject(DateCustomService)
+        ];
+    }
+
     constructor(dateCustomService) { <2>
         this.dateService = dateCustomService;
     }

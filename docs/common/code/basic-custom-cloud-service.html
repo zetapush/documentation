@@ -43,11 +43,21 @@
 5
 6
 7
+8
+9
+10
+11
+12
 </pre></td>
   <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {
-    constructor() {} <i class="conum" data-value="1"></i><b>(1)</b>
 
-    helloWorld() { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="reserved">static</span> get parameters() { <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="keyword">return</span> [];
+    }
+
+    constructor() {} <i class="conum" data-value="2"></i><b>(2)</b>
+
+    helloWorld() { <i class="conum" data-value="3"></i><b>(3)</b>
         <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
     }
 }</pre></td>
@@ -58,10 +68,14 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>You always need to add a constructor in a <em>custom cloud service</em></td>
+<td>You need to add static method named <code>parameters</code> that return the other services used (Only if you expose this service)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You always need to add a constructor in a <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td><code>helloWorld</code> is your first <em>cloud function</em> in your <em>custom cloud service</em> named <strong>HelloWorldAsCustomCloudService</strong></td>
 </tr>
 </table>
@@ -71,7 +85,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-28 11:53:24 CEST
+Last updated 2018-05-29 15:24:09 CEST
 </div>
 </div>
 </body>

@@ -1,0 +1,24 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Basic custom cloud service with existing cloud service
+[source, javascript, linenums]
+----
+const { Inject, Stack } = require('@zetapush/platform');
+const { DateCustomService } = require('./date-service.js');
+
+class SimpleStorageWithDate {
+
+    static get parameters() {
+        return [
+            new Inject(Stack),
+            new Inject(DateCustomService)
+        ]
+    }
+
+    constructor(stack, dateCustomService) {
+        this.stack = stack;
+        this.date = dateCustomService
+    }
+}
+----

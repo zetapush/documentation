@@ -33,7 +33,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Complete example custom cloud services</div>
+<div class="title">worker/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -77,11 +77,16 @@
 39
 40
 41
+42
+43
+44
 </pre></td>
-  <td class="code"><pre>const { Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre>const { Stack, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)
 
 <span class="reserved">class</span> DateCustomService {
     constructor() {}
+
+    <i class="conum" data-value="1"></i><b>(1)</b>
 
     formatDate(date) {
         <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
@@ -89,36 +94,37 @@
 }
 
 <span class="reserved">class</span> SimpleStorageWithDate {
+
+    <span class="reserved">static</span> get parameters() {
+        <span class="keyword">return</span> [
+            <span class="keyword">new</span> Inject(Stack),
+            <span class="keyword">new</span> Inject(DateCustomService)
+        ]
+    }
+
     constructor(stack, dateCustomService) {
         <span class="local-variable">this</span>.stack = stack;
         <span class="local-variable">this</span>.dateCustomService = dateCustomService;
     }
 
-    async push(item) { <i class="conum" data-value="1"></i><b>(1)</b>
-        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="2"></i><b>(2)</b>
+    async push(item) { <i class="conum" data-value="2"></i><b>(2)</b>
+        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="3"></i><b>(3)</b>
             <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
             <span class="key">data</span>: {
                 <span class="key">value</span>: item,
-                <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="3"></i><b>(3)</b>
+                <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="4"></i><b>(4)</b>
             }
         });
         <span class="keyword">return</span> const;
     }
 
-    async list() { <i class="conum" data-value="1"></i><b>(1)</b>
+    async list() {
         const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
         <span class="keyword">return</span> output;
     }
 }
 
-<span class="reserved">export</span> <span class="keyword">default</span> { <i class="conum" data-value="4"></i><b>(4)</b>
-  <span class="key">exposed</span>: {
-   <span class="key">simpleStorageWithDate</span>: SimpleStorageWithDate,
-  },
-  <span class="key">internal</span>: {
-   <span class="key">dateCustomService</span>: DateCustomService
-  }
-}</pre></td>
+module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(5)</b></pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -126,19 +132,23 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Async/Await context</td>
+<td>No need to define <code>parameters</code> static method because we don&#8217;t expose this service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Use the existing <em>cloud services</em></td>
+<td>Async/Await context</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Use an other <em>custom cloud service</em></td>
+<td>Use the existing <em>cloud services</em></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Register our <em>custom cloud services</em> and expose only <code>SimpleStorageWithDate</code></td>
+<td>Use an other <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Expose only <code>SimpleStorageWithDate</code></td>
 </tr>
 </table>
 </div>
@@ -147,7 +157,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-28 14:47:33 CEST
+Last updated 2018-05-29 15:40:04 CEST
 </div>
 </div>
 </body>
