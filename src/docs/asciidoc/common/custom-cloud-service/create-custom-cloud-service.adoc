@@ -1,0 +1,33 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Syntax of a Custom Cloud Service
+
+First, a _custom cloud service_ is a `class` and its `methods` are the  _cloud functions_. So the most basic example of _custom cloud service_ is below :
+
+include::{docdir}/common/code/basic-custom-cloud-service.adoc[leveloffset=+1]
+
+TIP: You need to add the static method named `parameters` *only* if you want to expose your _custom cloud service_ to the client side
+
+In your _custom cloud service_ you can also use the existing _cloud services_ provided by ZetaPush :
+
+include::{docdir}/common/code/basic-custom-cloud-service-with-cloud-service.adoc[leveloffset=+1]
+
+
+= Dependencies
+
+If you use existing _cloud services_ provided by ZetaPush or import _custom cloud services_ in another, you need to import the packages from `@zetapush/platform`. So you need to install this dependency with :
+
+```console
+$ npm install --save @zetapush/platform
+```
+
+= Use custom cloud service inside another
+
+Like using existing _cloud services_, you can use other _custom cloud services_ into one of them. For that, you proceed like _cloud service_ :
+
+include::{docdir}/common/code/basic-custom-cloud-service-with-custom-cloud-service.adoc[leveloffset=+1]
+
+NOTE: If your _custom cloud service_ depends on many services, you need to pass them in the constructor of your service in the same order you pass them in the `parameters` static method.
+
+include::{docdir}/common/code/many-services-in-custom-cloud-service.adoc[leveloffset=+1]

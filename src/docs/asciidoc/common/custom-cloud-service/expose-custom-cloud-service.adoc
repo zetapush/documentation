@@ -1,0 +1,21 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+When you create a _custom cloud service_ that you want to expose to the client, you need to declare it. You have 2 cases :
+
+* Only one _custom cloud service_ exposed
+* Many _custom cloud servcies_ exposed 
+
+NOTE: The `package.json` has a property named `main`. It defines the file where the _custom cloud services_ are exposed. The following examples define them in `worker/index.js`.
+
+= Only one custom cloud service exposed
+
+In this example, we have 2 _custom cloud services_ : One is private and the second is exposed :
+
+include::{docdir}/common/code/expose-one-custom-cloud-service.adoc[leveloffset=+1]
+
+= Many custom cloud services exposed
+
+In this example, we want to expose 2 _custom cloud services_. In this case, we need to specify the namespace of each _custom cloud service_ :
+
+include::{docdir}/common/code/expose-many-custom-cloud-services.adoc[leveloffset=+1]

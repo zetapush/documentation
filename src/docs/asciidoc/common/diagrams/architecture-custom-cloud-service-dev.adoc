@@ -1,0 +1,51 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Custom Cloud Service in development phase
+[plantuml, custom-cloud-service-dev, png]     
+....
+skinparam component {
+	ArrowFontName Impact
+    ArrowFontColor Black
+    ArrowFontSize 14
+}
+
+node "Local" as local {
+   rectangle "worker" {
+        node "custom cloud service 1"
+        node "custom cloud service 2"
+   }
+
+   rectangle "front"
+
+   note left of [front]
+        Front code that use
+        your custom cloud services
+    end note
+    worker <.> [front] : 2
+}
+
+node "ZetaPush platform" as zp {
+    rectangle "application"
+    note right of [application]
+        Application on your
+        ZetaPush account
+    end note
+
+    rectangle "cloud services" {
+        node "cloud service 1"
+        node "cloud service 2"
+        node "cloud service 3"
+    }
+}
+
+local <..> zp : 1
+....
+<1> The worker is running "locally" and interacts with the existing _cloud services_ on the ZetaPush platform
+<2> The front code interacts *only* with the _custom cloud services_ that is running "locally"
+
+
+
+
+
+
