@@ -197,7 +197,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>You can also create async functions in your <em>custom cloud service</em></td>
+<td>You also can create async functions in your <em>custom cloud service</em></td>
 </tr>
 </table>
 </div>
@@ -207,10 +207,10 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="sect3">
 <h4 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a>Dependencies injection</h4>
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All your dependencies injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All of your dependencies injection will be facilitated.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code> that will inject the dependencies, as its name suggests.</p>
+<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependencies injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -235,7 +235,7 @@ The dependencies injection of ZetaPush use the library <strong>injection-js</str
 </table>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service in your own, you simply need to write :</p>
+<p>For example, to import an other service, you simply need to write :</p>
 </div>
 <div class="listingblock highlight-lines:6-11,13">
 <div class="title">Import service</div>
@@ -285,7 +285,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>One other service we want to import</td>
+<td>We import an other custom cloud service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -297,11 +297,11 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 The order in your <code>parameters</code> method need to be the same in your constructor. (Here, first <em>MyOtherService</em>, then <em>Stack</em>)
@@ -309,17 +309,8 @@ The order in your <code>parameters</code> method need to be the same in your con
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Import and use a <em>cloud service</em> provided by ZetaPush or a <em>custom cloud service</em> is exactly the same
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similary</p>
 </div>
 </div>
 <div class="sect3">
@@ -351,13 +342,10 @@ In our use-case, we want to put some data associated with the current timestamp 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>Stack</code> service has asynchrone methods
+The <code>Stack</code> service has asynchronous methods
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Here is our <em>custom cloud services</em> to store our data :</p>
 </div>
 <div class="listingblock highlight-lines:5-9,11,12,14">
 <div class="title">MyStorageService</div>
@@ -462,10 +450,10 @@ The <code>Stack</code> service has asynchrone methods
 <div class="sect3">
 <h4 id="_dependencies_injection_2"><a class="anchor" href="#_dependencies_injection_2"></a>Dependencies injection</h4>
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All your dependencies injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All of your dependencies injection will be facilitated.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code> that will inject the dependencies, as its name suggests.</p>
+<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependencies injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -490,7 +478,7 @@ The dependencies injection of ZetaPush use the library <strong>injection-js</str
 </table>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service in your own, you simply need to write :</p>
+<p>For example, to import an other service, you simply need to write :</p>
 </div>
 <div class="listingblock highlight-lines:6-11,13">
 <div class="title">Import service</div>
@@ -540,7 +528,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>One other service we want to import</td>
+<td>We import an other custom cloud service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -552,11 +540,11 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 The order in your <code>parameters</code> method need to be the same in your constructor. (Here, first <em>MyOtherService</em>, then <em>Stack</em>)
@@ -564,17 +552,8 @@ The order in your <code>parameters</code> method need to be the same in your con
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Import and use a <em>cloud service</em> provided by ZetaPush or a <em>custom cloud service</em> is exactly the same
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similary</p>
 </div>
 </div>
 <div class="sect3">
@@ -631,7 +610,7 @@ module.exports = { Calendar };</pre></td>
 <div class="paragraph">
 <p>Then, we have the <code>HelloWorldService</code> that use our <code>Calendar</code> service. It is in the file : "./worker/index.js".</p>
 </div>
-<div class="listingblock">
+<div class="listingblock highlight-lines:6-10,12-14">
 <div class="title">worker/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
@@ -729,7 +708,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 <div class="paragraph">
 <p>In this example, we have 2 <em>custom cloud services</em> : One is private and the second is exposed :</p>
 </div>
-<div class="listingblock highlight-lines:10-17,24">
+<div class="listingblock highlight-lines:24">
 <div class="title">worker/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
@@ -807,7 +786,7 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 <div class="paragraph">
 <p>In this example, we want to expose 2 <em>custom cloud services</em>. In this case, we need to specify the namespace of each <em>custom cloud service</em> :</p>
 </div>
-<div class="listingblock highlight-lines:10-17,24-27">
+<div class="listingblock highlight-lines:24-27">
 <div class="title">worker/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>

@@ -9,10 +9,8 @@ For this the `Stack` service provides some methods :
 * push({ _stack_: string, _data_: object });
 * list({ _stack_: string });
 
-NOTE: The `Stack` service has asynchrone methods
+NOTE: The `Stack` service has asynchronous methods
 
-
-Here is our _custom cloud services_ to store our data :
 
 .MyStorageService
 [source, javascript, linenums, role="highlight-lines:5-9,11,12,14"]

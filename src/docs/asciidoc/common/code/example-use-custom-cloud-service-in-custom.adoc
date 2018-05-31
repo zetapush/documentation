@@ -24,7 +24,7 @@ module.exports = { Calendar };
 Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file : "./worker/index.js".
 
 .worker/index.js
-[source, javascript, linenums]
+[source, javascript, linenums, role="highlight-lines:6-10,12-14"]
 ----
 const { Inject } = require('@zetapush/platform');
 const { Calendar } = require('./calendar.js');
