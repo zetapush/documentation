@@ -6,17 +6,17 @@ include::{docdir}/variables.adoc[]
 ----
 class HelloWorldAsCustomCloudService {
 
-    static get parameters() { <1>
-        return [];
+    constructor() {} <1>
+    
+    helloWorld() { <2>
+        return "Hello World";
     }
 
-    constructor() {} <2>
-    
-    helloWorld() { <3>
-        return "Hello World";
+    async helloWorldAsAsync() { <3>
+        return "Hello World Async";
     }
 }
 ----
-<1> You need to add static method named `parameters` that return the other services used (Only if you expose this service)
-<2> You always need to add a constructor in a _custom cloud service_
-<3> `helloWorld` is your first _cloud function_ in your _custom cloud service_ named *HelloWorldAsCustomCloudService*
+<1> You always need to add a constructor in a _custom cloud service_
+<2> `helloWorld` is your first _cloud function_ in your _custom cloud service_ named *HelloWorldAsCustomCloudService*
+<3> You can also create async functions in your _custom cloud service_
