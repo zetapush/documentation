@@ -1,0 +1,10 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+TIP: The utilization of a _custom cloud service_ and a _cloud service_ provided by ZetaPush is exactly the same process
+
+An example gives a better explanation than a long speech, so here is an example of utilization of services.
+
+IMPORTANT: When you call a _cloud function_, the result is always a Promise.
+
+include::{docdir}/common/code/example-use-service-in-front.adoc[]

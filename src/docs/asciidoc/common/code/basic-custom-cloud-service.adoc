@@ -11,12 +11,9 @@ class HelloWorldAsCustomCloudService {
     helloWorld() { <2>
         return "Hello World";
     }
-
-    async helloWorldAsAsync() { <3>
-        return "Hello World Async";
-    }
 }
 ----
 <1> You always need to add a constructor in a _custom cloud service_
 <2> `helloWorld` is your first _cloud function_ in your _custom cloud service_ named *HelloWorldAsCustomCloudService*
-<3> You also can create async functions in your _custom cloud service_
+
+TIP: A _cloud function_ is always asynchronous (with the _async_ keyword or not)

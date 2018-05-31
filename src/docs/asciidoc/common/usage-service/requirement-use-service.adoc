@@ -21,4 +21,4 @@ or
 
 = Requirements for _custom cloud service_
 
-If you want to use a _custom cloud service_, make sure that you have exposed the service. 
+If you want to use a _custom cloud service_, make sure that you have exposed your service (link:#+_expose_my_em_custom_cloud_services_em+[Documentation])
