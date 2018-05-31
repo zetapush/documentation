@@ -9,3 +9,5 @@ include::{docdir}/common/vocabulary/vocabulary.adoc[leveloffset=+1]
 // CUSTOM CLOUD SERVICE
 include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[leveloffset=+1]
 
+// USE SERVICE
+include::{docdir}/common/usage-service/usage-service.adoc[leveloffset=+1]

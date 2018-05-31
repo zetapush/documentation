@@ -1,0 +1,11 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Use services
+include::{docdir}/common/usage-service/intro-use-service.adoc[leveloffset=+1]
+
+== Requirements
+include::{docdir}/common/usage-service/requirement-use-service.adoc[leveloffset=+2]
+
+== Use a service
+include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+2]
