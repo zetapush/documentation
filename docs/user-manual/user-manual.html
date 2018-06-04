@@ -40,6 +40,11 @@
 <li><a href="#_custom_cloud_service">Custom Cloud Service</a></li>
 </ul>
 </li>
+<li><a href="#_create_a_new_application">Create a new application</a>
+<ul class="sectlevel2">
+<li><a href="#_initialization_with_the_cli">Initialization with the CLI</a></li>
+</ul>
+</li>
 <li><a href="#_custom_cloud_service_2">Custom Cloud Service</a></li>
 </ul>
 </div>
@@ -67,6 +72,146 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_create_a_new_application"><a class="anchor" href="#_create_a_new_application"></a>Create a new application</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_initialization_with_the_cli"><a class="anchor" href="#_initialization_with_the_cli"></a>Initialization with the CLI</h3>
+<div class="paragraph">
+<p>You can generate a classic application with the following command :</p>
+</div>
+<div class="listingblock">
+<div class="title">Generate application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>myApp</em> is the name of my generated application</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_npm_lower_than_6">section</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This command generate a tree structure of a classic application :</p>
+</div>
+<div class="listingblock">
+<div class="title">Generated tree structure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">myApp
+├── .zetarc
+├── .gitignore
+├── front
+│   ├── index.html
+│   └── index.js
+├── worker
+│   └── index.js
+├── README.md
+└── package.json</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+All dependencies are installed, so you already can launch <code>zeta run worker</code> or <code>zeta push</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Many files are created, you can see the role of each file in the following table :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">File / Folder</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.zetarc</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish you developer credentials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the dependencies of ZetaPush, the name of your app, the entry point of yours <em>custom cloud services</em> and many useful other informations for your application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to deploy or run your application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_using_npm_lower_than_6"><a class="anchor" href="#_using_npm_lower_than_6"></a>Using npm lower than 6</h4>
+<div class="paragraph">
+<p>If you using npm with a version lower than 6, you can upgrade your npm version with :</p>
+</div>
+<div class="listingblock">
+<div class="title">Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install -g npm@latest</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or use <em>npx</em> to launch the script :</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npx npm@latest init @zetapush myApp</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will have the same result that using the classic command.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_custom_cloud_service_2"><a class="anchor" href="#_custom_cloud_service_2"></a>Custom Cloud Service</h2>
 <div class="sectionbody">
 
@@ -75,7 +220,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-30 17:51:04 CEST
+Last updated 2018-06-04 11:59:27 CEST
 </div>
 </div>
 </body>
