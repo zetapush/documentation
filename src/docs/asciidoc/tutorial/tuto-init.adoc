@@ -1,12 +1,18 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-In this first step, you will initialize your *avengersChat* application. To do this, you only need to launch :
+In this first step, you will initialize your *avengersChat* application. To do this, you only need to launch this command in your workspace :
 
 [source, console]
 ----
-$ npm init @zetapush avengersChat
+$ npm init @zetapush avengersChat <1>
 ----
+<1> _avengersChat_ is the name of your application
 
 WARNING: If you using npm < 6, you need to launch `npx @zetapush/create avengersChat`
 
+This command create this tree structure :
+
+include::{docdir}/common/code/tuto-generated-tree-init.adoc[]
+
+include::{docdir}/common/code/table-definition-generated-files.adoc[]

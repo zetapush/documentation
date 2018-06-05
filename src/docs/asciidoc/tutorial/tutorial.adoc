@@ -8,6 +8,7 @@ You will learn to :
 
 * Generate an application with the CLI
 * Add business logic with ZetaPush
+* Use _cloud services_ provided by ZetaPush
 * Run your code locally
 * Deploy your application
 

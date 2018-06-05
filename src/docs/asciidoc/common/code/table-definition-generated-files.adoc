@@ -1,6 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
+.Definition of generated files
 [cols="2*^.^", options="header"]
 |===
 | File / Folder
