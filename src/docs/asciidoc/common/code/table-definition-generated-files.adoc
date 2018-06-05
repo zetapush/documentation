@@ -1,0 +1,27 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+[cols="2*^.^", options="header"]
+|===
+| File / Folder
+| Definition
+
+| `.zetarc`
+| Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.
+
+| `.gitignore`
+| Avoid you to publish you developer credentials
+
+| `package.json`
+| Contains the dependencies of ZetaPush, the name of your app, the entry point of yours _custom cloud services_ and many useful other informations for your application.
+
+| `README.md`
+| Give you some informations to deploy or run your application. 
+
+| `front/`
+| By convention, the front side code of your application is in this folder. You can change it by editing `package.json`.
+
+| `worker/`
+| By convention, the back side code of your application is in this folder. You can change it by editing `package.json`.
+
+|===

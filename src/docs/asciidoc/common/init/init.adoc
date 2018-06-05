@@ -1,0 +1,7 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Create a new application
+
+== Initialization with the CLI
+include::{docdir}/common/init/init-with-cli.adoc[leveloffset=+2]

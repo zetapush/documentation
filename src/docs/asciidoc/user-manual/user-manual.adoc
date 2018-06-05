@@ -6,6 +6,9 @@ include::{docdir}/variables.adoc[]
 // VOCABULARY
 include::{docdir}/common/vocabulary/vocabulary.adoc[leveloffset=+1]
 
+// INIT APP
+include::{docdir}/common/init/init.adoc[leveloffset=+1]
+
 // CUSTOM CLOUD SERVICE
 include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[leveloffset=+1]
 
