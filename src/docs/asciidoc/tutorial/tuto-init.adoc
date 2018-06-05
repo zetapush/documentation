@@ -1,0 +1,12 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+In this first step, you will initialize your *avengersChat* application. To do this, you only need to launch :
+
+[source, console]
+----
+$ npm init @zetapush avengersChat
+----
+
+WARNING: If you using npm < 6, you need to launch `npx @zetapush/create avengersChat`
+
