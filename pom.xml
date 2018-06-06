@@ -14,8 +14,7 @@
 		<!-- Documentation -->
 		<docProjectVersion>${project.version}</docProjectVersion>
 		<dependency.locations.enabled>false</dependency.locations.enabled>
-		<site.staging.dir>${project.build.outputDirectory}/staging</site.staging.dir>
-		<site.output.dir>${site.staging.dir}/v${docProjectVersion}</site.output.dir>
+		<outputdir>${project.build.outputDirectory}/generated-docs</outputdir>
 
 		<!-- Plugins -->
 		<asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
@@ -106,7 +105,7 @@
 									<sourceHighlighter>coderay</sourceHighlighter>
 									<embedAssets>false</embedAssets>
 									<templateDir>${basedir}/src/docs/resources/templates</templateDir>
-									<outputDirectory>${basedir}/docs</outputDirectory>
+									<outputDirectory>${outputdir}</outputDirectory>
 									<attributes>
 										<toc>left</toc>
 										<icons>font</icons>
@@ -140,7 +139,7 @@
 											<directory>src/docs/resources</directory>
 										</resource>
 									</resources>
-									<outputDirectory>${basedir}/docs</outputDirectory>
+									<outputDirectory>${outputdir}</outputDirectory>
 								</configuration>
 							</execution>
 						</executions>

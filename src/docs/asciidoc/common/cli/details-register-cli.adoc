@@ -3,11 +3,11 @@ include::{docdir}/variables.adoc[]
 
 You can use the command `zeta register` in different contexts :
 
-= Create an anonymous account
+==1 Create an anonymous account
 
 include::{docdir}/common/cli/create-anonymous-account.adoc[leveloffset=+1]
 
-= Create an activated account
+== Create an activated account
 
 WARNING: This feature is work in progress
 

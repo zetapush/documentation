@@ -26,5 +26,5 @@ The CLI dependency is already installed and npm scripts are created. So you can 
 
 include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=+1]
 
-= Using npm lower than 6
+== Using npm lower than 6
 include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]

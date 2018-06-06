@@ -9,7 +9,7 @@ IMPORTANT: When you call a _cloud function_, the result is always a Promise.
 
 include::{docdir}/common/code/example-use-service-in-front.adoc[]
 
-= Namespace
+== Namespace
 
 When you call a _cloud function_ from a _custom cloud service_, you can specified a _namespace_ (if you have 2 _cloud functions_ on 2 differents _custom cloud services_). 
 
