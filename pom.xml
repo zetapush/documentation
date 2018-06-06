@@ -14,7 +14,7 @@
 		<!-- Documentation -->
 		<docProjectVersion>${project.version}</docProjectVersion>
 		<dependency.locations.enabled>false</dependency.locations.enabled>
-		<outputdir>${project.build.outputDirectory}/generated-docs</outputdir>
+		<outputdir>${project.build.directory}/generated-docs</outputdir>
 
 		<!-- Plugins -->
 		<asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
@@ -80,6 +80,31 @@
               </goals>
             </configuration>
         </plugin>
+				<!-- generate list of errors -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+							<execution>
+									<phase>generate-resources</phase>
+									<configuration>
+											<target>
+													<fileset id="my-fileset" dir="src/docs/asciidoc/common/troubleshooting" />
+													<pathconvert targetos="unix" pathsep='","'
+															property="my-file-list" refid="my-fileset">
+															<globmapper from="${basedir}/src/docs/asciidoc/common/troubleshooting/*.adoc" to="*"/>
+													</pathconvert>
+													<echo file="${outputdir}/common/troubleshooting/error-codes.json">["</echo>
+													<echo file="${outputdir}/common/troubleshooting/error-codes.json" append="true">${my-file-list}</echo>
+													<echo file="${outputdir}/common/troubleshooting/error-codes.json" append="true">"]</echo>
+											</target>
+									</configuration>
+									<goals>
+											<goal>run</goal>
+									</goals>
+							</execution>
+					</executions>
+			</plugin>
     </plugins>
 	</build>
 

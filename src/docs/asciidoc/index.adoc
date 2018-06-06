@@ -18,3 +18,5 @@ include::{docdir}/tutorial/tutorial.adoc[leveloffset=+1]
 
 include::{docdir}/user-manual/user-manual.adoc[leveloffset=+1]
 
+include::{docdir}/troubleshooting/index.adoc[leveloffset=+1]
+

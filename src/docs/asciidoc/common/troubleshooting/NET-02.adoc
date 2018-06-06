@@ -1,0 +1,50 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Your computer can access local network but can't access the Internet.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/NET-02-cause.html[]
+++++
+
+== Have you access to the Internet ?
+
+Execute the following command in your terminal:
+`$ ping google.com`
+And then press Ctrl+C
+
+You should have something like that for a working Internet address:
+```
+PING google.com (64.233.167.100) 56(84) bytes of data.
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=1 ttl=63 time=14.5 ms
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=2 ttl=63 time=13.0 ms
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=3 ttl=63 time=17.3 ms
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 13.038/14.964/17.319/1.776 ms
+```
+
+=== Google is unknown or unreachable
+
+
+If you have this result instead:
+`ping: unknown host google.com`
+Or this result:
+`Destination Host Unreachable`
+
+
+=== Google is not answering
+
+```
+PING google.com (64.233.167.100) 56(84) bytes of data.
+^C
+--- google.com ping statistics ---
+123 packets transmitted, 0 received, 100% packet loss, time 122391ms
+```
+
+////
+TODO: DNS issue
+TODO: DNS ok but site unavailable
+TODO: Internet accessible but NodeJS/npm can't reach it
+TODO: Windows version
+////

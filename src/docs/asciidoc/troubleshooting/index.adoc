@@ -1,0 +1,32 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Troubleshooting
+
+== Network issue
+
+=== Local network unreachable (NET-01)
+
+include::{docdir}/common/troubleshooting/NET-01.adoc[leveloffset=+2]
+
+=== Internet unreachable (NET-02)
+
+include::{docdir}/common/troubleshooting/NET-02.adoc[leveloffset=+2]
+
+=== Proxy unreachable (NET-03)
+
+include::{docdir}/common/troubleshooting/NET-03.adoc[leveloffset=+2]
+
+=== Internet behind proxy unreachable (NET-04)
+
+include::{docdir}/common/troubleshooting/NET-04.adoc[leveloffset=+2]
+
+== Dependency resolution issue
+
+=== Unresolved dependency (DEPENDENCY-01)
+
+include::{docdir}/common/troubleshooting/DEPENDENCY-01.adoc[leveloffset=+2]
+
+=== Unreadable dependency (DEPENDENCY-02)
+
+include::{docdir}/common/troubleshooting/DEPENDENCY-02.adoc[leveloffset=+2]

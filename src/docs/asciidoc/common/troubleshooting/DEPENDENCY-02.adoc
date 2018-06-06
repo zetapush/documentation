@@ -1,0 +1,21 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+A NPM dependency couldn't be downloaded or installed.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/DEPENDENCY-02-cause.html[]
+++++
+
+➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush. +
+➋ Once your code is uploaded, ZetaPush builds your custom services. +
+➌ The dependencies defined in the package.json file are downloaded and installed. +
+  This is this step that fails because one dependency is unreadable.
+
+
+////
+TODO:
+- Help to resolve the issue
+  - Retry (handle a skip cache mode ?)
+  - Ask user to check if dependency is usable
+////
