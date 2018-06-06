@@ -28,6 +28,17 @@ To generate the PDF documentation, you can run the following command:
 The generated PDF documentation is available in the folder `target/generated-docs`. Each `.adoc` source file has its own PDF file.
 
 
+#### Generate documentation and publish on gh-pages
+
+Assuming you have cloned this documentation project a second time in `../documentation-site` and made a checkout of `gh-pages` branch.
+To generate the HTML documentation for being published on Github Pages, you can run the following command:
+
+```
+./mvnw generate-resources -P html -Doutputdir=../documentation-site
+```
+
+The you can commit and push the result to update Github Pages.
+
 #### Auto-reload
 
 To automatically generate the HTML documentation after any change in `src/docs` directory, you can run the following command:
