@@ -1,0 +1,20 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+If you using npm with a version lower than 6, you can upgrade your npm version with :
+
+.Upgrade npm
+[source, console]
+----
+$ npm install -g npm@latest
+----
+
+Or use _npx_ to launch the script :
+
+.Launch with npx
+[source, console]
+----
+$ npx @zetapush/create myApp
+----
+
+This will have the same result that using the classic command.

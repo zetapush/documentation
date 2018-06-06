@@ -1,0 +1,17 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Generated tree structure
+[source, console]
+----
+myApp
+├── .zetarc
+├── .gitignore
+├── front
+│   ├── index.html
+│   └── index.js
+├── worker
+│   └── index.js
+├── README.md
+└── package.json
+----
