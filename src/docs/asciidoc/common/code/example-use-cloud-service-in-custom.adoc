@@ -1,0 +1,58 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+In this example, we will use the `Stack` _cloud service_ provided by ZetaPush.
+In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.
+
+For this the `Stack` service provides some methods :
+
+* push({ _stack_: string, _data_: object });
+* list({ _stack_: string });
+
+NOTE: The `Stack` service has asynchronous methods
+
+
+.MyStorageService
+[source, javascript, linenums, role="highlight-lines:5-9,11,12,14"]
+----
+const { Inject, Stack } = require('@zetapush/platform');
+
+class MyStorageService {
+
+    static get parameters() {
+        return [
+            new Inject(Stack) <1>
+        ]
+    }
+
+    constructor(stack) { <2> 
+        this.stack = stack;
+        this.stackName = 'stack-example';
+    }
+
+    /**
+     *  Store data with associated timestamp
+     *  @param {object} value Data we want to store
+     */
+    async storeWithTimestamp(value) {
+        return this.stack.push({
+            stack: this.stackName,
+            data: {
+                value,
+                timestamp: Date.now()
+            }
+        });
+    }
+
+    /**
+     * List all stored data
+     */
+    async getAllData() {
+        return this.stack.list({
+            stack: this.stackName
+        });
+    }
+}
+----
+<1> We import the `Stack` service
+<2> `stack` is an instance of `Stack`

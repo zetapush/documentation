@@ -1,0 +1,37 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.worker/index.js
+[source, javascript, linenums, role="highlight-lines:24-27"]
+----
+const { Inject } = require('@zetapush/platform');
+
+class Calendar { <1>
+  getNow() {
+    return new Date().toLocaleDateString();
+  }
+}
+
+class HelloService {
+  static get parameters() {
+    return [
+      new Inject(Calendar)
+    ];
+  }
+  constructor(calendar) {
+    this.calendar = calendar;
+  }
+  
+  async hello() {
+    return `Hello World at ${this.calendar.getNow()}`;
+  }
+}
+
+module.exports = { <2> 
+  helloService: HelloService,
+  calendar: Calendar
+};
+----
+<1> No need to define `parameters` static method because we don't expose this service
+<2> We expose the 2 _custom cloud services_ to the client side with the syntax : { _namespace1_ : _Service1_, _namespace2_ : _Service2_ }
+

@@ -1,0 +1,84 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+In our example we use this _custom cloud service_ named `HelloService` :
+
+.worker/index.js
+[source, javascript, linenumbers]
+----
+class HelloService {
+    static get parameters() {
+        return [];
+    }
+    constructor() { }
+
+    async hello() {
+        return `Hello World`;
+    }
+}
+
+module.exports = HelloService; <1>
+----
+<1> The service is exported
+
+Now we create the HTML page with a button to display the _HelloWorld_ message in the console :
+
+.front/index.html
+[source, html, linenumbers]
+----
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtia</title>
+</head>
+
+<body>
+    <button onclick="hello()">hello</button> <1>
+    <ul></ul>
+
+    <script src="https://unpkg.com/@zetapush/core"></script> <2>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+----
+<1> We call `hello()` that call our _custom cloud service_
+<2> Dependency of ZetaPush Core
+
+Finally, we have the front-side code to call our services :
+
+.front/index.js
+[source, javascript, linenumbers]
+----
+// Create new ZetaPush Client
+const client = new ZetaPush.WeakClient({ <1>
+    appName: <yourAppName>,
+    platformUrl: <optionalUrl>
+});
+
+const api = client.createProxyTaskService(); <2>
+
+client.connect().then(() => ( <3>
+    console.debug('onConnectionEstablished')
+));
+
+async function hello() {
+    const output = await api.hello(); <4>
+
+    const ul = document.querySelector('ul');
+    const fragment = document.createDocumentFragment();
+    const li = document.createElement('li');
+    li.textContent = output;
+    fragment.appendChild(li);
+    ul.appendChild(fragment);
+}
+----
+<1> Create the ZetaPush client with a specific appName and optional URL
+<2> API to access to our services
+<3> Connection to the ZetaPush platform
+<4> Call our _cloud function_ and display the result
+
+*Now when we click on the button, "Hello World" is displayed on the page.*

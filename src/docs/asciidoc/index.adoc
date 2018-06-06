@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 :toc:
-:toclevels: 2
+:toclevels: 3
 :sectnums:
 :sectnumlevels: 4
 :sectlinks:

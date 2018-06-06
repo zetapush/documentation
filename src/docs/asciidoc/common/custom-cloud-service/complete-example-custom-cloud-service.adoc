@@ -1,0 +1,26 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+My configuration in the `package.json` is the following :
+
+.package.json
+[source, json, linenums]
+----
+{
+    "name": "myApp",
+    "version": "1.0.0",
+    "main": "worker/index.js",
+    "zetapush": {
+        "front": "./front",
+        "worker": "./worker"
+    },
+    "dependencies": {
+        "@zetapush/core": "^0.14.1",
+        "@zetapush/plaform": "^0.14.1"
+    }
+}
+----
+
+And my back side code is :
+
+include::{docdir}/common/code/complete-example-custom-cloud-service.adoc[]

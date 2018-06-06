@@ -1,0 +1,44 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+TIP: The utilization of a _custom cloud service_ and a _cloud service_ provided by ZetaPush is exactly the same process
+
+An example gives a better explanation than a long speech, so here is an example of utilization of services.
+
+IMPORTANT: When you call a _cloud function_, the result is always a Promise.
+
+include::{docdir}/common/code/example-use-service-in-front.adoc[]
+
+= Namespace
+
+When you call a _cloud function_ from a _custom cloud service_, you can specified a _namespace_ (if you have 2 _cloud functions_ on 2 differents _custom cloud services_). 
+
+NOTE: The _namespace_ is never used in the _custom cloud service_. The _namespace_ is defined when you expose your _custom cloud service_.
+
+For example we have this service :
+
+[source, javascript, linenums]
+----
+class Api {
+    constructor() {}
+
+    hello(name, context) { <1>
+        return `Hello ${name} called by ${context.owner}.`;
+    }
+}
+
+module.exports = {
+    api: Api <2>
+}
+----
+<1> The _namespace_ is never passed here
+<2> We export this _custom cloud service_ with the namespace 'api'
+
+You can call `hello()` like this :
+
+[source, javascript, linenums]
+----
+// api is an instance of Api
+this.api.hello('Toto', 'api'); <1>
+----
+We use the method `hello()` from the namespace _api_.

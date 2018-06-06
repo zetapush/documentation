@@ -1,0 +1,19 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Basic custom cloud service
+[source, javascript, linenums]
+----
+class HelloWorldAsCustomCloudService {
+
+    constructor() {} <1>
+    
+    helloWorld() { <2>
+        return "Hello World";
+    }
+}
+----
+<1> You always need to add a constructor in a _custom cloud service_
+<2> `helloWorld` is your first _cloud function_ in your _custom cloud service_ named *HelloWorldAsCustomCloudService*
+
+TIP: A _cloud function_ is always asynchronous (with the _async_ keyword or not)

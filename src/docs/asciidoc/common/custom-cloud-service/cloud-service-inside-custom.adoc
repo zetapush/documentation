@@ -1,0 +1,10 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+
+= Dependencies injection
+include::{docdir}/common/custom-cloud-service/dependencies-include-services.adoc[]
+
+= Use imported cloud services
+include::{docdir}/common/custom-cloud-service/use-cloud-services-in-custom.adoc[]
+
