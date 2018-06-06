@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Import cloud services and define constants</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_import_em_cloud_services_em_and_define_constants">Import <em>cloud services</em> and define constants</a></li>
+<li><a href="#_create_the_class_with_its_constructor">Create the class with its constructor</a></li>
+<li><a href="#_create_the_chat">Create the chat</a></li>
+<li><a href="#_add_user_in_the_conversation">Add user in the conversation</a></li>
+<li><a href="#_send_a_message">Send a message</a></li>
+<li><a href="#_get_all_messages">Get all messages</a></li>
+<li><a href="#_export_our_class">Export our class</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, you will create the business logic of your application. To do this, you will use a <em>custom cloud service</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A <em>custom cloud service</em> is a class where you develop a business logic. You can create several <em>custom cloud services</em> inside one application. Each <em>custom cloud service</em> can use the <em>cloud services</em> provided by ZetaPush.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In your existing application you already have a <em>custom cloud service</em> on the file <code>worker/index.js</code> (Defined in the <code>package.json</code> with the property <code>main</code>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When you create one or many <em>custom cloud services</em>, you need to export them (to use them from the front side). The exportation need to be done in a file of your application, defined in the <code>package.json</code>. The property <code>main</code> defines this file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can fill this file (<code>worker/index.js</code>) with the following content :</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a>Import <em>cloud services</em> and define constants</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, you need to import the <em>cloud services</em> provided by ZetaPush, used in this application :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Stack</em> (Save data in a stack)</p>
+</li>
+<li>
+<p><em>Messaging</em> (Send and receive messages)</p>
+</li>
+<li>
+<p><em>GroupManagement</em> (Manage group of users)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You also need to import <em>Inject</em> that is useful for the dependencies injection.</p>
+</div>
+<div class="listingblock">
+<div class="title">Imports and constants</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>const { Stack, Messaging, GroupManagement, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+
+const CONVERSATION_ID = <span class="string"><span class="delimiter">'</span><span class="content">avengersChat</span><span class="delimiter">'</span></span>;
+const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><span class="content">avengersChannel</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>On which channel the users send and listen the messages</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_class_with_its_constructor"><a class="anchor" href="#_create_the_class_with_its_constructor"></a>Create the class with its constructor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <em>custom cloud service</em> is a class, so you need to create it.</p>
+</div>
+<div class="listingblock">
+<div class="title">Class and constructor</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> AvengersApi {
+  <span class="comment">/**
+   * Dependencies injection of cloud services
+   */</span>
+  <span class="reserved">static</span> get parameters() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> [
+      <span class="keyword">new</span> Inject(Stack),
+      <span class="keyword">new</span> Inject(Messaging),
+      <span class="keyword">new</span> Inject(GroupManagement)
+    ]
+  }
+
+  <span class="comment">/**
+   * Constructor of our API
+   */</span>
+  constructor(stack, messaging, groups) { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.stack = stack;
+    <span class="local-variable">this</span>.messaging = messaging;
+    <span class="local-variable">this</span>.groups = groups;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Syntax of dependencies injection based on <code>injection-js</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You need to put the injected <em>cloud services</em> in the constructor in the same order that they are defined in the static method <code>parameters</code>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The dependencies injection of ZetaPush use <code>injection-js</code>. So we use the same syntax (static method <em>parameters</em>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a>Create the chat</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
+So we add a method in our class to create this conversation.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create conversation</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+ * Create the conversation of the chat, if doesn't already exists
+ */</span>
+async createConversation() {
+    const { exists } = await <span class="local-variable">this</span>.groups.exists({
+        <span class="key">group</span>: CONVERSATION_ID
+    });
+    <span class="keyword">if</span> (!exists) {
+        await <span class="local-variable">this</span>.groups.createGroup({
+            <span class="key">group</span>: CONVERSATION_ID
+        });
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_add_user_in_the_conversation"><a class="anchor" href="#_add_user_in_the_conversation"></a>Add user in the conversation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When an user come to the chat, we need to add it to the conversation.
+So we create a method in our class to add the current user in the conversation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Add the current user in the conversation
+*/</span>
+async addMeToConversation(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
+    const output = await <span class="local-variable">this</span>.groups.addUser({
+        <span class="key">group</span>: CONVERSATION_ID,
+        <span class="key">user</span>: context.owner <i class="conum" data-value="2"></i><b>(2)</b>
+    });
+    <span class="keyword">return</span> output;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each <em>cloud function</em> in a <em>custom cloud function</em> takes only one parameter. The second is the context, injected by the SDK</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We get the caller (owner) of the <em>cloud function</em> from the context.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_send_a_message"><a class="anchor" href="#_send_a_message"></a>Send a message</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>No we want to send a message on our chat. To do this, we need to follow 3 steps :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get all users in the conversation</p>
+</li>
+<li>
+<p>Send the message of all users in the conversation</p>
+</li>
+<li>
+<p>Store the message in a stack</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Send a message on the chat
+* @param {Object} message
+*/</span>
+async sendMessage(message = {}) {
+    <span class="comment">// Get all users inside the conversation</span>
+    const group = await <span class="local-variable">this</span>.groups.groupUsers({
+      <span class="key">group</span>: CONVERSATION_ID
+    });
+    const users = group.users;
+
+    <span class="comment">// Send the message to each user in the conversation</span>
+    <span class="local-variable">this</span>.messaging.send({
+      <span class="key">target</span>: users,
+      <span class="key">channel</span>: CHANNEL_MESSAGING,
+      <span class="key">data</span>: { message }
+    });
+
+    <span class="comment">// Store the message in a stack</span>
+    await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: CONVERSATION_ID,
+      <span class="key">data</span>: message
+    });
+
+    <span class="keyword">return</span> group;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+There is no specific method to launch an attack, to do this, we only send a specific message throught <code>sendMessage</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_get_all_messages"><a class="anchor" href="#_get_all_messages"></a>Get all messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Get all messages in the conversation
+*/</span>
+async getMessages() {
+    const { result } = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: CONVERSATION_ID
+    });
+    <span class="keyword">return</span> result;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a>Export our class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>module.exports = AvengersApi;</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now your <em>custom cloud service</em> is ready !</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-06 10:46:10 CEST
+</div>
+</div>
+</body>
+</html>

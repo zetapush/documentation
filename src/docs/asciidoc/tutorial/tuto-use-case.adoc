@@ -1,0 +1,43 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+
+You will create a realtime chat application, but it will be particular : This will be an *Avengers Chat* !
+
+At the beginning, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers. 
+
+.List of skills by Avenger
+[cols="2*^.^", options="header"]
+|===
+| Avenger
+| Skill
+
+| Captain America
+| Shoot of shield / Cure
+
+| Falcon
+| Archery / Super vision
+
+| Iron Man
+| Flight / Missile launcher
+
+| Hulk
+| Punch / Regeneration
+
+| Thor
+| Hammer hit / Lightning strike
+
+| Spider Man
+| Shoot of cobweb / Jump with cobweb
+
+| Wolverine
+| Scratch / Regeneration
+
+|===
+
+You will create this application in few steps :
+
+. link:#+_initialize_your_application+[Initialize a new application]
+. link:#+_create_your_business_logic+[Create the business logic in a _custom cloud service_]
+. link:#+_use_your_em_custom_cloud_services_em+[Use your _custom cloud service_ in your UI]
+. link:#+_deploy_your_application+[Deploy your application]
