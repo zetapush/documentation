@@ -3,4 +3,46 @@ include::{docdir}/variables.adoc[]
 
 == Vocabulary
 
-==== Worker
+[cols="2*^.^",options="header"]
+|===
+
+| Word
+| Definition
+
+| ZetaPush Account
+| Developer account on the ZetaPush platform to create and manage applications
+
+| Credentials
+| Couple Login/Password of the developer ZetaPush account
+
+| Cloud service
+| Class with methods (cloud functions) provided by ZetaPush. For example we have many cloud services : Chat, Group, Messaging...
+
+| Cloud function
+| A method of a Cloud Service. For example : createUser(), sendMessage()...
+
+| Custom Cloud Service
+| This is a class lile a Cloud Service, but this is the developer that create this class and its methods. We use similary a Cloud Service and a Custom Cloud Service
+
+| Front
+| Front end part of your application (HTML / CSS / JS)
+
+| Worker
+| Back end part of your application written in JavaScript (Node). Generally you put your business logic inside it
+
+| Organization
+| Grouping of ZetaPush accounts
+
+| Application
+| Logic container which gathers a frontend and backend part on one or several environment
+
+| Environment
+| State of your application, for example : prod, pre-prod, dev...
+
+| CLI
+| Command Line Interface : Used to run your code or deploy your application for example
+
+| Console
+| Administration website to manage ZetaPush account, applications, see documentation...
+
+|===
