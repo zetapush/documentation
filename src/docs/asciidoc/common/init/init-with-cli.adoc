@@ -16,13 +16,15 @@ This command generate a tree structure of a classic application :
 
 include::{docdir}/common/code/generated-tree-init.adoc[leveloffset=+1]
 
-TIP: All dependencies are installed, so you already can launch `zeta run worker` or `zeta push`.
+All dependencies are already installed, so you can run your application locally or deploy it.
 
-Many files are created, you can see the role of each file in the following table :
+To do this you can use the _CLI_ using the commands : `zeta run` and `zeta push`. 
+
+TIP: To install the CLI you can launch : `npm install -g @zetapush/cli`.
+
+The CLI dependency is already installed and npm scripts are created. So you can execute your code with `npm run start` and deploy your application with `npm run deploy`.
 
 include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=+1]
-
-
 
 = Using npm lower than 6
 include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]
