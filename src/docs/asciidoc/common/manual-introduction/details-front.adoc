@@ -1,0 +1,18 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= front
+
+By convention, the directory contains the front code. For example you can have this tree structure :
+
+```console
+└── front
+    ├── index.html
+    └── index.js
+```
+
+== Basic example of Hello World (with custom cloud service)
+
+include::{docdir}/common/code/hello-world-front-html.adoc[]
+
+include::{docdir}/common/code/hello-world-front-js.adoc[]

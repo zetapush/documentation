@@ -1,0 +1,9 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= zeta register
+
+NOTE: This command is automatically called when you run the commands `zeta run` or `zeta deploy`. So, an anonymous account is created when you call these commands.
+
+There are 2 types of account on the ZetaPush platform : The *activated account* and the *anonymous account*.
+

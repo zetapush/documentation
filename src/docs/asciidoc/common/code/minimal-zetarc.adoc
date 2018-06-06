@@ -1,0 +1,11 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.+.zetarc+
+[source,json,linenums]
+----
+{
+    "developerLogin": "user@gmail.com",
+    "developerPassword": "password"
+}
+----

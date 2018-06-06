@@ -1,0 +1,11 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.+.gitignore+
+[source,bash,linenums]
+----
+.zetarc <1>
+node_modules/ <2>
+----
+<1> Avoid to publish credentials
+<2> Avoid to publish all node_modules

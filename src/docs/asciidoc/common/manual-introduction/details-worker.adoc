@@ -1,0 +1,15 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= worker
+
+By convention, the directory contains the back code. For example you can have this tree structure :
+
+```console
+└── worker
+    └── index.js
+```
+
+== Basic example of Hello World (custom cloud service)
+
+include::{docdir}/common/code/hello-world-worker-js.adoc[]

@@ -1,0 +1,14 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= .zetarc
+
+To specify which account (on the ZetaPush platform) you use for an application, you type the account informations in the `.zetarc`.
+
+The format of this file is the **JSON**. The possible properties are below :
+
+- _developerLogin_ : Login of the developer account on the ZetaPush platform
+- _developerPassword_ : Password of the developer account on the ZetaPush platform
+
+
+include::{docdir}/common/code/minimal-zetarc.adoc[]

@@ -1,0 +1,10 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= .gitignore
+
+This file is optional but it is very useful if you want to avoid to publish your account informations on _GitHub_ for example. 
+
+We recommend to create a `.gitignore` file with the following content by default :
+
+include::{docdir}/common/code/gitignore.adoc[]

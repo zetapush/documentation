@@ -6,6 +6,9 @@ include::{docdir}/variables.adoc[]
 // VOCABULARY
 include::{docdir}/common/vocabulary/vocabulary.adoc[leveloffset=+1]
 
-// CUSTOM CLOUD SERVICE
-include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[leveloffset=+1]
+// CLI
+include::{docdir}/common/cli/cli.adoc[leveloffset=+1]
+
+// MANUAL INTRODUCTION (Start without CLI)
+include::{docdir}/common/manual-introduction/manual-introduction.adoc[leveloffset=+1]
 
