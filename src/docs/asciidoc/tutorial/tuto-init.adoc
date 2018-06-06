@@ -1,18 +1,21 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-In this first step, you will initialize your *avengersChat* application. To do this, you only need to launch this command in your workspace :
+In this tutorial, we are focusing on the ZetaPush development. So to begin, you need to clone the repository *zetapush-tutorials*, go to the tutorial *avengersChat* and install all dependencies :
 
-[source, console]
+[source, console, linenums]
 ----
-$ npm init @zetapush avengersChat <1>
+$ git clone git@github.com:zetapush/zetapush-tutorials.git
+$ cd zetapush-tutorials/avengersChat/
+$ npm install
 ----
-<1> _avengersChat_ is the name of your application
 
-WARNING: If you using npm < 6, you need to launch `npx @zetapush/create avengersChat`
+TIP: The repository _zetapush-tutorials_ contains all tutorials on ZetaPush
 
-This command create this tree structure :
+So you already have the style and the frontend logic in the folder `assets` and `utils`. You can browse this files to understand this code.
 
-include::{docdir}/common/code/tuto-generated-tree-init.adoc[]
+In this tutorial, you need to :
 
-include::{docdir}/common/code/table-definition-generated-files.adoc[]
+. Create the business logic with a custom cloud service
+. Implement interaction with the custom cloud service on the frontend
+. Deploy your application

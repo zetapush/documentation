@@ -33,96 +33,58 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this first step, you will initialize your <strong>avengersChat</strong> application. To do this, you only need to launch this command in your workspace :</p>
+<p>In this tutorial, we are focusing on the ZetaPush development. So to begin, you need to clone the repository <strong>zetapush-tutorials</strong>, go to the tutorial <strong>avengersChat</strong> and install all dependencies :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush avengersChat <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>$ git clone git@github.com:zetapush/zetapush-tutorials.git
+$ cd zetapush-tutorials/avengersChat/
+$ npm install</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><em>avengersChat</em> is the name of your application</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you using npm &lt; 6, you need to launch <code>npx @zetapush/create avengersChat</code>
+The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>This command create this tree structure :</p>
+<p>So you already have the style and the frontend logic in the folder <code>assets</code> and <code>utils</code>. You can browse this files to understand this code.</p>
 </div>
-<div class="listingblock">
-<div class="title">Generated tree structure</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">avengersChat
-├── .zetarc
-├── .gitignore
-├── front
-│   ├── index.html
-│   └── index.js
-├── worker
-│   └── index.js
-├── README.md
-└── package.json</code></pre>
+<div class="paragraph">
+<p>In this tutorial, you need to :</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the business logic with a custom cloud service</p>
+</li>
+<li>
+<p>Implement interaction with the custom cloud service on the frontend</p>
+</li>
+<li>
+<p>Deploy your application</p>
+</li>
+</ol>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Definition of generated files</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-middle">File / Folder</th>
-<th class="tableblock halign-center valign-middle">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.zetarc</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish you developer credentials</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the dependencies of ZetaPush, the name of your app, the entry point of yours <em>custom cloud services</em> and many useful other informations for your application.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to deploy or run your application.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-05 09:56:00 CEST
+Last updated 2018-06-05 17:45:19 CEST
 </div>
 </div>
 </body>

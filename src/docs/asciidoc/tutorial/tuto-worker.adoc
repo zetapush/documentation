@@ -1,2 +1,168 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
+
+Now, we will create the business logic of our application. To do this, we will use a _custom cloud service_.
+
+NOTE: A _custom cloud service_ is a class where you create your business logic. You can use the _cloud services_ provided by ZetaPush for example.
+This code is your backend of your application.
+
+In your existing application you already have a _custom cloud service_ on `worker/index.js` (Defined in the `package.json` with the property `main`).
+You can fill this file with the following content :
+
+
+== Import _cloud services_ and define constants
+
+.Imports and constants
+[source, javascript, linenums]
+----
+const { Stack, Messaging, GroupManagement, Inject } = require('@zetapush/platform'); <1> <2>
+
+const CONVERSATION_ID = 'avengersChat';
+const CHANNEL_MESSAGING = 'avengersChannel'; <3>
+----
+<1> Import all _cloud services_ we need, provided by ZetaPush
+<2> Import `Inject`, that will resolve the dependencies injection
+<3> On which channel the users listen the incoming messages
+
+== Create the class with its constructor
+
+.Class and constructor
+[source, javascript, linenums]
+----
+class AvengersApi {
+  /**
+   * Dependencies injection of cloud services
+   */
+  static get parameters() {
+    return [
+      new Inject(Stack),
+      new Inject(Messaging),
+      new Inject(GroupManagement)
+    ]
+  }
+
+  /**
+   * Constructor of our API
+   */
+  constructor(stack, messaging, groups) { <1>
+    this.stack = stack;
+    this.messaging = messaging;
+    this.groups = groups;
+  }
+}
+----
+<1> You need to put the injected _cloud services_ in the constructor in the same order that they are defined in the static method `parameters`.
+
+NOTE: The dependencies injection of ZetaPush use `injection-js`. So we use the same syntax (static method _parameters_).
+
+== Create the chat
+
+To create our chat, we use the _GroupManagement cloud service_ provided by ZetaPush. The created group will be our conversation.
+So we add a method in our class to create this conversation.
+
+.Create conversation
+[source, javascript, linenums]
+----
+/**
+ * Create the conversation of the chat, if doesn't already exists
+ */
+async createConversation() {
+    const { exists } = await this.groups.exists({
+        group: CONVERSATION_ID 
+    });
+    if (!exists) {
+        await this.groups.createGroup({
+            group: CONVERSATION_ID
+        });
+    }
+}
+----
+
+== Add user in the conversation
+
+When an user come to the chat, we need to add it to the conversation.
+So we create a method in our class to add the current user in the conversation. 
+
+[source, javascript, linenums]
+----
+/**
+* Add the current user in the conversation
+*/
+async addMeToConversation(parameters, context) { <1>
+    const output = await this.groups.addUser({
+        group: CONVERSATION_ID,
+        user: context.owner <2>
+    });
+    return output;
+}
+----
+<1> In last parameters of each _cloud function_, the SDK automatically add the context of the call.
+<2> We get the caller (owner) of the _cloud function_ from the context.
+
+== Send a message
+
+No we want to send a message on our chat. To do this, we need to follow 3 steps :
+
+. Get all users in the conversation
+. Send the message of all users in the conversation
+. Store the message in a stack
+
+[source, javascript, linenums]
+----
+/**
+* Send a message on the chat
+* @param {Object} message
+*/
+async sendMessage(message = {}) {
+    // Get all users inside the conversation
+    const group = await this.groups.groupUsers({
+      group: CONVERSATION_ID
+    });
+    const users = group.users;
+
+    // Send the message to each user in the conversation
+    this.messaging.send({
+      target: users,
+      channel: CHANNEL_MESSAGING,
+      data: { message }
+    });
+
+    // Store the message in a stack
+    await this.stack.push({
+      stack: CONVERSATION_ID,
+      data: message
+    });
+
+    return group;
+}
+----
+
+TIP: There is no specific method to launch an attack, to do this, we only send a specific message throught `sendMessage`.
+
+== Get all messages
+
+To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).
+
+[source, javascript, linenums]
+----
+/**
+* Get all messages in the conversation
+*/
+async getMessages() {
+    const { result } = await this.stack.list({
+      stack: CONVERSATION_ID
+    });
+    return result;
+}
+----
+
+== Export our class
+
+At the end, we need to export our class to use it on the front side. To do this, we only need to add this line at the end of our file :
+
+[source, javascript, linenums]
+----
+module.exports = AvengersApi;
+----
+
+Now your _custom cloud service_ is ready !

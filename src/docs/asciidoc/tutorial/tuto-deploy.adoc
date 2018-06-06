@@ -1,2 +1,14 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
+
+Your application is running but only locally. To deploy your application you just need to launch `zeta push`. In this application you already have a npm script so you can run :
+
+.Deploy the application
+[source, console]
+----
+$ npm run deploy
+----
+
+This command deploys all in once (Front and Worker). It will return you an unique URL to access to your application.
+
+Enjoy ! Your Avengers Chat is running !
