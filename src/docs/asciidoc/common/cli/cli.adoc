@@ -3,4 +3,4 @@ include::{docdir}/variables.adoc[]
 
 = Command Line Interface (CLI)
 
-include::{docdir}/cli/register.adoc[leveloffset=+1]
+include::{docdir}/common/cli/register.adoc[leveloffset=+1]

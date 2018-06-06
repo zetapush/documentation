@@ -1,0 +1,15 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.+.zetarc+
+[source,json,linenums]
+----
+{
+  "developerLogin": "xsXnmWhi9WUx8F3J5kDyhRem2I6sUYpFsZjdW3SOjuA",
+  "developerPassword": "va4RPi_rwKHcov9rQYtheXDvoU4RIPyJkUXz4_DzaL0",
+  "appName": "XWPbrVVV", <1>
+  "envName": "" <2>
+}
+----
+<1> Generated name of your application
+<2> Environment of your application, not used yet
