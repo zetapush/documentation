@@ -1,11 +1,11 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-To start a new application with ZetaPush Celtia, the easiest path is to use the link:#_command_line_interface_cli[CLI]. But you can also start your application creating each file you need.
+To start a new application with ZetaPush Celtia, the easiest path is to use the _CLI_. But you can also start your application creating each file you need.
 
 Here the basic source tree you need to create :
 
-include::{docdir}/common/code/hello-world-worker-js.adoc[]
+include::{docdir}/common/code/minimal-tree.adoc[]
 
 
 You will see what you need to do for each file in the following section.

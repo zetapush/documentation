@@ -9,7 +9,7 @@ module.exports = class Api {
    * Explicit injected platform services
    * @returns {Object[]}
    */
-  static get injected() {
+  static get parameters() { <1>
     return [];
   }
   /**
@@ -28,3 +28,4 @@ module.exports = class Api {
   }
 }
 ----
+<1> Useful for dependencies injection, empty for this case
