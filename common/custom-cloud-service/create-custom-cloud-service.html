@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Create a cloud function</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_create_a_em_cloud_function_em">Create a <em>cloud function</em></a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a>Create a <em>cloud function</em></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Basic custom cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {
+
+    constructor() {} <i class="conum" data-value="1"></i><b>(1)</b>
+
+    helloWorld() { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You always need to add a constructor in a <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>helloWorld</code> is your first <em>cloud function</em> in your <em>custom cloud service</em> named <strong>HelloWorldAsCustomCloudService</strong></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A <em>cloud function</em> is always asynchronous (with the <em>async</em> keyword or not)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Each <em>cloud function</em> in a <em>custom cloud service</em> must follow a specific format.
+Only the first parameter is passed, the second is the context of the call.
+For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> myCustomCloudService {
+    constructor() {}
+
+    myCloudFunction(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
+        ...
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>parameters</code> is the first argument passed, it can be an object.
+<code>context</code> is the context of the call for this <em>cloud function</em>.
+For example you can get the ID of the caller by <code>context.owner</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On the front side, you can use this <em>cloud function</em> like this :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="local-variable">this</span>.api.myCloudFunction({ <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">toto</span><span class="delimiter">'</span></span>});
+<span class="comment">// Or this.api.myCloudFunction('titi');</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-06 13:48:12 CEST
+</div>
+</div>
+</body>
+</html>
