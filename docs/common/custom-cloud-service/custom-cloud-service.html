@@ -38,7 +38,11 @@
 <li><a href="#_architecture">Architecture</a></li>
 </ul>
 </li>
-<li><a href="#_how_to_create_a_em_custom_cloud_service_em">How to create a <em>custom cloud service</em></a></li>
+<li><a href="#_how_to_create_a_em_custom_cloud_service_em">How to create a <em>custom cloud service</em></a>
+<ul class="sectlevel2">
+<li><a href="#_create_a_em_cloud_function_em">Create a <em>cloud function</em></a></li>
+</ul>
+</li>
 <li><a href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">Use a <em>cloud service</em> inside my <em>custom cloud service</em></a>
 <ul class="sectlevel2">
 <li><a href="#_dependencies_injection">Dependencies injection</a></li>
@@ -140,6 +144,8 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="paragraph">
 <p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
 </div>
+<div class="sect2">
+<h3 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a>Create a <em>cloud function</em></h3>
 <div class="listingblock">
 <div class="title">Basic custom cloud service</div>
 <div class="content">
@@ -187,6 +193,57 @@ A <em>cloud function</em> is always asynchronous (with the <em>async</em> keywor
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Each <em>cloud function</em> in a <em>custom cloud service</em> must follow a specific format.
+Only the first parameter is passed, the second is the context of the call.
+For example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> myCustomCloudService {
+    constructor() {}
+
+    myCloudFunction(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
+        ...
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>parameters</code> is the first argument passed, it can be an object.
+<code>context</code> is the context of the call for this <em>cloud function</em>.
+For example you can get the ID of the caller by <code>context.owner</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On the front side, you can use this <em>cloud function</em> like this :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="local-variable">this</span>.api.myCloudFunction({ <span class="key"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">toto</span><span class="delimiter">'</span></span>});
+<span class="comment">// Or this.api.myCloudFunction('titi');</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1024,7 +1081,7 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-31 16:27:44 CEST
+Last updated 2018-06-06 10:54:43 CEST
 </div>
 </div>
 </body>
