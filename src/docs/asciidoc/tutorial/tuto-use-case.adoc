@@ -4,7 +4,7 @@ include::{docdir}/variables.adoc[]
 
 You will create a realtime chat application, but it will be particular : This will be an *Avengers Chat* !
 
-At the start, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers. 
+At the beginning, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers. 
 
 .List of skills by Avenger
 [cols="2*^.^", options="header"]
@@ -35,7 +35,7 @@ At the start, the user of the chat can choose an Avenger. Each character has man
 
 |===
 
-You will create the application in few steps :
+You will create this application in few steps :
 
 . link:#+_initialize_your_application+[Initialize a new application]
 . link:#+_create_your_business_logic+[Create the business logic in a _custom cloud service_]

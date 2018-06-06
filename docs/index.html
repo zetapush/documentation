@@ -132,7 +132,7 @@ You will learn to :</p>
 <p>You will create a realtime chat application, but it will be particular : This will be an <strong>Avengers Chat</strong> !</p>
 </div>
 <div class="paragraph">
-<p>At the start, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers.</p>
+<p>At the beginning, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. List of skills by Avenger</caption>
@@ -178,7 +178,7 @@ You will learn to :</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>You will create the application in few steps :</p>
+<p>You will create this application in few steps :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -228,7 +228,7 @@ The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 </table>
 </div>
 <div class="paragraph">
-<p>So you already have the style and the frontend logic in the folder <code>assets</code> and <code>utils</code>. You can browse this files to understand this code.</p>
+<p>So you already have the style and the frontend logic in the folders <code>assets</code> and <code>utils</code>. You can browse this files to understand this code.</p>
 </div>
 <div class="paragraph">
 <p>In this tutorial, you need to :</p>
@@ -236,10 +236,10 @@ The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create the business logic with a custom cloud service</p>
+<p>Create the business logic with a <em>custom cloud service</em></p>
 </li>
 <li>
-<p>Implement interaction with the custom cloud service on the frontend</p>
+<p>Implement the interaction with the <em>custom cloud service</em> (front side)</p>
 </li>
 <li>
 <p>Deploy your application</p>
@@ -250,7 +250,7 @@ The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 <div class="sect2">
 <h3 id="_create_your_business_logic"><a class="anchor" href="#_create_your_business_logic"></a><a class="link" href="#_create_your_business_logic">2.3. Create your business logic</a></h3>
 <div class="paragraph">
-<p>Now, we will create the business logic of our application. To do this, we will use a <em>custom cloud service</em>.</p>
+<p>Now, you will create the business logic of your application. To do this, you will use a <em>custom cloud service</em>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -259,18 +259,50 @@ The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A <em>custom cloud service</em> is a class where you create your business logic. You can use the <em>cloud services</em> provided by ZetaPush for example.
-This code is your backend of your application.
+A <em>custom cloud service</em> is a class where you develop a business logic. You can create several <em>custom cloud services</em> inside one application. Each <em>custom cloud service</em> can use the <em>cloud services</em> provided by ZetaPush.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In your existing application you already have a <em>custom cloud service</em> on <code>worker/index.js</code> (Defined in the <code>package.json</code> with the property <code>main</code>).
-You can fill this file with the following content :</p>
+<p>In your existing application you already have a <em>custom cloud service</em> on the file <code>worker/index.js</code> (Defined in the <code>package.json</code> with the property <code>main</code>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When you create one or many <em>custom cloud services</em>, you need to export them (to use them from the front side). The exportation need to be done in a file of your application, defined in the <code>package.json</code>. The property <code>main</code> defines this file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can fill this file (<code>worker/index.js</code>) with the following content :</p>
 </div>
 <div class="sect4">
 <h5 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a><a class="link" href="#_import_em_cloud_services_em_and_define_constants">2.3.1. Import <em>cloud services</em> and define constants</a></h5>
+<div class="paragraph">
+<p>First, you need to import the <em>cloud services</em> provided by ZetaPush, used in this application :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Stack</em> (Save data in a stack)</p>
+</li>
+<li>
+<p><em>Messaging</em> (Send and receive messages)</p>
+</li>
+<li>
+<p><em>GroupManagement</em> (Manage group of users)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You also need to import <em>Inject</em> that is useful for the dependencies injection.</p>
+</div>
 <div class="listingblock">
 <div class="title">Imports and constants</div>
 <div class="content">
@@ -280,10 +312,10 @@ You can fill this file with the following content :</p>
 3
 4
 </pre></td>
-  <td class="code"><pre>const { Stack, Messaging, GroupManagement, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre>const { Stack, Messaging, GroupManagement, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
 
 const CONVERSATION_ID = <span class="string"><span class="delimiter">'</span><span class="content">avengersChat</span><span class="delimiter">'</span></span>;
-const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><span class="content">avengersChannel</span><span class="delimiter">'</span></span>; <i class="conum" data-value="3"></i><b>(3)</b></pre></td>
+const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><span class="content">avengersChannel</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -291,21 +323,16 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Import all <em>cloud services</em> we need, provided by ZetaPush</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Import <code>Inject</code>, that will resolve the dependencies injection</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>On which channel the users listen the incoming messages</td>
+<td>On which channel the users send and listen the messages</td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_create_the_class_with_its_constructor"><a class="anchor" href="#_create_the_class_with_its_constructor"></a><a class="link" href="#_create_the_class_with_its_constructor">2.3.2. Create the class with its constructor</a></h5>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> is a class, so you need to create it.</p>
+</div>
 <div class="listingblock">
 <div class="title">Class and constructor</div>
 <div class="content">
@@ -336,7 +363,7 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
   <span class="comment">/**
    * Dependencies injection of cloud services
    */</span>
-  <span class="reserved">static</span> get parameters() {
+  <span class="reserved">static</span> get parameters() { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="keyword">return</span> [
       <span class="keyword">new</span> Inject(Stack),
       <span class="keyword">new</span> Inject(Messaging),
@@ -347,7 +374,7 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
   <span class="comment">/**
    * Constructor of our API
    */</span>
-  constructor(stack, messaging, groups) { <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(stack, messaging, groups) { <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="local-variable">this</span>.stack = stack;
     <span class="local-variable">this</span>.messaging = messaging;
     <span class="local-variable">this</span>.groups = groups;
@@ -360,6 +387,10 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Syntax of dependencies injection based on <code>injection-js</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>You need to put the injected <em>cloud services</em> in the constructor in the same order that they are defined in the static method <code>parameters</code>.</td>
 </tr>
 </table>
@@ -380,7 +411,7 @@ The dependencies injection of ZetaPush use <code>injection-js</code>. So we use 
 <div class="sect4">
 <h5 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a><a class="link" href="#_create_the_chat">2.3.3. Create the chat</a></h5>
 <div class="paragraph">
-<p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group will be our conversation.
+<p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
 So we add a method in our class to create this conversation.</p>
 </div>
 <div class="listingblock">
@@ -455,7 +486,7 @@ async addMeToConversation(parameters, context) { <i class="conum" data-value="1"
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In last parameters of each <em>cloud function</em>, the SDK automatically add the context of the call.</td>
+<td>Each <em>cloud function</em> in a <em>custom cloud function</em> takes only one parameter. The second is the context, injected by the SDK</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -588,7 +619,7 @@ async getMessages() {
 <div class="sect4">
 <h5 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a><a class="link" href="#_export_our_class">2.3.7. Export our class</a></h5>
 <div class="paragraph">
-<p>At the end, we need to export our class to use it on the front side. To do this, we only need to add this line at the end of our file :</p>
+<p>At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -613,7 +644,7 @@ async getMessages() {
 <h5 id="_launch_the_worker_locally"><a class="anchor" href="#_launch_the_worker_locally"></a><a class="link" href="#_launch_the_worker_locally">2.4.1. Launch the worker locally</a></h5>
 <div class="paragraph">
 <p>When we working on the frontend part, we often want to test our interaction with the backend logic.
-So with ZetaPush you can launch your worker locally to test this interaction.
+So with ZetaPush, you can launch your worker locally to test this interaction.
 To do this you need to use the <em>CLI</em> and run : <code>zeta run</code>.
 But in this project, the <em>CLI</em> is imported and a script is created with npm, so you just need to launch :</p>
 </div>
@@ -622,6 +653,18 @@ But in this project, the <em>CLI</em> is imported and a script is created with n
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span> npm run start</code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -g @zetapush/cli</code>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -759,7 +802,7 @@ Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if yo
 <div class="sect2">
 <h3 id="_deploy_your_application"><a class="anchor" href="#_deploy_your_application"></a><a class="link" href="#_deploy_your_application">2.5. Deploy your application</a></h3>
 <div class="paragraph">
-<p>Your application is running but only locally. To deploy your application you just need to launch <code>zeta push</code>. In this application you already have a npm script so you can run :</p>
+<p>Your application is working but only locally. To deploy your application you just need to launch <code>zeta push</code>. In this application you already have a npm script so you can run :</p>
 </div>
 <div class="listingblock">
 <div class="title">Deploy the application</div>
@@ -771,7 +814,7 @@ Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if yo
 <p>This command deploys all in once (Front and Worker). It will return you an unique URL to access to your application.</p>
 </div>
 <div class="paragraph">
-<p>Enjoy ! Your Avengers Chat is running !</p>
+<p>Enjoy ! Your Avengers Chat is working and deployed !</p>
 </div>
 </div>
 </div>

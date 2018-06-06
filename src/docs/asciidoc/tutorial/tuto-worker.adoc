@@ -1,30 +1,39 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-Now, we will create the business logic of our application. To do this, we will use a _custom cloud service_.
+Now, you will create the business logic of your application. To do this, you will use a _custom cloud service_.
 
-NOTE: A _custom cloud service_ is a class where you create your business logic. You can use the _cloud services_ provided by ZetaPush for example.
-This code is your backend of your application.
+NOTE: A _custom cloud service_ is a class where you develop a business logic. You can create several _custom cloud services_ inside one application. Each _custom cloud service_ can use the _cloud services_ provided by ZetaPush.
 
-In your existing application you already have a _custom cloud service_ on `worker/index.js` (Defined in the `package.json` with the property `main`).
-You can fill this file with the following content :
+In your existing application you already have a _custom cloud service_ on the file `worker/index.js` (Defined in the `package.json` with the property `main`).
 
+TIP: When you create one or many _custom cloud services_, you need to export them (to use them from the front side). The exportation need to be done in a file of your application, defined in the `package.json`. The property `main` defines this file.
+
+You can fill this file (`worker/index.js`) with the following content :
 
 == Import _cloud services_ and define constants
+
+First, you need to import the _cloud services_ provided by ZetaPush, used in this application : 
+
+* _Stack_ (Save data in a stack)
+* _Messaging_ (Send and receive messages)
+* _GroupManagement_ (Manage group of users)
+
+You also need to import _Inject_ that is useful for the dependencies injection.
 
 .Imports and constants
 [source, javascript, linenums]
 ----
-const { Stack, Messaging, GroupManagement, Inject } = require('@zetapush/platform'); <1> <2>
+const { Stack, Messaging, GroupManagement, Inject } = require('@zetapush/platform');
 
 const CONVERSATION_ID = 'avengersChat';
-const CHANNEL_MESSAGING = 'avengersChannel'; <3>
+const CHANNEL_MESSAGING = 'avengersChannel'; <1>
 ----
-<1> Import all _cloud services_ we need, provided by ZetaPush
-<2> Import `Inject`, that will resolve the dependencies injection
-<3> On which channel the users listen the incoming messages
+<1> On which channel the users send and listen the messages
 
 == Create the class with its constructor
+
+A _custom cloud service_ is a class, so you need to create it.
 
 .Class and constructor
 [source, javascript, linenums]
@@ -33,7 +42,7 @@ class AvengersApi {
   /**
    * Dependencies injection of cloud services
    */
-  static get parameters() {
+  static get parameters() { <1>
     return [
       new Inject(Stack),
       new Inject(Messaging),
@@ -44,20 +53,21 @@ class AvengersApi {
   /**
    * Constructor of our API
    */
-  constructor(stack, messaging, groups) { <1>
+  constructor(stack, messaging, groups) { <2>
     this.stack = stack;
     this.messaging = messaging;
     this.groups = groups;
   }
 }
 ----
+<1> Syntax of dependencies injection based on `injection-js`.
 <1> You need to put the injected _cloud services_ in the constructor in the same order that they are defined in the static method `parameters`.
 
 NOTE: The dependencies injection of ZetaPush use `injection-js`. So we use the same syntax (static method _parameters_).
 
 == Create the chat
 
-To create our chat, we use the _GroupManagement cloud service_ provided by ZetaPush. The created group will be our conversation.
+To create our chat, we use the _GroupManagement cloud service_ provided by ZetaPush. The created group includes all users of the conversation.
 So we add a method in our class to create this conversation.
 
 .Create conversation
@@ -96,7 +106,7 @@ async addMeToConversation(parameters, context) { <1>
     return output;
 }
 ----
-<1> In last parameters of each _cloud function_, the SDK automatically add the context of the call.
+<1> Each _cloud function_ in a _custom cloud function_ takes only one parameter. The second is the context, injected by the SDK
 <2> We get the caller (owner) of the _cloud function_ from the context.
 
 == Send a message
@@ -158,7 +168,7 @@ async getMessages() {
 
 == Export our class
 
-At the end, we need to export our class to use it on the front side. To do this, we only need to add this line at the end of our file :
+At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :
 
 [source, javascript, linenums]
 ----

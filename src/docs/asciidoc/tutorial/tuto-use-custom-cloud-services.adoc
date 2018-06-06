@@ -6,7 +6,7 @@ Once we have our _custom cloud service_, we need to create the frontend of our a
 == Launch the worker locally
 
 When we working on the frontend part, we often want to test our interaction with the backend logic.
-So with ZetaPush you can launch your worker locally to test this interaction.
+So with ZetaPush, you can launch your worker locally to test this interaction.
 To do this you need to use the _CLI_ and run : `zeta run`.
 But in this project, the _CLI_ is imported and a script is created with npm, so you just need to launch :
 
@@ -15,6 +15,8 @@ But in this project, the _CLI_ is imported and a script is created with npm, so 
 ----
 $ npm run start
 ----
+
+TIP: If you want to install the _ZetaPush CLI_ you can run `npm install -g @zetapush/cli`.
 
 
 == Interaction with worker
