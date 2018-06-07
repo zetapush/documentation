@@ -1,0 +1,16 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+== I have an existing account
+
+=== I want to use an existing application
+
+include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[leveloffset=+3]
+
+=== I want to create a new application
+
+include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[leveloffset=+3]
+
+== I don't have ZetaPush account
+
+include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+2]
