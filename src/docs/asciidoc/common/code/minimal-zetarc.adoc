@@ -6,6 +6,7 @@ include::{docdir}/variables.adoc[]
 ----
 {
     "developerLogin": "user@gmail.com",
-    "developerPassword": "password"
+    "developerPassword": "password",
+    "appName": "myAppName"
 }
 ----

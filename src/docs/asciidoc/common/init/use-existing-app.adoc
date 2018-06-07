@@ -1,0 +1,18 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+If you want to deploy or execute your application on an existing application you can follow this process :
+
+include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[]
+
+For example you can launch this command :
+
+[source, console, linenums]
+----
+$ npm init @zetapush myApp 
+    --developer-login user@gmail.com 
+    --developer-password password 
+    --appName myAppName
+----
+
+Because your `.zetarc` has an existing application (_appName_), the CLI you execute or deploy your code on this one.

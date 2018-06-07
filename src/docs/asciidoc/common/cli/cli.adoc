@@ -1,6 +1,0 @@
-:relative-path: ../
-include::{docdir}/variables.adoc[]
-
-= Command Line Interface (CLI)
-
-include::{docdir}/common/cli/register.adoc[leveloffset=+1]

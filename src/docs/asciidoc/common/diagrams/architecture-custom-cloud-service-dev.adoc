@@ -22,7 +22,7 @@ node "Local" as local {
         Front code that use
         your custom cloud services
     end note
-    worker <.> [front] : 2
+    worker <.> [front]
 }
 
 node "ZetaPush platform" as zp {
@@ -39,10 +39,10 @@ node "ZetaPush platform" as zp {
     }
 }
 
-local <..> zp : 1
+local <..> zp
 ....
-<1> The worker is running "locally" and interacts with the existing _cloud services_ on the ZetaPush platform
-<2> The front code interacts *only* with the _custom cloud services_ that is running "locally"
+
+The worker is running "locally" and interacts with the existing _cloud services_ on the ZetaPush platform and the front code interacts *only* with the _custom cloud services_ that is running "locally"
 
 
 

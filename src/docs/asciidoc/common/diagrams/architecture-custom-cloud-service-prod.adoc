@@ -27,7 +27,8 @@ node "ZetaPush platform" {
         only the deployed worker
     end note
 
-    [worker] <.> [front] : (1)
+    [worker] <.> [front]
 }
 ....
-<1> The front code interacts *only* with the _custom cloud services_ that is running "locally"
+
+The front code interacts *only* with the _custom cloud services_ that is running "locally"

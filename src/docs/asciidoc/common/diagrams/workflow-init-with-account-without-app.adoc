@@ -5,18 +5,12 @@ include::{docdir}/variables.adoc[]
 ....
 start
 
-:<b>(1)</b>
+:I launch :
+<color:#38363a>$ npm init @zetapush myApp ➊;
 
-I launch :
-<color:#38363a>$ npm init @zetapush myApp;
+:An application with an example is created ➋;
 
-:<b>(2)</b>
-
-An application with an example is created;
-
-:<b>(3)</b>
-
-<color:#38363a>.zetarc</color> file is created;
+:<color:#38363a>.zetarc</color> file is created ➌;
 
 :I launch :
 <color:#38363a>$ zeta run</color> or
@@ -24,10 +18,12 @@ An application with an example is created;
 
 :<b>Deployment success on a new application;
 ....
-<1> I launch `npm init @zetapush myApp` with the _developer-login_ and _developer-password_ properties
-<2> An application is created in your workspace
-<3> The _.zetarc_ file is like :
-[source, json]
+➊ I launch `npm init @zetapush myApp` with the _developer-login_ and _developer-password_ properties
+
+➋ An application is created in your workspace
+
+➌ The _.zetarc_ file is like :
+[source, json, linenums]
 ----
 {
     "developerLogin": "user@gmail.com",
@@ -36,4 +32,4 @@ An application with an example is created;
 }
 ----
 
-TIP: If the _appName_ property in the _.zetarc_ is empty or missing, ZetaPush deploy or run the code on a new application.
+TIP: If the _appName_ property in the _.zetarc_ is empty or missing, ZetaPush deploy or execute the code on a new application.
