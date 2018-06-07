@@ -44,7 +44,7 @@ The you can commit and push the result to update Github Pages.
 To automatically generate the HTML documentation after any change in `src/docs` directory, you can run the following command:
 
 ```
-./mvnw fizzed-watcher:run -P html -Doutputdir=../documentation-site
+./mvnw fizzed-watcher:run -P html
 ```
 
 To automatically generate the PDF documentation after any change in `src/docs` directory, you can run the following command:
