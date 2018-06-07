@@ -12,3 +12,5 @@ The format of this file is the **JSON**. The possible properties are below :
 
 
 include::{docdir}/common/code/minimal-zetarc.adoc[]
+
+TIP: If you don't have any account, you can leave the file empty. When you will deploy or run locally your application, ZetaPush will create an anonymous account for you.
