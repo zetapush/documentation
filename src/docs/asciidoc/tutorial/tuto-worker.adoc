@@ -61,7 +61,7 @@ class AvengersApi {
 }
 ----
 <1> Syntax of dependencies injection based on `injection-js`.
-<1> You need to put the injected _cloud services_ in the constructor in the same order that they are defined in the static method `parameters`.
+<2> You need to put the injected _cloud services_ in the constructor in the same order that they are defined in the static method `parameters`.
 
 NOTE: The dependencies injection of ZetaPush use `injection-js`. So we use the same syntax (static method _parameters_).
 

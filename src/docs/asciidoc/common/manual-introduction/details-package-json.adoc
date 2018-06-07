@@ -1,7 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= package.json
+== package.json
 
 The `package.json` is the most important file in the application. It contains all informations needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the `.zetarc`).
 

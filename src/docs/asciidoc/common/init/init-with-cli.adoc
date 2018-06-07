@@ -12,7 +12,13 @@ $ npm init @zetapush myApp <1>
 
 WARNING: This command works only with npm >= 6. Otherwise, read this link:#_using_npm_lower_than_6[section].
 
-This command generate a tree structure of a classic application :
+This command can takes many parameters : 
+
+* *--developer-login* : Define which developer login (ZetaPush account) use
+* *--developer-password* : Define which developer password (ZetaPush account) use
+* *--appName* : Define which application use
+
+This will generate a tree structure of a classic application :
 
 include::{docdir}/common/code/generated-tree-init.adoc[leveloffset=+1]
 

@@ -1,0 +1,12 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+If you have no ZetaPush account, you can create a new and generate an application with the CLI.
+
+The process is the following :
+
+include::{docdir}/common/diagrams/workflow-init-without-account.adoc[]
+
+To validate your account you need to click on the link in the sent email.
+
+Once your account is validate, you can launch `zeta run` or `zeta push` to execute or deploy your application.

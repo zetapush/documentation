@@ -12,10 +12,10 @@ Your use-case is a basic real-time chat between _characters of Avengers_ (See li
 To add this business logic, you can create a _custom cloud service_ named _AvengerService_ and into this, you add a _cloud function_ named _sendMessage_.
 ****
 
-= Architecture
+== Architecture
 
-== Development phase
+=== Development phase
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-dev.adoc[leveloffset=+2]
 
-== Production phase
+=== Production phase
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-prod.adoc[leveloffset=+2]

@@ -1,0 +1,35 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+[plantuml, init-with-account-without-app, png]     
+....
+start
+
+:I launch :
+<color:#38363a>$ npm init @zetapush myApp ➊;
+
+:An application with an example is created ➋;
+
+:<color:#38363a>.zetarc</color> file is created ➌;
+
+:I launch :
+<color:#38363a>$ zeta run</color> or
+<color:#38363a>$ zeta push;
+
+:<b>Deployment success on a new application;
+....
+➊ I launch `npm init @zetapush myApp` with the _developer-login_ and _developer-password_ properties
+
+➋ An application is created in your workspace
+
+➌ The _.zetarc_ file is like :
+[source, json, linenums]
+----
+{
+    "developerLogin": "user@gmail.com",
+    "developerPassword": "password",
+    "appName": ""
+}
+----
+
+TIP: If the _appName_ property in the _.zetarc_ is empty or missing, ZetaPush deploy or execute the code on a new application.

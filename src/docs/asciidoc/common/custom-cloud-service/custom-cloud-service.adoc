@@ -1,24 +1,24 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Custom Cloud Service
+== Custom Cloud Service
 
-== What is a _custom cloud service_
+=== What is a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.adoc[leveloffset=+2]
 
-== How to create a _custom cloud service_
+=== How to create a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+2]
 
-== Use a _cloud service_ inside my _custom cloud service_
+=== Use a _cloud service_ inside my _custom cloud service_
 include::{docdir}/common/custom-cloud-service/cloud-service-inside-custom.adoc[leveloffset=+2]
 
-== Use an other _custom cloud service_ in my own
+=== Use an other _custom cloud service_ in my own
 include::{docdir}/common/custom-cloud-service/custom-cloud-service-inside-custom.adoc[leveloffset=+2]
 
-== Expose my _custom cloud services_
+=== Expose my _custom cloud services_
 include::{docdir}/common/custom-cloud-service/expose-custom-cloud-service.adoc[leveloffset=+2]
 
-== Complete example
+=== Complete example
 include::{docdir}/common/custom-cloud-service/complete-example-custom-cloud-service.adoc[leveloffset=+2]
 
 
