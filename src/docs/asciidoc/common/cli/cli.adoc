@@ -1,0 +1,6 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+== Initialize an application
+
+include::{docdir}/common/cli/cli-init-app.adoc[leveloffset=+1]
