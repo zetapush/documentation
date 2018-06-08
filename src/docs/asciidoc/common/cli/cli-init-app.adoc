@@ -19,7 +19,7 @@ This login is the email used by the developer to the connection on the ZetaPush 
 
 Like the property _--developer-login_, this password is only used for the ZetaPush developer account. It *doesn't concerns* any application developed by the developer.
 
-* *--appName* 
+* *--app-name* 
 
 A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The _appName_ property is the unique name of an application on a ZetaPush developer account.
 
