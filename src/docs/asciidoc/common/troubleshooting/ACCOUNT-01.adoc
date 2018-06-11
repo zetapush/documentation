@@ -1,0 +1,42 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You didn't provide your ZetaPush account login.
+
+
+== I don't have ZetaPush account, how to create it ?
+
+When you want to use ZetaPush Cloud services or push your custom Cloud services on ZetaPush, you need an account.
+
+=== I use the CLI
+
+////
+TODO: command
+TODO: process
+////
+
+=== I use ZetaPush console
+
+////
+TODO: URL
+TODO: process
+////
+
+== I have a ZetaPush account, how to use it ?
+
+////
+TODO: configuration sources (ENV var, CLI, .zetarc)
+TODO: priority order
+////
+
+=== I provide my crendentials manually
+
+////
+TODO: create a .zetarc file
+////
+
+=== I use the CLI
+
+////
+TODO: prompt to select app
+////

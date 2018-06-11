@@ -1,0 +1,25 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Wrong login or password.
+
+== Check your credentials
+
+////
+TODO: login from CLI
+TODO: login from ZetaPush Console
+////
+
+== Did you click the confirmation link in the email ?
+
+When you created your account, we sent you an email with a confirmation link.
+You must click the confirmation link in order to validate your account and be able to use ZetaPush services.
+This confirmation link is valid for 7 days.
+
+If you didn't click in time, your account has been deleted and you must create it again.
+
+== Are you using the right platform ?
+
+////
+TODO: account exists but wrong platform
+////

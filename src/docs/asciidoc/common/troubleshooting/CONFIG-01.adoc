@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Loading of configuration from CLI has failed.
+
+Please contact the support
+
+////
+TODO: URL for the support
+////

@@ -1,0 +1,9 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You have a valid account but no application name is configured.
+
+
+////
+TODO: what to do to help user ?
+////

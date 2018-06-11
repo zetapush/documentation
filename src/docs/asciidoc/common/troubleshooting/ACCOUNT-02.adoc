@@ -1,0 +1,70 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+You did provide your ZetaPush account login but not your password.
+
+
+== I provide my password in .zetarc file
+
+Edit the `.zetarc` file to add `developerPassword` with your password:
+
+[source,json, role="highlight-lines:3"]
+----
+{
+  "developerLogin": "<your login>",
+  "developerPassword": "<your password>"
+}
+----
+
+[WARNING]
+.Sensitive information leak
+====
+You must check that `.zetarc` file is not commited on your source control.
+
+If you are using git, add `.zetarc` entry in `.gitignore` file
+====
+
+
+== I provide my password through the CLI
+
+When you want to run your custom cloud services locally, you can provide your password using `--developer-password` option:
+```
+zeta run --developer-password "<your password>"
+```
+
+If you run the command through npm, you can provide the option like this:
+```
+npm start -- --developer-password "<your password>"
+```
+
+[WARNING]
+.Sensitive information leak
+====
+Using this method writes your password in your terminal history. If your computer can be accessed by other people, they may be able
+to see your password in command history.
+====
+
+
+== I provide my password in environment variable
+
+[role="tab-container"]
+help
+
+[role="tab", condition=isLinux()]
+linux
+
+////
+TODO: set env variable in current terminal
+TODO: set persistent env variable -> depends linux distrib
+////
+
+[role=tab, condition=isWindows()]
+Windows
+
+////
+TODO: handle windows resolution
+////
+
+[role=tab-container-end]
+-

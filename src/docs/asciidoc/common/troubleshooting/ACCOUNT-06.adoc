@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+The application that you have configured doesn't exist for your account.
+
+////
+TODO: list available applications for the account ?
+TODO: wrong account ?
+TODO: wrong app name ?
+////
