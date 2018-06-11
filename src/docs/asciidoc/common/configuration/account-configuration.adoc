@@ -1,0 +1,52 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+To use ZetaPush Celtia, you need to have an account and an optional application.
+You specify this properties in the `.zetarc` file.
+Here is the list of them :
+
+.Account variables
+[cols="5*^.^", options="header"]
+|===
+| Name of the property
+| Definition
+| environment variable
+| Name in the _.zetarc_
+| CLI parameter
+
+| Developer login
+| 
+include::{docdir}/common/definitions/developer-login.adoc[]
+| ZP_DEVELOPER_LOGIN
+| developerLogin
+| --developer-login <login>
+
+| Developer password
+| 
+include::{docdir}/common/definitions/developer-password.adoc[]
+| ZP_DEVELOPER_PASSWORD
+| developerLogin
+| --developer-password <password>
+
+| Developer login
+| 
+include::{docdir}/common/definitions/app-name.adoc[]
+| ZP_APP_NAME
+| appName
+| --app-name <name>
+
+| Environment name
+| 
+include::{docdir}/common/definitions/env-name.adoc[]
+| ZP_ENV_NAME
+| envName
+| --env-name <env>
+
+| Platform URL
+| 
+include::{docdir}/common/definitions/platform-url.adoc[]
+| ZP_PLATFORM_URL
+| platformUrl
+| --platform-url <platform>
+
+|===

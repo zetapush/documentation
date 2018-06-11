@@ -13,22 +13,20 @@ This command can take many parameters :
 
 * *--developer-login* 
 
-This login is the email used by the developer to the connection on the ZetaPush console. It *doesn't concerns* any application developed by the developer. It's only used to identify the developer account.
+include::{docdir}/common/definitions/developer-login.adoc[]
 
 * *--developer-password*
 
-Like the property _--developer-login_, this password is only used for the ZetaPush developer account. It *doesn't concerns* any application developed by the developer.
+include::{docdir}/common/definitions/developer-password.adoc[]
 
 * *--app-name* 
 
-A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The _appName_ property is the unique name of an application on a ZetaPush developer account.
+include::{docdir}/common/definitions/app-name.adoc[]
 
 * *--platform-url*
 
-By default, the developer use the _production environment of ZetaPush_ to develop and deploy its applications. In most cases, the developer doesn't need to set this property. *He just need to use this property if ZetaPush says explicitly to use an other ZetaPush platform.*
+include::{docdir}/common/definitions/platform-url.adoc[]
 
 * *--env-name*
 
-An application created by a developer can takes many environments. 
-The default environment is _prod_ but you can create your own (_dev_, _preprod_, ...).
-An environment is one stage in the life-cycle of the application. 
+include::{docdir}/common/definitions/env-name.adoc[]

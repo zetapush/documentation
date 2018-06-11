@@ -1,0 +1,1 @@
+To use your _custom cloud services_ from the front part you need to export them. So the exportation of services need to be in only one file.
