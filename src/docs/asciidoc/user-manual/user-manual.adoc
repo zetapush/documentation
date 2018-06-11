@@ -23,3 +23,6 @@ include::{docdir}/common/usage-service/usage-service.adoc[]
 
 // DEPLOY APPLICATION
 include::{docdir}/common/deploy/deploy.adoc[]
+
+// CONFIGURATION MANAGEMENT
+include::{docdir}/common/configuration/configuration.adoc[]

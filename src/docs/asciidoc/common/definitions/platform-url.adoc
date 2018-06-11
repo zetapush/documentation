@@ -1,0 +1,1 @@
+By default, the developer use the _production environment of ZetaPush_ to develop and deploy its applications. In most cases, the developer doesn't need to set this property. *He just need to use this property if ZetaPush says explicitly to use an other ZetaPush platform.*
