@@ -1,16 +1,31 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-In this tutorial, we are focusing on the ZetaPush development. So to begin, you need to clone the repository *zetapush-tutorials*, go to the tutorial *avengersChat* and install all dependencies :
+In the first step, you need to create your application. To do this you can run :
 
 [source, console, linenums]
 ----
-$ git clone git@github.com:zetapush/zetapush-tutorials.git
-$ cd zetapush-tutorials/avengersChat/
-$ npm install
+npm init @zetapush myApp --developer-login user@gmail.com --developer-password password
 ----
 
-TIP: The repository _zetapush-tutorials_ contains all tutorials on ZetaPush
+This command will create you an account on the ZetaPush platform and create your first application in the _myApp_ directory.
+The create of an account send an email to confirm your account.
+
+NOTE: To use your application, you need to validate your account. To do this, click on the link in the received email
+
+In this tutorial, we are focusing on the ZetaPush development. So to begin, get all resources and add them to your application (css, assets, ...) :
+
+[source, console, linenums]
+----
+$ cd myApp/front/
+$ rm -r ./*
+$ curl -X GET 'http://github-download-subfolder.zpush.io/?owner=zetapush&repository=zetapush-tutorials&path=avengersChat/front' --output front.zip
+$ unzip front.zip
+$ rm front.zip
+
+----
+
+TIP: If you are using _Windows_, you can download the file with all resources and unzip it in the front directory. Link : http://github-download-subfolder.zpush.io/?owner=zetapush&repository=zetapush-tutorials&path=avengersChat/front
 
 So you already have the style and the frontend logic in the folders `assets` and `utils`. You can browse this files to understand this code.
 
