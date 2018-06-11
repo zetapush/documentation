@@ -24,6 +24,8 @@ Open the following URL in your browser and search for the dependency:
 
 == Are you using a custom NPM registry ?
 
+TODO: https://github.com/zetapush/documentation/issues/25
+
 FIXME: ZetaPush MUST support private NPM registries
 
 
@@ -38,12 +40,6 @@ You can follow the NPM tutorial to publish your packages:
 
 == Are you using a dependency that requires additionnal tools to be installed ?
 
-TODO: different help ?
+TODO: https://github.com/zetapush/documentation/issues/26
 
-
-
-////
-TODO:
-- Issue with internet while npm tries to download ? => retry
-- Issue with dependency that requires some additionnal tools to be installed ? => other help ?
-////
+TODO: https://github.com/zetapush/documentation/issues/27

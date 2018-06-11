@@ -5,10 +5,8 @@ Wrong login or password.
 
 == Check your credentials
 
-////
-TODO: login from CLI
-TODO: login from ZetaPush Console
-////
+TODO: https://github.com/zetapush/documentation/issues/20
+
 
 == Did you click the confirmation link in the email ?
 
@@ -20,6 +18,4 @@ If you didn't click in time, your account has been deleted and you must create i
 
 == Are you using the right platform ?
 
-////
-TODO: account exists but wrong platform
-////
+TODO: https://github.com/zetapush/documentation/issues/21

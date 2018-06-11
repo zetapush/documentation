@@ -42,9 +42,10 @@ PING google.com (64.233.167.100) 56(84) bytes of data.
 123 packets transmitted, 0 received, 100% packet loss, time 122391ms
 ```
 
-////
-TODO: DNS issue
-TODO: DNS ok but site unavailable
-TODO: Internet accessible but NodeJS/npm can't reach it
-TODO: Windows version
-////
+TODO: https://github.com/zetapush/documentation/issues/31
+
+TODO: https://github.com/zetapush/documentation/issues/32
+
+TODO: https://github.com/zetapush/documentation/issues/33
+
+

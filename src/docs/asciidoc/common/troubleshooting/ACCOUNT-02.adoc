@@ -30,12 +30,12 @@ If you are using git, add `.zetarc` entry in `.gitignore` file
 
 When you want to run your custom cloud services locally, you can provide your password using `--developer-password` option:
 ```
-zeta run --developer-password "<your password>"
+$ zeta run --developer-password "<your password>"
 ```
 
 If you run the command through npm, you can provide the option like this:
 ```
-npm start -- --developer-password "<your password>"
+$ npm start -- --developer-password "<your password>"
 ```
 
 [WARNING]
@@ -54,17 +54,13 @@ help
 [role="tab", condition=isLinux()]
 linux
 
-////
-TODO: set env variable in current terminal
-TODO: set persistent env variable -> depends linux distrib
-////
+TODO: https://github.com/zetapush/documentation/issues/19
+
 
 [role=tab, condition=isWindows()]
 Windows
 
-////
-TODO: handle windows resolution
-////
+TODO: https://github.com/zetapush/documentation/issues/19
 
 [role=tab-container-end]
 -

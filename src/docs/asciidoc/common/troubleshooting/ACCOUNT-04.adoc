@@ -4,6 +4,4 @@ include::{docdir}/variables.adoc[]
 You have a valid account but no application name is configured.
 
 
-////
-TODO: what to do to help user ?
-////
+TODO: https://github.com/zetapush/documentation/issues/22

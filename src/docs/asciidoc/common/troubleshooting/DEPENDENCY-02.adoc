@@ -13,9 +13,7 @@ include::{docdir}/common/troubleshooting/schemas/DEPENDENCY-02-cause.html[]
   This is this step that fails because one dependency is unreadable.
 
 
-////
-TODO:
-- Help to resolve the issue
-  - Retry (handle a skip cache mode ?)
-  - Ask user to check if dependency is usable
-////
+TODO: https://github.com/zetapush/documentation/issues/27
+
+TODO: https://github.com/zetapush/documentation/issues/28
+

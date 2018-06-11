@@ -7,8 +7,8 @@ Your computer can access local network but can't access the proxy.
 include::{docdir}/common/troubleshooting/schemas/NET-03-cause.html[]
 ++++
 
-////
-TODO: test access to the proxy
-TODO: check if NodeJS configured with a proxy and have access to Internet through the proxy
-TODO: check if Internet not accessible because of corporate proxy not configured
-////
+TODO: https://github.com/zetapush/documentation/issues/34
+
+TODO: https://github.com/zetapush/documentation/issues/35
+
+TODO: https://github.com/zetapush/documentation/issues/36

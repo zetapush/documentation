@@ -10,33 +10,21 @@ When you want to use ZetaPush Cloud services or push your custom Cloud services 
 
 === I use the CLI
 
-////
-TODO: command
-TODO: process
-////
+TODO: https://github.com/zetapush/documentation/issues/14
 
 === I use ZetaPush console
 
-////
-TODO: URL
-TODO: process
-////
+TODO: https://github.com/zetapush/documentation/issues/15
+
 
 == I have a ZetaPush account, how to use it ?
 
-////
-TODO: configuration sources (ENV var, CLI, .zetarc)
-TODO: priority order
-////
+TODO: https://github.com/zetapush/documentation/issues/16
 
 === I provide my crendentials manually
 
-////
-TODO: create a .zetarc file
-////
+TODO: https://github.com/zetapush/documentation/issues/17
 
 === I use the CLI
 
-////
-TODO: prompt to select app
-////
+TODO: https://github.com/zetapush/documentation/issues/18

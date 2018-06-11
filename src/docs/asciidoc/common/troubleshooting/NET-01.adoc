@@ -46,10 +46,12 @@ external network that is available or activated.
 If you have another entry (like `eth0` in the example), check that you have an IP address (check the line starting with `inet adr:`). 
 If the line is missing, then check that your network is working and you are authorized to connect to it.
 
+TODO: https://github.com/zetapush/documentation/issues/29
+
 [role=tab, condition=isWindows()]
 Windows
 
-TODO: handle windows resolution
+TODO: https://github.com/zetapush/documentation/issues/30
 
 [role=tab-container-end]
 -
