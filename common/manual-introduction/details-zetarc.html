@@ -26,12 +26,18 @@
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
-<h1>.zetarc</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#__zetarc">.zetarc</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="__zetarc"><a class="anchor" href="#__zetarc"></a>.zetarc</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To specify which account (on the ZetaPush platform) you use for an application, you type the account informations in the <code>.zetarc</code>.</p>
@@ -47,6 +53,9 @@
 <li>
 <p><em>developerPassword</em> : Password of the developer account on the ZetaPush platform</p>
 </li>
+<li>
+<p><em>appName</em> : The name of your application</p>
+</li>
 </ul>
 </div>
 <div class="listingblock">
@@ -57,20 +66,34 @@
 2
 3
 4
+5
 </pre></td>
   <td class="code"><pre>{
     <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you want to create a new application, you can leave the <em>appName</em> property empty, this will create a new application and fill your <em>.zetarc</em> when you will run or deploy your code.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:29:50 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

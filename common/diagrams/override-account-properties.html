@@ -32,54 +32,20 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>You can automatically create a new activated account. For this you can launch :</p>
-</div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>$ zeta register --email user@gmail.com</pre></td>
-</tr></table></code></pre>
+<img src="override-account-properties.png" alt="override account properties" width="183" height="242">
 </div>
 </div>
 <div class="paragraph">
-<p>When you use <code>--email</code>, you specify that you want to create a new activated account.</p>
-</div>
-<div class="paragraph">
-<p>A prompt ask you to create a password for your account. Then an email is sent to confirm your account. You have 7 days for it.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If you have an anonymous account in the <code>.zetarc</code>, the CLI ask you if you want to move your applications in the new accounts.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-If you have an anonymous account in the <code>.zetarc</code> and you want to keep your data with the new account, you <strong>need</strong> to activate your account before the validity of anonymous account expires.
-</td>
-</tr>
-</table>
+<p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:44:22 CEST
+Last updated 2018-06-11 17:09:56 CEST
 </div>
 </div>
 </body>

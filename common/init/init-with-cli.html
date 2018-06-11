@@ -68,7 +68,23 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 </table>
 </div>
 <div class="paragraph">
-<p>This command generate a tree structure of a classic application :</p>
+<p>This command can takes many parameters :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>--developer-login</strong> : Define which developer login (ZetaPush account) use</p>
+</li>
+<li>
+<p><strong>--developer-password</strong> : Define which developer password (ZetaPush account) use</p>
+</li>
+<li>
+<p><strong>--appName</strong> : Define which application use</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This will generate a tree structure of a classic application :</p>
 </div>
 <div class="listingblock">
 <div class="title">Generated tree structure</div>
@@ -85,6 +101,12 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 └── package.json</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>All dependencies are already installed, so you can run your application locally or deploy it.</p>
+</div>
+<div class="paragraph">
+<p>To do this you can use the <em>CLI</em> using the commands : <code>zeta run</code> and <code>zeta push</code>.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -92,13 +114,13 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-All dependencies are installed, so you already can launch <code>zeta run worker</code> or <code>zeta push</code>.
+To install the CLI you can launch : <code>npm install -g @zetapush/cli</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Many files are created, you can see the role of each file in the following table :</p>
+<p>The CLI dependency is already installed and npm scripts are created. So you can execute your code with <code>npm run start</code> and deploy your application with <code>npm run deploy</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Definition of generated files</caption>
@@ -119,7 +141,7 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish you developer credentials</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish your developer credentials (on GitHub for example)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
@@ -127,15 +149,15 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to deploy or run your application.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to use your application.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -170,7 +192,7 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 13:48:45 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

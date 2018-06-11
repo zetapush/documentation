@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Deployment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_deployment">Deployment</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_deployment">What is deployment ?</a></li>
+<li><a href="#_requirements">Requirements</a></li>
+<li><a href="#_how_to_deploy_your_application">How to deploy your application ?</a></li>
+<li><a href="#_how_to_deploy_only_the_em_worker_em">How to deploy only the <em>worker</em> ?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_deployment"><a class="anchor" href="#_deployment"></a>Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have develop your application and test it, you may want to deploy it.</p>
+</div>
+<div class="sect2">
+<h3 id="_what_is_deployment"><a class="anchor" href="#_what_is_deployment"></a>What is deployment ?</h3>
+<div class="paragraph">
+<p>In the <em>deployment</em> with ZetaPush, you have 2 parts :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Hosting and scalability of the back end</p>
+</li>
+<li>
+<p>Hosting of the front end</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_back_end"><a class="anchor" href="#_back_end"></a>Back end</h4>
+<div class="paragraph">
+<p>When you deploy the back end part (<em>custom cloud services</em>) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_front_end"><a class="anchor" href="#_front_end"></a>Front end</h4>
+<div class="paragraph">
+<p>For the front end part, we hosting your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (<em>custom cloud services</em> or <em>cloud services</em> provided by ZetaPush).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h3>
+<div class="paragraph">
+<p>To execute or deploy your application you need to use the <em>Command Line Interface (CLI)</em>.</p>
+</div>
+<div class="paragraph">
+<p>You can check if you already installed the CLI with :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the CLI returns a result as <code>0.18.4</code>, the CLI is installed.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, you can install it with :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g @zetapush/cli</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_deploy_your_application"><a class="anchor" href="#_how_to_deploy_your_application"></a>How to deploy your application ?</h3>
+<div class="paragraph">
+<p>The deployment is very easy, to do this you only need to launch this command in your application directory :</p>
+</div>
+<div class="listingblock">
+<div class="title">Deploy an application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ cd myApp/
+$ zeta push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will read the <code>.zetarc</code> file. If there is no <em>developerLogin</em> and <em>developerPassword</em> properties or if the ZetaPush account is not validated, you will not be able to push your application.</p>
+</div>
+<div class="paragraph">
+<p>About the <em>appName</em> property, if it is empty, the CLI will deploy your code on a new application.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When you deploy your application (Front + Worker), the CLI returns you an unique URL to use it.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_deploy_only_the_em_worker_em"><a class="anchor" href="#_how_to_deploy_only_the_em_worker_em"></a>How to deploy only the <em>worker</em> ?</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <em>Worker</em> is the back end of your application. Generally you put your business logic inside it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to only deploy your worker on the ZetaPush platform, you can launch :</p>
+</div>
+<div class="listingblock">
+<div class="title">Deploy the worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ cd myApp/
+$ zeta push --worker</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case you only deploy your back end code, so no URL will be return.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-11 09:33:03 CEST
+</div>
+</div>
+</body>
+</html>

@@ -33,19 +33,23 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create a new anonymous you just need to launch :</p>
+<p>If you want to deploy or execute your application on an existing application you can follow this process :</p>
 </div>
-<div class="listingblock">
-<div class="title">Register your application</div>
+<div class="imageblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ zeta register</code></pre>
+<img src="init-with-account-and-app.png" alt="init with account and app" width="379" height="352">
 </div>
 </div>
 <div class="paragraph">
-<p>It will create a new anonymous account on the ZetaPush platform with a new application and fill the <code>.zetarc</code> with the new informations.</p>
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em>, <em>developer-password</em> and <em>appName</em> properties</p>
+</div>
+<div class="paragraph">
+<p>➋ An application is created in your workspace</p>
+</div>
+<div class="paragraph">
+<p>➌ The <em>.zetarc</em> file is like :</p>
 </div>
 <div class="listingblock">
-<div class="title">.zetarc</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -53,44 +57,42 @@
 3
 4
 5
-6
 </pre></td>
   <td class="code"><pre>{
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xsXnmWhi9WUx8F3J5kDyhRem2I6sUYpFsZjdW3SOjuA</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">va4RPi_rwKHcov9rQYtheXDvoU4RIPyJkUXz4_DzaL0</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">XWPbrVVV</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">envName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
 }</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Generated name of your application</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Environment of your application, not used yet</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>You can also specify where you want to store your <code>.zetarc</code> file adding an argument on your command. For example, if you want to store your <code>.zetarc</code> file in the folder <code>utils</code> you can launch :</p>
+<p>For example you can launch this command :</p>
 </div>
 <div class="listingblock">
-<div class="title">Register your application</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ zeta register ./utils</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>$ npm init @zetapush myApp
+    --developer-login user@gmail.com
+    --developer-password password
+    --appName myAppName</pre></td>
+</tr></table></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Because your <code>.zetarc</code> has an existing application (<em>appName</em>), the CLI you execute or deploy your code on this one.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:44:22 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

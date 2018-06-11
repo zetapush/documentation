@@ -33,7 +33,35 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this tutorial, we are focusing on the ZetaPush development. So to begin, you need to clone the repository <strong>zetapush-tutorials</strong>, go to the tutorial <strong>avengersChat</strong> and install all dependencies :</p>
+<p>In the first step, you need to create your application. To do this you can run :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>npm init @zetapush myApp --developer-login user@gmail.com --developer-password password</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will create you an account on the ZetaPush platform and create your first application in the <em>myApp</em> directory.
+The create of an account send an email to confirm your account.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To use your application, you need to validate your account. To do this, click on the link in the received email
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this tutorial, we are focusing on the ZetaPush development. So to begin, get all resources and add them to your application (css, assets, &#8230;&#8203;) :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -41,10 +69,15 @@
   <td class="line-numbers"><pre>1
 2
 3
+4
+5
 </pre></td>
-  <td class="code"><pre>$ git clone git@github.com:zetapush/zetapush-tutorials.git
-$ cd zetapush-tutorials/avengersChat/
-$ npm install</pre></td>
+  <td class="code"><pre>$ cd myApp/front/
+$ rm -r ./*
+$ curl -X GET 'http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front' --output front.zip
+$ unzip front.zip
+$ rm front.zip
+</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -55,7 +88,7 @@ $ npm install</pre></td>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
+If you are using <em>Windows</em>, you can download the file with all resources and unzip it in the front directory. Link : <a href="http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front" class="bare">http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front</a>
 </td>
 </tr>
 </table>
@@ -84,7 +117,7 @@ The repository <em>zetapush-tutorials</em> contains all tutorials on ZetaPush
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:40:50 CEST
+Last updated 2018-06-11 17:09:53 CEST
 </div>
 </div>
 </body>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Configuration management</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_configuration_management">Configuration management</a>
+<ul class="sectlevel2">
+<li><a href="#_account_configuration">Account configuration</a></li>
+<li><a href="#_application_configuration">Application configuration</a></li>
+<li><a href="#_configuration_override">Configuration override</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_configuration_management"><a class="anchor" href="#_configuration_management"></a>Configuration management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ZetaPush provides many variables to configure your applications.
+There are 2 types : the <em>account configuration variables</em> and the <em>application configuration variables</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a>Account configuration</h3>
+<div class="paragraph">
+<p>To use ZetaPush Celtia, you need to have an account and an optional application.
+You specify this properties in the <code>.zetarc</code> file.
+Here is the list of them :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Account variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Name of the property</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-center valign-middle">environment variable</th>
+<th class="tableblock halign-center valign-middle">Name in the <em>.zetarc</em></th>
+<th class="tableblock halign-center valign-middle">CLI parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">This login is the email used by the developer to the connection on the ZetaPush console. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer. It&#8217;s only used to identify the developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_LOGIN</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-login &lt;login&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer password</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Like the property <em>--developer-login</em>, this password is only used for the ZetaPush developer account. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_PASSWORD</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-password &lt;password&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The <em>appName</em> property is the unique name of an application on a ZetaPush developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_APP_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">appName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--app-name &lt;name&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Environment name</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">An application created by a developer can takes many environments.
+The default environment is <em>prod</em> but you can create your own (<em>dev</em>, <em>preprod</em>, &#8230;&#8203;).
+An environment is one stage in the life-cycle of the application.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_ENV_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">envName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--env-name &lt;env&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Platform URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By default, the developer use the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>He just need to use this property if ZetaPush says explicitly to use an other ZetaPush platform.</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_PLATFORM_URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">platformUrl</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--platform-url &lt;platform&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a>Application configuration</h3>
+<div class="paragraph">
+<p>You can configure your applications with several variables. Here is the list of them :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Application variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Name of the property</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-center valign-middle"><em>package.json</em></th>
+<th class="tableblock halign-center valign-middle">CLI parameter</th>
+<th class="tableblock halign-center valign-middle">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Front code</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>In an application, you need to define where you put your front end part of your application.
+ZetaPush uses this property to host and expose it.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/front</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>--front &lt;path&gt;</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./front/</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Worker code</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>When you create your business logic in <em>custom cloud services</em>, ZetaPush need to know his location to deploy it.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/worker</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>--worker &lt;path&gt;</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./worker/</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Worker entry point</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>To use your <em>custom cloud services</em> from the front part you need to export them. So the exportation of services need to be in only one file.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/entry</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./worker/index.js</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a>Configuration override</h3>
+<div class="paragraph">
+<p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
+ZetaPush includes and overrides this properties in a specific order :</p>
+</div>
+<div class="sect3">
+<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a>Account properties</h4>
+<div class="imageblock">
+<div class="content">
+<img src="override-account-properties.png" alt="override account properties" width="183" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a>Application properties</h4>
+<div class="imageblock">
+<div class="content">
+<img src="override-application-properties.png" alt="override application properties" width="155" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the default value is overwritten by the <code>package.json</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-11 17:09:56 CEST
+</div>
+</div>
+</body>
+</html>

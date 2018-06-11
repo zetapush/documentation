@@ -28,47 +28,28 @@
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Custom Cloud Service</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_what_is_a_em_custom_cloud_service_em">What is a <em>custom cloud service</em></a>
-<ul class="sectlevel3">
-<li><a href="#_example">Example</a></li>
-<li><a href="#_architecture">Architecture</a></li>
-</ul>
-</li>
-<li><a href="#_how_to_create_a_em_custom_cloud_service_em">How to create a <em>custom cloud service</em></a>
-<ul class="sectlevel3">
-<li><a href="#_create_a_em_cloud_function_em">Create a <em>cloud function</em></a></li>
-</ul>
-</li>
-<li><a href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">Use a <em>cloud service</em> inside my <em>custom cloud service</em></a>
-<ul class="sectlevel3">
-<li><a href="#_dependencies_injection">Dependencies injection</a></li>
-<li><a href="#_use_imported_cloud_services">Use imported cloud services</a></li>
-</ul>
-</li>
-<li><a href="#_use_an_other_em_custom_cloud_service_em_in_my_own">Use an other <em>custom cloud service</em> in my own</a>
-<ul class="sectlevel3">
-<li><a href="#_dependencies_injection_2">Dependencies injection</a></li>
-<li><a href="#_use_imported_custom_cloud_services">Use imported custom cloud services</a></li>
-</ul>
-</li>
-<li><a href="#_expose_my_em_custom_cloud_services_em">Expose my <em>custom cloud services</em></a>
-<ul class="sectlevel3">
-<li><a href="#_only_one_custom_cloud_service_exposed">Only one custom cloud service exposed</a></li>
-<li><a href="#_many_custom_cloud_services_exposed">Many custom cloud services exposed</a></li>
-</ul>
-</li>
+<li><a href="#_custom_cloud_service">Custom Cloud Service</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_a_em_custom_cloud_service_em">What is a <em>custom cloud service</em></a></li>
+<li><a href="#_how_to_create_a_em_custom_cloud_service_em">How to create a <em>custom cloud service</em></a></li>
+<li><a href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">Use a <em>cloud service</em> inside my <em>custom cloud service</em></a></li>
+<li><a href="#_use_an_other_em_custom_cloud_service_em_in_my_own">Use an other <em>custom cloud service</em> in my own</a></li>
+<li><a href="#_expose_my_em_custom_cloud_services_em">Expose my <em>custom cloud services</em></a></li>
 <li><a href="#_complete_example">Complete example</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a>What is a <em>custom cloud service</em></h2>
+<h2 id="_custom_cloud_service"><a class="anchor" href="#_custom_cloud_service"></a>Custom Cloud Service</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a>What is a <em>custom cloud service</em></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -76,7 +57,7 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A <em>custom cloud service</em> combines many <a href="#_cloud_function">cloud functions</a> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
+A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
 Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.
 </td>
 </tr>
@@ -90,57 +71,41 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <p>Your use-case is a basic real-time chat between <em>characters of Avengers</em> (See <a href="#_tutorial">tutorial</a>). You create the chat with the <em>cloud services</em> provided by ZetaPush and you want to add a new feature : Each <em>Avenger</em> has many skills/attacks and they can randomly use one of them on the chat.</p>
 </div>
 <div class="paragraph">
-<p>To add this business logic, you can create a <em>custom cloud service</em> named <em>AvengerService</em> and into this, you add a <em>cloud function</em> named <em>launchRandomAttack</em>.</p>
+<p>To add this business logic, you can create a <em>custom cloud service</em> named <em>AvengerService</em> and into this, you add a <em>cloud function</em> named <em>sendMessage</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h4>
+<div class="sect4">
+<h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a>Development phase</h5>
+<div class="imageblock">
+<div class="content">
+<img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1403" height="551">
+</div>
+<div class="title">Figure 1. Custom Cloud Service in development phase</div>
+</div>
+<div class="paragraph">
+<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a>Production phase</h5>
+<div class="imageblock">
+<div class="content">
+<img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="318" height="352">
+</div>
+<div class="title">Figure 2. Custom Cloud Service in production phase</div>
+</div>
+<div class="paragraph">
+<p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h3>
-<div class="sect3">
-<h4 id="_development_phase"><a class="anchor" href="#_development_phase"></a>Development phase</h4>
-<div class="imageblock">
-<div class="content">
-<img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1437" height="594">
-</div>
-<div class="title">Figure 1. Custom Cloud Service in development phase</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_production_phase"><a class="anchor" href="#_production_phase"></a>Production phase</h4>
-<div class="imageblock">
-<div class="content">
-<img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="352" height="377">
-</div>
-<div class="title">Figure 2. Custom Cloud Service in production phase</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a>How to create a <em>custom cloud service</em></h2>
-<div class="sectionbody">
+<h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a>How to create a <em>custom cloud service</em></h3>
 <div class="paragraph">
 <p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
 </div>
@@ -246,10 +211,8 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"><a class="anchor" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"></a>Use a <em>cloud service</em> inside my <em>custom cloud service</em></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"><a class="anchor" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"></a>Use a <em>cloud service</em> inside my <em>custom cloud service</em></h3>
 <div class="sect3">
 <h4 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a>Dependencies injection</h4>
 <div class="paragraph">
@@ -491,10 +454,8 @@ The <code>Stack</code> service has asynchronous methods
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_use_an_other_em_custom_cloud_service_em_in_my_own"><a class="anchor" href="#_use_an_other_em_custom_cloud_service_em_in_my_own"></a>Use an other <em>custom cloud service</em> in my own</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_use_an_other_em_custom_cloud_service_em_in_my_own"><a class="anchor" href="#_use_an_other_em_custom_cloud_service_em_in_my_own"></a>Use an other <em>custom cloud service</em> in my own</h3>
 <div class="sect3">
 <h4 id="_dependencies_injection_2"><a class="anchor" href="#_dependencies_injection_2"></a>Dependencies injection</h4>
 <div class="paragraph">
@@ -643,7 +604,7 @@ The order in your <code>parameters</code> method need to be the same in your con
     }
 }
 
-module.exports = { Calendar };</pre></td>
+module.exports = Calendar;</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -724,10 +685,8 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_expose_my_em_custom_cloud_services_em"><a class="anchor" href="#_expose_my_em_custom_cloud_services_em"></a>Expose my <em>custom cloud services</em></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_expose_my_em_custom_cloud_services_em"><a class="anchor" href="#_expose_my_em_custom_cloud_services_em"></a>Expose my <em>custom cloud services</em></h3>
 <div class="paragraph">
 <p>When you create a <em>custom cloud service</em> that you want to expose to the client, you need to declare it. You have 2 cases :</p>
 </div>
@@ -912,10 +871,8 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_complete_example"><a class="anchor" href="#_complete_example"></a>Complete example</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a>Complete example</h3>
 <div class="paragraph">
 <p>My configuration in the <code>package.json</code> is the following :</p>
 </div>
@@ -932,22 +889,14 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 7
 8
 9
-10
-11
-12
-13
 </pre></td>
   <td class="code"><pre>{
     <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.js</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./worker</span><span class="delimiter">&quot;</span></span>
-    },
     <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.14.1</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.14.1</span><span class="delimiter">&quot;</span></span>
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>
     }
 }</pre></td>
 </tr></table></code></pre>
@@ -1079,9 +1028,10 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:35:24 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

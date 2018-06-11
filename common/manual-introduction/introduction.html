@@ -33,63 +33,33 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>To start a new application with ZetaPush Celtia, the easiest path is to use the <a href="#_command_line_interface_cli">CLI</a>. But you can also start your application creating each file you need.</p>
+<p>To start a new application with ZetaPush Celtia, the easiest path is to use the <em>CLI</em>. But you can also start your application creating each file you need.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Above all, you need to have a ZetaPush account with an existing application. So you can create this with the <em>console</em> (Work in progress) or use the <em>CLI</em> with <code>npm init @zetapush myApp</code>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Here the basic source tree you need to create :</p>
 </div>
 <div class="listingblock">
-<div class="title">worker/index.js</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-</pre></td>
-  <td class="code"><pre>module.exports = <span class="reserved">class</span> Api {
-  <span class="comment">/**
-   * Explicit injected platform services
-   * @returns {Object[]}
-   */</span>
-  <span class="reserved">static</span> get injected() {
-    <span class="keyword">return</span> [];
-  }
-  <span class="comment">/**
-   * Api constructor
-   */</span>
-  constructor() {
-    console.log(<span class="string"><span class="delimiter">'</span><span class="content">Api:constructor</span><span class="delimiter">'</span></span>)
-  }
-
-  <span class="comment">/**
-   * Get an Hello World string with server side timestamp value
-   * @returns {string}
-   */</span>
-  async hello() {
-    <span class="keyword">return</span> <span class="error">`</span>Hello World from JavaScript <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;
-  }
-}</pre></td>
-</tr></table></code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">├── .zetarc
+├── .gitignore
+├── front
+│   ├── index.html
+│   └── index.js
+├── worker
+│   └── index.js
+└── package.json</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -100,7 +70,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:29:50 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

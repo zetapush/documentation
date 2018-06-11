@@ -28,13 +28,15 @@
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Create a new application</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_initialization_with_the_cli">Initialization with the CLI</a>
-<ul class="sectlevel3">
-<li><a href="#_using_npm_lower_than_6">Using npm lower than 6</a></li>
+<li><a href="#_create_a_new_application">Create a new application</a>
+<ul class="sectlevel2">
+<li><a href="#_initialization_with_the_cli">Initialization with the CLI</a></li>
+<li><a href="#_i_create_an_application_without_account">I create an application without account</a></li>
+<li><a href="#_i_use_an_existing_application">I use an existing application</a></li>
+<li><a href="#_i_create_a_new_application_on_my_account">I create a new application on my account</a></li>
 </ul>
 </li>
 </ul>
@@ -42,8 +44,10 @@
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_initialization_with_the_cli"><a class="anchor" href="#_initialization_with_the_cli"></a>Initialization with the CLI</h2>
+<h2 id="_create_a_new_application"><a class="anchor" href="#_create_a_new_application"></a>Create a new application</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_initialization_with_the_cli"><a class="anchor" href="#_initialization_with_the_cli"></a>Initialization with the CLI</h3>
 <div class="paragraph">
 <p>You can generate a classic application with the following command :</p>
 </div>
@@ -74,7 +78,23 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 </table>
 </div>
 <div class="paragraph">
-<p>This command generate a tree structure of a classic application :</p>
+<p>This command can takes many parameters :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>--developer-login</strong> : Define which developer login (ZetaPush account) use</p>
+</li>
+<li>
+<p><strong>--developer-password</strong> : Define which developer password (ZetaPush account) use</p>
+</li>
+<li>
+<p><strong>--appName</strong> : Define which application use</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This will generate a tree structure of a classic application :</p>
 </div>
 <div class="listingblock">
 <div class="title">Generated tree structure</div>
@@ -91,6 +111,12 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 └── package.json</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>All dependencies are already installed, so you can run your application locally or deploy it.</p>
+</div>
+<div class="paragraph">
+<p>To do this you can use the <em>CLI</em> using the commands : <code>zeta run</code> and <code>zeta push</code>.</p>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -98,13 +124,13 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-All dependencies are installed, so you already can launch <code>zeta run worker</code> or <code>zeta push</code>.
+To install the CLI you can launch : <code>npm install -g @zetapush/cli</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Many files are created, you can see the role of each file in the following table :</p>
+<p>The CLI dependency is already installed and npm scripts are created. So you can execute your code with <code>npm run start</code> and deploy your application with <code>npm run deploy</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Definition of generated files</caption>
@@ -125,7 +151,7 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish you developer credentials</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish your developer credentials (on GitHub for example)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
@@ -133,15 +159,15 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to deploy or run your application.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to use your application.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back side code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -170,11 +196,202 @@ All dependencies are installed, so you already can launch <code>zeta run worker<
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_i_create_an_application_without_account"><a class="anchor" href="#_i_create_an_application_without_account"></a>I create an application without account</h3>
+<div class="paragraph">
+<p>If you have no ZetaPush account, you can create a new and generate an application with the CLI.</p>
+</div>
+<div class="paragraph">
+<p>The process is the following :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="init-without-account.png" alt="init without account" width="379" height="460">
+</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters</p>
+</div>
+<div class="paragraph">
+<p>➋ You type your email and a password to create your ZetaPush account</p>
+</div>
+<div class="paragraph">
+<p>➌ An application is created in your workspace</p>
+</div>
+<div class="paragraph">
+<p>➍ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You need to validate your ZetaPush account to run or deploy your application.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To validate your account you need to click on the link in the sent email.</p>
+</div>
+<div class="paragraph">
+<p>Once your account is validate, you can launch <code>zeta run</code> or <code>zeta push</code> to execute or deploy your application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_i_use_an_existing_application"><a class="anchor" href="#_i_use_an_existing_application"></a>I use an existing application</h3>
+<div class="paragraph">
+<p>If you want to deploy or execute your application on an existing application you can follow this process :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="init-with-account-and-app.png" alt="init with account and app" width="379" height="352">
+</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em>, <em>developer-password</em> and <em>appName</em> properties</p>
+</div>
+<div class="paragraph">
+<p>➋ An application is created in your workspace</p>
+</div>
+<div class="paragraph">
+<p>➌ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example you can launch this command :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>$ npm init @zetapush myApp
+    --developer-login user@gmail.com
+    --developer-password password
+    --appName myAppName</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Because your <code>.zetarc</code> has an existing application (<em>appName</em>), the CLI you execute or deploy your code on this one.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_i_create_a_new_application_on_my_account"><a class="anchor" href="#_i_create_a_new_application_on_my_account"></a>I create a new application on my account</h3>
+<div class="paragraph">
+<p>If you have an existing account and you want to create a new application you can use the CLI.</p>
+</div>
+<div class="paragraph">
+<p>The process is the following :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="init-with-account-without-app.png" alt="init with account without app" width="338" height="352">
+</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em> and <em>developer-password</em> properties</p>
+</div>
+<div class="paragraph">
+<p>➋ An application is created in your workspace</p>
+</div>
+<div class="paragraph">
+<p>➌ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploy or execute the code on a new application.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example you can launch :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>$ npm init @zetapush myApp
+    --developer-login user@gmail.com
+    --developer-password password</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is when you launch <code>zeta run</code> or <code>zeta push</code> that the CLI checks if an application name exists in the <code>.zetarc</code>. If there is no <em>appName</em>, the CLI executes or deploys the code on a new application.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 12:33:35 CEST
+Last updated 2018-06-11 09:33:03 CEST
 </div>
 </div>
 </body>

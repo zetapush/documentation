@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Untitled</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use ZetaPush Celtia, you need to have an account and an optional application.
+You specify this properties in the <code>.zetarc</code> file.
+Here is the list of them :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Account variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Name of the property</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-center valign-middle">environment variable</th>
+<th class="tableblock halign-center valign-middle">Name in the <em>.zetarc</em></th>
+<th class="tableblock halign-center valign-middle">CLI parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">This login is the email used by the developer to the connection on the ZetaPush console. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer. It&#8217;s only used to identify the developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_LOGIN</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-login &lt;login&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer password</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Like the property <em>--developer-login</em>, this password is only used for the ZetaPush developer account. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_PASSWORD</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-password &lt;password&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The <em>appName</em> property is the unique name of an application on a ZetaPush developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_APP_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">appName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--app-name &lt;name&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Environment name</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">An application created by a developer can takes many environments.
+The default environment is <em>prod</em> but you can create your own (<em>dev</em>, <em>preprod</em>, &#8230;&#8203;).
+An environment is one stage in the life-cycle of the application.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_ENV_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">envName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--env-name &lt;env&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Platform URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By default, the developer use the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>He just need to use this property if ZetaPush says explicitly to use an other ZetaPush platform.</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_PLATFORM_URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">platformUrl</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--platform-url &lt;platform&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-11 17:09:56 CEST
+</div>
+</div>
+</body>
+</html>

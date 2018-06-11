@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Account properties</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_account_properties">Account properties</a></li>
+<li><a href="#_application_properties">Application properties</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
+ZetaPush includes and overrides this properties in a specific order :</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_account_properties"><a class="anchor" href="#_account_properties"></a>Account properties</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="override-account-properties.png" alt="override account properties" width="183" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_application_properties"><a class="anchor" href="#_application_properties"></a>Application properties</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="override-application-properties.png" alt="override application properties" width="155" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the default value is overwritten by the <code>package.json</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-11 17:09:56 CEST
+</div>
+</div>
+</body>
+</html>
