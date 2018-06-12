@@ -1,0 +1,14 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Your computer can access local network but can't access the proxy.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/NET-03-cause.html[]
+++++
+
+TODO: https://github.com/zetapush/documentation/issues/34
+
+TODO: https://github.com/zetapush/documentation/issues/35
+
+TODO: https://github.com/zetapush/documentation/issues/36

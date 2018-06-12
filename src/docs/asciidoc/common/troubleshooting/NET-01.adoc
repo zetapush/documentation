@@ -1,0 +1,58 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Your computer can't acces to external network.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/NET-01-cause.html[]
+++++
+
+== Is your network card activated ?
+
+[role="tab-container"]
+help
+
+[role="tab", condition=isLinux()]
+linux
+
+Execute the following command in your terminal:
+
+`$ ifconfig` 
+
+You should have at least 2 entries:
+```
+lo        Link encap:Boucle locale                                               
+          inet adr:127.0.0.1  Masque:255.0.0.0                                   
+          adr inet6: ::1/128 Scope:Hôte                                          
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1                               
+          Packets reçus:426620 erreurs:0 :0 overruns:0 frame:0                   
+          TX packets:426620 errors:0 dropped:0 overruns:0 carrier:0              
+          collisions:0 lg file transmission:1                                    
+          Octets reçus:46609524 (46.6 MB) Octets transmis:46609524 (46.6 MB)     
+                                                                                 
+eth0      Link encap:Ethernet  HWaddr 08:00:27:8e:b3:2d                          
+          inet adr:10.0.2.15  Bcast:10.0.2.255  Masque:255.255.255.0             
+          adr inet6: fe80::d931:52d8:4a6b:a750/64 Scope:Lien                     
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1                     
+          Packets reçus:2201511 erreurs:0 :0 overruns:0 frame:0                  
+          TX packets:1321912 errors:0 dropped:0 overruns:0 carrier:0             
+          collisions:0 lg file transmission:1000                                 
+          Octets reçus:1577748703 (1.5 GB) Octets transmis:243738531 (243.7 MB)  
+```
+
+If you only have `lo` entry, it means that you have no network card to access 
+external network that is available or activated.  
+
+If you have another entry (like `eth0` in the example), check that you have an IP address (check the line starting with `inet adr:`). 
+If the line is missing, then check that your network is working and you are authorized to connect to it.
+
+TODO: https://github.com/zetapush/documentation/issues/29
+
+[role=tab, condition=isWindows()]
+Windows
+
+TODO: https://github.com/zetapush/documentation/issues/30
+
+[role=tab-container-end]
+-
+

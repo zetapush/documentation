@@ -1,0 +1,67 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Troubleshooting
+
+
+== Configuration issue
+
+=== Failed to load configuration (CONFIG-01)
+
+include::{docdir}/common/troubleshooting/CONFIG-01.adoc[leveloffset=+2]
+
+
+== Account issue
+
+=== Missing login information (ACCOUNT-01)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-01.adoc[leveloffset=+2]
+
+=== Missing password information (ACCOUNT-02)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-02.adoc[leveloffset=+2]
+
+=== Wrong login or password (ACCOUNT-03)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-03.adoc[leveloffset=+2]
+
+=== Missing application name (ACCOUNT-04)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-04.adoc[leveloffset=+2]
+
+=== Account not validated (ACCOUNT-05)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-05.adoc[leveloffset=+2]
+
+=== Application doesn't exist for this account (ACCOUNT-06)
+
+include::{docdir}/common/troubleshooting/ACCOUNT-06.adoc[leveloffset=+2]
+
+
+== Network issue
+
+=== Local network unreachable (NET-01)
+
+include::{docdir}/common/troubleshooting/NET-01.adoc[leveloffset=+2]
+
+=== Internet unreachable (NET-02)
+
+include::{docdir}/common/troubleshooting/NET-02.adoc[leveloffset=+2]
+
+=== Proxy unreachable (NET-03)
+
+include::{docdir}/common/troubleshooting/NET-03.adoc[leveloffset=+2]
+
+=== Internet behind proxy unreachable (NET-04)
+
+include::{docdir}/common/troubleshooting/NET-04.adoc[leveloffset=+2]
+
+== Dependency resolution issue
+
+=== Unresolved dependency (DEPENDENCY-01)
+
+include::{docdir}/common/troubleshooting/DEPENDENCY-01.adoc[leveloffset=+2]
+
+=== Unreadable dependency (DEPENDENCY-02)
+
+include::{docdir}/common/troubleshooting/DEPENDENCY-02.adoc[leveloffset=+2]

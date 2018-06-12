@@ -1,0 +1,45 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+A NPM dependency couldn't be resolved.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/DEPENDENCY-01-cause.html[]
+++++
+
+➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush. +
+➋ Once your code is uploaded, ZetaPush builds your custom services. +
+➌ The dependencies defined in the package.json file are downloaded and installed. +
+  This is this step that fails because one dependency can't be downloaded.
+
+// {red The dependency that can't be downloaded is: ${missingDependency}}
+// The dependency is used by: ${usedBy}
+
+
+== Is this the right dependency name and version ?
+
+Open the following URL in your browser and search for the dependency:
+  https://www.npmjs.com/
+
+
+== Are you using a custom NPM registry ?
+
+TODO: https://github.com/zetapush/documentation/issues/25
+
+FIXME: ZetaPush MUST support private NPM registries
+
+
+== Are you using a local dependency not published on NPM registry ?
+
+ZetaPush needs all the dependency to be available on the Internet.
+Please publish your local dependencies on a NPM registry and retry.
+
+You can follow the NPM tutorial to publish your packages:
+  https://docs.npmjs.com/getting-started/publishing-npm-packages
+
+
+== Are you using a dependency that requires additionnal tools to be installed ?
+
+TODO: https://github.com/zetapush/documentation/issues/26
+
+TODO: https://github.com/zetapush/documentation/issues/27

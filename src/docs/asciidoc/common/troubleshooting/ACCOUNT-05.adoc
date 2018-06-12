@@ -1,0 +1,8 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You have created a ZetaPush account but the account is not confirmed.
+
+When you created your account, we sent you an email with a confirmation link.
+You must click the confirmation link in order to validate your account and be able to use ZetaPush services.
+This confirmation link is valid for 7 days.
