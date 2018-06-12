@@ -65,3 +65,9 @@ include::{docdir}/common/troubleshooting/DEPENDENCY-01.adoc[leveloffset=+2]
 === Unreadable dependency (DEPENDENCY-02)
 
 include::{docdir}/common/troubleshooting/DEPENDENCY-02.adoc[leveloffset=+2]
+
+== Dependencies injection issue
+
+=== Cannot resolve parameters for custom cloud service (INJECTION-01)
+
+include::{docdir}/common/troubleshooting/INJECTION-01.adoc[leveloffset=+2]
