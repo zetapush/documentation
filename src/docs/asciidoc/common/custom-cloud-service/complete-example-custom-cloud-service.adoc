@@ -10,13 +10,9 @@ My configuration in the `package.json` is the following :
     "name": "myApp",
     "version": "1.0.0",
     "main": "worker/index.js",
-    "zetapush": {
-        "front": "./front",
-        "worker": "./worker"
-    },
     "dependencies": {
-        "@zetapush/core": "^0.14.1",
-        "@zetapush/plaform": "^0.14.1"
+        "@zetapush/core": "^0.18.2",
+        "@zetapush/plaform": "^0.18.2"
     }
 }
 ----

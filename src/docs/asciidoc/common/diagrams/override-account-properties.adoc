@@ -1,0 +1,15 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+[plantuml, override-account-properties, png]     
+....
+start
+
+: Environment variables;
+: .zetarc file ;
+: CLI parameters;
+
+stop
+....
+
+So if you use the same property in several locations, the environment variable is overwritten by the `.zetarc` value and this last value is overwritten by the CLI parameter.

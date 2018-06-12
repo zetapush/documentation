@@ -1,7 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Path of the code
+== Path of the code
 
 TIP: By convention, ZetaPush Celtia considers that your front code is in the directory `front` and your back code (worker) in `worker`. You can change it by setting path in the `package.json`.
 

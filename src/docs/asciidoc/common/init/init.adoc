@@ -1,7 +1,16 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Create a new application
+== Create a new application
 
-== Initialization with the CLI
+=== Initialization with the CLI
 include::{docdir}/common/init/init-with-cli.adoc[leveloffset=+2]
+
+=== I create an application without account
+include::{docdir}/common/init/create-app-without-account.adoc[leveloffset=+2]
+
+=== I use an existing application
+include::{docdir}/common/init/use-existing-app.adoc[leveloffset=+2]
+
+=== I create a new application on my account
+include::{docdir}/common/init/create-app-with-account.adoc[leveloffset=+2]

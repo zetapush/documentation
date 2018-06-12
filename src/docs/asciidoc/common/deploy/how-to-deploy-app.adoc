@@ -1,0 +1,13 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+The deployment is very easy, to do this you only need to launch this command in your application directory :
+
+include::{docdir}/common/code/command-to-deploy.adoc[]
+
+The command will read the `.zetarc` file. If there is no _developerLogin_ and _developerPassword_ properties or if the ZetaPush account is not validated, you will not be able to push your application.
+
+About the _appName_ property, if it is empty, the CLI will deploy your code on a new application.
+
+
+TIP: When you deploy your application (Front + Worker), the CLI returns you an unique URL to use it.

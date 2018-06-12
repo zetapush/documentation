@@ -12,11 +12,13 @@ include::{docdir}/variables.adoc[]
 = ZetaPush documentation
 {project-version}
 
-include::{docdir}/introduction/introduction.adoc[leveloffset=+1]
+include::{docdir}/introduction/introduction.adoc[]
 
-include::{docdir}/tutorial/tutorial.adoc[leveloffset=+1]
+include::{docdir}/user-manual/user-manual.adoc[]
 
-include::{docdir}/user-manual/user-manual.adoc[leveloffset=+1]
+include::{docdir}/tutorial/tutorial.adoc[]
+
+include::{docdir}/reference/reference.adoc[]
 
 include::{docdir}/troubleshooting/index.adoc[leveloffset=+1]
 

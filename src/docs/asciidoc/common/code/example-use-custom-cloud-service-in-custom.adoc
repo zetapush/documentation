@@ -17,7 +17,7 @@ class Calendar {
     }
 }
 
-module.exports = { Calendar };
+module.exports = Calendar;
 ----
 <1> The only _cloud function_ of the `Calendar` service
 

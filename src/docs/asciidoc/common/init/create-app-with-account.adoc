@@ -1,0 +1,19 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+If you have an existing account and you want to create a new application you can use the CLI.
+
+The process is the following :
+
+include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[]
+
+For example you can launch :
+
+[source, console, linenums]
+----
+$ npm init @zetapush myApp
+    --developer-login user@gmail.com
+    --developer-password password
+----
+
+This is when you launch `zeta run` or `zeta push` that the CLI checks if an application name exists in the `.zetarc`. If there is no _appName_, the CLI executes or deploys the code on a new application. 

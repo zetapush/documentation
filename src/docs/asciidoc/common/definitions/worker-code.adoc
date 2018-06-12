@@ -1,0 +1,1 @@
+When you create your business logic in _custom cloud services_, ZetaPush need to know his location to deploy it.

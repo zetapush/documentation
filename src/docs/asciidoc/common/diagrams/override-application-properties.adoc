@@ -1,0 +1,16 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, override-application-properties, png]     
+....
+start
+
+: Default values;
+: package.json file ;
+: CLI parameters;
+
+stop
+....
+
+So if you use the same property in several locations, the default value is overwritten by the `package.json` value and this last value is overwritten by the CLI parameter.

@@ -1,0 +1,23 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+== Deployment
+
+Once you have develop your application and test it, you may want to deploy it.
+
+=== What is deployment ?
+
+include::{docdir}/common/deploy/what-is-deployment.adoc[leveloffset=+2]
+
+=== Requirements
+
+include::{docdir}/common/utils/requirements-run-push.adoc[leveloffset=+2]
+
+
+=== How to deploy your application ?
+
+include::{docdir}/common/deploy/how-to-deploy-app.adoc[leveloffset=+2]
+
+=== How to deploy only the _worker_ ?
+
+include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]

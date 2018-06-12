@@ -1,0 +1,4 @@
+[source, json]
+----
+"main": "./path/of/entry"
+----

@@ -1,14 +1,14 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Manual introduction
+== Manual introduction
 
-== What do we need to do ?
+=== What do we need to do ?
 
 include::{docdir}/common/manual-introduction/introduction.adoc[leveloffset=+2]
 
 
-== Details by file
+=== Details by file
 
 include::{docdir}/common/manual-introduction/details-zetarc.adoc[leveloffset=+2]
 
@@ -19,3 +19,7 @@ include::{docdir}/common/manual-introduction/details-front.adoc[leveloffset=+2]
 include::{docdir}/common/manual-introduction/details-worker.adoc[leveloffset=+2]
 
 include::{docdir}/common/manual-introduction/details-package-json.adoc[leveloffset=+2]
+
+=== Use your application
+
+include::{docdir}/common/manual-introduction/use-manual-application.adoc[leveloffset=+2]

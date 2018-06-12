@@ -1,0 +1,32 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+The command to initialize an application with the CLI is :
+
+[source, console]
+----
+$ npm init @zetapush myApp <1>
+----
+<1> _myApp_ is the name of the directory generated
+
+This command can take many parameters :
+
+* *--developer-login* 
+
+include::{docdir}/common/definitions/developer-login.adoc[]
+
+* *--developer-password*
+
+include::{docdir}/common/definitions/developer-password.adoc[]
+
+* *--app-name* 
+
+include::{docdir}/common/definitions/app-name.adoc[]
+
+* *--platform-url*
+
+include::{docdir}/common/definitions/platform-url.adoc[]
+
+* *--env-name*
+
+include::{docdir}/common/definitions/env-name.adoc[]

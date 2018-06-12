@@ -1,16 +1,13 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= package.json
+== package.json
 
 The `package.json` is the most important file in the application. It contains all informations needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the `.zetarc`).
 
 The minimal `package.json` is below :
 
 include::{docdir}/common/code/minimal-package-json.adoc[]
-
-IMPORTANT: The name of the application is important. It should be the same that the same of your application registered in your ZetaPush account. Otherwise, at the next deployment, a new application will be created with the name in the `package.json` 
-
 
 include::{docdir}/common/manual-introduction/path-code.adoc[leveloffset=+1]
 

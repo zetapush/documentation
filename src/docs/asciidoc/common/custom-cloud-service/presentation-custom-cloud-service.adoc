@@ -1,7 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-TIP: A _custom cloud service_ combines many link:#+_cloud_function+[cloud functions] like the _cloud services_ exposed by ZetaPush. The only difference is that it is *you* that create the _cloud functions_. 
+TIP: A _custom cloud service_ combines many _cloud functions_ like the _cloud services_ exposed by ZetaPush. The only difference is that it is *you* that create the _cloud functions_. 
 Generally, we put the *business logic* of your application in the _custom cloud services_.
 
 == Example
@@ -9,13 +9,13 @@ Generally, we put the *business logic* of your application in the _custom cloud 
 ****
 Your use-case is a basic real-time chat between _characters of Avengers_ (See link:#+_tutorial+[tutorial]). You create the chat with the _cloud services_ provided by ZetaPush and you want to add a new feature : Each _Avenger_ has many skills/attacks and they can randomly use one of them on the chat.
 
-To add this business logic, you can create a _custom cloud service_ named _AvengerService_ and into this, you add a _cloud function_ named _launchRandomAttack_.
+To add this business logic, you can create a _custom cloud service_ named _AvengerService_ and into this, you add a _cloud function_ named _sendMessage_.
 ****
 
-= Architecture
+== Architecture
 
-== Development phase
+=== Development phase
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-dev.adoc[leveloffset=+2]
 
-== Production phase
+=== Production phase
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-prod.adoc[leveloffset=+2]

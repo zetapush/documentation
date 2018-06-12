@@ -1,0 +1,3 @@
+An application created by a developer can takes many environments. 
+The default environment is _prod_ but you can create your own (_dev_, _preprod_, ...).
+An environment is one stage in the life-cycle of the application. 

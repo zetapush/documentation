@@ -1,0 +1,2 @@
+In an application, you need to define where you put your front end part of your application.
+ZetaPush uses this property to host and expose it.

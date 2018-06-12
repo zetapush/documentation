@@ -1,0 +1,9 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Deploy an application
+[source, console]
+----
+$ cd myApp/
+$ zeta push
+----

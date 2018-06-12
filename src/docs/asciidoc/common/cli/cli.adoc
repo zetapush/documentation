@@ -1,6 +1,6 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= Command Line Interface (CLI)
+== Initialize an application
 
-include::{docdir}/common/cli/register.adoc[leveloffset=+1]
+include::{docdir}/common/cli/cli-init-app.adoc[leveloffset=+1]

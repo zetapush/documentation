@@ -1,0 +1,9 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Deploy the worker
+[source, console]
+----
+$ cd myApp/
+$ zeta push --worker
+----

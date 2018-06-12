@@ -4,18 +4,25 @@ include::{docdir}/variables.adoc[]
 = User manual
 
 // VOCABULARY
-include::{docdir}/common/vocabulary/vocabulary.adoc[leveloffset=+1]
+include::{docdir}/common/vocabulary/vocabulary.adoc[]
+
+// WORKFLOW INIT APP
+include::{docdir}/common/init/workflow-init-app.adoc[]
 
 // INIT APP
-include::{docdir}/common/init/init.adoc[leveloffset=+1]
+include::{docdir}/common/init/init.adoc[]
 
 // MANUAL INTRODUCTION (Start without CLI)
-include::{docdir}/common/manual-introduction/manual-introduction.adoc[leveloffset=+1]
-
+include::{docdir}/common/manual-introduction/manual-introduction.adoc[]
 
 // CUSTOM CLOUD SERVICE
-include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[leveloffset=+1]
-
+include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[]
 
 // USE SERVICE
-include::{docdir}/common/usage-service/usage-service.adoc[leveloffset=+1]
+include::{docdir}/common/usage-service/usage-service.adoc[]
+
+// DEPLOY APPLICATION
+include::{docdir}/common/deploy/deploy.adoc[]
+
+// CONFIGURATION MANAGEMENT
+include::{docdir}/common/configuration/configuration.adoc[]

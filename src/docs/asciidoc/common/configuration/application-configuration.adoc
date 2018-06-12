@@ -1,0 +1,44 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+You can configure your applications with several variables. Here is the list of them :
+
+.Application variables
+[cols="5*^.^a", options="header"]
+|===
+| Name of the property
+| Definition
+| _package.json_
+| CLI parameter
+| Default value
+
+| Front code
+| 
+include::{docdir}/common/definitions/front-code.adoc[]
+| 
+include::{docdir}/common/code/front-property-package-json.adoc[]
+| --front <path>
+| `./front/`
+
+| Worker code
+| 
+include::{docdir}/common/definitions/worker-code.adoc[]
+| 
+include::{docdir}/common/code/worker-property-package-json.adoc[]
+| --worker <path>
+| `./worker/`
+
+| Worker entry point
+| 
+include::{docdir}/common/definitions/entry-point-worker.adoc[]
+| 
+include::{docdir}/common/code/entry-point-worker-package-json.adoc[]
+| _None_
+| `./worker/index.js`
+
+
+
+|===
+
+
+

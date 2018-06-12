@@ -1,7 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-= worker
+== worker
 
 By convention, the directory contains the back code. For example you can have this tree structure :
 
@@ -10,6 +10,6 @@ By convention, the directory contains the back code. For example you can have th
     └── index.js
 ```
 
-== Basic example of Hello World (custom cloud service)
+=== Basic example of Hello World (custom cloud service)
 
 include::{docdir}/common/code/hello-world-worker-js.adoc[]
