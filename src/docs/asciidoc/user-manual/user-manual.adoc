@@ -6,6 +6,9 @@ include::{docdir}/variables.adoc[]
 // VOCABULARY
 include::{docdir}/common/vocabulary/vocabulary.adoc[]
 
+// PREREQUISITES
+include::{docdir}/common/prerequisites/prerequisites.adoc[]
+
 // WORKFLOW INIT APP
 include::{docdir}/common/init/workflow-init-app.adoc[]
 
