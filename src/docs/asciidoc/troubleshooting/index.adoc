@@ -71,3 +71,10 @@ include::{docdir}/common/troubleshooting/DEPENDENCY-02.adoc[leveloffset=+2]
 === Cannot resolve parameters for custom cloud service (INJECTION-01)
 
 include::{docdir}/common/troubleshooting/INJECTION-01.adoc[leveloffset=+2]
+
+
+== Custom could service issue
+
+=== Custom cloud service start failed (SERVICE-05)
+
+include::{docdir}/common/troubleshooting/SERVICE-05.adoc[leveloffset=+2]

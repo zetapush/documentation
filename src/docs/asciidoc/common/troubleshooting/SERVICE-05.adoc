@@ -1,0 +1,22 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Your custom cloud services couldn't start on ZetaPush platform.
+
+++++
+include::{docdir}/common/troubleshooting/schemas/SERVICE-05-cause.html[]
+++++
+
+➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush. +
+➋ Once your code is uploaded, ZetaPush builds your custom services. +
+➌ The dependencies defined in the package.json file are downloaded and installed. +
+➍ In parallel, your web application (front) is deployed. +
+➎ Your custom cloud service is started by running `npm run start -- --skip-provisioning` +
+  This is this step that fails.
+
+// [NOTE]
+// .Logs of worker start
+// ====
+// ${logs}
+// ====
+
