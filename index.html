@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src=".//javascripts/steps.js"></script>
 <script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
 <script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
@@ -223,6 +223,7 @@
 <li><a href="#_internet_unreachable_net_02">15.3.2. Internet unreachable (NET-02)</a></li>
 <li><a href="#_proxy_unreachable_net_03">15.3.3. Proxy unreachable (NET-03)</a></li>
 <li><a href="#_internet_behind_proxy_unreachable_net_04">15.3.4. Internet behind proxy unreachable (NET-04)</a></li>
+<li><a href="#_analysis_failed_net_05">15.3.5. Analysis failed (NET-05)</a></li>
 </ul>
 </li>
 <li><a href="#_dependency_resolution_issue">15.4. Dependency resolution issue</a>
@@ -4421,6 +4422,113 @@ Or this result:
 </div>
 <div class="paragraph">
 <p>TODO: <a href="https://github.com/zetapush/documentation/issues/36" class="bare">https://github.com/zetapush/documentation/issues/36</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_analysis_failed_net_05"><a class="anchor" href="#_analysis_failed_net_05"></a><a class="link" href="#_analysis_failed_net_05">15.3.5. Analysis failed (NET-05)</a></h4>
+<div class="paragraph">
+<p>We detected that you have a network issue but unfortunately
+we couldn&#8217;t make automated checks to help you understand</p>
+</div>
+<div class="sect4">
+<h5 id="_check_that_your_computer_can_access_internet"><a class="anchor" href="#_check_that_your_computer_can_access_internet"></a><a class="link" href="#_check_that_your_computer_can_access_internet">15.3.5.1. Check that your computer can access Internet</a></h5>
+<div class="paragraph">
+<p>Open a browser and try to open <code>google.fr</code>.</p>
+</div>
+<div class="sect5">
+<h6 id="_access_ko_from_browser"><a class="anchor" href="#_access_ko_from_browser"></a><a class="link" href="#_access_ko_from_browser">Access ko from browser</a></h6>
+<div class="paragraph">
+<p>TODO: URL to guide to resolve internet issues</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_access_ok_from_browser_but_ko_from_npm_node"><a class="anchor" href="#_access_ok_from_browser_but_ko_from_npm_node"></a><a class="link" href="#_access_ok_from_browser_but_ko_from_npm_node">Access ok from browser but ko from npm/node</a></h6>
+<div class="paragraph">
+<p>Behind proxy</p>
+</div>
+<div class="paragraph">
+<p>If you can access it through your browser but not with npm,
+check your proxy</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_behind_proxy"><a class="anchor" href="#_behind_proxy"></a><a class="link" href="#_behind_proxy">15.3.5.2. Behind proxy</a></h5>
+<div class="paragraph">
+<p>If NodeJS/npm reports one of theses errors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ENETUNREACH</code></p>
+</li>
+<li>
+<p><code>ECONNREFUSED</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It may mean that your system or NodeJS/npm is configured with proxy settings.
+Please check that your proxy configuration is correct.</p>
+</div>
+<div class="sect5">
+<h6 id="_proxy_configured_system_wide"><a class="anchor" href="#_proxy_configured_system_wide"></a><a class="link" href="#_proxy_configured_system_wide">Proxy configured system-wide</a></h6>
+<div class="paragraph tab-container">
+<p>System-wide proxy</p>
+</div>
+<div class="paragraph tab">
+<p>Linux</p>
+</div>
+<div class="paragraph">
+<p>In your terminal, execute the following commands to know if your system uses a proxy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">echo $http_proxy
+echo $HTTP_PROXY
+echo $https_proxy
+echo $HTTPS_PROXY</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>TODO: windows version</p>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+<div class="paragraph">
+<p>If at least one command displays something, then your system is configured to use a proxy.</p>
+</div>
+<div class="paragraph">
+<p>TODO: disable proxy (depends on system)</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_proxy_configured_for_npm"><a class="anchor" href="#_proxy_configured_for_npm"></a><a class="link" href="#_proxy_configured_for_npm">Proxy configured for npm</a></h6>
+<div class="paragraph">
+<p>In your terminal, execute the following commands to know if npm uses a proxy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">npm config get proxy
+npm config get https-proxy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If at least one command displays any other result thant <code>null</code>,
+then npm is configured to use this proxy.
+If you want to disable npm proxy, you can execute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">npm config rm proxy
+npm config rm https-proxy</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
