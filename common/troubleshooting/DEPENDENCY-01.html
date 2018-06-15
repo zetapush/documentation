@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Is this the right dependency name and version ?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_is_this_the_right_dependency_name_and_version">Is this the right dependency name and version ?</a></li>
+<li><a href="#_are_you_using_a_custom_npm_registry">Are you using a custom NPM registry ?</a></li>
+<li><a href="#_are_you_using_a_local_dependency_not_published_on_npm_registry">Are you using a local dependency not published on NPM registry ?</a></li>
+<li><a href="#_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed">Are you using a dependency that requires additionnal tools to be installed ?</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A NPM dependency couldn&#8217;t be resolved.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>DEPENDENCY-01-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;54b84990-987b-28cd-0bf2-d1c95d2958c5\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush.<br>
+➋ Once your code is uploaded, ZetaPush builds your custom services.<br>
+➌ The dependencies defined in the package.json file are downloaded and installed.<br>
+  This is this step that fails because one dependency can&#8217;t be downloaded.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_is_this_the_right_dependency_name_and_version"><a class="anchor" href="#_is_this_the_right_dependency_name_and_version"></a>Is this the right dependency name and version ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Open the following URL in your browser and search for the dependency:
+  <a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_are_you_using_a_custom_npm_registry"><a class="anchor" href="#_are_you_using_a_custom_npm_registry"></a>Are you using a custom NPM registry ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/25" class="bare">https://github.com/zetapush/documentation/issues/25</a></p>
+</div>
+<div class="paragraph">
+<p>FIXME: ZetaPush MUST support private NPM registries</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_are_you_using_a_local_dependency_not_published_on_npm_registry"><a class="anchor" href="#_are_you_using_a_local_dependency_not_published_on_npm_registry"></a>Are you using a local dependency not published on NPM registry ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ZetaPush needs all the dependency to be available on the Internet.
+Please publish your local dependencies on a NPM registry and retry.</p>
+</div>
+<div class="paragraph">
+<p>You can follow the NPM tutorial to publish your packages:
+  <a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" class="bare">https://docs.npmjs.com/getting-started/publishing-npm-packages</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed"><a class="anchor" href="#_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed"></a>Are you using a dependency that requires additionnal tools to be installed ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/26" class="bare">https://github.com/zetapush/documentation/issues/26</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/27" class="bare">https://github.com/zetapush/documentation/issues/27</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-15 18:47:50 UTC
+</div>
+</div>
+</body>
+</html>

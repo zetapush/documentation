@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>I provide my password in .zetarc file</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+/> -->
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_i_provide_my_password_in_zetarc_file">I provide my password in .zetarc file</a></li>
+<li><a href="#_i_provide_my_password_through_the_cli">I provide my password through the CLI</a></li>
+<li><a href="#_i_provide_my_password_in_environment_variable">I provide my password in environment variable</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You did provide your ZetaPush account login but not your password.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i_provide_my_password_in_zetarc_file"><a class="anchor" href="#_i_provide_my_password_in_zetarc_file"></a>I provide my password in .zetarc file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Edit the <code>.zetarc</code> file to add <code>developerPassword</code> with your password:</p>
+</div>
+<div class="listingblock highlight-lines:3">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;your login&gt;</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;your password&gt;</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Sensitive information leak</div>
+<div class="paragraph">
+<p>You must check that <code>.zetarc</code> file is not commited on your source control.</p>
+</div>
+<div class="paragraph">
+<p>If you are using git, add <code>.zetarc</code> entry in <code>.gitignore</code> file</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i_provide_my_password_through_the_cli"><a class="anchor" href="#_i_provide_my_password_through_the_cli"></a>I provide my password through the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you want to run your custom cloud services locally, you can provide your password using <code>--developer-password</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ zeta run --developer-password "&lt;your password&gt;"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you run the command through npm, you can provide the option like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ npm start -- --developer-password "&lt;your password&gt;"</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Sensitive information leak</div>
+<div class="paragraph">
+<p>Using this method writes your password in your terminal history. If your computer can be accessed by other people, they may be able
+to see your password in command history.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_i_provide_my_password_in_environment_variable"><a class="anchor" href="#_i_provide_my_password_in_environment_variable"></a>I provide my password in environment variable</h2>
+<div class="sectionbody">
+<div class="paragraph tab-container">
+<p>help</p>
+</div>
+<div class="paragraph tab">
+<p>linux</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/19" class="bare">https://github.com/zetapush/documentation/issues/19</a></p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/19" class="bare">https://github.com/zetapush/documentation/issues/19</a></p>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-15 18:47:50 UTC
+</div>
+</div>
+</body>
+</html>

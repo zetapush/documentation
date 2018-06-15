@@ -46,113 +46,119 @@
 <li><a href="#_user_manual">User manual</a>
 <ul class="sectlevel1">
 <li><a href="#_vocabulary">4. Vocabulary</a></li>
-<li><a href="#_workflow_initialization">5. Workflow initialization</a>
+<li><a href="#_prerequisites">5. Prerequisites</a>
 <ul class="sectlevel2">
-<li><a href="#_i_have_an_existing_account">5.1. I have an existing account</a>
-<ul class="sectlevel3">
-<li><a href="#_i_want_to_use_an_existing_application">5.1.1. I want to use an existing application</a></li>
-<li><a href="#_i_want_to_create_a_new_application">5.1.2. I want to create a new application</a></li>
+<li><a href="#_nodejs_and_npm">5.1. NodeJS and npm</a></li>
+<li><a href="#_git">5.2. Git</a></li>
 </ul>
 </li>
-<li><a href="#_i_don_t_have_zetapush_account">5.2. I don&#8217;t have ZetaPush account</a></li>
-</ul>
-</li>
-<li><a href="#_create_a_new_application">6. Create a new application</a>
+<li><a href="#_workflow_initialization">6. Workflow initialization</a>
 <ul class="sectlevel2">
-<li><a href="#_initialization_with_the_cli">6.1. Initialization with the CLI</a>
+<li><a href="#_i_have_an_existing_account">6.1. I have an existing account</a>
 <ul class="sectlevel3">
-<li><a href="#_using_npm_lower_than_6">6.1.1. Using npm lower than 6</a></li>
+<li><a href="#_i_want_to_use_an_existing_application">6.1.1. I want to use an existing application</a></li>
+<li><a href="#_i_want_to_create_a_new_application">6.1.2. I want to create a new application</a></li>
 </ul>
 </li>
-<li><a href="#_i_create_an_application_without_account">6.2. I create an application without account</a></li>
-<li><a href="#_i_use_an_existing_application">6.3. I use an existing application</a></li>
-<li><a href="#_i_create_a_new_application_on_my_account">6.4. I create a new application on my account</a></li>
+<li><a href="#_i_don_t_have_zetapush_account">6.2. I don&#8217;t have ZetaPush account</a></li>
 </ul>
 </li>
-<li><a href="#_manual_introduction">7. Manual introduction</a>
+<li><a href="#_create_a_new_application">7. Create a new application</a>
 <ul class="sectlevel2">
-<li><a href="#_what_do_we_need_to_do">7.1. What do we need to do ?</a></li>
-<li><a href="#_details_by_file">7.2. Details by file</a>
+<li><a href="#_initialization_with_the_cli">7.1. Initialization with the CLI</a>
 <ul class="sectlevel3">
-<li><a href="#__zetarc">7.2.1. .zetarc</a></li>
-<li><a href="#__gitignore">7.2.2. .gitignore</a></li>
-<li><a href="#_front">7.2.3. front</a></li>
-<li><a href="#_worker">7.2.4. worker</a></li>
-<li><a href="#_package_json">7.2.5. package.json</a></li>
+<li><a href="#_using_npm_lower_than_6">7.1.1. Using npm lower than 6</a></li>
 </ul>
 </li>
-<li><a href="#_use_your_application">7.3. Use your application</a></li>
+<li><a href="#_i_create_an_application_without_account">7.2. I create an application without account</a></li>
+<li><a href="#_i_use_an_existing_application">7.3. I use an existing application</a></li>
+<li><a href="#_i_create_a_new_application_on_my_account">7.4. I create a new application on my account</a></li>
 </ul>
 </li>
-<li><a href="#_custom_cloud_service">8. Custom Cloud Service</a>
+<li><a href="#_manual_introduction">8. Manual introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_what_is_a_em_custom_cloud_service_em">8.1. What is a <em>custom cloud service</em></a>
+<li><a href="#_what_do_we_need_to_do">8.1. What do we need to do ?</a></li>
+<li><a href="#_details_by_file">8.2. Details by file</a>
 <ul class="sectlevel3">
-<li><a href="#_example">8.1.1. Example</a></li>
-<li><a href="#_architecture">8.1.2. Architecture</a></li>
+<li><a href="#__zetarc">8.2.1. .zetarc</a></li>
+<li><a href="#__gitignore">8.2.2. .gitignore</a></li>
+<li><a href="#_front">8.2.3. front</a></li>
+<li><a href="#_worker">8.2.4. worker</a></li>
+<li><a href="#_package_json">8.2.5. package.json</a></li>
 </ul>
 </li>
-<li><a href="#_how_to_create_a_em_custom_cloud_service_em">8.2. How to create a <em>custom cloud service</em></a>
-<ul class="sectlevel3">
-<li><a href="#_create_a_em_cloud_function_em">8.2.1. Create a <em>cloud function</em></a></li>
+<li><a href="#_use_your_application">8.3. Use your application</a></li>
 </ul>
 </li>
-<li><a href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">8.3. Use a <em>cloud service</em> inside my <em>custom cloud service</em></a>
-<ul class="sectlevel3">
-<li><a href="#_dependencies_injection">8.3.1. Dependencies injection</a></li>
-<li><a href="#_use_imported_cloud_services">8.3.2. Use imported cloud services</a></li>
-</ul>
-</li>
-<li><a href="#_use_an_other_em_custom_cloud_service_em_in_my_own">8.4. Use an other <em>custom cloud service</em> in my own</a>
-<ul class="sectlevel3">
-<li><a href="#_dependencies_injection_2">8.4.1. Dependencies injection</a></li>
-<li><a href="#_use_imported_custom_cloud_services">8.4.2. Use imported custom cloud services</a></li>
-</ul>
-</li>
-<li><a href="#_expose_my_em_custom_cloud_services_em">8.5. Expose my <em>custom cloud services</em></a>
-<ul class="sectlevel3">
-<li><a href="#_only_one_custom_cloud_service_exposed">8.5.1. Only one custom cloud service exposed</a></li>
-<li><a href="#_many_custom_cloud_services_exposed">8.5.2. Many custom cloud services exposed</a></li>
-</ul>
-</li>
-<li><a href="#_complete_example">8.6. Complete example</a></li>
-</ul>
-</li>
-<li><a href="#_use_services">9. Use services</a>
+<li><a href="#_custom_cloud_service">9. Custom Cloud Service</a>
 <ul class="sectlevel2">
-<li><a href="#_requirements">9.1. Requirements</a>
+<li><a href="#_what_is_a_em_custom_cloud_service_em">9.1. What is a <em>custom cloud service</em></a>
 <ul class="sectlevel3">
-<li><a href="#_requirements_for_em_custom_cloud_service_em">9.1.1. Requirements for <em>custom cloud service</em></a></li>
+<li><a href="#_example">9.1.1. Example</a></li>
+<li><a href="#_architecture">9.1.2. Architecture</a></li>
 </ul>
 </li>
-<li><a href="#_use_a_service">9.2. Use a service</a>
+<li><a href="#_how_to_create_a_em_custom_cloud_service_em">9.2. How to create a <em>custom cloud service</em></a>
 <ul class="sectlevel3">
-<li><a href="#_namespace">9.2.1. Namespace</a></li>
+<li><a href="#_create_a_em_cloud_function_em">9.2.1. Create a <em>cloud function</em></a></li>
 </ul>
 </li>
+<li><a href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">9.3. Use a <em>cloud service</em> inside my <em>custom cloud service</em></a>
+<ul class="sectlevel3">
+<li><a href="#_dependencies_injection">9.3.1. Dependencies injection</a></li>
+<li><a href="#_use_imported_cloud_services">9.3.2. Use imported cloud services</a></li>
 </ul>
 </li>
-<li><a href="#_deployment">10. Deployment</a>
+<li><a href="#_use_an_other_em_custom_cloud_service_em_in_my_own">9.4. Use an other <em>custom cloud service</em> in my own</a>
+<ul class="sectlevel3">
+<li><a href="#_dependencies_injection_2">9.4.1. Dependencies injection</a></li>
+<li><a href="#_use_imported_custom_cloud_services">9.4.2. Use imported custom cloud services</a></li>
+</ul>
+</li>
+<li><a href="#_expose_my_em_custom_cloud_services_em">9.5. Expose my <em>custom cloud services</em></a>
+<ul class="sectlevel3">
+<li><a href="#_only_one_custom_cloud_service_exposed">9.5.1. Only one custom cloud service exposed</a></li>
+<li><a href="#_many_custom_cloud_services_exposed">9.5.2. Many custom cloud services exposed</a></li>
+</ul>
+</li>
+<li><a href="#_complete_example">9.6. Complete example</a></li>
+</ul>
+</li>
+<li><a href="#_use_services">10. Use services</a>
 <ul class="sectlevel2">
-<li><a href="#_what_is_deployment">10.1. What is deployment ?</a>
+<li><a href="#_requirements">10.1. Requirements</a>
 <ul class="sectlevel3">
-<li><a href="#_back_end">10.1.1. Back end</a></li>
-<li><a href="#_front_end">10.1.2. Front end</a></li>
+<li><a href="#_requirements_for_em_custom_cloud_service_em">10.1.1. Requirements for <em>custom cloud service</em></a></li>
 </ul>
 </li>
-<li><a href="#_requirements_2">10.2. Requirements</a></li>
-<li><a href="#_how_to_deploy_your_application">10.3. How to deploy your application ?</a></li>
-<li><a href="#_how_to_deploy_only_the_em_worker_em">10.4. How to deploy only the <em>worker</em> ?</a></li>
+<li><a href="#_use_a_service">10.2. Use a service</a>
+<ul class="sectlevel3">
+<li><a href="#_namespace">10.2.1. Namespace</a></li>
 </ul>
 </li>
-<li><a href="#_configuration_management">11. Configuration management</a>
+</ul>
+</li>
+<li><a href="#_deployment">11. Deployment</a>
 <ul class="sectlevel2">
-<li><a href="#_account_configuration">11.1. Account configuration</a></li>
-<li><a href="#_application_configuration">11.2. Application configuration</a></li>
-<li><a href="#_configuration_override">11.3. Configuration override</a>
+<li><a href="#_what_is_deployment">11.1. What is deployment ?</a>
 <ul class="sectlevel3">
-<li><a href="#_account_properties">11.3.1. Account properties</a></li>
-<li><a href="#_application_properties">11.3.2. Application properties</a></li>
+<li><a href="#_back_end">11.1.1. Back end</a></li>
+<li><a href="#_front_end">11.1.2. Front end</a></li>
+</ul>
+</li>
+<li><a href="#_requirements_2">11.2. Requirements</a></li>
+<li><a href="#_how_to_deploy_your_application">11.3. How to deploy your application ?</a></li>
+<li><a href="#_how_to_deploy_only_the_em_worker_em">11.4. How to deploy only the <em>worker</em> ?</a></li>
+</ul>
+</li>
+<li><a href="#_configuration_management">12. Configuration management</a>
+<ul class="sectlevel2">
+<li><a href="#_account_configuration">12.1. Account configuration</a></li>
+<li><a href="#_application_configuration">12.2. Application configuration</a></li>
+<li><a href="#_configuration_override">12.3. Configuration override</a>
+<ul class="sectlevel3">
+<li><a href="#_account_properties">12.3.1. Account properties</a></li>
+<li><a href="#_application_properties">12.3.2. Application properties</a></li>
 </ul>
 </li>
 </ul>
@@ -161,37 +167,80 @@
 </li>
 <li><a href="#_tutorial">Tutorial</a>
 <ul class="sectlevel1">
-<li><a href="#_use_case">12. Use case</a>
+<li><a href="#_use_case">13. Use case</a>
 <ul class="sectlevel2">
-<li><a href="#_initialize_your_application">12.1. Initialize your application</a></li>
-<li><a href="#_create_your_business_logic">12.2. Create your business logic</a>
+<li><a href="#_initialize_your_application">13.1. Initialize your application</a></li>
+<li><a href="#_create_your_business_logic">13.2. Create your business logic</a>
 <ul class="sectlevel3">
-<li><a href="#_import_em_cloud_services_em_and_define_constants">12.2.1. Import <em>cloud services</em> and define constants</a></li>
-<li><a href="#_create_the_class_with_its_constructor">12.2.2. Create the class with its constructor</a></li>
-<li><a href="#_create_the_chat">12.2.3. Create the chat</a></li>
-<li><a href="#_add_user_in_the_conversation">12.2.4. Add user in the conversation</a></li>
-<li><a href="#_send_a_message">12.2.5. Send a message</a></li>
-<li><a href="#_get_all_messages">12.2.6. Get all messages</a></li>
-<li><a href="#_export_our_class">12.2.7. Export our class</a></li>
+<li><a href="#_import_em_cloud_services_em_and_define_constants">13.2.1. Import <em>cloud services</em> and define constants</a></li>
+<li><a href="#_create_the_class_with_its_constructor">13.2.2. Create the class with its constructor</a></li>
+<li><a href="#_create_the_chat">13.2.3. Create the chat</a></li>
+<li><a href="#_add_user_in_the_conversation">13.2.4. Add user in the conversation</a></li>
+<li><a href="#_send_a_message">13.2.5. Send a message</a></li>
+<li><a href="#_get_all_messages">13.2.6. Get all messages</a></li>
+<li><a href="#_export_our_class">13.2.7. Export our class</a></li>
 </ul>
 </li>
-<li><a href="#_use_your_em_custom_cloud_services_em">12.3. Use your <em>custom cloud services</em></a>
+<li><a href="#_use_your_em_custom_cloud_services_em">13.3. Use your <em>custom cloud services</em></a>
 <ul class="sectlevel3">
-<li><a href="#_launch_the_worker_locally">12.3.1. Launch the worker locally</a></li>
-<li><a href="#_interaction_with_worker">12.3.2. Interaction with worker</a></li>
-<li><a href="#_test_you_application_locally">12.3.3. Test you application locally</a></li>
+<li><a href="#_launch_the_worker_locally">13.3.1. Launch the worker locally</a></li>
+<li><a href="#_interaction_with_worker">13.3.2. Interaction with worker</a></li>
+<li><a href="#_test_you_application_locally">13.3.3. Test you application locally</a></li>
 </ul>
 </li>
-<li><a href="#_deploy_your_application">12.4. Deploy your application</a></li>
+<li><a href="#_deploy_your_application">13.4. Deploy your application</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_reference">Reference</a>
 <ul class="sectlevel1">
-<li><a href="#_command_line_interface">13. Command Line Interface</a>
+<li><a href="#_command_line_interface">14. Command Line Interface</a>
 <ul class="sectlevel2">
-<li><a href="#_initialize_an_application">13.1. Initialize an application</a></li>
+<li><a href="#_initialize_an_application">14.1. Initialize an application</a></li>
+</ul>
+</li>
+<li><a href="#_troubleshooting">15. Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="#_configuration_issue">15.1. Configuration issue</a>
+<ul class="sectlevel3">
+<li><a href="#_failed_to_load_configuration_config_01">15.1.1. Failed to load configuration (CONFIG-01)</a></li>
+</ul>
+</li>
+<li><a href="#_account_issue">15.2. Account issue</a>
+<ul class="sectlevel3">
+<li><a href="#_missing_login_information_account_01">15.2.1. Missing login information (ACCOUNT-01)</a></li>
+<li><a href="#_missing_password_information_account_02">15.2.2. Missing password information (ACCOUNT-02)</a></li>
+<li><a href="#_wrong_login_or_password_account_03">15.2.3. Wrong login or password (ACCOUNT-03)</a></li>
+<li><a href="#_missing_application_name_account_04">15.2.4. Missing application name (ACCOUNT-04)</a></li>
+<li><a href="#_account_not_validated_account_05">15.2.5. Account not validated (ACCOUNT-05)</a></li>
+<li><a href="#_application_doesn_t_exist_for_this_account_account_06">15.2.6. Application doesn&#8217;t exist for this account (ACCOUNT-06)</a></li>
+</ul>
+</li>
+<li><a href="#_network_issue">15.3. Network issue</a>
+<ul class="sectlevel3">
+<li><a href="#_local_network_unreachable_net_01">15.3.1. Local network unreachable (NET-01)</a></li>
+<li><a href="#_internet_unreachable_net_02">15.3.2. Internet unreachable (NET-02)</a></li>
+<li><a href="#_proxy_unreachable_net_03">15.3.3. Proxy unreachable (NET-03)</a></li>
+<li><a href="#_internet_behind_proxy_unreachable_net_04">15.3.4. Internet behind proxy unreachable (NET-04)</a></li>
+</ul>
+</li>
+<li><a href="#_dependency_resolution_issue">15.4. Dependency resolution issue</a>
+<ul class="sectlevel3">
+<li><a href="#_unresolved_dependency_dependency_01">15.4.1. Unresolved dependency (DEPENDENCY-01)</a></li>
+<li><a href="#_unreadable_dependency_dependency_02">15.4.2. Unreadable dependency (DEPENDENCY-02)</a></li>
+</ul>
+</li>
+<li><a href="#_dependencies_injection_issue">15.5. Dependencies injection issue</a>
+<ul class="sectlevel3">
+<li><a href="#_cannot_resolve_parameters_for_custom_cloud_service_injection_01">15.5.1. Cannot resolve parameters for custom cloud service (INJECTION-01)</a></li>
+</ul>
+</li>
+<li><a href="#_custom_could_service_issue">15.6. Custom could service issue</a>
+<ul class="sectlevel3">
+<li><a href="#_custom_cloud_service_start_failed_service_05">15.6.1. Custom cloud service start failed (SERVICE-05)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -311,12 +360,113 @@ How to use the ZetaPush CLI</p></td>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_workflow_initialization"><a class="anchor" href="#_workflow_initialization"></a><a class="link" href="#_workflow_initialization">5. Workflow initialization</a></h2>
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a><a class="link" href="#_prerequisites">5. Prerequisites</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_i_have_an_existing_account"><a class="anchor" href="#_i_have_an_existing_account"></a><a class="link" href="#_i_have_an_existing_account">5.1. I have an existing account</a></h3>
+<h3 id="_nodejs_and_npm"><a class="anchor" href="#_nodejs_and_npm"></a><a class="link" href="#_nodejs_and_npm">5.1. NodeJS and npm</a></h3>
+<div class="paragraph">
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank">NodeJS Downloads</a> and follow installation instructions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>NodeJS is used to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>develop custom cloud services</p>
+</li>
+<li>
+<p>run custom cloud services</p>
+</li>
+<li>
+<p>deploy your application on ZetaPush</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You may also need to install additionnal tools for NodeJS:</p>
+</div>
+<div class="paragraph tab-container">
+<p>Additional tools</p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>You must install development tools on Windows (Visual Studio Build Tools and Python).
+Hopefully, there is a npm tool that helps to install all required dependencies.
+You must run this command line using <strong>PowerShell</strong> as <strong>Administrator</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">npm install --global --production windows-build-tools</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo apt-get install -y build-essential</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Enterprise Linux and Fedora</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo yum install gcc-c++ make
+# or: sudo yum groupinstall 'Development Tools'</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_git"><a class="anchor" href="#_git"></a><a class="link" href="#_git">5.2. Git</a></h3>
+<div class="paragraph">
+<p>Go to <a href="https://git-scm.com/downloads" target="_blank">Git Downloads</a> and follow the installation instructions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Git is used by ZetaPush when you use our tool to create a project (see: <a href="#_initialization_with_the_cli">Create a new application using the CLI</a>)
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_workflow_initialization"><a class="anchor" href="#_workflow_initialization"></a><a class="link" href="#_workflow_initialization">6. Workflow initialization</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_i_have_an_existing_account"><a class="anchor" href="#_i_have_an_existing_account"></a><a class="link" href="#_i_have_an_existing_account">6.1. I have an existing account</a></h3>
 <div class="sect3">
-<h4 id="_i_want_to_use_an_existing_application"><a class="anchor" href="#_i_want_to_use_an_existing_application"></a><a class="link" href="#_i_want_to_use_an_existing_application">5.1.1. I want to use an existing application</a></h4>
+<h4 id="_i_want_to_use_an_existing_application"><a class="anchor" href="#_i_want_to_use_an_existing_application"></a><a class="link" href="#_i_want_to_use_an_existing_application">6.1.1. I want to use an existing application</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="init-with-account-and-app.png" alt="init with account and app" width="379" height="352">
@@ -350,7 +500,7 @@ How to use the ZetaPush CLI</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_i_want_to_create_a_new_application"><a class="anchor" href="#_i_want_to_create_a_new_application"></a><a class="link" href="#_i_want_to_create_a_new_application">5.1.2. I want to create a new application</a></h4>
+<h4 id="_i_want_to_create_a_new_application"><a class="anchor" href="#_i_want_to_create_a_new_application"></a><a class="link" href="#_i_want_to_create_a_new_application">6.1.2. I want to create a new application</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="init-with-account-without-app.png" alt="init with account without app" width="338" height="352">
@@ -397,7 +547,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect2">
-<h3 id="_i_don_t_have_zetapush_account"><a class="anchor" href="#_i_don_t_have_zetapush_account"></a><a class="link" href="#_i_don_t_have_zetapush_account">5.2. I don&#8217;t have ZetaPush account</a></h3>
+<h3 id="_i_don_t_have_zetapush_account"><a class="anchor" href="#_i_don_t_have_zetapush_account"></a><a class="link" href="#_i_don_t_have_zetapush_account">6.2. I don&#8217;t have ZetaPush account</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="init-without-account.png" alt="init without account" width="379" height="460">
@@ -448,10 +598,10 @@ You need to validate your ZetaPush account to run or deploy your application.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_create_a_new_application"><a class="anchor" href="#_create_a_new_application"></a><a class="link" href="#_create_a_new_application">6. Create a new application</a></h2>
+<h2 id="_create_a_new_application"><a class="anchor" href="#_create_a_new_application"></a><a class="link" href="#_create_a_new_application">7. Create a new application</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_initialization_with_the_cli"><a class="anchor" href="#_initialization_with_the_cli"></a><a class="link" href="#_initialization_with_the_cli">6.1. Initialization with the CLI</a></h3>
+<h3 id="_initialization_with_the_cli"><a class="anchor" href="#_initialization_with_the_cli"></a><a class="link" href="#_initialization_with_the_cli">7.1. Initialization with the CLI</a></h3>
 <div class="paragraph">
 <p>You can generate a classic application with the following command :</p>
 </div>
@@ -576,7 +726,7 @@ To install the CLI you can launch : <code>npm install -g @zetapush/cli</code>.
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_using_npm_lower_than_6"><a class="anchor" href="#_using_npm_lower_than_6"></a><a class="link" href="#_using_npm_lower_than_6">6.1.1. Using npm lower than 6</a></h4>
+<h4 id="_using_npm_lower_than_6"><a class="anchor" href="#_using_npm_lower_than_6"></a><a class="link" href="#_using_npm_lower_than_6">7.1.1. Using npm lower than 6</a></h4>
 <div class="paragraph">
 <p>If you using npm with a version lower than 6, you can upgrade your npm version with :</p>
 </div>
@@ -601,7 +751,7 @@ To install the CLI you can launch : <code>npm install -g @zetapush/cli</code>.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_i_create_an_application_without_account"><a class="anchor" href="#_i_create_an_application_without_account"></a><a class="link" href="#_i_create_an_application_without_account">6.2. I create an application without account</a></h3>
+<h3 id="_i_create_an_application_without_account"><a class="anchor" href="#_i_create_an_application_without_account"></a><a class="link" href="#_i_create_an_application_without_account">7.2. I create an application without account</a></h3>
 <div class="paragraph">
 <p>If you have no ZetaPush account, you can create a new and generate an application with the CLI.</p>
 </div>
@@ -662,7 +812,7 @@ You need to validate your ZetaPush account to run or deploy your application.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_i_use_an_existing_application"><a class="anchor" href="#_i_use_an_existing_application"></a><a class="link" href="#_i_use_an_existing_application">6.3. I use an existing application</a></h3>
+<h3 id="_i_use_an_existing_application"><a class="anchor" href="#_i_use_an_existing_application"></a><a class="link" href="#_i_use_an_existing_application">7.3. I use an existing application</a></h3>
 <div class="paragraph">
 <p>If you want to deploy or execute your application on an existing application you can follow this process :</p>
 </div>
@@ -720,7 +870,7 @@ You need to validate your ZetaPush account to run or deploy your application.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_i_create_a_new_application_on_my_account"><a class="anchor" href="#_i_create_a_new_application_on_my_account"></a><a class="link" href="#_i_create_a_new_application_on_my_account">6.4. I create a new application on my account</a></h3>
+<h3 id="_i_create_a_new_application_on_my_account"><a class="anchor" href="#_i_create_a_new_application_on_my_account"></a><a class="link" href="#_i_create_a_new_application_on_my_account">7.4. I create a new application on my account</a></h3>
 <div class="paragraph">
 <p>If you have an existing account and you want to create a new application you can use the CLI.</p>
 </div>
@@ -793,10 +943,10 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect1">
-<h2 id="_manual_introduction"><a class="anchor" href="#_manual_introduction"></a><a class="link" href="#_manual_introduction">7. Manual introduction</a></h2>
+<h2 id="_manual_introduction"><a class="anchor" href="#_manual_introduction"></a><a class="link" href="#_manual_introduction">8. Manual introduction</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_what_do_we_need_to_do"><a class="anchor" href="#_what_do_we_need_to_do"></a><a class="link" href="#_what_do_we_need_to_do">7.1. What do we need to do ?</a></h3>
+<h3 id="_what_do_we_need_to_do"><a class="anchor" href="#_what_do_we_need_to_do"></a><a class="link" href="#_what_do_we_need_to_do">8.1. What do we need to do ?</a></h3>
 <div class="paragraph">
 <p>To start a new application with ZetaPush Celtia, the easiest path is to use the <em>CLI</em>. But you can also start your application creating each file you need.</p>
 </div>
@@ -832,9 +982,9 @@ Above all, you need to have a ZetaPush account with an existing application. So 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_details_by_file"><a class="anchor" href="#_details_by_file"></a><a class="link" href="#_details_by_file">7.2. Details by file</a></h3>
+<h3 id="_details_by_file"><a class="anchor" href="#_details_by_file"></a><a class="link" href="#_details_by_file">8.2. Details by file</a></h3>
 <div class="sect3">
-<h4 id="__zetarc"><a class="anchor" href="#__zetarc"></a><a class="link" href="#__zetarc">7.2.1. .zetarc</a></h4>
+<h4 id="__zetarc"><a class="anchor" href="#__zetarc"></a><a class="link" href="#__zetarc">8.2.1. .zetarc</a></h4>
 <div class="paragraph">
 <p>To specify which account (on the ZetaPush platform) you use for an application, you type the account informations in the <code>.zetarc</code>.</p>
 </div>
@@ -886,7 +1036,7 @@ If you want to create a new application, you can leave the <em>appName</em> prop
 </div>
 </div>
 <div class="sect3">
-<h4 id="__gitignore"><a class="anchor" href="#__gitignore"></a><a class="link" href="#__gitignore">7.2.2. .gitignore</a></h4>
+<h4 id="__gitignore"><a class="anchor" href="#__gitignore"></a><a class="link" href="#__gitignore">8.2.2. .gitignore</a></h4>
 <div class="paragraph">
 <p>This file is optional but it is very useful if you want to avoid to publish your account informations on <em>GitHub</em> for example.</p>
 </div>
@@ -919,7 +1069,7 @@ node_modules/ <i class="conum" data-value="2"></i><b>(2)</b></pre></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_front"><a class="anchor" href="#_front"></a><a class="link" href="#_front">7.2.3. front</a></h4>
+<h4 id="_front"><a class="anchor" href="#_front"></a><a class="link" href="#_front">8.2.3. front</a></h4>
 <div class="paragraph">
 <p>By convention, the directory contains the front code. For example you can have this tree structure :</p>
 </div>
@@ -931,7 +1081,7 @@ node_modules/ <i class="conum" data-value="2"></i><b>(2)</b></pre></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_basic_example_of_hello_world_with_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_with_custom_cloud_service"></a><a class="link" href="#_basic_example_of_hello_world_with_custom_cloud_service">7.2.3.1. Basic example of Hello World (with custom cloud service)</a></h5>
+<h5 id="_basic_example_of_hello_world_with_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_with_custom_cloud_service"></a><a class="link" href="#_basic_example_of_hello_world_with_custom_cloud_service">8.2.3.1. Basic example of Hello World (with custom cloud service)</a></h5>
 <div class="listingblock">
 <div class="title">front/index.html</div>
 <div class="content">
@@ -1123,7 +1273,7 @@ document.addEventListener(<span class="string"><span class="delimiter">'</span><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_worker"><a class="anchor" href="#_worker"></a><a class="link" href="#_worker">7.2.4. worker</a></h4>
+<h4 id="_worker"><a class="anchor" href="#_worker"></a><a class="link" href="#_worker">8.2.4. worker</a></h4>
 <div class="paragraph">
 <p>By convention, the directory contains the back code. For example you can have this tree structure :</p>
 </div>
@@ -1134,7 +1284,7 @@ document.addEventListener(<span class="string"><span class="delimiter">'</span><
 </div>
 </div>
 <div class="sect4">
-<h5 id="_basic_example_of_hello_world_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_custom_cloud_service"></a><a class="link" href="#_basic_example_of_hello_world_custom_cloud_service">7.2.4.1. Basic example of Hello World (custom cloud service)</a></h5>
+<h5 id="_basic_example_of_hello_world_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_custom_cloud_service"></a><a class="link" href="#_basic_example_of_hello_world_custom_cloud_service">8.2.4.1. Basic example of Hello World (custom cloud service)</a></h5>
 <div class="listingblock">
 <div class="title">worker/index.js</div>
 <div class="content">
@@ -1200,7 +1350,7 @@ document.addEventListener(<span class="string"><span class="delimiter">'</span><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_package_json"><a class="anchor" href="#_package_json"></a><a class="link" href="#_package_json">7.2.5. package.json</a></h4>
+<h4 id="_package_json"><a class="anchor" href="#_package_json"></a><a class="link" href="#_package_json">8.2.5. package.json</a></h4>
 <div class="paragraph">
 <p>The <code>package.json</code> is the most important file in the application. It contains all informations needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the <code>.zetarc</code>).</p>
 </div>
@@ -1248,7 +1398,7 @@ document.addEventListener(<span class="string"><span class="delimiter">'</span><
 </table>
 </div>
 <div class="sect4">
-<h5 id="_path_of_the_code"><a class="anchor" href="#_path_of_the_code"></a><a class="link" href="#_path_of_the_code">7.2.5.1. Path of the code</a></h5>
+<h5 id="_path_of_the_code"><a class="anchor" href="#_path_of_the_code"></a><a class="link" href="#_path_of_the_code">8.2.5.1. Path of the code</a></h5>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1310,7 +1460,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </div>
 </div>
 <div class="sect4">
-<h5 id="_install_dependencies"><a class="anchor" href="#_install_dependencies"></a><a class="link" href="#_install_dependencies">7.2.5.2. Install dependencies</a></h5>
+<h5 id="_install_dependencies"><a class="anchor" href="#_install_dependencies"></a><a class="link" href="#_install_dependencies">8.2.5.2. Install dependencies</a></h5>
 <div class="paragraph">
 <p>You need to install some dependencies in your application. To do this, you can run :</p>
 </div>
@@ -1324,7 +1474,7 @@ $ npm install --save @zetapush/cli</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_use_your_application"><a class="anchor" href="#_use_your_application"></a><a class="link" href="#_use_your_application">7.3. Use your application</a></h3>
+<h3 id="_use_your_application"><a class="anchor" href="#_use_your_application"></a><a class="link" href="#_use_your_application">8.3. Use your application</a></h3>
 <div class="paragraph">
 <p>Once your have your application ready you can :</p>
 </div>
@@ -1381,10 +1531,10 @@ $ npm install --save @zetapush/cli</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_custom_cloud_service"><a class="anchor" href="#_custom_cloud_service"></a><a class="link" href="#_custom_cloud_service">8. Custom Cloud Service</a></h2>
+<h2 id="_custom_cloud_service"><a class="anchor" href="#_custom_cloud_service"></a><a class="link" href="#_custom_cloud_service">9. Custom Cloud Service</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a><a class="link" href="#_what_is_a_em_custom_cloud_service_em">8.1. What is a <em>custom cloud service</em></a></h3>
+<h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a><a class="link" href="#_what_is_a_em_custom_cloud_service_em">9.1. What is a <em>custom cloud service</em></a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1399,7 +1549,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </table>
 </div>
 <div class="sect3">
-<h4 id="_example"><a class="anchor" href="#_example"></a><a class="link" href="#_example">8.1.1. Example</a></h4>
+<h4 id="_example"><a class="anchor" href="#_example"></a><a class="link" href="#_example">9.1.1. Example</a></h4>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
@@ -1412,9 +1562,9 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </div>
 </div>
 <div class="sect3">
-<h4 id="_architecture"><a class="anchor" href="#_architecture"></a><a class="link" href="#_architecture">8.1.2. Architecture</a></h4>
+<h4 id="_architecture"><a class="anchor" href="#_architecture"></a><a class="link" href="#_architecture">9.1.2. Architecture</a></h4>
 <div class="sect4">
-<h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a><a class="link" href="#_development_phase">8.1.2.1. Development phase</a></h5>
+<h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a><a class="link" href="#_development_phase">9.1.2.1. Development phase</a></h5>
 <div class="imageblock">
 <div class="content">
 <img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1403" height="551">
@@ -1426,7 +1576,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </div>
 </div>
 <div class="sect4">
-<h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a><a class="link" href="#_production_phase">8.1.2.2. Production phase</a></h5>
+<h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a><a class="link" href="#_production_phase">9.1.2.2. Production phase</a></h5>
 <div class="imageblock">
 <div class="content">
 <img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="318" height="352">
@@ -1440,12 +1590,12 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a><a class="link" href="#_how_to_create_a_em_custom_cloud_service_em">8.2. How to create a <em>custom cloud service</em></a></h3>
+<h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a><a class="link" href="#_how_to_create_a_em_custom_cloud_service_em">9.2. How to create a <em>custom cloud service</em></a></h3>
 <div class="paragraph">
 <p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
 </div>
 <div class="sect3">
-<h4 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a><a class="link" href="#_create_a_em_cloud_function_em">8.2.1. Create a <em>cloud function</em></a></h4>
+<h4 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a><a class="link" href="#_create_a_em_cloud_function_em">9.2.1. Create a <em>cloud function</em></a></h4>
 <div class="listingblock">
 <div class="title">Basic custom cloud service</div>
 <div class="content">
@@ -1547,9 +1697,9 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"><a class="anchor" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"></a><a class="link" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">8.3. Use a <em>cloud service</em> inside my <em>custom cloud service</em></a></h3>
+<h3 id="_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"><a class="anchor" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em"></a><a class="link" href="#_use_a_em_cloud_service_em_inside_my_em_custom_cloud_service_em">9.3. Use a <em>cloud service</em> inside my <em>custom cloud service</em></a></h3>
 <div class="sect3">
-<h4 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a><a class="link" href="#_dependencies_injection">8.3.1. Dependencies injection</a></h4>
+<h4 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a><a class="link" href="#_dependencies_injection">9.3.1. Dependencies injection</a></h4>
 <div class="paragraph">
 <p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All of your dependencies injection will be facilitated.</p>
 </div>
@@ -1658,7 +1808,7 @@ The order in your <code>parameters</code> method need to be the same in your con
 </div>
 </div>
 <div class="sect3">
-<h4 id="_use_imported_cloud_services"><a class="anchor" href="#_use_imported_cloud_services"></a><a class="link" href="#_use_imported_cloud_services">8.3.2. Use imported cloud services</a></h4>
+<h4 id="_use_imported_cloud_services"><a class="anchor" href="#_use_imported_cloud_services"></a><a class="link" href="#_use_imported_cloud_services">9.3.2. Use imported cloud services</a></h4>
 <div class="paragraph">
 <p>Once you have import the services, you can use them.</p>
 </div>
@@ -1790,9 +1940,9 @@ The <code>Stack</code> service has asynchronous methods
 </div>
 </div>
 <div class="sect2">
-<h3 id="_use_an_other_em_custom_cloud_service_em_in_my_own"><a class="anchor" href="#_use_an_other_em_custom_cloud_service_em_in_my_own"></a><a class="link" href="#_use_an_other_em_custom_cloud_service_em_in_my_own">8.4. Use an other <em>custom cloud service</em> in my own</a></h3>
+<h3 id="_use_an_other_em_custom_cloud_service_em_in_my_own"><a class="anchor" href="#_use_an_other_em_custom_cloud_service_em_in_my_own"></a><a class="link" href="#_use_an_other_em_custom_cloud_service_em_in_my_own">9.4. Use an other <em>custom cloud service</em> in my own</a></h3>
 <div class="sect3">
-<h4 id="_dependencies_injection_2"><a class="anchor" href="#_dependencies_injection_2"></a><a class="link" href="#_dependencies_injection_2">8.4.1. Dependencies injection</a></h4>
+<h4 id="_dependencies_injection_2"><a class="anchor" href="#_dependencies_injection_2"></a><a class="link" href="#_dependencies_injection_2">9.4.1. Dependencies injection</a></h4>
 <div class="paragraph">
 <p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All of your dependencies injection will be facilitated.</p>
 </div>
@@ -1901,7 +2051,7 @@ The order in your <code>parameters</code> method need to be the same in your con
 </div>
 </div>
 <div class="sect3">
-<h4 id="_use_imported_custom_cloud_services"><a class="anchor" href="#_use_imported_custom_cloud_services"></a><a class="link" href="#_use_imported_custom_cloud_services">8.4.2. Use imported custom cloud services</a></h4>
+<h4 id="_use_imported_custom_cloud_services"><a class="anchor" href="#_use_imported_custom_cloud_services"></a><a class="link" href="#_use_imported_custom_cloud_services">9.4.2. Use imported custom cloud services</a></h4>
 <div class="paragraph">
 <p>Once you have import the services, you can use them.</p>
 </div>
@@ -2021,7 +2171,7 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 </div>
 </div>
 <div class="sect2">
-<h3 id="_expose_my_em_custom_cloud_services_em"><a class="anchor" href="#_expose_my_em_custom_cloud_services_em"></a><a class="link" href="#_expose_my_em_custom_cloud_services_em">8.5. Expose my <em>custom cloud services</em></a></h3>
+<h3 id="_expose_my_em_custom_cloud_services_em"><a class="anchor" href="#_expose_my_em_custom_cloud_services_em"></a><a class="link" href="#_expose_my_em_custom_cloud_services_em">9.5. Expose my <em>custom cloud services</em></a></h3>
 <div class="paragraph">
 <p>When you create a <em>custom cloud service</em> that you want to expose to the client, you need to declare it. You have 2 cases :</p>
 </div>
@@ -2048,7 +2198,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 </table>
 </div>
 <div class="sect3">
-<h4 id="_only_one_custom_cloud_service_exposed"><a class="anchor" href="#_only_one_custom_cloud_service_exposed"></a><a class="link" href="#_only_one_custom_cloud_service_exposed">8.5.1. Only one custom cloud service exposed</a></h4>
+<h4 id="_only_one_custom_cloud_service_exposed"><a class="anchor" href="#_only_one_custom_cloud_service_exposed"></a><a class="link" href="#_only_one_custom_cloud_service_exposed">9.5.1. Only one custom cloud service exposed</a></h4>
 <div class="paragraph">
 <p>In this example, we have 2 <em>custom cloud services</em> : One is private and the second is exposed :</p>
 </div>
@@ -2126,7 +2276,7 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_many_custom_cloud_services_exposed"><a class="anchor" href="#_many_custom_cloud_services_exposed"></a><a class="link" href="#_many_custom_cloud_services_exposed">8.5.2. Many custom cloud services exposed</a></h4>
+<h4 id="_many_custom_cloud_services_exposed"><a class="anchor" href="#_many_custom_cloud_services_exposed"></a><a class="link" href="#_many_custom_cloud_services_exposed">9.5.2. Many custom cloud services exposed</a></h4>
 <div class="paragraph">
 <p>In this example, we want to expose 2 <em>custom cloud services</em>. In this case, we need to specify the namespace of each <em>custom cloud service</em> :</p>
 </div>
@@ -2207,7 +2357,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a><a class="link" href="#_complete_example">8.6. Complete example</a></h3>
+<h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a><a class="link" href="#_complete_example">9.6. Complete example</a></h3>
 <div class="paragraph">
 <p>My configuration in the <code>package.json</code> is the following :</p>
 </div>
@@ -2364,7 +2514,7 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 </div>
 </div>
 <div class="sect1">
-<h2 id="_use_services"><a class="anchor" href="#_use_services"></a><a class="link" href="#_use_services">9. Use services</a></h2>
+<h2 id="_use_services"><a class="anchor" href="#_use_services"></a><a class="link" href="#_use_services">10. Use services</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>On the front-side, you will want to use the <em>cloud services</em> provided by ZetaPush or your <em>custom cloud services</em>.
@@ -2383,7 +2533,7 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 </table>
 </div>
 <div class="sect2">
-<h3 id="_requirements"><a class="anchor" href="#_requirements"></a><a class="link" href="#_requirements">9.1. Requirements</a></h3>
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a><a class="link" href="#_requirements">10.1. Requirements</a></h3>
 <div class="paragraph">
 <p>To use services (custom or not), you need to have installed the dependency of the ZetaPush Core (<code>@zetapush/core</code>).</p>
 </div>
@@ -2410,14 +2560,14 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 </div>
 </div>
 <div class="sect3">
-<h4 id="_requirements_for_em_custom_cloud_service_em"><a class="anchor" href="#_requirements_for_em_custom_cloud_service_em"></a><a class="link" href="#_requirements_for_em_custom_cloud_service_em">9.1.1. Requirements for <em>custom cloud service</em></a></h4>
+<h4 id="_requirements_for_em_custom_cloud_service_em"><a class="anchor" href="#_requirements_for_em_custom_cloud_service_em"></a><a class="link" href="#_requirements_for_em_custom_cloud_service_em">10.1.1. Requirements for <em>custom cloud service</em></a></h4>
 <div class="paragraph">
 <p>If you want to use a <em>custom cloud service</em>, make sure that you have exposed your service (<a href="#_expose_my_em_custom_cloud_services_em">Documentation</a>)</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_use_a_service"><a class="anchor" href="#_use_a_service"></a><a class="link" href="#_use_a_service">9.2. Use a service</a></h3>
+<h3 id="_use_a_service"><a class="anchor" href="#_use_a_service"></a><a class="link" href="#_use_a_service">10.2. Use a service</a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -2626,7 +2776,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 <p><strong>Now when we click on the button, "Hello World" is displayed on the page.</strong></p>
 </div>
 <div class="sect3">
-<h4 id="_namespace"><a class="anchor" href="#_namespace"></a><a class="link" href="#_namespace">9.2.1. Namespace</a></h4>
+<h4 id="_namespace"><a class="anchor" href="#_namespace"></a><a class="link" href="#_namespace">10.2.1. Namespace</a></h4>
 <div class="paragraph">
 <p>When you call a <em>cloud function</em> from a <em>custom cloud service</em>, you can specified a <em>namespace</em> (if you have 2 <em>cloud functions</em> on 2 differents <em>custom cloud services</em>).</p>
 </div>
@@ -2708,13 +2858,13 @@ module.exports = {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_deployment"><a class="anchor" href="#_deployment"></a><a class="link" href="#_deployment">10. Deployment</a></h2>
+<h2 id="_deployment"><a class="anchor" href="#_deployment"></a><a class="link" href="#_deployment">11. Deployment</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Once you have develop your application and test it, you may want to deploy it.</p>
 </div>
 <div class="sect2">
-<h3 id="_what_is_deployment"><a class="anchor" href="#_what_is_deployment"></a><a class="link" href="#_what_is_deployment">10.1. What is deployment ?</a></h3>
+<h3 id="_what_is_deployment"><a class="anchor" href="#_what_is_deployment"></a><a class="link" href="#_what_is_deployment">11.1. What is deployment ?</a></h3>
 <div class="paragraph">
 <p>In the <em>deployment</em> with ZetaPush, you have 2 parts :</p>
 </div>
@@ -2729,20 +2879,20 @@ module.exports = {
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_back_end"><a class="anchor" href="#_back_end"></a><a class="link" href="#_back_end">10.1.1. Back end</a></h4>
+<h4 id="_back_end"><a class="anchor" href="#_back_end"></a><a class="link" href="#_back_end">11.1.1. Back end</a></h4>
 <div class="paragraph">
 <p>When you deploy the back end part (<em>custom cloud services</em>) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_front_end"><a class="anchor" href="#_front_end"></a><a class="link" href="#_front_end">10.1.2. Front end</a></h4>
+<h4 id="_front_end"><a class="anchor" href="#_front_end"></a><a class="link" href="#_front_end">11.1.2. Front end</a></h4>
 <div class="paragraph">
 <p>For the front end part, we hosting your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (<em>custom cloud services</em> or <em>cloud services</em> provided by ZetaPush).</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a><a class="link" href="#_requirements_2">10.2. Requirements</a></h3>
+<h3 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a><a class="link" href="#_requirements_2">11.2. Requirements</a></h3>
 <div class="paragraph">
 <p>To execute or deploy your application you need to use the <em>Command Line Interface (CLI)</em>.</p>
 </div>
@@ -2767,7 +2917,7 @@ module.exports = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_deploy_your_application"><a class="anchor" href="#_how_to_deploy_your_application"></a><a class="link" href="#_how_to_deploy_your_application">10.3. How to deploy your application ?</a></h3>
+<h3 id="_how_to_deploy_your_application"><a class="anchor" href="#_how_to_deploy_your_application"></a><a class="link" href="#_how_to_deploy_your_application">11.3. How to deploy your application ?</a></h3>
 <div class="paragraph">
 <p>The deployment is very easy, to do this you only need to launch this command in your application directory :</p>
 </div>
@@ -2798,7 +2948,7 @@ When you deploy your application (Front + Worker), the CLI returns you an unique
 </div>
 </div>
 <div class="sect2">
-<h3 id="_how_to_deploy_only_the_em_worker_em"><a class="anchor" href="#_how_to_deploy_only_the_em_worker_em"></a><a class="link" href="#_how_to_deploy_only_the_em_worker_em">10.4. How to deploy only the <em>worker</em> ?</a></h3>
+<h3 id="_how_to_deploy_only_the_em_worker_em"><a class="anchor" href="#_how_to_deploy_only_the_em_worker_em"></a><a class="link" href="#_how_to_deploy_only_the_em_worker_em">11.4. How to deploy only the <em>worker</em> ?</a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2828,14 +2978,14 @@ $ zeta push --worker</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration_management"><a class="anchor" href="#_configuration_management"></a><a class="link" href="#_configuration_management">11. Configuration management</a></h2>
+<h2 id="_configuration_management"><a class="anchor" href="#_configuration_management"></a><a class="link" href="#_configuration_management">12. Configuration management</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>ZetaPush provides many variables to configure your applications.
 There are 2 types : the <em>account configuration variables</em> and the <em>application configuration variables</em>.</p>
 </div>
 <div class="sect2">
-<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a><a class="link" href="#_account_configuration">11.1. Account configuration</a></h3>
+<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a><a class="link" href="#_account_configuration">12.1. Account configuration</a></h3>
 <div class="paragraph">
 <p>To use ZetaPush Celtia, you need to have an account and an optional application.
 You specify this properties in the <code>.zetarc</code> file.
@@ -2901,7 +3051,7 @@ An environment is one stage in the life-cycle of the application.</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a><a class="link" href="#_application_configuration">11.2. Application configuration</a></h3>
+<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a><a class="link" href="#_application_configuration">12.2. Application configuration</a></h3>
 <div class="paragraph">
 <p>You can configure your applications with several variables. Here is the list of them :</p>
 </div>
@@ -3002,13 +3152,13 @@ ZetaPush uses this property to host and expose it.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a><a class="link" href="#_configuration_override">11.3. Configuration override</a></h3>
+<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a><a class="link" href="#_configuration_override">12.3. Configuration override</a></h3>
 <div class="paragraph">
 <p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
 ZetaPush includes and overrides this properties in a specific order :</p>
 </div>
 <div class="sect3">
-<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">11.3.1. Account properties</a></h4>
+<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">12.3.1. Account properties</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="override-account-properties.png" alt="override account properties" width="183" height="242">
@@ -3019,7 +3169,7 @@ ZetaPush includes and overrides this properties in a specific order :</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">11.3.2. Application properties</a></h4>
+<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">12.3.2. Application properties</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="override-application-properties.png" alt="override application properties" width="155" height="242">
@@ -3058,7 +3208,7 @@ You will learn to :</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_use_case"><a class="anchor" href="#_use_case"></a><a class="link" href="#_use_case">12. Use case</a></h2>
+<h2 id="_use_case"><a class="anchor" href="#_use_case"></a><a class="link" href="#_use_case">13. Use case</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You will create a realtime chat application, but it will be particular : This will be an <strong>Avengers Chat</strong> !</p>
@@ -3129,7 +3279,7 @@ You will learn to :</p>
 </ol>
 </div>
 <div class="sect2">
-<h3 id="_initialize_your_application"><a class="anchor" href="#_initialize_your_application"></a><a class="link" href="#_initialize_your_application">12.1. Initialize your application</a></h3>
+<h3 id="_initialize_your_application"><a class="anchor" href="#_initialize_your_application"></a><a class="link" href="#_initialize_your_application">13.1. Initialize your application</a></h3>
 <div class="paragraph">
 <p>In the first step, you need to create your application. To do this you can run :</p>
 </div>
@@ -3212,7 +3362,7 @@ If you are using <em>Windows</em>, you can download the file with all resources 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_create_your_business_logic"><a class="anchor" href="#_create_your_business_logic"></a><a class="link" href="#_create_your_business_logic">12.2. Create your business logic</a></h3>
+<h3 id="_create_your_business_logic"><a class="anchor" href="#_create_your_business_logic"></a><a class="link" href="#_create_your_business_logic">13.2. Create your business logic</a></h3>
 <div class="paragraph">
 <p>Now, you will create the business logic of your application. To do this, you will use a <em>custom cloud service</em>.</p>
 </div>
@@ -3247,7 +3397,7 @@ When you create one or many <em>custom cloud services</em>, you need to export t
 <p>You can fill this file (<code>worker/index.js</code>) with the following content :</p>
 </div>
 <div class="sect3">
-<h4 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a><a class="link" href="#_import_em_cloud_services_em_and_define_constants">12.2.1. Import <em>cloud services</em> and define constants</a></h4>
+<h4 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a><a class="link" href="#_import_em_cloud_services_em_and_define_constants">13.2.1. Import <em>cloud services</em> and define constants</a></h4>
 <div class="paragraph">
 <p>First, you need to import the <em>cloud services</em> provided by ZetaPush, used in this application :</p>
 </div>
@@ -3293,7 +3443,7 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 </div>
 </div>
 <div class="sect3">
-<h4 id="_create_the_class_with_its_constructor"><a class="anchor" href="#_create_the_class_with_its_constructor"></a><a class="link" href="#_create_the_class_with_its_constructor">12.2.2. Create the class with its constructor</a></h4>
+<h4 id="_create_the_class_with_its_constructor"><a class="anchor" href="#_create_the_class_with_its_constructor"></a><a class="link" href="#_create_the_class_with_its_constructor">13.2.2. Create the class with its constructor</a></h4>
 <div class="paragraph">
 <p>A <em>custom cloud service</em> is a class, so you need to create it.</p>
 </div>
@@ -3373,7 +3523,7 @@ The dependencies injection of ZetaPush use <code>injection-js</code>. So we use 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a><a class="link" href="#_create_the_chat">12.2.3. Create the chat</a></h4>
+<h4 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a><a class="link" href="#_create_the_chat">13.2.3. Create the chat</a></h4>
 <div class="paragraph">
 <p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
 So we add a method in our class to create this conversation.</p>
@@ -3414,7 +3564,7 @@ async createConversation() {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_add_user_in_the_conversation"><a class="anchor" href="#_add_user_in_the_conversation"></a><a class="link" href="#_add_user_in_the_conversation">12.2.4. Add user in the conversation</a></h4>
+<h4 id="_add_user_in_the_conversation"><a class="anchor" href="#_add_user_in_the_conversation"></a><a class="link" href="#_add_user_in_the_conversation">13.2.4. Add user in the conversation</a></h4>
 <div class="paragraph">
 <p>When an user come to the chat, we need to add it to the conversation.
 So we create a method in our class to add the current user in the conversation.</p>
@@ -3460,7 +3610,7 @@ async addMeToConversation(parameters, context) { <i class="conum" data-value="1"
 </div>
 </div>
 <div class="sect3">
-<h4 id="_send_a_message"><a class="anchor" href="#_send_a_message"></a><a class="link" href="#_send_a_message">12.2.5. Send a message</a></h4>
+<h4 id="_send_a_message"><a class="anchor" href="#_send_a_message"></a><a class="link" href="#_send_a_message">13.2.5. Send a message</a></h4>
 <div class="paragraph">
 <p>No we want to send a message on our chat. To do this, we need to follow 3 steps :</p>
 </div>
@@ -3550,7 +3700,7 @@ There is no specific method to launch an attack, to do this, we only send a spec
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_all_messages"><a class="anchor" href="#_get_all_messages"></a><a class="link" href="#_get_all_messages">12.2.6. Get all messages</a></h4>
+<h4 id="_get_all_messages"><a class="anchor" href="#_get_all_messages"></a><a class="link" href="#_get_all_messages">13.2.6. Get all messages</a></h4>
 <div class="paragraph">
 <p>To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).</p>
 </div>
@@ -3581,7 +3731,7 @@ async getMessages() {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a><a class="link" href="#_export_our_class">12.2.7. Export our class</a></h4>
+<h4 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a><a class="link" href="#_export_our_class">13.2.7. Export our class</a></h4>
 <div class="paragraph">
 <p>At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :</p>
 </div>
@@ -3600,12 +3750,12 @@ async getMessages() {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_use_your_em_custom_cloud_services_em"><a class="anchor" href="#_use_your_em_custom_cloud_services_em"></a><a class="link" href="#_use_your_em_custom_cloud_services_em">12.3. Use your <em>custom cloud services</em></a></h3>
+<h3 id="_use_your_em_custom_cloud_services_em"><a class="anchor" href="#_use_your_em_custom_cloud_services_em"></a><a class="link" href="#_use_your_em_custom_cloud_services_em">13.3. Use your <em>custom cloud services</em></a></h3>
 <div class="paragraph">
 <p>Once we have our <em>custom cloud service</em>, we need to create the frontend of our application.</p>
 </div>
 <div class="sect3">
-<h4 id="_launch_the_worker_locally"><a class="anchor" href="#_launch_the_worker_locally"></a><a class="link" href="#_launch_the_worker_locally">12.3.1. Launch the worker locally</a></h4>
+<h4 id="_launch_the_worker_locally"><a class="anchor" href="#_launch_the_worker_locally"></a><a class="link" href="#_launch_the_worker_locally">13.3.1. Launch the worker locally</a></h4>
 <div class="paragraph">
 <p>When we working on the frontend part, we often want to test our interaction with the backend logic.
 So with ZetaPush, you can launch your worker locally to test this interaction.
@@ -3632,7 +3782,7 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
 </div>
 </div>
 <div class="sect3">
-<h4 id="_interaction_with_worker"><a class="anchor" href="#_interaction_with_worker"></a><a class="link" href="#_interaction_with_worker">12.3.2. Interaction with worker</a></h4>
+<h4 id="_interaction_with_worker"><a class="anchor" href="#_interaction_with_worker"></a><a class="link" href="#_interaction_with_worker">13.3.2. Interaction with worker</a></h4>
 <div class="paragraph">
 <p>Now you just need to add the interaction with the <em>custom cloud service</em>. To do this, fill the file <code>front/index.js</code> :</p>
 </div>
@@ -3728,7 +3878,7 @@ const controller = <span class="keyword">new</span> AvengersController(client, d
 </div>
 </div>
 <div class="sect3">
-<h4 id="_test_you_application_locally"><a class="anchor" href="#_test_you_application_locally"></a><a class="link" href="#_test_you_application_locally">12.3.3. Test you application locally</a></h4>
+<h4 id="_test_you_application_locally"><a class="anchor" href="#_test_you_application_locally"></a><a class="link" href="#_test_you_application_locally">13.3.3. Test you application locally</a></h4>
 <div class="paragraph">
 <p>Now, you can test your application. To do this, you need to execute your frontend part locally. For example, you can use <a href="https://caddyserver.com/">Caddy Server</a>.</p>
 </div>
@@ -3764,7 +3914,7 @@ Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if yo
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploy_your_application"><a class="anchor" href="#_deploy_your_application"></a><a class="link" href="#_deploy_your_application">12.4. Deploy your application</a></h3>
+<h3 id="_deploy_your_application"><a class="anchor" href="#_deploy_your_application"></a><a class="link" href="#_deploy_your_application">13.4. Deploy your application</a></h3>
 <div class="paragraph">
 <p>Your application is working but only locally. To deploy your application you just need to launch <code>zeta push</code>. In this application you already have a npm script so you can run :</p>
 </div>
@@ -3785,10 +3935,10 @@ Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if yo
 </div>
 <h1 id="_reference" class="sect0"><a class="anchor" href="#_reference"></a><a class="link" href="#_reference">Reference</a></h1>
 <div class="sect1">
-<h2 id="_command_line_interface"><a class="anchor" href="#_command_line_interface"></a><a class="link" href="#_command_line_interface">13. Command Line Interface</a></h2>
+<h2 id="_command_line_interface"><a class="anchor" href="#_command_line_interface"></a><a class="link" href="#_command_line_interface">14. Command Line Interface</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_initialize_an_application"><a class="anchor" href="#_initialize_an_application"></a><a class="link" href="#_initialize_an_application">13.1. Initialize an application</a></h3>
+<h3 id="_initialize_an_application"><a class="anchor" href="#_initialize_an_application"></a><a class="link" href="#_initialize_an_application">14.1. Initialize an application</a></h3>
 <div class="paragraph">
 <p>The command to initialize an application with the CLI is :</p>
 </div>
@@ -3863,10 +4013,554 @@ An environment is one stage in the life-cycle of the application.</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a><a class="link" href="#_troubleshooting">15. Troubleshooting</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configuration_issue"><a class="anchor" href="#_configuration_issue"></a><a class="link" href="#_configuration_issue">15.1. Configuration issue</a></h3>
+<div class="sect3">
+<h4 id="_failed_to_load_configuration_config_01"><a class="anchor" href="#_failed_to_load_configuration_config_01"></a><a class="link" href="#_failed_to_load_configuration_config_01">15.1.1. Failed to load configuration (CONFIG-01)</a></h4>
+<div class="paragraph">
+<p>Loading of configuration from CLI has failed.</p>
+</div>
+<div class="paragraph">
+<p>Please contact the support</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/24" class="bare">https://github.com/zetapush/documentation/issues/24</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_account_issue"><a class="anchor" href="#_account_issue"></a><a class="link" href="#_account_issue">15.2. Account issue</a></h3>
+<div class="sect3">
+<h4 id="_missing_login_information_account_01"><a class="anchor" href="#_missing_login_information_account_01"></a><a class="link" href="#_missing_login_information_account_01">15.2.1. Missing login information (ACCOUNT-01)</a></h4>
+<div class="paragraph">
+<p>You didn&#8217;t provide your ZetaPush account login.</p>
+</div>
+<div class="sect4">
+<h5 id="_i_don_t_have_zetapush_account_how_to_create_it"><a class="anchor" href="#_i_don_t_have_zetapush_account_how_to_create_it"></a><a class="link" href="#_i_don_t_have_zetapush_account_how_to_create_it">15.2.1.1. I don&#8217;t have ZetaPush account, how to create it ?</a></h5>
+<div class="paragraph">
+<p>When you want to use ZetaPush Cloud services or push your custom Cloud services on ZetaPush, you need an account.</p>
+</div>
+<div class="sect5">
+<h6 id="_i_use_the_cli"><a class="anchor" href="#_i_use_the_cli"></a><a class="link" href="#_i_use_the_cli">I use the CLI</a></h6>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/14" class="bare">https://github.com/zetapush/documentation/issues/14</a></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_i_use_zetapush_console"><a class="anchor" href="#_i_use_zetapush_console"></a><a class="link" href="#_i_use_zetapush_console">I use ZetaPush console</a></h6>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/15" class="bare">https://github.com/zetapush/documentation/issues/15</a></p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_i_have_a_zetapush_account_how_to_use_it"><a class="anchor" href="#_i_have_a_zetapush_account_how_to_use_it"></a><a class="link" href="#_i_have_a_zetapush_account_how_to_use_it">15.2.1.2. I have a ZetaPush account, how to use it ?</a></h5>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/16" class="bare">https://github.com/zetapush/documentation/issues/16</a></p>
+</div>
+<div class="sect5">
+<h6 id="_i_provide_my_crendentials_manually"><a class="anchor" href="#_i_provide_my_crendentials_manually"></a><a class="link" href="#_i_provide_my_crendentials_manually">I provide my crendentials manually</a></h6>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/17" class="bare">https://github.com/zetapush/documentation/issues/17</a></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_i_use_the_cli_2"><a class="anchor" href="#_i_use_the_cli_2"></a><a class="link" href="#_i_use_the_cli_2">I use the CLI</a></h6>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/18" class="bare">https://github.com/zetapush/documentation/issues/18</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_password_information_account_02"><a class="anchor" href="#_missing_password_information_account_02"></a><a class="link" href="#_missing_password_information_account_02">15.2.2. Missing password information (ACCOUNT-02)</a></h4>
+<div class="paragraph">
+<p>You did provide your ZetaPush account login but not your password.</p>
+</div>
+<div class="sect4">
+<h5 id="_i_provide_my_password_in_zetarc_file"><a class="anchor" href="#_i_provide_my_password_in_zetarc_file"></a><a class="link" href="#_i_provide_my_password_in_zetarc_file">15.2.2.1. I provide my password in .zetarc file</a></h5>
+<div class="paragraph">
+<p>Edit the <code>.zetarc</code> file to add <code>developerPassword</code> with your password:</p>
+</div>
+<div class="listingblock highlight-lines:3">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;your login&gt;</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;your password&gt;</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Sensitive information leak</div>
+<div class="paragraph">
+<p>You must check that <code>.zetarc</code> file is not commited on your source control.</p>
+</div>
+<div class="paragraph">
+<p>If you are using git, add <code>.zetarc</code> entry in <code>.gitignore</code> file</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_i_provide_my_password_through_the_cli"><a class="anchor" href="#_i_provide_my_password_through_the_cli"></a><a class="link" href="#_i_provide_my_password_through_the_cli">15.2.2.2. I provide my password through the CLI</a></h5>
+<div class="paragraph">
+<p>When you want to run your custom cloud services locally, you can provide your password using <code>--developer-password</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ zeta run --developer-password "&lt;your password&gt;"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you run the command through npm, you can provide the option like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>$ npm start -- --developer-password "&lt;your password&gt;"</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Sensitive information leak</div>
+<div class="paragraph">
+<p>Using this method writes your password in your terminal history. If your computer can be accessed by other people, they may be able
+to see your password in command history.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_i_provide_my_password_in_environment_variable"><a class="anchor" href="#_i_provide_my_password_in_environment_variable"></a><a class="link" href="#_i_provide_my_password_in_environment_variable">15.2.2.3. I provide my password in environment variable</a></h5>
+<div class="paragraph tab-container">
+<p>help</p>
+</div>
+<div class="paragraph tab">
+<p>linux</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/19" class="bare">https://github.com/zetapush/documentation/issues/19</a></p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/19" class="bare">https://github.com/zetapush/documentation/issues/19</a></p>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_wrong_login_or_password_account_03"><a class="anchor" href="#_wrong_login_or_password_account_03"></a><a class="link" href="#_wrong_login_or_password_account_03">15.2.3. Wrong login or password (ACCOUNT-03)</a></h4>
+<div class="paragraph">
+<p>Wrong login or password.</p>
+</div>
+<div class="sect4">
+<h5 id="_check_your_credentials"><a class="anchor" href="#_check_your_credentials"></a><a class="link" href="#_check_your_credentials">15.2.3.1. Check your credentials</a></h5>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/20" class="bare">https://github.com/zetapush/documentation/issues/20</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_did_you_click_the_confirmation_link_in_the_email"><a class="anchor" href="#_did_you_click_the_confirmation_link_in_the_email"></a><a class="link" href="#_did_you_click_the_confirmation_link_in_the_email">15.2.3.2. Did you click the confirmation link in the email ?</a></h5>
+<div class="paragraph">
+<p>When you created your account, we sent you an email with a confirmation link.
+You must click the confirmation link in order to validate your account and be able to use ZetaPush services.
+This confirmation link is valid for 7 days.</p>
+</div>
+<div class="paragraph">
+<p>If you didn&#8217;t click in time, your account has been deleted and you must create it again.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_are_you_using_the_right_platform"><a class="anchor" href="#_are_you_using_the_right_platform"></a><a class="link" href="#_are_you_using_the_right_platform">15.2.3.3. Are you using the right platform ?</a></h5>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/21" class="bare">https://github.com/zetapush/documentation/issues/21</a></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_missing_application_name_account_04"><a class="anchor" href="#_missing_application_name_account_04"></a><a class="link" href="#_missing_application_name_account_04">15.2.4. Missing application name (ACCOUNT-04)</a></h4>
+<div class="paragraph">
+<p>You have a valid account but no application name is configured.</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/22" class="bare">https://github.com/zetapush/documentation/issues/22</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_account_not_validated_account_05"><a class="anchor" href="#_account_not_validated_account_05"></a><a class="link" href="#_account_not_validated_account_05">15.2.5. Account not validated (ACCOUNT-05)</a></h4>
+<div class="paragraph">
+<p>You have created a ZetaPush account but the account is not confirmed.</p>
+</div>
+<div class="paragraph">
+<p>When you created your account, we sent you an email with a confirmation link.
+You must click the confirmation link in order to validate your account and be able to use ZetaPush services.
+This confirmation link is valid for 7 days.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_application_doesn_t_exist_for_this_account_account_06"><a class="anchor" href="#_application_doesn_t_exist_for_this_account_account_06"></a><a class="link" href="#_application_doesn_t_exist_for_this_account_account_06">15.2.6. Application doesn&#8217;t exist for this account (ACCOUNT-06)</a></h4>
+<div class="paragraph">
+<p>The application that you have configured doesn&#8217;t exist for your account.</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/23" class="bare">https://github.com/zetapush/documentation/issues/23</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_network_issue"><a class="anchor" href="#_network_issue"></a><a class="link" href="#_network_issue">15.3. Network issue</a></h3>
+<div class="sect3">
+<h4 id="_local_network_unreachable_net_01"><a class="anchor" href="#_local_network_unreachable_net_01"></a><a class="link" href="#_local_network_unreachable_net_01">15.3.1. Local network unreachable (NET-01)</a></h4>
+<div class="paragraph">
+<p>Your computer can&#8217;t acces to external network.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>NET-01-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;cd659ef2-318e-a0ba-b7b7-bfff18f0701e\&quot; name=\&quot;Page-1\&quot;&gt;1VZtb5swEP41fGzESyDZx4W026RuqtRJ6z464IBVwyHjNGl//c5wvNWkq7Qq0viC/fh8Pj/33IETxMXpi2JV/h1SLh3fTU9OsHV831v6Eb4M8twiq8htgUyJlIwG4F68cAI7s4NIeT0x1ABSi2oKJlCWPNETjCkFx6nZHuT01Ipl3ALuEyZt9JdIdd6ia3814F+5yPLuZC/61K7sWPKYKTiUdJ7jB/vmaZcL1vmii9Y5S+E4goJrJ4gVgG5HxSnm0nDb0dbuuzmz2seteKnfsyGkMPRzd3WeIhM0LaHE16a5Dzc7XJzlupA49HCIh6jnB8KbyW8zWYQ4rbWCRx6DBNU4Dm5uXHxwZS+kHOFpyNfp0uBQ6jn7NkQT19lLElTDQSVk5ZNsmMo4WQU9wShcDgXHgNFEccm0eJp6Z6SgrLcbWMQBETlPKon/ickDOX2waNb8pKdkKl6LF7ZrDMy1KxClbqIIN064RYRJkZUIJHhvjixtnrjSAlX7mRYKkaZm/0ayHZebXosjVkmNf2PbeOYnZ6bWKMJBwuM8hPMMkyN30WXl3ZSTrzvDxeDoyqMt1F6u/KkH2O9rTPrrlPURvSuLvpVFK4mvOHTdKIrjmbxoqEborUnOHdRCCzCrO9Aaii5ro4U+z1biR7KBg5aixELrOuFMicXNM1eU0XrtbQJcyRRLBR+uQ6XfwVuh0HsbVgnKdDFy1vVH3yA5qww1xSkz34VFyfUR1GO9qJK3lGVV8lkFeUt3knh/TfPj0KU9l7B81KFX7r+X9epyvdJ1L9orA7tXLi/UKwOrym4BawShH614LNKnDB9zofl9xZqrHFF1U9bPMztVr2dz2lt+gG4DS7ehrVt/RrfRB+h2aVH8M+cIfDPNpKQ++b8zHIaXYxinwx9a+2UZfoOD6z8=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="sect4">
+<h5 id="_is_your_network_card_activated"><a class="anchor" href="#_is_your_network_card_activated"></a><a class="link" href="#_is_your_network_card_activated">15.3.1.1. Is your network card activated ?</a></h5>
+<div class="paragraph tab-container">
+<p>help</p>
+</div>
+<div class="paragraph tab">
+<p>linux</p>
+</div>
+<div class="paragraph">
+<p>Execute the following command in your terminal:</p>
+</div>
+<div class="paragraph">
+<p><code>$ ifconfig</code></p>
+</div>
+<div class="paragraph">
+<p>You should have at least 2 entries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>lo        Link encap:Boucle locale
+          inet adr:127.0.0.1  Masque:255.0.0.0
+          adr inet6: ::1/128 Scope:Hôte
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          Packets reçus:426620 erreurs:0 :0 overruns:0 frame:0
+          TX packets:426620 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 lg file transmission:1
+          Octets reçus:46609524 (46.6 MB) Octets transmis:46609524 (46.6 MB)
+
+eth0      Link encap:Ethernet  HWaddr 08:00:27:8e:b3:2d
+          inet adr:10.0.2.15  Bcast:10.0.2.255  Masque:255.255.255.0
+          adr inet6: fe80::d931:52d8:4a6b:a750/64 Scope:Lien
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          Packets reçus:2201511 erreurs:0 :0 overruns:0 frame:0
+          TX packets:1321912 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 lg file transmission:1000
+          Octets reçus:1577748703 (1.5 GB) Octets transmis:243738531 (243.7 MB)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you only have <code>lo</code> entry, it means that you have no network card to access
+external network that is available or activated.</p>
+</div>
+<div class="paragraph">
+<p>If you have another entry (like <code>eth0</code> in the example), check that you have an IP address (check the line starting with <code>inet adr:</code>).
+If the line is missing, then check that your network is working and you are authorized to connect to it.</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/29" class="bare">https://github.com/zetapush/documentation/issues/29</a></p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/30" class="bare">https://github.com/zetapush/documentation/issues/30</a></p>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_internet_unreachable_net_02"><a class="anchor" href="#_internet_unreachable_net_02"></a><a class="link" href="#_internet_unreachable_net_02">15.3.2. Internet unreachable (NET-02)</a></h4>
+<div class="paragraph">
+<p>Your computer can access local network but can&#8217;t access the Internet.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>NET-02-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;cd659ef2-318e-a0ba-b7b7-bfff18f0701e\&quot; name=\&quot;Page-1\&quot;&gt;vVbfb5swEP5reFxkIKTZ40KbbVI3VeqkdY8OOGDFcMg4Tdq/fmc4AtRkzdSqvIC/O5/vvvthvDAujl81r/IfkArlBSw9euG1FwT+PFjgyyJPLXLl+y2QaZmSUg/cy2dBICN0L1NRjxQNgDKyGoMJlKVIzAjjWsNhrLYFNT614plwgPuEKxf9LVOTt+gyuOrxb0JmeXeyv/jcSjY82WUa9iWd5wXhtnlaccE7WxRonfMUDgMovPHCWAOY9qs4xkJZbjva2n3rM9KT31qU5pINFFBtnrrQRYpM0LKEEl+rJh5hdzBc5aZQ+OnjJx6inx4IbxZ/7GIW4bI2GnYiBgW6MRyu1wwflGylUgM8jcQynVscSjOl37po/TobJEE17HVCWiGVDdeZIK35iWAsXAGFQIdRRQvFjXwcW+dUQdlJr2cRP4jIaVKjjyOVsTj+H1IZexOpgUtq+EGk0kR55GpPRh8cmo04mjGZWtTymW8aBRt2BbI0jRfRyouuEeFKZiUCCcYtkKXVo9BG4ij4QoJCpqndv1J8I9Tq1OADVqnFXytha1kcR4zQACMP+7kwzEM0zTAZYrMuKxdTTrbuLBe9oYDRFprZn4KxBdhua0z6y5SdPLooi4GTRSeJTsUuFnE8kRcD1QC9tcm5g1oaCVa6AWOg6LI2EJzy7CR+UDawN0qW2Gjd9TLRYnHzTDXlYrn0VyFKMs1TKfpwqPU7+FpqtN66VYK2VwMZ6y6dwCI5ryw1xTGzl+2sFOYAelfPquRfleV08tkK8udslPhgSetDf/X5jLB8cO1dsbe3degUxC1gOhH62cbp1Md4cB5yacR9xZsJdUCCxok8PzDHRPtTo5I034Hi0KE4cikOJihevAPFc4fiX7lA4Lut+5Ja+j0ZpqF3AcOvjcfLGY6ij2MYl/0fWjsE+9/g8OYv&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="sect4">
+<h5 id="_have_you_access_to_the_internet"><a class="anchor" href="#_have_you_access_to_the_internet"></a><a class="link" href="#_have_you_access_to_the_internet">15.3.2.1. Have you access to the Internet ?</a></h5>
+<div class="paragraph">
+<p>Execute the following command in your terminal:
+<code>$ ping google.com</code>
+And then press Ctrl+C</p>
+</div>
+<div class="paragraph">
+<p>You should have something like that for a working Internet address:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>PING google.com (64.233.167.100) 56(84) bytes of data.
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=1 ttl=63 time=14.5 ms
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=2 ttl=63 time=13.0 ms
+64 bytes from wl-in-f100.1e100.net (64.233.167.100): icmp_seq=3 ttl=63 time=17.3 ms
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 13.038/14.964/17.319/1.776 ms</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_google_is_unknown_or_unreachable"><a class="anchor" href="#_google_is_unknown_or_unreachable"></a><a class="link" href="#_google_is_unknown_or_unreachable">Google is unknown or unreachable</a></h6>
+<div class="paragraph">
+<p>If you have this result instead:
+<code>ping: unknown host google.com</code>
+Or this result:
+<code>Destination Host Unreachable</code></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_google_is_not_answering"><a class="anchor" href="#_google_is_not_answering"></a><a class="link" href="#_google_is_not_answering">Google is not answering</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>PING google.com (64.233.167.100) 56(84) bytes of data.
+^C
+--- google.com ping statistics ---
+123 packets transmitted, 0 received, 100% packet loss, time 122391ms</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/31" class="bare">https://github.com/zetapush/documentation/issues/31</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/32" class="bare">https://github.com/zetapush/documentation/issues/32</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/33" class="bare">https://github.com/zetapush/documentation/issues/33</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_proxy_unreachable_net_03"><a class="anchor" href="#_proxy_unreachable_net_03"></a><a class="link" href="#_proxy_unreachable_net_03">15.3.3. Proxy unreachable (NET-03)</a></h4>
+<div class="paragraph">
+<p>Your computer can access local network but can&#8217;t access the proxy.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>NET-03-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;cd659ef2-318e-a0ba-b7b7-bfff18f0701e\&quot; name=\&quot;Page-1\&quot;&gt;1Vffb5swEP5r8rjIQEiyx4W226RuqtRJ2x4dcMCq4ZBxmqR//c5wBJhJm6pRp/EC/nw+3333K5kEUb7/rHmZfYNEqInPkv0kuJr4vjfz5/iyyKFBFp7XAKmWCQl1wL18EgQyQrcyEdVA0AAoI8shGENRiNgMMK417IZiG1DDW0ueCge4j7ly0Z8yMVmDLv1Fh38RMs3am735x2ZnzeOHVMO2oPsmfrCpn2Y7560ucrTKeAK7HhRcT4JIA5jmK99HQlluW9qaczcndo92a1GYcw6QQ5U5tK6LBJmgZQEFvla1P8KeYLjKTK7w08NPvEQffhFeL37bxTTEZWU0PIgIFOhacXBzw/DBnY1UqocnoVgmM4tDYcbkGxOtXSedJKiCrY5JKqC04ToVJDU7EoyJKyAXaDCKaKG4kY9D7ZwyKD3KdSziBxE5Tmr4fqQyFkWvIZWxN5Hqu6QG70QqdZRHrrak9JdDsxF7MyRTi0o+8XUtYN0uQRamtiJcTcIrRLiSaYFAjH4LZGn1KLSR2Ao+0UYuk8SeXym+Fmp1LPAeq1TiL6Ww1Sz2A0aogZGFXV/oxyEcZ5gUsWkblbMpJ113lotOkc/oCPXsD/5QA2w2FQb975AdLTorir4TRSeITsbO51E0EhcDZQ+9tcG5g0oaCXZ3DcZA3katt3GMsxP4XtrA1ihZYKG142WkxKL6GSvK+XLprQLcSTVPpOjcodJv4SupUXtjVgHajgZS1g4d3yIZLy01+T61w3ZaCLMD/VBNy/i5zHIq+WQGeTM2CLy/pPWuG30eIyzrjb0Fe3tZB05C3AKGE6HvjZ9Ofgwb5y6TRtyXvO5QOyRoGMjTDXNItDfWKknyAhQHDsWhS7E/QvH8AhS3v72eK7rXDKgRTl832d84hGbuEPLYOP0Xn0Izh8o7DfvDxZOUCDojSV+aMOcnaRj+yyRlDrM/MoHAV9udCxo8/zvFi3ekGJfd/4hmVHd/1oLrPw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/34" class="bare">https://github.com/zetapush/documentation/issues/34</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/35" class="bare">https://github.com/zetapush/documentation/issues/35</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/36" class="bare">https://github.com/zetapush/documentation/issues/36</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_internet_behind_proxy_unreachable_net_04"><a class="anchor" href="#_internet_behind_proxy_unreachable_net_04"></a><a class="link" href="#_internet_behind_proxy_unreachable_net_04">15.3.4. Internet behind proxy unreachable (NET-04)</a></h4>
+<div class="paragraph">
+<p>Your computer can access local network but can&#8217;t access the Internet through a proxy.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>NET-04-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;cd659ef2-318e-a0ba-b7b7-bfff18f0701e\&quot; name=\&quot;Page-1\&quot;&gt;3Zdtb5swEMc/DS8X8Zzs5UKbblI3VeqkdS8dcMCK4ZBxGtJPPxuOp5ku2Vp103gD/ts+7N+d78Dyory+EaTMPkNCueXaSW15V5brOr4bqptWTq2ydJxWSAVLcNAg3LMniqKN6oEltJoMlABcsnIqxlAUNJYTjQgBx+mwHfDpW0uSUkO4jwk31W8skVmrrtzloH+kLM26Nzvh+7ZnS+J9KuBQ4Pss19s1V9udk84WbrTKSALHkeRdW14kAGT7lNcR5Zpth62dt3mmt1+3oIW8aALOeCT8QLslNwuTpw4GTRQbbBZQqNu62SHVNmzVymTO1aOjHispYE8j4CCayd5mY6tL9ewY5yM9Cegq8bUOhRzpto3j22Xodz+7NZQqOIgYR/kYLESkVI5jCrd/QyGnUpzUGEE5kexxap5g4KT9uAGeekB+8yyXLyKndiVOD6g3je+6sQjmqNp2FP0O1d4Lf0bVM6n6bwQ1+HehvjBUXROq90ZQQ+PQPxiYJa3lFKagFXsi22aA3nYJrJDNKoK1FVwphXCWFkqI1b6porR+pEIylVY/YEfOkkTPX3OypXzdJ8sRVUyX50JYW6b1hAgWA1zhkGPHfgjmCaMhe9F55WLkaOtOsxgM+TYixvr3zp1agN2uUk7/2WX9ii7yons+dRsRG4ZRNOMXCeVIvdXOuYOKSQa6dwtSQt55bdTR+9lw/Chs4CA5K9RB60r1zBGLmmvuUIarlbP2VE8qSMLosB08+p18xYSy3i6rAKHLLBrrCrirlYyUGk1ep/rDZVFQeQSxrxZl/KvIMk7ysxHk+PbE8e4K28fhM8KxUctGnxBL++XH2jMC4haUO5X0pd2nER/TxHnMmKT3JWky1FEBOlPb+4Q5Be3MpUoc+QqIPQNxYCJ2ZxCHr4DYNxDfCahP/wXYIPiLYLsv/xHZrxlVwiedUQpMlq+JGMvJBYjPFZ7LES/fELFqDv8RbXkZfta86x8=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/35" class="bare">https://github.com/zetapush/documentation/issues/35</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/36" class="bare">https://github.com/zetapush/documentation/issues/36</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dependency_resolution_issue"><a class="anchor" href="#_dependency_resolution_issue"></a><a class="link" href="#_dependency_resolution_issue">15.4. Dependency resolution issue</a></h3>
+<div class="sect3">
+<h4 id="_unresolved_dependency_dependency_01"><a class="anchor" href="#_unresolved_dependency_dependency_01"></a><a class="link" href="#_unresolved_dependency_dependency_01">15.4.1. Unresolved dependency (DEPENDENCY-01)</a></h4>
+<div class="paragraph">
+<p>A NPM dependency couldn&#8217;t be resolved.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>DEPENDENCY-01-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;54b84990-987b-28cd-0bf2-d1c95d2958c5\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush.<br>
+➋ Once your code is uploaded, ZetaPush builds your custom services.<br>
+➌ The dependencies defined in the package.json file are downloaded and installed.<br>
+  This is this step that fails because one dependency can&#8217;t be downloaded.</p>
+</div>
+<div class="sect4">
+<h5 id="_is_this_the_right_dependency_name_and_version"><a class="anchor" href="#_is_this_the_right_dependency_name_and_version"></a><a class="link" href="#_is_this_the_right_dependency_name_and_version">15.4.1.1. Is this the right dependency name and version ?</a></h5>
+<div class="paragraph">
+<p>Open the following URL in your browser and search for the dependency:
+  <a href="https://www.npmjs.com/" class="bare">https://www.npmjs.com/</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_are_you_using_a_custom_npm_registry"><a class="anchor" href="#_are_you_using_a_custom_npm_registry"></a><a class="link" href="#_are_you_using_a_custom_npm_registry">15.4.1.2. Are you using a custom NPM registry ?</a></h5>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/25" class="bare">https://github.com/zetapush/documentation/issues/25</a></p>
+</div>
+<div class="paragraph">
+<p>FIXME: ZetaPush MUST support private NPM registries</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_are_you_using_a_local_dependency_not_published_on_npm_registry"><a class="anchor" href="#_are_you_using_a_local_dependency_not_published_on_npm_registry"></a><a class="link" href="#_are_you_using_a_local_dependency_not_published_on_npm_registry">15.4.1.3. Are you using a local dependency not published on NPM registry ?</a></h5>
+<div class="paragraph">
+<p>ZetaPush needs all the dependency to be available on the Internet.
+Please publish your local dependencies on a NPM registry and retry.</p>
+</div>
+<div class="paragraph">
+<p>You can follow the NPM tutorial to publish your packages:
+  <a href="https://docs.npmjs.com/getting-started/publishing-npm-packages" class="bare">https://docs.npmjs.com/getting-started/publishing-npm-packages</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed"><a class="anchor" href="#_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed"></a><a class="link" href="#_are_you_using_a_dependency_that_requires_additionnal_tools_to_be_installed">15.4.1.4. Are you using a dependency that requires additionnal tools to be installed ?</a></h5>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/26" class="bare">https://github.com/zetapush/documentation/issues/26</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/27" class="bare">https://github.com/zetapush/documentation/issues/27</a></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unreadable_dependency_dependency_02"><a class="anchor" href="#_unreadable_dependency_dependency_02"></a><a class="link" href="#_unreadable_dependency_dependency_02">15.4.2. Unreadable dependency (DEPENDENCY-02)</a></h4>
+<div class="paragraph">
+<p>A NPM dependency couldn&#8217;t be downloaded or installed.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>DEPENDENCY-02-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;54b84990-987b-28cd-0bf2-d1c95d2958c5\&quot; name=\&quot;Page-1\&quot;&gt;3VpLc+MoEP41Pial9+MYK87MYWcrVTnszt5kCdtUsFAhHDv59QsSyALkxE5wnIwvFg1C0P31181j4mfr3Q+S16tfuARo4jnlbuLfTjzPDbyI/XHJcyeJI6cTLAksRaO94AG+ACGUzTawBI3SkGKMKKxVYYGrChRUkeWE4K3abIGR+tU6XwJD8FDkyJT+A0u66qSJF+/lPwFcruSX3SjtauZ58bgkeFOJ7008f9H+uup1LvsSE21WeYm3A5E/m/gZwZh2T+tdBhDXrVRb997dgdp+3ARU9JgXvO6FpxxtgBxxOy76LHXBXmBqZ4UpG2zNhQXCG/b+dLuCFDzUecGFW4YEJlvRNWIllz2aYxHDewKEgt1AJMb2A+A1oOSZNZG1vtCTwFEqitu9UaJQyFYDg/ixEOYCCMu+670y2IPQx7hufEM3v/GGtKhb1xsKiKGqBa5ohhEmbdF3nCjKMqYJPmHI0HWD4LJidRTXA+lf+Ryge9xACjGvnWNK8Zo1QFpFwRTJvupPc9FPLxhoHW8oghXIes9wmHABERoMLGt/3KKU4EcwqImSxJ36rGZJ8hKC/XQqXIGB+BYS1ns3rAoTbgzRmfQXbwCY9W7JeeK6AnSLyWNzXRd28BE4oYKP0DcB4jojALGBDzcyfaVkNCKKAM3xdrYXTFtaAKUwSVvNniUKVCsylZDnf2VTXvjNC9fhmNGc9meauQxBUgZcruNStD9ogYYBvRBzCgT/5mQJRCuhdD7bV61EAMopfFJJdUzl7as3hOTPgwY1hhVtBj3fc8HA+IFKDn7oaObretwbsx/aUfb1UpMcZ94knU0S9hwhpozpnJFAtORP9WaOYLMyKwyQMGxT1doENPAln7cNuF3EzFnrcDoJb8c8XqeUNSzLFmUtaUz7MDQwuwhEJ8EhOuCRfegVo1bC1yiTK6a6SkX5NIQYELhKVAhcua7WB14sGgZb3a1PQ4Ibf4ant87d+7o77ulZ9qqnv9ejE9sefSyJypRqxMmmpi/NN5Blcgx8m4aHSC/K1zySVvOmbievt+8yFTZ7QJ5gwTLK7+idwuQjppW6+7B3XjnXkZsEii95djxUI+mr5Az+GRgYugU1ws8jKZrqmufPYPtMQwapYzOUwEaGkpyRt3aQdrTlhaL4e5ivDOve4LRzZi+hyXXxpbjOl+gxue7uG/DQYbUntniIAcZzEkupgeJ38TnSgvQNejnWg2Ldg+w5ycAX/SBWFxNp6knBPSCQzZyD5vYjvhVdzLdGdjL+CN+SixALviV19EHPis/uWKFhS7HzsgVz/q26Rkzz7fbDpeN76F8wvkeGnjIj4b20frT8xwvDz9NPv8tqlaC1VZuvpDhnYO93cXP8lbjZ3En9I7hZwssKN8dSS3KhZIesU7VTV/MqK3RtLuHlRrlYpjtfj5Y02naTT6RtubT++hvHewbUM9SjSCgxScj64ut9W8eOFpUcu1vHEl0jjDd7ZevYyavWS5jCqNnsW29iHSZRmbjb2MRyYm2f2Q6Juhz/ar/hGXhUnjhearvGNSljNAExeOTu7g0eeS9byHB1YbrwXS1auJZPmsxEXtJFZnp7VfOQCitGE7yXb0cGPVpGyEBmilbIIE1VNggtHToFGhnEWhdWyCAxIJEdzqac9mDko9vdr/j10RY8ORPztQOCPqv+lA1yM07/ff/L9CkClrBp+37T29RbEK6mYe1CxALhbbFi0f66zBm08/aazZiVLCja1VbisannaETNiQ01jywAjUhXlTf85hYnHZQ3DSwOJbbmOemrUXIkLmqBczzJZcmEKOrx71CUO3xce1T88834FxwZ/gY2HLsOJWUfJL4gUhEUORo2utmIt/bwMPOpRIei1lGnA6Ojk+N2qn5HTsBW3HbNg0cZt29MqngBNOco2HzTWyKHsWwtajOnC7SrIpYyeKVP9yzZu7lr/R+z+P2ouUUIfwcKVJIR1/KGjCREx2NhLN6oDHnyCewJUSlVjxP6Sw0DSgtGKM07PSyx4v5ibWfg/e1lf/Y/&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush.<br>
+➋ Once your code is uploaded, ZetaPush builds your custom services.<br>
+➌ The dependencies defined in the package.json file are downloaded and installed.<br>
+  This is this step that fails because one dependency is unreadable.</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/27" class="bare">https://github.com/zetapush/documentation/issues/27</a></p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/28" class="bare">https://github.com/zetapush/documentation/issues/28</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dependencies_injection_issue"><a class="anchor" href="#_dependencies_injection_issue"></a><a class="link" href="#_dependencies_injection_issue">15.5. Dependencies injection issue</a></h3>
+<div class="sect3">
+<h4 id="_cannot_resolve_parameters_for_custom_cloud_service_injection_01"><a class="anchor" href="#_cannot_resolve_parameters_for_custom_cloud_service_injection_01"></a><a class="link" href="#_cannot_resolve_parameters_for_custom_cloud_service_injection_01">15.5.1. Cannot resolve parameters for custom cloud service (INJECTION-01)</a></h4>
+<div class="paragraph">
+<p>One of your custom cloud services hasn&#8217;t all necessary dependencies</p>
+</div>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/37" class="bare">https://github.com/zetapush/documentation/issues/37</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_could_service_issue"><a class="anchor" href="#_custom_could_service_issue"></a><a class="link" href="#_custom_could_service_issue">15.6. Custom could service issue</a></h3>
+<div class="sect3">
+<h4 id="_custom_cloud_service_start_failed_service_05"><a class="anchor" href="#_custom_cloud_service_start_failed_service_05"></a><a class="link" href="#_custom_cloud_service_start_failed_service_05">15.6.1. Custom cloud service start failed (SERVICE-05)</a></h4>
+<div class="paragraph">
+<p>Your custom cloud services couldn&#8217;t start on ZetaPush platform.</p>
+</div>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>SERVICE-05-cause</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36\&quot; version=\&quot;8.7.10\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;54b84990-987b-28cd-0bf2-d1c95d2958c5\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+</body>
+</html>
+<div class="paragraph">
+<p>➊ You run the command 'zeta push'. Your code is uploaded on ZetaPush.<br>
+➋ Once your code is uploaded, ZetaPush builds your custom services.<br>
+➌ The dependencies defined in the package.json file are downloaded and installed.<br>
+➍ In parallel, your web application (front) is deployed.<br>
+➎ Your custom cloud service is started by running <code>npm run start&#8201;&#8212;&#8201;--skip-provisioning</code><br>
+  This is this step that fails.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-11 09:33:03 CEST
+Last updated 2018-06-15 18:47:50 UTC
 </div>
 </div>
 </body>
