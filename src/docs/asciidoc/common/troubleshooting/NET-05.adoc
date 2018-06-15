@@ -1,0 +1,81 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+We detected that you have a network issue but unfortunately 
+we couldn't make automated checks to help you understand
+
+== Check that your computer can access Internet
+
+Open a browser and try to open `google.fr`. 
+
+=== Access ko from browser
+
+TODO: URL to guide to resolve internet issues
+
+=== Access ok from browser but ko from npm/node
+
+Behind proxy
+
+If you can access it through your browser but not with npm,
+check your proxy 
+
+
+== Behind proxy
+
+If NodeJS/npm reports one of theses errors:
+
+- `ENETUNREACH`
+- `ECONNREFUSED`
+
+It may mean that your system or NodeJS/npm is configured with proxy settings.
+Please check that your proxy configuration is correct.
+
+=== Proxy configured system-wide
+
+[role=tab-container]
+System-wide proxy
+
+[role=tab, condition=isLinux()]
+Linux
+
+In your terminal, execute the following commands to know if your system uses a proxy:
+
+[source, console]
+----
+echo $http_proxy
+echo $HTTP_PROXY
+echo $https_proxy
+echo $HTTPS_PROXY
+----
+
+[role=tab, condition=isWindows()]
+Windows
+
+TODO: windows version
+
+[role=tab-container-end]
+-
+
+If at least one command displays something, then your system is configured to use a proxy.
+
+TODO: disable proxy (depends on system)
+
+=== Proxy configured for npm
+
+In your terminal, execute the following commands to know if npm uses a proxy:
+
+[source, console]
+----
+npm config get proxy
+npm config get https-proxy
+----
+
+If at least one command displays any other result thant `null`, 
+then npm is configured to use this proxy.
+If you want to disable npm proxy, you can execute:
+
+[source, console]
+----
+npm config rm proxy
+npm config rm https-proxy
+----
