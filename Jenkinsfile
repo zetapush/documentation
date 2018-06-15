@@ -32,7 +32,7 @@ pipeline {
           reportDir: 'target/generated-docs', 
           reportFiles: 'index.html', 
           allowMissing: false, 
-          alwaysLinkToLastBuild: false, 
+          alwaysLinkToLastBuild: true, 
           keepAll: false, 
           reportTitles: ''
         )
@@ -41,23 +41,48 @@ pipeline {
 
     stage('Publish html documentation') {
       when {
-          branch 'master'
+        branch 'master'
       }
       steps {
-        sh 'mkdir /tmp/gh-pages'
-        dir('/tmp/gh-pages') {
+        // checkout gh-pages
+        dir('target/documentation') {
           git(url: 'git@github.com:zetapush/documentation.git', branch: 'gh-pages')
         }
-        sh 'cp -rf target/generated-docs/* /tmp/gh-pages/documentation'
-        dir('/tmp/gh-pages/documentation') {
-          sshagent(['github']) {
-            // TODO: push
-            sh 'git add .'
-            sh 'git commit -m "Update generated documentation"'
-            sh 'git push'            
-          }
+        // copy new documentation to gh-pages local repo
+        sh 'cp -rf target/generated-docs/* target/documentation'
+        // commit
+        sh 'cd target/documentation && git add .'
+        sh 'cd target/documentation && git commit -m "Update generated documentation"'
+        // push on gh-pages
+        sshagent(['github-ssh']) {
+          sh 'mkdir ~/.ssh'
+          sh 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
+          sh 'cd target/documentation && git push origin gh-pages'
         }
       }
+    }
+  }
+
+  post {
+    failure {
+      slackSend(
+          message: """ZetaPush documentation : ${env.BRANCH_NAME} failed to build
+                      - <${env.BUILD_URL}/consoleFull|View logs>""",
+          color: '#ff0000'
+      )
+      emailext(
+          subject: '${DEFAULT_SUBJECT}',
+          body: '${DEFAULT_CONTENT}', 
+          attachLog: true, 
+          recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+      )
+    }      
+    success {
+      slackSend(
+          message: """ZetaPush documentation : ${env.BRANCH_NAME} success
+                      - <${env.BUILD_URL}/consoleFull|View logs>""",
+          color: '#00ff00'
+      )
     }
   }
 }
