@@ -32,7 +32,7 @@ pipeline {
           reportDir: 'target/generated-docs', 
           reportFiles: 'index.html', 
           allowMissing: false, 
-          alwaysLinkToLastBuild: false, 
+          alwaysLinkToLastBuild: true, 
           keepAll: false, 
           reportTitles: ''
         )
@@ -47,18 +47,20 @@ pipeline {
         }
       }
       steps {
-        sh 'mkdir /tmp/gh-pages'
-        dir('/tmp/gh-pages') {
+        // checkout gh-pages
+        dir('target/documentation') {
           git(url: 'git@github.com:zetapush/documentation.git', branch: 'gh-pages')
         }
-        sh 'cp -rf target/generated-docs/* /tmp/gh-pages/documentation'
-        dir('/tmp/gh-pages/documentation') {
-          sshagent(['github']) {
-            // TODO: push
-            sh 'git add .'
-            sh 'git commit -m "Update generated documentation"'
-            sh 'git push'            
-          }
+        // copy new documentation to gh-pages local repo
+        sh 'cp -rf target/generated-docs/* target/documentation'
+        // commit
+        sh 'cd target/documentation && git add .'
+        sh 'cd target/documentation && git commit -m "Update generated documentation"'
+        // push on gh-pages
+        sshagent(['github-ssh']) {
+          sh 'mkdir ~/.ssh'
+          sh 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
+          sh 'cd target/documentation && git push origin gh-pages'
         }
       }
     }
