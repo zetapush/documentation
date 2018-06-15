@@ -56,6 +56,10 @@ include::{docdir}/common/troubleshooting/NET-03.adoc[leveloffset=+2]
 
 include::{docdir}/common/troubleshooting/NET-04.adoc[leveloffset=+2]
 
+=== Analysis failed (NET-05)
+
+include::{docdir}/common/troubleshooting/NET-05.adoc[leveloffset=+2]
+
 == Dependency resolution issue
 
 === Unresolved dependency (DEPENDENCY-01)
