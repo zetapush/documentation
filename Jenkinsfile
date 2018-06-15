@@ -41,7 +41,10 @@ pipeline {
 
     stage('Publish html documentation') {
       when {
+        anyOf {
           branch 'master'
+          branch 'feature/ci/gh-pages'
+        }
       }
       steps {
         sh 'mkdir /tmp/gh-pages'

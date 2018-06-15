@@ -22,4 +22,6 @@ RUN groupadd --gid ${gid} ${group} && \
 
 RUN chown -R ${user}:${user} ${USER_HOME}
 
+USER jenkins
+
 VOLUME ["/home/jenkins/.m2"]
