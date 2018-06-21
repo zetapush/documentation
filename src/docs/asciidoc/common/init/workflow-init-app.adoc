@@ -1,18 +1,31 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-== Workflow initialization
+== Initialization Workflows explanation
 
-=== I have an existing account
+[role="tab-container no-max-height"]
+With or without account
 
-==== I want to use an existing application
+[role=tab]
+Don't have ZetaPush account
 
+
+.I want to create an account
+include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+2]
+
+[role=tab]
+Have an account and an app
+
+.I want to use an existing application
 include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[leveloffset=+3]
 
-==== I want to create a new application
 
+[role=tab]
+Have an account and want new app
+
+.I want to create a new application
 include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[leveloffset=+3]
 
-=== I don't have ZetaPush account
 
-include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+2]
+[role=tab-container-end]
+-

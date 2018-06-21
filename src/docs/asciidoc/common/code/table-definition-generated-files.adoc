@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 .Definition of generated files
-[cols="2*^.^", options="header"]
+[cols="1,4", options="header"]
 |===
 | File / Folder
 | Definition
@@ -14,10 +14,10 @@ include::{docdir}/variables.adoc[]
 | Avoid you to publish your developer credentials (on GitHub for example)
 
 | `package.json`
-| Contains the dependencies of ZetaPush, the name of your app, the entry point of yours _custom cloud services_ and many useful other informations for your application.
+| Contains the dependencies, the name of your application, the entry point of yours _custom cloud services_ (`main` property) and many useful other informations for your application.
 
 | `README.md`
-| Give you some informations to use your application. 
+| Give you some informations about how to use your application. 
 
 | `front/`
 | By convention, the front end code of your application is in this folder. You can change it by editing `package.json`.

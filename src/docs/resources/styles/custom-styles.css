@@ -24,6 +24,11 @@ li code {
 .imageblock.text-center .title {
 	text-align: center;
 }
+.imageblock.center .content,
+.imageblock.center .title {
+	text-align: center;
+	
+}
 
 .no-callout .conum,
 .no-callout .conum + b,
@@ -50,3 +55,38 @@ h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id
 .code-once-diagram img {
 	height: 370px;
 }
+
+.sect1 ~ .sect0 {
+	border-top: 1px solid #ba3925;
+	padding-top: 1.1em;
+}
+
+#toc ul.sectlevel0>li>a {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#toc ul.sectlevel1>li>a {
+	font-weight: bold;
+}
+
+@media only screen and (min-width: 1600px) {
+	#toc.toc2 {
+		width: 30em;
+	}
+	body.toc2 {
+    padding-left: 30em;
+    padding-right: 0;
+	}
+}
+
+
+.exchange-call {
+	color: #00c0f2;
+	font-size: 1.2em;
+}
+.exchange-response {
+	color: #ffbd4a;
+	font-size: 1.2em;
+}
+

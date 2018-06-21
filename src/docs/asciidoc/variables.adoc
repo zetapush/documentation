@@ -4,12 +4,7 @@ endif::[]
 ifndef::images-dir[]
 :images-dir: {relative-path}images/
 endif::[]
-ifndef::user-manual-dir[]
-:user-manual-dir: {docdir}/user-manual/
+
+ifndef::appName[]
+:appName: myApp
 endif::[]
-ifndef::general-dir[]
-:general-dir: {docdir}/general/
-endif::[]
-
-
-

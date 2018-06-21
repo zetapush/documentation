@@ -1,0 +1,135 @@
+:relative-path: ./
+include::{docdir}/variables.adoc[]
+
+= Developer manual
+
+== Account management
+
+// TODO: explications compte, app, envs, orga
+Each account
+
+=== Create a new account and a new application
+
+==== Using ZetaPush main site
+
+
+==== Using ZetaPush web Console
+
+
+==== Using your terminal
+
+// TODO: Landing page
+// TODO: Web Console
+// TODO: CLI
+
+=== Add a new application to your account
+
+// TODO: Web Console
+// TODO: CLI
+
+=== Configure your project to use existing application
+
+// TODO: Web Console
+// TODO: CLI
+// TODO: manually
+
+== Develop your front with ZetaPush
+
+// TODO: general explanations
+
+=== Use built-in ZetaPush cloud services
+
+// TODO
+
+[TIP]
+====
+// TODO: reference to existing services
+====
+
+=== Configure/adapt ZetaPush cloud services
+
+// TODO
+
+=== Run your front locally
+
+// TODO
+
+== Develop your business logic
+
+// TODO: general explanations
+
+=== Define a custom cloud service
+
+// TODO
+
+=== Use a custom cloud service in your front
+
+// TODO
+
+=== Hot reload
+
+// TODO
+
+== Deploy/publish your application
+
+// TODO: general explanation
+
+=== Applications and environments
+
+// TODO: principes de surcharge
+
+=== Deploy both front and custom cloud services on ZetaPush Cloud
+
+// TODO
+
+=== Deploy your front on ZetaPush Cloud
+
+// TODO
+
+=== Deploy your custom cloud services on ZetaPush Cloud
+
+// TODO
+
+== Testing
+
+// TODO
+
+=== Unit testing your front
+
+// TODO: outils habituels
+// TODO: mock des services
+
+=== Unit testing your custom cloud services
+
+// TODO: how to test
+// TODO: mock services
+
+=== Integration testing your front
+
+// TODO
+
+=== Integration testing your custom cloud services
+
+// TODO
+
+=== Functional testing / end-to-end testing
+
+// TODO
+
+// WORKFLOW INIT APP
+//include::{docdir}/common/init/workflow-init-app.adoc[]
+
+// INIT APP
+//include::{docdir}/common/init/init.adoc[]
+
+// CUSTOM CLOUD SERVICE
+//include::{docdir}/common/custom-cloud-service/custom-cloud-service.adoc[]
+
+// USE SERVICE
+//include::{docdir}/common/usage-service/usage-service.adoc[]
+
+// DEPLOY APPLICATION
+//include::{docdir}/common/deploy/deploy.adoc[]
+
+// CONFIGURATION MANAGEMENT
+//include::{docdir}/common/configuration/configuration.adoc[]

@@ -1,0 +1,37 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+= Introduction
+
+== ZetaPush Celtia
+
+TODO: Write presentation
+
+== Sections
+
+[cols="5*^"]
+|===
+| <<quick-start.adoc#_quick_start, Quick Start>> + 
+If you want to start using ZetaPush quickly
+
+| <<tutorials.adoc#_tutorials, Tutorials>> + 
+If you want to learn how to use ZetaPush Celtia main features, you can begin here
+
+| <<how-to.adoc, Guides>> + 
+If you want to go into some topics in depth
+
+| <<developer-manual.adoc, Developer Manual>> +
+If you want to cover completely each topic
+
+| <<reference.adoc, Reference>> +
+If you want to search for a particular piece of information
+|===
+
+== Contact us
+
+You can contact us on https://spectrum.chat/zetapush[Spectrum^].
+
+If you want to share your ideas with us, you can contribute to our https://github.com/zetapush/zetapush-next-open-specification[open specifications on GitHub^]
+
+// VOCABULARY
+include::{docdir}/common/vocabulary/vocabulary.adoc[]

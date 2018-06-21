@@ -11,7 +11,7 @@ By convention, the directory contains the front code. For example you can have t
     └── index.js
 ```
 
-=== Basic example of Hello World (with custom cloud service)
+=== Basic example of Hello World (calling custom cloud service)
 
 include::{docdir}/common/code/hello-world-front-html.adoc[]
 

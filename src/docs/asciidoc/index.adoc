@@ -12,13 +12,83 @@ include::{docdir}/variables.adoc[]
 = ZetaPush documentation
 {project-version}
 
-include::{docdir}/introduction/introduction.adoc[]
+include::{docdir}/introduction.adoc[]
 
-include::{docdir}/user-manual/user-manual.adoc[]
+include::{docdir}/quick-start.adoc[]
 
-include::{docdir}/tutorial/tutorial.adoc[]
+include::{docdir}/developer-manual.adoc[]
 
-include::{docdir}/reference/reference.adoc[]
+include::{docdir}/tutorials.adoc[]
 
-include::{docdir}/troubleshooting/index.adoc[leveloffset=+1]
+include::{docdir}/how-to.adoc[]
 
+include::{docdir}/faq.adoc[]
+
+include::{docdir}/reference.adoc[]
+
+
+
+////
+TODO: vérifier tous les liens
+////
+
+////
+TODO: revoir le plan (faire différentes vue de la même documentation) 
+/!\ Chaque setion doit être autonome
+Intro
+- générale
+- sections principale : Quick Start, Developer manual, Tutorial, Reference -> expliquer l'organisation de la doc
+- vocabulaire
+Quick start / Getting started (process général temporel pour débuter rapidement dans le cas où l'utilisateur ne connaît pas zp + références vers plus d'info)
+- Pre-requis
+- Installing
+- Créer un nouveau compte et une première app (uniquement cas pas de compte parce que c'est le démarrage)
+- développer première app en local (front + ccs)
+- publier
+User Manual -> developer manual JS (autre vue plus complète et non temporelle qui regroupe de manière logique par aspect pour donner tous les détails)
+- Pre-requis
+- Gestion du compte
+  - explications compte, app, envs, orga
+  - Créer un nouveau compte
+    - CLI
+    - console
+    - landing page
+  - Ajouter une nouvelle app à un compte existant
+    - CLI
+    - console
+    - manuellement
+  - Configurer pour utiliser une app existante
+    - CLI
+    - console
+    - manuellement
+- Déveloper son front avec ZetaPush
+  - utiliser les cloud services existants
+  - référence aux services existants
+  - adapter/configurer les services existants
+- Déveloper son métier
+  - Démarrer + recommendations
+  - Développer en local
+  - Utiliser dans le front
+- Publier
+  - gestion des environnements / principes de surcharge
+  - front
+  - custom cloud services
+- Testing (outils habituels)
+  - TU front + mock services
+  - TU métier + mock services
+  - TI front
+  - TI métier
+  - TF
+How to / guides (focus sur un point précis)
+FAQ
+Tutorials
+- 1
+- 2
+- ...
+Reference
+  - toutes les commandes de la CLI + options + aide
+  - toutes les propriétés de configuration
+  - tous les cloud services existants
+  - troubleshooting (toutes les erreurs)
+  - ...
+////

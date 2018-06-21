@@ -9,6 +9,6 @@ The minimal `package.json` is below :
 
 include::{docdir}/common/code/minimal-package-json.adoc[]
 
-include::{docdir}/common/manual-introduction/path-code.adoc[leveloffset=+1]
+include::{docdir}/common/manual-initialization/path-code.adoc[leveloffset=+1]
 
-include::{docdir}/common/manual-introduction/dependencies-needed.adoc[leveloffset=+1]
+include::{docdir}/common/manual-initialization/dependencies-needed.adoc[leveloffset=+1]

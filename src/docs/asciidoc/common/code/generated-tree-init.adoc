@@ -4,7 +4,7 @@ include::{docdir}/variables.adoc[]
 .Generated tree structure
 [source, console]
 ----
-myApp
+{appName}
 ├── .zetarc
 ├── .gitignore
 ├── front

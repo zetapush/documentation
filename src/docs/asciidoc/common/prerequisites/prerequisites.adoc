@@ -1,5 +1,5 @@
 
-== Prerequisites
+== System requirements
 
 === NodeJS and npm
 
@@ -14,7 +14,7 @@ NodeJS is used to:
 - deploy your application on ZetaPush
 ====
 
-You may also need to install additionnal tools for NodeJS:
+You also need to install additionnal tools for NodeJS:
 
 [role=tab-container]
 Additional tools
@@ -56,7 +56,7 @@ sudo yum install gcc-c++ make
 -
 
 
-=== Git
+=== Git (optional but recommended)
 
 Go to https://git-scm.com/downloads[Git Downloads^] and follow the installation instructions.
 

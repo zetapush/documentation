@@ -1,0 +1,19 @@
+:relative-path: ../
+include::{docdir}/variables.adoc[]
+
+.Start application (front and custom cloud services)
+[source, console, subs="attributes+"]
+----
+$ npm run start -- --serve-front
+----
+
+[TIP]
+====
+`npm run start` is a script alias defined in the `package.json` file.
+The executed command under the hood is:
+[source, console, subs="attributes+"]
+----
+$ zeta run --serve-front
+----
+====
+

@@ -3,14 +3,42 @@ include::{docdir}/variables.adoc[]
 
 == Create a new application
 
-=== Initialization with the CLI
+=== Initialization from  your terminal
 include::{docdir}/common/init/init-with-cli.adoc[leveloffset=+2]
 
-=== I create an application without account
+==== Create an application without account
 include::{docdir}/common/init/create-app-without-account.adoc[leveloffset=+2]
 
-=== I use an existing application
+==== Use an existing application
 include::{docdir}/common/init/use-existing-app.adoc[leveloffset=+2]
 
-=== I create a new application on my account
+==== Ceate a new application on my account
 include::{docdir}/common/init/create-app-with-account.adoc[leveloffset=+2]
+
+=== Manual initialization
+
+To start a new application with ZetaPush Celtia, the easiest path is to use the _CLI_. But you can also start your application creating each file you need.
+
+WARNING: Above all, you need to have a ZetaPush account with an existing application. So you can create this with the _console_ (Work in progress) or use the _CLI_ with `npm init @zetapush myApp`. 
+
+
+==== What do we need to do ?
+
+include::{docdir}/common/manual-initialization/introduction.adoc[leveloffset=+2]
+
+
+==== Details by file
+
+include::{docdir}/common/manual-initialization/details-zetarc.adoc[leveloffset=+2]
+
+include::{docdir}/common/manual-initialization/details-gitignore.adoc[leveloffset=+2]
+
+include::{docdir}/common/manual-initialization/details-front.adoc[leveloffset=+2]
+
+include::{docdir}/common/manual-initialization/details-worker.adoc[leveloffset=+2]
+
+include::{docdir}/common/manual-initialization/details-package-json.adoc[leveloffset=+2]
+
+==== Use your application
+
+include::{docdir}/common/manual-initialization/use-manual-application.adoc[leveloffset=+2]

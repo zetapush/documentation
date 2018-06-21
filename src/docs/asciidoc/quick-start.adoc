@@ -1,0 +1,95 @@
+:relative-path: ./
+include::{docdir}/variables.adoc[]
+
+// override to have a more significant application name for the quick start
+:appName: first-hello-world
+
+= Quick Start
+
+// PREREQUISITES
+include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+2]
+
+== Create your first project
+
+=== Create from your terminal
+
+include::{docdir}/common/cli/create-project.adoc[leveloffset=+2]
+
+[TIP]
+====
+See <<developer-manual.adoc#_account_management, Account management>> to learn how to manage your account and your applications.
+====
+
+=== Generated project
+
+.Result of hello world project
+image::{images-dir}/hello-world/result.png[role=center]
+
+The generated project:
+
+- Provides a web page (front part)
+- The web page automatically connects to ZetaPush Cloud.
++
+TIP: The connection is done by `client.connect()` in `{appName}/front/index.html`
+- The web page displays a button named `hello()`.
++
+TIP: See `{appName}/front/index.html`
+- Provides a custom cloud service that generates a message ("hello world from JavaScript" followed by the date as timestamp).
++
+TIP: The executed code is available in `{appName}/worker/index.js`
+- When the `hello()` button is clicked, the custom cloud service is called and the response is displayed in the browser console. The text of the button is also updated with the count of custom cloud services responses.
++
+TIP: See call to `api.hello()` in `{appName}/front/index.js`.
+
+
+[INFO]
+====
+The generated project files are:
+
+include::{docdir}/common/code/generated-tree-init.adoc[leveloffset=+1]
+
+include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=+1]
+====
+
+
+== Run locally your first project
+
+=== Run from your terminal
+
+include::{docdir}/common/cli/run-project.adoc[leveloffset=+2]
+
+This starts a local web server to serve the web page on `localhost:3000` and also starts the custom cloud services.
+You can open a web browser on `localhost:3000` and open the browser console.
+
+Click on the button to see that the text of the button changes and the result of the call to the custom cloud service in the console.
+
+=== How it works
+
+include::{docdir}/common/diagrams/run-locally-exchanges.adoc[leveloffset+=2]
+
+
+== Push your first project in the Cloud
+
+=== Push from your terminal
+
+include::{docdir}/common/cli/push-project.adoc[leveloffset=+2]
+
+This uploads your code (front and worker) to ZetaPush cloud. ZetaPush then handles the deployment
+by publishing your front and your custom cloud services.
+
+The CLI displays the URL to access the published web page.
+
+=== How it works
+
+include::{docdir}/common/diagrams/run-in-cloud-exchanges.adoc[leveloffset+=2]
+
+
+
+== What's next
+
+You have created a new application, executed it locally and then published it.
+
+Now, you are ready to code your own application:
+
+- See <<developer-manual.adoc#_develop_front, how to use built-in ZetaPush cloud services>>
+- See <<developer-manual.adoc#_develop_custom_could_services, how to develop your custom cloud services>>
