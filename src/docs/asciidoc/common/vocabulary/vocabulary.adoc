@@ -16,23 +16,23 @@ include::{docdir}/variables.adoc[]
 | Login/Password pair of the developer ZetaPush account
 
 | Cloud function
-a| A single operation that has a name, well-defined behavior, that can accept parameters and can produce something. 
+a| A single operation that has a name, well-defined behavior, that can accept parameters and can produce an output. 
 
 This is equivalent to function in any language except that it is run remotely.
 
 | Cloud service
-a| Several Cloud functions that are grouped to cover a coherent set of features. You can consider this as a class (custom cloud service) with methods (cloud functions).
+a| Several Cloud functions that are grouped together to cover a coherent set of features. You can consider this as a class (custom cloud service) with methods (cloud functions).
 
 [NOTE]
 ====
 ZetaPush already provides ready to use cloud services. 
-For example we have many cloud services : Chat, Group, Messaging...
+For example we have: Chat, Group, Messaging...
 
 In this documentation, we mention Cloud Services as a shortcut of ZetaPush Cloud Services.
 ====
 
 | Custom Cloud Service
-| A set of features like ZetaPush Cloud Services developed by you. Usage of your custom cloud services is exactly the same as ZetaPush cloud services
+| A set of features like ZetaPush Cloud Services developed by you. The usage of your custom cloud services is exactly the same as ZetaPush cloud services
 
 | Front
 | Web pages developed by you (HTML / CSS / JS)
@@ -41,24 +41,24 @@ In this documentation, we mention Cloud Services as a shortcut of ZetaPush Cloud
 | Set of Custom cloud services that you have developed to mutualize your business logic.
 
 | Organization
-a| Group of ZetaPush accounts. Each organization may have several managers and several developers. Each person uses his own credentials 
+| Group of ZetaPush accounts. Each organization may have several managers and several developers. Each person uses his own credentials 
 to interact with ZetaPush but actions are shared among the organization
 
 | Application
-a| Logic container designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user. 
+| Logic container designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user. 
 
 An application may have a front part and a worker.
 
 An application has at least one environment
 
 | Environment
-a| Your application may be deployed and executed in separated zones. Each environment is a particular zone that you can organize as you want. 
+| Your application may be deployed and executed in separated zones called Environment. Each environment is a particular zone that you can organize as you wish. 
 For example, you can have `prod`, `pre-prod`, `dev` environments for the same application. 
 
 | CLI
 | Command Line Interface : utility scripts that are usable in a terminal to run your code or deploy your application for example
 
 | Console
-| Principal website to manage ZetaPush account, applications, see documentation, monitor your applications...
+| Main website used to manage your ZetaPush account and applications, read the documentation, monitor your applications...
 
 |===

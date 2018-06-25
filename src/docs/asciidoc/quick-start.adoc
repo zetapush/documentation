@@ -9,9 +9,9 @@ include::{docdir}/variables.adoc[]
 // PREREQUISITES
 include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+2]
 
-== Create your first project
+== Create your first application
 
-=== Create from your terminal
+=== From the command line
 
 include::{docdir}/common/cli/create-project.adoc[leveloffset=+2]
 
@@ -22,7 +22,7 @@ See <<developer-manual.adoc#_account_management, Account management>> to learn h
 
 === Generated project
 
-.Result of hello world project
+.Result of {appName} project
 image::{images-dir}/hello-world/result.png[role=center]
 
 The generated project:
@@ -54,14 +54,14 @@ include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=
 
 == Run locally your first project
 
-=== Run from your terminal
+=== From your terminal
 
 include::{docdir}/common/cli/run-project.adoc[leveloffset=+2]
 
-This starts a local web server to serve the web page on `localhost:3000` and also starts the custom cloud services.
+This command launchs a local web server on `localhost:3000` and also launchs the custom cloud services.
 You can open a web browser on `localhost:3000` and open the browser console.
 
-Click on the button to see that the text of the button changes and the result of the call to the custom cloud service in the console.
+You can click on the button and see the result of the custom cloud service call in the browser console.
 
 === How it works
 
@@ -70,11 +70,11 @@ include::{docdir}/common/diagrams/run-locally-exchanges.adoc[leveloffset+=2]
 
 == Push your first project in the Cloud
 
-=== Push from your terminal
+=== From your terminal
 
 include::{docdir}/common/cli/push-project.adoc[leveloffset=+2]
 
-This uploads your code (front and worker) to ZetaPush cloud. ZetaPush then handles the deployment
+This command uploads your code (front and worker) to ZetaPush cloud. ZetaPush then handles the deployment
 by publishing your front and your custom cloud services.
 
 The CLI displays the URL to access the published web page.

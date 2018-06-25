@@ -1,18 +1,25 @@
 
 == System requirements
 
-=== NodeJS and npm
-
-Go to https://nodejs.org/en/download/[NodeJS Downloads^] and follow installation instructions.
+To create an application with ZetaPush you only need the NodeJS ecosystem: 
 
 [NOTE]
 ====
-NodeJS is used to:
+- NodeJS version 8.11.2 (LTS) or higher
+- Npm version 5.x or higher
+====
 
-- develop custom cloud services
-- run custom cloud services
+NodeJS is used for ZetaPush to:
+[NOTE]
+====
+- create custom cloud services
+- locally run custom cloud services
 - deploy your application on ZetaPush
 ====
+
+*Install NodeJS and npm*
+
+Go to https://nodejs.org/en/download/[NodeJS Downloads^] and follow installation instructions.
 
 You also need to install additionnal tools for NodeJS:
 
@@ -23,13 +30,14 @@ Additional tools
 Windows
 
 You must install development tools on Windows (Visual Studio Build Tools and Python). 
-Hopefully, there is a npm tool that helps to install all required dependencies.
+Hopefully, there is a npm tool that helps you to install all required dependencies.
 You must run this command line using **PowerShell** as **Administrator**:
 
 [source, console]
 ----
 npm install --global --production windows-build-tools
 ----
+Be patient! It may take a while.
 
 [role=tab]
 Debian/Ubuntu
@@ -54,10 +62,3 @@ sudo yum install gcc-c++ make
 
 [role=tab-container-end]
 -
-
-
-=== Git (optional but recommended)
-
-Go to https://git-scm.com/downloads[Git Downloads^] and follow the installation instructions.
-
-NOTE: Git is used by ZetaPush when you use our tool to create a project (see: <<common/init/init.adoc#_initialization_with_the_cli, Create a new application using the CLI>>)

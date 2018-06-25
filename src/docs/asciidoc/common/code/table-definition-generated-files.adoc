@@ -8,10 +8,10 @@ include::{docdir}/variables.adoc[]
 | Definition
 
 | `.zetarc`
-| Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.
+| Contains the developer's credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.
 
 | `.gitignore`
-| Avoid you to publish your developer credentials (on GitHub for example)
+| Prevents publication of your developer credentials (on GitHub for example)
 
 | `package.json`
 | Contains the dependencies, the name of your application, the entry point of yours _custom cloud services_ (`main` property) and many useful other informations for your application.

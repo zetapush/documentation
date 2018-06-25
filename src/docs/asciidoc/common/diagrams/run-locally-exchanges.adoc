@@ -3,5 +3,5 @@ include::{docdir}/variables.adoc[]
 
 .Exchanges between web page and custom cloud services
 image::{images-dir}/schemas/run-locally.png[role=center]
-[.exchange-call]#➊# Clicking on the button triggers a call to ZetaPush cloud. ZetaPush routes the call to the NodeJS (the NodeJS has been registered automatically by the CLI) +
+[.exchange-call]#➊# Clicking on the button triggers a call to ZetaPush cloud. ZetaPush routes the call to the local NodeJS (the NodeJS has been registered automatically by the CLI) +
 [.exchange-response]#➋# The custom cloud service does its job and provides a response. ZetaPush routes the response to the connected web page
