@@ -5,30 +5,30 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Dependencies injection</title>
+<title>Dependency injection</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="..//javascripts/menu.js"></script>
-<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
-<script type="text/javascript" src="..//javascripts/steps.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
 <header>
   <nav>
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
@@ -42,10 +42,10 @@
     </ul>
     <div>
       <div class="contact-us">
-        <a href="https://spectrum.chat/zetapush">Contact us</a>
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
       </div>
       <div class="github">
-        <a href="https://github.com/zetapush">
+        <a href="https://github.com/zetapush" target="_blank">
           <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
       </div>
       <div class="search"></div>
@@ -61,20 +61,20 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_dependencies_injection">Dependencies injection</a></li>
+<li><a href="#_dependency_injection">Dependency injection</a></li>
 <li><a href="#_use_imported_cloud_services">Use imported cloud services</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a>Dependencies injection</h2>
+<h2 id="_dependency_injection"><a class="anchor" href="#_dependency_injection"></a>Dependency injection</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependencies injection</em> of ZetaPush. All of your dependencies injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use <em>dependency injection</em> of ZetaPush. All of your dependency injection will be facilitated.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependencies injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -93,7 +93,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependencies injection of ZetaPush use the library <strong>injection-js</strong>
+The dependency injection of ZetaPush use Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
 </td>
 </tr>
 </table>
@@ -153,7 +153,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We create a static method to implement our dependencies injection (<em>injection-js</em> syntax)</td>
+<td>We create a static method to implement our dependency injection (<em>injection-js</em> syntax)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -194,10 +194,10 @@ In our use-case, we want to put some data associated with the current timestamp 
 <div class="ulist">
 <ul>
 <li>
-<p>push({ <em>stack</em>: string, <em>data</em>: object });</p>
+<p><code>push({ <em>stack</em>: string, <em>data</em>: object });</code></p>
 </li>
 <li>
-<p>list({ <em>stack</em>: string });</p>
+<p><code>list({ <em>stack</em>: string });</code></p>
 </li>
 </ul>
 </div>
@@ -314,7 +314,7 @@ The <code>Stack</code> service has asynchronous methods
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 16:34:09 UTC
 </div>
 </div>
 </body>

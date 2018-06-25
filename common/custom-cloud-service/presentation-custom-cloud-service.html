@@ -5,30 +5,30 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Example</title>
+<title>Architecture</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="..//javascripts/menu.js"></script>
-<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
-<script type="text/javascript" src="..//javascripts/steps.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
 <header>
   <nav>
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
@@ -42,10 +42,10 @@
     </ul>
     <div>
       <div class="contact-us">
-        <a href="https://spectrum.chat/zetapush">Contact us</a>
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
       </div>
       <div class="github">
-        <a href="https://github.com/zetapush">
+        <a href="https://github.com/zetapush" target="_blank">
           <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
       </div>
       <div class="search"></div>
@@ -61,7 +61,6 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_example">Example</a></li>
 <li><a href="#_architecture">Architecture</a>
 <ul class="sectlevel2">
 <li><a href="#_development_phase">Development phase</a></li>
@@ -74,33 +73,9 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
-Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example"><a class="anchor" href="#_example"></a>Example</h2>
-<div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
-<p>Your use-case is a basic real-time chat between <em>characters of Avengers</em> (See <a href="#_tutorial">tutorial</a>). You create the chat with the <em>cloud services</em> provided by ZetaPush and you want to add a new feature : Each <em>Avenger</em> has many skills/attacks and they can randomly use one of them on the chat.</p>
-</div>
-<div class="paragraph">
-<p>To add this business logic, you can create a <em>custom cloud service</em> named <em>AvengerService</em> and into this, you add a <em>cloud function</em> named <em>sendMessage</em>.</p>
-</div>
-</div>
+<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
+Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
 </div>
 </div>
 </div>
@@ -109,7 +84,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_development_phase"><a class="anchor" href="#_development_phase"></a>Development phase</h3>
-<div class="imageblock">
+<div class="imageblock center">
 <div class="content">
 <img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1403" height="551">
 </div>
@@ -121,7 +96,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </div>
 <div class="sect2">
 <h3 id="_production_phase"><a class="anchor" href="#_production_phase"></a>Production phase</h3>
-<div class="imageblock">
+<div class="imageblock center">
 <div class="content">
 <img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="318" height="352">
 </div>
@@ -136,7 +111,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 16:34:09 UTC
 </div>
 </div>
 </body>

@@ -12,23 +12,23 @@
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="..//javascripts/menu.js"></script>
-<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
-<script type="text/javascript" src="..//javascripts/steps.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
-<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src=".//javascripts/menu.js"></script>
+<script type="text/javascript" src=".//javascripts/sidebar.js"></script>
+<script type="text/javascript" src=".//javascripts/steps.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
-<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
 <header>
   <nav>
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
@@ -42,10 +42,10 @@
     </ul>
     <div>
       <div class="contact-us">
-        <a href="https://spectrum.chat/zetapush">Contact us</a>
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
       </div>
       <div class="github">
-        <a href="https://github.com/zetapush">
+        <a href="https://github.com/zetapush" target="_blank">
           <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
       </div>
       <div class="search"></div>
@@ -65,9 +65,22 @@
 <li><a href="#_command_line_interface">Command Line Interface</a>
 <ul class="sectlevel2">
 <li><a href="#_initialize_an_application">Initialize an application</a></li>
+<li><a href="#_run_project_locally">Run project locally</a></li>
+<li><a href="#_deploy_project_on_zetapush_cloud">Deploy project on ZetaPush Cloud</a></li>
 </ul>
 </li>
-<li><a href="#_zetapush_cloud_services">ZetaPush Cloud Services</a></li>
+<li><a href="#_configuration">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_account_configuration">Account configuration</a></li>
+<li><a href="#_application_configuration">Application configuration</a></li>
+<li><a href="#_configuration_override">Configuration override</a></li>
+</ul>
+</li>
+<li><a href="#_zetapush_cloud_services">ZetaPush Cloud Services</a>
+<ul class="sectlevel2">
+<li><a href="#_user_management">User Management</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -134,7 +147,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>By default, the developer use the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>He just need to use this property if ZetaPush says explicitly to use an other ZetaPush platform.</strong></p>
+<p>By default, the developer use the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>He just need to use this property if ZetaPush says explicitly to use another ZetaPush platform.</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -148,21 +161,708 @@
 The default environment is <em>prod</em> but you can create your own (<em>dev</em>, <em>preprod</em>, &#8230;&#8203;).
 An environment is one stage in the life-cycle of the application.</p>
 </div>
+<div class="sect3">
+<h4 id="_create_a_new_project_and_or_account"><a class="anchor" href="#_create_a_new_project_and_or_account"></a>Create a new project and/or account</h4>
+<div class="sect4">
+<h5 id="_initialization_workflows"><a class="anchor" href="#_initialization_workflows"></a>Initialization workflows</h5>
+<div class="paragraph tab-container no-max-height">
+<p>With or without account</p>
+</div>
+<div class="paragraph tab">
+<p>Don&#8217;t have ZetaPush account</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="init-without-account.png" alt="I want to create an account" width="379" height="460">
+</div>
+<div class="title">Figure 1. I want to create an account</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters<br>
+➋ You type your email and a password to create your ZetaPush account<br>
+➌ The application is created in <code>myApp</code> folder<br>
+➍ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You need to validate your ZetaPush account to run or deploy your application.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab">
+<p>Have an account and an app</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="init-with-account-and-app.png" alt="I want to use an existing application" width="496" height="352">
+</div>
+<div class="title">Figure 2. I want to use an existing application</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code>, <code>--developer-password</code> and <code>--appName</code> parameters<br>
+➋ The application is created in <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Have an account and want new app</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="init-with-account-without-app.png" alt="I want to create a new application" width="435" height="352">
+</div>
+<div class="title">Figure 3. I want to create a new application</div>
+</div>
+<div class="paragraph">
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code> and <code>--developer-password</code> parameters<br>
+➋ The application is created in <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploys or executes the code on a new application.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_create_a_new_account_and_a_new_application"><a class="anchor" href="#_create_a_new_account_and_a_new_application"></a>Create a new account and a new application</h5>
+<div class="listingblock">
+<div class="title">Generate application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>myApp</em> is the name of the folder that will be created and will contain all generated files</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A username and a password will be prompt in order to create a new account.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Using npm lower than 6</strong></p>
+</div>
+<div class="paragraph">
+<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
+</div>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_use_existing_account_and_application"><a class="anchor" href="#_use_existing_account_and_application"></a>Use existing account and application</h5>
+<div class="listingblock">
+<div class="title">Generate application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp <i class="conum" data-value="1"></i><b>(1)</b>
+           --developer-login &lt;your email address&gt; <i class="conum" data-value="2"></i><b>(2)</b>
+           --app-name &lt;your application name&gt; <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>myApp</em> is the name of the folder that will be created and will contain all generated files</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><em>&lt;your email address&gt;</em> is the email you used when you registered on ZetaPush</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><em>&lt;your application name&gt;</em> is the application name registered on ZetaPush</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Your password will be prompt in order to login on ZetaPush.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Using npm lower than 6</strong></p>
+</div>
+<div class="paragraph">
+<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
+</div>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_add_an_application_to_my_account"><a class="anchor" href="#_add_an_application_to_my_account"></a>Add an application to my account</h5>
+<div class="listingblock">
+<div class="title">Generate application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp <i class="conum" data-value="1"></i><b>(1)</b>
+           --developer-login &lt;your email address&gt; <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>myApp</em> is the name of the folder that will be created and will contain all generated files</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><em>&lt;your email address&gt;</em> is the email you used when you registered on ZetaPush</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Your password will be prompt in order to login on ZetaPush.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Using npm lower than 6</strong></p>
+</div>
+<div class="paragraph">
+<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
+</div>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_project_locally"><a class="anchor" href="#_run_project_locally"></a>Run project locally</h3>
+<div class="sect3">
+<h4 id="_run_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_run_front_and_em_custom_cloud_services_em"></a>Run front and <em>custom cloud services</em></h4>
+<div class="listingblock">
+<div class="title">Start application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The executed command under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_only_em_custom_cloud_services_em"><a class="anchor" href="#_run_only_em_custom_cloud_services_em"></a>Run only <em>custom cloud services</em></h4>
+<div class="listingblock">
+<div class="title">Start custom cloud services locally</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The executed command under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_project_on_zetapush_cloud"><a class="anchor" href="#_deploy_project_on_zetapush_cloud"></a>Deploy project on ZetaPush Cloud</h3>
+<div class="sect3">
+<h4 id="_deploy_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_front_and_em_custom_cloud_services_em"></a>Deploy front and <em>custom cloud services</em></h4>
+<div class="paragraph">
+<p>Unresolved directive in common/cli/cli.adoc - include::/var/lib/jenkins/workspace/Github_documentation_master-IOSGDW42Y6L7PFABZDVKWIMQ7U5ZFS2WPFP2G4YQ6QQOVPTQ7Y4A/src/docs/asciidoc/common/cli/deploy-project.adoc[leveloffset=+2]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deploy_only_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_only_em_custom_cloud_services_em"></a>Deploy only <em>custom cloud services</em></h4>
+<div class="listingblock">
+<div class="title">Deploy the worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy -- --worker</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
+The executed command under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta push --worker</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deploy_only_front"><a class="anchor" href="#_deploy_only_front"></a>Deploy only front</h4>
+<div class="paragraph">
+<p>Unresolved directive in common/cli/cli.adoc - include::/var/lib/jenkins/workspace/Github_documentation_master-IOSGDW42Y6L7PFABZDVKWIMQ7U5ZFS2WPFP2G4YQ6QQOVPTQ7Y4A/src/docs/asciidoc/common/cli/command-to-deploy-front.adoc[leveloffset=+2]</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ZetaPush provides many variables to configure your applications.
+There are 2 types : the <em>account configuration variables</em> and the <em>application configuration variables</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a>Account configuration</h3>
+<div class="paragraph">
+<p>To use ZetaPush Celtia, you need to have an account and an optional application.
+You specify this properties in the <code>.zetarc</code> file.
+Here is the list of them :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Account variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Name of the property</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-center valign-middle">environment variable</th>
+<th class="tableblock halign-center valign-middle">Name in the <em>.zetarc</em></th>
+<th class="tableblock halign-center valign-middle">CLI parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">This login is the email used by the developer to the connection on the ZetaPush console. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer. It&#8217;s only used to identify the developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_LOGIN</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-login &lt;login&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer password</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Like the property <em>--developer-login</em>, this password is only used for the ZetaPush developer account. It <strong>doesn&#8217;t concerns</strong> any application developed by the developer.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_PASSWORD</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-password &lt;password&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The <em>appName</em> property is the unique name of an application on a ZetaPush developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_APP_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">appName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--app-name &lt;name&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Environment name</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">An application created by a developer can takes many environments.
+The default environment is <em>prod</em> but you can create your own (<em>dev</em>, <em>preprod</em>, &#8230;&#8203;).
+An environment is one stage in the life-cycle of the application.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_ENV_NAME</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">envName</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--env-name &lt;env&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Platform URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By default, the developer use the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>He just need to use this property if ZetaPush says explicitly to use another ZetaPush platform.</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_PLATFORM_URL</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">platformUrl</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">--platform-url &lt;platform&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a>Application configuration</h3>
+<div class="paragraph">
+<p>You can configure your applications with several variables. Here is the list of them :</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Application variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Name of the property</th>
+<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-center valign-middle"><em>package.json</em></th>
+<th class="tableblock halign-center valign-middle">CLI parameter</th>
+<th class="tableblock halign-center valign-middle">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Front code</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>In an application, you need to define where you put your front end part of your application.
+ZetaPush uses this property to host and expose it.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/front</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>--front &lt;path&gt;</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./front/</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Worker code</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>When you create your business logic in <em>custom cloud services</em>, ZetaPush need to know his location to deploy it.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/worker</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>--worker &lt;path&gt;</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./worker/</code></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>Worker entry point</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p>To use your <em>custom cloud services</em> from the front part you need to export them. So the exportation of services need to be in only one file.</p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/entry</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
+<p><code>./worker/index.js</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a>Configuration override</h3>
+<div class="paragraph">
+<p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
+ZetaPush includes and overrides this properties in a specific order :</p>
+</div>
+<div class="sect3">
+<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a>Account properties</h4>
+<div class="imageblock center">
+<div class="content">
+<img src="override-account-properties.png" alt="override account properties" width="183" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a>Application properties</h4>
+<div class="imageblock center">
+<div class="content">
+<img src="override-application-properties.png" alt="override application properties" width="155" height="242">
+</div>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the default value is overwritten by the <code>package.json</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_zetapush_cloud_services"><a class="anchor" href="#_zetapush_cloud_services"></a>ZetaPush Cloud Services</h2>
 <div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. List of available cloud services</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Cloud service</th>
+<th class="tableblock halign-center valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_user_management">User management</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TODO: <a href="https://github.com/zetapush/documentation/issues/45" class="bare">https://github.com/zetapush/documentation/issues/45</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_user_management"><a class="anchor" href="#_user_management"></a>User Management</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/61" class="bare">https://github.com/zetapush/documentation/issues/61</a></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-25 11:35:01 UTC
+Last updated 2018-06-25 16:34:09 UTC
 </div>
 </div>
 </body>
