@@ -11,28 +11,27 @@ To do this you need to use the _CLI_ and run : `zeta run`.
 But in this project, the _CLI_ is imported and a script is created with npm, so you just need to launch :
 
 .Run worker locally
-[source, javascript]
+[source,console]
 ----
-$ npm run start
+$ npm run start -- --http-server
 ----
 
 TIP: If you want to install the _ZetaPush CLI_ you can run `npm install -g @zetapush/cli`.
 
+Then you have access to your application on `http://localhost:3000`.
 
 == Interaction with worker
 
 Now you just need to add the interaction with the _custom cloud service_. To do this, fill the file `front/index.js` :
 
 .Interaction with worker
-[source, javascript, linenums]
+[source,javascript,linenums]
 ----
 import AvengersController from './utils/controller.js'; <1>
 import dom from './utils/dom.js'; <2>
 
 // Create the ZetaPush Client
-const client = new ZetaPush.WeakClient({ <3>
-  appName: 'appName',
-});
+const client = new ZetaPush.WeakClient();
 /**
  * Create service to listen incoming messages
  */
@@ -40,7 +39,7 @@ const service = client.createService({
   Type: ZetaPushPlatform.Messaging,
   listener: {
     // Listen incoming messages from the channel 'avengersChannel'
-    avengersChannel: ({ data }) => controller.onAvengersMessage(data), <4>
+    avengersChannel: ({ data }) => controller.onAvengersMessage(data), <3>
   },
 });
 
@@ -57,25 +56,4 @@ const controller = new AvengersController(client, dom);
 ----
 <1> Import the frontend logic (in the controller)
 <2> Import some utils functions
-<3> Object to interact with the ZetaPush platform and the _custom cloud service_
-<4> Cloud service provided by ZetaPush to listen incoming messages
-
-The value `appName` in the _ZetaPush Client_ is the id of your application on your ZetaPush account. When you have launch `zeta run` (or `npm run start`) you have created an anonymous account and an empty application. All this informations are stored in the file `.zetarc` just created with the same command.
-
-Copy-past the `appName` from the _.zetarc_ to your _ZetaPush Client_.
-
-== Test you application locally
-
-Now, you can test your application. To do this, you need to execute your frontend part locally. For example, you can use link:https://caddyserver.com/[Caddy Server].
-
-.Run locally
-[source, console, linenums]
-----
-$ curl https://getcaddy.com | bash
-$ cd front/
-$ caddy
-----
-
-TIP: Don't forget to relaunch your worker with `npm run start` if you have stop it.
-
-Then you have access to your application on `http://localhost:2015`.
+<3> Cloud service provided by ZetaPush to listen incoming messages
