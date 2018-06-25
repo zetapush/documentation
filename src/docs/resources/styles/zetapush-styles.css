@@ -418,6 +418,12 @@ table.tableblock {
 
 
 @media only screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .sectionbody {
+    overflow-x: auto;
+  }
   body::before {
     width: 90px;
     height: 90px;
