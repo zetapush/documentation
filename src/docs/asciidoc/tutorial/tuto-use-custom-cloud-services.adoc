@@ -28,7 +28,6 @@ Now you just need to add the interaction with the _custom cloud service_. To do 
 [source,javascript,linenums]
 ----
 import AvengersController from './utils/controller.js'; <1>
-import dom from './utils/dom.js'; <2>
 
 // Create the ZetaPush Client
 const client = new ZetaPush.WeakClient();
@@ -39,11 +38,11 @@ const service = client.createService({
   Type: ZetaPushPlatform.Messaging,
   listener: {
     // Listen incoming messages from the channel 'avengersChannel'
-    avengersChannel: ({ data }) => controller.onAvengersMessage(data), <3>
+    avengersChannel: ({ data }) => controller.onAvengersMessage(data), <2>
   },
 });
 
-const controller = new AvengersController(client, dom);
+const controller = new AvengersController(client);
 
 (async function main() {
   // Expose to template
@@ -55,5 +54,4 @@ const controller = new AvengersController(client, dom);
 })();
 ----
 <1> Import the frontend logic (in the controller)
-<2> Import some utils functions
-<3> Cloud service provided by ZetaPush to listen incoming messages
+<2> Cloud service provided by ZetaPush to listen incoming messages
