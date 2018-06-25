@@ -63,7 +63,6 @@
 <ul class="sectlevel1">
 <li><a href="#_launch_the_worker_locally">Launch the worker locally</a></li>
 <li><a href="#_interaction_with_worker">Interaction with worker</a></li>
-<li><a href="#_test_you_application_locally">Test you application locally</a></li>
 </ul>
 </div>
 </div>
@@ -87,7 +86,7 @@ But in this project, the <em>CLI</em> is imported and a script is created with n
 <div class="listingblock">
 <div class="title">Run worker locally</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span> npm run start</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --http-server</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -101,6 +100,9 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Then you have access to your application on <code><a href="http://localhost:3000" class="bare">http://localhost:3000</a></code>.</p>
 </div>
 </div>
 </div>
@@ -139,17 +141,11 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
 23
 24
 25
-26
-27
-28
 </pre></td>
   <td class="code"><pre><span class="reserved">import</span> AvengersController from <span class="string"><span class="delimiter">'</span><span class="content">./utils/controller.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="reserved">import</span> dom from <span class="string"><span class="delimiter">'</span><span class="content">./utils/dom.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="2"></i><b>(2)</b>
 
 <span class="comment">// Create the ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="3"></i><b>(3)</b>
-  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">appName</span><span class="delimiter">'</span></span>,
-});
+const client = <span class="keyword">new</span> ZetaPush.WeakClient();
 <span class="comment">/**
  * Create service to listen incoming messages
  */</span>
@@ -157,11 +153,11 @@ const service = client.createService({
   <span class="key">Type</span>: ZetaPushPlatform.Messaging,
   <span class="key">listener</span>: {
     <span class="comment">// Listen incoming messages from the channel 'avengersChannel'</span>
-    <span class="key">avengersChannel</span>: ({ data }) =&gt; controller.onAvengersMessage(data), <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="key">avengersChannel</span>: ({ data }) =&gt; controller.onAvengersMessage(data), <i class="conum" data-value="2"></i><b>(2)</b>
   },
 });
 
-const controller = <span class="keyword">new</span> AvengersController(client, dom);
+const controller = <span class="keyword">new</span> AvengersController(client);
 
 (async <span class="keyword">function</span> <span class="function">main</span>() {
   <span class="comment">// Expose to template</span>
@@ -182,67 +178,16 @@ const controller = <span class="keyword">new</span> AvengersController(client, d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Import some utils functions</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Object to interact with the ZetaPush platform and the <em>custom cloud service</em></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Cloud service provided by ZetaPush to listen incoming messages</td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>The value <code>appName</code> in the <em>ZetaPush Client</em> is the id of your application on your ZetaPush account. When you have launch <code>zeta run</code> (or <code>npm run start</code>) you have created an anonymous account and an empty application. All this informations are stored in the file <code>.zetarc</code> just created with the same command.</p>
-</div>
-<div class="paragraph">
-<p>Copy-past the <code>appName</code> from the <em>.zetarc</em> to your <em>ZetaPush Client</em>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_test_you_application_locally"><a class="anchor" href="#_test_you_application_locally"></a>Test you application locally</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Now, you can test your application. To do this, you need to execute your frontend part locally. For example, you can use <a href="https://caddyserver.com/">Caddy Server</a>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Run locally</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre>$ curl https://getcaddy.com | bash
-$ cd front/
-$ caddy</pre></td>
-</tr></table></code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if you have stop it.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Then you have access to your application on <code><a href="http://localhost:2015" class="bare">http://localhost:2015</a></code>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 15:16:24 UTC
 </div>
 </div>
 </body>

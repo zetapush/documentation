@@ -179,9 +179,12 @@ You will learn to :</p>
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>npm init @zetapush myApp --developer-login user@gmail.com --developer-password password</pre></td>
+  <td class="code"><pre>npm init @zetapush myApp</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This command will ask you your developer login and password.</p>
 </div>
 <div class="paragraph">
 <p>This command will create you an account on the ZetaPush platform and create your first application in the <em>myApp</em> directory.
@@ -270,7 +273,7 @@ A <em>custom cloud service</em> is a class where you develop a business logic. Y
 </table>
 </div>
 <div class="paragraph">
-<p>In your existing application you already have a <em>custom cloud service</em> on the file <code>worker/index.js</code> (Defined in the <code>package.json</code> with the property <code>main</code>).</p>
+<p>In your existing application you already have a <em>custom cloud service</em> on the file <code>worker/index.ts</code> (Defined in the <code>package.json</code> with the property <code>main</code>).</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -285,7 +288,7 @@ When you create one or many <em>custom cloud services</em>, you need to export t
 </table>
 </div>
 <div class="paragraph">
-<p>You can fill this file (<code>worker/index.js</code>) with the following content :</p>
+<p>You can fill this file (<code>worker/index.ts</code>) with the following content :</p>
 </div>
 <div class="sect3">
 <h4 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a>Import <em>cloud services</em> and define constants</h4>
@@ -311,16 +314,16 @@ When you create one or many <em>custom cloud services</em>, you need to export t
 <div class="listingblock">
 <div class="title">Imports and constants</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 4
 </pre></td>
-  <td class="code"><pre>const { Stack, Messaging, GroupManagement, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+  <td class="code"><pre>import { Stack, Messaging, GroupManagement, Injectable } from '@zetapush/platform';
 
-const CONVERSATION_ID = <span class="string"><span class="delimiter">'</span><span class="content">avengersChat</span><span class="delimiter">'</span></span>;
-const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><span class="content">avengersChannel</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+const CONVERSATION_ID = 'avengersChat';
+const CHANNEL_MESSAGING = 'avengersChannel'; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -341,7 +344,7 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 <div class="listingblock">
 <div class="title">Class and constructor</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -353,36 +356,16 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
 </pre></td>
-  <td class="code"><pre><span class="reserved">class</span> AvengersApi {
-  <span class="comment">/**
-   * Dependencies injection of cloud services
-   */</span>
-  <span class="reserved">static</span> get parameters() { <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="keyword">return</span> [
-      <span class="keyword">new</span> Inject(Stack),
-      <span class="keyword">new</span> Inject(Messaging),
-      <span class="keyword">new</span> Inject(GroupManagement)
-    ]
-  }
-
-  <span class="comment">/**
+  <td class="code"><pre>export default class AvengersApi {
+  /**
    * Constructor of our API
-   */</span>
-  constructor(stack, messaging, groups) { <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="local-variable">this</span>.stack = stack;
-    <span class="local-variable">this</span>.messaging = messaging;
-    <span class="local-variable">this</span>.groups = groups;
+   */
+  constructor(
+    private stack: Stack,
+    private messaging: Messaging,
+    private groups: GroupManagement
+  ) { <i class="conum" data-value="2"></i><b>(2)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -394,10 +377,6 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Syntax of dependencies injection based on <code>injection-js</code>.</td>
 </tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>You need to put the injected <em>cloud services</em> in the constructor in the same order that they are defined in the static method <code>parameters</code>.</td>
-</tr>
 </table>
 </div>
 <div class="admonitionblock note">
@@ -407,7 +386,7 @@ const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependencies injection of ZetaPush use <code>injection-js</code>. So we use the same syntax (static method <em>parameters</em>).
+The dependencies injection of ZetaPush use <code>injection-js</code>.
 </td>
 </tr>
 </table>
@@ -422,7 +401,7 @@ So we add a method in our class to create this conversation.</p>
 <div class="listingblock">
 <div class="title">Create conversation</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -437,18 +416,18 @@ So we add a method in our class to create this conversation.</p>
 12
 13
 </pre></td>
-  <td class="code"><pre><span class="comment">/**
+  <td class="code"><pre>/**
  * Create the conversation of the chat, if doesn't already exists
- */</span>
-async createConversation() {
-    const { exists } = await <span class="local-variable">this</span>.groups.exists({
-        <span class="key">group</span>: CONVERSATION_ID
+ */
+createConversation() {
+  const { exists } = await this.groups.exists({
+    group: CONVERSATION_ID
+  });
+  if (!exists) {
+    await this.groups.createGroup({
+      group: CONVERSATION_ID
     });
-    <span class="keyword">if</span> (!exists) {
-        await <span class="local-variable">this</span>.groups.createGroup({
-            <span class="key">group</span>: CONVERSATION_ID
-        });
-    }
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -462,7 +441,7 @@ So we create a method in our class to add the current user in the conversation.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -472,17 +451,15 @@ So we create a method in our class to add the current user in the conversation.<
 7
 8
 9
-10
 </pre></td>
-  <td class="code"><pre><span class="comment">/**
+  <td class="code"><pre>/**
 * Add the current user in the conversation
-*/</span>
-async addMeToConversation(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
-    const output = await <span class="local-variable">this</span>.groups.addUser({
-        <span class="key">group</span>: CONVERSATION_ID,
-        <span class="key">user</span>: context.owner <i class="conum" data-value="2"></i><b>(2)</b>
-    });
-    <span class="keyword">return</span> output;
+*/
+addMeToConversation(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
+  return this.groups.addUser({
+    group: CONVERSATION_ID,
+      user: context.owner <i class="conum" data-value="2"></i><b>(2)</b>
+  });
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -520,7 +497,7 @@ async addMeToConversation(parameters, context) { <i class="conum" data-value="1"
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -548,31 +525,31 @@ async addMeToConversation(parameters, context) { <i class="conum" data-value="1"
 25
 26
 </pre></td>
-  <td class="code"><pre><span class="comment">/**
+  <td class="code"><pre>/**
 * Send a message on the chat
 * @param {Object} message
-*/</span>
-async sendMessage(message = {}) {
-    <span class="comment">// Get all users inside the conversation</span>
-    const group = await <span class="local-variable">this</span>.groups.groupUsers({
-      <span class="key">group</span>: CONVERSATION_ID
-    });
-    const users = group.users;
+*/
+sendMessage(message = {}) {
+  // Get all users inside the conversation
+  const group = await this.groups.groupUsers({
+    group: CONVERSATION_ID
+  });
+  const users = group.users;
 
-    <span class="comment">// Send the message to each user in the conversation</span>
-    <span class="local-variable">this</span>.messaging.send({
-      <span class="key">target</span>: users,
-      <span class="key">channel</span>: CHANNEL_MESSAGING,
-      <span class="key">data</span>: { message }
-    });
+  // Send the message to each user in the conversation
+  this.messaging.send({
+    target: users,
+    channel: CHANNEL_MESSAGING,
+    data: { message }
+  });
 
-    <span class="comment">// Store the message in a stack</span>
-    await <span class="local-variable">this</span>.stack.push({
-      <span class="key">stack</span>: CONVERSATION_ID,
-      <span class="key">data</span>: message
-    });
+  // Store the message in a stack
+  await this.stack.push({
+    stack: CONVERSATION_ID,
+    data: message
+  });
 
-    <span class="keyword">return</span> group;
+  return group;
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -597,7 +574,7 @@ There is no specific method to launch an attack, to do this, we only send a spec
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -608,30 +585,15 @@ There is no specific method to launch an attack, to do this, we only send a spec
 8
 9
 </pre></td>
-  <td class="code"><pre><span class="comment">/**
+  <td class="code"><pre>/**
 * Get all messages in the conversation
-*/</span>
-async getMessages() {
-    const { result } = await <span class="local-variable">this</span>.stack.list({
-      <span class="key">stack</span>: CONVERSATION_ID
-    });
-    <span class="keyword">return</span> result;
+*/
+getMessages() {
+  const { result } = await this.stack.list({
+    stack: CONVERSATION_ID
+  });
+  return result;
 }</pre></td>
-</tr></table></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a>Export our class</h4>
-<div class="paragraph">
-<p>At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>module.exports = AvengersApi;</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -656,7 +618,7 @@ But in this project, the <em>CLI</em> is imported and a script is created with n
 <div class="listingblock">
 <div class="title">Run worker locally</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span> npm run start</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --http-server</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -670,6 +632,9 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Then you have access to your application on <code><a href="http://localhost:3000" class="bare">http://localhost:3000</a></code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -706,17 +671,11 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
 23
 24
 25
-26
-27
-28
 </pre></td>
   <td class="code"><pre><span class="reserved">import</span> AvengersController from <span class="string"><span class="delimiter">'</span><span class="content">./utils/controller.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="reserved">import</span> dom from <span class="string"><span class="delimiter">'</span><span class="content">./utils/dom.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="2"></i><b>(2)</b>
 
 <span class="comment">// Create the ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="3"></i><b>(3)</b>
-  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">appName</span><span class="delimiter">'</span></span>,
-});
+const client = <span class="keyword">new</span> ZetaPush.WeakClient();
 <span class="comment">/**
  * Create service to listen incoming messages
  */</span>
@@ -724,11 +683,11 @@ const service = client.createService({
   <span class="key">Type</span>: ZetaPushPlatform.Messaging,
   <span class="key">listener</span>: {
     <span class="comment">// Listen incoming messages from the channel 'avengersChannel'</span>
-    <span class="key">avengersChannel</span>: ({ data }) =&gt; controller.onAvengersMessage(data), <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="key">avengersChannel</span>: ({ data }) =&gt; controller.onAvengersMessage(data), <i class="conum" data-value="2"></i><b>(2)</b>
   },
 });
 
-const controller = <span class="keyword">new</span> AvengersController(client, dom);
+const controller = <span class="keyword">new</span> AvengersController(client);
 
 (async <span class="keyword">function</span> <span class="function">main</span>() {
   <span class="comment">// Expose to template</span>
@@ -749,58 +708,9 @@ const controller = <span class="keyword">new</span> AvengersController(client, d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Import some utils functions</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Object to interact with the ZetaPush platform and the <em>custom cloud service</em></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Cloud service provided by ZetaPush to listen incoming messages</td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>The value <code>appName</code> in the <em>ZetaPush Client</em> is the id of your application on your ZetaPush account. When you have launch <code>zeta run</code> (or <code>npm run start</code>) you have created an anonymous account and an empty application. All this informations are stored in the file <code>.zetarc</code> just created with the same command.</p>
-</div>
-<div class="paragraph">
-<p>Copy-past the <code>appName</code> from the <em>.zetarc</em> to your <em>ZetaPush Client</em>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_test_you_application_locally"><a class="anchor" href="#_test_you_application_locally"></a>Test you application locally</h4>
-<div class="paragraph">
-<p>Now, you can test your application. To do this, you need to execute your frontend part locally. For example, you can use <a href="https://caddyserver.com/">Caddy Server</a>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Run locally</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre>$ curl https://getcaddy.com | bash
-$ cd front/
-$ caddy</pre></td>
-</tr></table></code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if you have stop it.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Then you have access to your application on <code><a href="http://localhost:2015" class="bare">http://localhost:2015</a></code>.</p>
 </div>
 </div>
 </div>
