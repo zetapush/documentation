@@ -5,9 +5,9 @@ code {
 p code {
 	font-size: 0.72em !important;
 }
-pre code {
+/*pre code {
 	font-size: 0.75em !important;
-}
+}*/
 li code {
 	font-size: 0.85em !important;
 }
@@ -56,10 +56,6 @@ h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id
 	height: 370px;
 }
 
-.sect1 ~ .sect0 {
-	border-top: 1px solid #ba3925;
-	padding-top: 1.1em;
-}
 
 #toc ul.sectlevel0>li>a {
 	font-style: normal;

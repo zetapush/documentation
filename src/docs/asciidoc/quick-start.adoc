@@ -7,7 +7,7 @@ include::{docdir}/variables.adoc[]
 = Quick Start
 
 // PREREQUISITES
-include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+2]
+include::{docdir}/common/prerequisites/prerequisites.adoc[]
 
 == Create your first application
 
