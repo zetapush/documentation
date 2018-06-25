@@ -1,18 +1,19 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.Deploy the application
+.Start custom cloud services locally
 [source, console, subs="attributes+"]
 ----
-$ npm run deploy
+$ npm run start
 ----
 
 [TIP]
 ====
-`npm run deploy` is a script alias defined in the `package.json` file.
+`npm run start` is a script alias defined in the `package.json` file.
 The executed command under the hood is:
 [source, console, subs="attributes+"]
 ----
-$ zeta push
+$ zeta run
 ----
 ====
+

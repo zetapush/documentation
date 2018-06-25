@@ -1,0 +1,8 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+If you want to only deploy the front part of your application on the ZetaPush platform, you can launch:
+
+include::{docdir}/common/code/command-to-deploy-front.adoc[]
+
+In this case your worker is not deployed at all.

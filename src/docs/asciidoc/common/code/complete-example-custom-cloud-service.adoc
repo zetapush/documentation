@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 .worker/index.js
@@ -52,5 +52,5 @@ module.exports = SimpleStorageWithDate; <5>
 <1> No need to define `parameters` static method because we don't expose this service
 <2> Async/Await context
 <3> Use the existing _cloud services_
-<4> Use an other _custom cloud service_
+<4> Use another _custom cloud service_
 <5> Expose only `SimpleStorageWithDate`

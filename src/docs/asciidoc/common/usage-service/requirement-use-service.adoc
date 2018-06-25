@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 To use services (custom or not), you need to have installed the dependency of the ZetaPush Core (`@zetapush/core`).
@@ -18,7 +18,3 @@ or
 ----
 <script src="https://unpkg.com/@zetapush/core"></script>
 ----
-
-== Requirements for _custom cloud service_
-
-If you want to use a _custom cloud service_, make sure that you have exposed your service (link:#+_expose_my_em_custom_cloud_services_em+[Documentation])

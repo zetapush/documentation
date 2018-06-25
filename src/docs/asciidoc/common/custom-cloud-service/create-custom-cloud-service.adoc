@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 First, a _custom cloud service_ is a `class` and its `methods` are the  _cloud functions_. So the most basic example of _custom cloud service_ is below :

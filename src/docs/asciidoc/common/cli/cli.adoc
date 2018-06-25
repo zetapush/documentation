@@ -1,6 +1,69 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 == Initialize an application
 
 include::{docdir}/common/cli/cli-init-app.adoc[leveloffset=+1]
+
+=== Create a new project and/or account
+
+==== Initialization workflows
+
+[role="tab-container no-max-height"]
+With or without account
+
+[role=tab]
+Don't have ZetaPush account
+
+
+.I want to create an account
+include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+3]
+
+[role=tab]
+Have an account and an app
+
+.I want to use an existing application
+include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[leveloffset=+3]
+
+
+[role=tab]
+Have an account and want new app
+
+.I want to create a new application
+include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[leveloffset=+3]
+
+
+[role=tab-container-end]
+-
+
+==== Create a new account and a new application
+include::{docdir}/common/cli/create-project.adoc[leveloffset=+2]
+
+==== Use existing account and application
+include::{docdir}/common/cli/reuse-project-using-existing-account.adoc[leveloffset=+2]
+
+==== Add an application to my account
+include::{docdir}/common/cli/create-project-using-existing-account.adoc[leveloffset=+2]
+
+
+
+== Run project locally
+
+=== Run front and _custom cloud services_
+include::{docdir}/common/cli/run-project.adoc[leveloffset=+2]
+
+=== Run only _custom cloud services_
+include::{docdir}/common/cli/run-custom-cloud-services.adoc[leveloffset=+2]
+
+
+== Deploy project on ZetaPush Cloud
+
+=== Deploy front and _custom cloud services_
+include::{docdir}/common/cli/deploy-project.adoc[leveloffset=+2]
+
+=== Deploy only _custom cloud services_
+include::{docdir}/common/code/command-to-deploy-worker.adoc[leveloffset=+2]
+
+=== Deploy only front
+include::{docdir}/common/cli/command-to-deploy-front.adoc[leveloffset=+2]
+

@@ -1,9 +1,9 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 NOTE: The _Worker_ is the back end of your application. Generally you put your business logic inside it.
 
-If you want to only deploy your worker on the ZetaPush platform, you can launch :
+If you want to only deploy your worker on the ZetaPush platform, you can launch:
 
 include::{docdir}/common/code/command-to-deploy-worker.adoc[]
 

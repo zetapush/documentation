@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 The deployment is very easy, to do this you only need to launch this command in your application directory :

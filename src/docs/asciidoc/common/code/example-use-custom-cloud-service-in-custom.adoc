@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 In this example, we will have 2 _custom cloud services_ : 

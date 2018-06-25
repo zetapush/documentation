@@ -1,15 +1,15 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-In the _deployment_ with ZetaPush, you have 2 parts :
+In the _deployment_ with ZetaPush, you have 2 parts:
 
-* Hosting and scalability of the back end
+* Hosting and scalability of the worker (_custom cloud services_)
 * Hosting of the front end
 
-== Back end
+== Worker
 
-When you deploy the back end part (_custom cloud services_) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.
+When you deploy the worker (_custom cloud services_) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.
 
 == Front end
 
-For the front end part, we hosting your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (_custom cloud services_ or _cloud services_ provided by ZetaPush).
+For the front end part, we host your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (_custom cloud services_ or _cloud services_ provided by ZetaPush).

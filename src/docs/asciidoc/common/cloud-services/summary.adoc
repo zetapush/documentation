@@ -1,0 +1,12 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+[cols="2*^", options="header"]
+|===
+| Cloud service
+| Description
+
+| <<reference.adoc#_user_management, User management>>
+| TODO: https://github.com/zetapush/documentation/issues/45
+|===
+

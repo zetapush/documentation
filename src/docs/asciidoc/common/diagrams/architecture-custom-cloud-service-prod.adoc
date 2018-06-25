@@ -1,8 +1,8 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 .Custom Cloud Service in production phase
-[plantuml, custom-cloud-service-prod, png]     
+[plantuml, custom-cloud-service-prod, png, role="center"]     
 ....
 skinparam component {
 	ArrowFontName Impact

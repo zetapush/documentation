@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 To execute or deploy your application you need to use the _Command Line Interface (CLI)_.
