@@ -12,19 +12,49 @@
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/menu.js"></script>
+<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
 <script type="text/javascript" src="..//javascripts/steps.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
-/> -->
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
 </head>
 <body class="book">
 <div id="header">
@@ -35,19 +65,15 @@
 <div class="paragraph">
 <p>If you want to deploy or execute your application on an existing application you can follow this process :</p>
 </div>
-<div class="imageblock">
+<div class="imageblock center">
 <div class="content">
-<img src="init-with-account-and-app.png" alt="init with account and app" width="379" height="352">
+<img src="init-with-account-and-app.png" alt="init with account and app" width="496" height="352">
 </div>
 </div>
 <div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em>, <em>developer-password</em> and <em>appName</em> properties</p>
-</div>
-<div class="paragraph">
-<p>➋ An application is created in your workspace</p>
-</div>
-<div class="paragraph">
-<p>➌ The <em>.zetarc</em> file is like :</p>
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code>, <code>--developer-password</code> and <code>--appName</code> parameters<br>
+➋ The application is created in <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file is like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -61,7 +87,7 @@
   <td class="code"><pre>{
     <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
 }</pre></td>
 </tr></table></code></pre>
 </div>

@@ -5,62 +5,87 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Workflow initialization</title>
+<title>Initialization Workflows explanation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/menu.js"></script>
+<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
 <script type="text/javascript" src="..//javascripts/steps.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
-/> -->
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_workflow_initialization">Workflow initialization</a>
-<ul class="sectlevel2">
-<li><a href="#_i_have_an_existing_account">I have an existing account</a></li>
-<li><a href="#_i_don_t_have_zetapush_account">I don&#8217;t have ZetaPush account</a></li>
-</ul>
-</li>
+<li><a href="#_initialization_workflows_explanation">Initialization Workflows explanation</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_workflow_initialization"><a class="anchor" href="#_workflow_initialization"></a>Workflow initialization</h2>
+<h2 id="_initialization_workflows_explanation"><a class="anchor" href="#_initialization_workflows_explanation"></a>Initialization Workflows explanation</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_i_have_an_existing_account"><a class="anchor" href="#_i_have_an_existing_account"></a>I have an existing account</h3>
-<div class="sect3">
-<h4 id="_i_want_to_use_an_existing_application"><a class="anchor" href="#_i_want_to_use_an_existing_application"></a>I want to use an existing application</h4>
-<div class="imageblock">
+<div class="paragraph tab-container no-max-height">
+<p>With or without account</p>
+</div>
+<div class="paragraph tab">
+<p>Don&#8217;t have ZetaPush account</p>
+</div>
+<div class="imageblock center">
 <div class="content">
-<img src="init-with-account-and-app.png" alt="init with account and app" width="379" height="352">
+<img src="init-without-account.png" alt="I want to create an account" width="379" height="460">
 </div>
-</div>
-<div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em>, <em>developer-password</em> and <em>appName</em> properties</p>
+<div class="title">Figure 1. I want to create an account</div>
 </div>
 <div class="paragraph">
-<p>➋ An application is created in your workspace</p>
-</div>
-<div class="paragraph">
-<p>➌ The <em>.zetarc</em> file is like :</p>
+<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters<br>
+➋ You type your email and a password to create your ZetaPush account<br>
+➌ The application is created in <code>myApp</code> folder<br>
+➍ The <em>.zetarc</em> file is like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -74,27 +99,67 @@
   <td class="code"><pre>{
     <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
 }</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You need to validate your ZetaPush account to run or deploy your application.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect3">
-<h4 id="_i_want_to_create_a_new_application"><a class="anchor" href="#_i_want_to_create_a_new_application"></a>I want to create a new application</h4>
-<div class="imageblock">
+<div class="paragraph tab">
+<p>Have an account and an app</p>
+</div>
+<div class="imageblock center">
 <div class="content">
-<img src="init-with-account-without-app.png" alt="init with account without app" width="338" height="352">
+<img src="init-with-account-and-app.png" alt="I want to use an existing application" width="496" height="352">
 </div>
-</div>
-<div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> with the <em>developer-login</em> and <em>developer-password</em> properties</p>
+<div class="title">Figure 2. I want to use an existing application</div>
 </div>
 <div class="paragraph">
-<p>➋ An application is created in your workspace</p>
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code>, <code>--developer-password</code> and <code>--appName</code> parameters<br>
+➋ The application is created in <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file is like :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Have an account and want new app</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="init-with-account-without-app.png" alt="I want to create a new application" width="435" height="352">
+</div>
+<div class="title">Figure 3. I want to create a new application</div>
 </div>
 <div class="paragraph">
-<p>➌ The <em>.zetarc</em> file is like :</p>
+<p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code> and <code>--developer-password</code> parameters<br>
+➋ The application is created in <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file is like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -120,68 +185,20 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploy or execute the code on a new application.
+If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploys or executes the code on a new application.
 </td>
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_i_don_t_have_zetapush_account"><a class="anchor" href="#_i_don_t_have_zetapush_account"></a>I don&#8217;t have ZetaPush account</h3>
-<div class="imageblock">
-<div class="content">
-<img src="init-without-account.png" alt="init without account" width="379" height="460">
-</div>
-</div>
-<div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters</p>
-</div>
-<div class="paragraph">
-<p>➋ You type your email and a password to create your ZetaPush account</p>
-</div>
-<div class="paragraph">
-<p>➌ An application is created in your workspace</p>
-</div>
-<div class="paragraph">
-<p>➍ The <em>.zetarc</em> file is like :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-</pre></td>
-  <td class="code"><pre>{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">nameOfAppAutoGenerated</span><span class="delimiter">&quot;</span></span>
-}</pre></td>
-</tr></table></code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You need to validate your ZetaPush account to run or deploy your application.
-</td>
-</tr>
-</table>
-</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 11:35:01 UTC
 </div>
 </div>
 </body>

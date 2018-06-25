@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Tutorials</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/menu.js"></script>
+<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="..//javascripts/steps.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Tutorials</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_use_case">Use case</a>
+<ul class="sectlevel2">
+<li><a href="#_initialize_your_application">Initialize your application</a></li>
+<li><a href="#_create_your_business_logic">Create your business logic</a></li>
+<li><a href="#_use_your_em_custom_cloud_services_em">Use your <em>custom cloud services</em></a></li>
+<li><a href="#_deploy_your_application">Deploy your application</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial, you will create an application with ZetaPush, from the initialization to the deployment.
+You will learn to :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add business logic with ZetaPush</p>
+</li>
+<li>
+<p>Use <em>cloud services</em> provided by ZetaPush</p>
+</li>
+<li>
+<p>Run your code locally</p>
+</li>
+<li>
+<p>Deploy your application</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_case"><a class="anchor" href="#_use_case"></a>Use case</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You will create a realtime chat application, but it will be particular : This will be an <strong>Avengers Chat</strong> !</p>
+</div>
+<div class="paragraph">
+<p>At the beginning, the user of the chat can choose an Avenger. Each character has many skills and they can use them on the chat to attack the others Avengers.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. List of skills by Avenger</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Avenger</th>
+<th class="tableblock halign-center valign-middle">Skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Captain America</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Shoot of shield / Cure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Falcon</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Archery / Super vision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Iron Man</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Flight / Missile launcher</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Hulk</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Punch / Regeneration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Thor</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Hammer hit / Lightning strike</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Spider Man</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Shoot of cobweb / Jump with cobweb</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Wolverine</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Scratch / Regeneration</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You will create this application in few steps :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#_initialize_your_application">Initialize a new application</a></p>
+</li>
+<li>
+<p><a href="#_create_your_business_logic">Create the business logic in a <em>custom cloud service</em></a></p>
+</li>
+<li>
+<p><a href="#_use_your_em_custom_cloud_services_em">Use your <em>custom cloud service</em> in your UI</a></p>
+</li>
+<li>
+<p><a href="#_deploy_your_application">Deploy your application</a></p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_initialize_your_application"><a class="anchor" href="#_initialize_your_application"></a>Initialize your application</h3>
+<div class="paragraph">
+<p>In the first step, you need to create your application. To do this you can run :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>npm init @zetapush myApp --developer-login user@gmail.com --developer-password password</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will create you an account on the ZetaPush platform and create your first application in the <em>myApp</em> directory.
+The create of an account send an email to confirm your account.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To use your application, you need to validate your account. To do this, click on the link in the received email
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this tutorial, we are focusing on the ZetaPush development. So to begin, get all resources and add them to your application (css, assets, &#8230;&#8203;) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>$ cd myApp/front/
+$ rm -r ./*
+$ curl -X GET 'http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front' --output front.zip
+$ unzip front.zip
+$ rm front.zip
+</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you are using <em>Windows</em>, you can download the file with all resources and unzip it in the front directory. Link : <a href="http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front" class="bare">http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>So you already have the style and the frontend logic in the folders <code>assets</code> and <code>utils</code>. You can browse this files to understand this code.</p>
+</div>
+<div class="paragraph">
+<p>In this tutorial, you need to :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create the business logic with a <em>custom cloud service</em></p>
+</li>
+<li>
+<p>Implement the interaction with the <em>custom cloud service</em> (front side)</p>
+</li>
+<li>
+<p>Deploy your application</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_your_business_logic"><a class="anchor" href="#_create_your_business_logic"></a>Create your business logic</h3>
+<div class="paragraph">
+<p>Now, you will create the business logic of your application. To do this, you will use a <em>custom cloud service</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A <em>custom cloud service</em> is a class where you develop a business logic. You can create several <em>custom cloud services</em> inside one application. Each <em>custom cloud service</em> can use the <em>cloud services</em> provided by ZetaPush.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In your existing application you already have a <em>custom cloud service</em> on the file <code>worker/index.js</code> (Defined in the <code>package.json</code> with the property <code>main</code>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+When you create one or many <em>custom cloud services</em>, you need to export them (to use them from the front side). The exportation need to be done in a file of your application, defined in the <code>package.json</code>. The property <code>main</code> defines this file.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can fill this file (<code>worker/index.js</code>) with the following content :</p>
+</div>
+<div class="sect3">
+<h4 id="_import_em_cloud_services_em_and_define_constants"><a class="anchor" href="#_import_em_cloud_services_em_and_define_constants"></a>Import <em>cloud services</em> and define constants</h4>
+<div class="paragraph">
+<p>First, you need to import the <em>cloud services</em> provided by ZetaPush, used in this application :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Stack</em> (Save data in a stack)</p>
+</li>
+<li>
+<p><em>Messaging</em> (Send and receive messages)</p>
+</li>
+<li>
+<p><em>GroupManagement</em> (Manage group of users)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You also need to import <em>Inject</em> that is useful for the dependencies injection.</p>
+</div>
+<div class="listingblock">
+<div class="title">Imports and constants</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>const { Stack, Messaging, GroupManagement, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+
+const CONVERSATION_ID = <span class="string"><span class="delimiter">'</span><span class="content">avengersChat</span><span class="delimiter">'</span></span>;
+const CHANNEL_MESSAGING = <span class="string"><span class="delimiter">'</span><span class="content">avengersChannel</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>On which channel the users send and listen the messages</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_the_class_with_its_constructor"><a class="anchor" href="#_create_the_class_with_its_constructor"></a>Create the class with its constructor</h4>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> is a class, so you need to create it.</p>
+</div>
+<div class="listingblock">
+<div class="title">Class and constructor</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> AvengersApi {
+  <span class="comment">/**
+   * Dependencies injection of cloud services
+   */</span>
+  <span class="reserved">static</span> get parameters() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> [
+      <span class="keyword">new</span> Inject(Stack),
+      <span class="keyword">new</span> Inject(Messaging),
+      <span class="keyword">new</span> Inject(GroupManagement)
+    ]
+  }
+
+  <span class="comment">/**
+   * Constructor of our API
+   */</span>
+  constructor(stack, messaging, groups) { <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.stack = stack;
+    <span class="local-variable">this</span>.messaging = messaging;
+    <span class="local-variable">this</span>.groups = groups;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Syntax of dependencies injection based on <code>injection-js</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You need to put the injected <em>cloud services</em> in the constructor in the same order that they are defined in the static method <code>parameters</code>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The dependencies injection of ZetaPush use <code>injection-js</code>. So we use the same syntax (static method <em>parameters</em>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a>Create the chat</h4>
+<div class="paragraph">
+<p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
+So we add a method in our class to create this conversation.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create conversation</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+ * Create the conversation of the chat, if doesn't already exists
+ */</span>
+async createConversation() {
+    const { exists } = await <span class="local-variable">this</span>.groups.exists({
+        <span class="key">group</span>: CONVERSATION_ID
+    });
+    <span class="keyword">if</span> (!exists) {
+        await <span class="local-variable">this</span>.groups.createGroup({
+            <span class="key">group</span>: CONVERSATION_ID
+        });
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_user_in_the_conversation"><a class="anchor" href="#_add_user_in_the_conversation"></a>Add user in the conversation</h4>
+<div class="paragraph">
+<p>When an user come to the chat, we need to add it to the conversation.
+So we create a method in our class to add the current user in the conversation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Add the current user in the conversation
+*/</span>
+async addMeToConversation(parameters, context) { <i class="conum" data-value="1"></i><b>(1)</b>
+    const output = await <span class="local-variable">this</span>.groups.addUser({
+        <span class="key">group</span>: CONVERSATION_ID,
+        <span class="key">user</span>: context.owner <i class="conum" data-value="2"></i><b>(2)</b>
+    });
+    <span class="keyword">return</span> output;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each <em>cloud function</em> in a <em>custom cloud function</em> takes only one parameter. The second is the context, injected by the SDK</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We get the caller (owner) of the <em>cloud function</em> from the context.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_send_a_message"><a class="anchor" href="#_send_a_message"></a>Send a message</h4>
+<div class="paragraph">
+<p>No we want to send a message on our chat. To do this, we need to follow 3 steps :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get all users in the conversation</p>
+</li>
+<li>
+<p>Send the message of all users in the conversation</p>
+</li>
+<li>
+<p>Store the message in a stack</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Send a message on the chat
+* @param {Object} message
+*/</span>
+async sendMessage(message = {}) {
+    <span class="comment">// Get all users inside the conversation</span>
+    const group = await <span class="local-variable">this</span>.groups.groupUsers({
+      <span class="key">group</span>: CONVERSATION_ID
+    });
+    const users = group.users;
+
+    <span class="comment">// Send the message to each user in the conversation</span>
+    <span class="local-variable">this</span>.messaging.send({
+      <span class="key">target</span>: users,
+      <span class="key">channel</span>: CHANNEL_MESSAGING,
+      <span class="key">data</span>: { message }
+    });
+
+    <span class="comment">// Store the message in a stack</span>
+    await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: CONVERSATION_ID,
+      <span class="key">data</span>: message
+    });
+
+    <span class="keyword">return</span> group;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+There is no specific method to launch an attack, to do this, we only send a specific message throught <code>sendMessage</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_all_messages"><a class="anchor" href="#_get_all_messages"></a>Get all messages</h4>
+<div class="paragraph">
+<p>To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="comment">/**
+* Get all messages in the conversation
+*/</span>
+async getMessages() {
+    const { result } = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: CONVERSATION_ID
+    });
+    <span class="keyword">return</span> result;
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_export_our_class"><a class="anchor" href="#_export_our_class"></a>Export our class</h4>
+<div class="paragraph">
+<p>At the end, we need to export our class to use it from the front side. To do this, we only need to add this line at the end of our file :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>module.exports = AvengersApi;</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now your <em>custom cloud service</em> is ready !</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_your_em_custom_cloud_services_em"><a class="anchor" href="#_use_your_em_custom_cloud_services_em"></a>Use your <em>custom cloud services</em></h3>
+<div class="paragraph">
+<p>Once we have our <em>custom cloud service</em>, we need to create the frontend of our application.</p>
+</div>
+<div class="sect3">
+<h4 id="_launch_the_worker_locally"><a class="anchor" href="#_launch_the_worker_locally"></a>Launch the worker locally</h4>
+<div class="paragraph">
+<p>When we working on the frontend part, we often want to test our interaction with the backend logic.
+So with ZetaPush, you can launch your worker locally to test this interaction.
+To do this you need to use the <em>CLI</em> and run : <code>zeta run</code>.
+But in this project, the <em>CLI</em> is imported and a script is created with npm, so you just need to launch :</p>
+</div>
+<div class="listingblock">
+<div class="title">Run worker locally</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$</span> npm run start</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -g @zetapush/cli</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_interaction_with_worker"><a class="anchor" href="#_interaction_with_worker"></a>Interaction with worker</h4>
+<div class="paragraph">
+<p>Now you just need to add the interaction with the <em>custom cloud service</em>. To do this, fill the file <code>front/index.js</code> :</p>
+</div>
+<div class="listingblock">
+<div class="title">Interaction with worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> AvengersController from <span class="string"><span class="delimiter">'</span><span class="content">./utils/controller.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="reserved">import</span> dom from <span class="string"><span class="delimiter">'</span><span class="content">./utils/dom.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="comment">// Create the ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="3"></i><b>(3)</b>
+  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">appName</span><span class="delimiter">'</span></span>,
+});
+<span class="comment">/**
+ * Create service to listen incoming messages
+ */</span>
+const service = client.createService({
+  <span class="key">Type</span>: ZetaPushPlatform.Messaging,
+  <span class="key">listener</span>: {
+    <span class="comment">// Listen incoming messages from the channel 'avengersChannel'</span>
+    <span class="key">avengersChannel</span>: ({ data }) =&gt; controller.onAvengersMessage(data), <i class="conum" data-value="4"></i><b>(4)</b>
+  },
+});
+
+const controller = <span class="keyword">new</span> AvengersController(client, dom);
+
+(async <span class="keyword">function</span> <span class="function">main</span>() {
+  <span class="comment">// Expose to template</span>
+  window.<span class="predefined">$controller</span> = controller;
+  <span class="comment">// Connect to ZetaPush</span>
+  await client.connect();
+  <span class="comment">// Notify client connected</span>
+  controller.onConnectionEstablished();
+})();</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import the frontend logic (in the controller)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Import some utils functions</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Object to interact with the ZetaPush platform and the <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Cloud service provided by ZetaPush to listen incoming messages</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The value <code>appName</code> in the <em>ZetaPush Client</em> is the id of your application on your ZetaPush account. When you have launch <code>zeta run</code> (or <code>npm run start</code>) you have created an anonymous account and an empty application. All this informations are stored in the file <code>.zetarc</code> just created with the same command.</p>
+</div>
+<div class="paragraph">
+<p>Copy-past the <code>appName</code> from the <em>.zetarc</em> to your <em>ZetaPush Client</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test_you_application_locally"><a class="anchor" href="#_test_you_application_locally"></a>Test you application locally</h4>
+<div class="paragraph">
+<p>Now, you can test your application. To do this, you need to execute your frontend part locally. For example, you can use <a href="https://caddyserver.com/">Caddy Server</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Run locally</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>$ curl https://getcaddy.com | bash
+$ cd front/
+$ caddy</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Don&#8217;t forget to relaunch your worker with <code>npm run start</code> if you have stop it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then you have access to your application on <code><a href="http://localhost:2015" class="bare">http://localhost:2015</a></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_your_application"><a class="anchor" href="#_deploy_your_application"></a>Deploy your application</h3>
+<div class="paragraph">
+<p>Your application is working but only locally. To deploy your application you just need to launch <code>zeta push</code>. In this application you already have a npm script so you can run :</p>
+</div>
+<div class="listingblock">
+<div class="title">Deploy the application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command deploys all in once (Front and Worker). It will return you an unique URL to access to your application.</p>
+</div>
+<div class="paragraph">
+<p>Enjoy ! Your Avengers Chat is working and deployed !</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-25 11:35:01 UTC
+</div>
+</div>
+</body>
+</html>

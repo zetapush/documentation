@@ -12,19 +12,49 @@
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/menu.js"></script>
+<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
 <script type="text/javascript" src="..//javascripts/steps.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
-/> -->
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
 </head>
 <body class="book">
 <div id="header">
@@ -35,39 +65,39 @@
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Definition of generated files</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-middle">File / Folder</th>
-<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-left valign-top">File / Folder</th>
+<th class="tableblock halign-left valign-top">Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.zetarc</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.zetarc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the developer&#8217;s credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish your developer credentials (on GitHub for example)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.gitignore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents publication of your developer credentials (on GitHub for example)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the dependencies of ZetaPush, the name of your app, the entry point of yours <em>custom cloud services</em> and many useful other informations for your application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the dependencies, the name of your application, the entry point of yours <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to use your application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>README.md</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Give you some informations about how to use your application.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>front/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>worker/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -76,7 +106,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 11:35:01 UTC
 </div>
 </div>
 </body>

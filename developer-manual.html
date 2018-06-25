@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Developer manual</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=".//javascripts/menu.js"></script>
+<script type="text/javascript" src=".//javascripts/sidebar.js"></script>
+<script type="text/javascript" src=".//javascripts/steps.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href=".//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Developer manual</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_account_management">Account management</a>
+<ul class="sectlevel2">
+<li><a href="#_create_a_new_account_and_a_new_application">Create a new account and a new application</a></li>
+<li><a href="#_add_a_new_application_to_your_account">Add a new application to your account</a></li>
+<li><a href="#_configure_your_project_to_use_existing_application">Configure your project to use existing application</a></li>
+</ul>
+</li>
+<li><a href="#_develop_your_front_with_zetapush">Develop your front with ZetaPush</a>
+<ul class="sectlevel2">
+<li><a href="#_use_built_in_zetapush_cloud_services">Use built-in ZetaPush cloud services</a></li>
+<li><a href="#_configure_adapt_zetapush_cloud_services">Configure/adapt ZetaPush cloud services</a></li>
+<li><a href="#_run_your_front_locally">Run your front locally</a></li>
+</ul>
+</li>
+<li><a href="#_develop_your_business_logic">Develop your business logic</a>
+<ul class="sectlevel2">
+<li><a href="#_define_a_custom_cloud_service">Define a custom cloud service</a></li>
+<li><a href="#_use_a_custom_cloud_service_in_your_front">Use a custom cloud service in your front</a></li>
+<li><a href="#_hot_reload">Hot reload</a></li>
+</ul>
+</li>
+<li><a href="#_deploy_publish_your_application">Deploy/publish your application</a>
+<ul class="sectlevel2">
+<li><a href="#_applications_and_environments">Applications and environments</a></li>
+<li><a href="#_deploy_both_front_and_custom_cloud_services_on_zetapush_cloud">Deploy both front and custom cloud services on ZetaPush Cloud</a></li>
+<li><a href="#_deploy_your_front_on_zetapush_cloud">Deploy your front on ZetaPush Cloud</a></li>
+<li><a href="#_deploy_your_custom_cloud_services_on_zetapush_cloud">Deploy your custom cloud services on ZetaPush Cloud</a></li>
+</ul>
+</li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_unit_testing_your_front">Unit testing your front</a></li>
+<li><a href="#_unit_testing_your_custom_cloud_services">Unit testing your custom cloud services</a></li>
+<li><a href="#_integration_testing_your_front">Integration testing your front</a></li>
+<li><a href="#_integration_testing_your_custom_cloud_services">Integration testing your custom cloud services</a></li>
+<li><a href="#_functional_testing_end_to_end_testing">Functional testing / end-to-end testing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_account_management"><a class="anchor" href="#_account_management"></a>Account management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each account</p>
+</div>
+<div class="sect2">
+<h3 id="_create_a_new_account_and_a_new_application"><a class="anchor" href="#_create_a_new_account_and_a_new_application"></a>Create a new account and a new application</h3>
+<div class="sect3">
+<h4 id="_using_zetapush_main_site"><a class="anchor" href="#_using_zetapush_main_site"></a>Using ZetaPush main site</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_using_zetapush_web_console"><a class="anchor" href="#_using_zetapush_web_console"></a>Using ZetaPush web Console</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_using_your_terminal"><a class="anchor" href="#_using_your_terminal"></a>Using your terminal</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_a_new_application_to_your_account"><a class="anchor" href="#_add_a_new_application_to_your_account"></a>Add a new application to your account</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_configure_your_project_to_use_existing_application"><a class="anchor" href="#_configure_your_project_to_use_existing_application"></a>Configure your project to use existing application</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_develop_your_front_with_zetapush"><a class="anchor" href="#_develop_your_front_with_zetapush"></a>Develop your front with ZetaPush</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_use_built_in_zetapush_cloud_services"><a class="anchor" href="#_use_built_in_zetapush_cloud_services"></a>Use built-in ZetaPush cloud services</h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_adapt_zetapush_cloud_services"><a class="anchor" href="#_configure_adapt_zetapush_cloud_services"></a>Configure/adapt ZetaPush cloud services</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_run_your_front_locally"><a class="anchor" href="#_run_your_front_locally"></a>Run your front locally</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_develop_your_business_logic"><a class="anchor" href="#_develop_your_business_logic"></a>Develop your business logic</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_define_a_custom_cloud_service"><a class="anchor" href="#_define_a_custom_cloud_service"></a>Define a custom cloud service</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_use_a_custom_cloud_service_in_your_front"><a class="anchor" href="#_use_a_custom_cloud_service_in_your_front"></a>Use a custom cloud service in your front</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_hot_reload"><a class="anchor" href="#_hot_reload"></a>Hot reload</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploy_publish_your_application"><a class="anchor" href="#_deploy_publish_your_application"></a>Deploy/publish your application</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_applications_and_environments"><a class="anchor" href="#_applications_and_environments"></a>Applications and environments</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_deploy_both_front_and_custom_cloud_services_on_zetapush_cloud"><a class="anchor" href="#_deploy_both_front_and_custom_cloud_services_on_zetapush_cloud"></a>Deploy both front and custom cloud services on ZetaPush Cloud</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_deploy_your_front_on_zetapush_cloud"><a class="anchor" href="#_deploy_your_front_on_zetapush_cloud"></a>Deploy your front on ZetaPush Cloud</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_deploy_your_custom_cloud_services_on_zetapush_cloud"><a class="anchor" href="#_deploy_your_custom_cloud_services_on_zetapush_cloud"></a>Deploy your custom cloud services on ZetaPush Cloud</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_unit_testing_your_front"><a class="anchor" href="#_unit_testing_your_front"></a>Unit testing your front</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_unit_testing_your_custom_cloud_services"><a class="anchor" href="#_unit_testing_your_custom_cloud_services"></a>Unit testing your custom cloud services</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_integration_testing_your_front"><a class="anchor" href="#_integration_testing_your_front"></a>Integration testing your front</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_integration_testing_your_custom_cloud_services"><a class="anchor" href="#_integration_testing_your_custom_cloud_services"></a>Integration testing your custom cloud services</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_functional_testing_end_to_end_testing"><a class="anchor" href="#_functional_testing_end_to_end_testing"></a>Functional testing / end-to-end testing</h3>
+
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-06-25 11:35:01 UTC
+</div>
+</div>
+</body>
+</html>

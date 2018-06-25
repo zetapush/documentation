@@ -1,0 +1,566 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 100px;
+}
+body::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.1;
+  background: url(../images/icons/landing-page-cubes.png) no-repeat top right;
+  background-size: contain;
+}
+
+
+/** TABLE OF CONTENT */
+
+#toc.toc2 {
+  top: 100px;
+  font-family: 'Open Sans', sans-serif;
+  height: auto;
+  bottom: 0;
+}
+#toc.toc2 #toctitle {
+  display: none;
+  font-size: 30px;
+  text-align: center;
+  color: #145E79;
+  border-bottom: 2px solid #145E79;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#toc.toc2 li > a,
+#toc.toc2 li > a:hover {
+  color: #145E79;
+}
+
+#toc.toc2 li {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+#toc.toc2 .sectlevel0 > li {
+  text-align: center;
+}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1 {
+  text-align: left;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+#toc.toc2 .sectlevel0 > li > a,
+#toc.toc2 .sectlevel0 > li > a:hover {
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+#toc.toc2 .sectlevel1 > li > a,
+#toc.toc2 .sectlevel1 > li > a:hover {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#toc.toc2 .sectlevel2 > li > a,
+#toc.toc2 .sectlevel2 > li > a:hover {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+#toc.toc2 .sectlevel2 li {
+  position: relative;
+}
+#toc.toc2 .sectlevel2 > li.has-subsection i {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #145E79;
+  transition: transform 0.2s linear;
+}
+#toc.toc2 .sectlevel2 > li.has-subsection.opened i {
+  transform: rotate(90deg);
+}
+
+#toc.toc2 .sectlevel3 {
+  overflow: hidden;
+  transition: max-height 0.2s linear;
+}
+#toc.toc2 .sectlevel3.computing-size {
+  max-height: none !important;
+  position: absolute;
+  overflow: visible;
+  visibility: hidden;
+}
+#toc.toc2 .sectlevel3 > li > a,
+#toc.toc2 .sectlevel3 > li > a:hover {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+
+/** HEADER */
+
+header {
+  background: #145E79;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 10000;
+}
+
+header nav {
+  position: relative;
+}
+
+header nav ul {
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 100px;
+  width: 30em;
+  padding: 1em;
+  overflow: hidden;
+  background: #145E79;  
+  list-style: none;
+  display: none;
+  text-align: left;
+}
+header nav ul > li {
+  position: relative;
+  padding: 0.5em 0;
+}
+
+header nav .main-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30em;
+  padding: 1em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  user-select: none;
+}
+header nav .main-title span {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+header nav .main-title i {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+header nav ul > li a,
+header nav ul > li a:hover,
+header nav ul > li a:visited {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  line-height: 18px;
+}
+header nav ul > li i {
+  font-size: 18px !important;
+  color: #fff;
+  font-weight: bold !important;
+  position: absolute;
+  right: 5px;
+  height: 100%;
+  top: 50%;
+  margin-top: -9px;
+}
+
+header nav {
+  padding-left: 30em;
+  vertical-align: middle;
+  text-align: right;
+}
+header nav > div {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+header nav > div > div {
+  flex: 0 1 24%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header nav > div a,
+header nav > div a:hover,
+header nav > div a:visited,
+header nav > div a:focus {
+  display: flex;
+  align-items: center;
+  font-size: 22px;  
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+header .github span {
+  text-align: right;
+}
+header .github i {
+  font-size: 30px;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+}
+header nav > div > div.search {
+  /*width: 150px;
+  height: 50px;
+  background: red;*/
+  /* TODO */
+  display: none;
+}
+header nav > div > div.logo span {
+  display: block;
+  width: 150px;
+  height: 100px;
+  background: url(../images/icons/zplogo-def-bleu-web.png) no-repeat center right;
+  background-size: 100px auto;
+}
+
+
+
+/** MENU */
+header nav.opened ul {
+  height: auto;
+  display: block;
+}
+
+
+/** TITLES */
+
+#header h1:first-child,
+#header .details {
+  display: none;
+}
+
+#content h1,
+#content h1 > a.link,
+#content h1 > a.link:hover,
+#content h2,
+#content h2 > a.link,
+#content h2 > a.link:hover,
+#content h3,
+#content h3 > a.link,
+#content h3 > a.link:hover,
+#content h4,
+#content h4 > a.link,
+#content h4 > a.link:hover,
+#content h5,
+#content h5 > a.link,
+#content h5 > a.link:hover,
+#content h6,
+#content h6 > a.link,
+#content h6 > a.link:hover {
+  font-family: 'Open Sans', sans-serif;
+  color: #145E79;
+}
+
+#content h1 {
+  text-align: center;
+}
+#content h1 > a.link,
+#content h1 > a.link:hover {
+  font-weight: 800;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+#content h2 {
+  border-bottom: 1px solid rgba(20, 94, 121, 0.5);
+  margin-bottom: .8em;
+}
+#content h2 > a.link,
+#content h2 > a.anchor,
+#content h2 > a.link:hover {
+  font-weight: 600;
+  font-size: .8em;
+}
+
+#content h3 {
+  padding-left: 20px;
+}
+#content h3 > a.link,
+#content h3 > a.anchor {
+  font-size: .9em;
+}
+
+#content h4 {
+  padding-left: 40px;
+}
+#content h4 > a.link,
+#content h4 > a.anchor {
+  font-size: 0.9em;
+}
+
+#content h5 > a.link {
+  font-size: 0.9em;
+}
+
+
+.sect1 ~ .sect0 {
+	border-top: 1px solid #145E79;
+	padding-top: 1.1em;
+}
+
+
+/** GENERAL */
+
+a {
+  color: #29A8D6;
+  text-decoration: none;
+}
+a:hover {
+  color: #0294BA;
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: circle;
+}
+ul > li > p {
+  margin-bottom: 0;
+}
+.subheader, 
+.admonitionblock td.content>.title, 
+.audioblock>.title, 
+.exampleblock>.title, 
+.imageblock>.title, 
+.listingblock>.title, 
+.literalblock>.title, 
+.stemblock>.title, 
+.openblock>.title, 
+.paragraph>.title, 
+.quoteblock>.title, 
+table.tableblock>.title, 
+.verseblock>.title, 
+.videoblock>.title, 
+.dlist>.title, 
+.olist>.title, 
+.ulist>.title, 
+.qlist>.title, 
+.hdlist>.title {
+  font-size: 18px;
+  color: #145E79;
+  font-weight: 300;
+}
+
+/** TABLES */
+
+table.tableblock, td.tableblock, th.tableblock {
+  border: 0 solid rgba(20, 94, 121, 0.5);
+}
+table.tableblock,
+th.tableblock {
+  border-bottom-color: #145E79;
+}
+table {
+  border: none;
+}
+table thead tr th {
+  background: #F3F7F8;
+  font-weight: 600;
+  font-size: 22px;
+  color: #145E79;
+}
+table tr:nth-child(2n) {
+  background: #F3F7F8;
+}
+table.grid-all th.tableblock {
+  border-width: 0 1px 2px 0;
+}
+table.grid-all td.tableblock {
+  border-width: 0 1px 1px 0;
+}
+table.tableblock {
+  border-bottom-width: 2px;
+}
+
+/** RESPONSIVE */
+
+
+@media only screen and (max-width: 768px) {
+  body::before {
+    width: 90px;
+    height: 90px;
+  }
+  header nav {
+    padding-left: 80px;
+  }
+  header nav .main-title {
+    width: 80px;
+    overflow: hidden;
+  }
+  header nav .main-title span {
+    display: none;
+  }
+  header nav .main-title i {
+    display: none;
+  }
+  header nav .main-title::before {
+    content: "\f0c9";
+    font-family: 'FontAwesome';
+    color: #fff;
+    font-size: 30px;
+  }
+  header nav ul {
+    position: fixed;
+    width: 15em;
+    padding: 0 0.5em 0 0.5em;
+    bottom: 0;
+  }
+  
+  header,
+  header nav .main-title,
+  header nav > div {
+    height: 80px;
+  }
+  body {
+    margin-top: 80px;
+  }
+  header nav > div {
+    justify-content: flex-end;
+  }
+  header nav ul {
+    top: 80px;
+  }
+  header nav .search,
+  header nav .contact-us,
+  header nav .github {
+    display: none;
+  }
+  header nav.opened .contact-us,
+  header nav.opened .github {
+    position: fixed;
+    display: block;
+    left: 0;
+    width: 15em;
+    text-align: left;
+    padding-left: 0.5em;
+  }
+  header nav.opened .contact-us a,
+  header nav.opened .github a {
+    display: inline-block;
+    font-size: 18px;
+  }
+  header nav.opened .contact-us {
+    bottom: 50px;
+  }
+  header nav.opened .github {
+    bottom: 10px;
+  }  
+  header nav.opened .github i {
+    font-size: 25px;
+    padding-right: 0;
+  }
+  header nav > div > div.logo {
+    margin-right: 10px;
+  }
+  header nav > div > div.logo span {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: url(../images/icons/zplogo-def-bleu-web.png) no-repeat center right;
+    background-size: 80px auto;
+  }
+  header nav ul > li a, 
+  header nav ul > li a:hover, 
+  header nav ul > li a:visited {
+    font-size: 16px;
+  }
+  #toc.toc2 #toctitle {
+    display: block;
+  }
+  #header>h1:first-child+#toc {
+    border-top: none;
+  }
+  
+}
+@media only screen and (min-width: 769px) and (max-width: 1279px) {
+  body::before {
+    width: 180px;
+    height: 180px;
+  }
+  header nav {
+    padding-left: 15em;
+  }
+  header nav .main-title,
+  header nav ul {
+    width: 15em;
+    padding: 0 0.5em;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  body::before {
+    width: 260px;
+    height: 260px;
+  }
+  header nav {
+    padding-left: 20em;
+  }
+  header nav .main-title,
+  header nav ul {
+    width: 20em;
+    padding: 0 1em 0 0.5em;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  body::before {
+    width: 320px;
+    height: 320px;
+  }
+  header nav {
+    padding-left: 30em;
+  }
+  header nav .main-title,
+  header nav ul {
+    width: 30em;
+    padding: 1em;
+  }
+}
+
+
+
+/** ADMONITION */
+.admonitionblock.tip .content {
+  background-color: rgba(250,205,53,0.05);
+}
+.admonitionblock td.icon .icon-tip:before {
+  color: #FACD35;
+}
+.admonitionblock.note .content {
+  background-color: rgba(0,192,242,0.05);
+}
+.admonitionblock td.icon .icon-note:before {
+  color: #00C0F2;
+}
+.admonitionblock.warning .content {
+  background-color: rgba(245,166,35,0.05);
+}
+.admonitionblock td.icon .icon-warning:before {
+  color: #F5A623;  
+}
+.admonitionblock.caution .content {
+  background-color: rgba(241,91,62,0.05);
+}
+.admonitionblock td.icon .icon-caution:before {
+  color: #F15B3E;  
+}

@@ -5,9 +5,9 @@ code {
 p code {
 	font-size: 0.72em !important;
 }
-pre code {
+/*pre code {
 	font-size: 0.75em !important;
-}
+}*/
 li code {
 	font-size: 0.85em !important;
 }
@@ -23,6 +23,11 @@ li code {
 
 .imageblock.text-center .title {
 	text-align: center;
+}
+.imageblock.center .content,
+.imageblock.center .title {
+	text-align: center;
+	
 }
 
 .no-callout .conum,
@@ -50,3 +55,34 @@ h1[id]:before, h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before, h6[id
 .code-once-diagram img {
 	height: 370px;
 }
+
+
+#toc ul.sectlevel0>li>a {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#toc ul.sectlevel1>li>a {
+	font-weight: bold;
+}
+
+@media only screen and (min-width: 1600px) {
+	#toc.toc2 {
+		width: 30em;
+	}
+	body.toc2 {
+    padding-left: 30em;
+    padding-right: 0;
+	}
+}
+
+
+.exchange-call {
+	color: #00c0f2;
+	font-size: 1.2em;
+}
+.exchange-response {
+	color: #ffbd4a;
+	font-size: 1.2em;
+}
+

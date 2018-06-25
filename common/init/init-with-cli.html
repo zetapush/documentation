@@ -5,35 +5,59 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Using npm lower than 6</title>
+<title>Untitled</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="..//javascripts/menu.js"></script>
+<script type="text/javascript" src="..//javascripts/sidebar.js"></script>
 <script type="text/javascript" src="..//javascripts/steps.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/source-utils.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src="..//javascripts/tabcontainer.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
-/> -->
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="..//styles/zetapush-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/custom-styles.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/tabcontainer.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/steps.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href="..//styles/sourcecode/highlight-lines.css" />
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search"></div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
 </head>
-<body class="book toc2 toc-left">
+<body class="book">
 <div id="header">
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_using_npm_lower_than_6">Using npm lower than 6</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
 <div id="preamble">
@@ -51,7 +75,7 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><em>myApp</em> is the name of my generated application</td>
+<td><em>myApp</em> is the name of the folder that will be created and will contain all generated files</td>
 </tr>
 </table>
 </div>
@@ -62,24 +86,62 @@
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_npm_lower_than_6">section</a>.
+<div class="paragraph">
+<p>This command works only with npm &gt;= 6.</p>
+</div>
+<div class="paragraph">
+<p><strong>Using npm lower than 6</strong></p>
+</div>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>This command can takes many parameters :</p>
+<p>This command can takes several parameters :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>--developer-login</strong> : Define which developer login (ZetaPush account) use</p>
+<p><strong>--developer-login</strong> : Define which developer login (ZetaPush account) to use</p>
 </li>
 <li>
-<p><strong>--developer-password</strong> : Define which developer password (ZetaPush account) use</p>
+<p><strong>--developer-password</strong> : Define which developer password (ZetaPush account) to use</p>
 </li>
 <li>
-<p><strong>--appName</strong> : Define which application use</p>
+<p><strong>--appName</strong> : Define which application (defined in your ZetaPush account) to use</p>
 </li>
 </ul>
 </div>
@@ -89,7 +151,7 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 <div class="listingblock">
 <div class="title">Generated tree structure</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">myApp
+<pre class="CodeRay highlight"><code data-lang="console">{appName}
 ├── .zetarc
 ├── .gitignore
 ├── front
@@ -101,98 +163,51 @@ This command works only with npm &gt;= 6. Otherwise, read this <a href="#_using_
 └── package.json</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>All dependencies are already installed, so you can run your application locally or deploy it.</p>
-</div>
-<div class="paragraph">
-<p>To do this you can use the <em>CLI</em> using the commands : <code>zeta run</code> and <code>zeta push</code>.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-To install the CLI you can launch : <code>npm install -g @zetapush/cli</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The CLI dependency is already installed and npm scripts are created. So you can execute your code with <code>npm run start</code> and deploy your application with <code>npm run deploy</code>.</p>
-</div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Definition of generated files</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-middle">File / Folder</th>
-<th class="tableblock halign-center valign-middle">Definition</th>
+<th class="tableblock halign-left valign-top">File / Folder</th>
+<th class="tableblock halign-left valign-top">Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.zetarc</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the developer credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.zetarc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the developer&#8217;s credentials. Useful to deploy or run your code. This content is auto generated if the file is empty.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Avoid you to publish your developer credentials (on GitHub for example)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.gitignore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents publication of your developer credentials (on GitHub for example)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>package.json</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Contains the dependencies of ZetaPush, the name of your app, the entry point of yours <em>custom cloud services</em> and many useful other informations for your application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the dependencies, the name of your application, the entry point of yours <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Give you some informations to use your application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>README.md</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Give you some informations about how to use your application.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>front/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>worker/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_using_npm_lower_than_6"><a class="anchor" href="#_using_npm_lower_than_6"></a>Using npm lower than 6</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you using npm with a version lower than 6, you can upgrade your npm version with :</p>
-</div>
-<div class="listingblock">
-<div class="title">Upgrade npm</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or use <em>npx</em> to launch the script :</p>
-</div>
-<div class="listingblock">
-<div class="title">Launch with npx</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will have the same result that using the classic command.</p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-15 20:55:53 UTC
+Last updated 2018-06-25 11:35:01 UTC
 </div>
 </div>
 </body>
