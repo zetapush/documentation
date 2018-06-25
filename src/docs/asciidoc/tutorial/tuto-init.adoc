@@ -5,8 +5,10 @@ In the first step, you need to create your application. To do this you can run :
 
 [source, console, linenums]
 ----
-npm init @zetapush myApp --developer-login user@gmail.com --developer-password password
+npm init @zetapush myApp
 ----
+
+This command will ask you your developer login and password.
 
 This command will create you an account on the ZetaPush platform and create your first application in the _myApp_ directory.
 The create of an account send an email to confirm your account.
