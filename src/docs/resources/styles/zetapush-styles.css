@@ -414,8 +414,62 @@ table.tableblock {
   border-bottom-width: 2px;
 }
 
-/** RESPONSIVE */
 
+
+
+/** ADMONITION */
+
+.admonitionblock.tip .content {
+  background-color: rgba(250,205,53,0.05);
+}
+.admonitionblock td.icon .icon-tip:before {
+  color: #FACD35;
+}
+.admonitionblock.note .content {
+  background-color: rgba(0,192,242,0.05);
+}
+.admonitionblock td.icon .icon-note:before {
+  color: #00C0F2;
+}
+.admonitionblock.warning .content {
+  background-color: rgba(245,166,35,0.05);
+}
+.admonitionblock td.icon .icon-warning:before {
+  color: #F5A623;  
+}
+.admonitionblock.caution .content {
+  background-color: rgba(241,91,62,0.05);
+}
+.admonitionblock td.icon .icon-caution:before {
+  color: #F15B3E;  
+}
+.admonitionblock.important .content {
+  background-color: rgba(241,91,62,0.05);
+}
+.admonitionblock td.icon .icon-important:before {
+  color: #F15B3E;  
+}
+
+
+
+/** TABS */
+
+.tab>.tab-label,
+.tab>.tab-content {
+  border-color: rgba(20, 94, 121, 0.3) !important;
+}
+.tab>.tab-label {
+  background: #F3F7F8 !important;
+}
+.tab>[type=radio]:checked ~ .tab-label {
+  background: #fff !important;
+  border-bottom-color: #fff !important;
+}
+
+
+
+
+/** RESPONSIVE */
 
 @media only screen and (max-width: 768px) {
   html, body {
@@ -561,38 +615,4 @@ table.tableblock {
     width: 30em;
     padding: 1em;
   }
-}
-
-
-
-/** ADMONITION */
-.admonitionblock.tip .content {
-  background-color: rgba(250,205,53,0.05);
-}
-.admonitionblock td.icon .icon-tip:before {
-  color: #FACD35;
-}
-.admonitionblock.note .content {
-  background-color: rgba(0,192,242,0.05);
-}
-.admonitionblock td.icon .icon-note:before {
-  color: #00C0F2;
-}
-.admonitionblock.warning .content {
-  background-color: rgba(245,166,35,0.05);
-}
-.admonitionblock td.icon .icon-warning:before {
-  color: #F5A623;  
-}
-.admonitionblock.caution .content {
-  background-color: rgba(241,91,62,0.05);
-}
-.admonitionblock td.icon .icon-caution:before {
-  color: #F15B3E;  
-}
-.admonitionblock.important .content {
-  background-color: rgba(241,91,62,0.05);
-}
-.admonitionblock td.icon .icon-important:before {
-  color: #F15B3E;  
 }
