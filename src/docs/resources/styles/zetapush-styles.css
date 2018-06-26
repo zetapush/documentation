@@ -13,6 +13,19 @@ body::before {
   background-size: contain;
 }
 
+h1[id]:target:before,
+h2[id]:target:before,
+h3[id]:target:before,
+h4[id]:target:before,
+h5[id]:target:before,
+h6[id]:target:before {
+  content:"";
+  display:block;
+  height:100px; /* fixed header height*/
+  margin:-100px 0 0; /* negative fixed header height */
+  position: static;
+}
+
 
 /** TABLE OF CONTENT */
 
