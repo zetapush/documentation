@@ -59,11 +59,11 @@ include::{docdir}/common/cli/run-custom-cloud-services.adoc[leveloffset=+2]
 == Deploy project on ZetaPush Cloud
 
 === Deploy front and _custom cloud services_
-include::{docdir}/common/cli/deploy-project.adoc[leveloffset=+2]
+include::{docdir}/common/cli/push-project.adoc[leveloffset=+2]
 
 === Deploy only _custom cloud services_
 include::{docdir}/common/code/command-to-deploy-worker.adoc[leveloffset=+2]
 
 === Deploy only front
-include::{docdir}/common/cli/command-to-deploy-front.adoc[leveloffset=+2]
+include::{docdir}/common/code/command-to-deploy-front.adoc[leveloffset=+2]
 
