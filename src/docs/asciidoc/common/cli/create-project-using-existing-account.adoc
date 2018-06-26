@@ -7,10 +7,10 @@ include::{docdir}/variables.adoc[]
 $ npm init @zetapush {appName} <1>
            --developer-login <your email address> <2>
 ----
-<1> _{appName}_ is the name of the folder that will be created and will contain all generated files
+<1> _{appName}_ is the name of the folder that will be created with all the generated files
 <2> _<your email address>_ is the email you used when you registered on ZetaPush
 
-Your password will be prompt in order to login on ZetaPush.
+You will be prompted for a password in order to log in to ZetaPush.
 
 [WARNING]
 ====

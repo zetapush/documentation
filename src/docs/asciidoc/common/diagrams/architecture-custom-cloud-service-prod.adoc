@@ -31,4 +31,4 @@ node "ZetaPush platform" {
 }
 ....
 
-The front code interacts *only* with the _custom cloud services_ that is running "locally"
+The front code interacts *only* with the _custom cloud services_ that are running "remotely"

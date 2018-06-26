@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 TIP: The usage of a _custom cloud service_ and a _cloud service_ provided by ZetaPush is exactly the same process.
 
-An example gives a better explanation than a long speech, so here is an example of usage of services.
+An example is worth a thousand words, so here is an example of usage of services.
 
 IMPORTANT: When you call a _cloud function_, the result is always a Promise.
 

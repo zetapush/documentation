@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-To use services (custom or not), you need to have installed the dependency of the ZetaPush Core (`@zetapush/core`).
+To use services (custom or not), you need to install the ZetaPush Core dependency (`@zetapush/core`).
 
 So you can install it with :
 

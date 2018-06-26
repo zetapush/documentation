@@ -18,21 +18,21 @@ include::{docdir}/variables.adoc[]
 | Cloud function
 a| A single operation that has a name, well-defined behavior, that can accept parameters and can produce an output. 
 
-This is equivalent to function in any language except that it is run remotely.
+This is equivalent to a function in any language except that it is run remotely.
 
 | Cloud service
 a| Several Cloud functions that are grouped together to cover a coherent set of features. You can consider this as a class (custom cloud service) with methods (cloud functions).
 
 [NOTE]
 ====
-ZetaPush already provides ready to use cloud services. 
-For example we have: Chat, Group, Messaging...
+ZetaPush already provides ready-to-use cloud services. 
+For example we have: Chat, Groups, Messaging...
 
 In this documentation, we mention Cloud Services as a shortcut of ZetaPush Cloud Services.
 ====
 
 | Custom Cloud Service
-| A set of features like ZetaPush Cloud Services developed by you. The usage of your custom cloud services is exactly the same as ZetaPush cloud services
+| A set of features similar to ZetaPush Cloud Services but developed by you. The usage of your custom cloud services is exactly the same as ZetaPush cloud services
 
 | Front
 | Web pages developed by you (HTML / CSS / JS)
@@ -42,21 +42,21 @@ In this documentation, we mention Cloud Services as a shortcut of ZetaPush Cloud
 
 | Organization
 | Group of ZetaPush accounts. Each organization may have several managers and several developers. Each person uses his own credentials 
-to interact with ZetaPush but actions are shared among the organization
+to interact with ZetaPush but actions are shared among the organization.
 
 | Application
-| Logic container designed to perform a group of coordinated functions, tasks, or activities for the benefit of the user. 
+| Logical container designed to perform a group of coordinated tasks or activities for the benefit of the user. 
 
 An application may have a front part and a worker.
 
 An application has at least one environment
 
 | Environment
-| Your application may be deployed and executed in separated zones called Environment. Each environment is a particular zone that you can organize as you wish. 
+| Your application may be deployed and executed in separate zones called Environments. Each environment is a particular zone that you can organize as you wish. 
 For example, you can have `prod`, `pre-prod`, `dev` environments for the same application. 
 
 | CLI
-| Command Line Interface : utility scripts that are usable in a terminal to run your code or deploy your application for example
+| Command Line Interface : utility scripts that are usable in a terminal to run your code or deploy your application, for example.
 
 | Console
 | Main website used to manage your ZetaPush account and applications, read the documentation, monitor your applications...

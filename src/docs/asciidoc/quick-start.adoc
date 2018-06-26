@@ -30,11 +30,11 @@ The generated project:
 - Provides a web page (front part)
 - The web page automatically connects to ZetaPush Cloud.
 +
-TIP: The connection is done by `client.connect()` in `{appName}/front/index.html`
+TIP: The connection is requested with `client.connect()` in `{appName}/front/index.html`
 - The web page displays a button named `hello()`.
 +
 TIP: See `{appName}/front/index.html`
-- Provides a custom cloud service that generates a message ("hello world from JavaScript" followed by the date as timestamp).
+- Provides a custom cloud service that generates a message ("hello world from JavaScript" followed by the date as a timestamp).
 +
 TIP: The executed code is available in `{appName}/worker/index.js`
 - When the `hello()` button is clicked, the custom cloud service is called and the response is displayed in the browser console. The text of the button is also updated with the count of custom cloud services responses.
@@ -74,7 +74,7 @@ include::{docdir}/common/diagrams/run-locally-exchanges.adoc[leveloffset+=2]
 
 include::{docdir}/common/cli/push-project.adoc[leveloffset=+2]
 
-This command uploads your code (front and worker) to ZetaPush cloud. ZetaPush then handles the deployment
+This command uploads your code (front and worker) to the ZetaPush cloud. ZetaPush then handles the deployment
 by publishing your front and your custom cloud services.
 
 The CLI displays the URL to access the published web page.
