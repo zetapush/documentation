@@ -582,8 +582,31 @@ The executed command under the hood is:</p>
 <h3 id="_deploy_project_on_zetapush_cloud"><a class="anchor" href="#_deploy_project_on_zetapush_cloud"></a>Deploy project on ZetaPush Cloud</h3>
 <div class="sect3">
 <h4 id="_deploy_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_front_and_em_custom_cloud_services_em"></a>Deploy front and <em>custom cloud services</em></h4>
+<div class="listingblock">
+<div class="title">Deploy application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Unresolved directive in common/cli/cli.adoc - include::/var/lib/jenkins/workspace/Github_documentation_master-IOSGDW42Y6L7PFABZDVKWIMQ7U5ZFS2WPFP2G4YQ6QQOVPTQ7Y4A/src/docs/asciidoc/common/cli/deploy-project.adoc[leveloffset=+2]</p>
+<p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
+The executed command under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta push</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -617,8 +640,31 @@ The executed command under the hood is:</p>
 </div>
 <div class="sect3">
 <h4 id="_deploy_only_front"><a class="anchor" href="#_deploy_only_front"></a>Deploy only front</h4>
+<div class="listingblock">
+<div class="title">Deploy the worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy -- --front</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Unresolved directive in common/cli/cli.adoc - include::/var/lib/jenkins/workspace/Github_documentation_master-IOSGDW42Y6L7PFABZDVKWIMQ7U5ZFS2WPFP2G4YQ6QQOVPTQ7Y4A/src/docs/asciidoc/common/cli/command-to-deploy-front.adoc[leveloffset=+2]</p>
+<p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
+The executed command under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta push --front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -862,7 +908,7 @@ ZetaPush includes and overrides this properties in a specific order :</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-25 16:34:09 UTC
+Last updated 2018-06-26 08:04:54 UTC
 </div>
 </div>
 </body>
