@@ -79,7 +79,7 @@
 </div>
 <div class="paragraph">
 <p>This command will create you an account on the ZetaPush platform and create your first application in the <em>myApp</em> directory.
-The create of an account send an email to confirm your account.</p>
+An email will be sent to confirm your account.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -103,13 +103,11 @@ To use your application, you need to validate your account. To do this, click on
 2
 3
 4
-5
 </pre></td>
   <td class="code"><pre>$ cd myApp/front/
 $ rm -r ./*
 $ curl -X GET 'http://github-download-subfolder.zpush.io/?owner=zetapush&amp;repository=zetapush-tutorials&amp;path=avengersChat/front' --output front.zip
-$ unzip front.zip
-$ rm front.zip
+$ unzip front.zip &amp;&amp; rm front.zip
 </pre></td>
 </tr></table></code></pre>
 </div>
@@ -150,7 +148,7 @@ If you are using <em>Windows</em>, you can download the file with all resources 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-25 15:16:24 UTC
+Last updated 2018-06-26 08:04:10 UTC
 </div>
 </div>
 </body>
