@@ -1,1 +1,1 @@
-This login is the email used by the developer to the connection on the ZetaPush console. It *doesn't concerns* any application developed by the developer. It's only used to identify the developer account.
+This login is the email used by the developer when logging in to the ZetaPush console. It *does not concern* the applications developed by the developer. It is only used to identify the developer account.
