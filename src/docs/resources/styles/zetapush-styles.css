@@ -48,6 +48,9 @@ h6[id]:target:before {
 #toc.toc2 li > a:hover {
   color: #145E79;
 }
+#toc.toc2 li > a:hover {
+  color: #0294BA;
+}
 
 #toc.toc2 li {
   padding-top: 0.2em;
