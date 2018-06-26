@@ -1,4 +1,4 @@
-# README #
+# README
 
 Repository for the documentation of the ZetaPush platform
 
@@ -18,7 +18,6 @@ To generate the HTML documentation, you can run the following command:
 
 The generated HTML documentation is available in the folder `target/generated-docs`
 
-
 To generate the PDF documentation, you can run the following command:
 
 ```
@@ -26,7 +25,6 @@ To generate the PDF documentation, you can run the following command:
 ```
 
 The generated PDF documentation is available in the folder `target/generated-docs`. Each `.adoc` source file has its own PDF file.
-
 
 #### Generate documentation and publish on gh-pages
 
@@ -53,7 +51,6 @@ To automatically generate the PDF documentation after any change in `src/docs` d
 ./mvnw fizzed-watcher:run -P pdf
 ```
 
-
 ### Custom Asciidoctor extensions
 
 #### Source code
@@ -75,7 +72,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/highlight-1.png)
 
-
 How to highlight lines from line 1 to line 4:
 
 ```
@@ -92,7 +88,6 @@ line 5
 Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/highlight-2.png)
-
 
 How to mark line 2 and 5 as irrelevant:
 
@@ -111,8 +106,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/irrelevant-1.png)
 
-
-
 How to mark lines from line 1 to line 4 as irrelevant:
 
 ```
@@ -129,8 +122,6 @@ line 5
 Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/irrelevant-2.png)
-
-
 
 How to collapse lines from line 1 to line 4:
 
@@ -149,8 +140,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/collapse-1.png)
 
-
-
 How to mark lines 1, 3, 4 and 5 with info icon:
 
 ```
@@ -162,13 +151,11 @@ line 3
 line 4
 line 5
 ----
-
 ```
 
 Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/info.png)
-
 
 How to mark lines 1, 3, 4 and 5 with warn icon:
 
@@ -187,7 +174,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/warn.png)
 
-
 How to mark lines 1, 3, 4 and 5 with error icon:
 
 ```
@@ -205,7 +191,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/error.png)
 
-
 How to mark line 1 as added and lines 3 and 4 as removed:
 
 ```
@@ -222,8 +207,6 @@ line 5
 Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/diff.png)
-
-
 
 #### Tabs
 
@@ -259,12 +242,9 @@ Tab with some code
 
 The last `-` is mandatory after `[role=tab-container-end]`. Asciidoctor requires to have some text just after the directive `[role]`
 
-
 Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/tab-1.png)
-
-
 
 How to display 2 tabs with icons:
 
@@ -300,10 +280,6 @@ Result:
 
 ![Result](./src/docs/resources/images/extensions-samples/tab-2.png)
 
-
-
 ### Contribution guidelines
 
-
 ### Who do I talk to?
-

@@ -13,6 +13,7 @@ But in this project, the _CLI_ is imported and a script is created with npm, so 
 .Run worker locally
 [source,console]
 ----
+// In the root of the application
 $ npm run start -- --http-server
 ----
 

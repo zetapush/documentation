@@ -11,7 +11,7 @@ npm init @zetapush myApp
 This command will ask you your developer login and password.
 
 This command will create you an account on the ZetaPush platform and create your first application in the _myApp_ directory.
-The create of an account send an email to confirm your account.
+An email will be sent to confirm your account.
 
 NOTE: To use your application, you need to validate your account. To do this, click on the link in the received email
 
@@ -22,8 +22,7 @@ In this tutorial, we are focusing on the ZetaPush development. So to begin, get 
 $ cd myApp/front/
 $ rm -r ./*
 $ curl -X GET 'http://github-download-subfolder.zpush.io/?owner=zetapush&repository=zetapush-tutorials&path=avengersChat/front' --output front.zip
-$ unzip front.zip
-$ rm front.zip
+$ unzip front.zip && rm front.zip
 
 ----
 

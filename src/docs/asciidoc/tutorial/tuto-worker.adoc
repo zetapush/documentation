@@ -5,11 +5,11 @@ Now, you will create the business logic of your application. To do this, you wil
 
 NOTE: A _custom cloud service_ is a class where you develop a business logic. You can create several _custom cloud services_ inside one application. Each _custom cloud service_ can use the _cloud services_ provided by ZetaPush.
 
-In your existing application you already have a _custom cloud service_ on the file `worker/index.ts` (Defined in the `package.json` with the property `main`).
+In your existing application you already have a _custom cloud service_ on the file `worker/index.ts` (The entry point of the service is defined in the `package.json` with the property `main`).
 
-TIP: When you create one or many _custom cloud services_, you need to export them (to use them from the front side). The exportation need to be done in a file of your application, defined in the `package.json`. The property `main` defines this file.
+TIP: To use your _custom cloud services_ you need to export them. To do this, the property `main` in your `package.json` define the path of the file where you export all of your _custom cloud services_. 
 
-You can fill this file (`worker/index.ts`) with the following content :
+You can delete the content of the file `worker/index.ts` and fill it with the following content step by step.
 
 == Import _cloud services_ and define constants
 
@@ -19,7 +19,7 @@ First, you need to import the _cloud services_ provided by ZetaPush, used in thi
 * _Messaging_ (Send and receive messages)
 * _GroupManagement_ (Manage group of users)
 
-You also need to import _Inject_ that is useful for the dependencies injection.
+You also need to import _Injectable_ that is useful for the dependencies injection.
 
 .Imports and constants
 [source,typescript,linenums]
@@ -38,6 +38,7 @@ A _custom cloud service_ is a class, so you need to create it.
 .Class and constructor
 [source,typescript,linenums]
 ----
+@Injectable() <1>
 export default class AvengersApi {
   /**
    * Constructor of our API
@@ -46,11 +47,11 @@ export default class AvengersApi {
     private stack: Stack,
     private messaging: Messaging,
     private groups: GroupManagement
-  ) { <2>
+  ) {
   }
 }
 ----
-<1> Syntax of dependencies injection based on `injection-js`.
+<1> We expose our custom cloud service with only one annotation
 
 NOTE: The dependencies injection of ZetaPush use `injection-js`.
 
@@ -65,7 +66,7 @@ So we add a method in our class to create this conversation.
 /**
  * Create the conversation of the chat, if doesn't already exists
  */
-createConversation() {
+async createConversation() {
   const { exists } = await this.groups.exists({
     group: CONVERSATION_ID 
   });
@@ -87,7 +88,7 @@ So we create a method in our class to add the current user in the conversation.
 /**
 * Add the current user in the conversation
 */
-addMeToConversation(parameters, context) { <1>
+addMeToConversation(parameters: any, context: any) { <1>
   return this.groups.addUser({
     group: CONVERSATION_ID,
       user: context.owner <2>
@@ -111,7 +112,7 @@ No we want to send a message on our chat. To do this, we need to follow 3 steps 
 * Send a message on the chat
 * @param {Object} message
 */
-sendMessage(message = {}) {
+async sendMessage(message = {}) {
   // Get all users inside the conversation
   const group = await this.groups.groupUsers({
     group: CONVERSATION_ID
@@ -146,7 +147,7 @@ To complete our business logic, we need to have an other method in our class to 
 /**
 * Get all messages in the conversation
 */
-getMessages() {
+async getMessages() {
   const { result } = await this.stack.list({
     stack: CONVERSATION_ID
   });
@@ -154,4 +155,86 @@ getMessages() {
 }
 ----
 
-Now your _custom cloud service_ is ready !
+Now your _custom cloud service_ is ready with this following content :
+
+[source,typescript,linenums]
+----
+import { Stack, Messaging, GroupManagement, Injectable } from "@zetapush/platform";
+
+const CONVERSATION_ID = "avengersChat";
+const CHANNEL_MESSAGING = "avengersChannel";
+
+@Injectable()
+export default class AvengersApi {
+  /**
+   * Constructor of our API
+   */
+  constructor(
+    private stack: Stack,
+    private messaging: Messaging,
+    private groups: GroupManagement
+  ) {}
+
+  /**
+   * Create the conversation of the chat, if doesn't already exists
+   */
+  async createConversation() {
+    const { exists } = await this.groups.exists({
+      group: CONVERSATION_ID
+    });
+    if (!exists) {
+      await this.groups.createGroup({
+        group: CONVERSATION_ID
+      });
+    }
+  }
+
+  /**
+   * Add the current user in the conversation
+   */
+  addMeToConversation(parameters: any, context: any) {
+    return this.groups.addUser({
+      group: CONVERSATION_ID,
+      user: context.owner
+    });
+  }
+
+  /**
+   * Send a message on the chat
+   * @param {Object} message
+   */
+  async sendMessage(message = {}) {
+    // Get all users inside the conversation
+    const group = await this.groups.groupUsers({
+      group: CONVERSATION_ID
+    });
+    const users = group.users;
+
+    // Send the message to each user in the conversation
+    this.messaging.send({
+      target: users,
+      channel: CHANNEL_MESSAGING,
+      data: { message }
+    });
+
+    // Store the message in a stack
+    await this.stack.push({
+      stack: CONVERSATION_ID,
+      data: message
+    });
+
+    return group;
+  }
+
+  /**
+   * Get all messages in the conversation
+   */
+  async getMessages() {
+    const { result } = await this.stack.list({
+      stack: CONVERSATION_ID
+    });
+    return result;
+  }
+}
+
+----

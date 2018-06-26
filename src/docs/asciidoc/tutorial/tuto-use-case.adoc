@@ -41,3 +41,5 @@ You will create this application in few steps :
 . link:#+_create_your_business_logic+[Create the business logic in a _custom cloud service_]
 . link:#+_use_your_em_custom_cloud_services_em+[Use your _custom cloud service_ in your UI]
 . link:#+_deploy_your_application+[Deploy your application]
+
+TIP: We recommend to use _TypeScript_ so in this tutorial all of your code will be in this language.
