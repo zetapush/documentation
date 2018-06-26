@@ -1,10 +1,10 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.Deploy the application
+.Deploy the worker
 [source, console, subs="attributes+"]
 ----
-$ npm run deploy
+$ npm run deploy -- --front
 ----
 
 [TIP]
@@ -13,6 +13,6 @@ $ npm run deploy
 The executed command under the hood is:
 [source, console, subs="attributes+"]
 ----
-$ zeta push
+$ zeta push --front
 ----
 ====

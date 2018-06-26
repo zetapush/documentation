@@ -1,17 +1,16 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-== Configuration management
 
 ZetaPush provides many variables to configure your applications.
 There are 2 types : the _account configuration variables_ and the _application configuration variables_. 
 
-=== Account configuration
-include::{docdir}/common/configuration/account-configuration.adoc[leveloffset=+2]
+== Account configuration
+include::{docdir}/common/configuration/account-configuration.adoc[leveloffset=+1]
 
 
-=== Application configuration
-include::{docdir}/common/configuration/application-configuration.adoc[leveloffset=+2]
+== Application configuration
+include::{docdir}/common/configuration/application-configuration.adoc[leveloffset=+1]
 
-=== Configuration override
-include::{docdir}/common/configuration/override-configuration.adoc[leveloffset=+2]
+== Configuration override
+include::{docdir}/common/configuration/override-configuration.adoc[leveloffset=+1]

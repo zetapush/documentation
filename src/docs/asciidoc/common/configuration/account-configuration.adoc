@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 To use ZetaPush Celtia, you need to have an account and an optional application.

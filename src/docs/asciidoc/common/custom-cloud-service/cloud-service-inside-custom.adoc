@@ -1,8 +1,8 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 
-== Dependencies injection
+== Dependency injection
 include::{docdir}/common/custom-cloud-service/dependencies-include-services.adoc[leveloffset=+1]
 
 == Use imported cloud services

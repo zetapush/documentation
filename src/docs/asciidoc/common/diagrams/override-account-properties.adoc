@@ -1,7 +1,7 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-[plantuml, override-account-properties, png]     
+[plantuml, override-account-properties, png, role="center"]     
 ....
 start
 

@@ -42,7 +42,7 @@ TIP: The executed code is available in `{appName}/worker/index.js`
 TIP: See call to `api.hello()` in `{appName}/front/index.js`.
 
 
-[INFO]
+[NOTE]
 ====
 The generated project files are:
 
@@ -91,5 +91,5 @@ You have created a new application, executed it locally and then published it.
 
 Now, you are ready to code your own application:
 
-- See <<developer-manual.adoc#_develop_front, how to use built-in ZetaPush cloud services>>
-- See <<developer-manual.adoc#_develop_custom_could_services, how to develop your custom cloud services>>
+- See <<developer-manual.adoc#_develop_your_front_with_zetapush, how to use built-in ZetaPush cloud services>>
+- See <<developer-manual.adoc#_develop_your_business_logic, how to develop your custom cloud services>>

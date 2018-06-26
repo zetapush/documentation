@@ -39,6 +39,7 @@ body::before {
 #toc.toc2 li {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
+  padding-right: 10px;
 }
 #toc.toc2 .sectlevel0 > li {
   text-align: center;
@@ -73,7 +74,7 @@ body::before {
 }
 #toc.toc2 .sectlevel2 > li.has-subsection i {
   position: absolute;
-  right: 5px;
+  right: -5px;
   top: 5px;
   color: #145E79;
   transition: transform 0.2s linear;
@@ -296,7 +297,10 @@ header nav.opened ul {
 }
 
 #content h3 {
-  padding-left: 20px;
+  padding-left: 30px;
+  font-weight: 400;
+  font-size: 1.8em;
+  margin-top: 1.5em;
 }
 #content h3 > a.link,
 #content h3 > a.anchor {
@@ -304,15 +308,27 @@ header nav.opened ul {
 }
 
 #content h4 {
-  padding-left: 40px;
+  padding-left: 60px;
+  font-size: 1.6em;
+  margin-top: 2em;
+  font-weight: 400;
 }
 #content h4 > a.link,
 #content h4 > a.anchor {
   font-size: 0.9em;
 }
 
+#content h5 {
+  padding-left: 90px;  
+  margin-top: 2em;
+  font-weight: 400;
+}
 #content h5 > a.link {
   font-size: 0.9em;
+}
+
+#content h6 {
+  padding-left: 120px;  
 }
 
 
@@ -363,6 +379,10 @@ table.tableblock>.title,
   font-weight: 300;
 }
 
+.conum[data-value] {
+  background-color: #145E79;
+}
+
 /** TABLES */
 
 table.tableblock, td.tableblock, th.tableblock {
@@ -398,6 +418,12 @@ table.tableblock {
 
 
 @media only screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .sectionbody {
+    overflow-x: auto;
+  }
   body::before {
     width: 90px;
     height: 90px;
@@ -562,5 +588,11 @@ table.tableblock {
   background-color: rgba(241,91,62,0.05);
 }
 .admonitionblock td.icon .icon-caution:before {
+  color: #F15B3E;  
+}
+.admonitionblock.important .content {
+  background-color: rgba(241,91,62,0.05);
+}
+.admonitionblock td.icon .icon-important:before {
   color: #F15B3E;  
 }

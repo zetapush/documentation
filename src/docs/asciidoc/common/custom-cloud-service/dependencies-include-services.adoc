@@ -1,9 +1,9 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-First of all, if you want to include some services (custom or not), you need to use _dependencies injection_ of ZetaPush. All of your dependencies injection will be facilitated.
+First of all, if you want to include some services (custom or not), you need to use _dependency injection_ of ZetaPush. All of your dependency injection will be facilitated.
 
-So, you need to import the package `@zetapush/platform` to import `Inject()`. This object will resolve the dependencies injection of _cloud services_ and _custom cloud services_.
+So, you need to import the package `@zetapush/platform` to import `Inject()`. This object will resolve the dependency injection of _cloud services_ and _custom cloud services_.
 
 .Install @zetapush/platform
 [source, console, linenums]
@@ -11,7 +11,7 @@ So, you need to import the package `@zetapush/platform` to import `Inject()`. Th
 $ npm install --save @zetapush/platform
 ----
 
-NOTE: The dependencies injection of ZetaPush use the library *injection-js* 
+NOTE: The dependency injection of ZetaPush use Angular https://github.com/mgechev/injection-js[injection-js^] library.
 
 For example, to import an other service, you simply need to write :
 
@@ -37,7 +37,7 @@ class MyOwnService {
 ----
 <1> We import the `Inject` object and a service (_Stack_) provided by ZetaPush
 <2> We import an other custom cloud service
-<3> We create a static method to implement our dependencies injection (_injection-js_ syntax)
+<3> We create a static method to implement our dependency injection (_injection-js_ syntax)
 <4> We use instances of our injected services in our service throught the constructor
 
 WARNING: The order in your `parameters` method need to be the same in your constructor. (Here, first _MyOtherService_, then _Stack_)

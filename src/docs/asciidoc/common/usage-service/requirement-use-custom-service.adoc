@@ -1,0 +1,4 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+If you want to use a _custom cloud service_, make sure that <<developer-manual.adoc#_expose_a_em_custom_cloud_services_em, you have exposed your service>>

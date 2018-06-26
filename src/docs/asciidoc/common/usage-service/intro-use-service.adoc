@@ -1,7 +1,7 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 On the front-side, you will want to use the _cloud services_ provided by ZetaPush or your _custom cloud services_.
-The utilization of a _cloud service_ or a _custom cloud service_ *is exactly the same process*.
+The usage of a _cloud service_ or a _custom cloud service_ *is exactly the same process*.
 
 WARNING: Currently, we can't call a _cloud service_ provided by ZetaPush from the front-end. This will be worked out very soon, and this will be the same syntax that the _custom cloud service_.

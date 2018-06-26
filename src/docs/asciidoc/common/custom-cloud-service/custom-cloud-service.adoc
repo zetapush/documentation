@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ../../
 include::{docdir}/variables.adoc[]
 
 == Custom Cloud Service
@@ -12,7 +12,7 @@ include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[l
 === Use a _cloud service_ inside my _custom cloud service_
 include::{docdir}/common/custom-cloud-service/cloud-service-inside-custom.adoc[leveloffset=+2]
 
-=== Use an other _custom cloud service_ in my own
+=== Use another _custom cloud service_ from my _custom cloud service_
 include::{docdir}/common/custom-cloud-service/custom-cloud-service-inside-custom.adoc[leveloffset=+2]
 
 === Expose my _custom cloud services_

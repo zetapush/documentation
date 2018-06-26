@@ -1,4 +1,4 @@
-:relative-path: ../
+:relative-path: ./
 include::{docdir}/variables.adoc[]
 
 = Reference
@@ -7,7 +7,18 @@ include::{docdir}/variables.adoc[]
 
 include::{docdir}/common/cli/cli.adoc[leveloffset=+1]
 
+== Configuration
+include::{docdir}/common/configuration/configuration.adoc[leveloffset=+1]
+
 
 == ZetaPush Cloud Services
 
-TODO
+.List of available cloud services
+include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+1]
+
+
+=== User Management
+
+include::{docdir}/common/cloud-services/user-management.adoc[leveloffset=+2]
+
+TODO: https://github.com/zetapush/documentation/issues/61
