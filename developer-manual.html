@@ -66,7 +66,7 @@
 <ul class="sectlevel2">
 <li><a href="#_create_a_new_account_and_a_new_application">Create a new account and a new application</a></li>
 <li><a href="#_add_a_new_application_to_your_account">Add a new application to your account</a></li>
-<li><a href="#_configure_your_project_to_use_existing_application">Configure your project to use existing application</a></li>
+<li><a href="#_configure_your_project_to_use_an_existing_application">Configure your project to use an existing application</a></li>
 </ul>
 </li>
 <li><a href="#_develop_your_front_with_zetapush">Develop your front with ZetaPush</a>
@@ -88,9 +88,9 @@
 <li><a href="#_deploy_publish_your_application">Deploy/publish your application</a>
 <ul class="sectlevel2">
 <li><a href="#_what_will_be_deployed">What will be deployed ?</a></li>
-<li><a href="#_deploy_both_front_and_em_custom_cloud_services_em_on_zetapush_cloud">Deploy both front and <em>custom cloud services</em> on ZetaPush Cloud</a></li>
-<li><a href="#_deploy_your_front_on_zetapush_cloud">Deploy your front on ZetaPush Cloud</a></li>
-<li><a href="#_deploy_your_em_custom_cloud_services_em_on_zetapush_cloud">Deploy your <em>custom cloud services</em> on ZetaPush Cloud</a></li>
+<li><a href="#_deploy_both_front_and_em_custom_cloud_services_em_on_the_zetapush_cloud">Deploy both front and <em>custom cloud services</em> on the ZetaPush Cloud</a></li>
+<li><a href="#_deploy_your_front_on_the_zetapush_cloud">Deploy your front on the ZetaPush Cloud</a></li>
+<li><a href="#_deploy_your_em_custom_cloud_services_em_on_the_zetapush_cloud">Deploy your <em>custom cloud services</em> on the ZetaPush Cloud</a></li>
 </ul>
 </li>
 <li><a href="#_testing">Testing</a>
@@ -136,8 +136,8 @@
 <div class="paragraph">
 <p>➊ I launch <code>npm init @zetapush myApp</code> without parameters<br>
 ➋ You type your email and a password to create your ZetaPush account<br>
-➌ The application is created in <code>myApp</code> folder<br>
-➍ The <em>.zetarc</em> file is like :</p>
+➌ The application is created in the <code>myApp</code> folder<br>
+➍ The <em>.zetarc</em> file looks like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -163,7 +163,7 @@
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You need to validate your ZetaPush account to run or deploy your application.
+You need to confirm your ZetaPush account to run or deploy your application.
 </td>
 </tr>
 </table>
@@ -187,8 +187,8 @@ You need to validate your ZetaPush account to run or deploy your application.
 </div>
 <div class="paragraph">
 <p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code> and <code>--developer-password</code> parameters<br>
-➋ The application is created in <code>myApp</code> folder<br>
-➌ The <em>.zetarc</em> file is like :</p>
+➋ The application is created in the <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file looks like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -214,7 +214,7 @@ You need to validate your ZetaPush account to run or deploy your application.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploys or executes the code on a new application.
+If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, ZetaPush deploys or executes the code in a new application.
 </td>
 </tr>
 </table>
@@ -222,7 +222,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configure_your_project_to_use_existing_application"><a class="anchor" href="#_configure_your_project_to_use_existing_application"></a>Configure your project to use existing application</h3>
+<h3 id="_configure_your_project_to_use_an_existing_application"><a class="anchor" href="#_configure_your_project_to_use_an_existing_application"></a>Configure your project to use an existing application</h3>
 <div class="sect3">
 <h4 id="_using_your_terminal_3"><a class="anchor" href="#_using_your_terminal_3"></a>Using your terminal</h4>
 <div class="imageblock center">
@@ -232,8 +232,8 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 <div class="paragraph">
 <p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code>, <code>--developer-password</code> and <code>--appName</code> parameters<br>
-➋ The application is created in <code>myApp</code> folder<br>
-➌ The <em>.zetarc</em> file is like :</p>
+➋ The application is created in the <code>myApp</code> folder<br>
+➌ The <em>.zetarc</em> file looks like :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -276,7 +276,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <div class="sect4">
 <h5 id="_package_json"><a class="anchor" href="#_package_json"></a>package.json</h5>
 <div class="paragraph">
-<p>The <code>package.json</code> is the most important file in the application. It contains all informations needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the <code>.zetarc</code>).</p>
+<p>The <code>package.json</code> is the most important file in the application. It contains all the information needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the <code>.zetarc</code>).</p>
 </div>
 <div class="paragraph">
 <p>The minimal <code>package.json</code> is below :</p>
@@ -309,20 +309,20 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Entry point of your <a href="#_worker">worker</a>. This is in this file that you will expose your <em>custom cloud services</em></td>
+<td>Entry point of your <a href="#_worker">worker</a>. In this file you will expose your <em>custom cloud services</em></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency of the <em>ZetaPush Platform</em> to write some <em>custom cloud services</em> and access to existing <em>cloud services</em> exposed by ZetaPush</td>
+<td>Dependency to the <em>ZetaPush Platform</em> to write some <em>custom cloud services</em> and access existing <em>cloud services</em> exposed by ZetaPush</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Dependency to use the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). It will be useful to run your worker or deploy your code.</td>
+<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
 </tr>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_path_of_the_code"><a class="anchor" href="#_path_of_the_code"></a>Path of the code</h6>
+<h6 id="_path_to_the_code"><a class="anchor" href="#_path_to_the_code"></a>Path to the code</h6>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -330,7 +330,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-By convention, ZetaPush Celtia considers that your front code is in the directory <code>front</code> and your back code (worker) in <code>worker</code>. You can change it by setting path in the <code>package.json</code>.
+By convention, ZetaPush Celtia considers that your front code is in the directory <code>front</code> and your back end code (worker) in <code>worker</code>. You can change it by setting the path in the <code>package.json</code>.
 </td>
 </tr>
 </table>
@@ -399,10 +399,10 @@ $ npm install --save @zetapush/cli</code></pre>
 <div class="sect4">
 <h5 id="__zetarc"><a class="anchor" href="#__zetarc"></a>.zetarc</h5>
 <div class="paragraph">
-<p>To specify which account (on the ZetaPush platform) you use for an application, you type the account informations in the <code>.zetarc</code>.</p>
+<p>To specify which account (on the ZetaPush platform) you use for an application, you fill the file <code>.zetarc</code> with the account information.</p>
 </div>
 <div class="paragraph">
-<p>The format of this file is the <strong>JSON</strong>. The possible properties are below :</p>
+<p>This file is in <strong>JSON</strong> format. The possible properties are below :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -764,7 +764,7 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 <div class="sect3">
 <h4 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h4>
 <div class="paragraph">
-<p>To use services (custom or not), you need to have installed the dependency of the ZetaPush Core (<code>@zetapush/core</code>).</p>
+<p>To use services (custom or not), you need to install the ZetaPush Core dependency (<code>@zetapush/core</code>).</p>
 </div>
 <div class="paragraph">
 <p>So you can install it with :</p>
@@ -804,7 +804,7 @@ The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provid
 </table>
 </div>
 <div class="paragraph">
-<p>An example gives a better explanation than a long speech, so here is an example of usage of services.</p>
+<p>An example is worth a thousand words, so here is an example of usage of services.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -912,16 +912,16 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We call <code>hello()</code> that call our <em>custom cloud service</em></td>
+<td>We call <code>hello()</code>, which in turns calls our <em>custom cloud service</em></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency of ZetaPush Core</td>
+<td>Dependency to ZetaPush Core</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, we have the front-side code to call our services :</p>
+<p>Finally, we have the front-side code call our services :</p>
 </div>
 <div class="listingblock">
 <div class="title">front/index.js</div>
@@ -983,7 +983,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>API to access to our services</td>
+<td>API to access our custom service(s)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -996,7 +996,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Now when we click on the button, "Hello World" is displayed on the page.</strong></p>
+<p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1050,8 +1050,8 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 <div class="sect2">
 <h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a>What is a <em>custom cloud service</em></h3>
 <div class="paragraph">
-<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
-Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
+<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that <strong>you</strong> create the <em>cloud functions</em>.
+Generally, you will want to put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
 </div>
 <div class="sect3">
 <h4 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h4>
@@ -1064,7 +1064,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="title">Figure 1. Custom Cloud Service in development phase</div>
 </div>
 <div class="paragraph">
-<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
+<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "locally"</p>
 </div>
 </div>
 <div class="sect4">
@@ -1076,7 +1076,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="title">Figure 2. Custom Cloud Service in production phase</div>
 </div>
 <div class="paragraph">
-<p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
+<p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "remotely"</p>
 </div>
 </div>
 </div>
@@ -1084,7 +1084,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="sect2">
 <h3 id="_define_a_em_custom_cloud_service_em"><a class="anchor" href="#_define_a_em_custom_cloud_service_em"></a>Define a <em>custom cloud service</em></h3>
 <div class="paragraph">
-<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
+<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of a <em>custom cloud service</em> is below :</p>
 </div>
 <div class="sect3">
 <h4 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a>Create a <em>cloud function</em></h4>
@@ -1168,7 +1168,7 @@ For example :</p>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td><code>parameters</code> is the first argument passed, it can be an object.
 <code>context</code> is the context of the call for this <em>cloud function</em>.
-For example you can get the ID of the caller by <code>context.owner</code>.</td>
+For example you can get the ID of the caller with <code>context.owner</code>.</td>
 </tr>
 </table>
 </div>
@@ -1188,7 +1188,7 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_expose_a_em_custom_cloud_services_em"><a class="anchor" href="#_expose_a_em_custom_cloud_services_em"></a>Expose a <em>custom cloud services</em></h4>
+<h4 id="_expose_a_em_custom_cloud_service_em"><a class="anchor" href="#_expose_a_em_custom_cloud_service_em"></a>Expose a <em>custom cloud service</em></h4>
 <div class="paragraph">
 <p>When you create a <em>custom cloud service</em> that you want to expose to the client, you need to declare it. You have 2 cases :</p>
 </div>
@@ -1198,7 +1198,7 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 <p>Only one <em>custom cloud service</em> exposed</p>
 </li>
 <li>
-<p>Many <em>custom cloud servcies</em> exposed</p>
+<p>Many <em>custom cloud services</em> exposed</p>
 </li>
 </ul>
 </div>
@@ -1217,7 +1217,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 <div class="sect4">
 <h5 id="_namespace"><a class="anchor" href="#_namespace"></a>Namespace</h5>
 <div class="paragraph">
-<p>When you call a <em>cloud function</em> from a <em>custom cloud service</em>, you can specified a <em>namespace</em> (if you have 2 <em>cloud functions</em> on 2 differents <em>custom cloud services</em>).</p>
+<p>When you call a <em>cloud function</em> from a <em>custom cloud service</em>, you can specify a <em>namespace</em> (if you have 2 <em>cloud functions</em> on 2 differents <em>custom cloud services</em>).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1226,7 +1226,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <em>namespace</em> is never used in the <em>custom cloud service</em>. The <em>namespace</em> is defined when you expose your <em>custom cloud service</em>.
+The <em>namespace</em> is never used inside the <em>custom cloud service</em>. The <em>namespace</em> is defined when you expose your <em>custom cloud service</em>.
 </td>
 </tr>
 </table>
@@ -1442,7 +1442,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define <code>parameters</code> static method because we don&#8217;t expose this service</td>
+<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1455,10 +1455,10 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <div class="sect3">
 <h4 id="_dependency_injection"><a class="anchor" href="#_dependency_injection"></a>Dependency injection</h4>
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependency injection</em> of ZetaPush. All of your dependency injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>You need to import the package <code>@zetapush/platform</code> in order to use <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -1477,7 +1477,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependency injection of ZetaPush use Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
 </td>
 </tr>
 </table>
@@ -1558,13 +1558,13 @@ The order in your <code>parameters</code> method need to be the same in your con
 </table>
 </div>
 <div class="paragraph">
-<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similary</p>
+<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similarily</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_use_built_in_em_cloud_service_em"><a class="anchor" href="#_use_built_in_em_cloud_service_em"></a>Use built-in <em>cloud service</em></h4>
 <div class="paragraph">
-<p>Once you have import the services, you can use them.</p>
+<p>Once you have imported the services, you can use them.</p>
 </div>
 <div class="paragraph">
 <p>In this example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
@@ -1829,7 +1829,7 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 <td class="content">
 <div class="paragraph">
 <p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
-The executed command under the hood is:</p>
+The command that is executed under the hood is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1856,7 +1856,7 @@ The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provid
 </table>
 </div>
 <div class="paragraph">
-<p>An example gives a better explanation than a long speech, so here is an example of usage of services.</p>
+<p>An example is worth a thousand words, so here is an example of usage of services.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1964,16 +1964,16 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We call <code>hello()</code> that call our <em>custom cloud service</em></td>
+<td>We call <code>hello()</code>, which in turns calls our <em>custom cloud service</em></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency of ZetaPush Core</td>
+<td>Dependency to ZetaPush Core</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, we have the front-side code to call our services :</p>
+<p>Finally, we have the front-side code call our services :</p>
 </div>
 <div class="listingblock">
 <div class="title">front/index.js</div>
@@ -2035,7 +2035,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>API to access to our services</td>
+<td>API to access our custom service(s)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -2048,7 +2048,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Now when we click on the button, "Hello World" is displayed on the page.</strong></p>
+<p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
 </div>
 </div>
 <div class="sect2">
@@ -2063,7 +2063,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 <h2 id="_deploy_publish_your_application"><a class="anchor" href="#_deploy_publish_your_application"></a>Deploy/publish your application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you have developed your application and tested it, you may want to deploy it on ZetaPush cloud.</p>
+<p>Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.</p>
 </div>
 <div class="sect2">
 <h3 id="_what_will_be_deployed"><a class="anchor" href="#_what_will_be_deployed"></a>What will be deployed ?</h3>
@@ -2100,7 +2100,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploy_both_front_and_em_custom_cloud_services_em_on_zetapush_cloud"><a class="anchor" href="#_deploy_both_front_and_em_custom_cloud_services_em_on_zetapush_cloud"></a>Deploy both front and <em>custom cloud services</em> on ZetaPush Cloud</h3>
+<h3 id="_deploy_both_front_and_em_custom_cloud_services_em_on_the_zetapush_cloud"><a class="anchor" href="#_deploy_both_front_and_em_custom_cloud_services_em_on_the_zetapush_cloud"></a>Deploy both front and <em>custom cloud services</em> on the ZetaPush Cloud</h3>
 <div class="paragraph">
 <p>The deployment is very easy, to do this you only need to launch this command in your application directory :</p>
 </div>
@@ -2119,7 +2119,7 @@ async <span class="keyword">function</span> <span class="function">hello</span>(
 <td class="content">
 <div class="paragraph">
 <p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
-The executed command under the hood is:</p>
+The command that is executed under the hood is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2150,7 +2150,7 @@ When you deploy your application (Front + Worker), the CLI returns you an unique
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploy_your_front_on_zetapush_cloud"><a class="anchor" href="#_deploy_your_front_on_zetapush_cloud"></a>Deploy your front on ZetaPush Cloud</h3>
+<h3 id="_deploy_your_front_on_the_zetapush_cloud"><a class="anchor" href="#_deploy_your_front_on_the_zetapush_cloud"></a>Deploy your front on the ZetaPush Cloud</h3>
 <div class="paragraph">
 <p>If you want to only deploy the front part of your application on the ZetaPush platform, you can launch:</p>
 </div>
@@ -2169,7 +2169,7 @@ When you deploy your application (Front + Worker), the CLI returns you an unique
 <td class="content">
 <div class="paragraph">
 <p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
-The executed command under the hood is:</p>
+The command that is executed under the hood is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2185,7 +2185,7 @@ The executed command under the hood is:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploy_your_em_custom_cloud_services_em_on_zetapush_cloud"><a class="anchor" href="#_deploy_your_em_custom_cloud_services_em_on_zetapush_cloud"></a>Deploy your <em>custom cloud services</em> on ZetaPush Cloud</h3>
+<h3 id="_deploy_your_em_custom_cloud_services_em_on_the_zetapush_cloud"><a class="anchor" href="#_deploy_your_em_custom_cloud_services_em_on_the_zetapush_cloud"></a>Deploy your <em>custom cloud services</em> on the ZetaPush Cloud</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2199,7 +2199,7 @@ The <em>Worker</em> is the back end of your application. Generally you put your 
 </table>
 </div>
 <div class="paragraph">
-<p>If you want to only deploy your worker on the ZetaPush platform, you can launch:</p>
+<p>If you want to deploy your worker only on the ZetaPush platform, you can launch:</p>
 </div>
 <div class="listingblock">
 <div class="title">Deploy the worker</div>
@@ -2216,7 +2216,7 @@ The <em>Worker</em> is the back end of your application. Generally you put your 
 <td class="content">
 <div class="paragraph">
 <p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
-The executed command under the hood is:</p>
+The command that is executed under the hood is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2228,7 +2228,7 @@ The executed command under the hood is:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>In this case you only deploy your back end code, so no URL will be return.</p>
+<p>In this case you only deploy your back end code, so no URL will be returned.</p>
 </div>
 </div>
 </div>
@@ -2274,7 +2274,7 @@ The executed command under the hood is:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-26 08:04:54 UTC
+Last updated 2018-06-27 08:38:05 UTC
 </div>
 </div>
 </body>

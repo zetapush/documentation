@@ -81,8 +81,8 @@
 <div class="sect2">
 <h3 id="_what_is_a_em_custom_cloud_service_em"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em"></a>What is a <em>custom cloud service</em></h3>
 <div class="paragraph">
-<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that it is <strong>you</strong> that create the <em>cloud functions</em>.
-Generally, we put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
+<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that <strong>you</strong> create the <em>cloud functions</em>.
+Generally, you will want to put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
 </div>
 <div class="sect3">
 <h4 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h4>
@@ -95,7 +95,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="title">Figure 1. Custom Cloud Service in development phase</div>
 </div>
 <div class="paragraph">
-<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
+<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "locally"</p>
 </div>
 </div>
 <div class="sect4">
@@ -107,7 +107,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="title">Figure 2. Custom Cloud Service in production phase</div>
 </div>
 <div class="paragraph">
-<p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that is running "locally"</p>
+<p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "remotely"</p>
 </div>
 </div>
 </div>
@@ -115,7 +115,7 @@ Generally, we put the <strong>business logic</strong> of your application in the
 <div class="sect2">
 <h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a>How to create a <em>custom cloud service</em></h3>
 <div class="paragraph">
-<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of <em>custom cloud service</em> is below :</p>
+<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of a <em>custom cloud service</em> is below :</p>
 </div>
 <div class="sect3">
 <h4 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a>Create a <em>cloud function</em></h4>
@@ -199,7 +199,7 @@ For example :</p>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td><code>parameters</code> is the first argument passed, it can be an object.
 <code>context</code> is the context of the call for this <em>cloud function</em>.
-For example you can get the ID of the caller by <code>context.owner</code>.</td>
+For example you can get the ID of the caller with <code>context.owner</code>.</td>
 </tr>
 </table>
 </div>
@@ -224,10 +224,10 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 <div class="sect3">
 <h4 id="_dependency_injection"><a class="anchor" href="#_dependency_injection"></a>Dependency injection</h4>
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependency injection</em> of ZetaPush. All of your dependency injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>You need to import the package <code>@zetapush/platform</code> in order to use <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -246,7 +246,7 @@ For example you can get the ID of the caller by <code>context.owner</code>.</td>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependency injection of ZetaPush use Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
 </td>
 </tr>
 </table>
@@ -327,13 +327,13 @@ The order in your <code>parameters</code> method need to be the same in your con
 </table>
 </div>
 <div class="paragraph">
-<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similary</p>
+<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similarily</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_use_imported_cloud_services"><a class="anchor" href="#_use_imported_cloud_services"></a>Use imported cloud services</h4>
 <div class="paragraph">
-<p>Once you have import the services, you can use them.</p>
+<p>Once you have imported the services, you can use them.</p>
 </div>
 <div class="paragraph">
 <p>In this example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
@@ -467,10 +467,10 @@ The <code>Stack</code> service has asynchronous methods
 <div class="sect3">
 <h4 id="_dependencies_injection"><a class="anchor" href="#_dependencies_injection"></a>Dependencies injection</h4>
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use <em>dependency injection</em> of ZetaPush. All of your dependency injection will be facilitated.</p>
+<p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
 </div>
 <div class="paragraph">
-<p>So, you need to import the package <code>@zetapush/platform</code> to import <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>You need to import the package <code>@zetapush/platform</code> in order to use <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Install @zetapush/platform</div>
@@ -489,7 +489,7 @@ The <code>Stack</code> service has asynchronous methods
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependency injection of ZetaPush use Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
 </td>
 </tr>
 </table>
@@ -570,7 +570,7 @@ The order in your <code>parameters</code> method need to be the same in your con
 </table>
 </div>
 <div class="paragraph">
-<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similary</p>
+<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similarily</p>
 </div>
 </div>
 <div class="sect3">
@@ -704,7 +704,7 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 <p>Only one <em>custom cloud service</em> exposed</p>
 </li>
 <li>
-<p>Many <em>custom cloud servcies</em> exposed</p>
+<p>Many <em>custom cloud services</em> exposed</p>
 </li>
 </ul>
 </div>
@@ -723,7 +723,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 <div class="sect3">
 <h4 id="_namespace"><a class="anchor" href="#_namespace"></a>Namespace</h4>
 <div class="paragraph">
-<p>When you call a <em>cloud function</em> from a <em>custom cloud service</em>, you can specified a <em>namespace</em> (if you have 2 <em>cloud functions</em> on 2 differents <em>custom cloud services</em>).</p>
+<p>When you call a <em>cloud function</em> from a <em>custom cloud service</em>, you can specify a <em>namespace</em> (if you have 2 <em>cloud functions</em> on 2 differents <em>custom cloud services</em>).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -732,7 +732,7 @@ The <code>package.json</code> has a property named <code>main</code>. It defines
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <em>namespace</em> is never used in the <em>custom cloud service</em>. The <em>namespace</em> is defined when you expose your <em>custom cloud service</em>.
+The <em>namespace</em> is never used inside the <em>custom cloud service</em>. The <em>namespace</em> is defined when you expose your <em>custom cloud service</em>.
 </td>
 </tr>
 </table>
@@ -948,7 +948,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define <code>parameters</code> static method because we don&#8217;t expose this service</td>
+<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1092,7 +1092,7 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define <code>parameters</code> static method because we don&#8217;t expose this service</td>
+<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1118,7 +1118,7 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-26 08:04:54 UTC
+Last updated 2018-06-25 16:34:09 UTC
 </div>
 </div>
 </body>

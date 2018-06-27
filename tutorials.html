@@ -199,7 +199,7 @@ We recommend to use <em>TypeScript</em> so in this tutorial all of your code wil
 <p>This command will ask you your developer login and password.</p>
 </div>
 <div class="paragraph">
-<p>This command will create you an account on the ZetaPush platform and create your first application in the <em>myApp</em> directory.
+<p>This command will create you an account on the ZetaPush platform and will create your first application in the <em>myApp</em> directory.
 An email will be sent to confirm your account.</p>
 </div>
 <div class="admonitionblock note">
@@ -215,7 +215,7 @@ To use your application, you need to validate your account. To do this, click on
 </table>
 </div>
 <div class="paragraph">
-<p>In this tutorial, we are focusing on the ZetaPush development. So to begin, get all resources and add them to your application (css, assets, &#8230;&#8203;) :</p>
+<p>In this tutorial, we are focusing on the ZetaPush development. So, to begin, get all resources and add them to your application (css, assets, &#8230;&#8203;) :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -246,7 +246,7 @@ If you are using <em>Windows</em>, you can download the file with all resources 
 </table>
 </div>
 <div class="paragraph">
-<p>So you already have the style and the frontend logic in the folders <code>assets</code> and <code>utils</code>. You can browse this files to understand this code.</p>
+<p>So you already have the style and the frontend logic in the folders <code>assets</code> and <code>utils</code>. You can browse these files to understand this code.</p>
 </div>
 <div class="paragraph">
 <p>In this tutorial, you need to :</p>
@@ -341,7 +341,7 @@ const CHANNEL_MESSAGING = 'avengersChannel'; <i class="conum" data-value="1"></i
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>On which channel the users send and listen the messages</td>
+<td>Channel on which the users send and listen to the messages</td>
 </tr>
 </table>
 </div>
@@ -408,7 +408,7 @@ The dependencies injection of ZetaPush use <code>injection-js</code>.
 <h4 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a>Create the chat</h4>
 <div class="paragraph">
 <p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
-So we add a method in our class to create this conversation.</p>
+So we add a method to our class to create this conversation.</p>
 </div>
 <div class="listingblock">
 <div class="title">Create conversation</div>
@@ -446,10 +446,10 @@ async createConversation() {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_add_user_in_the_conversation"><a class="anchor" href="#_add_user_in_the_conversation"></a>Add user in the conversation</h4>
+<h4 id="_add_user_to_the_conversation"><a class="anchor" href="#_add_user_to_the_conversation"></a>Add user to the conversation</h4>
 <div class="paragraph">
-<p>When an user come to the chat, we need to add it to the conversation.
-So we create a method in our class to add the current user in the conversation.</p>
+<p>When an user comes to the chat, we need to add it to the conversation.
+So we create a method in our class to add the current user to the conversation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -465,7 +465,7 @@ So we create a method in our class to add the current user in the conversation.<
 9
 </pre></td>
   <td class="code"><pre>/**
-* Add the current user in the conversation
+* Add the current user to the conversation
 */
 addMeToConversation(parameters: any, context: any) { <i class="conum" data-value="1"></i><b>(1)</b>
   return this.groups.addUser({
@@ -480,7 +480,7 @@ addMeToConversation(parameters: any, context: any) { <i class="conum" data-value
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Each <em>cloud function</em> in a <em>custom cloud function</em> takes only one parameter. The second is the context, injected by the SDK</td>
+<td>Each <em>custom cloud function</em> takes only one (client-provided) parameter. The second is the context, injected by the SDK</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -582,7 +582,7 @@ There is no specific method to launch an attack, to do this, we only send a spec
 <div class="sect3">
 <h4 id="_get_all_messages"><a class="anchor" href="#_get_all_messages"></a>Get all messages</h4>
 <div class="paragraph">
-<p>To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).</p>
+<p>To complete our business logic, we need to have an other method in our class to get all messages (when we enter the chat).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -784,8 +784,8 @@ export default class AvengersApi {
 <div class="sect3">
 <h4 id="_launch_the_worker_locally"><a class="anchor" href="#_launch_the_worker_locally"></a>Launch the worker locally</h4>
 <div class="paragraph">
-<p>When we working on the frontend part, we often want to test our interaction with the backend logic.
-So with ZetaPush, you can launch your worker locally to test this interaction.
+<p>When we work on the frontend part, we often want to test our interaction with the backend logic.
+With ZetaPush, you can launch your worker locally to test this interaction.
 To do this you need to use the <em>CLI</em> and run : <code>zeta run</code>.
 But in this project, the <em>CLI</em> is imported and a script is created with npm, so you just need to launch :</p>
 </div>
@@ -883,7 +883,7 @@ const controller = <span class="keyword">new</span> AvengersController(client);
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Cloud service provided by ZetaPush to listen incoming messages</td>
+<td>Cloud service provided by ZetaPush to listen to incoming messages</td>
 </tr>
 </table>
 </div>
@@ -912,7 +912,7 @@ const controller = <span class="keyword">new</span> AvengersController(client);
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-26 08:04:54 UTC
+Last updated 2018-06-25 16:34:09 UTC
 </div>
 </div>
 </body>
