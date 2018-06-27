@@ -1,0 +1,49 @@
+.listingblock:hover .clipboard {
+  opacity: 1;
+}
+
+.clipboard {
+  outline: 0;
+  opacity: 0;
+  position: absolute;
+  top: .425rem;
+  right: .5rem;
+  width: 30px;
+  height: 30px;
+  padding: 1px 4px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #333;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc,#eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+}
+.clipboard:active {
+  margin-top: 1px;
+  margin-right: -1px; 
+}
+
+.clipboard::before {
+  content: "";
+  background: url(../images/clipboard/clippy-normal.png) no-repeat center center;
+  width: 20px;
+  height: 22px;
+  display: block;
+  background-size: 20px auto;
+}
+
+.clipboard.copied::before {
+  background-image: url(../images/clipboard/clippy-normal-ok.png);
+}
+.clipboard.error::before {
+  background-image: url(../images/clipboard/clippy-normal-ko.png);
+}
