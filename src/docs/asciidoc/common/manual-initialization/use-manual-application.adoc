@@ -17,7 +17,7 @@ Update environement variables
 [role=tab]
 Debian/Ubuntu/MacOSX
 
-You need to add it to your shell config file \~/.zshrc \~/.profile or \~/.bashrc.
+You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.
 
 [source,console,subs="attributes+"]
 ----
