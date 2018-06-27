@@ -6,6 +6,8 @@ include::{docdir}/variables.adoc[]
 
 = Quick Start
 
+== System requirements
+
 // PREREQUISITES
 include::{docdir}/common/prerequisites/prerequisites.adoc[]
 
