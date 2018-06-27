@@ -484,6 +484,10 @@ table.tableblock {
 
 
 
+.listingblock:hover code[data-lang]:before {
+  display: none !important;
+}
+
 
 /** RESPONSIVE */
 
