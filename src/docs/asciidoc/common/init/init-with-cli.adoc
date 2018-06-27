@@ -33,7 +33,7 @@ include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=
 
 ////
 TODO: ailleurs
-All dependencies are already installed, so you can run your application locally or deploy it. Npm scripts are also configured in the `package.json` file.
+All dependencies are already installed, so you can run your application locally or deploy it. npm scripts are also configured in the `package.json` file.
 
 So you can use either the _CLI_ using the commands: 
 

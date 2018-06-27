@@ -1,15 +1,15 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-To create an application with ZetaPush you only need the NodeJS ecosystem: 
+To create an application with ZetaPush you only need the Node.js ecosystem: 
 
 [NOTE]
 ====
-- NodeJS version 8.11.2 (LTS) or higher
-- Npm version 5.x or higher
+- Node.js version 8.11.2 (LTS) or higher
+- npm version 5.x or higher
 ====
 
-NodeJS is used to:
+Node.js is used to:
 [NOTE]
 ====
 - create custom cloud services
@@ -17,11 +17,11 @@ NodeJS is used to:
 - deploy your application on ZetaPush
 ====
 
-*Install NodeJS and npm*
+*Install Node.js and npm*
 
-Go to https://nodejs.org/en/download/[NodeJS Downloads^] and follow the installation instructions.
+Go to https://nodejs.org/en/download/[Node.js Downloads^] and follow the installation instructions.
 
-You also need to install additional tools for NodeJS:
+You also need to install additional tools for Node.js:
 
 [role=tab-container]
 Additional tools
