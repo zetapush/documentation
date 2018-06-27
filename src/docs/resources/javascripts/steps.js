@@ -17,7 +17,7 @@
 		parent.find('.progressbar').append(parent.find('p'));
 		for(var i=0 ; i<steps.length ; i++) {
 			var step = $(steps[i]);
-			step.addClass('step step'+i+' '+(current==i ? 'current': '')+' '+(i==steps.length-1 ? 'last': ''));
+			step.addClass('step step'+i+' '+(current==i ? 'current' : '')+' '+(i==steps.length-1 ? 'last' : ''));
 			step.attr("title", step.text());
 			step.css("left", (i*100/(steps.length-1))+"%");
 		}
