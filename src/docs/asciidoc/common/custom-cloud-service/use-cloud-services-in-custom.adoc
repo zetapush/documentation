@@ -1,6 +1,6 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-Once you have import the services, you can use them.
+Once you have imported the services, you can use them.
 
 include::{docdir}/common/code/example-use-cloud-service-in-custom.adoc[]

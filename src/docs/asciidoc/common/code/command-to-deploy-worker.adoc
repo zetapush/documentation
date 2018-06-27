@@ -10,7 +10,7 @@ $ npm run deploy -- --worker
 [TIP]
 ====
 `npm run deploy` is a script alias defined in the `package.json` file.
-The executed command under the hood is:
+The command that is executed under the hood is:
 [source, console, subs="attributes+"]
 ----
 $ zeta push --worker

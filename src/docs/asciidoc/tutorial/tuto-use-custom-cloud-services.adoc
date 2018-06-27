@@ -5,8 +5,8 @@ Once we have our _custom cloud service_, we need to create the frontend of our a
 
 == Launch the worker locally
 
-When we working on the frontend part, we often want to test our interaction with the backend logic.
-So with ZetaPush, you can launch your worker locally to test this interaction.
+When we work on the frontend part, we often want to test our interaction with the backend logic.
+With ZetaPush, you can launch your worker locally to test this interaction.
 To do this you need to use the _CLI_ and run : `zeta run`.
 But in this project, the _CLI_ is imported and a script is created with npm, so you just need to launch :
 
@@ -55,4 +55,4 @@ const controller = new AvengersController(client);
 })();
 ----
 <1> Import the frontend logic (in the controller)
-<2> Cloud service provided by ZetaPush to listen incoming messages
+<2> Cloud service provided by ZetaPush to listen to incoming messages

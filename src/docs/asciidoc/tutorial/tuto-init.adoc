@@ -10,12 +10,12 @@ npm init @zetapush myApp
 
 This command will ask you your developer login and password.
 
-This command will create you an account on the ZetaPush platform and create your first application in the _myApp_ directory.
+This command will create you an account on the ZetaPush platform and will create your first application in the _myApp_ directory.
 An email will be sent to confirm your account.
 
 NOTE: To use your application, you need to validate your account. To do this, click on the link in the received email
 
-In this tutorial, we are focusing on the ZetaPush development. So to begin, get all resources and add them to your application (css, assets, ...) :
+In this tutorial, we are focusing on the ZetaPush development. So, to begin, get all resources and add them to your application (css, assets, ...) :
 
 [source, console, linenums]
 ----
@@ -28,7 +28,7 @@ $ unzip front.zip && rm front.zip
 
 TIP: If you are using _Windows_, you can download the file with all resources and unzip it in the front directory. Link : http://github-download-subfolder.zpush.io/?owner=zetapush&repository=zetapush-tutorials&path=avengersChat/front
 
-So you already have the style and the frontend logic in the folders `assets` and `utils`. You can browse this files to understand this code.
+So you already have the style and the frontend logic in the folders `assets` and `utils`. You can browse these files to understand this code.
 
 In this tutorial, you need to :
 

@@ -19,8 +19,8 @@ start
 :<b>Deployment success on a new application;
 ....
 ➊ I launch `npm init @zetapush myApp` with the `--developer-login` and `--developer-password` parameters +
-➋ The application is created in `myApp` folder +
-➌ The _.zetarc_ file is like :
+➋ The application is created in the `myApp` folder +
+➌ The _.zetarc_ file looks like :
 [source, json, linenums]
 ----
 {
@@ -30,4 +30,4 @@ start
 }
 ----
 
-TIP: If the _appName_ property in the _.zetarc_ is empty or missing, ZetaPush deploys or executes the code on a new application.
+TIP: If the _appName_ property in the _.zetarc_ is empty or missing, ZetaPush deploys or executes the code in a new application.

@@ -45,10 +45,10 @@ Now we create the HTML page with a button to display the _HelloWorld_ message in
 
 </html>
 ----
-<1> We call `hello()` that call our _custom cloud service_
-<2> Dependency of ZetaPush Core
+<1> We call `hello()`, which in turns calls our _custom cloud service_
+<2> Dependency to ZetaPush Core
 
-Finally, we have the front-side code to call our services :
+Finally, we have the front-side code call our services :
 
 .front/index.js
 [source, javascript, linenumbers]
@@ -77,8 +77,8 @@ async function hello() {
 }
 ----
 <1> Create the ZetaPush client with a specific appName and optional URL
-<2> API to access to our services
+<2> API to access our custom service(s)
 <3> Connection to the ZetaPush platform
 <4> Call our _cloud function_ and display the result
 
-*Now when we click on the button, "Hello World" is displayed on the page.*
+*Now when we click the button, "Hello World" is displayed on the page.*

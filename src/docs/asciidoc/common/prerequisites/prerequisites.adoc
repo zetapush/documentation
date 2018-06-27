@@ -11,7 +11,7 @@ To create an application with ZetaPush you only need the NodeJS ecosystem:
 - Npm version 5.x or higher
 ====
 
-NodeJS is used for ZetaPush to:
+NodeJS is used to:
 [NOTE]
 ====
 - create custom cloud services
@@ -21,9 +21,9 @@ NodeJS is used for ZetaPush to:
 
 *Install NodeJS and npm*
 
-Go to https://nodejs.org/en/download/[NodeJS Downloads^] and follow installation instructions.
+Go to https://nodejs.org/en/download/[NodeJS Downloads^] and follow the installation instructions.
 
-You also need to install additionnal tools for NodeJS:
+You also need to install additional tools for NodeJS:
 
 [role=tab-container]
 Additional tools
@@ -32,7 +32,7 @@ Additional tools
 Windows
 
 You must install development tools on Windows (Visual Studio Build Tools and Python). 
-Hopefully, there is a npm tool that helps you to install all required dependencies.
+Fortunately, there is a npm tool that helps you to install all required dependencies.
 You must run this command line using **PowerShell** as **Administrator**:
 
 [source, console]

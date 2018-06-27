@@ -1,8 +1,8 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-A _custom cloud service_ combines many _cloud functions_ like the _cloud services_ exposed by ZetaPush. The only difference is that it is *you* that create the _cloud functions_. 
-Generally, we put the *business logic* of your application in the _custom cloud services_.
+A _custom cloud service_ combines many _cloud functions_ like the _cloud services_ exposed by ZetaPush. The only difference is that *you* create the _cloud functions_. 
+Generally, you will want to put the *business logic* of your application in the _custom cloud services_.
 
 == Architecture
 

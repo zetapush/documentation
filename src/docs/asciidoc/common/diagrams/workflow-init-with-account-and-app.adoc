@@ -19,8 +19,8 @@ start
 :<b>Deployment success on the existing application;
 ....
 ➊ I launch `npm init @zetapush myApp` with the `--developer-login`, `--developer-password` and `--appName` parameters +
-➋ The application is created in `myApp` folder +
-➌ The _.zetarc_ file is like :
+➋ The application is created in the `myApp` folder +
+➌ The _.zetarc_ file looks like :
 [source, json, linenums]
 ----
 {

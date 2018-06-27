@@ -29,7 +29,7 @@ import { Stack, Messaging, GroupManagement, Injectable } from '@zetapush/platfor
 const CONVERSATION_ID = 'avengersChat';
 const CHANNEL_MESSAGING = 'avengersChannel'; <1>
 ----
-<1> On which channel the users send and listen the messages
+<1> Channel on which the users send and listen to the messages
 
 == Create the class with its constructor
 
@@ -58,7 +58,7 @@ NOTE: The dependencies injection of ZetaPush use `injection-js`.
 == Create the chat
 
 To create our chat, we use the _GroupManagement cloud service_ provided by ZetaPush. The created group includes all users of the conversation.
-So we add a method in our class to create this conversation.
+So we add a method to our class to create this conversation.
 
 .Create conversation
 [source,typescript,linenums]
@@ -78,15 +78,15 @@ async createConversation() {
 }
 ----
 
-== Add user in the conversation
+== Add user to the conversation
 
-When an user come to the chat, we need to add it to the conversation.
-So we create a method in our class to add the current user in the conversation. 
+When an user comes to the chat, we need to add it to the conversation.
+So we create a method in our class to add the current user to the conversation. 
 
 [source,typescript,linenums]
 ----
 /**
-* Add the current user in the conversation
+* Add the current user to the conversation
 */
 addMeToConversation(parameters: any, context: any) { <1>
   return this.groups.addUser({
@@ -95,7 +95,7 @@ addMeToConversation(parameters: any, context: any) { <1>
   });
 }
 ----
-<1> Each _cloud function_ in a _custom cloud function_ takes only one parameter. The second is the context, injected by the SDK
+<1> Each _custom cloud function_ takes only one (client-provided) parameter. The second is the context, injected by the SDK
 <2> We get the caller (owner) of the _cloud function_ from the context.
 
 == Send a message
@@ -140,7 +140,7 @@ TIP: There is no specific method to launch an attack, to do this, we only send a
 
 == Get all messages
 
-To complete our business logic, we need to have an other method in our class to get all messages (when we enter in the chat).
+To complete our business logic, we need to have an other method in our class to get all messages (when we enter the chat).
 
 [source,typescript,linenums]
 ----

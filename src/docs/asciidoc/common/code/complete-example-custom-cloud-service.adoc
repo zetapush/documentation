@@ -49,7 +49,7 @@ class SimpleStorageWithDate {
 
 module.exports = SimpleStorageWithDate; <5>
 ----
-<1> No need to define `parameters` static method because we don't expose this service
+<1> No need to define a static method named `parameters` because we don't expose this service
 <2> Async/Await context
 <3> Use the existing _cloud services_
 <4> Use another _custom cloud service_

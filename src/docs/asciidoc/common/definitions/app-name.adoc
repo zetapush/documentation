@@ -1,1 +1,1 @@
-A developer can develops many applications. So for his account on the ZetaPush platform, he need to identify each of them. The _appName_ property is the unique name of an application on a ZetaPush developer account.
+A developer can develop many applications. Hence the need to identify each of them. The _appName_ property is the unique name of an application on a ZetaPush developer account.

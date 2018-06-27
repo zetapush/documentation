@@ -31,7 +31,7 @@ TODO: https://github.com/zetapush/documentation/issues/50
 include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[leveloffset=+3]
 
 
-=== Configure your project to use existing application
+=== Configure your project to use an existing application
 
 ==== Using your terminal
 include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[leveloffset=+3]
@@ -90,7 +90,7 @@ include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.
 === Define a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+2]
 
-==== Expose a _custom cloud services_
+==== Expose a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/expose-custom-cloud-service.adoc[leveloffset=+3]
 
 ==== Dependency injection
@@ -114,7 +114,7 @@ TODO: https://github.com/zetapush/documentation/issues/53
 
 == Deploy/publish your application
 
-Once you have developed your application and tested it, you may want to deploy it on ZetaPush cloud.
+Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.
 
 === What will be deployed ?
 
@@ -125,13 +125,13 @@ include::{docdir}/common/deploy/what-is-deployment.adoc[leveloffset=+2]
 TODO: https://github.com/zetapush/documentation/issues/54
 
 
-=== Deploy both front and _custom cloud services_ on ZetaPush Cloud
+=== Deploy both front and _custom cloud services_ on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-app.adoc[leveloffset=+2]
 
-=== Deploy your front on ZetaPush Cloud
+=== Deploy your front on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-front.adoc[leveloffset=+2]
 
-=== Deploy your _custom cloud services_ on ZetaPush Cloud
+=== Deploy your _custom cloud services_ on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
 
 

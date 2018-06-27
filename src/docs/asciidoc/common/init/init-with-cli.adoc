@@ -8,7 +8,7 @@ You can generate a classic application with the following command :
 ----
 $ npm init @zetapush myApp <1>
 ----
-<1> _myApp_ is the name of the folder that will be created and will contain all generated files
+<1> _myApp_ is the name of the folder that will be created with all the generated files
 
 [WARNING]
 ====

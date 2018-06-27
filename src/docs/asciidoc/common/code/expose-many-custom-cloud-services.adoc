@@ -32,6 +32,6 @@ module.exports = { <2>
   calendar: Calendar
 };
 ----
-<1> No need to define `parameters` static method because we don't expose this service
+<1> No need to define a static method named `parameters` because we don't expose this service
 <2> We expose the 2 _custom cloud services_ to the client side with the syntax : { _namespace1_ : _Service1_, _namespace2_ : _Service2_ }
 

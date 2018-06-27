@@ -7,9 +7,9 @@ The command to initialize an application with the CLI is :
 ----
 $ npm init @zetapush myApp <1>
 ----
-<1> _myApp_ is the name of the directory generated
+<1> _myApp_ is the name of the generated directory 
 
-This command can take many parameters :
+This command can take the following parameters :
 
 * *--developer-login* 
 
