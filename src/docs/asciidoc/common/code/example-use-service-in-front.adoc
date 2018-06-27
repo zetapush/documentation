@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-In our example we use this _custom cloud service_ named `HelloService` :
+In our example we use this _custom cloud service_ named `HelloService`:
 
 .worker/index.js
 [source, javascript, linenumbers]
@@ -21,7 +21,7 @@ module.exports = HelloService; <1>
 ----
 <1> The service is exported
 
-Now we create the HTML page with a button to display the _HelloWorld_ message in the console :
+Now we create the HTML page with a button to display the _HelloWorld_ message in the console:
 
 .front/index.html
 [source, html, linenumbers]
@@ -48,7 +48,7 @@ Now we create the HTML page with a button to display the _HelloWorld_ message in
 <1> We call `hello()`, which in turns calls our _custom cloud service_
 <2> Dependency to ZetaPush Core
 
-Finally, we have the front-side code call our services :
+Finally, we have the front-side code call our services:
 
 .front/index.js
 [source, javascript, linenumbers]

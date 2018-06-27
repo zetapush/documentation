@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 
 ZetaPush provides many variables to configure your applications.
-There are 2 types : the _account configuration variables_ and the _application configuration variables_. 
+There are 2 types: the _account configuration variables_ and the _application configuration variables_. 
 
 == Account configuration
 include::{docdir}/common/configuration/account-configuration.adoc[leveloffset=+1]

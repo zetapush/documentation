@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 To use ZetaPush Celtia, you need to have an account and an optional application.
 You specify this properties in the `.zetarc` file.
-Here is the list of them :
+Here is the list of them:
 
 .Account variables
 [cols="5*^.^", options="header"]

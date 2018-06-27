@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 You can put many properties in several locations (environment variables, CLI...).
-ZetaPush includes and overrides this properties in a specific order :
+ZetaPush includes and overrides this properties in a specific order:
 
 == Account properties
 include::{docdir}/common/diagrams/override-account-properties.adoc[]

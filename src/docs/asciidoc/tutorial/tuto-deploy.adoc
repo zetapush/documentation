@@ -1,7 +1,7 @@
 :relative-path: ../
 include::{docdir}/variables.adoc[]
 
-Your application is working but only locally. To deploy your application you just need to launch `zeta push`. In this application you already have a npm script so you can run :
+Your application is working but only locally. To deploy your application you just need to launch `zeta push`. In this application you already have a npm script so you can run:
 
 .Deploy the application
 [source,console]

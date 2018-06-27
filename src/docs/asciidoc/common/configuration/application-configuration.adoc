@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-You can configure your applications with several variables. Here is the list of them :
+You can configure your applications with several variables. Here is the list of them:
 
 .Application variables
 [cols="5*^.^a", options="header"]

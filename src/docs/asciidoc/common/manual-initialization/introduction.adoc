@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 
-Here the basic source tree you need to create :
+Here the basic source tree you need to create:
 
 include::{docdir}/common/code/minimal-tree.adoc[]
 

@@ -5,11 +5,11 @@ include::{docdir}/variables.adoc[]
 
 To specify which account (on the ZetaPush platform) you use for an application, you fill the file `.zetarc` with the account information.
 
-This file is in **JSON** format. The possible properties are below :
+This file is in **JSON** format. The possible properties are below:
 
-- _developerLogin_ : Login of the developer account on the ZetaPush platform
-- _developerPassword_ : Password of the developer account on the ZetaPush platform
-- _appName_ : The name of your application
+- _developerLogin_: Login of the developer account on the ZetaPush platform
+- _developerPassword_: Password of the developer account on the ZetaPush platform
+- _appName_: The name of your application
 
 
 include::{docdir}/common/code/minimal-zetarc.adoc[]

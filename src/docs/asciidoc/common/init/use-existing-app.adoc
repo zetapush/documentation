@@ -1,11 +1,11 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-If you want to deploy or execute your application on an existing application you can follow this process :
+If you want to deploy or execute your application on an existing application you can follow this process:
 
 include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[]
 
-For example you can launch this command :
+For example you can launch this command:
 
 [source, console, linenums]
 ----

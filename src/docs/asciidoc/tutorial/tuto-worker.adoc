@@ -13,7 +13,7 @@ You can delete the content of the file `worker/index.ts` and fill it with the fo
 
 == Import _cloud services_ and define constants
 
-First, you need to import the _cloud services_ provided by ZetaPush, used in this application : 
+First, you need to import the _cloud services_ provided by ZetaPush, used in this application: 
 
 * _Stack_ (Save data in a stack)
 * _Messaging_ (Send and receive messages)
@@ -100,7 +100,7 @@ addMeToConversation(parameters: any, context: any) { <1>
 
 == Send a message
 
-No we want to send a message on our chat. To do this, we need to follow 3 steps :
+No we want to send a message on our chat. To do this, we need to follow 3 steps:
 
 . Get all users in the conversation
 . Send the message of all users in the conversation
@@ -155,7 +155,7 @@ async getMessages() {
 }
 ----
 
-Now your _custom cloud service_ is ready with this following content :
+Now your _custom cloud service_ is ready with this following content:
 
 [source,typescript,linenums]
 ----

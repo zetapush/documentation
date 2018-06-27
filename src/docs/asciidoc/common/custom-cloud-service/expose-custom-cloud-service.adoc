@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-When you create a _custom cloud service_ that you want to expose to the client, you need to declare it. You have 2 cases :
+When you create a _custom cloud service_ that you want to expose to the client, you need to declare it. You have 2 cases:
 
 * Only one _custom cloud service_ exposed
 * Many _custom cloud services_ exposed 
@@ -15,7 +15,7 @@ When you call a _cloud function_ from a _custom cloud service_, you can specify 
 
 NOTE: The _namespace_ is never used inside the _custom cloud service_. The _namespace_ is defined when you expose your _custom cloud service_.
 
-For example we have this service :
+For example we have this service:
 
 [source, javascript, linenums]
 ----
@@ -34,7 +34,7 @@ module.exports = {
 <1> The _namespace_ is never passed here
 <2> We export this _custom cloud service_ with the namespace 'api'
 
-You can call `hello()` like this :
+You can call `hello()` like this:
 
 [source, javascript, linenums]
 ----
@@ -45,12 +45,12 @@ We use the method `hello()` from the namespace _api_.
 
 == Only one custom cloud service exposed
 
-In this example, we have 2 _custom cloud services_ : One is private and the second is exposed :
+In this example, we have 2 _custom cloud services_: One is private and the second is exposed:
 
 include::{docdir}/common/code/expose-one-custom-cloud-service.adoc[leveloffset=+1]
 
 == Many custom cloud services exposed
 
-In this example, we want to expose 2 _custom cloud services_. In this case, we need to specify the namespace of each _custom cloud service_ :
+In this example, we want to expose 2 _custom cloud services_. In this case, we need to specify the namespace of each _custom cloud service_:
 
 include::{docdir}/common/code/expose-many-custom-cloud-services.adoc[leveloffset=+1]

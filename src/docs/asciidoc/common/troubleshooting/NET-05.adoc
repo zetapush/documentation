@@ -22,12 +22,12 @@ check your proxy
 
 == Behind proxy
 
-If NodeJS/npm reports one of theses errors:
+If Node.js/npm reports one of theses errors:
 
 - `ENETUNREACH`
 - `ECONNREFUSED`
 
-It may mean that your system or NodeJS/npm is configured with proxy settings.
+It may mean that your system or Node.js/npm is configured with proxy settings.
 Please check that your proxy configuration is correct.
 
 === Proxy configured system-wide

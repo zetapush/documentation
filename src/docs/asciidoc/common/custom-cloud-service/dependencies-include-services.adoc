@@ -13,7 +13,7 @@ $ npm install --save @zetapush/platform
 
 NOTE: The dependency injection of ZetaPush uses Angular https://github.com/mgechev/injection-js[injection-js^] library.
 
-For example, to import an other service, you simply need to write :
+For example, to import an other service, you simply need to write:
 
 .Import service
 [source, javascript, linenums, role="highlight-lines:6-11,13"]
