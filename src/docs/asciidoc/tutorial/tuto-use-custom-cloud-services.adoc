@@ -14,7 +14,7 @@ But in this project, the _CLI_ is imported and a script is created with npm, so 
 [source,console]
 ----
 // In the root of the application
-$ npm run start -- --http-server
+$ npm run start -- --serve-front
 ----
 
 TIP: If you want to install the _ZetaPush CLI_ you can run `npm install -g @zetapush/cli`.
