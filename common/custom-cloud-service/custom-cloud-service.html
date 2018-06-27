@@ -118,7 +118,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <div class="sect2">
 <h3 id="_how_to_create_a_em_custom_cloud_service_em"><a class="anchor" href="#_how_to_create_a_em_custom_cloud_service_em"></a>How to create a <em>custom cloud service</em></h3>
 <div class="paragraph">
-<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of a <em>custom cloud service</em> is below :</p>
+<p>First, a <em>custom cloud service</em> is a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>. So the most basic example of a <em>custom cloud service</em> is below:</p>
 </div>
 <div class="sect3">
 <h4 id="_create_a_em_cloud_function_em"><a class="anchor" href="#_create_a_em_cloud_function_em"></a>Create a <em>cloud function</em></h4>
@@ -173,7 +173,7 @@ A <em>cloud function</em> is always asynchronous (with the <em>async</em> keywor
 <div class="paragraph">
 <p>Each <em>cloud function</em> in a <em>custom cloud service</em> must follow a specific format.
 Only the first parameter is passed, the second is the context of the call.
-For example :</p>
+For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -207,7 +207,7 @@ For example you can get the ID of the caller with <code>context.owner</code>.</t
 </table>
 </div>
 <div class="paragraph">
-<p>On the front side, you can use this <em>cloud function</em> like this :</p>
+<p>On the front side, you can use this <em>cloud function</em> like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -255,7 +255,7 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </table>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service, you simply need to write :</p>
+<p>For example, to import an other service, you simply need to write:</p>
 </div>
 <div class="listingblock highlight-lines:6-11,13">
 <div class="title">Import service</div>
@@ -343,7 +343,7 @@ The order in your <code>parameters</code> method need to be the same in your con
 In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.</p>
 </div>
 <div class="paragraph">
-<p>For this the <code>Stack</code> service provides some methods :</p>
+<p>For this the <code>Stack</code> service provides some methods:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -498,7 +498,7 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </table>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service, you simply need to write :</p>
+<p>For example, to import an other service, you simply need to write:</p>
 </div>
 <div class="listingblock highlight-lines:6-11,13">
 <div class="title">Import service</div>
@@ -582,20 +582,20 @@ The order in your <code>parameters</code> method need to be the same in your con
 <p>Once you have imported the services, you can use them.</p>
 </div>
 <div class="paragraph">
-<p>In this example, we will have 2 <em>custom cloud services</em> :</p>
+<p>In this example, we will have 2 <em>custom cloud services</em>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Calendar</code> : Utils function to return the current date</p>
+<p><code>Calendar</code>: Utils function to return the current date</p>
 </li>
 <li>
-<p><code>HelloWorldService</code> : Basic example using <code>Calendar</code> <em>cloud function</em></p>
+<p><code>HelloWorldService</code>: Basic example using <code>Calendar</code> <em>cloud function</em></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first <em>custom cloud service</em> (<code>Calendar</code>) is in the file : "worker/calendar.js".</p>
+<p>The first <em>custom cloud service</em> (<code>Calendar</code>) is in the file: "worker/calendar.js".</p>
 </div>
 <div class="listingblock">
 <div class="title">worker/calendar.js</div>
@@ -628,7 +628,7 @@ module.exports = Calendar;</pre></td>
 </table>
 </div>
 <div class="paragraph">
-<p>Then, we have the <code>HelloWorldService</code> that use our <code>Calendar</code> service. It is in the file : "./worker/index.js".</p>
+<p>Then, we have the <code>HelloWorldService</code> that use our <code>Calendar</code> service. It is in the file: "./worker/index.js".</p>
 </div>
 <div class="listingblock highlight-lines:6-10,12-14">
 <div class="title">worker/index.js</div>
@@ -699,7 +699,7 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 <div class="sect2">
 <h3 id="_expose_my_em_custom_cloud_services_em"><a class="anchor" href="#_expose_my_em_custom_cloud_services_em"></a>Expose my <em>custom cloud services</em></h3>
 <div class="paragraph">
-<p>When you create a <em>custom cloud service</em> that you want to expose to the client, you need to declare it. You have 2 cases :</p>
+<p>When you create a <em>custom cloud service</em> that you want to expose to the client, you need to declare it. You have 2 cases:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -741,7 +741,7 @@ The <em>namespace</em> is never used inside the <em>custom cloud service</em>. T
 </table>
 </div>
 <div class="paragraph">
-<p>For example we have this service :</p>
+<p>For example we have this service:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -785,7 +785,7 @@ module.exports = {
 </table>
 </div>
 <div class="paragraph">
-<p>You can call <code>hello()</code> like this :</p>
+<p>You can call <code>hello()</code> like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -805,7 +805,7 @@ module.exports = {
 <div class="sect3">
 <h4 id="_only_one_custom_cloud_service_exposed"><a class="anchor" href="#_only_one_custom_cloud_service_exposed"></a>Only one custom cloud service exposed</h4>
 <div class="paragraph">
-<p>In this example, we have 2 <em>custom cloud services</em> : One is private and the second is exposed :</p>
+<p>In this example, we have 2 <em>custom cloud services</em>: One is private and the second is exposed:</p>
 </div>
 <div class="listingblock highlight-lines:24">
 <div class="title">worker/index.js</div>
@@ -883,7 +883,7 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 <div class="sect3">
 <h4 id="_many_custom_cloud_services_exposed"><a class="anchor" href="#_many_custom_cloud_services_exposed"></a>Many custom cloud services exposed</h4>
 <div class="paragraph">
-<p>In this example, we want to expose 2 <em>custom cloud services</em>. In this case, we need to specify the namespace of each <em>custom cloud service</em> :</p>
+<p>In this example, we want to expose 2 <em>custom cloud services</em>. In this case, we need to specify the namespace of each <em>custom cloud service</em>:</p>
 </div>
 <div class="listingblock highlight-lines:24-27">
 <div class="title">worker/index.js</div>
@@ -955,7 +955,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We expose the 2 <em>custom cloud services</em> to the client side with the syntax : { <em>namespace1</em> : <em>Service1</em>, <em>namespace2</em> : <em>Service2</em> }</td>
+<td>We expose the 2 <em>custom cloud services</em> to the client side with the syntax: { <em>namespace1</em>: <em>Service1</em>, <em>namespace2</em>: <em>Service2</em> }</td>
 </tr>
 </table>
 </div>
@@ -964,7 +964,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <div class="sect2">
 <h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a>Complete example</h3>
 <div class="paragraph">
-<p>My configuration in the <code>package.json</code> is the following :</p>
+<p>My configuration in the <code>package.json</code> is the following:</p>
 </div>
 <div class="listingblock">
 <div class="title">package.json</div>
@@ -993,7 +993,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 </div>
 </div>
 <div class="paragraph">
-<p>And my back side code is :</p>
+<p>And my back side code is:</p>
 </div>
 <div class="listingblock">
 <div class="title">worker/index.js</div>
