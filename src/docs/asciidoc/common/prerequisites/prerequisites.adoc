@@ -1,8 +1,6 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-== System requirements
-
 To create an application with ZetaPush you only need the NodeJS ecosystem: 
 
 [NOTE]

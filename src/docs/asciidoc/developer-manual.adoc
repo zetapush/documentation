@@ -3,6 +3,16 @@ include::{docdir}/variables.adoc[]
 
 = Developer manual
 
+== Requirements
+
+=== System requirements
+
+include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+1]
+
+=== Using CLI
+
+include::{docdir}/common/manual-initialization/use-manual-application.adoc[leveloffset=+2]
+
 == Account management
 
 TODO: https://github.com/zetapush/documentation/issues/48
