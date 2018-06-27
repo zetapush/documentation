@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 To execute or deploy your application you need to use the _Command Line Interface (CLI)_.
 
-You can check if you already installed the CLI with : 
+You can check if you already installed the CLI with: 
 
 [source, console]
 ----
@@ -12,7 +12,7 @@ $ zeta --version
 
 If the CLI returns a result as `0.18.4`, the CLI is installed.
 
-Otherwise, you can install it with :
+Otherwise, you can install it with:
 
 [source, console]
 ----

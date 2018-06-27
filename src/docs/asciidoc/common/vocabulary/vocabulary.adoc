@@ -56,7 +56,7 @@ An application has at least one environment.
 For example, you can have `prod`, `pre-prod`, `dev` environments for the same application. 
 
 | CLI
-| Command Line Interface : utility scripts that are usable in a terminal to run your code or deploy your application, for example.
+| Command Line Interface: utility scripts that are usable in a terminal to run your code or deploy your application, for example.
 
 | Console
 | The main website used to manage your ZetaPush account and applications, read the documentation, monitor your applications...

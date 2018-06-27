@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-My configuration in the `package.json` is the following :
+My configuration in the `package.json` is the following:
 
 .package.json
 [source, json, linenums]
@@ -17,6 +17,6 @@ My configuration in the `package.json` is the following :
 }
 ----
 
-And my back side code is :
+And my back side code is:
 
 include::{docdir}/common/code/complete-example-custom-cloud-service.adoc[]

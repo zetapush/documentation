@@ -4,7 +4,7 @@ include::{docdir}/variables.adoc[]
 In this example, we will use the `Stack` _cloud service_ provided by ZetaPush.
 In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.
 
-For this the `Stack` service provides some methods :
+For this the `Stack` service provides some methods:
 
 * `push({ _stack_: string, _data_: object });`
 * `list({ _stack_: string });`

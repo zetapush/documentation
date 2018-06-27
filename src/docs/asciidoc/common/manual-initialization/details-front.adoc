@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 == front
 
-By convention, the directory contains the front code. For example you can have this tree structure :
+By convention, the directory contains the front code. For example you can have this tree structure:
 
 ```console
 └── front

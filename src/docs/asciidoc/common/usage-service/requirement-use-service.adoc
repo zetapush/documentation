@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 To use services (custom or not), you need to install the ZetaPush Core dependency (`@zetapush/core`).
 
-So you can install it with :
+So you can install it with:
 
 .Install @zetapush/core via npm
 [source, console, linenums]

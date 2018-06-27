@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-You can generate a classic application with the following command :
+You can generate a classic application with the following command:
 
 .Generate application
 [source, console]
@@ -19,13 +19,13 @@ This command works only with npm >= 6.
 include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]
 ====
 
-This command can takes several parameters : 
+This command can takes several parameters: 
 
-* *--developer-login* : Define which developer login (ZetaPush account) to use
-* *--developer-password* : Define which developer password (ZetaPush account) to use
-* *--appName* : Define which application (defined in your ZetaPush account) to use
+* *--developer-login*: Define which developer login (ZetaPush account) to use
+* *--developer-password*: Define which developer password (ZetaPush account) to use
+* *--appName*: Define which application (defined in your ZetaPush account) to use
 
-This will generate a tree structure of a classic application :
+This will generate a tree structure of a classic application:
 
 include::{docdir}/common/code/generated-tree-init.adoc[leveloffset=+1]
 

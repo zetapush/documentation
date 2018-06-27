@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-First, a _custom cloud service_ is a `class` and its `methods` are the  _cloud functions_. So the most basic example of a _custom cloud service_ is below :
+First, a _custom cloud service_ is a `class` and its `methods` are the  _cloud functions_. So the most basic example of a _custom cloud service_ is below:
 
 
 == Create a _cloud function_
@@ -10,7 +10,7 @@ include::{docdir}/common/code/basic-custom-cloud-service.adoc[leveloffset=+1]
 
 Each _cloud function_ in a _custom cloud service_ must follow a specific format.
 Only the first parameter is passed, the second is the context of the call.
-For example :
+For example:
 
 [source, javascript, linenums]
 ----
@@ -26,7 +26,7 @@ class myCustomCloudService {
 `context` is the context of the call for this _cloud function_.
 For example you can get the ID of the caller with `context.owner`. 
 
-On the front side, you can use this _cloud function_ like this :
+On the front side, you can use this _cloud function_ like this:
 
 [source, javascript, linenums]
 ----

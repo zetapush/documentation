@@ -1,12 +1,12 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-Once your have your application ready you can :
+Once your have your application ready you can:
 
 * Run the backend code (Worker) locally
 * Deploy your application
 
-To do this you need to use the _CLI_. To install it, launch :
+To do this you need to use the _CLI_. To install it, launch:
 
 == Update your PATH environement variable (recommended)
 
@@ -95,7 +95,7 @@ $ npx zeta <command>
 $ npm i -g @angular/cli
 ----
 
-With the CLI, you can run your worker with :
+With the CLI, you can run your worker with:
 
 .Run worker
 [source, console, linenums]
@@ -103,7 +103,7 @@ With the CLI, you can run your worker with :
 $ zeta run
 ----
 
-Or deploy your application with :
+Or deploy your application with:
 
 .Deploy the application
 [source, console, linenums]

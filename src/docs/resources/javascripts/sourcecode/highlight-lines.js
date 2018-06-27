@@ -66,7 +66,7 @@
 	};
 
 	var decorate = function (/*String*/line, /*String*/type) {
-		return '<span class="highlight-line' + (type ? '-' + type : '') + '"><span class="wrapped-line">' + (line || "") + '</span></span>';
+		return '<span class="highlight-line' + (type ? '-' + type: '') + '"><span class="wrapped-line">' + (line || "") + '</span></span>';
 	};
 
 	$(document).ready(highlightLines);

@@ -8,8 +8,8 @@
 			if(part.indexOf("-")!=-1) {
 				// example: 10-25
 				var subpart = part.split("-");
-				var start = subpart[0] ? parseInt(subpart[0]) : 1;
-				var end = subpart[1] ? parseInt(subpart[1]) : sourceLines.length;
+				var start = subpart[0] ? parseInt(subpart[0]): 1;
+				var end = subpart[1] ? parseInt(subpart[1]): sourceLines.length;
 				for(var j=start ; j<=end ; j++) {
 					hl.push(j);
 				}

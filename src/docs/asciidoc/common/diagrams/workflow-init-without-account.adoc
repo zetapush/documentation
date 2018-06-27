@@ -5,7 +5,7 @@ include::{docdir}/variables.adoc[]
 ....
 start
 
-:I launch :
+:I launch:
 <color:#38363a>$ npm init @zetapush myApp ➊; 
 
 :The CLI asks you to create a ZetaPush account ➋;
@@ -16,7 +16,7 @@ start
 
 :<color:#38363a>.zetarc</color> file is created ➍;
 
-:I launch :
+:I launch:
 <color:#38363a>$ zeta run</color> or
 <color:#38363a>$ zeta push;
 
@@ -25,7 +25,7 @@ start
 ➊ I launch `npm init @zetapush myApp` without parameters +
 ➋ You type your email and a password to create your ZetaPush account +
 ➌ The application is created in the `myApp` folder +
-➍ The _.zetarc_ file looks like :
+➍ The _.zetarc_ file looks like:
 [source, json, linenums]
 ----
 {

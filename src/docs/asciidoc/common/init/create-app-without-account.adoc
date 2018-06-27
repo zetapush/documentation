@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 If you have no ZetaPush account, you can create a new and generate an application with the CLI.
 
-The process is the following :
+The process is the following:
 
 include::{docdir}/common/diagrams/workflow-init-without-account.adoc[]
 

@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 == worker
 
-By convention, the directory contains the back code. For example you can have this tree structure :
+By convention, the directory contains the back code. For example you can have this tree structure:
 
 ```console
 └── worker

@@ -3,11 +3,11 @@ include::{docdir}/variables.adoc[]
 
 If you have an existing account and you want to create a new application you can use the CLI.
 
-The process is the following :
+The process is the following:
 
 include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[]
 
-For example you can launch :
+For example you can launch:
 
 [source, console, linenums]
 ----

@@ -1,12 +1,12 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-In this example, we will have 2 _custom cloud services_ : 
+In this example, we will have 2 _custom cloud services_: 
 
-* `Calendar` : Utils function to return the current date
-* `HelloWorldService` : Basic example using `Calendar` _cloud function_
+* `Calendar`: Utils function to return the current date
+* `HelloWorldService`: Basic example using `Calendar` _cloud function_
 
-The first _custom cloud service_ (`Calendar`) is in the file : "worker/calendar.js".
+The first _custom cloud service_ (`Calendar`) is in the file: "worker/calendar.js".
 
 .worker/calendar.js
 [source, javascript, linenums]
@@ -21,7 +21,7 @@ module.exports = Calendar;
 ----
 <1> The only _cloud function_ of the `Calendar` service
 
-Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file : "./worker/index.js".
+Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file: "./worker/index.js".
 
 .worker/index.js
 [source, javascript, linenums, role="highlight-lines:6-10,12-14"]
