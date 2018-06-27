@@ -60,7 +60,7 @@ include::{docdir}/common/code/table-definition-generated-files.adoc[leveloffset=
 
 include::{docdir}/common/cli/run-project.adoc[leveloffset=+2]
 
-This command launchs a local web server on `localhost:3000` and also launchs the custom cloud services.
+This command launches both a local web server on `localhost:3000` and the custom cloud services.
 You can open a web browser on `localhost:3000` and open the browser console.
 
 You can click on the button and see the result of the custom cloud service call in the browser console.
