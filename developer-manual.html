@@ -62,6 +62,12 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_requirements">Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_system_requirements">System requirements</a></li>
+<li><a href="#_using_cli">Using CLI</a></li>
+</ul>
+</li>
 <li><a href="#_account_management">Account management</a>
 <ul class="sectlevel2">
 <li><a href="#_create_a_new_account_and_a_new_application">Create a new account and a new application</a></li>
@@ -106,6 +112,315 @@
 </div>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_system_requirements"><a class="anchor" href="#_system_requirements"></a>System requirements</h3>
+<div class="paragraph">
+<p>To create an application with ZetaPush you only need the NodeJS ecosystem:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>NodeJS version 8.11.2 (LTS) or higher</p>
+</li>
+<li>
+<p>Npm version 5.x or higher</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>NodeJS is used to:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>create custom cloud services</p>
+</li>
+<li>
+<p>locally run custom cloud services</p>
+</li>
+<li>
+<p>deploy your application on ZetaPush</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Install NodeJS and npm</strong></p>
+</div>
+<div class="paragraph">
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank">NodeJS Downloads</a> and follow the installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>You also need to install additional tools for NodeJS:</p>
+</div>
+<div class="paragraph tab-container">
+<p>Additional tools</p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>You must install development tools on Windows (Visual Studio Build Tools and Python).
+Fortunately, there is a npm tool that helps you to install all required dependencies.
+You must run this command line using <strong>PowerShell</strong> as <strong>Administrator</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">npm install --global --production windows-build-tools</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Be patient! It may take a while.</p>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo apt-get install -y build-essential</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Enterprise Linux and Fedora</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo yum install gcc-c++ make
+# or: sudo yum groupinstall 'Development Tools'</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_cli"><a class="anchor" href="#_using_cli"></a>Using CLI</h3>
+<div class="paragraph">
+<p>Once your have your application ready you can :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the backend code (Worker) locally</p>
+</li>
+<li>
+<p>Deploy your application</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To do this you need to use the <em>CLI</em>. To install it, launch :</p>
+</div>
+<div class="sect3">
+<h4 id="_update_your_path_environement_variable_recommended"><a class="anchor" href="#_update_your_path_environement_variable_recommended"></a>Update your PATH environement variable (recommended)</h4>
+<div class="paragraph tab-container">
+<p>Update environement variables</p>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu/MacOSX</p>
+</div>
+<div class="paragraph">
+<p>You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ export PATH=./node_modules/.bin:$PATH</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this will not automatically update your path for the remainder of the session. To do this, you should run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ source ~/.zshrc
+$ source ~/.profile
+$ source ~/.bashrc</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>Windows 10 and Windows 8</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Search, search for and then select: System (Control Panel)</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run your java code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Windows 7</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run your java code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Windows Vista</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the My Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced tab (Advanced system settings link in Vista).</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run your java code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Windows XP</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select Start, select Control Panel. double click System, and select the Advanced tab.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run your java code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_aliases_command_npm_run_command"><a class="anchor" href="#_use_aliases_command_npm_run_command"></a>Use aliases command npm run &lt;command&gt;</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_npx_tool"><a class="anchor" href="#_use_npx_tool"></a>Use npx tool</h4>
+<div class="paragraph">
+<p>npx is shipped with npm standard install</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx zeta &lt;command&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_install_zetapush_cli_as_a_global_command_not_recommended"><a class="anchor" href="#_install_zetapush_cli_as_a_global_command_not_recommended"></a>Install @zetapush/cli as a global command (not recommended)</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm i -g @angular/cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the CLI, you can run your worker with :</p>
+</div>
+<div class="listingblock">
+<div class="title">Run worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta run</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or deploy your application with :</p>
+</div>
+<div class="listingblock">
+<div class="title">Deploy the application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ zeta push</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_account_management"><a class="anchor" href="#_account_management"></a>Account management</h2>
 <div class="sectionbody">
@@ -762,7 +1077,7 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 </table>
 </div>
 <div class="sect3">
-<h4 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h4>
+<h4 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a>Requirements</h4>
 <div class="paragraph">
 <p>To use services (custom or not), you need to install the ZetaPush Core dependency (<code>@zetapush/core</code>).</p>
 </div>
@@ -2274,7 +2589,7 @@ The command that is executed under the hood is:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-27 08:38:05 UTC
+Last updated 2018-06-27 08:38:21 UTC
 </div>
 </div>
 </body>
