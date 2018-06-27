@@ -42,7 +42,7 @@ Windows 10 and Windows 8
 - Click the Advanced system settings link.
 - Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
-- Reopen Command prompt window, and run your java code.
+- Reopen Command prompt window, and run zeta command.
 
 Windows 7
 
@@ -51,7 +51,7 @@ Windows 7
 - Click the Advanced system settings link.
 - Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
-- Reopen Command prompt window, and run your java code.
+- Reopen Command prompt window, and run zeta command.
 
 Windows Vista
 
@@ -60,14 +60,14 @@ Windows Vista
 - Click the Advanced tab (Advanced system settings link in Vista).
 - Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
-- Reopen Command prompt window, and run your java code.
+- Reopen Command prompt window, and run zeta command.
 
 Windows XP
 
 - Select Start, select Control Panel. double click System, and select the Advanced tab.
 - Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
-- Reopen Command prompt window, and run your java code.
+- Reopen Command prompt window, and run zeta command.
 
 [role=tab-container-end]
 -
