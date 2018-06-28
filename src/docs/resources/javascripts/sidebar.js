@@ -3,6 +3,18 @@
     $(el).addClass('opened');
     $('.sectlevel3', el).css('max-height', $('.sectlevel3', el).attr('data-height'));
   }
+  var close = function(el) {
+    $(el).removeClass('opened');
+    $('.sectlevel3', el).css('max-height', 0);
+  }
+  
+  var toggle = function(el) {
+    if($(el).hasClass('opened')) {
+      close(el);
+    } else {
+      open(el);
+    }
+  }
 
   var closeAll = function() {
     $('.sectlevel2 li').removeClass('opened');
@@ -22,8 +34,7 @@
       }
     });
     $('.sectlevel2 li').click(function(e) {
-      closeAll();
-      open($(e.currentTarget));
+      toggle($(e.currentTarget));
     });
     closeAll();
   }
