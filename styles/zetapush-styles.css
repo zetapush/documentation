@@ -95,6 +95,9 @@ h6[id]:target:before {
   color: #145E79;
   transition: transform 0.2s linear;
 }
+#toc.toc2 .sectlevel2 > li.has-subsection:hover i {
+  color: #0294BA;
+}
 #toc.toc2 .sectlevel2 > li.has-subsection.opened i {
   transform: rotate(90deg);
 }
