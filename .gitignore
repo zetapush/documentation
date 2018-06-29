@@ -1,3 +1,4 @@
 target/
 .asciidoctor/
 /docs/
+node_modules/

@@ -1,0 +1,14 @@
+{
+  "name": "zetapush-documentation-indexer",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "indexer": "./bin/cli.js"
+  },
+  "dependencies": {
+    "algoliasearch": "^3.29.0",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.15.1",
+    "lodash.chunk": "^4.2.0"
+  }
+}

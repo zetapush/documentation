@@ -242,11 +242,8 @@ header .github i {
   padding-right: 0.4em;
 }
 header nav > div > div.search {
-  /*width: 150px;
-  height: 50px;
-  background: red;*/
-  /* TODO */
-  display: none;
+  width: 150px;
+  height: 100px;
 }
 header nav > div > div.logo span {
   display: block;
@@ -264,6 +261,111 @@ header nav.opened ul {
   display: block;
 }
 
+
+/** SEARCH RESULTS */
+.search {
+  position: relative;
+  overflow: visible;
+}
+.search-results {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: -75px;
+  right: -75px;
+  height: 40vh;
+  background: #fff;
+  border: 1px solid rgba(20, 94, 121, 0.3);
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+}
+.search-results::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+.search-results.show {
+  display: block;
+}
+.search-results #search-hits {
+  height: 100%;
+  overflow-y: auto;
+}
+.search-results .hit-title {
+  display: none;
+}
+.search-results .hit-content {
+  text-align: left;
+  border-bottom: 1px solid rgba(20, 94, 121, 0.3);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.search-results h3 {
+  border-bottom: 1px solid #145E79;
+}
+.search-results h3,
+.search-results h3 a,
+.search-results h3 a:hover,
+.search-results .context,
+.search-results .context a,
+.search-results .context a:hover  {
+  text-transform: none;
+  display: inline;
+  font-size: 1em;
+}
+.search-results h3,
+.search-results .context {
+  display: block;
+}
+
+
+.search-results .context {
+  padding-bottom: 0.5rem;
+}
+.search-results .context,
+.search-results .context a {
+  color: #0294BA;
+}
+.search-results .context a:hover {
+  color: #0294BA;
+}
+.search-results .context a::after {
+  content: ">";
+  padding-left: 5px;
+}
+.search-results .context a:last-child::after {
+  content: "";
+}
+.search-results em {
+  font-style: normal;
+  font-weight: bold;
+  background: yellow;
+  line-height: normal;
+}
+
+.search-results .hit-content pre {
+  line-height: normal;
+  margin: 0;
+  font-size: 0.8em;
+  font-family: 'Open Sans', sans-serif;
+}
+.ais-infinite-hits--showmore {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.search .ais-search-box--magnifier {
+  top: 7px;
+}
+.search .ais-search-box--reset {
+  top: 8px;
+}
 
 /** TITLES */
 

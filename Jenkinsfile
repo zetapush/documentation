@@ -59,6 +59,10 @@ pipeline {
           sh 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
           sh 'cd target/documentation && git push origin gh-pages'
         }
+        // index documents for search
+        withCredentials([string(credentialsId: 'algolia-documentation-admin-key', variable: 'ALGOLIA_DOCUMENTATION_ADMIN_KEY')]) {
+          sh "indexer index -d target/generated-docs/ -a ${env.ALGOLIA_DOCUMENTATION_APP_ID} -k ${env.ALGOLIA_DOCUMENTATION_ADMIN_KEY} -i ${env.ALGOLIA_DOCUMENTATION_INDEX}"
+        }
       }
     }
   }
