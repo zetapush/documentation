@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="author" content="0.0.1-SNAPSHOT">
 <title>ZetaPush documentation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script type="text/javascript" src=".//javascripts/menu.js"></script>
 <script type="text/javascript" src=".//javascripts/sidebar.js"></script>
 <script type="text/javascript" src=".//javascripts/steps.js"></script>
@@ -21,7 +20,10 @@
 <script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script type="text/javascript" src=".//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src=".//javascripts/search.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
@@ -33,6 +35,21 @@
 <link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
 <link rel="stylesheet" type="text/css" href=".//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
 <header>
   <nav>
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
@@ -52,7 +69,12 @@
         <a href="https://github.com/zetapush" target="_blank">
           <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
       </div>
-      <div class="search"></div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+            <div id="search-hits"></div>
+        </div>
+      </div>
       <div class="logo">
         <a href="https://zetapush.com"><span class="icon"></span></a>
       </div>
@@ -385,9 +407,9 @@ to interact with ZetaPush but actions are shared among the organization.</p></td
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A logical container designed to perform a group of coordinated tasks or activities for the benefit of the user.
-</p><p class="tableblock">An application may have a front part and a worker.
-</p><p class="tableblock">An application has at least one environment.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">A logical container designed to perform a group of coordinated tasks or activities for the benefit of the user.</p>
+<p class="tableblock">An application may have a front part and a worker.</p>
+<p class="tableblock">An application has at least one environment.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Environment</p></td>
@@ -465,7 +487,7 @@ For example, you can have <code>prod</code>, <code>pre-prod</code>, <code>dev</c
 <p><strong>Install Node.js and npm</strong></p>
 </div>
 <div class="paragraph">
-<p>Go to <a href="https://nodejs.org/en/download/" target="_blank">Node.js Downloads</a> and follow the installation instructions.</p>
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js Downloads</a> and follow the installation instructions.</p>
 </div>
 <div class="paragraph">
 <p>You also need to install additional tools for Node.js:</p>
@@ -943,7 +965,7 @@ by publishing your front and your custom cloud services.</p>
 <p><strong>Install Node.js and npm</strong></p>
 </div>
 <div class="paragraph">
-<p>Go to <a href="https://nodejs.org/en/download/" target="_blank">Node.js Downloads</a> and follow the installation instructions.</p>
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js Downloads</a> and follow the installation instructions.</p>
 </div>
 <div class="paragraph">
 <p>You also need to install additional tools for Node.js:</p>
@@ -1216,7 +1238,7 @@ $ source ~/.bashrc</code></pre>
 <h4 id="_using_your_terminal"><a class="anchor" href="#_using_your_terminal"></a><a class="link" href="#_using_your_terminal">10.1.3. Using your terminal</a></h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-without-account.png" alt="init without account" width="379" height="460">
+<img src="init-without-account.png" alt="init without account" width="378" height="459">
 </div>
 </div>
 <div class="paragraph">
@@ -1268,7 +1290,7 @@ You need to confirm your ZetaPush account to run or deploy your application.
 <h4 id="_using_your_terminal_2"><a class="anchor" href="#_using_your_terminal_2"></a><a class="link" href="#_using_your_terminal_2">10.2.2. Using your terminal</a></h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-without-app.png" alt="init with account without app" width="435" height="352">
+<img src="init-with-account-without-app.png" alt="init with account without app" width="434" height="351">
 </div>
 </div>
 <div class="paragraph">
@@ -1313,7 +1335,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <h4 id="_using_your_terminal_3"><a class="anchor" href="#_using_your_terminal_3"></a><a class="link" href="#_using_your_terminal_3">10.3.1. Using your terminal</a></h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-and-app.png" alt="init with account and app" width="496" height="352">
+<img src="init-with-account-and-app.png" alt="init with account and app" width="495" height="351">
 </div>
 </div>
 <div class="paragraph">
@@ -1483,7 +1505,7 @@ $ npm install --save @zetapush/cli</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="__zetarc"><a class="anchor" href="#__zetarc"></a><a class="link" href="#__zetarc">10.3.2.2. .zetarc</a></h5>
+<h5 id="_zetarc"><a class="anchor" href="#_zetarc"></a><a class="link" href="#_zetarc">10.3.2.2. .zetarc</a></h5>
 <div class="paragraph">
 <p>To specify which account (on the ZetaPush platform) you use for an application, you fill the file <code>.zetarc</code> with the account information.</p>
 </div>
@@ -2145,7 +2167,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a><a class="link" href="#_development_phase">12.1.1.1. Development phase</a></h5>
 <div class="imageblock center">
 <div class="content">
-<img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1403" height="551">
+<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="946" height="591">
 </div>
 <div class="title">Figure 4. Custom Cloud Service in development phase</div>
 </div>
@@ -2157,7 +2179,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a><a class="link" href="#_production_phase">12.1.1.2. Production phase</a></h5>
 <div class="imageblock center">
 <div class="content">
-<img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="318" height="352">
+<img src="custom-cloud-service-prod.png" alt="custom cloud service prod" width="744" height="251">
 </div>
 <div class="title">Figure 5. Custom Cloud Service in production phase</div>
 </div>
@@ -2563,7 +2585,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank" rel="noopener">injection-js</a> library.
 </td>
 </tr>
 </table>
@@ -4307,7 +4329,7 @@ An environment is one stage in the development of the application.</p>
 </div>
 <div class="imageblock center">
 <div class="content">
-<img src="init-without-account.png" alt="I want to create an account" width="379" height="460">
+<img src="init-without-account.png" alt="init without account" width="378" height="459">
 </div>
 <div class="title">Figure 6. I want to create an account</div>
 </div>
@@ -4351,7 +4373,7 @@ You need to confirm your ZetaPush account to run or deploy your application.
 </div>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-and-app.png" alt="I want to use an existing application" width="496" height="352">
+<img src="init-with-account-and-app.png" alt="init with account and app" width="495" height="351">
 </div>
 <div class="title">Figure 7. I want to use an existing application</div>
 </div>
@@ -4382,7 +4404,7 @@ You need to confirm your ZetaPush account to run or deploy your application.
 </div>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-without-app.png" alt="I want to create a new application" width="435" height="352">
+<img src="init-with-account-without-app.png" alt="init with account without app" width="434" height="351">
 </div>
 <div class="title">Figure 8. I want to create a new application</div>
 </div>
@@ -4988,7 +5010,7 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 <h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">17.3.1. Account properties</a></h4>
 <div class="imageblock center">
 <div class="content">
-<img src="override-account-properties.png" alt="override account properties" width="183" height="242">
+<img src="override-account-properties.png" alt="override account properties" width="182" height="241">
 </div>
 </div>
 <div class="paragraph">
@@ -4999,7 +5021,7 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 <h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">17.3.2. Application properties</a></h4>
 <div class="imageblock center">
 <div class="content">
-<img src="override-application-properties.png" alt="override application properties" width="155" height="242">
+<img src="override-application-properties.png" alt="override application properties" width="154" height="241">
 </div>
 </div>
 <div class="paragraph">

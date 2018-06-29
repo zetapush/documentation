@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <title>Developer manual</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script type="text/javascript" src=".//javascripts/menu.js"></script>
 <script type="text/javascript" src=".//javascripts/sidebar.js"></script>
 <script type="text/javascript" src=".//javascripts/steps.js"></script>
@@ -20,7 +19,10 @@
 <script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
 <script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
 <script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script type="text/javascript" src=".//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src=".//javascripts/search.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
@@ -32,6 +34,21 @@
 <link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
 <link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
 <link rel="stylesheet" type="text/css" href=".//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
 <header>
   <nav>
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
@@ -51,7 +68,12 @@
         <a href="https://github.com/zetapush" target="_blank">
           <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
       </div>
-      <div class="search"></div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+            <div id="search-hits"></div>
+        </div>
+      </div>
       <div class="logo">
         <a href="https://zetapush.com"><span class="icon"></span></a>
       </div>
@@ -175,7 +197,7 @@
 <p><strong>Install Node.js and npm</strong></p>
 </div>
 <div class="paragraph">
-<p>Go to <a href="https://nodejs.org/en/download/" target="_blank">Node.js Downloads</a> and follow the installation instructions.</p>
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js Downloads</a> and follow the installation instructions.</p>
 </div>
 <div class="paragraph">
 <p>You also need to install additional tools for Node.js:</p>
@@ -448,7 +470,7 @@ $ source ~/.bashrc</code></pre>
 <h4 id="_using_your_terminal"><a class="anchor" href="#_using_your_terminal"></a>Using your terminal</h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-without-account.png" alt="init without account" width="379" height="460">
+<img src="init-without-account.png" alt="init without account" width="378" height="459">
 </div>
 </div>
 <div class="paragraph">
@@ -500,7 +522,7 @@ You need to confirm your ZetaPush account to run or deploy your application.
 <h4 id="_using_your_terminal_2"><a class="anchor" href="#_using_your_terminal_2"></a>Using your terminal</h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-without-app.png" alt="init with account without app" width="435" height="352">
+<img src="init-with-account-without-app.png" alt="init with account without app" width="434" height="351">
 </div>
 </div>
 <div class="paragraph">
@@ -545,7 +567,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <h4 id="_using_your_terminal_3"><a class="anchor" href="#_using_your_terminal_3"></a>Using your terminal</h4>
 <div class="imageblock center">
 <div class="content">
-<img src="init-with-account-and-app.png" alt="init with account and app" width="496" height="352">
+<img src="init-with-account-and-app.png" alt="init with account and app" width="495" height="351">
 </div>
 </div>
 <div class="paragraph">
@@ -715,7 +737,7 @@ $ npm install --save @zetapush/cli</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="__zetarc"><a class="anchor" href="#__zetarc"></a>.zetarc</h5>
+<h5 id="_zetarc"><a class="anchor" href="#_zetarc"></a>.zetarc</h5>
 <div class="paragraph">
 <p>To specify which account (on the ZetaPush platform) you use for an application, you fill the file <code>.zetarc</code> with the account information.</p>
 </div>
@@ -1377,7 +1399,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <h5 id="_development_phase"><a class="anchor" href="#_development_phase"></a>Development phase</h5>
 <div class="imageblock center">
 <div class="content">
-<img src="custom-cloud-service-dev.png" alt="Custom Cloud Service in development phase" width="1403" height="551">
+<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="946" height="591">
 </div>
 <div class="title">Figure 1. Custom Cloud Service in development phase</div>
 </div>
@@ -1389,7 +1411,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <h5 id="_production_phase"><a class="anchor" href="#_production_phase"></a>Production phase</h5>
 <div class="imageblock center">
 <div class="content">
-<img src="custom-cloud-service-prod.png" alt="Custom Cloud Service in production phase" width="318" height="352">
+<img src="custom-cloud-service-prod.png" alt="custom cloud service prod" width="744" height="251">
 </div>
 <div class="title">Figure 2. Custom Cloud Service in production phase</div>
 </div>
@@ -1795,7 +1817,7 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank">injection-js</a> library.
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank" rel="noopener">injection-js</a> library.
 </td>
 </tr>
 </table>
