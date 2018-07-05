@@ -3,7 +3,7 @@
   var search = instantsearch({
     appId: 'OUL28USF6Z',
     apiKey: 'eff5222daa0dd668572cd04a9a5b957c',
-    indexName: 'documentation',
+    indexName: 'dev_documentation',
     //urlSync: true,
     searchParameters: {
       hitsPerPage: 10

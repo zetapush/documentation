@@ -12,6 +12,17 @@ const parse = (dir) => {
       for(let i=0; i<paragraphs.length ; i++) {
         addParagraph({path: sourceFilePath, $}, $(paragraphs[i]), records);
       }
+      let codesWithLines = $('.listingblock pre > code > table td.code > pre');
+      for(let i=0; i<codesWithLines.length ; i++) {
+        addCode({path: sourceFilePath, $}, $(codesWithLines[i]), $(codesWithLines[i]).parents('.listingblock'), records);
+      }
+      // filter if contains table (already added)
+      let codes = $('.listingblock pre > code');
+      for(let i=0; i<codes.length ; i++) {
+        if(!$(codes[i]).find('table td.code').length) {
+          addCode({path: sourceFilePath, $}, $(codes[i]), $(codes[i]).parents('.listingblock'), records);
+        }
+      }
     }
   }
   return records;
@@ -33,6 +44,22 @@ const addParagraph = (sourceFile, paragraph, records) => {
     parents: parents.slice(0, parents.length-1),
     title: title.text,
     content: paragraph.text()
+  });
+};
+
+const addCode = (sourceFile, code, listingblock, records) => {
+  let title = getTitle(listingblock);
+  let parents = getParents(sourceFile, listingblock);
+  records.push({
+    sourceFile: {
+      url: sourceFile.path,
+      title: getMainTitle(sourceFile)
+    },
+    url: sourceFile.path+title.anchor,
+    parents: parents.slice(0, parents.length-1),
+    title: title.text,
+    content: code.text(),
+    type: 'code'
   });
 };
 
@@ -63,6 +90,7 @@ const getTitle = (paragraph) => {
   }
 };
 
+
 const getParents = (sourceFile, paragraph) => {
   let parents = [
     paragraph.parents('.sect1').prev('h1'),
@@ -80,5 +108,6 @@ const getParents = (sourceFile, paragraph) => {
                   }
                 });
 }
+
 
 module.exports = { parse }
