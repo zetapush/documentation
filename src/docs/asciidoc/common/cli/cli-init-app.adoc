@@ -30,3 +30,7 @@ include::{docdir}/common/definitions/platform-url.adoc[]
 * *--env-name*
 
 include::{docdir}/common/definitions/env-name.adoc[]
+
+* *--javascript* 
+
+This option allow developer to bootstrap project with a pure JavaScript stack. Default strategy is TypeScript.
