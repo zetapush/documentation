@@ -124,6 +124,12 @@
 <li><a href="#_deploy_your_em_custom_cloud_services_em_on_the_zetapush_cloud">Deploy your <em>custom cloud services</em> on the ZetaPush Cloud</a></li>
 </ul>
 </li>
+<li><a href="#_debug">Debug</a>
+<ul class="sectlevel2">
+<li><a href="#_debug_your_application_with_vscode">Debug your application with VSCode</a></li>
+<li><a href="#_debug_your_application_with_intellij_based_ide">Debug your application with IntelliJ based IDE</a></li>
+</ul>
+</li>
 <li><a href="#_testing">Testing</a>
 <ul class="sectlevel2">
 <li><a href="#_unit_testing_your_front">Unit testing your front</a></li>
@@ -2574,6 +2580,95 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_debug"><a class="anchor" href="#_debug"></a>Debug</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_debug_your_application_with_vscode"><a class="anchor" href="#_debug_your_application_with_vscode"></a>Debug your application with VSCode</h3>
+<div class="paragraph">
+<p>VSCode provide a powerfull debugging feature <a href="https://code.visualstudio.com/docs/editor/debugging" class="bare">https://code.visualstudio.com/docs/editor/debugging</a>.</p>
+</div>
+<div class="paragraph">
+<p>Add a launch configuration with the following structure.</p>
+</div>
+<div class="listingblock">
+<div class="title">Configure .vscode/launch.json file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.2.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">configurations</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">zeta run</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">node</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">request</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">launch</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">program</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}/node_modules/.bin/zeta</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">stopOnEntry</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">sourceMaps</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [ <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">run</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">--serve-front</span><span class="delimiter">&quot;</span></span>
+      ],
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">cwd</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">console</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">internalConsole</span><span class="delimiter">&quot;</span></span>
+    }
+  ]
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Launch configuration name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>zeta command arguments</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Run VSCode debugger</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//debug/run-vscode-debugger.png" alt="Run VSCode debugger">
+</div>
+</div>
+<div class="paragraph">
+<p>You can run Debugger by following the official  VSCode documentation: <a href="https://code.visualstudio.com/docs/editor/debugging" class="bare">https://code.visualstudio.com/docs/editor/debugging</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_debug_your_application_with_intellij_based_ide"><a class="anchor" href="#_debug_your_application_with_intellij_based_ide"></a>Debug your application with IntelliJ based IDE</h3>
+<div class="paragraph">
+<p>TODO: <a href="https://github.com/zetapush/documentation/issues/81" class="bare">https://github.com/zetapush/documentation/issues/81</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2614,7 +2709,7 @@ The command that is executed under the hood is:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-27 11:42:29 UTC
+Last updated 2018-07-11 07:41:47 UTC
 </div>
 </div>
 </body>
