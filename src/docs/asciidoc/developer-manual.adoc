@@ -145,7 +145,13 @@ include::{docdir}/common/deploy/how-to-deploy-front.adoc[leveloffset=+2]
 include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
 
 
+== Debug
 
+=== Debug your application with VSCode
+include::{docdir}/common/debug/how-to-debug-with-vscode.adoc[leveloffset=+2]
+
+=== Debug your application with IntelliJ based IDE
+TODO: https://github.com/zetapush/documentation/issues/81
 
 == Testing
 
