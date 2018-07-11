@@ -1,0 +1,38 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+VSCode provide a powerfull debugging feature https://code.visualstudio.com/docs/editor/debugging.
+
+Add a launch configuration with the following structure.
+
+.Configure .vscode/launch.json file
+[source,json,linenums]
+----
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "zeta run", <1>
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/zeta",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "args": [ <2>
+        "run",
+        "--serve-front"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "internalConsole"
+    }
+  ]
+}
+----
+<1> Launch configuration name
+<2> zeta command arguments
+
+Run VSCode debugger
+
+image::{images-dir}/debug/run-vscode-debugger.png[Run VSCode debugger]
+
+You can run Debugger by following the official  VSCode documentation: https://code.visualstudio.com/docs/editor/debugging.
