@@ -11,7 +11,7 @@ My configuration in the `package.json` is the following:
   "version": "1.0.0",
   "main": "worker/index.ts",
   "dependencies": {
-    "@zetapush/core": "^0.29.0",
+    "@zetapush/client": "^0.29.0",
     "@zetapush/plaform": "^0.29.0"
   }
 }

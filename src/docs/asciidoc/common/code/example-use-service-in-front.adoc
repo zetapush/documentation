@@ -6,13 +6,11 @@ In our example we use this _custom cloud service_ named `HelloService`:
 .worker/index.ts
 [source,typescript,linenumbers]
 ----
-export default class HelloService {
+export default class HelloService { <1>
   hello() {
     return `Hello World`;
   }
 }
-
-module.exports = HelloService; <1>
 ----
 <1> The service is exported
 
@@ -34,7 +32,7 @@ Now we create the HTML page with a button to display the _HelloWorld_ message in
     <button onclick="hello()">hello</button> <1>
     <ul></ul>
 
-    <script src="https://unpkg.com/@zetapush/core"></script> <2>
+    <script src="https://unpkg.com/@zetapush/client"></script> <2>
     <script src="./index.js"></script>
 </body>
 
