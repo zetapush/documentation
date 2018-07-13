@@ -8,8 +8,8 @@ include::{docdir}/variables.adoc[]
   "name": "myApp",
   "main": "worker/index.ts",
   "dependencies": {
-    "@zetapush/platform": "^0.29.0",
-    "@zetapush/cli": "^0.29.0"
+    "@zetapush/platform": "^0.30.0",
+    "@zetapush/cli": "^0.30.0"
   },
   "zetapush": {
     "front": "./front/dist", <1>

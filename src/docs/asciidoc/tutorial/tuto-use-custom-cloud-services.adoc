@@ -31,7 +31,7 @@ Now you just need to add the interaction with the _custom cloud service_. To do 
 import AvengersController from './utils/controller.js'; <1>
 
 // Create the ZetaPush Client
-const client = new ZetaPush.WeakClient();
+const client = new ZetaPushClient.WeakClient();
 /**
  * Create service to listen incoming messages
  */

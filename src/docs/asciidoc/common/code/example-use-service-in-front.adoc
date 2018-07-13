@@ -47,7 +47,7 @@ Finally, we have the front-side code call our services:
 [source, javascript, linenumbers]
 ----
 // Create new ZetaPush Client
-const client = new ZetaPush.WeakClient({ <1>
+const client = new ZetaPushClient.WeakClient({ <1>
   appName: <yourAppName>,
   platformUrl: <optionalUrl>
 });
