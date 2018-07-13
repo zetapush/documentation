@@ -118,10 +118,10 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 <div class="paragraph">
 <p>For example, to import an other service, you simply need to write:</p>
 </div>
-<div class="listingblock highlight-lines:6-11,13">
+<div class="listingblock highlight-lines:6">
 <div class="title">Import service</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -131,27 +131,13 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 7
 8
 9
-10
-11
-12
-13
-14
-15
-16
 </pre></td>
-  <td class="code"><pre>const { Inject, Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
-const MyOtherService = require(<span class="string"><span class="delimiter">'</span><span class="content">./services.js</span><span class="delimiter">'</span></span>); <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre>import { Injectable, Stack } = require('@zetapush/platform'); <i class="conum" data-value="1"></i><b>(1)</b>
+import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
 
-<span class="reserved">class</span> MyOwnService {
-
-    <span class="reserved">static</span> get parameters() { <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(MyOtherService),
-            <span class="keyword">new</span> Inject(Stack)
-        ]
-    }
-
-    constructor(myOtherService, stack) { <i class="conum" data-value="4"></i><b>(4)</b>
+@Injectable()
+class MyOwnService {
+    constructor(private myOtherService: MyOtherService, private stack: Stack) { <i class="conum" data-value="3"></i><b>(3)</b>
         ...
     }
 }</pre></td>
@@ -170,23 +156,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We create a static method to implement our dependency injection (<em>injection-js</em> syntax)</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>We use instances of our injected services in our service throught the constructor</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The order in your <code>parameters</code> method need to be the same in your constructor. (Here, first <em>MyOtherService</em>, then <em>Stack</em>)
-</td>
 </tr>
 </table>
 </div>
@@ -198,7 +168,7 @@ The order in your <code>parameters</code> method need to be the same in your con
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-27 16:12:39 UTC
+Last updated 2018-07-13 06:19:54 UTC
 </div>
 </div>
 </body>

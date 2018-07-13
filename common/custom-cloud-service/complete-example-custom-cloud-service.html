@@ -105,13 +105,13 @@
 9
 </pre></td>
   <td class="code"><pre>{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.js</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>
-    }
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -120,9 +120,9 @@
 <p>And my back side code is:</p>
 </div>
 <div class="listingblock">
-<div class="title">worker/index.js</div>
+<div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -151,67 +151,35 @@
 26
 27
 28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
 </pre></td>
-  <td class="code"><pre>const { Stack, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
 
-<span class="reserved">class</span> DateCustomService {
-    constructor() {}
-
-    <i class="conum" data-value="1"></i><b>(1)</b>
-
-    formatDate(date) {
-        <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
-    }
+class DateCustomService {
+  <i class="conum" data-value="1"></i><b>(1)</b>
+  formatDate(date) {
+    return date.toLocalDateString(&quot;fr-FR&quot;);
+  }
 }
 
-<span class="reserved">class</span> SimpleStorageWithDate {
-
-    <span class="reserved">static</span> get parameters() {
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(Stack),
-            <span class="keyword">new</span> Inject(DateCustomService)
-        ]
-    }
-
-    constructor(stack, dateCustomService) {
-        <span class="local-variable">this</span>.stack = stack;
-        <span class="local-variable">this</span>.dateCustomService = dateCustomService;
-    }
-
-    async push(item) { <i class="conum" data-value="2"></i><b>(2)</b>
-        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="3"></i><b>(3)</b>
-            <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
-            <span class="key">data</span>: {
-                <span class="key">value</span>: item,
-                <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="4"></i><b>(4)</b>
-            }
-        });
-        <span class="keyword">return</span> const;
-    }
-
-    async list() {
-        const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
-        <span class="keyword">return</span> output;
-    }
-}
-
-module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(5)</b></pre></td>
+@Injectable()
+export default class SimpleStorageWithDate { <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(<i class="conum" data-value="2"></i><b>(2)</b>
+    private stack: Stack,
+    private dateCustomService: DateCustomService
+  ) {}
+  push(item: any) {
+    return this.stack.push({<i class="conum" data-value="3"></i><b>(3)</b>
+      stack: 'test',
+      data: {
+        value: item,
+        date: this.dateService.formateDate(new Date()); <i class="conum" data-value="4"></i><b>(4)</b>
+      }
+    });
+  }
+  list() {
+    return this.stack.list({ stack: 'demo'});
+  }
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -219,11 +187,11 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
+<td>Expose only <code>SimpleStorageWithDate</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Async/Await context</td>
+<td>Dependency injection</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -233,10 +201,6 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 <td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Use another <em>custom cloud service</em></td>
 </tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Expose only <code>SimpleStorageWithDate</code></td>
-</tr>
 </table>
 </div>
 </div>
@@ -244,7 +208,7 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-27 16:12:39 UTC
+Last updated 2018-07-13 06:19:54 UTC
 </div>
 </div>
 </body>

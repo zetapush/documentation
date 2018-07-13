@@ -279,10 +279,10 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 <div class="paragraph">
 <p>For example, to import an other service, you simply need to write:</p>
 </div>
-<div class="listingblock highlight-lines:6-11,13">
+<div class="listingblock highlight-lines:6">
 <div class="title">Import service</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -292,27 +292,13 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 7
 8
 9
-10
-11
-12
-13
-14
-15
-16
 </pre></td>
-  <td class="code"><pre>const { Inject, Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
-const MyOtherService = require(<span class="string"><span class="delimiter">'</span><span class="content">./services.js</span><span class="delimiter">'</span></span>); <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre>import { Injectable, Stack } = require('@zetapush/platform'); <i class="conum" data-value="1"></i><b>(1)</b>
+import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
 
-<span class="reserved">class</span> MyOwnService {
-
-    <span class="reserved">static</span> get parameters() { <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(MyOtherService),
-            <span class="keyword">new</span> Inject(Stack)
-        ]
-    }
-
-    constructor(myOtherService, stack) { <i class="conum" data-value="4"></i><b>(4)</b>
+@Injectable()
+class MyOwnService {
+    constructor(private myOtherService: MyOtherService, private stack: Stack) { <i class="conum" data-value="3"></i><b>(3)</b>
         ...
     }
 }</pre></td>
@@ -331,23 +317,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We create a static method to implement our dependency injection (<em>injection-js</em> syntax)</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>We use instances of our injected services in our service throught the constructor</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The order in your <code>parameters</code> method need to be the same in your constructor. (Here, first <em>MyOtherService</em>, then <em>Stack</em>)
-</td>
 </tr>
 </table>
 </div>
@@ -389,10 +359,10 @@ The <code>Stack</code> service has asynchronous methods
 </tr>
 </table>
 </div>
-<div class="listingblock highlight-lines:5-9,11,12,14">
+<div class="listingblock highlight-lines:6-8">
 <div class="title">MyStorageService</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -423,52 +393,36 @@ The <code>Stack</code> service has asynchronous methods
 28
 29
 30
-31
-32
-33
-34
-35
-36
-37
-38
 </pre></td>
-  <td class="code"><pre>const { Inject, Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
 
-<span class="reserved">class</span> MyStorageService {
+@Injectable()
+export default class MyStorageService {
+  private stackName = 'stack-example';
+  constructor(<i class="conum" data-value="2"></i><b>(2)</b>
+    private stack: Stack
+  ) {}
+  /**
+   *  Store data with associated timestamp
+   */
+  storeWithTimestamp(value: any) {
+    return this.stack.push({
+      stack: this.stackName,
+      data: {
+        value,
+        timestamp: Date.now()
+      }
+    });
+  }
 
-    <span class="reserved">static</span> get parameters() {
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(Stack) <i class="conum" data-value="1"></i><b>(1)</b>
-        ]
-    }
-
-    constructor(stack) { <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="local-variable">this</span>.stack = stack;
-        <span class="local-variable">this</span>.stackName = <span class="string"><span class="delimiter">'</span><span class="content">stack-example</span><span class="delimiter">'</span></span>;
-    }
-
-    <span class="comment">/**
-     *  Store data with associated timestamp
-     *  @param {object} value Data we want to store
-     */</span>
-    async storeWithTimestamp(value) {
-        <span class="keyword">return</span> <span class="local-variable">this</span>.stack.push({
-            <span class="key">stack</span>: <span class="local-variable">this</span>.stackName,
-            <span class="key">data</span>: {
-                value,
-                <span class="key">timestamp</span>: Date.now()
-            }
-        });
-    }
-
-    <span class="comment">/**
-     * List all stored data
-     */</span>
-    async getAllData() {
-        <span class="keyword">return</span> <span class="local-variable">this</span>.stack.list({
-            <span class="key">stack</span>: <span class="local-variable">this</span>.stackName
-        });
-    }
+  /**
+   * List all stored data
+   */
+  getAllData() {
+    return this.stack.list({
+      stack: this.stackName
+    });
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -522,10 +476,10 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 <div class="paragraph">
 <p>For example, to import an other service, you simply need to write:</p>
 </div>
-<div class="listingblock highlight-lines:6-11,13">
+<div class="listingblock highlight-lines:6">
 <div class="title">Import service</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -535,27 +489,13 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 7
 8
 9
-10
-11
-12
-13
-14
-15
-16
 </pre></td>
-  <td class="code"><pre>const { Inject, Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
-const MyOtherService = require(<span class="string"><span class="delimiter">'</span><span class="content">./services.js</span><span class="delimiter">'</span></span>); <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre>import { Injectable, Stack } = require('@zetapush/platform'); <i class="conum" data-value="1"></i><b>(1)</b>
+import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
 
-<span class="reserved">class</span> MyOwnService {
-
-    <span class="reserved">static</span> get parameters() { <i class="conum" data-value="3"></i><b>(3)</b>
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(MyOtherService),
-            <span class="keyword">new</span> Inject(Stack)
-        ]
-    }
-
-    constructor(myOtherService, stack) { <i class="conum" data-value="4"></i><b>(4)</b>
+@Injectable()
+class MyOwnService {
+    constructor(private myOtherService: MyOtherService, private stack: Stack) { <i class="conum" data-value="3"></i><b>(3)</b>
         ...
     }
 }</pre></td>
@@ -574,23 +514,7 @@ const MyOtherService = require(<span class="string"><span class="delimiter">'</s
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We create a static method to implement our dependency injection (<em>injection-js</em> syntax)</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>We use instances of our injected services in our service throught the constructor</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The order in your <code>parameters</code> method need to be the same in your constructor. (Here, first <em>MyOtherService</em>, then <em>Stack</em>)
-</td>
 </tr>
 </table>
 </div>
@@ -620,24 +544,20 @@ The order in your <code>parameters</code> method need to be the same in your con
 <p>The first <em>custom cloud service</em> (<code>Calendar</code>) is in the file: "worker/calendar.js".</p>
 </div>
 <div class="listingblock">
-<div class="title">worker/calendar.js</div>
+<div class="title">worker/calendar.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 4
 5
-6
-7
 </pre></td>
-  <td class="code"><pre><span class="reserved">class</span> Calendar {
-    getNow() { <i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="keyword">return</span> <span class="keyword">new</span> Date().toLocalDateString(<span class="string"><span class="delimiter">'</span><span class="content">fr-FR</span><span class="delimiter">'</span></span>);
-    }
-}
-
-module.exports = Calendar;</pre></td>
+  <td class="code"><pre>export class Calendar {
+  getNow() { <i class="conum" data-value="1"></i><b>(1)</b>
+    return new Date().toLocalDateString('fr-FR');
+  }
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -650,12 +570,12 @@ module.exports = Calendar;</pre></td>
 </table>
 </div>
 <div class="paragraph">
-<p>Then, we have the <code>HelloWorldService</code> that use our <code>Calendar</code> service. It is in the file: "./worker/index.js".</p>
+<p>Then, we have the <code>HelloWorldService</code> that use our <code>Calendar</code> service. It is in the file: "./worker/index.ts".</p>
 </div>
-<div class="listingblock highlight-lines:6-10,12-14">
-<div class="title">worker/index.js</div>
+<div class="listingblock highlight-lines:7,13">
+<div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -671,35 +591,21 @@ module.exports = Calendar;</pre></td>
 13
 14
 15
-16
-17
-18
-19
-20
-21
-22
 </pre></td>
-  <td class="code"><pre>const { Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
-const { Calendar } = require(<span class="string"><span class="delimiter">'</span><span class="content">./calendar.js</span><span class="delimiter">'</span></span>);
+  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
+import { Calendar } from './calendar'; <i class="conum" data-value="1"></i><b>(1)</b>
 
-<span class="reserved">class</span> HelloWorldService {
-
-    <span class="reserved">static</span> get parameters() {
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(Calendar) <i class="conum" data-value="1"></i><b>(1)</b>
-        ]
-    }
-
-    constructor(calendar) { <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="local-variable">this</span>.calendar = calendar;
-    }
-
-    <span class="comment">/**
-     *  Return 'Hello World' with current date
-     */</span>
-    helloWorldWithDate() {
-        <span class="keyword">return</span> <span class="error">`</span>Hello world at <span class="predefined">$</span>{<span class="local-variable">this</span>.calendar.getNow()}<span class="error">`</span>;
-    }
+@Injectable()
+class HelloWorldService {
+  constructor( <i class="conum" data-value="2"></i><b>(2)</b>
+    private calendar: Calendar
+  ) {}
+  /**
+   * Return 'Hello World' with current date
+   */
+  helloWorldWithDate() {
+    return `Hello world at ${this.calendar.getNow()}`;
+ }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -740,7 +646,7 @@ const { Calendar } = require(<span class="string"><span class="delimiter">'</spa
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>package.json</code> has a property named <code>main</code>. It defines the file where the <em>custom cloud services</em> are exposed. The following examples define them in <code>worker/index.js</code>.
+The <code>package.json</code> has a property named <code>main</code>. It defines the file where the <em>custom cloud services</em> are exposed. The following examples define them in <code>worker/index.ts</code>.
 </td>
 </tr>
 </table>
@@ -829,10 +735,10 @@ module.exports = {
 <div class="paragraph">
 <p>In this example, we have 2 <em>custom cloud services</em>: One is private and the second is exposed:</p>
 </div>
-<div class="listingblock highlight-lines:24">
-<div class="title">worker/index.js</div>
+<div class="listingblock highlight-lines:15">
+<div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -850,38 +756,24 @@ module.exports = {
 15
 16
 17
-18
-19
-20
-21
-22
-23
-24
 </pre></td>
-  <td class="code"><pre>const { Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
 
-<span class="reserved">class</span> Calendar { <i class="conum" data-value="1"></i><b>(1)</b>
+class Calendar { <i class="conum" data-value="1"></i><b>(1)</b>
   getNow() {
-    <span class="keyword">return</span> <span class="keyword">new</span> Date().toLocaleDateString();
+    return new Date().toLocaleDateString();
   }
 }
 
-<span class="reserved">class</span> MyPublicCustomCloudService { <i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="reserved">static</span> get parameters() {
-    <span class="keyword">return</span> [
-      <span class="keyword">new</span> Inject(Calendar)
-    ];
+@Injectable()
+export default class MyPublicCustomCloudService { <i class="conum" data-value="2"></i><b>(2)</b>
+  constructor(
+    private calendar: Calendar
+  ) {}
+  hello() {
+    return `Hello World at ${this.calendar.getNow()}`;
   }
-  constructor(calendar) {
-    <span class="local-variable">this</span>.calendar = calendar;
-  }
-
-  async hello() {
-    <span class="keyword">return</span> <span class="error">`</span>Hello World at <span class="predefined">$</span>{<span class="local-variable">this</span>.calendar.getNow()}<span class="error">`</span>;
-  }
-}
-
-module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i><b>(3)</b></pre></td>
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -893,10 +785,6 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>MyPublicCustomCloudService</code> is my exposed <em>custom cloud service</em></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>We expose only <code>MyPublicCustomCloudService</code> to the client side</td>
 </tr>
 </table>
@@ -907,10 +795,10 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 <div class="paragraph">
 <p>In this example, we want to expose 2 <em>custom cloud services</em>. In this case, we need to specify the namespace of each <em>custom cloud service</em>:</p>
 </div>
-<div class="listingblock highlight-lines:24-27">
-<div class="title">worker/index.js</div>
+<div class="listingblock highlight-lines:21-22">
+<div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -934,37 +822,29 @@ module.exports = MyPublicCustomCloudService; <i class="conum" data-value="3"></i
 21
 22
 23
-24
-25
-26
-27
 </pre></td>
-  <td class="code"><pre>const { Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>);
+  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
 
-<span class="reserved">class</span> Calendar { <i class="conum" data-value="1"></i><b>(1)</b>
+@Injectable()
+class Calendar {
   getNow() {
-    <span class="keyword">return</span> <span class="keyword">new</span> Date().toLocaleDateString();
+    return new Date().toLocaleDateString();
   }
 }
 
-<span class="reserved">class</span> HelloService {
-  <span class="reserved">static</span> get parameters() {
-    <span class="keyword">return</span> [
-      <span class="keyword">new</span> Inject(Calendar)
-    ];
-  }
-  constructor(calendar) {
-    <span class="local-variable">this</span>.calendar = calendar;
-  }
-
-  async hello() {
-    <span class="keyword">return</span> <span class="error">`</span>Hello World at <span class="predefined">$</span>{<span class="local-variable">this</span>.calendar.getNow()}<span class="error">`</span>;
+@Injectable()
+class HelloService {
+  constructor(
+    private calendar: Calendar
+  ) {}
+  hello() {
+    return `Hello World at ${this.calendar.getNow()}`;
   }
 }
 
-module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
-  <span class="key">helloService</span>: HelloService,
-  <span class="key">calendar</span>: Calendar
+export default  { <i class="conum" data-value="1"></i><b>(1)</b>
+  helloService: HelloService,
+  calendar: Calendar
 };</pre></td>
 </tr></table></code></pre>
 </div>
@@ -973,10 +853,6 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>We expose the 2 <em>custom cloud services</em> to the client side with the syntax: { <em>namespace1</em>: <em>Service1</em>, <em>namespace2</em>: <em>Service2</em> }</td>
 </tr>
 </table>
@@ -1003,13 +879,13 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 9
 </pre></td>
   <td class="code"><pre>{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.js</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.18.2</span><span class="delimiter">&quot;</span></span>
-    }
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/plaform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -1018,9 +894,9 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 <p>And my back side code is:</p>
 </div>
 <div class="listingblock">
-<div class="title">worker/index.js</div>
+<div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -1049,67 +925,35 @@ module.exports = { <i class="conum" data-value="2"></i><b>(2)</b>
 26
 27
 28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
 </pre></td>
-  <td class="code"><pre>const { Stack, Inject } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
 
-<span class="reserved">class</span> DateCustomService {
-    constructor() {}
-
-    <i class="conum" data-value="1"></i><b>(1)</b>
-
-    formatDate(date) {
-        <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
-    }
+class DateCustomService {
+  <i class="conum" data-value="1"></i><b>(1)</b>
+  formatDate(date) {
+    return date.toLocalDateString(&quot;fr-FR&quot;);
+  }
 }
 
-<span class="reserved">class</span> SimpleStorageWithDate {
-
-    <span class="reserved">static</span> get parameters() {
-        <span class="keyword">return</span> [
-            <span class="keyword">new</span> Inject(Stack),
-            <span class="keyword">new</span> Inject(DateCustomService)
-        ]
-    }
-
-    constructor(stack, dateCustomService) {
-        <span class="local-variable">this</span>.stack = stack;
-        <span class="local-variable">this</span>.dateCustomService = dateCustomService;
-    }
-
-    async push(item) { <i class="conum" data-value="2"></i><b>(2)</b>
-        const output = await <span class="local-variable">this</span>.stack.push({ <i class="conum" data-value="3"></i><b>(3)</b>
-            <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
-            <span class="key">data</span>: {
-                <span class="key">value</span>: item,
-                <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="4"></i><b>(4)</b>
-            }
-        });
-        <span class="keyword">return</span> const;
-    }
-
-    async list() {
-        const output = await <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
-        <span class="keyword">return</span> output;
-    }
-}
-
-module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(5)</b></pre></td>
+@Injectable()
+export default class SimpleStorageWithDate { <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(<i class="conum" data-value="2"></i><b>(2)</b>
+    private stack: Stack,
+    private dateCustomService: DateCustomService
+  ) {}
+  push(item: any) {
+    return this.stack.push({<i class="conum" data-value="3"></i><b>(3)</b>
+      stack: 'test',
+      data: {
+        value: item,
+        date: this.dateService.formateDate(new Date()); <i class="conum" data-value="4"></i><b>(4)</b>
+      }
+    });
+  }
+  list() {
+    return this.stack.list({ stack: 'demo'});
+  }
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -1117,11 +961,11 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>No need to define a static method named <code>parameters</code> because we don&#8217;t expose this service</td>
+<td>Expose only <code>SimpleStorageWithDate</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Async/Await context</td>
+<td>Dependency injection</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -1130,10 +974,6 @@ module.exports = SimpleStorageWithDate; <i class="conum" data-value="5"></i><b>(
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Use another <em>custom cloud service</em></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Expose only <code>SimpleStorageWithDate</code></td>
 </tr>
 </table>
 </div>
