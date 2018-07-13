@@ -4,16 +4,16 @@ include::{docdir}/variables.adoc[]
 My configuration in the `package.json` is the following:
 
 .package.json
-[source, json, linenums]
+[source,json,linenums]
 ----
 {
-    "name": "myApp",
-    "version": "1.0.0",
-    "main": "worker/index.js",
-    "dependencies": {
-        "@zetapush/core": "^0.18.2",
-        "@zetapush/plaform": "^0.18.2"
-    }
+  "name": "myApp",
+  "version": "1.0.0",
+  "main": "worker/index.ts",
+  "dependencies": {
+    "@zetapush/core": "^0.29.0",
+    "@zetapush/plaform": "^0.29.0"
+  }
 }
 ----
 

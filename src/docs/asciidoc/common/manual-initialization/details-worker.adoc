@@ -7,7 +7,7 @@ By convention, the directory contains the back code. For example you can have th
 
 ```console
 └── worker
-    └── index.js
+    └── index.ts
 ```
 
 === Basic example of Hello World (custom cloud service)

@@ -8,6 +8,6 @@ include::{docdir}/variables.adoc[]
 │   ├── index.html
 │   └── index.js
 ├── worker
-│   └── index.js
+│   └── index.ts
 └── package.json
 ```

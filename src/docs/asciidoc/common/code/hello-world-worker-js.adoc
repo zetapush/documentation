@@ -1,31 +1,15 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.worker/index.js
-[source,javascript,linenums]
+.worker/index.ts
+[source,typescript,linenums]
 ----
-module.exports = class Api {
-  /**
-   * Explicit injected platform services
-   * @returns {Object[]}
-   */
-  static get parameters() { <1>
-    return [];
-  }
-  /**
-   * Api constructor
-   */
-  constructor() {
-    console.log('Api:constructor')
-  }
-
+export default class Api {
   /**
    * Get an Hello World string with server side timestamp value
-   * @returns {string}
    */
-  async hello() {
+  hello() {
     return `Hello World from JavaScript ${Date.now()}`;
   }
 }
 ----
-<1> Useful for dependencies injection, empty for this case

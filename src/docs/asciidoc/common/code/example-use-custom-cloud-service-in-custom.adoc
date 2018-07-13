@@ -8,45 +8,36 @@ In this example, we will have 2 _custom cloud services_:
 
 The first _custom cloud service_ (`Calendar`) is in the file: "worker/calendar.js".
 
-.worker/calendar.js
-[source, javascript, linenums]
+.worker/calendar.ts
+[source,typescript,linenums]
 ----
-class Calendar {
-    getNow() { <1>
-        return new Date().toLocalDateString('fr-FR');
-    }
+export class Calendar {
+  getNow() { <1>
+    return new Date().toLocalDateString('fr-FR');
+  }
 }
-
-module.exports = Calendar;
 ----
 <1> The only _cloud function_ of the `Calendar` service
 
-Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file: "./worker/index.js".
+Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file: "./worker/index.ts".
 
-.worker/index.js
-[source, javascript, linenums, role="highlight-lines:6-10,12-14"]
+.worker/index.ts
+[source,typescript,linenums,role="highlight-lines:7,13"]
 ----
-const { Inject } = require('@zetapush/platform');
-const { Calendar } = require('./calendar.js');
+import { Injectable } from '@zetapush/platform';
+import { Calendar } from './calendar'; <1>
 
+@Injectable()
 class HelloWorldService {
-
-    static get parameters() {
-        return [
-            new Inject(Calendar) <1>
-        ]
-    }
-
-    constructor(calendar) { <2> 
-        this.calendar = calendar;
-    }
-
-    /**
-     *  Return 'Hello World' with current date
-     */
-    helloWorldWithDate() {
-        return `Hello world at ${this.calendar.getNow()}`;
-    }
+  constructor( <2> 
+    private calendar: Calendar
+  ) {}
+  /**
+   * Return 'Hello World' with current date
+   */
+  helloWorldWithDate() {
+    return `Hello world at ${this.calendar.getNow()}`;
+ }
 }
 ----
 <1> We import the `Calendar` service

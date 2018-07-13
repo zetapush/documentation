@@ -34,7 +34,7 @@ include::{docdir}/common/definitions/entry-point-worker.adoc[]
 | 
 include::{docdir}/common/code/entry-point-worker-package-json.adoc[]
 | _None_
-| `./worker/index.js`
+| `./worker/index.ts`
 
 
 

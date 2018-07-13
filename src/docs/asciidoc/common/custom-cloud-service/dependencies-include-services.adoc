@@ -16,30 +16,20 @@ NOTE: The dependency injection of ZetaPush uses Angular https://github.com/mgech
 For example, to import an other service, you simply need to write:
 
 .Import service
-[source, javascript, linenums, role="highlight-lines:6-11,13"]
+[source,typescript,linenums,role="highlight-lines:6"]
 ----
-const { Inject, Stack } = require('@zetapush/platform'); <1>
-const MyOtherService = require('./services.js'); <2>
+import { Injectable, Stack } = require('@zetapush/platform'); <1>
+import { MyOtherService } from './services'; <2>
 
+@Injectable()
 class MyOwnService {
-
-    static get parameters() { <3>
-        return [
-            new Inject(MyOtherService),
-            new Inject(Stack)
-        ]
-    }
-
-    constructor(myOtherService, stack) { <4>
+    constructor(private myOtherService: MyOtherService, private stack: Stack) { <3>
         ...
     }
 }
 ----
 <1> We import the `Inject` object and a service (_Stack_) provided by ZetaPush
 <2> We import an other custom cloud service
-<3> We create a static method to implement our dependency injection (_injection-js_ syntax)
-<4> We use instances of our injected services in our service throught the constructor
-
-WARNING: The order in your `parameters` method need to be the same in your constructor. (Here, first _MyOtherService_, then _Stack_)
+<3> We use instances of our injected services in our service throught the constructor
 
 If you import a _custom cloud service_ or a _cloud service_ provided by ZetaPush, you use both similarily
