@@ -126,16 +126,12 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 3
 4
 5
-6
-7
 </pre></td>
-  <td class="code"><pre>export default class HelloService {
+  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
   hello() {
     return `Hello World`;
   }
-}
-
-module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -186,7 +182,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
     <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
 
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/core</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 
@@ -233,7 +229,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
 18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key">appName</span>: &lt;yourAppName&gt;,
   <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
 });

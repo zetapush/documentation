@@ -244,7 +244,7 @@
   <span class="tag">&lt;main&gt;</span>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/core</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
@@ -273,7 +273,7 @@
 15
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
 <span class="comment">// Create a proxy to invoked worker methods</span>
 const api = client.createProxyTaskService();
 <span class="comment">// Handle connection</span>

@@ -1412,8 +1412,8 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -1473,8 +1473,8 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.29.0</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front/dist</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1710,7 +1710,7 @@ If you want to create a new application, you can leave the <em>appName</em> prop
   <span class="tag">&lt;main&gt;</span>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/core</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
@@ -1739,7 +1739,7 @@ If you want to create a new application, you can leave the <em>appName</em> prop
 15
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
 <span class="comment">// Create a proxy to invoked worker methods</span>
 const api = client.createProxyTaskService();
 <span class="comment">// Handle connection</span>
@@ -1832,18 +1832,18 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 <div class="sect3">
 <h4 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a><a class="link" href="#_requirements_2">11.1.1. Requirements</a></h4>
 <div class="paragraph">
-<p>To use services (custom or not), you need to install the ZetaPush Core dependency (<code>@zetapush/core</code>).</p>
+<p>To use services (custom or not), you need to install the ZetaPush Core dependency (<code>@zetapush/client</code>).</p>
 </div>
 <div class="paragraph">
 <p>So you can install it with:</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/core via npm</div>
+<div class="title">Install @zetapush/client via npm</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>$ npm install @zetapush/core</pre></td>
+  <td class="code"><pre>$ npm install @zetapush/client</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -1851,9 +1851,9 @@ Currently, we can&#8217;t call a <em>cloud service</em> provided by ZetaPush fro
 <p>or</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/core via unpkg</div>
+<div class="title">Install @zetapush/client via unpkg</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">&lt;script src=&quot;https://unpkg.com/@zetapush/core&quot;&gt;&lt;/script&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">&lt;script src=&quot;https://unpkg.com/@zetapush/client&quot;&gt;&lt;/script&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1898,16 +1898,12 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 3
 4
 5
-6
-7
 </pre></td>
-  <td class="code"><pre>export default class HelloService {
+  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
   hello() {
     return `Hello World`;
   }
-}
-
-module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -1958,7 +1954,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
     <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
 
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/core</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 
@@ -2005,7 +2001,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
 18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key">appName</span>: &lt;yourAppName&gt;,
   <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
 });
@@ -2838,16 +2834,12 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 3
 4
 5
-6
-7
 </pre></td>
-  <td class="code"><pre>export default class HelloService {
+  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
   hello() {
     return `Hello World`;
   }
-}
-
-module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -2898,7 +2890,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
     <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
 
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/core</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 
@@ -2945,7 +2937,7 @@ module.exports = HelloService; <i class="conum" data-value="1"></i><b>(1)</b></p
 18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key">appName</span>: &lt;yourAppName&gt;,
   <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
 });
@@ -4075,7 +4067,7 @@ If you want to install the <em>ZetaPush CLI</em> you can run <code>npm install -
   <td class="code"><pre><span class="reserved">import</span> AvengersController from <span class="string"><span class="delimiter">'</span><span class="content">./utils/controller.js</span><span class="delimiter">'</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
 
 <span class="comment">// Create the ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPush.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
 <span class="comment">/**
  * Create service to listen incoming messages
  */</span>
