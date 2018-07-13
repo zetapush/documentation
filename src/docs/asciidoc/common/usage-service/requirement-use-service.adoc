@@ -1,20 +1,20 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-To use services (custom or not), you need to install the ZetaPush Core dependency (`@zetapush/core`).
+To use services (custom or not), you need to install the ZetaPush Core dependency (`@zetapush/client`).
 
 So you can install it with:
 
-.Install @zetapush/core via npm
+.Install @zetapush/client via npm
 [source, console, linenums]
 ----
-$ npm install @zetapush/core
+$ npm install @zetapush/client
 ----
 
 or
 
-.Install @zetapush/core via unpkg
+.Install @zetapush/client via unpkg
 [source, console]
 ----
-<script src="https://unpkg.com/@zetapush/core"></script>
+<script src="https://unpkg.com/@zetapush/client"></script>
 ----

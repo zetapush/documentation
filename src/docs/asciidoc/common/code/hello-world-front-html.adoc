@@ -66,7 +66,7 @@ include::{docdir}/variables.adoc[]
   <main>
     <ul></ul>
   </main>
-  <script src="https://unpkg.com/@zetapush/core"></script>
+  <script src="https://unpkg.com/@zetapush/client"></script>
   <script src="https://unpkg.com/@zetapush/platform"></script>
   <script src="./index.js"></script>
 </body>
