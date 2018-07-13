@@ -5,22 +5,18 @@ include::{docdir}/variables.adoc[]
 [source,javascript,linenums]
 ----
 // Create new ZetaPush Client
-const client = new ZetaPush.WeakClient({
-  sandboxId: "yourappname",
-});
-
+const client = new ZetaPush.WeakClient();
+// Create a proxy to invoked worker methods
 const api = client.createProxyTaskService();
-
+// Handle connection
 client.connect().then(() => (
   console.debug('onConnectionEstablished'),
   [...document.querySelectorAll('button')].forEach((node) =>
     node.removeAttribute('disabled'),
   )
 ));
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.js-Hello').addEventListener('click', (event) => {
-        console.log('Hello world', () => api.hello());
-    });
+// Handle DOM events
+document.querySelector('.js-Hello').addEventListener('click', async () => {
+  console.log(await api.hello());
 });
 ----

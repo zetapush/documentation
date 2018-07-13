@@ -3,18 +3,13 @@ include::{docdir}/variables.adoc[]
 
 In our example we use this _custom cloud service_ named `HelloService`:
 
-.worker/index.js
-[source, javascript, linenumbers]
+.worker/index.ts
+[source,typescript,linenumbers]
 ----
-class HelloService {
-    static get parameters() {
-        return [];
-    }
-    constructor() { }
-
-    async hello() {
-        return `Hello World`;
-    }
+export default class HelloService {
+  hello() {
+    return `Hello World`;
+  }
 }
 
 module.exports = HelloService; <1>
@@ -55,26 +50,22 @@ Finally, we have the front-side code call our services:
 ----
 // Create new ZetaPush Client
 const client = new ZetaPush.WeakClient({ <1>
-    appName: <yourAppName>,
-    platformUrl: <optionalUrl>
+  appName: <yourAppName>,
+  platformUrl: <optionalUrl>
 });
-
+// Create a proxy to invoked worker methods
 const api = client.createProxyTaskService(); <2>
-
+// Handle connection
 client.connect().then(() => ( <3>
-    console.debug('onConnectionEstablished')
+  console.debug('onConnectionEstablished'),
+  [...document.querySelectorAll('button')].forEach((node) =>
+    node.removeAttribute('disabled'),
+  )
 ));
-
-async function hello() {
-    const output = await api.hello(); <4>
-
-    const ul = document.querySelector('ul');
-    const fragment = document.createDocumentFragment();
-    const li = document.createElement('li');
-    li.textContent = output;
-    fragment.appendChild(li);
-    ul.appendChild(fragment);
-}
+// Handle DOM events
+document.querySelector('.js-Hello').addEventListener('click', async () => {
+  console.log(await api.hello()); <4>
+});
 ----
 <1> Create the ZetaPush client with a specific appName and optional URL
 <2> API to access our custom service(s)

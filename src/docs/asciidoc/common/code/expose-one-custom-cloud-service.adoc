@@ -1,10 +1,10 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.worker/index.js
-[source, javascript, linenums, role="highlight-lines:24"]
+.worker/index.ts
+[source,typescript,linenums,role="highlight-lines:15"]
 ----
-const { Inject } = require('@zetapush/platform');
+import { Injectable } from '@zetapush/platform';
 
 class Calendar { <1>
   getNow() {
@@ -12,23 +12,15 @@ class Calendar { <1>
   }
 }
 
-class MyPublicCustomCloudService { <2>
-  static get parameters() {
-    return [
-      new Inject(Calendar)
-    ];
-  }
-  constructor(calendar) {
-    this.calendar = calendar;
-  }
-  
-  async hello() {
+@Injectable()
+export default class MyPublicCustomCloudService { <2>
+  constructor(
+    private calendar: Calendar
+  ) {}
+  hello() {
     return `Hello World at ${this.calendar.getNow()}`;
   }
 }
-
-module.exports = MyPublicCustomCloudService; <3>
 ----
 <1> `Calendar` is my private _custom cloud service_
-<2> `MyPublicCustomCloudService` is my exposed _custom cloud service_
-<3> We expose only `MyPublicCustomCloudService` to the client side
+<2> We expose only `MyPublicCustomCloudService` to the client side

@@ -13,45 +13,37 @@ NOTE: The `Stack` service has asynchronous methods
 
 
 .MyStorageService
-[source, javascript, linenums, role="highlight-lines:5-9,11,12,14"]
+[source,typescript,linenums,role="highlight-lines:6-8"]
 ----
-const { Inject, Stack } = require('@zetapush/platform');
+import { Injectable, Stack } from '@zetapush/platform';
 
-class MyStorageService {
+@Injectable()
+export default class MyStorageService {
+  private stackName = 'stack-example';
+  constructor(<2> 
+    private stack: Stack
+  ) {}
+  /**
+   *  Store data with associated timestamp
+   */
+  storeWithTimestamp(value: any) {
+    return this.stack.push({
+      stack: this.stackName,
+      data: {
+        value,
+        timestamp: Date.now()
+      }
+    });
+  }
 
-    static get parameters() {
-        return [
-            new Inject(Stack) <1>
-        ]
-    }
-
-    constructor(stack) { <2> 
-        this.stack = stack;
-        this.stackName = 'stack-example';
-    }
-
-    /**
-     *  Store data with associated timestamp
-     *  @param {object} value Data we want to store
-     */
-    async storeWithTimestamp(value) {
-        return this.stack.push({
-            stack: this.stackName,
-            data: {
-                value,
-                timestamp: Date.now()
-            }
-        });
-    }
-
-    /**
-     * List all stored data
-     */
-    async getAllData() {
-        return this.stack.list({
-            stack: this.stackName
-        });
-    }
+  /**
+   * List all stored data
+   */
+  getAllData() {
+    return this.stack.list({
+      stack: this.stackName
+    });
+  }
 }
 ----
 <1> We import the `Stack` service

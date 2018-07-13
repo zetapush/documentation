@@ -38,7 +38,7 @@ TIP: The connection is requested with `client.connect()` in `{appName}/front/ind
 TIP: See `{appName}/front/index.html`
 - Provides a custom cloud service that generates a message ("hello world from JavaScript" followed by the date as a timestamp).
 +
-TIP: The executed code is available in `{appName}/worker/index.js`
+TIP: The executed code is available in `{appName}/worker/index.ts`
 - When the `hello()` button is clicked, the custom cloud service is called and the response is displayed in the browser console. The text of the button is also updated with the count of custom cloud services responses.
 +
 TIP: See call to `api.hello()` in `{appName}/front/index.js`.

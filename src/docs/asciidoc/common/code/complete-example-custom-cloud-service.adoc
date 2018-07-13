@@ -1,56 +1,39 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.worker/index.js
-[source, javascript, linenums]
+.worker/index.ts
+[source,typescript,linenums]
 ----
-const { Stack, Inject } = require('@zetapush/platform')
+import { Injectable, Stack } from '@zetapush/platform';
 
 class DateCustomService {
-    constructor() {}
-
-    <1>
-
-    formatDate(date) {
-        return date.toLocalDateString("fr-FR");
-    }
+  <1>
+  formatDate(date) {
+    return date.toLocalDateString("fr-FR");
+  }
 }
 
-class SimpleStorageWithDate {
-
-    static get parameters() {
-        return [
-            new Inject(Stack),
-            new Inject(DateCustomService)
-        ]
-    }
-
-    constructor(stack, dateCustomService) {
-        this.stack = stack;
-        this.dateCustomService = dateCustomService;
-    }
-    
-    async push(item) { <2>
-        const output = await this.stack.push({ <3>
-            stack: 'test', 
-            data: {
-                value: item,
-                date: this.dateService.formateDate(new Date()); <4>
-            }
-        });
-        return const;
-    }
-
-    async list() {
-        const output = await this.stack.list({ stack: 'demo'});
-        return output;
-    }    
+@Injectable()
+export default class SimpleStorageWithDate { <1>
+  constructor(<2>
+    private stack: Stack,
+    private dateCustomService: DateCustomService
+  ) {}
+  push(item: any) {
+    return this.stack.push({<3>
+      stack: 'test', 
+      data: {
+        value: item,
+        date: this.dateService.formateDate(new Date()); <4>
+      }
+    });
+  }
+  list() {
+    return this.stack.list({ stack: 'demo'});
+  }
 }
-
-module.exports = SimpleStorageWithDate; <5>
 ----
-<1> No need to define a static method named `parameters` because we don't expose this service
-<2> Async/Await context
+<1> Expose only `SimpleStorageWithDate`
+<2> Dependency injection
 <3> Use the existing _cloud services_
 <4> Use another _custom cloud service_
-<5> Expose only `SimpleStorageWithDate`
