@@ -388,7 +388,7 @@ async sendMessage(message = {}) {
   const group = await this.groups.groupUsers({
     group: CONVERSATION_ID
   });
-  const users = group.users;
+  const users = group.users || [];
 
   // Send the message to each user in the conversation
   this.messaging.send({
@@ -586,7 +586,7 @@ export default class AvengersApi {
     const group = await this.groups.groupUsers({
       group: CONVERSATION_ID
     });
-    const users = group.users;
+    const users = group.users || [];
 
     // Send the message to each user in the conversation
     this.messaging.send({
@@ -623,7 +623,7 @@ export default class AvengersApi {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-16 08:08:05 UTC
+Last updated 2018-07-16 08:13:53 UTC
 </div>
 </div>
 </body>
