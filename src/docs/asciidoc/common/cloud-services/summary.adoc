@@ -9,4 +9,3 @@ include::{docdir}/variables.adoc[]
 | <<reference.adoc#_user_management, User management>>
 | TODO: https://github.com/zetapush/documentation/issues/45
 |===
-

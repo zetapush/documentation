@@ -24,6 +24,32 @@ pipeline {
       }
     }
 
+    stage('Generate API doc') {
+      steps {
+        dir('${WORKSPACE}/src/docs/asciidoc/resources/api') {
+          deleteDir()
+          sh 'echo "<h1>Hello</h1>" >> index.html'
+        }
+
+
+        // Clean the output folder
+        // dir('src/docs/asciidoc/resources/api') {
+        //   deleteDir()
+        //   sh 'echo "<h1>Hello</h1>" >> index.html'
+
+    //     // Clone the repository
+    //     // TODO:
+    //     // npm install && npm run build:api-doc
+    //     // TODO:
+    //     // Move output doc to proper folder
+    //       file = new File('index.html')
+    //       file.append("<h1>Hello world</h1>")
+    //     // Clean the github project
+    //     // TODO:
+        // }
+      }
+    }
+
     stage('Generate html documentation') {
       steps {
         sh './mvnw generate-resources -P html'
