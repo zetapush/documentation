@@ -17,14 +17,14 @@ First, you need to import the _cloud services_ provided by ZetaPush, used in thi
 
 * _Stack_ (Save data in a stack)
 * _Messaging_ (Send and receive messages)
-* _GroupManagement_ (Manage group of users)
+* _Groups_ (Manage group of users)
 
 You also need to import _Injectable_ that is useful for the dependencies injection.
 
 .Imports and constants
 [source,typescript,linenums]
 ----
-import { Stack, Messaging, GroupManagement, Injectable } from '@zetapush/platform';
+import { Stack, Messaging, Groups, Injectable } from '@zetapush/platform';
 
 const CONVERSATION_ID = 'avengersChat';
 const CHANNEL_MESSAGING = 'avengersChannel'; <1>
@@ -46,7 +46,7 @@ export default class AvengersApi {
   constructor(
     private stack: Stack,
     private messaging: Messaging,
-    private groups: GroupManagement
+    private groups: Groups
   ) {
   }
 }
@@ -57,7 +57,7 @@ NOTE: The dependencies injection of ZetaPush use `injection-js`.
 
 == Create the chat
 
-To create our chat, we use the _GroupManagement cloud service_ provided by ZetaPush. The created group includes all users of the conversation.
+To create our chat, we use the _Groups cloud service_ provided by ZetaPush. The created group includes all users of the conversation.
 So we add a method to our class to create this conversation.
 
 .Create conversation
@@ -159,7 +159,7 @@ Now your _custom cloud service_ is ready with this following content:
 
 [source,typescript,linenums]
 ----
-import { Stack, Messaging, GroupManagement, Injectable } from "@zetapush/platform";
+import { Stack, Messaging, Groups, Injectable } from "@zetapush/platform";
 
 const CONVERSATION_ID = "avengersChat";
 const CHANNEL_MESSAGING = "avengersChannel";
@@ -172,7 +172,7 @@ export default class AvengersApi {
   constructor(
     private stack: Stack,
     private messaging: Messaging,
-    private groups: GroupManagement
+    private groups: Groups
   ) {}
 
   /**
