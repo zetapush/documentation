@@ -339,7 +339,7 @@ To use your <em>custom cloud services</em> you need to export them. To do this, 
 <p><em>Messaging</em> (Send and receive messages)</p>
 </li>
 <li>
-<p><em>GroupManagement</em> (Manage group of users)</p>
+<p><em>Groups</em> (Manage group of users)</p>
 </li>
 </ul>
 </div>
@@ -355,7 +355,7 @@ To use your <em>custom cloud services</em> you need to export them. To do this, 
 3
 4
 </pre></td>
-  <td class="code"><pre>import { Stack, Messaging, GroupManagement, Injectable } from '@zetapush/platform';
+  <td class="code"><pre>import { Stack, Messaging, Groups, Injectable } from '@zetapush/platform';
 
 const CONVERSATION_ID = 'avengersChat';
 const CHANNEL_MESSAGING = 'avengersChannel'; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
@@ -401,7 +401,7 @@ export default class AvengersApi {
   constructor(
     private stack: Stack,
     private messaging: Messaging,
-    private groups: GroupManagement
+    private groups: Groups
   ) {
   }
 }</pre></td>
@@ -432,7 +432,7 @@ The dependencies injection of ZetaPush use <code>injection-js</code>.
 <div class="sect3">
 <h4 id="_create_the_chat"><a class="anchor" href="#_create_the_chat"></a>Create the chat</h4>
 <div class="paragraph">
-<p>To create our chat, we use the <em>GroupManagement cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
+<p>To create our chat, we use the <em>Groups cloud service</em> provided by ZetaPush. The created group includes all users of the conversation.
 So we add a method to our class to create this conversation.</p>
 </div>
 <div class="listingblock">
@@ -718,7 +718,7 @@ async getMessages() {
 76
 77
 </pre></td>
-  <td class="code"><pre>import { Stack, Messaging, GroupManagement, Injectable } from &quot;@zetapush/platform&quot;;
+  <td class="code"><pre>import { Stack, Messaging, Groups, Injectable } from &quot;@zetapush/platform&quot;;
 
 const CONVERSATION_ID = &quot;avengersChat&quot;;
 const CHANNEL_MESSAGING = &quot;avengersChannel&quot;;
@@ -731,7 +731,7 @@ export default class AvengersApi {
   constructor(
     private stack: Stack,
     private messaging: Messaging,
-    private groups: GroupManagement
+    private groups: Groups
   ) {}
 
   /**
