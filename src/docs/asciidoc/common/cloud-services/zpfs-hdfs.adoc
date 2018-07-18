@@ -210,7 +210,7 @@ export default class Api {
     private zpfs_hdfs: Zpfs_hdfs <2>
   ) {}
   async doStuff(parameters: ZpfsRequest) {
-    const response = await this.readToken(parameters); <3>
+    const response = await this.zpfs_hdfs.readToken(parameters); <3>
     return response;
   }
 }

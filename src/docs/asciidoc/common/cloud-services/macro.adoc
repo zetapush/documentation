@@ -83,7 +83,7 @@ export default class Api {
     private macro: Macro <2>
   ) {}
   async doStuff(parameters: MacroPlay) {
-    const response = await this.call(parameters); <3>
+    const response = await this.macro.call(parameters); <3>
     return response;
   }
 }

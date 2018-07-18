@@ -43,7 +43,7 @@ export default class Api {
     private userdir: Userdir <2>
   ) {}
   async doStuff(parameters: UserInfoRequest) {
-    const response = await this.userInfo(parameters); <3>
+    const response = await this.userdir.userInfo(parameters); <3>
     return response;
   }
 }

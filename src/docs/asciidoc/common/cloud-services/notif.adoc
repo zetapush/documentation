@@ -61,7 +61,7 @@ export default class Api {
     private notif: Notif <2>
   ) {}
   async doStuff(parameters: NotificationMessage) {
-    const response = await this.send(parameters); <3>
+    const response = await this.notif.send(parameters); <3>
     return response;
   }
 }

@@ -103,7 +103,7 @@ export default class Api {
     private stack: Stack <2>
   ) {}
   async doStuff(parameters: StackRequest) {
-    const response = await this.purge(parameters); <3>
+    const response = await this.stack.purge(parameters); <3>
     return response;
   }
 }

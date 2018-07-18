@@ -34,7 +34,7 @@ export default class Api {
     private template: Template <2>
   ) {}
   async doStuff(parameters: TemplateRequest) {
-    const response = await this.evaluate(parameters); <3>
+    const response = await this.template.evaluate(parameters); <3>
     return response;
   }
 }

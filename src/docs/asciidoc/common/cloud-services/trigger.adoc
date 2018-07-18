@@ -34,7 +34,7 @@ export default class Api {
     private trigger: Trigger <2>
   ) {}
   async doStuff(parameters: EventTrigger) {
-    const response = await this.trigger(parameters); <3>
+    const response = await this.trigger.trigger(parameters); <3>
     return response;
   }
 }

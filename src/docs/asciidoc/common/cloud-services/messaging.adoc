@@ -34,7 +34,7 @@ export default class Api {
     private messaging: Messaging <2>
   ) {}
   async doStuff(parameters: Message) {
-    const response = await this.send(parameters); <3>
+    const response = await this.messaging.send(parameters); <3>
     return response;
   }
 }

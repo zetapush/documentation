@@ -34,7 +34,7 @@ export default class Api {
     private sendmail: Sendmail <2>
   ) {}
   async doStuff(parameters: Email) {
-    const response = await this.send(parameters); <3>
+    const response = await this.sendmail.send(parameters); <3>
     return response;
   }
 }

@@ -36,7 +36,7 @@ export default class Api {
     private ${service.name.toLowerCase()}: ${service.name} <2>
   ) {}
   async doStuff(parameters: ${Type.transform(method.type)}) {
-    const response = await this.${method.name}(parameters); <3>
+    const response = await this.${service.name.toLowerCase()}.${method.name}(parameters); <3>
     return response;
   }
 }

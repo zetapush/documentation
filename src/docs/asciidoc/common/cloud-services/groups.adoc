@@ -317,7 +317,7 @@ export default class Api {
     private groups: Groups <2>
   ) {}
   async doStuff(parameters: Grant) {
-    const response = await this.grant(parameters); <3>
+    const response = await this.groups.grant(parameters); <3>
     return response;
   }
 }

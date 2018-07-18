@@ -75,7 +75,7 @@ export default class Api {
     private cron: Cron <2>
   ) {}
   async doStuff(parameters: CronTaskRequest) {
-    const response = await this.schedule(parameters); <3>
+    const response = await this.cron.schedule(parameters); <3>
     return response;
   }
 }

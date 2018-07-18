@@ -186,7 +186,7 @@ export default class Api {
     private gda: Gda <2>
   ) {}
   async doStuff(parameters: GdaPuts) {
-    const response = await this.puts(parameters); <3>
+    const response = await this.gda.puts(parameters); <3>
     return response;
   }
 }

@@ -33,7 +33,7 @@ export default class Api {
     private sms_ovh: Sms_ovh <2>
   ) {}
   async doStuff(parameters: SmsMessage) {
-    const response = await this.send(parameters); <3>
+    const response = await this.sms_ovh.send(parameters); <3>
     return response;
   }
 }
