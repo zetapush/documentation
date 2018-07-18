@@ -58,7 +58,7 @@ const generateType = (type) => {
 
 fs.readFile(path.join(process.cwd(), target), { encoding: 'utf-8'}, (error, content) => {
   const { strVersion, services, deployables } = JSON.parse(content);
-  const WHITELIST = ['Cron', 'Gda', 'GroupManagement', 'Macro', 'Messaging', 'Notif', 'Logs', 'Sendmail', 'Search', 'Sms_ovh', 'Stack', 'Template', 'Trigger', 'Userdir', 'Zpfs_hdfs'];
+  const WHITELIST = ['Simple', 'Weak', 'Cron', 'Gda', 'GroupManagement', 'Macro', 'Messaging', 'Notif', 'Logs', 'Sendmail', 'Search', 'Sms_ovh', 'Stack', 'Template', 'Trigger', 'Userdir', 'Zpfs_hdfs'];
   services
     .filter((service) => WHITELIST.indexOf(service.name) > -1)
     .forEach((service) => generateService(service));
