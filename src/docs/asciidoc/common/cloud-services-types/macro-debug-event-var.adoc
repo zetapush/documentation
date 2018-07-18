@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugEventVar
+
+=== Properties
+
+
+
+.error: ZetaApiError;
+The request may have caused an error
+
+
+.frame: int;
+Frame index, as requested
+
+
+.requestId: string;
+request ID
+
+
+.type: string;
+Data type
+
+
+.value: MacroDebugFrameValue;
+Data value
+
+
+.var: string;
+Evaluated expression, as requested
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugEventVar {
+
+  /**
+   * The request may have caused an error
+   */
+  error: ZetaApiError;
+
+  /**
+   * Frame index, as requested
+   */
+  frame: int;
+
+  /**
+   * request ID
+   */
+  requestId: string;
+
+  /**
+   * Data type
+   */
+  type: string;
+
+  /**
+   * Data value
+   */
+  value: MacroDebugFrameValue;
+
+  /**
+   * Evaluated expression, as requested
+   */
+  var: string;
+
+}
+----

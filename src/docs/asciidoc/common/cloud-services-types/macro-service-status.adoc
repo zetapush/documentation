@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroServiceStatus
+
+=== Properties
+
+
+
+.currentNb: int;
+Number of macros currently running
+
+
+.debug: boolean;
+Whether this macro service is currently in debug mode
+
+
+.totalNb: int;
+Total number of macros currently running, including nested calls
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroServiceStatus {
+
+  /**
+   * Number of macros currently running
+   */
+  currentNb: int;
+
+  /**
+   * Whether this macro service is currently in debug mode
+   */
+  debug: boolean;
+
+  /**
+   * Total number of macros currently running, including nested calls
+   */
+  totalNb: int;
+
+}
+----

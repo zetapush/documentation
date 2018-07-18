@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTransitionInfo
+
+=== Properties
+
+
+
+.creation: long;
+Creation timestamp of this workflow.
+
+
+.firstState: string;
+First state of this workflow.
+
+
+.newState: string;
+New state ID when the transition is complete.
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.state: string;
+Current state of this workflow.
+
+
+.template: WorkflowTemplate;
+Template on which this workflow is based.
+
+
+.userData: Object;
+User data for this workflow.
+
+
+.workflow: string;
+Workflow ID, as returned by 'create'
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTransitionInfo {
+
+  /**
+   * Creation timestamp of this workflow.
+   */
+  creation: long;
+
+  /**
+   * First state of this workflow.
+   */
+  firstState: string;
+
+  /**
+   * New state ID when the transition is complete.
+   */
+  newState: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Current state of this workflow.
+   */
+  state: string;
+
+  /**
+   * Template on which this workflow is based.
+   */
+  template: WorkflowTemplate;
+
+  /**
+   * User data for this workflow.
+   */
+  userData: Object;
+
+  /**
+   * Workflow ID, as returned by 'create'
+   */
+  workflow: string;
+
+}
+----

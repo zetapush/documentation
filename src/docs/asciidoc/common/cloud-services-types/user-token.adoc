@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserToken
+
+=== Properties
+
+
+
+.publicToken: string;
+public token
+
+
+.token: string;
+private token
+
+
+.userKey: string;
+userKey for this user
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserToken {
+
+  /**
+   * public token
+   */
+  publicToken: string;
+
+  /**
+   * private token
+   */
+  token: string;
+
+  /**
+   * userKey for this user
+   */
+  userKey: string;
+
+}
+----

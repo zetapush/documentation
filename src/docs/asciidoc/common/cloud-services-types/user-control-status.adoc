@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserControlStatus
+
+=== Properties
+
+
+
+.controller: string;
+User key of the controlling user
+
+
+.fullRights: boolean;
+Whether the controlled user/device fully impersonates its controller
+
+
+.publicToken: string;
+Public token of the weak you want to control
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserControlStatus {
+
+  /**
+   * User key of the controlling user
+   */
+  controller: string;
+
+  /**
+   * Whether the controlled user/device fully impersonates its controller
+   */
+  fullRights: boolean;
+
+  /**
+   * Public token of the weak you want to control
+   */
+  publicToken: string;
+
+}
+----

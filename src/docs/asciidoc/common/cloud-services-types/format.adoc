@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Format
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum Format {
+
+  /**
+   * missing enum desc
+   */
+  Y = "Y";
+
+  /**
+   * missing enum desc
+   */
+  YMDHMSN = "YMDHMSN";
+
+  /**
+   * missing enum desc
+   */
+  YMDHMS = "YMDHMS";
+
+  /**
+   * missing enum desc
+   */
+  YMDHMSM = "YMDHMSM";
+
+  /**
+   * missing enum desc
+   */
+  YMD = "YMD";
+
+  /**
+   * missing enum desc
+   */
+  YMDH = "YMDH";
+
+  /**
+   * missing enum desc
+   */
+  YMDHM = "YMDHM";
+
+  /**
+   * missing enum desc
+   */
+  YM = "YM";
+
+}
+----

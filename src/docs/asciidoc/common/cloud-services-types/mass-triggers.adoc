@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MassTriggers
+
+=== Properties
+
+
+
+.apiTriggers: ApiTriggerListener[];
+List of API trigger listeners
+
+
+.purge: boolean;
+Whether to purge all the already stored listeners before storing the given listeners
+
+
+.triggers: TriggerListener[];
+List of trigger listeners
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MassTriggers {
+
+  /**
+   * List of API trigger listeners
+   */
+  apiTriggers: ApiTriggerListener[];
+
+  /**
+   * Whether to purge all the already stored listeners before storing the given listeners
+   */
+  purge: boolean;
+
+  /**
+   * List of trigger listeners
+   */
+  triggers: TriggerListener[];
+
+}
+----

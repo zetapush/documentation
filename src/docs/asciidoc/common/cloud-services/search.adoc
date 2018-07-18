@@ -1,0 +1,76 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Search
+
+ElasticSearch Service
+
+This API is a very thin wrapper around ElasticSearch's API.
+
+
+=== index
+
+Inserts or updates a document into the elasticsearch engine.
+
+.index(parameters: <<common/cloud-services-types/search-data.adoc#,SearchData>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.search.index(parameters);
+----
+
+=== get
+
+Retrieves a document from the elasticsearch engine by id.
+
+.get(parameters: <<common/cloud-services-types/search-document-id.adoc#,SearchDocumentId>>): Promise<<<common/cloud-services-types/search-data.adoc#,SearchData>>>
+
+[source,typescript,linenums]
+----
+const response = await this.search.get(parameters);
+----
+
+=== delete
+
+Deletes a document from the elasticsearch engine by id.
+
+.delete(parameters: <<common/cloud-services-types/search-document-id.adoc#,SearchDocumentId>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.search.delete(parameters);
+----
+
+=== search
+
+
+
+.search(parameters: <<common/cloud-services-types/search-request.adoc#,SearchRequest>>): Promise<<<common/cloud-services-types/search-results.adoc#,SearchResults>>>
+
+[source,typescript,linenums]
+----
+const response = await this.search.search(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Search, SearchData } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private search: Search <2>
+  ) {}
+  async doStuff(parameters: SearchData) {
+    const response = await this.index(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Search` from platform
+<2> Declare injected service
+<3> Call injected service

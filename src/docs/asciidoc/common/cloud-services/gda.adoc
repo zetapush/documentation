@@ -1,0 +1,196 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Gda
+
+GDA User API
+
+User API for Generic Data Access.
+The data are stored on a per-user basis.
+Users can put, get, list their data.
+
+
+=== puts
+
+Creates or replaces the (maybe partial) contents of a collection of rows.
+This method only creates or replaces cells for non-null input values.
+
+.puts(parameters: <<common/cloud-services-types/gda-puts.adoc#,GdaPuts>>): Promise<<<common/cloud-services-types/gda-puts-result.adoc#,GdaPutsResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.puts(parameters);
+----
+
+=== inc
+
+Increments a cell 64-bit signed integer value and returns the result in the data field.
+The increment is atomic : if you concurrently increment 10 times a value by 1, the final result will be the initial value plus 10. The actual individual resulting values seen by the 10 concurrent callers may vary discontinuously, with duplicates : at least one of them will see the final (+10) result.
+
+.inc(parameters: <<common/cloud-services-types/gda-put.adoc#,GdaPut>>): Promise<<<common/cloud-services-types/gda-put.adoc#,GdaPut>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.inc(parameters);
+----
+
+=== removeRow
+
+Removes all columns of the given row from the given table.
+
+.removeRow(parameters: <<common/cloud-services-types/gda-row-request.adoc#,GdaRowRequest>>): Promise<<<common/cloud-services-types/gda-row-request.adoc#,GdaRowRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.removeRow(parameters);
+----
+
+=== removeColumn
+
+Removes all cells of the given column of the given row from the given table.
+
+.removeColumn(parameters: <<common/cloud-services-types/gda-column-request.adoc#,GdaColumnRequest>>): Promise<<<common/cloud-services-types/gda-column-request.adoc#,GdaColumnRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.removeColumn(parameters);
+----
+
+=== removeCell
+
+Removes only one cell of the given column of the given row from the given table.
+
+.removeCell(parameters: <<common/cloud-services-types/gda-cell-request.adoc#,GdaCellRequest>>): Promise<<<common/cloud-services-types/gda-cell-request.adoc#,GdaCellRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.removeCell(parameters);
+----
+
+=== mget
+
+Returns full data rows, in the order they were asked.
+
+.mget(parameters: <<common/cloud-services-types/gda-multi-get-request.adoc#,GdaMultiGetRequest>>): Promise<<<common/cloud-services-types/gda-multi-get-result.adoc#,GdaMultiGetResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.mget(parameters);
+----
+
+=== getCells
+
+Returns a precise list of cells from a column in a data row.
+
+.getCells(parameters: <<common/cloud-services-types/gda-cells-request.adoc#,GdaCellsRequest>>): Promise<<<common/cloud-services-types/gda-cells-result.adoc#,GdaCellsResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.getCells(parameters);
+----
+
+=== get
+
+Returns a full data row.
+
+.get(parameters: <<common/cloud-services-types/gda-get.adoc#,GdaGet>>): Promise<<<common/cloud-services-types/gda-get-result.adoc#,GdaGetResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.get(parameters);
+----
+
+=== put
+
+Creates or replaces the contents of a particular cell.
+
+.put(parameters: <<common/cloud-services-types/gda-put.adoc#,GdaPut>>): Promise<<<common/cloud-services-types/gda-put.adoc#,GdaPut>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.put(parameters);
+----
+
+=== list
+
+Returns a paginated list of rows from the given table.
+
+.list(parameters: <<common/cloud-services-types/gda-list.adoc#,GdaList>>): Promise<<<common/cloud-services-types/gda-list-result.adoc#,GdaListResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.list(parameters);
+----
+
+=== removeRange
+
+Removes the specified columns of the given range of rows from the given table.
+
+.removeRange(parameters: <<common/cloud-services-types/gda-remove-range.adoc#,GdaRemoveRange>>): Promise<<<common/cloud-services-types/gda-remove-range.adoc#,GdaRemoveRange>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.removeRange(parameters);
+----
+
+=== filter
+
+Similar to range, but rows can be filtered out according to a developer-supplied predicate.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.
+
+.filter(parameters: <<common/cloud-services-types/gda-filter-request.adoc#,GdaFilterRequest>>): Promise<<<common/cloud-services-types/gda-filter-result.adoc#,GdaFilterResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.filter(parameters);
+----
+
+=== range
+
+Returns a paginated range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.
+
+.range(parameters: <<common/cloud-services-types/gda-range.adoc#,GdaRange>>): Promise<<<common/cloud-services-types/gda-range-result.adoc#,GdaRangeResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.range(parameters);
+----
+
+=== reduce
+
+Returns a computed single reduced result from a range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.
+
+.reduce(parameters: <<common/cloud-services-types/gda-reduce-request.adoc#,GdaReduceRequest>>): Promise<<<common/cloud-services-types/gda-reduce-result.adoc#,GdaReduceResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.gda.reduce(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Gda, GdaPuts } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private gda: Gda <2>
+  ) {}
+  async doStuff(parameters: GdaPuts) {
+    const response = await this.puts(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Gda` from platform
+<2> Declare injected service
+<3> Call injected service

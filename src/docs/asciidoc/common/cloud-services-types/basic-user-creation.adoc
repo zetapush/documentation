@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== BasicUserCreation
+
+=== Properties
+
+
+
+.additionalProperties: Map<string,Object>;
+You can pass any number of arbitrary properties in the enclosing object (there is no field actually named additionalProperties).
+
+
+.idempotence: Idempotence;
+Specify the behavior when the user already exists. The default value is IGNORE_IDENTICAL
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface BasicUserCreation {
+
+  /**
+   * You can pass any number of arbitrary properties in the enclosing object (there is no field actually named additionalProperties).
+   */
+  additionalProperties: Map<string,Object>;
+
+  /**
+   * Specify the behavior when the user already exists. The default value is IGNORE_IDENTICAL
+   */
+  idempotence: Idempotence;
+
+}
+----

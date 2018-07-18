@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTemplateList
+
+=== Properties
+
+
+
+.page: Pagination;
+Pagination information
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTemplateList {
+
+  /**
+   * Pagination information
+   */
+  page: Pagination;
+
+}
+----

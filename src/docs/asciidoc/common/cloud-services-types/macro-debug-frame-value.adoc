@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugFrameValue
+
+=== Properties
+
+
+
+.type: string;
+Value type
+
+
+.value: Object;
+Actual value, for primitive types. Size for complex types
+
+
+.vars: MacroDebugFrameVariable[];
+Sub fields, for complex types
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugFrameValue {
+
+  /**
+   * Value type
+   */
+  type: string;
+
+  /**
+   * Actual value, for primitive types. Size for complex types
+   */
+  value: Object;
+
+  /**
+   * Sub fields, for complex types
+   */
+  vars: MacroDebugFrameVariable[];
+
+}
+----

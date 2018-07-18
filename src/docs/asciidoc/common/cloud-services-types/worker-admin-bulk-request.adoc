@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkerAdminBulkRequest
+
+=== Properties
+
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.requests: WorkerAdminRequest[];
+List of admin requests
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkerAdminBulkRequest {
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * List of admin requests
+   */
+  requests: WorkerAdminRequest[];
+
+}
+----

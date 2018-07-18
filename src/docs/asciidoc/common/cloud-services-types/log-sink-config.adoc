@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogSinkConfig
+
+=== Properties
+
+
+
+.sinkConfig: Map<string,Object>;
+undefined
+
+
+.sinkType: LogSinkType;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface LogSinkConfig {
+
+  /**
+   * undefined
+   */
+  sinkConfig: Map<string,Object>;
+
+  /**
+   * undefined
+   */
+  sinkType: LogSinkType;
+
+}
+----

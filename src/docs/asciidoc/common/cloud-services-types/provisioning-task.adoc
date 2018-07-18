@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ProvisioningTask
+
+=== Properties
+
+
+
+.assignee: OwnerResource;
+Slave coordinates for this task
+
+
+.businessId: string;
+Sandbox ID of this queue service
+
+
+.channel: string;
+Channel name
+
+
+.comet: string;
+STR Node processing the request
+
+
+.deploymentId: string;
+Deployment ID of this queue service
+
+
+.dispatched: boolean;
+for server use
+
+
+.done: boolean;
+for server use
+
+
+.request: ProvisioningTaskRequest;
+Use-case specific payload
+
+
+.taskId: string;
+Server-generated task ID. Should be given back to channel 'done'
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ProvisioningTask {
+
+  /**
+   * Slave coordinates for this task
+   */
+  assignee: OwnerResource;
+
+  /**
+   * Sandbox ID of this queue service
+   */
+  businessId: string;
+
+  /**
+   * Channel name
+   */
+  channel: string;
+
+  /**
+   * STR Node processing the request
+   */
+  comet: string;
+
+  /**
+   * Deployment ID of this queue service
+   */
+  deploymentId: string;
+
+  /**
+   * for server use
+   */
+  dispatched: boolean;
+
+  /**
+   * for server use
+   */
+  done: boolean;
+
+  /**
+   * Use-case specific payload
+   */
+  request: ProvisioningTaskRequest;
+
+  /**
+   * Server-generated task ID. Should be given back to channel 'done'
+   */
+  taskId: string;
+
+}
+----

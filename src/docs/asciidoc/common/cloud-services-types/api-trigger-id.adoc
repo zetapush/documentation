@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ApiTriggerId
+
+=== Properties
+
+
+
+.deploymentId: string;
+Deployment ID of the service verb to listen to.
+
+
+.name: string;
+Listener name
+
+
+.verb: string;
+Verb to be listened to within the target service.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ApiTriggerId {
+
+  /**
+   * Deployment ID of the service verb to listen to.
+   */
+  deploymentId: string;
+
+  /**
+   * Listener name
+   */
+  name: string;
+
+  /**
+   * Verb to be listened to within the target service.
+   */
+  verb: string;
+
+}
+----

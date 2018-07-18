@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TemplateCreation
+
+=== Properties
+
+
+
+.name: string;
+template name
+
+
+.template: string;
+template contents, as a character string
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TemplateCreation {
+
+  /**
+   * template name
+   */
+  name: string;
+
+  /**
+   * template contents, as a character string
+   */
+  template: string;
+
+}
+----

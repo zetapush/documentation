@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameRunnerFullLocation
+
+=== Properties
+
+
+
+.requestChannel: string;
+Reserved for future use
+
+
+.responseChannel: string;
+Reserved for future use
+
+
+.sessionId: string;
+Session identifier of the game engine. Server-attributed
+
+
+.setiId: string;
+Seti identifier of the game engine. Server-attributed
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameRunnerFullLocation {
+
+  /**
+   * Reserved for future use
+   */
+  requestChannel: string;
+
+  /**
+   * Reserved for future use
+   */
+  responseChannel: string;
+
+  /**
+   * Session identifier of the game engine. Server-attributed
+   */
+  sessionId: string;
+
+  /**
+   * Seti identifier of the game engine. Server-attributed
+   */
+  setiId: string;
+
+}
+----

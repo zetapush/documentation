@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroExecBaseUrl
+
+=== Properties
+
+
+
+.url: string;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroExecBaseUrl {
+
+  /**
+   * undefined
+   */
+  url: string;
+
+}
+----

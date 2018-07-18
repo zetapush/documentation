@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroVariable
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+.value: Object;
+value to be evaluated
+
+
+.var: string;
+Variable identifier
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroVariable {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * value to be evaluated
+   */
+  value: Object;
+
+  /**
+   * Variable identifier
+   */
+  var: string;
+
+}
+----

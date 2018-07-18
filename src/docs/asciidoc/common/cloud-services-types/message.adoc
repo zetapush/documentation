@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Message
+
+=== Properties
+
+
+
+.channel: string;
+Optional (alphanumeric) channel name
+
+
+.data: Map<string,Object>;
+Data to be sent
+
+
+.source: string;
+User key of the message sender
+
+
+.target: ListOrSingle<string>;
+Target user or group. Can be either a string, an array of string or an object that contains an array of string. The 'target' property of the output message will have exactly the same form.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Message {
+
+  /**
+   * Optional (alphanumeric) channel name
+   */
+  channel: string;
+
+  /**
+   * Data to be sent
+   */
+  data: Map<string,Object>;
+
+  /**
+   * User key of the message sender
+   */
+  source: string;
+
+  /**
+   * Target user or group. Can be either a string, an array of string or an object that contains an array of string. The 'target' property of the output message will have exactly the same form.
+   */
+  target: ListOrSingle<string>;
+
+}
+----

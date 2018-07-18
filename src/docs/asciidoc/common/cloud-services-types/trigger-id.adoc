@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TriggerId
+
+=== Properties
+
+
+
+.event: string;
+Event name
+
+
+.name: string;
+Listener name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TriggerId {
+
+  /**
+   * Event name
+   */
+  event: string;
+
+  /**
+   * Listener name
+   */
+  name: string;
+
+}
+----

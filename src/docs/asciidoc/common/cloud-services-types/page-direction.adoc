@@ -1,0 +1,23 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== PageDirection
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum PageDirection {
+
+  /**
+   * Descending order
+   */
+  DESC = "DESC";
+
+  /**
+   * Ascending order
+   */
+  ASC = "ASC";
+
+}
+----

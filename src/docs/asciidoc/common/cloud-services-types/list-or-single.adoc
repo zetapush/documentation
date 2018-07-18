@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ListOrSingle
+
+=== Properties
+
+
+
+.values: string[];
+The list of values
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ListOrSingle {
+
+  /**
+   * The list of values
+   */
+  values: string[];
+
+}
+----

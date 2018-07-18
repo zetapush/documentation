@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugFrameVariable
+
+=== Properties
+
+
+
+.name: string;
+Variable name
+
+
+.type: string;
+Variable type
+
+
+.value: MacroDebugFrameValue;
+Variable value
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugFrameVariable {
+
+  /**
+   * Variable name
+   */
+  name: string;
+
+  /**
+   * Variable type
+   */
+  type: string;
+
+  /**
+   * Variable value
+   */
+  value: MacroDebugFrameValue;
+
+}
+----

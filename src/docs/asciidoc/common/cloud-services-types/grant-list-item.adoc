@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GrantListItem
+
+=== Properties
+
+
+
+.action: string;
+Configured authorized action
+
+
+.resource: string;
+Configured authorized resource
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GrantListItem {
+
+  /**
+   * Configured authorized action
+   */
+  action: string;
+
+  /**
+   * Configured authorized resource
+   */
+  resource: string;
+
+}
+----

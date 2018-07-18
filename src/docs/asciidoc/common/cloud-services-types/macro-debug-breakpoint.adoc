@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugBreakpoint
+
+=== Properties
+
+
+
+.line: int;
+Line number inside the source file
+
+
+.location: string;
+Source file information
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugBreakpoint {
+
+  /**
+   * Line number inside the source file
+   */
+  line: int;
+
+  /**
+   * Source file information
+   */
+  location: string;
+
+}
+----

@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroLocalFunction
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.f: MacroFunction;
+Function definition
+
+
+.line: int;
+Line number in source file
+
+
+.var: string;
+Function local name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroLocalFunction {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Function definition
+   */
+  f: MacroFunction;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * Function local name
+   */
+  var: string;
+
+}
+----

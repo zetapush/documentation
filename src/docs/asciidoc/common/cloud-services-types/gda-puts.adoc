@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaPuts
+
+=== Properties
+
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.rows: GdaPutsRow[];
+Rows to be inserted
+
+
+.table: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaPuts {
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Rows to be inserted
+   */
+  rows: GdaPutsRow[];
+
+  /**
+   * Table name
+   */
+  table: string;
+
+}
+----

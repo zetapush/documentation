@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaColumnSpec
+
+=== Properties
+
+
+
+.column: string;
+Mandatory column name
+
+
+.key2: string[];
+Optional list of cell names
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaColumnSpec {
+
+  /**
+   * Mandatory column name
+   */
+  column: string;
+
+  /**
+   * Optional list of cell names
+   */
+  key2: string[];
+
+}
+----

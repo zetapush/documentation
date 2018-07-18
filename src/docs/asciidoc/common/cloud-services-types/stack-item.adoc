@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== StackItem
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Stored data
+
+
+.guid: byte[];
+Server-generated GUID
+
+
+.ts: long;
+Insertion timestamp
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface StackItem {
+
+  /**
+   * Stored data
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Server-generated GUID
+   */
+  guid: byte[];
+
+  /**
+   * Insertion timestamp
+   */
+  ts: long;
+
+}
+----

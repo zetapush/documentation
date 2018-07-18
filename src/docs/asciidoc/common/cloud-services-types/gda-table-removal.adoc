@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaTableRemoval
+
+=== Properties
+
+
+
+.name: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaTableRemoval {
+
+  /**
+   * Table name
+   */
+  name: string;
+
+}
+----

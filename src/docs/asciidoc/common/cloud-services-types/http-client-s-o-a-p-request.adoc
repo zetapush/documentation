@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientSOAPRequest
+
+=== Properties
+
+
+
+.content: Object;
+Request body. String (passed as is) or complex object (serialized to json)
+
+
+.headers: HttpClientHeader[];
+Headers to be sent
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.requestWrapperNamespace: string;
+Use when the xml root type does not declare any namespace, but does need it
+
+
+.soapAction: string;
+SOAP action, as defined in the WSDL, for inclusion in the generated request headers
+
+
+.soapFaults: SoapFaultDefinition[];
+List of possible soap fault classes for this request
+
+
+.soapHeaders: Object[];
+Soap headers : the content of &lt;soapenv:Header&gt;
+
+
+.typeDefinition: MacroTypeDefinition;
+Type reference, as returned in ZMS by 'YourClassName.class' 
+
+
+.url: string;
+Remote URL. a literal string
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientSOAPRequest {
+
+  /**
+   * Request body. String (passed as is) or complex object (serialized to json)
+   */
+  content: Object;
+
+  /**
+   * Headers to be sent
+   */
+  headers: HttpClientHeader[];
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Use when the xml root type does not declare any namespace, but does need it
+   */
+  requestWrapperNamespace: string;
+
+  /**
+   * SOAP action, as defined in the WSDL, for inclusion in the generated request headers
+   */
+  soapAction: string;
+
+  /**
+   * List of possible soap fault classes for this request
+   */
+  soapFaults: SoapFaultDefinition[];
+
+  /**
+   * Soap headers : the content of &lt;soapenv:Header&gt;
+   */
+  soapHeaders: Object[];
+
+  /**
+   * Type reference, as returned in ZMS by 'YourClassName.class' 
+   */
+  typeDefinition: MacroTypeDefinition;
+
+  /**
+   * Remote URL. a literal string
+   */
+  url: string;
+
+}
+----

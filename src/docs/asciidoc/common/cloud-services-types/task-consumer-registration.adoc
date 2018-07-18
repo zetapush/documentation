@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TaskConsumerRegistration
+
+=== Properties
+
+
+
+.capacity: int;
+Task consumer maximum capacity at a given time. The server will not exceed that capacity when dispatching new tasks
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TaskConsumerRegistration {
+
+  /**
+   * Task consumer maximum capacity at a given time. The server will not exceed that capacity when dispatching new tasks
+   */
+  capacity: int;
+
+}
+----

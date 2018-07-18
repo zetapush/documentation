@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaTableStructure
+
+=== Properties
+
+
+
+.columns: GdaTableColumn[];
+List of column specifications
+
+
+.name: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaTableStructure {
+
+  /**
+   * List of column specifications
+   */
+  columns: GdaTableColumn[];
+
+  /**
+   * Table name
+   */
+  name: string;
+
+}
+----

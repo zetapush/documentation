@@ -1,0 +1,93 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Macro
+
+User API for macro execution
+
+Simple errors are reported as usual.
+However, the macro execution verbs treat most errors in a particular way : instead of reporting errors on the usual 'error' channel, errors are put in the returned 'MacroCompletion' result.
+This behavior can be tuned on a per-call basis with the hardFail parameter.
+Note that some particular errors will always behave as if hardFail were true, because they are related to programming errors, or prevent processing from ending gracefully : STACK_OVERFLOW, NO_SUCH_FUNCTION, RAM_EXCEEDED, CYCLES_EXCEEDED, TIME_EXCEEDED, QUOTA_EXCEEDED, RATE_EXCEEDED, BAD_COMPARATOR_VALUE
+
+
+=== call
+
+DO NOT use this verb from inside an enclosing macro when you need the result in order to proceed with the enclosing macro.
+You can override the default notification channel when defining the macro.
+
+.call(parameters: <<common/cloud-services-types/macro-play.adoc#,MacroPlay>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.macro.call(parameters);
+----
+
+=== evaluate
+
+
+
+.evaluate(parameters: <<common/cloud-services-types/macro-function-request.adoc#,MacroFunctionRequest>>): Promise<<<common/cloud-services-types/macro-function-result.adoc#,MacroFunctionResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.macro.evaluate(parameters);
+----
+
+=== func
+
+Use this verb when you want to synchronously call a macro from inside another macro.
+Despite being a server verb, func will honor the 'loud' modifier in ZMS.
+
+.func(parameters: <<common/cloud-services-types/macro-play.adoc#,MacroPlay>>): Promise<<<common/cloud-services-types/macro-completion.adoc#,MacroCompletion>>>
+
+[source,typescript,linenums]
+----
+const response = await this.macro.func(parameters);
+----
+
+=== sudo
+
+Use this verb when you do not want to use or cannot use the standard rights system and wish to bypass it completely.
+Use this verb sparingly, as it can give the caller any right on any resource.
+
+.sudo(parameters: <<common/cloud-services-types/su-macro-play.adoc#,SuMacroPlay>>): Promise<<<common/cloud-services-types/macro-completion.adoc#,MacroCompletion>>>
+
+[source,typescript,linenums]
+----
+const response = await this.macro.sudo(parameters);
+----
+
+=== getPublicHttpUrl
+
+
+
+.getPublicHttpUrl(parameters: <<common/cloud-services-types/.adoc#,undefined>>): Promise<<<common/cloud-services-types/macro-exec-base-url.adoc#,MacroExecBaseUrl>>>
+
+[source,typescript,linenums]
+----
+const response = await this.macro.getPublicHttpUrl(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Macro, MacroPlay } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private macro: Macro <2>
+  ) {}
+  async doStuff(parameters: MacroPlay) {
+    const response = await this.call(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Macro` from platform
+<2> Declare injected service
+<3> Call injected service

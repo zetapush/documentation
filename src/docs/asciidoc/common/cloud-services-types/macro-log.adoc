@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroLog
+
+=== Properties
+
+
+
+.data: Object;
+Data to be logged. The server will fail to produce an accurate result if the actual evaluated data is too big.
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroLog {
+
+  /**
+   * Data to be logged. The server will fail to produce an accurate result if the actual evaluated data is too big.
+   */
+  data: Object;
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+}
+----

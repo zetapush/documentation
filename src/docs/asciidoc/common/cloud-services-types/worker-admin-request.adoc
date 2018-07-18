@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkerAdminRequest
+
+=== Properties
+
+
+
+.deploymentId: string;
+Deployment ID of the target service
+
+
+.parameters: Object;
+Parameter (request body)
+
+
+.verb: string;
+Verb name inside the service
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkerAdminRequest {
+
+  /**
+   * Deployment ID of the target service
+   */
+  deploymentId: string;
+
+  /**
+   * Parameter (request body)
+   */
+  parameters: Object;
+
+  /**
+   * Verb name inside the service
+   */
+  verb: string;
+
+}
+----

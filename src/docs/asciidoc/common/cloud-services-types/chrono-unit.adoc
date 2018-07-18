@@ -1,0 +1,93 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ChronoUnit
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum ChronoUnit {
+
+  /**
+   * missing enum desc
+   */
+  SECONDS = "SECONDS";
+
+  /**
+   * missing enum desc
+   */
+  MICROS = "MICROS";
+
+  /**
+   * missing enum desc
+   */
+  FOREVER = "FOREVER";
+
+  /**
+   * missing enum desc
+   */
+  CENTURIES = "CENTURIES";
+
+  /**
+   * missing enum desc
+   */
+  MILLIS = "MILLIS";
+
+  /**
+   * missing enum desc
+   */
+  DAYS = "DAYS";
+
+  /**
+   * missing enum desc
+   */
+  HALF_DAYS = "HALF_DAYS";
+
+  /**
+   * missing enum desc
+   */
+  MONTHS = "MONTHS";
+
+  /**
+   * missing enum desc
+   */
+  WEEKS = "WEEKS";
+
+  /**
+   * missing enum desc
+   */
+  HOURS = "HOURS";
+
+  /**
+   * missing enum desc
+   */
+  NANOS = "NANOS";
+
+  /**
+   * missing enum desc
+   */
+  YEARS = "YEARS";
+
+  /**
+   * missing enum desc
+   */
+  DECADES = "DECADES";
+
+  /**
+   * missing enum desc
+   */
+  ERAS = "ERAS";
+
+  /**
+   * missing enum desc
+   */
+  MILLENNIA = "MILLENNIA";
+
+  /**
+   * missing enum desc
+   */
+  MINUTES = "MINUTES";
+
+}
+----

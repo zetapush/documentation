@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== NotifiableApplication
+
+=== Properties
+
+
+
+.appId: string;
+Application primary key, that you choose arbitrarily. If absent, it will default to the value of applicationName
+
+
+.applicationName: string;
+Application name, as registered in your vendor-specific management console
+
+
+.credential: string;
+Vendor-specific credential : 'private key' for APNS, 'API key' for GCM
+
+
+.platform: NotificationPlatform;
+Platform type
+
+
+.principal: string;
+Your vendor-specific principal : 'SSL certificate' (PEM format) for APNS, N/A for GCM
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface NotifiableApplication {
+
+  /**
+   * Application primary key, that you choose arbitrarily. If absent, it will default to the value of applicationName
+   */
+  appId: string;
+
+  /**
+   * Application name, as registered in your vendor-specific management console
+   */
+  applicationName: string;
+
+  /**
+   * Vendor-specific credential : 'private key' for APNS, 'API key' for GCM
+   */
+  credential: string;
+
+  /**
+   * Platform type
+   */
+  platform: NotificationPlatform;
+
+  /**
+   * Your vendor-specific principal : 'SSL certificate' (PEM format) for APNS, N/A for GCM
+   */
+  principal: string;
+
+}
+----

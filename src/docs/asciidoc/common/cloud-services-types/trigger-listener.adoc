@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TriggerListener
+
+=== Properties
+
+
+
+.deploymentId: string;
+DeploymentId of the target service.
+
+
+.loud: boolean;
+Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+
+
+.parameter: Map<string,Object>;
+Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+
+
+.trigger: TriggerId;
+Trigger info
+
+
+.verb: string;
+Verb to be called within the target service.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TriggerListener {
+
+  /**
+   * DeploymentId of the target service.
+   */
+  deploymentId: string;
+
+  /**
+   * Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+   */
+  loud: boolean;
+
+  /**
+   * Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+   */
+  parameter: Map<string,Object>;
+
+  /**
+   * Trigger info
+   */
+  trigger: TriggerId;
+
+  /**
+   * Verb to be called within the target service.
+   */
+  verb: string;
+
+}
+----

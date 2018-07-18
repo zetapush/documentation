@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Sendmail
+
+Mail service user API
+
+This service is statically configured with an outgoing SMTP server.
+Users call the API here to actually send emails.
+
+
+=== send
+
+Sends an email with the given body to the intended recipients.
+
+.send(parameters: <<common/cloud-services-types/email.adoc#,Email>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.sendmail.send(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Sendmail, Email } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private sendmail: Sendmail <2>
+  ) {}
+  async doStuff(parameters: Email) {
+    const response = await this.send(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Sendmail` from platform
+<2> Declare injected service
+<3> Call injected service

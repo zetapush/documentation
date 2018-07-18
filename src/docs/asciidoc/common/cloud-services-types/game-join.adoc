@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameJoin
+
+=== Properties
+
+
+
+.gameId: string;
+Server attributed game identifier
+
+
+.role: string;
+Optional role for the player. Meaning is game specific
+
+
+.userId: string;
+User unique key
+
+
+.userName: string;
+Player name inside the game
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameJoin {
+
+  /**
+   * Server attributed game identifier
+   */
+  gameId: string;
+
+  /**
+   * Optional role for the player. Meaning is game specific
+   */
+  role: string;
+
+  /**
+   * User unique key
+   */
+  userId: string;
+
+  /**
+   * Player name inside the game
+   */
+  userName: string;
+
+}
+----

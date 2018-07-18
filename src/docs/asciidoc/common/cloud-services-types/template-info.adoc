@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TemplateInfo
+
+=== Properties
+
+
+
+.languageTags: string[];
+List of languages for which a localization of the template exists
+
+
+.name: string;
+Template name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TemplateInfo {
+
+  /**
+   * List of languages for which a localization of the template exists
+   */
+  languageTags: string[];
+
+  /**
+   * Template name
+   */
+  name: string;
+
+}
+----

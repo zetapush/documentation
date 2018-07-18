@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ProvisioningRequest
+
+=== Properties
+
+
+
+.n: int;
+Number of accounts to create
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ProvisioningRequest {
+
+  /**
+   * Number of accounts to create
+   */
+  n: int;
+
+}
+----

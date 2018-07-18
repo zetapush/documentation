@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ZpfsFileHandler
+
+=== Properties
+
+
+
+.handle: Object;
+Opaque file handler, for use by 'read' calls.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ZpfsFileHandler {
+
+  /**
+   * Opaque file handler, for use by 'read' calls.
+   */
+  handle: Object;
+
+}
+----

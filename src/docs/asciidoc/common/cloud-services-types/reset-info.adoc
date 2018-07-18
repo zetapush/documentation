@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ResetInfo
+
+=== Properties
+
+
+
+.key: string;
+account key in the realm. (configured 'unique key' used for authentication)
+
+
+.token: string;
+Server-provided temporary token to reset a password
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ResetInfo {
+
+  /**
+   * account key in the realm. (configured 'unique key' used for authentication)
+   */
+  key: string;
+
+  /**
+   * Server-provided temporary token to reset a password
+   */
+  token: string;
+
+}
+----

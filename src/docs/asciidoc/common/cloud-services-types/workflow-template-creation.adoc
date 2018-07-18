@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTemplateCreation
+
+=== Properties
+
+
+
+.states: FullWorkflowStateDefinition[];
+All the possible states of this workflow
+
+
+.templateName: string;
+Unique template name
+
+
+.transitions: WorkflowTransitionDefinition[];
+All the transitions of this workflow
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTemplateCreation {
+
+  /**
+   * All the possible states of this workflow
+   */
+  states: FullWorkflowStateDefinition[];
+
+  /**
+   * Unique template name
+   */
+  templateName: string;
+
+  /**
+   * All the transitions of this workflow
+   */
+  transitions: WorkflowTransitionDefinition[];
+
+}
+----

@@ -1,0 +1,28 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogSinkType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum LogSinkType {
+
+  /**
+   * missing enum desc
+   */
+  TODO = "TODO";
+
+  /**
+   * missing enum desc
+   */
+  INTERNAL = "INTERNAL";
+
+  /**
+   * missing enum desc
+   */
+  REAL_TIME = "REAL_TIME";
+
+}
+----

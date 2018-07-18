@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserSearchConfig
+
+=== Properties
+
+
+
+.settings: Map<string,Object>;
+ElasticSearch index settings.
+
+
+.usersMapping: Map<string,Object>;
+ES mappings for the 'users' type
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserSearchConfig {
+
+  /**
+   * ElasticSearch index settings.
+   */
+  settings: Map<string,Object>;
+
+  /**
+   * ES mappings for the 'users' type
+   */
+  usersMapping: Map<string,Object>;
+
+}
+----

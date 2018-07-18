@@ -1,0 +1,33 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugStepType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum MacroDebugStepType {
+
+  /**
+   * Step over the next instruction
+   */
+  STEP_OVER = "STEP_OVER";
+
+  /**
+   * Resume execution
+   */
+  RESUME = "RESUME";
+
+  /**
+   * Terminate execution
+   */
+  TERMINATE = "TERMINATE";
+
+  /**
+   * Step into the next macrvo call
+   */
+  STEP_INTO = "STEP_INTO";
+
+}
+----

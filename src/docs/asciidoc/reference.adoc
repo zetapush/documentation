@@ -3,19 +3,29 @@ include::{docdir}/variables.adoc[]
 
 = Reference
 
+== Available cloud services
+
+include::{docdir}/common/cloud-services/cron.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/gda.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/groups.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/logs.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/messaging.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/notif.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/search.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/sendmail.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/sms-ovh.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/stack.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/template.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/trigger.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/userdir.adoc[leveloffset=+1]
+include::{docdir}/common/cloud-services/zpfs-hdfs.adoc[leveloffset=+1]
+
 == Command Line Interface
 
 include::{docdir}/common/cli/cli.adoc[leveloffset=+1]
 
 == Configuration
 include::{docdir}/common/configuration/configuration.adoc[leveloffset=+1]
-
-
-== ZetaPush Cloud Services
-
-.List of available cloud services
-include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+1]
-
 
 === User Management
 

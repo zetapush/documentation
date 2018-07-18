@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroCall
+
+=== Properties
+
+
+
+.deploymentId: string;
+DeploymentId of the service to be called
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+.loud: boolean;
+Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+
+
+.noExpand: boolean;
+Specifies whether parameter expansion should be avoided. The server will of course set this to true automatically if no refs are present. Defaults to false
+
+
+.parameter: Map<string,Object>;
+Parameter that will be passed to the verb. The format is the format expected by the target verb, with the following exception : any field can be replaced by a placeholder. A placeholder is an object with a '__ref' field. The value of the ref field follows java EL syntax with some pre-defined objects and functions (see the documentation on macros)
+
+
+.resultName: string;
+Name of the result, for future reference
+
+
+.suKey: string;
+Key of the impersonated user
+
+
+.verb: string;
+Verb to be called inside the specified service
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroCall {
+
+  /**
+   * DeploymentId of the service to be called
+   */
+  deploymentId: string;
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+   */
+  loud: boolean;
+
+  /**
+   * Specifies whether parameter expansion should be avoided. The server will of course set this to true automatically if no refs are present. Defaults to false
+   */
+  noExpand: boolean;
+
+  /**
+   * Parameter that will be passed to the verb. The format is the format expected by the target verb, with the following exception : any field can be replaced by a placeholder. A placeholder is an object with a '__ref' field. The value of the ref field follows java EL syntax with some pre-defined objects and functions (see the documentation on macros)
+   */
+  parameter: Map<string,Object>;
+
+  /**
+   * Name of the result, for future reference
+   */
+  resultName: string;
+
+  /**
+   * Key of the impersonated user
+   */
+  suKey: string;
+
+  /**
+   * Verb to be called inside the specified service
+   */
+  verb: string;
+
+}
+----

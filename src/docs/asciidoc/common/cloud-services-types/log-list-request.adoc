@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogListRequest
+
+=== Properties
+
+
+
+.page: Pagination;
+undefined
+
+
+.start: long;
+undefined
+
+
+.stop: long;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface LogListRequest {
+
+  /**
+   * undefined
+   */
+  page: Pagination;
+
+  /**
+   * undefined
+   */
+  start: long;
+
+  /**
+   * undefined
+   */
+  stop: long;
+
+}
+----

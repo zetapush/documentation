@@ -1,0 +1,17 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== RdbmsResultSet
+
+=== Properties
+
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface RdbmsResultSet {
+
+}
+----

@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameRunnerRegistration
+
+=== Properties
+
+
+
+.gameInfo: GameInfo;
+Game Type information
+
+
+.location: GameRunnerFullLocation;
+Location of the engine. The server will fill it if left null.
+
+
+.maxGames: int;
+Maximum number of simultaneous games that the registering runner can handle
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameRunnerRegistration {
+
+  /**
+   * Game Type information
+   */
+  gameInfo: GameInfo;
+
+  /**
+   * Location of the engine. The server will fill it if left null.
+   */
+  location: GameRunnerFullLocation;
+
+  /**
+   * Maximum number of simultaneous games that the registering runner can handle
+   */
+  maxGames: int;
+
+}
+----

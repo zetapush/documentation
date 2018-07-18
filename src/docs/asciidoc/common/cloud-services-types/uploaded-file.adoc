@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UploadedFile
+
+=== Properties
+
+
+
+.contentType: string;
+File mime type
+
+
+.guid: string;
+File GUID
+
+
+.hash: string;
+File hash
+
+
+.meta: Map<string,Object>;
+Metadata, as originally uploaded
+
+
+.path: string;
+File path
+
+
+.size: long;
+File size
+
+
+.url: string;
+HTTP url
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UploadedFile {
+
+  /**
+   * File mime type
+   */
+  contentType: string;
+
+  /**
+   * File GUID
+   */
+  guid: string;
+
+  /**
+   * File hash
+   */
+  hash: string;
+
+  /**
+   * Metadata, as originally uploaded
+   */
+  meta: Map<string,Object>;
+
+  /**
+   * File path
+   */
+  path: string;
+
+  /**
+   * File size
+   */
+  size: long;
+
+  /**
+   * HTTP url
+   */
+  url: string;
+
+}
+----

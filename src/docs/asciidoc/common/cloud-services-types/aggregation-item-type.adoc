@@ -1,0 +1,23 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== AggregationItemType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum AggregationItemType {
+
+  /**
+   * Averages the item over the period (floating point values).
+   */
+  MEAN = "MEAN";
+
+  /**
+   * Sums the item over the period (integral values only).
+   */
+  TOTAL = "TOTAL";
+
+}
+----

@@ -1,0 +1,89 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ProvisioningTaskRequest
+
+=== Properties
+
+
+
+.contextId: string;
+STR-generated context ID. Used for traceability of client requests.
+
+
+.data: ProvisioningCall;
+Task parameters. Specific for each consumer/producer contract
+
+
+.description: string;
+Task description
+
+
+.originBusinessId: string;
+BusinessId of the service which the task is from
+
+
+.originDeploymentId: string;
+DeploymentId of the service which the task is from
+
+
+.originator: OwnerResource;
+Request submitter
+
+
+.owner: string;
+When impersonating someone, use this field to differentiate from originator.owner
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ProvisioningTaskRequest {
+
+  /**
+   * STR-generated context ID. Used for traceability of client requests.
+   */
+  contextId: string;
+
+  /**
+   * Task parameters. Specific for each consumer/producer contract
+   */
+  data: ProvisioningCall;
+
+  /**
+   * Task description
+   */
+  description: string;
+
+  /**
+   * BusinessId of the service which the task is from
+   */
+  originBusinessId: string;
+
+  /**
+   * DeploymentId of the service which the task is from
+   */
+  originDeploymentId: string;
+
+  /**
+   * Request submitter
+   */
+  originator: OwnerResource;
+
+  /**
+   * When impersonating someone, use this field to differentiate from originator.owner
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+}
+----

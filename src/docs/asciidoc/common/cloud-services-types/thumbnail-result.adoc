@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ThumbnailResult
+
+=== Properties
+
+
+
+.baseFile: UploadedFile;
+The file used as base for generating thumbnails
+
+
+.failed: ZetaApiError[];
+Generated thumbnails
+
+
+.thumbnails: Thumbnail[];
+Generated thumbnails
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ThumbnailResult {
+
+  /**
+   * The file used as base for generating thumbnails
+   */
+  baseFile: UploadedFile;
+
+  /**
+   * Generated thumbnails
+   */
+  failed: ZetaApiError[];
+
+  /**
+   * Generated thumbnails
+   */
+  thumbnails: Thumbnail[];
+
+}
+----

@@ -1,0 +1,220 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Zpfs_hdfs
+
+User API for local file management
+
+User API for file content manipulation
+User API for virtual file management and http file upload
+This API contains all the verbs needed to browse, upload and remove files.
+Files are stored on a per-user basis: each user has his or her own whole virtual filesystem.
+Uploading a file is a 3-step process : request an upload URL, upload via HTTP, notify this service of completion.
+
+
+=== readToken
+
+Requests a token. This token can be used to retrieve a compressed folder via HTTP.
+
+.readToken(parameters: <<common/cloud-services-types/zpfs-request.adoc#,ZpfsRequest>>): Promise<<<common/cloud-services-types/zpfs-token.adoc#,ZpfsToken>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.readToken(parameters);
+----
+
+=== create
+
+Creates a file, writes content and closes the file as a single operation.
+Calling this verb is functionnally equivalent to successively calling 'newUploadUrl', posting the content and calling 'newFile'
+
+.create(parameters: <<common/cloud-services-types/file-creation-request.adoc#,FileCreationRequest>>): Promise<<<common/cloud-services-types/listing-entry-info.adoc#,ListingEntryInfo>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.create(parameters);
+----
+
+=== open
+
+Opens a file for reading.
+
+.open(parameters: <<common/cloud-services-types/zpfs-request.adoc#,ZpfsRequest>>): Promise<<<common/cloud-services-types/zpfs-file-handler.adoc#,ZpfsFileHandler>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.open(parameters);
+----
+
+=== link
+
+Links a file or folder to another location.
+May fail if the target location is not empty.
+
+.link(parameters: <<common/cloud-services-types/created-file.adoc#,CreatedFile>>): Promise<<<common/cloud-services-types/created-file.adoc#,CreatedFile>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.link(parameters);
+----
+
+=== stat
+
+Returns information about a single file.
+The entry field will be null if the path does not exist
+
+.stat(parameters: <<common/cloud-services-types/file-stat-request.adoc#,FileStatRequest>>): Promise<<<common/cloud-services-types/file-stat-result.adoc#,FileStatResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.stat(parameters);
+----
+
+=== cp
+
+Copies a file or folder (recursively) to a new location.
+May fail if the target location is not empty.
+
+.cp(parameters: <<common/cloud-services-types/created-file.adoc#,CreatedFile>>): Promise<<<common/cloud-services-types/created-file.adoc#,CreatedFile>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.cp(parameters);
+----
+
+=== ls
+
+Returns a paginated list of the folder's content.
+
+.ls(parameters: <<common/cloud-services-types/folder-listing-request.adoc#,FolderListingRequest>>): Promise<<<common/cloud-services-types/folder-listing.adoc#,FolderListing>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.ls(parameters);
+----
+
+=== mv
+
+Moves a file or folder (recursively) to a new location.
+May fail if the target location is not empty.
+
+.mv(parameters: <<common/cloud-services-types/created-file.adoc#,CreatedFile>>): Promise<<<common/cloud-services-types/created-file.adoc#,CreatedFile>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.mv(parameters);
+----
+
+=== snapshot
+
+Creates a new folder and then copies the given files inside
+
+.snapshot(parameters: <<common/cloud-services-types/snapshot-creation-request.adoc#,SnapshotCreationRequest>>): Promise<<<common/cloud-services-types/created-file.adoc#,CreatedFile>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.snapshot(parameters);
+----
+
+=== du
+
+Returns an recursively aggregated number of used bytes, starting at the given path.
+
+.du(parameters: <<common/cloud-services-types/zpfs-request.adoc#,ZpfsRequest>>): Promise<<<common/cloud-services-types/zpfs-disk-usage.adoc#,ZpfsDiskUsage>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.du(parameters);
+----
+
+=== rm
+
+Removes a file or folder (recursively).
+
+.rm(parameters: <<common/cloud-services-types/file-removal.adoc#,FileRemoval>>): Promise<<<common/cloud-services-types/file-removal.adoc#,FileRemoval>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.rm(parameters);
+----
+
+=== freeUploadUrl
+
+
+
+.freeUploadUrl(parameters: <<common/cloud-services-types/file-upload-request.adoc#,FileUploadRequest>>): Promise<<<common/cloud-services-types/file-upload-location.adoc#,FileUploadLocation>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.freeUploadUrl(parameters);
+----
+
+=== newUploadUrl
+
+Requests an HTTP upload URL.
+The URL contains temporary credentials (typically valid for a few minutes) and is meant for immediate use.
+
+.newUploadUrl(parameters: <<common/cloud-services-types/file-upload-request.adoc#,FileUploadRequest>>): Promise<<<common/cloud-services-types/file-upload-location.adoc#,FileUploadLocation>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.newUploadUrl(parameters);
+----
+
+=== updateMeta
+
+
+
+.updateMeta(parameters: <<common/cloud-services-types/file-meta-update.adoc#,FileMetaUpdate>>): Promise<<<common/cloud-services-types/listing-entry-info.adoc#,ListingEntryInfo>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.updateMeta(parameters);
+----
+
+=== newFile
+
+The client application calls this verb to notify that it's done uploading to the cloud.
+Calling that verb MAY trigger additional events such as thumbnail/metadata creation.
+
+.newFile(parameters: <<common/cloud-services-types/file-upload-complete.adoc#,FileUploadComplete>>): Promise<<<common/cloud-services-types/listing-entry-info.adoc#,ListingEntryInfo>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.newFile(parameters);
+----
+
+=== mkdir
+
+Creates a new folder.
+May fail if the target location is not empty.
+
+.mkdir(parameters: <<common/cloud-services-types/folder-creation-request.adoc#,FolderCreationRequest>>): Promise<<<common/cloud-services-types/created-file.adoc#,CreatedFile>>>
+
+[source,typescript,linenums]
+----
+const response = await this.zpfs_hdfs.mkdir(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private zpfs_hdfs: Zpfs_hdfs <2>
+  ) {}
+  async doStuff(parameters: ZpfsRequest) {
+    const response = await this.readToken(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Zpfs_hdfs` from platform
+<2> Declare injected service
+<3> Call injected service

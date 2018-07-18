@@ -1,0 +1,17 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugEvent
+
+=== Properties
+
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugEvent {
+
+}
+----

@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTransitionRequest
+
+=== Properties
+
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.to: string;
+Destination state
+
+
+.userData: Object;
+User data. When not null, used to update the user-data field of the workflow instance
+
+
+.workflow: string;
+Workflow ID, as returned by 'create'
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTransitionRequest {
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Destination state
+   */
+  to: string;
+
+  /**
+   * User data. When not null, used to update the user-data field of the workflow instance
+   */
+  userData: Object;
+
+  /**
+   * Workflow ID, as returned by 'create'
+   */
+  workflow: string;
+
+}
+----

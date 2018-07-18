@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserInfoRequest
+
+=== Properties
+
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.userKeys: Set[String];
+Set of user keys
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserInfoRequest {
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Set of user keys
+   */
+  userKeys: Set[String];
+
+}
+----

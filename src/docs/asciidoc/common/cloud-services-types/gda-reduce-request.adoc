@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaReduceRequest
+
+=== Properties
+
+
+
+.columns: GdaColumnSpec[];
+Optional column/cell specifications of the columns/cells to retrieve
+
+
+.function: Object;
+Computation function. The function must accept two parameters : the current value and the current row. The return value is ignored : the current value must be updated instead.
+
+
+.initialValue: Map<string,Object>;
+Initial value for the computation function. Example : {sum:0, mean:null}
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.page: Pagination;
+Pagination information
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.start: string;
+Start row key (inclusive)
+
+
+.stop: string;
+Stop row key (exclusive)
+
+
+.table: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaReduceRequest {
+
+  /**
+   * Optional column/cell specifications of the columns/cells to retrieve
+   */
+  columns: GdaColumnSpec[];
+
+  /**
+   * Computation function. The function must accept two parameters : the current value and the current row. The return value is ignored : the current value must be updated instead.
+   */
+  function: Object;
+
+  /**
+   * Initial value for the computation function. Example : {sum:0, mean:null}
+   */
+  initialValue: Map<string,Object>;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Pagination information
+   */
+  page: Pagination;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Start row key (inclusive)
+   */
+  start: string;
+
+  /**
+   * Stop row key (exclusive)
+   */
+  stop: string;
+
+  /**
+   * Table name
+   */
+  table: string;
+
+}
+----

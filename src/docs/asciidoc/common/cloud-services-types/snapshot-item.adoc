@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SnapshotItem
+
+=== Properties
+
+
+
+.caseInsensitive: boolean;
+Whether to taken case into account. Defaults to false : case is important
+
+
+.excludes: string[];
+Patterns for files that should be excluded. Used only when path is a folder. Exclusions have precedence over inclusions
+
+
+.includes: string[];
+Patterns for files that should be included. Used only when path is a folder
+
+
+.path: string;
+Path of the file to be included.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SnapshotItem {
+
+  /**
+   * Whether to taken case into account. Defaults to false : case is important
+   */
+  caseInsensitive: boolean;
+
+  /**
+   * Patterns for files that should be excluded. Used only when path is a folder. Exclusions have precedence over inclusions
+   */
+  excludes: string[];
+
+  /**
+   * Patterns for files that should be included. Used only when path is a folder
+   */
+  includes: string[];
+
+  /**
+   * Path of the file to be included.
+   */
+  path: string;
+
+}
+----

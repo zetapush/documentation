@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== DeviceAvailability
+
+=== Properties
+
+
+
+.action: string;
+Action for which the device's availability is tested
+
+
+.available: boolean;
+Whether the device is available or not
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.resource: string;
+Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+
+
+.uid: string;
+Session id of the answering device
+
+
+.user: string;
+User inquiring about availability
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface DeviceAvailability {
+
+  /**
+   * Action for which the device's availability is tested
+   */
+  action: string;
+
+  /**
+   * Whether the device is available or not
+   */
+  available: boolean;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+   */
+  resource: string;
+
+  /**
+   * Session id of the answering device
+   */
+  uid: string;
+
+  /**
+   * User inquiring about availability
+   */
+  user: string;
+
+}
+----

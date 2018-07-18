@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== StackItemAdd
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Stored data
+
+
+.guid: byte[];
+Key of this stack item
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.stack: string;
+Stack name.
+
+
+.ts: long;
+Insertion timestamp
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface StackItemAdd {
+
+  /**
+   * Stored data
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Key of this stack item
+   */
+  guid: byte[];
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Stack name.
+   */
+  stack: string;
+
+  /**
+   * Insertion timestamp
+   */
+  ts: long;
+
+}
+----

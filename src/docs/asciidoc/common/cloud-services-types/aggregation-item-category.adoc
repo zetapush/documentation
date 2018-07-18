@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== AggregationItemCategory
+
+=== Properties
+
+
+
+.category: string;
+Item category. Arbitrary developer-defined name.
+
+
+.deploymentId: string;
+DeploymentId of the target service.
+
+
+.loud: boolean;
+Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+
+
+.parameter: Map<string,Object>;
+Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+
+
+.periods: Integer[];
+Item periods, in minutes. Automatic aggregation by this service ensures that these will be the minimum visible granularities. Although you can specify arbitrary values, it is recommended, for easier auto-alignment of period boundaries, to use divisors of well known values : for example 30 (half an hour) is a lot better than 29.
+
+
+.type: AggregationItemType;
+Item type (aggregation behavior).
+
+
+.verb: string;
+Verb to be called within the target service.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface AggregationItemCategory {
+
+  /**
+   * Item category. Arbitrary developer-defined name.
+   */
+  category: string;
+
+  /**
+   * DeploymentId of the target service.
+   */
+  deploymentId: string;
+
+  /**
+   * Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+   */
+  loud: boolean;
+
+  /**
+   * Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+   */
+  parameter: Map<string,Object>;
+
+  /**
+   * Item periods, in minutes. Automatic aggregation by this service ensures that these will be the minimum visible granularities. Although you can specify arbitrary values, it is recommended, for easier auto-alignment of period boundaries, to use divisors of well known values : for example 30 (half an hour) is a lot better than 29.
+   */
+  periods: Integer[];
+
+  /**
+   * Item type (aggregation behavior).
+   */
+  type: AggregationItemType;
+
+  /**
+   * Verb to be called within the target service.
+   */
+  verb: string;
+
+}
+----

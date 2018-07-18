@@ -1,0 +1,23 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== FileType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum FileType {
+
+  /**
+   * Normal file
+   */
+  FILE = "FILE";
+
+  /**
+   * Directory. May contain other files.
+   */
+  DIR = "DIR";
+
+}
+----

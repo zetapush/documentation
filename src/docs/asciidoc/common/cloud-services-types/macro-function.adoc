@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroFunction
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+.name: string;
+Function name
+
+
+.parameters: MacroFunctionParam[];
+Function parameters
+
+
+.result: Object;
+Function result
+
+
+.source: string;
+source file
+
+
+.steps: MacroStep[];
+Sub steps, sequentially executed
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroFunction {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * Function name
+   */
+  name: string;
+
+  /**
+   * Function parameters
+   */
+  parameters: MacroFunctionParam[];
+
+  /**
+   * Function result
+   */
+  result: Object;
+
+  /**
+   * source file
+   */
+  source: string;
+
+  /**
+   * Sub steps, sequentially executed
+   */
+  steps: MacroStep[];
+
+}
+----

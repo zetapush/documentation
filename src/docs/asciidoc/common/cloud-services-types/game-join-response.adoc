@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameJoinResponse
+
+=== Properties
+
+
+
+.callerId: string;
+caller ID from the original request
+
+
+.error: string;
+error message
+
+
+.msgId: string;
+unique ID for this message, matching the request ID
+
+
+.payload: GameJoin;
+response payload
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameJoinResponse {
+
+  /**
+   * caller ID from the original request
+   */
+  callerId: string;
+
+  /**
+   * error message
+   */
+  error: string;
+
+  /**
+   * unique ID for this message, matching the request ID
+   */
+  msgId: string;
+
+  /**
+   * response payload
+   */
+  payload: GameJoin;
+
+}
+----

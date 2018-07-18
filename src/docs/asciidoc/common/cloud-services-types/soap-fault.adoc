@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SoapFault
+
+=== Properties
+
+
+
+.detail: Object[];
+undefined
+
+
+.faultcode: string;
+undefined
+
+
+.faultstring: string;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SoapFault {
+
+  /**
+   * undefined
+   */
+  detail: Object[];
+
+  /**
+   * undefined
+   */
+  faultcode: string;
+
+  /**
+   * undefined
+   */
+  faultstring: string;
+
+}
+----

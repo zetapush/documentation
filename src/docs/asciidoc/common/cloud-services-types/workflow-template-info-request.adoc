@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTemplateInfoRequest
+
+=== Properties
+
+
+
+.templateName: string;
+Template name, as created with 'createTemplate'
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTemplateInfoRequest {
+
+  /**
+   * Template name, as created with 'createTemplate'
+   */
+  templateName: string;
+
+}
+----

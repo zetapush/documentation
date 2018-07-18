@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameOrganization
+
+=== Properties
+
+
+
+.gameId: string;
+Game identifier
+
+
+.options: Map<string,Object>;
+Game creation options
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.type: GameType;
+Game type
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameOrganization {
+
+  /**
+   * Game identifier
+   */
+  gameId: string;
+
+  /**
+   * Game creation options
+   */
+  options: Map<string,Object>;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Game type
+   */
+  type: GameType;
+
+}
+----

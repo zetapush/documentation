@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroUploadReport
+
+=== Properties
+
+
+
+.functions: string[];
+List of successfully uploaded function names
+
+
+.macros: string[];
+List of successfully uploaded macro names
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroUploadReport {
+
+  /**
+   * List of successfully uploaded function names
+   */
+  functions: string[];
+
+  /**
+   * List of successfully uploaded macro names
+   */
+  macros: string[];
+
+}
+----

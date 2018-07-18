@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== BasicAuthenticatedUser
+
+=== Properties
+
+
+
+.additionalProperties: Map<string,Object>;
+You can pass any number of arbitrary properties in the enclosing object (there is no field actually named additionalProperties). 
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface BasicAuthenticatedUser {
+
+  /**
+   * You can pass any number of arbitrary properties in the enclosing object (there is no field actually named additionalProperties). 
+   */
+  additionalProperties: Map<string,Object>;
+
+}
+----

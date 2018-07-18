@@ -1,0 +1,23 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Type
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum Type {
+
+  /**
+   * missing enum desc
+   */
+  BREAK = "BREAK";
+
+  /**
+   * missing enum desc
+   */
+  CONTINUE = "CONTINUE";
+
+}
+----

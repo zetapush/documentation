@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Thumbnail
+
+=== Properties
+
+
+
+.guid: string;
+The unique identifier of the thumbnail
+
+
+.name: string;
+The name of the thumbnail
+
+
+.size: string;
+The size of the thumbnail
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Thumbnail {
+
+  /**
+   * The unique identifier of the thumbnail
+   */
+  guid: string;
+
+  /**
+   * The name of the thumbnail
+   */
+  name: string;
+
+  /**
+   * The size of the thumbnail
+   */
+  size: string;
+
+}
+----

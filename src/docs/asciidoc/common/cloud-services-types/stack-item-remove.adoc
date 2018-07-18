@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== StackItemRemove
+
+=== Properties
+
+
+
+.guids: byte[][];
+List of keys of the items to be removed
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.stack: string;
+Stack name.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface StackItemRemove {
+
+  /**
+   * List of keys of the items to be removed
+   */
+  guids: byte[][];
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Stack name.
+   */
+  stack: string;
+
+}
+----

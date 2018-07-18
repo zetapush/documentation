@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientTemplate
+
+=== Properties
+
+
+
+.content: Object;
+Request body. String (passed as is) or complex object (serialized to json)
+
+
+.headers: HttpClientHeader[];
+Headers to be sent
+
+
+.method: string;
+HTTP method
+
+
+.name: string;
+Name of the request template (primary key)
+
+
+.parseMode: HttpClientParseMode;
+How to parse the response content
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.url: string;
+Remote URL. a literal string
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientTemplate {
+
+  /**
+   * Request body. String (passed as is) or complex object (serialized to json)
+   */
+  content: Object;
+
+  /**
+   * Headers to be sent
+   */
+  headers: HttpClientHeader[];
+
+  /**
+   * HTTP method
+   */
+  method: string;
+
+  /**
+   * Name of the request template (primary key)
+   */
+  name: string;
+
+  /**
+   * How to parse the response content
+   */
+  parseMode: HttpClientParseMode;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Remote URL. a literal string
+   */
+  url: string;
+
+}
+----

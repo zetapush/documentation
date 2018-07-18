@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== DeployedItem
+
+=== Properties
+
+
+
+.businessId: string;
+undefined
+
+
+.deploymentId: string;
+undefined
+
+
+.description: string;
+undefined
+
+
+.enabled: boolean;
+undefined
+
+
+.forbiddenVerbs: Set[String];
+undefined
+
+
+.itemId: string;
+undefined
+
+
+.options: Map<string,string>;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface DeployedItem {
+
+  /**
+   * undefined
+   */
+  businessId: string;
+
+  /**
+   * undefined
+   */
+  deploymentId: string;
+
+  /**
+   * undefined
+   */
+  description: string;
+
+  /**
+   * undefined
+   */
+  enabled: boolean;
+
+  /**
+   * undefined
+   */
+  forbiddenVerbs: Set[String];
+
+  /**
+   * undefined
+   */
+  itemId: string;
+
+  /**
+   * undefined
+   */
+  options: Map<string,string>;
+
+}
+----

@@ -1,0 +1,125 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroInfo
+
+=== Properties
+
+
+
+.broadcast: boolean;
+Whether to broadcast to all the user's sessions, or just to the asking session. Defaults to false (request-response paradigm).
+
+
+.channel: string;
+Optional return channel. Defaults to completed
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+.name: string;
+Macro name
+
+
+.params: MacroScriptParam[];
+Optional parameter specifications
+
+
+.result: Map<string,Object>;
+Optional macro result
+
+
+.returned: MacroScriptParam[];
+Optional output field specifications
+
+
+.source: string;
+source file (for debug)
+
+
+.steps: MacroStep[];
+Sub steps, sequentially executed
+
+
+.target: Object;
+Target for the response (the syntax is the same as in messaging.send). Overrides 'broadcast' when set.
+
+
+.userKey: string;
+Setting this field effectively overrides the __userKey pseudo-constant for the duration of the macro. All non-sudoed internal calls will behave as if sudoed with the given user key. When this field is set, there is not point in calling this macro with sudo
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroInfo {
+
+  /**
+   * Whether to broadcast to all the user's sessions, or just to the asking session. Defaults to false (request-response paradigm).
+   */
+  broadcast: boolean;
+
+  /**
+   * Optional return channel. Defaults to completed
+   */
+  channel: string;
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * Macro name
+   */
+  name: string;
+
+  /**
+   * Optional parameter specifications
+   */
+  params: MacroScriptParam[];
+
+  /**
+   * Optional macro result
+   */
+  result: Map<string,Object>;
+
+  /**
+   * Optional output field specifications
+   */
+  returned: MacroScriptParam[];
+
+  /**
+   * source file (for debug)
+   */
+  source: string;
+
+  /**
+   * Sub steps, sequentially executed
+   */
+  steps: MacroStep[];
+
+  /**
+   * Target for the response (the syntax is the same as in messaging.send). Overrides 'broadcast' when set.
+   */
+  target: Object;
+
+  /**
+   * Setting this field effectively overrides the __userKey pseudo-constant for the duration of the macro. All non-sudoed internal calls will behave as if sudoed with the given user key. When this field is set, there is not point in calling this macro with sudo
+   */
+  userKey: string;
+
+}
+----

@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== PageContent
+
+=== Properties
+
+
+
+.content: List;
+Content
+
+
+.page: Pagination;
+Pagination information
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface PageContent {
+
+  /**
+   * Content
+   */
+  content: List;
+
+  /**
+   * Pagination information
+   */
+  page: Pagination;
+
+}
+----

@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GamePlay
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Game-specific data
+
+
+.gameId: string;
+Server attributed game identifier
+
+
+.userId: string;
+User unique key
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GamePlay {
+
+  /**
+   * Game-specific data
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Server attributed game identifier
+   */
+  gameId: string;
+
+  /**
+   * User unique key
+   */
+  userId: string;
+
+}
+----

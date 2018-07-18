@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Trigger
+
+Trigger service
+
+Register listeners and trigger events.
+
+
+=== trigger
+
+Triggers an event.
+All listeners previously registered for that event will be called, in no particular order.
+
+.trigger(parameters: <<common/cloud-services-types/event-trigger.adoc#,EventTrigger>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.trigger.trigger(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Trigger, EventTrigger } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private trigger: Trigger <2>
+  ) {}
+  async doStuff(parameters: EventTrigger) {
+    const response = await this.trigger(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Trigger` from platform
+<2> Declare injected service
+<3> Call injected service

@@ -1,0 +1,85 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Cron
+
+User API for the Scheduler
+
+User endpoints for scheduling : users can schedule, list and delete tasks.
+Tasks are stored on a per-user basis: a task will run with the priviledges of the user who stored it.
+Tasks are run on the server and thus can call api verbs marked as server-only.
+
+
+=== schedule
+
+Schedules a task for later execution. Tasks are executed asynchronously with the identity of the calling user.
+Tasks will be executed at a fixed moment in time in the future, or repeatedly, with minute precision.
+If a task already exists with the same cronName (a cronName is unique for a given user), this new task completely replaces it.
+A task can be scheduled with a cron-like syntax for repetitive or one-shot execution.
+Wildcards are not allowed for minutes and hours.
+When scheduling for one-shot execution, the time must be at least two minutes into the future.
+
+.schedule(parameters: <<common/cloud-services-types/cron-task-request.adoc#,CronTaskRequest>>): Promise<<<common/cloud-services-types/cron-task-request.adoc#,CronTaskRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.cron.schedule(parameters);
+----
+
+=== setTimeout
+
+Schedules a task for later execution. Tasks are executed asynchronously with the identity of the calling user.
+Tasks will be executed with second precision in the near future (120 seconds delay max).
+
+.setTimeout(parameters: <<common/cloud-services-types/timer-request.adoc#,TimerRequest>>): Promise<<<common/cloud-services-types/timer-result.adoc#,TimerResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.cron.setTimeout(parameters);
+----
+
+=== unschedule
+
+Removes a previously scheduled task.
+Does absolutely nothing if asked to remove a non-existent task.
+
+.unschedule(parameters: <<common/cloud-services-types/cron-task-deletion.adoc#,CronTaskDeletion>>): Promise<<<common/cloud-services-types/cron-task-deletion.adoc#,CronTaskDeletion>>>
+
+[source,typescript,linenums]
+----
+const response = await this.cron.unschedule(parameters);
+----
+
+=== list
+
+Returns a paginated list of the asking user's tasks.
+
+.list(parameters: <<common/cloud-services-types/cron-task-list-request.adoc#,CronTaskListRequest>>): Promise<<<common/cloud-services-types/cron-planning.adoc#,CronPlanning>>>
+
+[source,typescript,linenums]
+----
+const response = await this.cron.list(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Cron, CronTaskRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private cron: Cron <2>
+  ) {}
+  async doStuff(parameters: CronTaskRequest) {
+    const response = await this.schedule(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Cron` from platform
+<2> Declare injected service
+<3> Call injected service

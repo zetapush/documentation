@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Userdir
+
+User API for user information
+
+
+
+=== userInfo
+
+
+
+.userInfo(parameters: <<common/cloud-services-types/user-info-request.adoc#,UserInfoRequest>>): Promise<<<common/cloud-services-types/user-info-response.adoc#,UserInfoResponse>>>
+
+[source,typescript,linenums]
+----
+const response = await this.userdir.userInfo(parameters);
+----
+
+=== search
+
+
+
+.search(parameters: <<common/cloud-services-types/user-search-request.adoc#,UserSearchRequest>>): Promise<<<common/cloud-services-types/user-search-response.adoc#,UserSearchResponse>>>
+
+[source,typescript,linenums]
+----
+const response = await this.userdir.search(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Userdir, UserInfoRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private userdir: Userdir <2>
+  ) {}
+  async doStuff(parameters: UserInfoRequest) {
+    const response = await this.userInfo(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Userdir` from platform
+<2> Declare injected service
+<3> Call injected service
