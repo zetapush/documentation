@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Groups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+            <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_groups">Groups</a>
+<ul class="sectlevel2">
+<li><a href="#_grant">grant</a></li>
+<li><a href="#_creategroup">createGroup</a></li>
+<li><a href="#_listownedgroups">listOwnedGroups</a></li>
+<li><a href="#_listdetailedownedgroups">listDetailedOwnedGroups</a></li>
+<li><a href="#_mygroups">myGroups</a></li>
+<li><a href="#_listjoinedgroups">listJoinedGroups</a></li>
+<li><a href="#_delgroup">delGroup</a></li>
+<li><a href="#_addme">addMe</a></li>
+<li><a href="#_memberof">memberOf</a></li>
+<li><a href="#_addusers">addUsers</a></li>
+<li><a href="#_delusers">delUsers</a></li>
+<li><a href="#_mgrant">mgrant</a></li>
+<li><a href="#_mrevoke">mrevoke</a></li>
+<li><a href="#_listgrants">listGrants</a></li>
+<li><a href="#_listgroupgrants">listGroupGrants</a></li>
+<li><a href="#_listpresences">listPresences</a></li>
+<li><a href="#_listgrouppresences">listGroupPresences</a></li>
+<li><a href="#_adduser">addUser</a></li>
+<li><a href="#_deluser">delUser</a></li>
+<li><a href="#_groupusers">groupUsers</a></li>
+<li><a href="#_revoke">revoke</a></li>
+<li><a href="#_allgroups">allGroups</a></li>
+<li><a href="#_groups_2">groups</a></li>
+<li><a href="#_check">check</a></li>
+<li><a href="#_exists">exists</a></li>
+<li><a href="#_how_to_use_it">How to use it ?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_groups"><a class="anchor" href="#_groups"></a>Groups</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User API for groups and rights.</p>
+</div>
+<div class="paragraph">
+<p>Groups are stored per user.
+This means that two users can own a group with the same identifier. A couple (owner, group) is needed to uniquely identify a group inside a group management service.
+The triplet (deploymentId, owner, group) is actually needed to fully qualify a group outside of the scope of this service.</p>
+</div>
+<div class="sect2">
+<h3 id="_grant"><a class="anchor" href="#_grant"></a>grant</h3>
+<div class="paragraph">
+<p>The granting API does not do any check when storing permissions.
+In particular when granting rights on a verb and resource of another API, the existence of said verb and resource is not checked.</p>
+</div>
+<div class="listingblock">
+<div class="title">grant(parameters: <a href="../../common/cloud-services-types/grant.html">Grant</a>): Promise&lt;<a href="../../common/cloud-services-types/grant.html">Grant</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.grant(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creategroup"><a class="anchor" href="#_creategroup"></a>createGroup</h3>
+<div class="paragraph">
+<p>Creates a group owned by the current user.
+Group creation may fail if the group already exists.</p>
+</div>
+<div class="listingblock">
+<div class="title">createGroup(parameters: <a href="../../common/cloud-services-types/group-info.html">GroupInfo</a>): Promise&lt;<a href="../../common/cloud-services-types/group-info.html">GroupInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.createGroup(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listownedgroups"><a class="anchor" href="#_listownedgroups"></a>listOwnedGroups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user</p>
+</div>
+<div class="listingblock">
+<div class="title">listOwnedGroups(parameters: <a href="../../common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/owned-groups.html">OwnedGroups</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listOwnedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listdetailedownedgroups"><a class="anchor" href="#_listdetailedownedgroups"></a>listDetailedOwnedGroups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user, with their members</p>
+</div>
+<div class="listingblock">
+<div class="title">listDetailedOwnedGroups(parameters: <a href="../../common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/owned-groups-with-details.html">OwnedGroupsWithDetails</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listDetailedOwnedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mygroups"><a class="anchor" href="#_mygroups"></a>myGroups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.</p>
+</div>
+<div class="listingblock">
+<div class="title">myGroups(parameters: <a href="../../common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/group-info.html">GroupInfo</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.myGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listjoinedgroups"><a class="anchor" href="#_listjoinedgroups"></a>listJoinedGroups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.</p>
+</div>
+<div class="listingblock">
+<div class="title">listJoinedGroups(parameters: <a href="../../common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/joined-groups.html">JoinedGroups</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listJoinedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delgroup"><a class="anchor" href="#_delgroup"></a>delGroup</h3>
+<div class="paragraph">
+<p>Removes the given group owned by the current user or the given owner.
+Also removes all grants to that group.</p>
+</div>
+<div class="listingblock">
+<div class="title">delGroup(parameters: <a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delGroup(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_addme"><a class="anchor" href="#_addme"></a>addMe</h3>
+<div class="paragraph">
+<p>Adds me (the caller) to a group.
+This verb exists so that group owners may grant the right to join their groups without granting the right to add other users to those groups.
+The 'user' field is implicitly set to the current user&#8217;s key.</p>
+</div>
+<div class="listingblock">
+<div class="title">addMe(parameters: <a href="../../common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="../../common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addMe(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_memberof"><a class="anchor" href="#_memberof"></a>memberOf</h3>
+<div class="paragraph">
+<p>Tests whether I (the caller) am a member of the given group.
+This verb exists so that users can determine if they are part of a group without being granted particular rights.
+The 'user' field is implicitly set to the current user&#8217;s key.</p>
+</div>
+<div class="listingblock">
+<div class="title">memberOf(parameters: <a href="../../common/cloud-services-types/user-membership.html">UserMembership</a>): Promise&lt;<a href="../../common/cloud-services-types/user-group-membership.html">UserGroupMembership</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.memberOf(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_addusers"><a class="anchor" href="#_addusers"></a>addUsers</h3>
+<div class="paragraph">
+<p>Users are processed in the given order
+In case of failure in the middle of a user list, this verb may have succeeded to add the first users, but will not continue processing the end of the list.</p>
+</div>
+<div class="listingblock">
+<div class="title">addUsers(parameters: <a href="../../common/cloud-services-types/group-users.html">GroupUsers</a>): Promise&lt;<a href="../../common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delusers"><a class="anchor" href="#_delusers"></a>delUsers</h3>
+<div class="listingblock">
+<div class="title">delUsers(parameters: <a href="../../common/cloud-services-types/group-users.html">GroupUsers</a>): Promise&lt;<a href="../../common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mgrant"><a class="anchor" href="#_mgrant"></a>mgrant</h3>
+<div class="paragraph">
+<p>Grant several rights at once.</p>
+</div>
+<div class="listingblock">
+<div class="title">mgrant(parameters: <a href="../../common/cloud-services-types/grants.html">Grants</a>): Promise&lt;<a href="../../common/cloud-services-types/grants.html">Grants</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.mgrant(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mrevoke"><a class="anchor" href="#_mrevoke"></a>mrevoke</h3>
+<div class="listingblock">
+<div class="title">mrevoke(parameters: <a href="../../common/cloud-services-types/grants.html">Grants</a>): Promise&lt;<a href="../../common/cloud-services-types/grants.html">Grants</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.mrevoke(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listgrants"><a class="anchor" href="#_listgrants"></a>listGrants</h3>
+<div class="paragraph">
+<p>This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGrants(parameters: <a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="../../common/cloud-services-types/grant-list.html">GrantList</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGrants(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listgroupgrants"><a class="anchor" href="#_listgroupgrants"></a>listGroupGrants</h3>
+<div class="paragraph">
+<p>This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGroupGrants(parameters: <a href="../../common/cloud-services-types/group-related-and-paged.html">GroupRelatedAndPaged</a>): Promise&lt;<a href="../../common/cloud-services-types/paged-grant-list.html">PagedGrantList</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGroupGrants(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listpresences"><a class="anchor" href="#_listpresences"></a>listPresences</h3>
+<div class="paragraph">
+<p>Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.</p>
+</div>
+<div class="listingblock">
+<div class="title">listPresences(parameters: <a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="../../common/cloud-services-types/group-presence.html">GroupPresence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listPresences(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listgrouppresences"><a class="anchor" href="#_listgrouppresences"></a>listGroupPresences</h3>
+<div class="paragraph">
+<p>Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGroupPresences(parameters: <a href="../../common/cloud-services-types/group-related-and-paged.html">GroupRelatedAndPaged</a>): Promise&lt;<a href="../../common/cloud-services-types/paged-group-presence.html">PagedGroupPresence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGroupPresences(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adduser"><a class="anchor" href="#_adduser"></a>addUser</h3>
+<div class="paragraph">
+<p>Adds the given user to the given group.
+Addition may fail if the given group does not already exist.</p>
+</div>
+<div class="listingblock">
+<div class="title">addUser(parameters: <a href="../../common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="../../common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deluser"><a class="anchor" href="#_deluser"></a>delUser</h3>
+<div class="listingblock">
+<div class="title">delUser(parameters: <a href="../../common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="../../common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_groupusers"><a class="anchor" href="#_groupusers"></a>groupUsers</h3>
+<div class="paragraph">
+<p>Returns the whole list of users configured inside the given group.</p>
+</div>
+<div class="listingblock">
+<div class="title">groupUsers(parameters: <a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="../../common/cloud-services-types/group-users.html">GroupUsers</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.groupUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_revoke"><a class="anchor" href="#_revoke"></a>revoke</h3>
+<div class="listingblock">
+<div class="title">revoke(parameters: <a href="../../common/cloud-services-types/grant.html">Grant</a>): Promise&lt;<a href="../../common/cloud-services-types/grant.html">Grant</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.revoke(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_allgroups"><a class="anchor" href="#_allgroups"></a>allGroups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user, with their members</p>
+</div>
+<div class="listingblock">
+<div class="title">allGroups(parameters: <a href="../../common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/group-users.html">GroupUsers</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.allGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_groups_2"><a class="anchor" href="#_groups_2"></a>groups</h3>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user</p>
+</div>
+<div class="listingblock">
+<div class="title">groups(parameters: <a href="../../common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/group-info.html">GroupInfo</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.groups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check"><a class="anchor" href="#_check"></a>check</h3>
+<div class="paragraph">
+<p>This API checks if the given user has the proper authorizations to perform the given action on the owner&#8217;s resource.
+If you give the same value for 'user' and 'owner', the check always passes.</p>
+</div>
+<div class="listingblock">
+<div class="title">check(parameters: <a href="../../common/cloud-services-types/grant-check-request.html">GrantCheckRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/grant-check-result.html">GrantCheckResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.check(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exists"><a class="anchor" href="#_exists"></a>exists</h3>
+<div class="paragraph">
+<p>Returns whether a group exists or not.</p>
+</div>
+<div class="listingblock">
+<div class="title">exists(parameters: <a href="../../common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="../../common/cloud-services-types/group-existence.html">GroupExistence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.exists(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_use_it"><a class="anchor" href="#_how_to_use_it"></a>How to use it ?</h3>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Groups, Grant } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private groups: Groups <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: Grant) {
+    const response = await this.groups.grant(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Groups</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-07-24 10:48:38 UTC
+</div>
+</div>
+</body>
+</html>

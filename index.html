@@ -254,43 +254,79 @@
 <li><a href="#_faq">FAQ</a></li>
 <li><a href="#_reference">Reference</a>
 <ul class="sectlevel1">
-<li><a href="#_command_line_interface">17. Command Line Interface</a>
+<li><a href="#_available_cloud_services">17. Available cloud services</a>
 <ul class="sectlevel2">
-<li><a href="#_initialize_an_application">17.1. Initialize an application</a>
+<li><a href="#_user_management">17.1. User Management</a>
 <ul class="sectlevel3">
-<li><a href="#_create_a_new_project_and_or_account">17.1.1. Create a new project and/or account</a></li>
+<li><a href="#_simple">17.1.1. Simple</a></li>
+<li><a href="#_weak">17.1.2. Weak</a></li>
+<li><a href="#_userdir">17.1.3. Userdir</a></li>
+<li><a href="#_groups">17.1.4. Groups</a></li>
 </ul>
 </li>
-<li><a href="#_run_project_locally">17.2. Run project locally</a>
+<li><a href="#_data_management">17.2. Data Management</a>
 <ul class="sectlevel3">
-<li><a href="#_run_front_and_em_custom_cloud_services_em">17.2.1. Run front and <em>custom cloud services</em></a></li>
-<li><a href="#_run_only_em_custom_cloud_services_em">17.2.2. Run only <em>custom cloud services</em></a></li>
+<li><a href="#_gda">17.2.1. Gda</a></li>
+<li><a href="#_stack">17.2.2. Stack</a></li>
+<li><a href="#_search_2">17.2.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_deploy_project_on_the_zetapush_cloud">17.3. Deploy project on the ZetaPush Cloud</a>
+<li><a href="#_file_management">17.3. File Management</a>
 <ul class="sectlevel3">
-<li><a href="#_deploy_front_and_em_custom_cloud_services_em">17.3.1. Deploy front and <em>custom cloud services</em></a></li>
-<li><a href="#_deploy_only_em_custom_cloud_services_em">17.3.2. Deploy only <em>custom cloud services</em></a></li>
-<li><a href="#_deploy_only_front">17.3.3. Deploy only front</a></li>
+<li><a href="#_zpfs_hdfs">17.3.1. Zpfs_hdfs</a></li>
+<li><a href="#_template">17.3.2. Template</a></li>
+</ul>
+</li>
+<li><a href="#_communication">17.4. Communication</a>
+<ul class="sectlevel3">
+<li><a href="#_messaging">17.4.1. Messaging</a></li>
+<li><a href="#_notif">17.4.2. Notif</a></li>
+<li><a href="#_sendmail">17.4.3. Sendmail</a></li>
+<li><a href="#_sms_ovh">17.4.4. Sms_ovh</a></li>
+</ul>
+</li>
+<li><a href="#_utilities_management">17.5. Utilities Management</a>
+<ul class="sectlevel3">
+<li><a href="#_cron">17.5.1. Cron</a></li>
+<li><a href="#_logs">17.5.2. Logs</a></li>
+<li><a href="#_trigger">17.5.3. Trigger</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_configuration">18. Configuration</a>
+<li><a href="#_command_line_interface">18. Command Line Interface</a>
 <ul class="sectlevel2">
-<li><a href="#_account_configuration">18.1. Account configuration</a></li>
-<li><a href="#_application_configuration">18.2. Application configuration</a></li>
-<li><a href="#_configuration_override">18.3. Configuration override</a>
+<li><a href="#_initialize_an_application">18.1. Initialize an application</a>
 <ul class="sectlevel3">
-<li><a href="#_account_properties">18.3.1. Account properties</a></li>
-<li><a href="#_application_properties">18.3.2. Application properties</a></li>
+<li><a href="#_create_a_new_project_and_or_account">18.1.1. Create a new project and/or account</a></li>
+</ul>
+</li>
+<li><a href="#_run_project_locally">18.2. Run project locally</a>
+<ul class="sectlevel3">
+<li><a href="#_run_front_and_em_custom_cloud_services_em">18.2.1. Run front and <em>custom cloud services</em></a></li>
+<li><a href="#_run_only_em_custom_cloud_services_em">18.2.2. Run only <em>custom cloud services</em></a></li>
+</ul>
+</li>
+<li><a href="#_deploy_project_on_the_zetapush_cloud">18.3. Deploy project on the ZetaPush Cloud</a>
+<ul class="sectlevel3">
+<li><a href="#_deploy_front_and_em_custom_cloud_services_em">18.3.1. Deploy front and <em>custom cloud services</em></a></li>
+<li><a href="#_deploy_only_em_custom_cloud_services_em">18.3.2. Deploy only <em>custom cloud services</em></a></li>
+<li><a href="#_deploy_only_front">18.3.3. Deploy only front</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_zetapush_cloud_services">19. ZetaPush Cloud Services</a>
+<li><a href="#_configuration">19. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_user_management">19.1. User Management</a></li>
+<li><a href="#_account_configuration">19.1. Account configuration</a></li>
+<li><a href="#_application_configuration">19.2. Application configuration</a></li>
+<li><a href="#_configuration_override">19.3. Configuration override</a>
+<ul class="sectlevel3">
+<li><a href="#_account_properties">19.3.1. Account properties</a></li>
+<li><a href="#_application_properties">19.3.2. Application properties</a></li>
+</ul>
+</li>
+<li><a href="#_user_management_2">19.4. User Management</a></li>
 </ul>
 </li>
 </ul>
@@ -4153,10 +4189,2548 @@ const controller = <span class="keyword">new</span> AvengersController(client);
 </div>
 <h1 id="_reference" class="sect0"><a class="anchor" href="#_reference"></a><a class="link" href="#_reference">Reference</a></h1>
 <div class="sect1">
-<h2 id="_command_line_interface"><a class="anchor" href="#_command_line_interface"></a><a class="link" href="#_command_line_interface">17. Command Line Interface</a></h2>
+<h2 id="_available_cloud_services"><a class="anchor" href="#_available_cloud_services"></a><a class="link" href="#_available_cloud_services">17. Available cloud services</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_initialize_an_application"><a class="anchor" href="#_initialize_an_application"></a><a class="link" href="#_initialize_an_application">17.1. Initialize an application</a></h3>
+<h3 id="_user_management"><a class="anchor" href="#_user_management"></a><a class="link" href="#_user_management">17.1. User Management</a></h3>
+<div class="sect3">
+<h4 id="_simple"><a class="anchor" href="#_simple"></a><a class="link" href="#_simple">17.1.1. Simple</a></h4>
+<div class="paragraph">
+<p>End-user API for the simple local authentication</p>
+</div>
+<div class="paragraph">
+<p>These API verbs allow end-users to manage their account(s).</p>
+</div>
+<div class="sect4">
+<h5 id="_createuser"><a class="anchor" href="#_createuser"></a><a class="link" href="#_createuser">17.1.1.1. createUser</a></h5>
+<div class="paragraph">
+<p>Creates a new account in this 'simple' authentication realm.
+Returns a map of account fields, including a field named &lt;i&gt;zetapushKey&lt;/i&gt; containing the global user key of the user (value of the &lt;b&gt;__userKey&lt;/b&gt; pseudo-constant when this new account will be used)</p>
+</div>
+<div class="listingblock">
+<div class="title">createUser(parameters: <a href="./common/cloud-services-types/basic-authenticated-user.html">BasicAuthenticatedUser</a>): Promise&lt;<a href="./common/cloud-services-types/map&.html#8592;string">-object&gt;.adoc#,Map&lt;String,Object</a>&gt;&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.createUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_credentials"><a class="anchor" href="#_credentials"></a><a class="link" href="#_credentials">17.1.1.2. credentials</a></h5>
+<div class="paragraph">
+<p>Returns the list of account credentials in this service for the asking user.
+Might return an empty list.</p>
+</div>
+<div class="listingblock">
+<div class="title">credentials(parameters: <a href="./common/cloud-services-types/impersonated-traceable-request.html">ImpersonatedTraceableRequest</a>): Promise&lt;<a href="./common/cloud-services-types/all-credentials.html">AllCredentials</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.credentials(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_updatekey"><a class="anchor" href="#_updatekey"></a><a class="link" href="#_updatekey">17.1.1.3. updateKey</a></h5>
+<div class="paragraph">
+<p>Updates an existing account primary key (login, NOT &lt;b&gt;__userKey&lt;/b&gt;) in this 'simple' authentication realm.
+The updated account MUST belong to the user making the call.
+The configured login field MUST be given, as a user (identified by his zetapush userKey) might possess several accounts.
+Returns a map of account fields</p>
+</div>
+<div class="listingblock">
+<div class="title">updateKey(parameters: <a href="./common/cloud-services-types/user-loginchange.html">UserLoginchange</a>): Promise&lt;<a href="./common/cloud-services-types/map&.html#8592;string">-object&gt;.adoc#,Map&lt;String,Object</a>&gt;&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.updateKey(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_updateuser"><a class="anchor" href="#_updateuser"></a><a class="link" href="#_updateuser">17.1.1.4. updateUser</a></h5>
+<div class="paragraph">
+<p>Updates an existing account in this 'simple' authentication realm.
+The updated account MUST belong to the user making the call.
+The configured login field MUST be given, as a user (identified by his zetapush userKey) might possess several accounts.
+Returns a map of account fields</p>
+</div>
+<div class="listingblock">
+<div class="title">updateUser(parameters: <a href="./common/cloud-services-types/basic-authenticated-user.html">BasicAuthenticatedUser</a>): Promise&lt;<a href="./common/cloud-services-types/map&.html#8592;string">-object&gt;.adoc#,Map&lt;String,Object</a>&gt;&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.updateUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_deleteuser"><a class="anchor" href="#_deleteuser"></a><a class="link" href="#_deleteuser">17.1.1.5. deleteUser</a></h5>
+<div class="paragraph">
+<p>Deletes an existing account in this 'simple' authentication realm.</p>
+</div>
+<div class="listingblock">
+<div class="title">deleteUser(parameters: <a href="./common/cloud-services-types/existence-check.html">ExistenceCheck</a>): Promise&lt;<a href="./common/cloud-services-types/existence-check.html">ExistenceCheck</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.deleteUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_checkuser"><a class="anchor" href="#_checkuser"></a><a class="link" href="#_checkuser">17.1.1.6. checkUser</a></h5>
+<div class="paragraph">
+<p>Checks whether the given account already exists in this 'simple' authentication realm.
+This verb returns all the information about the user, including non public fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">checkUser(parameters: <a href="./common/cloud-services-types/existence-check.html">ExistenceCheck</a>): Promise&lt;<a href="./common/cloud-services-types/map&.html#8592;string">-object&gt;.adoc#,Map&lt;String,Object</a>&gt;&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.checkUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_requestreset"><a class="anchor" href="#_requestreset"></a><a class="link" href="#_requestreset">17.1.1.7. requestReset</a></h5>
+<div class="paragraph">
+<p>Requests a password reset for the given unique account key.
+The account key must exist and must be given, as it cannot obviously be deduced from the currently logged in user.
+The returned token needs to be sent to the intended recipient only. The typical use case is to define a macro that requests a reset, generates a email template and emails the user. The macro can then be safely called by a weakly authenticated user.
+Requesting a reset does not invalidate the password.
+Requesting a reset again invalidates previous reset requests (only the last token is usable)</p>
+</div>
+<div class="listingblock">
+<div class="title">requestReset(parameters: <a href="./common/cloud-services-types/reset-request.html">ResetRequest</a>): Promise&lt;<a href="./common/cloud-services-types/reset-info.html">ResetInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.requestReset(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_changepassword"><a class="anchor" href="#_changepassword"></a><a class="link" href="#_changepassword">17.1.1.8. changePassword</a></h5>
+<div class="paragraph">
+<p>Changes a user password for this authentication realm.
+The user can be either explicit, implicit (one of the current user&#8217;s accounts) or deduced from the token.
+You should provide at least one of 'key' and 'token'. If you do not, the server will try and find any key for the current user.
+The change is effective immediately. However, already logged in users might stay connected.
+The password and token fields are always null in the output.</p>
+</div>
+<div class="listingblock">
+<div class="title">changePassword(parameters: <a href="./common/cloud-services-types/change-password-request.html">ChangePasswordRequest</a>): Promise&lt;<a href="./common/cloud-services-types/change-password-request.html">ChangePasswordRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.changePassword(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_checkpassword"><a class="anchor" href="#_checkpassword"></a><a class="link" href="#_checkpassword">17.1.1.9. checkPassword</a></h5>
+<div class="listingblock">
+<div class="title">checkPassword(parameters: <a href="./common/cloud-services-types/check-password-request.html">CheckPasswordRequest</a>): Promise&lt;<a href="./common/cloud-services-types/check-password-result.html">CheckPasswordResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.simple.checkPassword(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it"><a class="anchor" href="#_how_to_use_it"></a><a class="link" href="#_how_to_use_it">17.1.1.10. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Simple, BasicAuthenticatedUser } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private simple: Simple <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: BasicAuthenticatedUser) {
+    const response = await this.simple.createUser(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Simple</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_weak"><a class="anchor" href="#_weak"></a><a class="link" href="#_weak">17.1.2. Weak</a></h4>
+<div class="paragraph">
+<p>User API for weak devices control</p>
+</div>
+<div class="paragraph">
+<p>User API for control and release of weakly authenticated user sessions.</p>
+</div>
+<div class="sect4">
+<h5 id="_control"><a class="anchor" href="#_control"></a><a class="link" href="#_control">17.1.2.1. control</a></h5>
+<div class="paragraph">
+<p>Takes control of a weak user session, identified by the given public token.
+The public token has been previously made available by the controlled device, for example by displaying a QRCode.
+Upon control notification, the client SDK of the controlled session is expected to re-handshake.</p>
+</div>
+<div class="listingblock">
+<div class="title">control(parameters: <a href="./common/cloud-services-types/user-control-request.html">UserControlRequest</a>): Promise&lt;<a href="./common/cloud-services-types/user-control-status.html">UserControlStatus</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.weak.control(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_release"><a class="anchor" href="#_release"></a><a class="link" href="#_release">17.1.2.2. release</a></h5>
+<div class="paragraph">
+<p>Releases control of a weak user session, identified by the given public token.
+The weak user session must have been previously controlled by a call to 'control'.</p>
+</div>
+<div class="listingblock">
+<div class="title">release(parameters: <a href="./common/cloud-services-types/user-control-request.html">UserControlRequest</a>): Promise&lt;<a href="./common/cloud-services-types/user-control-status.html">UserControlStatus</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.weak.release(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_provision"><a class="anchor" href="#_provision"></a><a class="link" href="#_provision">17.1.2.3. provision</a></h5>
+<div class="paragraph">
+<p>Provisions an arbitrary number of accounts.
+The maximum number of accounts that you can create in one single call is configured per server.</p>
+</div>
+<div class="listingblock">
+<div class="title">provision(parameters: <a href="./common/cloud-services-types/provisioning-request.html">ProvisioningRequest</a>): Promise&lt;<a href="./common/cloud-services-types/provisioning-result.html">ProvisioningResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.weak.provision(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_gettoken"><a class="anchor" href="#_gettoken"></a><a class="link" href="#_gettoken">17.1.2.4. getToken</a></h5>
+<div class="paragraph">
+<p>Returns your current session&#8217;s private token. The token field may be null, if you did not log in with this authentication.
+The token can be used to log in as the same weak user another time.</p>
+</div>
+<div class="listingblock">
+<div class="title">getToken(parameters: <a href="./common/cloud-services-types/.html">undefined</a>): Promise&lt;<a href="./common/cloud-services-types/user-token.html">UserToken</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.weak.getToken(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_2"><a class="anchor" href="#_how_to_use_it_2"></a><a class="link" href="#_how_to_use_it_2">17.1.2.5. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Weak, UserControlRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private weak: Weak <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: UserControlRequest) {
+    const response = await this.weak.control(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Weak</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_userdir"><a class="anchor" href="#_userdir"></a><a class="link" href="#_userdir">17.1.3. Userdir</a></h4>
+<div class="paragraph">
+<p>User API for user information</p>
+</div>
+<div class="sect4">
+<h5 id="_userinfo"><a class="anchor" href="#_userinfo"></a><a class="link" href="#_userinfo">17.1.3.1. userInfo</a></h5>
+<div class="listingblock">
+<div class="title">userInfo(parameters: <a href="./common/cloud-services-types/user-info-request.html">UserInfoRequest</a>): Promise&lt;<a href="./common/cloud-services-types/user-info-response.html">UserInfoResponse</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.userdir.userInfo(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_search"><a class="anchor" href="#_search"></a><a class="link" href="#_search">17.1.3.2. search</a></h5>
+<div class="listingblock">
+<div class="title">search(parameters: <a href="./common/cloud-services-types/user-search-request.html">UserSearchRequest</a>): Promise&lt;<a href="./common/cloud-services-types/user-search-response.html">UserSearchResponse</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.userdir.search(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_3"><a class="anchor" href="#_how_to_use_it_3"></a><a class="link" href="#_how_to_use_it_3">17.1.3.3. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Userdir, UserInfoRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private userdir: Userdir <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: UserInfoRequest) {
+    const response = await this.userdir.userInfo(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Userdir</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_groups"><a class="anchor" href="#_groups"></a><a class="link" href="#_groups">17.1.4. Groups</a></h4>
+<div class="paragraph">
+<p>User API for groups and rights.</p>
+</div>
+<div class="paragraph">
+<p>Groups are stored per user.
+This means that two users can own a group with the same identifier. A couple (owner, group) is needed to uniquely identify a group inside a group management service.
+The triplet (deploymentId, owner, group) is actually needed to fully qualify a group outside of the scope of this service.</p>
+</div>
+<div class="sect4">
+<h5 id="_grant"><a class="anchor" href="#_grant"></a><a class="link" href="#_grant">17.1.4.1. grant</a></h5>
+<div class="paragraph">
+<p>The granting API does not do any check when storing permissions.
+In particular when granting rights on a verb and resource of another API, the existence of said verb and resource is not checked.</p>
+</div>
+<div class="listingblock">
+<div class="title">grant(parameters: <a href="./common/cloud-services-types/grant.html">Grant</a>): Promise&lt;<a href="./common/cloud-services-types/grant.html">Grant</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.grant(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_creategroup"><a class="anchor" href="#_creategroup"></a><a class="link" href="#_creategroup">17.1.4.2. createGroup</a></h5>
+<div class="paragraph">
+<p>Creates a group owned by the current user.
+Group creation may fail if the group already exists.</p>
+</div>
+<div class="listingblock">
+<div class="title">createGroup(parameters: <a href="./common/cloud-services-types/group-info.html">GroupInfo</a>): Promise&lt;<a href="./common/cloud-services-types/group-info.html">GroupInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.createGroup(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listownedgroups"><a class="anchor" href="#_listownedgroups"></a><a class="link" href="#_listownedgroups">17.1.4.3. listOwnedGroups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user</p>
+</div>
+<div class="listingblock">
+<div class="title">listOwnedGroups(parameters: <a href="./common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/owned-groups.html">OwnedGroups</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listOwnedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listdetailedownedgroups"><a class="anchor" href="#_listdetailedownedgroups"></a><a class="link" href="#_listdetailedownedgroups">17.1.4.4. listDetailedOwnedGroups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user, with their members</p>
+</div>
+<div class="listingblock">
+<div class="title">listDetailedOwnedGroups(parameters: <a href="./common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/owned-groups-with-details.html">OwnedGroupsWithDetails</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listDetailedOwnedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mygroups"><a class="anchor" href="#_mygroups"></a><a class="link" href="#_mygroups">17.1.4.5. myGroups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.</p>
+</div>
+<div class="listingblock">
+<div class="title">myGroups(parameters: <a href="./common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/group-info.html">GroupInfo</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.myGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listjoinedgroups"><a class="anchor" href="#_listjoinedgroups"></a><a class="link" href="#_listjoinedgroups">17.1.4.6. listJoinedGroups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.</p>
+</div>
+<div class="listingblock">
+<div class="title">listJoinedGroups(parameters: <a href="./common/cloud-services-types/traceable-paginated-impersonated-request.html">TraceablePaginatedImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/joined-groups.html">JoinedGroups</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listJoinedGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delgroup"><a class="anchor" href="#_delgroup"></a><a class="link" href="#_delgroup">17.1.4.7. delGroup</a></h5>
+<div class="paragraph">
+<p>Removes the given group owned by the current user or the given owner.
+Also removes all grants to that group.</p>
+</div>
+<div class="listingblock">
+<div class="title">delGroup(parameters: <a href="./common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="./common/cloud-services-types/group-related.html">GroupRelated</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delGroup(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_addme"><a class="anchor" href="#_addme"></a><a class="link" href="#_addme">17.1.4.8. addMe</a></h5>
+<div class="paragraph">
+<p>Adds me (the caller) to a group.
+This verb exists so that group owners may grant the right to join their groups without granting the right to add other users to those groups.
+The 'user' field is implicitly set to the current user&#8217;s key.</p>
+</div>
+<div class="listingblock">
+<div class="title">addMe(parameters: <a href="./common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="./common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addMe(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_memberof"><a class="anchor" href="#_memberof"></a><a class="link" href="#_memberof">17.1.4.9. memberOf</a></h5>
+<div class="paragraph">
+<p>Tests whether I (the caller) am a member of the given group.
+This verb exists so that users can determine if they are part of a group without being granted particular rights.
+The 'user' field is implicitly set to the current user&#8217;s key.</p>
+</div>
+<div class="listingblock">
+<div class="title">memberOf(parameters: <a href="./common/cloud-services-types/user-membership.html">UserMembership</a>): Promise&lt;<a href="./common/cloud-services-types/user-group-membership.html">UserGroupMembership</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.memberOf(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_addusers"><a class="anchor" href="#_addusers"></a><a class="link" href="#_addusers">17.1.4.10. addUsers</a></h5>
+<div class="paragraph">
+<p>Users are processed in the given order
+In case of failure in the middle of a user list, this verb may have succeeded to add the first users, but will not continue processing the end of the list.</p>
+</div>
+<div class="listingblock">
+<div class="title">addUsers(parameters: <a href="./common/cloud-services-types/group-users.html">GroupUsers</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delusers"><a class="anchor" href="#_delusers"></a><a class="link" href="#_delusers">17.1.4.11. delUsers</a></h5>
+<div class="listingblock">
+<div class="title">delUsers(parameters: <a href="./common/cloud-services-types/group-users.html">GroupUsers</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mgrant"><a class="anchor" href="#_mgrant"></a><a class="link" href="#_mgrant">17.1.4.12. mgrant</a></h5>
+<div class="paragraph">
+<p>Grant several rights at once.</p>
+</div>
+<div class="listingblock">
+<div class="title">mgrant(parameters: <a href="./common/cloud-services-types/grants.html">Grants</a>): Promise&lt;<a href="./common/cloud-services-types/grants.html">Grants</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.mgrant(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mrevoke"><a class="anchor" href="#_mrevoke"></a><a class="link" href="#_mrevoke">17.1.4.13. mrevoke</a></h5>
+<div class="listingblock">
+<div class="title">mrevoke(parameters: <a href="./common/cloud-services-types/grants.html">Grants</a>): Promise&lt;<a href="./common/cloud-services-types/grants.html">Grants</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.mrevoke(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listgrants"><a class="anchor" href="#_listgrants"></a><a class="link" href="#_listgrants">17.1.4.14. listGrants</a></h5>
+<div class="paragraph">
+<p>This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGrants(parameters: <a href="./common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="./common/cloud-services-types/grant-list.html">GrantList</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGrants(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listgroupgrants"><a class="anchor" href="#_listgroupgrants"></a><a class="link" href="#_listgroupgrants">17.1.4.15. listGroupGrants</a></h5>
+<div class="paragraph">
+<p>This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGroupGrants(parameters: <a href="./common/cloud-services-types/group-related-and-paged.html">GroupRelatedAndPaged</a>): Promise&lt;<a href="./common/cloud-services-types/paged-grant-list.html">PagedGrantList</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGroupGrants(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listpresences"><a class="anchor" href="#_listpresences"></a><a class="link" href="#_listpresences">17.1.4.16. listPresences</a></h5>
+<div class="paragraph">
+<p>Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.</p>
+</div>
+<div class="listingblock">
+<div class="title">listPresences(parameters: <a href="./common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="./common/cloud-services-types/group-presence.html">GroupPresence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listPresences(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_listgrouppresences"><a class="anchor" href="#_listgrouppresences"></a><a class="link" href="#_listgrouppresences">17.1.4.17. listGroupPresences</a></h5>
+<div class="paragraph">
+<p>Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.</p>
+</div>
+<div class="listingblock">
+<div class="title">listGroupPresences(parameters: <a href="./common/cloud-services-types/group-related-and-paged.html">GroupRelatedAndPaged</a>): Promise&lt;<a href="./common/cloud-services-types/paged-group-presence.html">PagedGroupPresence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.listGroupPresences(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_adduser"><a class="anchor" href="#_adduser"></a><a class="link" href="#_adduser">17.1.4.18. addUser</a></h5>
+<div class="paragraph">
+<p>Adds the given user to the given group.
+Addition may fail if the given group does not already exist.</p>
+</div>
+<div class="listingblock">
+<div class="title">addUser(parameters: <a href="./common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="./common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.addUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_deluser"><a class="anchor" href="#_deluser"></a><a class="link" href="#_deluser">17.1.4.19. delUser</a></h5>
+<div class="listingblock">
+<div class="title">delUser(parameters: <a href="./common/cloud-services-types/user-group.html">UserGroup</a>): Promise&lt;<a href="./common/cloud-services-types/user-group.html">UserGroup</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.delUser(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_groupusers"><a class="anchor" href="#_groupusers"></a><a class="link" href="#_groupusers">17.1.4.20. groupUsers</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of users configured inside the given group.</p>
+</div>
+<div class="listingblock">
+<div class="title">groupUsers(parameters: <a href="./common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="./common/cloud-services-types/group-users.html">GroupUsers</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.groupUsers(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_revoke"><a class="anchor" href="#_revoke"></a><a class="link" href="#_revoke">17.1.4.21. revoke</a></h5>
+<div class="listingblock">
+<div class="title">revoke(parameters: <a href="./common/cloud-services-types/grant.html">Grant</a>): Promise&lt;<a href="./common/cloud-services-types/grant.html">Grant</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.revoke(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_allgroups"><a class="anchor" href="#_allgroups"></a><a class="link" href="#_allgroups">17.1.4.22. allGroups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user, with their members</p>
+</div>
+<div class="listingblock">
+<div class="title">allGroups(parameters: <a href="./common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/group-users.html">GroupUsers</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.allGroups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_groups_2"><a class="anchor" href="#_groups_2"></a><a class="link" href="#_groups_2">17.1.4.23. groups</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of groups owned by the current user</p>
+</div>
+<div class="listingblock">
+<div class="title">groups(parameters: <a href="./common/cloud-services-types/impersonated-request.html">ImpersonatedRequest</a>): Promise&lt;<a href="./common/cloud-services-types/group-info.html">GroupInfo</a>[]&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.groups(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_check"><a class="anchor" href="#_check"></a><a class="link" href="#_check">17.1.4.24. check</a></h5>
+<div class="paragraph">
+<p>This API checks if the given user has the proper authorizations to perform the given action on the owner&#8217;s resource.
+If you give the same value for 'user' and 'owner', the check always passes.</p>
+</div>
+<div class="listingblock">
+<div class="title">check(parameters: <a href="./common/cloud-services-types/grant-check-request.html">GrantCheckRequest</a>): Promise&lt;<a href="./common/cloud-services-types/grant-check-result.html">GrantCheckResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.check(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_exists"><a class="anchor" href="#_exists"></a><a class="link" href="#_exists">17.1.4.25. exists</a></h5>
+<div class="paragraph">
+<p>Returns whether a group exists or not.</p>
+</div>
+<div class="listingblock">
+<div class="title">exists(parameters: <a href="./common/cloud-services-types/group-related.html">GroupRelated</a>): Promise&lt;<a href="./common/cloud-services-types/group-existence.html">GroupExistence</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.groups.exists(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_4"><a class="anchor" href="#_how_to_use_it_4"></a><a class="link" href="#_how_to_use_it_4">17.1.4.26. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Groups, Grant } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private groups: Groups <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: Grant) {
+    const response = await this.groups.grant(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Groups</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_management"><a class="anchor" href="#_data_management"></a><a class="link" href="#_data_management">17.2. Data Management</a></h3>
+<div class="sect3">
+<h4 id="_gda"><a class="anchor" href="#_gda"></a><a class="link" href="#_gda">17.2.1. Gda</a></h4>
+<div class="paragraph">
+<p>GDA User API</p>
+</div>
+<div class="paragraph">
+<p>User API for Generic Data Access.
+The data are stored on a per-user basis.
+Users can put, get, list their data.</p>
+</div>
+<div class="sect4">
+<h5 id="_puts"><a class="anchor" href="#_puts"></a><a class="link" href="#_puts">17.2.1.1. puts</a></h5>
+<div class="paragraph">
+<p>Creates or replaces the (maybe partial) contents of a collection of rows.
+This method only creates or replaces cells for non-null input values.</p>
+</div>
+<div class="listingblock">
+<div class="title">puts(parameters: <a href="./common/cloud-services-types/gda-puts.html">GdaPuts</a>): Promise&lt;<a href="./common/cloud-services-types/gda-puts-result.html">GdaPutsResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.puts(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_inc"><a class="anchor" href="#_inc"></a><a class="link" href="#_inc">17.2.1.2. inc</a></h5>
+<div class="paragraph">
+<p>Increments a cell 64-bit signed integer value and returns the result in the data field.
+The increment is atomic : if you concurrently increment 10 times a value by 1, the final result will be the initial value plus 10. The actual individual resulting values seen by the 10 concurrent callers may vary discontinuously, with duplicates : at least one of them will see the final (+10) result.</p>
+</div>
+<div class="listingblock">
+<div class="title">inc(parameters: <a href="./common/cloud-services-types/gda-put.html">GdaPut</a>): Promise&lt;<a href="./common/cloud-services-types/gda-put.html">GdaPut</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.inc(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_removerow"><a class="anchor" href="#_removerow"></a><a class="link" href="#_removerow">17.2.1.3. removeRow</a></h5>
+<div class="paragraph">
+<p>Removes all columns of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeRow(parameters: <a href="./common/cloud-services-types/gda-row-request.html">GdaRowRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-row-request.html">GdaRowRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeRow(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_removecolumn"><a class="anchor" href="#_removecolumn"></a><a class="link" href="#_removecolumn">17.2.1.4. removeColumn</a></h5>
+<div class="paragraph">
+<p>Removes all cells of the given column of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeColumn(parameters: <a href="./common/cloud-services-types/gda-column-request.html">GdaColumnRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-column-request.html">GdaColumnRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeColumn(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_removecell"><a class="anchor" href="#_removecell"></a><a class="link" href="#_removecell">17.2.1.5. removeCell</a></h5>
+<div class="paragraph">
+<p>Removes only one cell of the given column of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeCell(parameters: <a href="./common/cloud-services-types/gda-cell-request.html">GdaCellRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-cell-request.html">GdaCellRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeCell(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mget"><a class="anchor" href="#_mget"></a><a class="link" href="#_mget">17.2.1.6. mget</a></h5>
+<div class="paragraph">
+<p>Returns full data rows, in the order they were asked.</p>
+</div>
+<div class="listingblock">
+<div class="title">mget(parameters: <a href="./common/cloud-services-types/gda-multi-get-request.html">GdaMultiGetRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-multi-get-result.html">GdaMultiGetResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.mget(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_getcells"><a class="anchor" href="#_getcells"></a><a class="link" href="#_getcells">17.2.1.7. getCells</a></h5>
+<div class="paragraph">
+<p>Returns a precise list of cells from a column in a data row.</p>
+</div>
+<div class="listingblock">
+<div class="title">getCells(parameters: <a href="./common/cloud-services-types/gda-cells-request.html">GdaCellsRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-cells-result.html">GdaCellsResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.getCells(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get"><a class="anchor" href="#_get"></a><a class="link" href="#_get">17.2.1.8. get</a></h5>
+<div class="paragraph">
+<p>Returns a full data row.</p>
+</div>
+<div class="listingblock">
+<div class="title">get(parameters: <a href="./common/cloud-services-types/gda-get.html">GdaGet</a>): Promise&lt;<a href="./common/cloud-services-types/gda-get-result.html">GdaGetResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.get(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_put"><a class="anchor" href="#_put"></a><a class="link" href="#_put">17.2.1.9. put</a></h5>
+<div class="paragraph">
+<p>Creates or replaces the contents of a particular cell.</p>
+</div>
+<div class="listingblock">
+<div class="title">put(parameters: <a href="./common/cloud-services-types/gda-put.html">GdaPut</a>): Promise&lt;<a href="./common/cloud-services-types/gda-put.html">GdaPut</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.put(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_list"><a class="anchor" href="#_list"></a><a class="link" href="#_list">17.2.1.10. list</a></h5>
+<div class="paragraph">
+<p>Returns a paginated list of rows from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">list(parameters: <a href="./common/cloud-services-types/gda-list.html">GdaList</a>): Promise&lt;<a href="./common/cloud-services-types/gda-list-result.html">GdaListResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.list(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_removerange"><a class="anchor" href="#_removerange"></a><a class="link" href="#_removerange">17.2.1.11. removeRange</a></h5>
+<div class="paragraph">
+<p>Removes the specified columns of the given range of rows from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeRange(parameters: <a href="./common/cloud-services-types/gda-remove-range.html">GdaRemoveRange</a>): Promise&lt;<a href="./common/cloud-services-types/gda-remove-range.html">GdaRemoveRange</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeRange(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_filter"><a class="anchor" href="#_filter"></a><a class="link" href="#_filter">17.2.1.12. filter</a></h5>
+<div class="paragraph">
+<p>Similar to range, but rows can be filtered out according to a developer-supplied predicate.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">filter(parameters: <a href="./common/cloud-services-types/gda-filter-request.html">GdaFilterRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-filter-result.html">GdaFilterResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.filter(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_range"><a class="anchor" href="#_range"></a><a class="link" href="#_range">17.2.1.13. range</a></h5>
+<div class="paragraph">
+<p>Returns a paginated range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">range(parameters: <a href="./common/cloud-services-types/gda-range.html">GdaRange</a>): Promise&lt;<a href="./common/cloud-services-types/gda-range-result.html">GdaRangeResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.range(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_reduce"><a class="anchor" href="#_reduce"></a><a class="link" href="#_reduce">17.2.1.14. reduce</a></h5>
+<div class="paragraph">
+<p>Returns a computed single reduced result from a range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">reduce(parameters: <a href="./common/cloud-services-types/gda-reduce-request.html">GdaReduceRequest</a>): Promise&lt;<a href="./common/cloud-services-types/gda-reduce-result.html">GdaReduceResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.reduce(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_5"><a class="anchor" href="#_how_to_use_it_5"></a><a class="link" href="#_how_to_use_it_5">17.2.1.15. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Gda, GdaPuts } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private gda: Gda <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: GdaPuts) {
+    const response = await this.gda.puts(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Gda</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_stack"><a class="anchor" href="#_stack"></a><a class="link" href="#_stack">17.2.2. Stack</a></h4>
+<div class="paragraph">
+<p>Data stack user API</p>
+</div>
+<div class="paragraph">
+<p>Data is stored on a per user basis. However, notifications can be sent to a configurable set of listeners.
+Stack names are arbitrary and do not need to be explicitly initialized.</p>
+</div>
+<div class="sect4">
+<h5 id="_purge"><a class="anchor" href="#_purge"></a><a class="link" href="#_purge">17.2.2.1. purge</a></h5>
+<div class="paragraph">
+<p>Removes all items from the given stack.</p>
+</div>
+<div class="listingblock">
+<div class="title">purge(parameters: <a href="./common/cloud-services-types/stack-request.html">StackRequest</a>): Promise&lt;<a href="./common/cloud-services-types/stack-request.html">StackRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.purge(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_getlisteners"><a class="anchor" href="#_getlisteners"></a><a class="link" href="#_getlisteners">17.2.2.2. getListeners</a></h5>
+<div class="paragraph">
+<p>Returns the whole list of listeners for the given stack.</p>
+</div>
+<div class="listingblock">
+<div class="title">getListeners(parameters: <a href="./common/cloud-services-types/stack-request.html">StackRequest</a>): Promise&lt;<a href="./common/cloud-services-types/stack-listeners.html">StackListeners</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.getListeners(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_setlisteners"><a class="anchor" href="#_setlisteners"></a><a class="link" href="#_setlisteners">17.2.2.3. setListeners</a></h5>
+<div class="paragraph">
+<p>Sets the listeners for the given stack.</p>
+</div>
+<div class="listingblock">
+<div class="title">setListeners(parameters: <a href="./common/cloud-services-types/stack-listeners.html">StackListeners</a>): Promise&lt;<a href="./common/cloud-services-types/stack-listeners.html">StackListeners</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.setListeners(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_remove"><a class="anchor" href="#_remove"></a><a class="link" href="#_remove">17.2.2.4. remove</a></h5>
+<div class="paragraph">
+<p>Removes the item with the given guid from the given stack.</p>
+</div>
+<div class="listingblock">
+<div class="title">remove(parameters: <a href="./common/cloud-services-types/stack-item-remove.html">StackItemRemove</a>): Promise&lt;<a href="./common/cloud-services-types/stack-item-remove.html">StackItemRemove</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.remove(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_update"><a class="anchor" href="#_update"></a><a class="link" href="#_update">17.2.2.5. update</a></h5>
+<div class="paragraph">
+<p>Updates an existing item of the given stack.
+The item MUST exist prior to the call.</p>
+</div>
+<div class="listingblock">
+<div class="title">update(parameters: <a href="./common/cloud-services-types/stack-item-add.html">StackItemAdd</a>): Promise&lt;<a href="./common/cloud-services-types/stack-item-add.html">StackItemAdd</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.update(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_push"><a class="anchor" href="#_push"></a><a class="link" href="#_push">17.2.2.6. push</a></h5>
+<div class="paragraph">
+<p>Pushes an item onto the given stack.
+The stack does not need to be created.</p>
+</div>
+<div class="listingblock">
+<div class="title">push(parameters: <a href="./common/cloud-services-types/stack-item-add.html">StackItemAdd</a>): Promise&lt;<a href="./common/cloud-services-types/stack-item-add.html">StackItemAdd</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.push(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_list_2"><a class="anchor" href="#_list_2"></a><a class="link" href="#_list_2">17.2.2.7. list</a></h5>
+<div class="paragraph">
+<p>Returns a paginated list of contents for the given stack.
+Content is sorted according to the statically configured order.</p>
+</div>
+<div class="listingblock">
+<div class="title">list(parameters: <a href="./common/cloud-services-types/stack-list-request.html">StackListRequest</a>): Promise&lt;<a href="./common/cloud-services-types/stack-list-response.html">StackListResponse</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.stack.list(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_6"><a class="anchor" href="#_how_to_use_it_6"></a><a class="link" href="#_how_to_use_it_6">17.2.2.8. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Stack, StackRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private stack: Stack <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: StackRequest) {
+    const response = await this.stack.purge(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Stack</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_search_2"><a class="anchor" href="#_search_2"></a><a class="link" href="#_search_2">17.2.3. Search</a></h4>
+<div class="paragraph">
+<p>ElasticSearch Service</p>
+</div>
+<div class="paragraph">
+<p>This API is a very thin wrapper around ElasticSearch&#8217;s API.</p>
+</div>
+<div class="sect4">
+<h5 id="_index"><a class="anchor" href="#_index"></a><a class="link" href="#_index">17.2.3.1. index</a></h5>
+<div class="paragraph">
+<p>Inserts or updates a document into the elasticsearch engine.</p>
+</div>
+<div class="listingblock">
+<div class="title">index(parameters: <a href="./common/cloud-services-types/search-data.html">SearchData</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.search.index(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_get_2"><a class="anchor" href="#_get_2"></a><a class="link" href="#_get_2">17.2.3.2. get</a></h5>
+<div class="paragraph">
+<p>Retrieves a document from the elasticsearch engine by id.</p>
+</div>
+<div class="listingblock">
+<div class="title">get(parameters: <a href="./common/cloud-services-types/search-document-id.html">SearchDocumentId</a>): Promise&lt;<a href="./common/cloud-services-types/search-data.html">SearchData</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.search.get(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_delete"><a class="anchor" href="#_delete"></a><a class="link" href="#_delete">17.2.3.3. delete</a></h5>
+<div class="paragraph">
+<p>Deletes a document from the elasticsearch engine by id.</p>
+</div>
+<div class="listingblock">
+<div class="title">delete(parameters: <a href="./common/cloud-services-types/search-document-id.html">SearchDocumentId</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.search.delete(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_search_3"><a class="anchor" href="#_search_3"></a><a class="link" href="#_search_3">17.2.3.4. search</a></h5>
+<div class="listingblock">
+<div class="title">search(parameters: <a href="./common/cloud-services-types/search-request.html">SearchRequest</a>): Promise&lt;<a href="./common/cloud-services-types/search-results.html">SearchResults</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.search.search(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_7"><a class="anchor" href="#_how_to_use_it_7"></a><a class="link" href="#_how_to_use_it_7">17.2.3.5. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Search, SearchData } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private search: Search <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: SearchData) {
+    const response = await this.search.index(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Search</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_file_management"><a class="anchor" href="#_file_management"></a><a class="link" href="#_file_management">17.3. File Management</a></h3>
+<div class="sect3">
+<h4 id="_zpfs_hdfs"><a class="anchor" href="#_zpfs_hdfs"></a><a class="link" href="#_zpfs_hdfs">17.3.1. Zpfs_hdfs</a></h4>
+<div class="paragraph">
+<p>User API for local file management</p>
+</div>
+<div class="paragraph">
+<p>User API for file content manipulation
+User API for virtual file management and http file upload
+This API contains all the verbs needed to browse, upload and remove files.
+Files are stored on a per-user basis: each user has his or her own whole virtual filesystem.
+Uploading a file is a 3-step process : request an upload URL, upload via HTTP, notify this service of completion.</p>
+</div>
+<div class="sect4">
+<h5 id="_readtoken"><a class="anchor" href="#_readtoken"></a><a class="link" href="#_readtoken">17.3.1.1. readToken</a></h5>
+<div class="paragraph">
+<p>Requests a token. This token can be used to retrieve a compressed folder via HTTP.</p>
+</div>
+<div class="listingblock">
+<div class="title">readToken(parameters: <a href="./common/cloud-services-types/zpfs-request.html">ZpfsRequest</a>): Promise&lt;<a href="./common/cloud-services-types/zpfs-token.html">ZpfsToken</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.readToken(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_create"><a class="anchor" href="#_create"></a><a class="link" href="#_create">17.3.1.2. create</a></h5>
+<div class="paragraph">
+<p>Creates a file, writes content and closes the file as a single operation.
+Calling this verb is functionnally equivalent to successively calling 'newUploadUrl', posting the content and calling 'newFile'</p>
+</div>
+<div class="listingblock">
+<div class="title">create(parameters: <a href="./common/cloud-services-types/file-creation-request.html">FileCreationRequest</a>): Promise&lt;<a href="./common/cloud-services-types/listing-entry-info.html">ListingEntryInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.create(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_open"><a class="anchor" href="#_open"></a><a class="link" href="#_open">17.3.1.3. open</a></h5>
+<div class="paragraph">
+<p>Opens a file for reading.</p>
+</div>
+<div class="listingblock">
+<div class="title">open(parameters: <a href="./common/cloud-services-types/zpfs-request.html">ZpfsRequest</a>): Promise&lt;<a href="./common/cloud-services-types/zpfs-file-handler.html">ZpfsFileHandler</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.open(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_link"><a class="anchor" href="#_link"></a><a class="link" href="#_link">17.3.1.4. link</a></h5>
+<div class="paragraph">
+<p>Links a file or folder to another location.
+May fail if the target location is not empty.</p>
+</div>
+<div class="listingblock">
+<div class="title">link(parameters: <a href="./common/cloud-services-types/created-file.html">CreatedFile</a>): Promise&lt;<a href="./common/cloud-services-types/created-file.html">CreatedFile</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.link(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_stat"><a class="anchor" href="#_stat"></a><a class="link" href="#_stat">17.3.1.5. stat</a></h5>
+<div class="paragraph">
+<p>Returns information about a single file.
+The entry field will be null if the path does not exist</p>
+</div>
+<div class="listingblock">
+<div class="title">stat(parameters: <a href="./common/cloud-services-types/file-stat-request.html">FileStatRequest</a>): Promise&lt;<a href="./common/cloud-services-types/file-stat-result.html">FileStatResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.stat(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cp"><a class="anchor" href="#_cp"></a><a class="link" href="#_cp">17.3.1.6. cp</a></h5>
+<div class="paragraph">
+<p>Copies a file or folder (recursively) to a new location.
+May fail if the target location is not empty.</p>
+</div>
+<div class="listingblock">
+<div class="title">cp(parameters: <a href="./common/cloud-services-types/created-file.html">CreatedFile</a>): Promise&lt;<a href="./common/cloud-services-types/created-file.html">CreatedFile</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.cp(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ls"><a class="anchor" href="#_ls"></a><a class="link" href="#_ls">17.3.1.7. ls</a></h5>
+<div class="paragraph">
+<p>Returns a paginated list of the folder&#8217;s content.</p>
+</div>
+<div class="listingblock">
+<div class="title">ls(parameters: <a href="./common/cloud-services-types/folder-listing-request.html">FolderListingRequest</a>): Promise&lt;<a href="./common/cloud-services-types/folder-listing.html">FolderListing</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.ls(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mv"><a class="anchor" href="#_mv"></a><a class="link" href="#_mv">17.3.1.8. mv</a></h5>
+<div class="paragraph">
+<p>Moves a file or folder (recursively) to a new location.
+May fail if the target location is not empty.</p>
+</div>
+<div class="listingblock">
+<div class="title">mv(parameters: <a href="./common/cloud-services-types/created-file.html">CreatedFile</a>): Promise&lt;<a href="./common/cloud-services-types/created-file.html">CreatedFile</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.mv(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_snapshot"><a class="anchor" href="#_snapshot"></a><a class="link" href="#_snapshot">17.3.1.9. snapshot</a></h5>
+<div class="paragraph">
+<p>Creates a new folder and then copies the given files inside</p>
+</div>
+<div class="listingblock">
+<div class="title">snapshot(parameters: <a href="./common/cloud-services-types/snapshot-creation-request.html">SnapshotCreationRequest</a>): Promise&lt;<a href="./common/cloud-services-types/created-file.html">CreatedFile</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.snapshot(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_du"><a class="anchor" href="#_du"></a><a class="link" href="#_du">17.3.1.10. du</a></h5>
+<div class="paragraph">
+<p>Returns an recursively aggregated number of used bytes, starting at the given path.</p>
+</div>
+<div class="listingblock">
+<div class="title">du(parameters: <a href="./common/cloud-services-types/zpfs-request.html">ZpfsRequest</a>): Promise&lt;<a href="./common/cloud-services-types/zpfs-disk-usage.html">ZpfsDiskUsage</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.du(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_rm"><a class="anchor" href="#_rm"></a><a class="link" href="#_rm">17.3.1.11. rm</a></h5>
+<div class="paragraph">
+<p>Removes a file or folder (recursively).</p>
+</div>
+<div class="listingblock">
+<div class="title">rm(parameters: <a href="./common/cloud-services-types/file-removal.html">FileRemoval</a>): Promise&lt;<a href="./common/cloud-services-types/file-removal.html">FileRemoval</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.rm(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_freeuploadurl"><a class="anchor" href="#_freeuploadurl"></a><a class="link" href="#_freeuploadurl">17.3.1.12. freeUploadUrl</a></h5>
+<div class="listingblock">
+<div class="title">freeUploadUrl(parameters: <a href="./common/cloud-services-types/file-upload-request.html">FileUploadRequest</a>): Promise&lt;<a href="./common/cloud-services-types/file-upload-location.html">FileUploadLocation</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.freeUploadUrl(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_newuploadurl"><a class="anchor" href="#_newuploadurl"></a><a class="link" href="#_newuploadurl">17.3.1.13. newUploadUrl</a></h5>
+<div class="paragraph">
+<p>Requests an HTTP upload URL.
+The URL contains temporary credentials (typically valid for a few minutes) and is meant for immediate use.</p>
+</div>
+<div class="listingblock">
+<div class="title">newUploadUrl(parameters: <a href="./common/cloud-services-types/file-upload-request.html">FileUploadRequest</a>): Promise&lt;<a href="./common/cloud-services-types/file-upload-location.html">FileUploadLocation</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.newUploadUrl(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_updatemeta"><a class="anchor" href="#_updatemeta"></a><a class="link" href="#_updatemeta">17.3.1.14. updateMeta</a></h5>
+<div class="listingblock">
+<div class="title">updateMeta(parameters: <a href="./common/cloud-services-types/file-meta-update.html">FileMetaUpdate</a>): Promise&lt;<a href="./common/cloud-services-types/listing-entry-info.html">ListingEntryInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.updateMeta(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_newfile"><a class="anchor" href="#_newfile"></a><a class="link" href="#_newfile">17.3.1.15. newFile</a></h5>
+<div class="paragraph">
+<p>The client application calls this verb to notify that it&#8217;s done uploading to the cloud.
+Calling that verb MAY trigger additional events such as thumbnail/metadata creation.</p>
+</div>
+<div class="listingblock">
+<div class="title">newFile(parameters: <a href="./common/cloud-services-types/file-upload-complete.html">FileUploadComplete</a>): Promise&lt;<a href="./common/cloud-services-types/listing-entry-info.html">ListingEntryInfo</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.newFile(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_mkdir"><a class="anchor" href="#_mkdir"></a><a class="link" href="#_mkdir">17.3.1.16. mkdir</a></h5>
+<div class="paragraph">
+<p>Creates a new folder.
+May fail if the target location is not empty.</p>
+</div>
+<div class="listingblock">
+<div class="title">mkdir(parameters: <a href="./common/cloud-services-types/folder-creation-request.html">FolderCreationRequest</a>): Promise&lt;<a href="./common/cloud-services-types/created-file.html">CreatedFile</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.zpfs_hdfs.mkdir(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_8"><a class="anchor" href="#_how_to_use_it_8"></a><a class="link" href="#_how_to_use_it_8">17.3.1.17. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private zpfs_hdfs: Zpfs_hdfs <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: ZpfsRequest) {
+    const response = await this.zpfs_hdfs.readToken(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Zpfs_hdfs</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_template"><a class="anchor" href="#_template"></a><a class="link" href="#_template">17.3.2. Template</a></h4>
+<div class="paragraph">
+<p>User API for templates</p>
+</div>
+<div class="paragraph">
+<p>Users use this API to evaluate pre-configured templates.</p>
+</div>
+<div class="sect4">
+<h5 id="_evaluate"><a class="anchor" href="#_evaluate"></a><a class="link" href="#_evaluate">17.3.2.1. evaluate</a></h5>
+<div class="paragraph">
+<p>Evaluates the given template and returns the result as a string.
+Templates are parsed the first time they are evaluated. Evaluation may fail early due to a parsing error.</p>
+</div>
+<div class="listingblock">
+<div class="title">evaluate(parameters: <a href="./common/cloud-services-types/template-request.html">TemplateRequest</a>): Promise&lt;<a href="./common/cloud-services-types/template-result.html">TemplateResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.template.evaluate(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_9"><a class="anchor" href="#_how_to_use_it_9"></a><a class="link" href="#_how_to_use_it_9">17.3.2.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Template, TemplateRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private template: Template <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: TemplateRequest) {
+    const response = await this.template.evaluate(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Template</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_communication"><a class="anchor" href="#_communication"></a><a class="link" href="#_communication">17.4. Communication</a></h3>
+<div class="sect3">
+<h4 id="_messaging"><a class="anchor" href="#_messaging"></a><a class="link" href="#_messaging">17.4.1. Messaging</a></h4>
+<div class="paragraph">
+<p>Messaging service</p>
+</div>
+<div class="paragraph">
+<p>Simple and flexible user-to-user or user-to-group messaging service.</p>
+</div>
+<div class="sect4">
+<h5 id="_send"><a class="anchor" href="#_send"></a><a class="link" href="#_send">17.4.1.1. send</a></h5>
+<div class="paragraph">
+<p>Sends the given message to the specified target on the given (optional) channel.
+The administratively given default channel name is used when none is provided in the message itself.</p>
+</div>
+<div class="listingblock">
+<div class="title">send(parameters: <a href="./common/cloud-services-types/message.html">Message</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.messaging.send(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_10"><a class="anchor" href="#_how_to_use_it_10"></a><a class="link" href="#_how_to_use_it_10">17.4.1.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Messaging, Message } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private messaging: Messaging <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: Message) {
+    const response = await this.messaging.send(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Messaging</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_notif"><a class="anchor" href="#_notif"></a><a class="link" href="#_notif">17.4.2. Notif</a></h4>
+<div class="paragraph">
+<p>Notification User API</p>
+</div>
+<div class="paragraph">
+<p>User API for notifications.
+For notifications to work properly, it is imperative that the resource name of a device remain constant over time.</p>
+</div>
+<div class="sect4">
+<h5 id="_send_2"><a class="anchor" href="#_send_2"></a><a class="link" href="#_send_2">17.4.2.1. send</a></h5>
+<div class="paragraph">
+<p>Sends a native push notification to the target.</p>
+</div>
+<div class="listingblock">
+<div class="title">send(parameters: <a href="./common/cloud-services-types/notification-message.html">NotificationMessage</a>): Promise&lt;<a href="./common/cloud-services-types/notification-send-status.html">NotificationSendStatus</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.notif.send(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_unregister"><a class="anchor" href="#_unregister"></a><a class="link" href="#_unregister">17.4.2.2. unregister</a></h5>
+<div class="paragraph">
+<p>Unregisters the device for the current user and resource.
+This verb does not need any parameters.</p>
+</div>
+<div class="listingblock">
+<div class="title">unregister(parameters: <a href="./common/cloud-services-types/.html">undefined</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.notif.unregister(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_register"><a class="anchor" href="#_register"></a><a class="link" href="#_register">17.4.2.3. register</a></h5>
+<div class="paragraph">
+<p>Registers the device for the current user and resource.
+This service maintains a mapping of <em>userkey/</em>resource to device registration IDs.
+You MUST NOT re-use the same resource name from one device to another if you want to target specific devices with 'send'.
+Only one registration can be active for a given <em>userKey/</em>resource pair in a notification service.
+Device registration can be &lt;b&gt;neither impersonated nor called indirectly&lt;/b&gt; (from a scheduled job).</p>
+</div>
+<div class="listingblock">
+<div class="title">register(parameters: <a href="./common/cloud-services-types/notifiable-device-registration.html">NotifiableDeviceRegistration</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.notif.register(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_11"><a class="anchor" href="#_how_to_use_it_11"></a><a class="link" href="#_how_to_use_it_11">17.4.2.4. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Notif, NotificationMessage } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private notif: Notif <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: NotificationMessage) {
+    const response = await this.notif.send(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Notif</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sendmail"><a class="anchor" href="#_sendmail"></a><a class="link" href="#_sendmail">17.4.3. Sendmail</a></h4>
+<div class="paragraph">
+<p>Mail service user API</p>
+</div>
+<div class="paragraph">
+<p>This service is statically configured with an outgoing SMTP server.
+Users call the API here to actually send emails.</p>
+</div>
+<div class="sect4">
+<h5 id="_send_3"><a class="anchor" href="#_send_3"></a><a class="link" href="#_send_3">17.4.3.1. send</a></h5>
+<div class="paragraph">
+<p>Sends an email with the given body to the intended recipients.</p>
+</div>
+<div class="listingblock">
+<div class="title">send(parameters: <a href="./common/cloud-services-types/email.html">Email</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.sendmail.send(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_12"><a class="anchor" href="#_how_to_use_it_12"></a><a class="link" href="#_how_to_use_it_12">17.4.3.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Sendmail, Email } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private sendmail: Sendmail <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: Email) {
+    const response = await this.sendmail.send(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Sendmail</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sms_ovh"><a class="anchor" href="#_sms_ovh"></a><a class="link" href="#_sms_ovh">17.4.4. Sms_ovh</a></h4>
+<div class="paragraph">
+<p>SMS service</p>
+</div>
+<div class="paragraph">
+<p>User API for SMS.</p>
+</div>
+<div class="sect4">
+<h5 id="_send_4"><a class="anchor" href="#_send_4"></a><a class="link" href="#_send_4">17.4.4.1. send</a></h5>
+<div class="paragraph">
+<p>Sends the given message to the given recipients.</p>
+</div>
+<div class="listingblock">
+<div class="title">send(parameters: <a href="./common/cloud-services-types/sms-message.html">SmsMessage</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.sms_ovh.send(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_13"><a class="anchor" href="#_how_to_use_it_13"></a><a class="link" href="#_how_to_use_it_13">17.4.4.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Sms_ovh, SmsMessage } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private sms_ovh: Sms_ovh <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: SmsMessage) {
+    const response = await this.sms_ovh.send(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Sms_ovh</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_utilities_management"><a class="anchor" href="#_utilities_management"></a><a class="link" href="#_utilities_management">17.5. Utilities Management</a></h3>
+<div class="sect3">
+<h4 id="_cron"><a class="anchor" href="#_cron"></a><a class="link" href="#_cron">17.5.1. Cron</a></h4>
+<div class="paragraph">
+<p>User API for the Scheduler</p>
+</div>
+<div class="paragraph">
+<p>User endpoints for scheduling : users can schedule, list and delete tasks.
+Tasks are stored on a per-user basis: a task will run with the priviledges of the user who stored it.
+Tasks are run on the server and thus can call api verbs marked as server-only.</p>
+</div>
+<div class="sect4">
+<h5 id="_schedule"><a class="anchor" href="#_schedule"></a><a class="link" href="#_schedule">17.5.1.1. schedule</a></h5>
+<div class="paragraph">
+<p>Schedules a task for later execution. Tasks are executed asynchronously with the identity of the calling user.
+Tasks will be executed at a fixed moment in time in the future, or repeatedly, with minute precision.
+If a task already exists with the same cronName (a cronName is unique for a given user), this new task completely replaces it.
+A task can be scheduled with a cron-like syntax for repetitive or one-shot execution.
+Wildcards are not allowed for minutes and hours.
+When scheduling for one-shot execution, the time must be at least two minutes into the future.</p>
+</div>
+<div class="listingblock">
+<div class="title">schedule(parameters: <a href="./common/cloud-services-types/cron-task-request.html">CronTaskRequest</a>): Promise&lt;<a href="./common/cloud-services-types/cron-task-request.html">CronTaskRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.cron.schedule(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_settimeout"><a class="anchor" href="#_settimeout"></a><a class="link" href="#_settimeout">17.5.1.2. setTimeout</a></h5>
+<div class="paragraph">
+<p>Schedules a task for later execution. Tasks are executed asynchronously with the identity of the calling user.
+Tasks will be executed with second precision in the near future (120 seconds delay max).</p>
+</div>
+<div class="listingblock">
+<div class="title">setTimeout(parameters: <a href="./common/cloud-services-types/timer-request.html">TimerRequest</a>): Promise&lt;<a href="./common/cloud-services-types/timer-result.html">TimerResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.cron.setTimeout(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_unschedule"><a class="anchor" href="#_unschedule"></a><a class="link" href="#_unschedule">17.5.1.3. unschedule</a></h5>
+<div class="paragraph">
+<p>Removes a previously scheduled task.
+Does absolutely nothing if asked to remove a non-existent task.</p>
+</div>
+<div class="listingblock">
+<div class="title">unschedule(parameters: <a href="./common/cloud-services-types/cron-task-deletion.html">CronTaskDeletion</a>): Promise&lt;<a href="./common/cloud-services-types/cron-task-deletion.html">CronTaskDeletion</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.cron.unschedule(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_list_3"><a class="anchor" href="#_list_3"></a><a class="link" href="#_list_3">17.5.1.4. list</a></h5>
+<div class="paragraph">
+<p>Returns a paginated list of the asking user&#8217;s tasks.</p>
+</div>
+<div class="listingblock">
+<div class="title">list(parameters: <a href="./common/cloud-services-types/cron-task-list-request.html">CronTaskListRequest</a>): Promise&lt;<a href="./common/cloud-services-types/cron-planning.html">CronPlanning</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.cron.list(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_14"><a class="anchor" href="#_how_to_use_it_14"></a><a class="link" href="#_how_to_use_it_14">17.5.1.5. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Cron, CronTaskRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private cron: Cron <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: CronTaskRequest) {
+    const response = await this.cron.schedule(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Cron</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logs"><a class="anchor" href="#_logs"></a><a class="link" href="#_logs">17.5.2. Logs</a></h4>
+<div class="paragraph">
+<p>Log API</p>
+</div>
+<div class="paragraph">
+<p>User API for logging.</p>
+</div>
+<div class="sect4">
+<h5 id="_log"><a class="anchor" href="#_log"></a><a class="link" href="#_log">17.5.2.1. log</a></h5>
+<div class="paragraph">
+<p>Adds some server generated data and stores the entry into the sink defined by configuration.</p>
+</div>
+<div class="listingblock">
+<div class="title">log(parameters: <a href="./common/cloud-services-types/log-request.html">LogRequest</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.logs.log(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_15"><a class="anchor" href="#_how_to_use_it_15"></a><a class="link" href="#_how_to_use_it_15">17.5.2.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Logs, LogRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private logs: Logs <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: LogRequest) {
+    const response = await this.logs.log(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Logs</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_trigger"><a class="anchor" href="#_trigger"></a><a class="link" href="#_trigger">17.5.3. Trigger</a></h4>
+<div class="paragraph">
+<p>Trigger service</p>
+</div>
+<div class="paragraph">
+<p>Register listeners and trigger events.</p>
+</div>
+<div class="sect4">
+<h5 id="_trigger_2"><a class="anchor" href="#_trigger_2"></a><a class="link" href="#_trigger_2">17.5.3.1. trigger</a></h5>
+<div class="paragraph">
+<p>Triggers an event.
+All listeners previously registered for that event will be called, in no particular order.</p>
+</div>
+<div class="listingblock">
+<div class="title">trigger(parameters: <a href="./common/cloud-services-types/event-trigger.html">EventTrigger</a>): Promise&lt;<a href="./common/cloud-services-types/void.html">void</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.trigger.trigger(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_how_to_use_it_16"><a class="anchor" href="#_how_to_use_it_16"></a><a class="link" href="#_how_to_use_it_16">17.5.3.2. How to use it ?</a></h5>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Trigger, EventTrigger } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private trigger: Trigger <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: EventTrigger) {
+    const response = await this.trigger.trigger(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Trigger</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_line_interface"><a class="anchor" href="#_command_line_interface"></a><a class="link" href="#_command_line_interface">18. Command Line Interface</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_initialize_an_application"><a class="anchor" href="#_initialize_an_application"></a><a class="link" href="#_initialize_an_application">18.1. Initialize an application</a></h3>
 <div class="paragraph">
 <p>The command to initialize an application with the CLI is:</p>
 </div>
@@ -4239,9 +6813,9 @@ An environment is one stage in the development of the application.</p>
 <p>This option allow developer to bootstrap project with a pure JavaScript stack. Default strategy is TypeScript.</p>
 </div>
 <div class="sect3">
-<h4 id="_create_a_new_project_and_or_account"><a class="anchor" href="#_create_a_new_project_and_or_account"></a><a class="link" href="#_create_a_new_project_and_or_account">17.1.1. Create a new project and/or account</a></h4>
+<h4 id="_create_a_new_project_and_or_account"><a class="anchor" href="#_create_a_new_project_and_or_account"></a><a class="link" href="#_create_a_new_project_and_or_account">18.1.1. Create a new project and/or account</a></h4>
 <div class="sect4">
-<h5 id="_initialization_workflows"><a class="anchor" href="#_initialization_workflows"></a><a class="link" href="#_initialization_workflows">17.1.1.1. Initialization workflows</a></h5>
+<h5 id="_initialization_workflows"><a class="anchor" href="#_initialization_workflows"></a><a class="link" href="#_initialization_workflows">18.1.1.1. Initialization workflows</a></h5>
 <div class="paragraph tab-container no-max-height">
 <p>With or without account</p>
 </div>
@@ -4368,7 +6942,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect4">
-<h5 id="_create_a_new_account_and_a_new_application_2"><a class="anchor" href="#_create_a_new_account_and_a_new_application_2"></a><a class="link" href="#_create_a_new_account_and_a_new_application_2">17.1.1.2. Create a new account and a new application</a></h5>
+<h5 id="_create_a_new_account_and_a_new_application_2"><a class="anchor" href="#_create_a_new_account_and_a_new_application_2"></a><a class="link" href="#_create_a_new_account_and_a_new_application_2">18.1.1.2. Create a new account and a new application</a></h5>
 <div class="listingblock">
 <div class="title">Generate application</div>
 <div class="content">
@@ -4438,7 +7012,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect4">
-<h5 id="_use_existing_account_and_application"><a class="anchor" href="#_use_existing_account_and_application"></a><a class="link" href="#_use_existing_account_and_application">17.1.1.3. Use existing account and application</a></h5>
+<h5 id="_use_existing_account_and_application"><a class="anchor" href="#_use_existing_account_and_application"></a><a class="link" href="#_use_existing_account_and_application">18.1.1.3. Use existing account and application</a></h5>
 <div class="listingblock">
 <div class="title">Generate application</div>
 <div class="content">
@@ -4518,7 +7092,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect4">
-<h5 id="_add_an_application_to_my_account"><a class="anchor" href="#_add_an_application_to_my_account"></a><a class="link" href="#_add_an_application_to_my_account">17.1.1.4. Add an application to my account</a></h5>
+<h5 id="_add_an_application_to_my_account"><a class="anchor" href="#_add_an_application_to_my_account"></a><a class="link" href="#_add_an_application_to_my_account">18.1.1.4. Add an application to my account</a></h5>
 <div class="listingblock">
 <div class="title">Generate application</div>
 <div class="content">
@@ -4595,9 +7169,9 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="sect2">
-<h3 id="_run_project_locally"><a class="anchor" href="#_run_project_locally"></a><a class="link" href="#_run_project_locally">17.2. Run project locally</a></h3>
+<h3 id="_run_project_locally"><a class="anchor" href="#_run_project_locally"></a><a class="link" href="#_run_project_locally">18.2. Run project locally</a></h3>
 <div class="sect3">
-<h4 id="_run_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_run_front_and_em_custom_cloud_services_em"></a><a class="link" href="#_run_front_and_em_custom_cloud_services_em">17.2.1. Run front and <em>custom cloud services</em></a></h4>
+<h4 id="_run_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_run_front_and_em_custom_cloud_services_em"></a><a class="link" href="#_run_front_and_em_custom_cloud_services_em">18.2.1. Run front and <em>custom cloud services</em></a></h4>
 <div class="listingblock">
 <div class="title">Start application (front and custom cloud services)</div>
 <div class="content">
@@ -4626,7 +7200,7 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_run_only_em_custom_cloud_services_em"><a class="anchor" href="#_run_only_em_custom_cloud_services_em"></a><a class="link" href="#_run_only_em_custom_cloud_services_em">17.2.2. Run only <em>custom cloud services</em></a></h4>
+<h4 id="_run_only_em_custom_cloud_services_em"><a class="anchor" href="#_run_only_em_custom_cloud_services_em"></a><a class="link" href="#_run_only_em_custom_cloud_services_em">18.2.2. Run only <em>custom cloud services</em></a></h4>
 <div class="listingblock">
 <div class="title">Start custom cloud services locally</div>
 <div class="content">
@@ -4656,9 +7230,9 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deploy_project_on_the_zetapush_cloud"><a class="anchor" href="#_deploy_project_on_the_zetapush_cloud"></a><a class="link" href="#_deploy_project_on_the_zetapush_cloud">17.3. Deploy project on the ZetaPush Cloud</a></h3>
+<h3 id="_deploy_project_on_the_zetapush_cloud"><a class="anchor" href="#_deploy_project_on_the_zetapush_cloud"></a><a class="link" href="#_deploy_project_on_the_zetapush_cloud">18.3. Deploy project on the ZetaPush Cloud</a></h3>
 <div class="sect3">
-<h4 id="_deploy_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_front_and_em_custom_cloud_services_em"></a><a class="link" href="#_deploy_front_and_em_custom_cloud_services_em">17.3.1. Deploy front and <em>custom cloud services</em></a></h4>
+<h4 id="_deploy_front_and_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_front_and_em_custom_cloud_services_em"></a><a class="link" href="#_deploy_front_and_em_custom_cloud_services_em">18.3.1. Deploy front and <em>custom cloud services</em></a></h4>
 <div class="listingblock">
 <div class="title">Deploy application (front and custom cloud services)</div>
 <div class="content">
@@ -4687,7 +7261,7 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_deploy_only_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_only_em_custom_cloud_services_em"></a><a class="link" href="#_deploy_only_em_custom_cloud_services_em">17.3.2. Deploy only <em>custom cloud services</em></a></h4>
+<h4 id="_deploy_only_em_custom_cloud_services_em"><a class="anchor" href="#_deploy_only_em_custom_cloud_services_em"></a><a class="link" href="#_deploy_only_em_custom_cloud_services_em">18.3.2. Deploy only <em>custom cloud services</em></a></h4>
 <div class="listingblock">
 <div class="title">Deploy the worker</div>
 <div class="content">
@@ -4716,7 +7290,7 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_deploy_only_front"><a class="anchor" href="#_deploy_only_front"></a><a class="link" href="#_deploy_only_front">17.3.3. Deploy only front</a></h4>
+<h4 id="_deploy_only_front"><a class="anchor" href="#_deploy_only_front"></a><a class="link" href="#_deploy_only_front">18.3.3. Deploy only front</a></h4>
 <div class="listingblock">
 <div class="title">Deploy the worker</div>
 <div class="content">
@@ -4748,14 +7322,14 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">18. Configuration</a></h2>
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a><a class="link" href="#_configuration">19. Configuration</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>ZetaPush provides many variables to configure your applications.
 There are 2 types: the <em>account configuration variables</em> and the <em>application configuration variables</em>.</p>
 </div>
 <div class="sect2">
-<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a><a class="link" href="#_account_configuration">18.1. Account configuration</a></h3>
+<h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a><a class="link" href="#_account_configuration">19.1. Account configuration</a></h3>
 <div class="paragraph">
 <p>To use ZetaPush Celtia, you need to have an account and an optional application.
 You specify this properties in the <code>.zetarc</code> file.
@@ -4821,7 +7395,7 @@ An environment is one stage in the development of the application.</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a><a class="link" href="#_application_configuration">18.2. Application configuration</a></h3>
+<h3 id="_application_configuration"><a class="anchor" href="#_application_configuration"></a><a class="link" href="#_application_configuration">19.2. Application configuration</a></h3>
 <div class="paragraph">
 <p>You can configure your applications with several variables. Here is the list of them:</p>
 </div>
@@ -4922,13 +7496,13 @@ ZetaPush uses this property to host and expose it.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a><a class="link" href="#_configuration_override">18.3. Configuration override</a></h3>
+<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a><a class="link" href="#_configuration_override">19.3. Configuration override</a></h3>
 <div class="paragraph">
 <p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
 ZetaPush includes and overrides this properties in a specific order:</p>
 </div>
 <div class="sect3">
-<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">18.3.1. Account properties</a></h4>
+<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">19.3.1. Account properties</a></h4>
 <div class="imageblock center">
 <div class="content">
 <img src="override-account-properties.png" alt="override account properties" width="182" height="241">
@@ -4939,7 +7513,7 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">18.3.2. Application properties</a></h4>
+<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">19.3.2. Application properties</a></h4>
 <div class="imageblock center">
 <div class="content">
 <img src="override-application-properties.png" alt="override application properties" width="154" height="241">
@@ -4950,32 +7524,8 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_zetapush_cloud_services"><a class="anchor" href="#_zetapush_cloud_services"></a><a class="link" href="#_zetapush_cloud_services">19. ZetaPush Cloud Services</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. List of available cloud services</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Cloud service</th>
-<th class="tableblock halign-center valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_user_management">User management</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">TODO: <a href="https://github.com/zetapush/documentation/issues/45" class="bare">https://github.com/zetapush/documentation/issues/45</a></p></td>
-</tr>
-</tbody>
-</table>
 <div class="sect2">
-<h3 id="_user_management"><a class="anchor" href="#_user_management"></a><a class="link" href="#_user_management">19.1. User Management</a></h3>
+<h3 id="_user_management_2"><a class="anchor" href="#_user_management_2"></a><a class="link" href="#_user_management_2">19.4. User Management</a></h3>
 <div class="paragraph">
 <p><a href="{basedir}/src/docs/resources/api/index.html">test</a></p>
 </div>

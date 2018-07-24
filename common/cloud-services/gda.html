@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Gda</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+            <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_gda">Gda</a>
+<ul class="sectlevel2">
+<li><a href="#_puts">puts</a></li>
+<li><a href="#_inc">inc</a></li>
+<li><a href="#_removerow">removeRow</a></li>
+<li><a href="#_removecolumn">removeColumn</a></li>
+<li><a href="#_removecell">removeCell</a></li>
+<li><a href="#_mget">mget</a></li>
+<li><a href="#_getcells">getCells</a></li>
+<li><a href="#_get">get</a></li>
+<li><a href="#_put">put</a></li>
+<li><a href="#_list">list</a></li>
+<li><a href="#_removerange">removeRange</a></li>
+<li><a href="#_filter">filter</a></li>
+<li><a href="#_range">range</a></li>
+<li><a href="#_reduce">reduce</a></li>
+<li><a href="#_how_to_use_it">How to use it ?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_gda"><a class="anchor" href="#_gda"></a>Gda</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GDA User API</p>
+</div>
+<div class="paragraph">
+<p>User API for Generic Data Access.
+The data are stored on a per-user basis.
+Users can put, get, list their data.</p>
+</div>
+<div class="sect2">
+<h3 id="_puts"><a class="anchor" href="#_puts"></a>puts</h3>
+<div class="paragraph">
+<p>Creates or replaces the (maybe partial) contents of a collection of rows.
+This method only creates or replaces cells for non-null input values.</p>
+</div>
+<div class="listingblock">
+<div class="title">puts(parameters: <a href="../../common/cloud-services-types/gda-puts.html">GdaPuts</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-puts-result.html">GdaPutsResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.puts(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inc"><a class="anchor" href="#_inc"></a>inc</h3>
+<div class="paragraph">
+<p>Increments a cell 64-bit signed integer value and returns the result in the data field.
+The increment is atomic : if you concurrently increment 10 times a value by 1, the final result will be the initial value plus 10. The actual individual resulting values seen by the 10 concurrent callers may vary discontinuously, with duplicates : at least one of them will see the final (+10) result.</p>
+</div>
+<div class="listingblock">
+<div class="title">inc(parameters: <a href="../../common/cloud-services-types/gda-put.html">GdaPut</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-put.html">GdaPut</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.inc(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removerow"><a class="anchor" href="#_removerow"></a>removeRow</h3>
+<div class="paragraph">
+<p>Removes all columns of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeRow(parameters: <a href="../../common/cloud-services-types/gda-row-request.html">GdaRowRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-row-request.html">GdaRowRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeRow(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removecolumn"><a class="anchor" href="#_removecolumn"></a>removeColumn</h3>
+<div class="paragraph">
+<p>Removes all cells of the given column of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeColumn(parameters: <a href="../../common/cloud-services-types/gda-column-request.html">GdaColumnRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-column-request.html">GdaColumnRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeColumn(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removecell"><a class="anchor" href="#_removecell"></a>removeCell</h3>
+<div class="paragraph">
+<p>Removes only one cell of the given column of the given row from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeCell(parameters: <a href="../../common/cloud-services-types/gda-cell-request.html">GdaCellRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-cell-request.html">GdaCellRequest</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeCell(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mget"><a class="anchor" href="#_mget"></a>mget</h3>
+<div class="paragraph">
+<p>Returns full data rows, in the order they were asked.</p>
+</div>
+<div class="listingblock">
+<div class="title">mget(parameters: <a href="../../common/cloud-services-types/gda-multi-get-request.html">GdaMultiGetRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-multi-get-result.html">GdaMultiGetResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.mget(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getcells"><a class="anchor" href="#_getcells"></a>getCells</h3>
+<div class="paragraph">
+<p>Returns a precise list of cells from a column in a data row.</p>
+</div>
+<div class="listingblock">
+<div class="title">getCells(parameters: <a href="../../common/cloud-services-types/gda-cells-request.html">GdaCellsRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-cells-result.html">GdaCellsResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.getCells(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get"><a class="anchor" href="#_get"></a>get</h3>
+<div class="paragraph">
+<p>Returns a full data row.</p>
+</div>
+<div class="listingblock">
+<div class="title">get(parameters: <a href="../../common/cloud-services-types/gda-get.html">GdaGet</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-get-result.html">GdaGetResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.get(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_put"><a class="anchor" href="#_put"></a>put</h3>
+<div class="paragraph">
+<p>Creates or replaces the contents of a particular cell.</p>
+</div>
+<div class="listingblock">
+<div class="title">put(parameters: <a href="../../common/cloud-services-types/gda-put.html">GdaPut</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-put.html">GdaPut</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.put(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list"><a class="anchor" href="#_list"></a>list</h3>
+<div class="paragraph">
+<p>Returns a paginated list of rows from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">list(parameters: <a href="../../common/cloud-services-types/gda-list.html">GdaList</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-list-result.html">GdaListResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.list(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_removerange"><a class="anchor" href="#_removerange"></a>removeRange</h3>
+<div class="paragraph">
+<p>Removes the specified columns of the given range of rows from the given table.</p>
+</div>
+<div class="listingblock">
+<div class="title">removeRange(parameters: <a href="../../common/cloud-services-types/gda-remove-range.html">GdaRemoveRange</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-remove-range.html">GdaRemoveRange</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.removeRange(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filter"><a class="anchor" href="#_filter"></a>filter</h3>
+<div class="paragraph">
+<p>Similar to range, but rows can be filtered out according to a developer-supplied predicate.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">filter(parameters: <a href="../../common/cloud-services-types/gda-filter-request.html">GdaFilterRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-filter-result.html">GdaFilterResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.filter(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_range"><a class="anchor" href="#_range"></a>range</h3>
+<div class="paragraph">
+<p>Returns a paginated range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">range(parameters: <a href="../../common/cloud-services-types/gda-range.html">GdaRange</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-range-result.html">GdaRangeResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.range(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reduce"><a class="anchor" href="#_reduce"></a>reduce</h3>
+<div class="paragraph">
+<p>Returns a computed single reduced result from a range of rows from the given table.
+A range consists of consecutive rows from the start key (inclusive) to the stop key (exclusive).
+You can specify partial keys for the start and stop fields.</p>
+</div>
+<div class="listingblock">
+<div class="title">reduce(parameters: <a href="../../common/cloud-services-types/gda-reduce-request.html">GdaReduceRequest</a>): Promise&lt;<a href="../../common/cloud-services-types/gda-reduce-result.html">GdaReduceResult</a>&gt;</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>const response = await this.gda.reduce(parameters);</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_use_it"><a class="anchor" href="#_how_to_use_it"></a>How to use it ?</h3>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+  <td class="code"><pre>import { Injectable, Gda, GdaPuts } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private gda: Gda <i class="conum" data-value="2"></i><b>(2)</b>
+  ) {}
+  async doStuff(parameters: GdaPuts) {
+    const response = await this.gda.puts(parameters); <i class="conum" data-value="3"></i><b>(3)</b>
+    return response;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>Gda</code> from platform</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declare injected service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call injected service</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-07-24 10:48:38 UTC
+</div>
+</div>
+</body>
+</html>
