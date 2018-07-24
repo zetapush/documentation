@@ -3283,7 +3283,40 @@ The command that is executed under the hood is:</p>
 <div class="sect2">
 <h3 id="_debug_your_application_with_intellij_based_ide"><a class="anchor" href="#_debug_your_application_with_intellij_based_ide"></a><a class="link" href="#_debug_your_application_with_intellij_based_ide">14.2. Debug your application with IntelliJ based IDE</a></h3>
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/81" class="bare">https://github.com/zetapush/documentation/issues/81</a></p>
+<p>Intellij&#8217;s WebStorm provide a powerfull debugging feature <a href="https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/" class="bare">https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/</a>.</p>
+</div>
+<div class="paragraph">
+<p>On the top menu, select Run &#8594; Edit Configurations</p>
+</div>
+<div class="paragraph">
+<p>then select a new NodeJs Template :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Node interpreter : path to nodeJS executable.</p>
+</li>
+<li>
+<p>Node parameters : must be "node_modules/.bin/zeta".</p>
+</li>
+<li>
+<p>Working directory : path to your project.</p>
+</li>
+<li>
+<p>Javascript file : should be blank.</p>
+</li>
+<li>
+<p>Application parameters : zeta command to launch, with optionals flags.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//debug/webstorm-debug.png" alt="Configure WebStorm Debug">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now use Intellij in debug mode with breakpoints and all the debugs features.</p>
 </div>
 </div>
 </div>
