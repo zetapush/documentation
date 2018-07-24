@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Pagination
+
+=== Properties
+
+
+
+.direction: PageDirection;
+Sort direction. Default is ASC when not specified.
+
+
+.pageNumber: int;
+Page number (zero-based)
+
+
+.pageSize: int;
+Page size (minimum 1)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Pagination {
+
+  /**
+   * Sort direction. Default is ASC when not specified.
+   */
+  direction: PageDirection;
+
+  /**
+   * Page number (zero-based)
+   */
+  pageNumber: int;
+
+  /**
+   * Page size (minimum 1)
+   */
+  pageSize: int;
+
+}
+----

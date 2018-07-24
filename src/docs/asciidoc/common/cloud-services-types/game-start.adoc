@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameStart
+
+=== Properties
+
+
+
+.gameId: string;
+Server attributed game identifier
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameStart {
+
+  /**
+   * Server attributed game identifier
+   */
+  gameId: string;
+
+}
+----

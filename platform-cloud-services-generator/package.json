@@ -1,0 +1,10 @@
+{
+  "name": "platform-cloud-services-generator",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "generator.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Grégory Houllier <gregory.houllier@zetapush.com>",
+  "license": "ISC"
+}

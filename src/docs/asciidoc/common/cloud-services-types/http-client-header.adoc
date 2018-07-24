@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientHeader
+
+=== Properties
+
+
+
+.name: string;
+Header name
+
+
+.value: string;
+Header value
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientHeader {
+
+  /**
+   * Header name
+   */
+  name: string;
+
+  /**
+   * Header value
+   */
+  value: string;
+
+}
+----

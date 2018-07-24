@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogConfig
+
+=== Properties
+
+
+
+.levels: Map<string,LogLevel>;
+Maps loggers to levels (DEBUG, INFO, ...)
+
+
+.rootLevel: LogLevel;
+Level for the root logger
+
+
+.sinkConfig: LogSinkConfig;
+specific to each sink type
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface LogConfig {
+
+  /**
+   * Maps loggers to levels (DEBUG, INFO, ...)
+   */
+  levels: Map<string,LogLevel>;
+
+  /**
+   * Level for the root logger
+   */
+  rootLevel: LogLevel;
+
+  /**
+   * specific to each sink type
+   */
+  sinkConfig: LogSinkConfig;
+
+}
+----

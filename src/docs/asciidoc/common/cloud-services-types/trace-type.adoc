@@ -1,0 +1,33 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TraceType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum TraceType {
+
+  /**
+   * A macro is starting
+   */
+  MS = "MS";
+
+  /**
+   * A macro has ended
+   */
+  ME = "ME";
+
+  /**
+   * User comment
+   */
+  CMT = "CMT";
+
+  /**
+   * Developer-generated
+   */
+  USR = "USR";
+
+}
+----

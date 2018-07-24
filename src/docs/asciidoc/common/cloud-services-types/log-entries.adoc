@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogEntries
+
+=== Properties
+
+
+
+.entries: PageContent[LogEntry];
+undefined
+
+
+.page: Pagination;
+undefined
+
+
+.start: long;
+undefined
+
+
+.stop: long;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface LogEntries {
+
+  /**
+   * undefined
+   */
+  entries: PageContent[LogEntry];
+
+  /**
+   * undefined
+   */
+  page: Pagination;
+
+  /**
+   * undefined
+   */
+  start: long;
+
+  /**
+   * undefined
+   */
+  stop: long;
+
+}
+----

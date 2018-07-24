@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== NotificationSendStatus
+
+=== Properties
+
+
+
+.message: NotificationMessage;
+Source message
+
+
+.report: DeviceNotificationSendStatus[];
+List of statuses for each target device
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface NotificationSendStatus {
+
+  /**
+   * Source message
+   */
+  message: NotificationMessage;
+
+  /**
+   * List of statuses for each target device
+   */
+  report: DeviceNotificationSendStatus[];
+
+}
+----

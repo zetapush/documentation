@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaRemoveColumns
+
+=== Properties
+
+
+
+.columns: Set[String];
+List of column names
+
+
+.name: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaRemoveColumns {
+
+  /**
+   * List of column names
+   */
+  columns: Set[String];
+
+  /**
+   * Table name
+   */
+  name: string;
+
+}
+----

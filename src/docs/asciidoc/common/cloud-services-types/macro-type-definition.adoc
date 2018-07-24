@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroTypeDefinition
+
+=== Properties
+
+
+
+.fields: MacroScriptParam[];
+List of field definitions
+
+
+.name: string;
+Type name
+
+
+.thisObject: Map<string,Object>;
+Initializer. contains class common fields, copied into each new instance
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroTypeDefinition {
+
+  /**
+   * List of field definitions
+   */
+  fields: MacroScriptParam[];
+
+  /**
+   * Type name
+   */
+  name: string;
+
+  /**
+   * Initializer. contains class common fields, copied into each new instance
+   */
+  thisObject: Map<string,Object>;
+
+}
+----

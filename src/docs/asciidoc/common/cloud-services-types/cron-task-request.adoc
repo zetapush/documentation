@@ -1,0 +1,98 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== CronTaskRequest
+
+=== Properties
+
+
+
+.cronName: string;
+Cron identifier. mandatory for creation or update.
+
+
+.deploymentId: string;
+DeploymentId of the target service.
+
+
+.loud: boolean;
+Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.parameter: Map<string,Object>;
+Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.schedule: Object;
+Cron-like expression (with fixed minutes and hours) or unix timestamp (as milliseconds from the epoch). Times are UTC.
+
+
+.stop: Long;
+Max number of executions.
+
+
+.verb: string;
+Verb to be called within the target service.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface CronTaskRequest {
+
+  /**
+   * Cron identifier. mandatory for creation or update.
+   */
+  cronName: string;
+
+  /**
+   * DeploymentId of the target service.
+   */
+  deploymentId: string;
+
+  /**
+   * Specifies whether this call should generate all expected direct user notifications (primary outputs). Does not affect side-effects (other outputs). Defaults to false
+   */
+  loud: boolean;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Parameter that will be passed to the target verb when called. The format is the format accepted by the target.
+   */
+  parameter: Map<string,Object>;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Cron-like expression (with fixed minutes and hours) or unix timestamp (as milliseconds from the epoch). Times are UTC.
+   */
+  schedule: Object;
+
+  /**
+   * Max number of executions.
+   */
+  stop: Long;
+
+  /**
+   * Verb to be called within the target service.
+   */
+  verb: string;
+
+}
+----

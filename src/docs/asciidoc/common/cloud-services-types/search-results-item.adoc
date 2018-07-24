@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SearchResultsItem
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Document data
+
+
+.id: string;
+Document id
+
+
+.index: string;
+Index name
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.score: float;
+Item score
+
+
+.type: string;
+Type name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SearchResultsItem {
+
+  /**
+   * Document data
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Document id
+   */
+  id: string;
+
+  /**
+   * Index name
+   */
+  index: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Item score
+   */
+  score: float;
+
+  /**
+   * Type name
+   */
+  type: string;
+
+}
+----

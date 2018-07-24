@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== CreatedFile
+
+=== Properties
+
+
+
+.oldPath: string;
+Old name (if applicable)
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.path: string;
+File path
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface CreatedFile {
+
+  /**
+   * Old name (if applicable)
+   */
+  oldPath: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * File path
+   */
+  path: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+}
+----

@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== FullWorkflowStateDefinition
+
+=== Properties
+
+
+
+.call: ServiceVerbCall;
+Called on the workflow when this state is about to be reached. If the call is a macro, it has the possibility to prevent the transition by returning {'transition':'failed', 'message':'optional error message'}.
+
+
+.stateId: string;
+ID of the state
+
+
+.stateName: string;
+State name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface FullWorkflowStateDefinition {
+
+  /**
+   * Called on the workflow when this state is about to be reached. If the call is a macro, it has the possibility to prevent the transition by returning {'transition':'failed', 'message':'optional error message'}.
+   */
+  call: ServiceVerbCall;
+
+  /**
+   * ID of the state
+   */
+  stateId: string;
+
+  /**
+   * State name
+   */
+  stateName: string;
+
+}
+----

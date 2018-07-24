@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameType
+
+=== Properties
+
+
+
+.description: string;
+Game description
+
+
+.name: string;
+Game type identifier
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameType {
+
+  /**
+   * Game description
+   */
+  description: string;
+
+  /**
+   * Game type identifier
+   */
+  name: string;
+
+}
+----

@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserMembership
+
+=== Properties
+
+
+
+.group: string;
+Group id. Must be alphanumerical. You MAY use the wildcard '*' when granting rights.
+
+
+.hardFail: boolean;
+True if lack of effective membership should be treated as an error. False to return the information as a boolean in the response.
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.user: string;
+The user's key (as in __userKey)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserMembership {
+
+  /**
+   * Group id. Must be alphanumerical. You MAY use the wildcard '*' when granting rights.
+   */
+  group: string;
+
+  /**
+   * True if lack of effective membership should be treated as an error. False to return the information as a boolean in the response.
+   */
+  hardFail: boolean;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * The user's key (as in __userKey)
+   */
+  user: string;
+
+}
+----

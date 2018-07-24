@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== RemoteCommand
+
+=== Properties
+
+
+
+.cmd: string;
+Command to be executed. This is an arbitrary identifier string whose semantics are left to the developer.
+
+
+.data: Map<string,Object>;
+Optional data payload for the command. This is an arbitrary object whose semantics are left to the developer.
+
+
+.from: string;
+User issuing the command
+
+
+.fromResource: string;
+Resource of the user issuing the command
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.resource: string;
+Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface RemoteCommand {
+
+  /**
+   * Command to be executed. This is an arbitrary identifier string whose semantics are left to the developer.
+   */
+  cmd: string;
+
+  /**
+   * Optional data payload for the command. This is an arbitrary object whose semantics are left to the developer.
+   */
+  data: Map<string,Object>;
+
+  /**
+   * User issuing the command
+   */
+  from: string;
+
+  /**
+   * Resource of the user issuing the command
+   */
+  fromResource: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+   */
+  resource: string;
+
+}
+----

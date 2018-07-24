@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugEventPause
+
+=== Properties
+
+
+
+.frames: MacroDebugFrame[];
+Stack frames
+
+
+.line: int;
+Line number
+
+
+.location: string;
+Source location
+
+
+.stepIntoPossible: boolean;
+Whether it is possible to step into.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugEventPause {
+
+  /**
+   * Stack frames
+   */
+  frames: MacroDebugFrame[];
+
+  /**
+   * Line number
+   */
+  line: int;
+
+  /**
+   * Source location
+   */
+  location: string;
+
+  /**
+   * Whether it is possible to step into.
+   */
+  stepIntoPossible: boolean;
+
+}
+----

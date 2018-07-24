@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroLoop
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.items: string;
+Collection to iterate on
+
+
+.line: int;
+Line number in source file
+
+
+.steps: MacroStep[];
+Sub steps, sequentially executed
+
+
+.var: string;
+Loop variable
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroLoop {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Collection to iterate on
+   */
+  items: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * Sub steps, sequentially executed
+   */
+  steps: MacroStep[];
+
+  /**
+   * Loop variable
+   */
+  var: string;
+
+}
+----

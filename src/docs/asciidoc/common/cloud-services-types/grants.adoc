@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Grants
+
+=== Properties
+
+
+
+.actions: string[];
+Actions which will be authorized. For built-in API verbs, it is often the verb itself. You can use the wildcard '*'
+
+
+.group: string;
+Group id. Must be alphanumerical. You MAY use the wildcard '*' when granting rights.
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.resource: string;
+Resource on which the grant applies. For API defined resources, it often has the syntax deploymentId:owner:preciseResource. For example to give access to a gda table, it may look like 'gda_0:wshwWSDOJSD:myTable' , gda_0 being the gda deploymentId, wshwWSDOJSD the data owner, and myTable the table to be shared. For grants on user devices, it can match the resource field used during authentication. You can use the wildcard '*'
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Grants {
+
+  /**
+   * Actions which will be authorized. For built-in API verbs, it is often the verb itself. You can use the wildcard '*'
+   */
+  actions: string[];
+
+  /**
+   * Group id. Must be alphanumerical. You MAY use the wildcard '*' when granting rights.
+   */
+  group: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Resource on which the grant applies. For API defined resources, it often has the syntax deploymentId:owner:preciseResource. For example to give access to a gda table, it may look like 'gda_0:wshwWSDOJSD:myTable' , gda_0 being the gda deploymentId, wshwWSDOJSD the data owner, and myTable the table to be shared. For grants on user devices, it can match the resource field used during authentication. You can use the wildcard '*'
+   */
+  resource: string;
+
+}
+----

@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkerAdminBulkServiceCreation
+
+=== Properties
+
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.services: DeployedItem[];
+List of services to be created
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkerAdminBulkServiceCreation {
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * List of services to be created
+   */
+  services: DeployedItem[];
+
+}
+----

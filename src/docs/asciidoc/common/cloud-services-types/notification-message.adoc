@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== NotificationMessage
+
+=== Properties
+
+
+
+.data: Object;
+Data to be sent (map or string). Top-level fields to be included in the message. If data is a string, data will be put in the right, vendor-specific, location in the data structure sent to the device.
+
+
+.resource: string;
+Resource of the target device (optional. if not given, will notify all devices of the user)
+
+
+.target: string;
+Target user key (as in __userKey)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface NotificationMessage {
+
+  /**
+   * Data to be sent (map or string). Top-level fields to be included in the message. If data is a string, data will be put in the right, vendor-specific, location in the data structure sent to the device.
+   */
+  data: Object;
+
+  /**
+   * Resource of the target device (optional. if not given, will notify all devices of the user)
+   */
+  resource: string;
+
+  /**
+   * Target user key (as in __userKey)
+   */
+  target: string;
+
+}
+----

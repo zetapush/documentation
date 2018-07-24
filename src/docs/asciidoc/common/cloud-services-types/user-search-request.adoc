@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserSearchRequest
+
+=== Properties
+
+
+
+.filter: Map<string,Object>;
+ElasticSearch filter
+
+
+.page: Pagination;
+Pagination information
+
+
+.query: Map<string,Object>;
+Elasticsearch query
+
+
+.requestId: string;
+Optional request ID
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserSearchRequest {
+
+  /**
+   * ElasticSearch filter
+   */
+  filter: Map<string,Object>;
+
+  /**
+   * Pagination information
+   */
+  page: Pagination;
+
+  /**
+   * Elasticsearch query
+   */
+  query: Map<string,Object>;
+
+  /**
+   * Optional request ID
+   */
+  requestId: string;
+
+}
+----

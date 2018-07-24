@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroCompletionStats
+
+=== Properties
+
+
+
+.cycles: long;
+Total number of VM cycles
+
+
+.elapsedMillis: long;
+Elapsed server time for the execution of the macro
+
+
+.nbCalls: long;
+Total number of called verbs
+
+
+.ram: long;
+Total number of RAM bytes
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroCompletionStats {
+
+  /**
+   * Total number of VM cycles
+   */
+  cycles: long;
+
+  /**
+   * Elapsed server time for the execution of the macro
+   */
+  elapsedMillis: long;
+
+  /**
+   * Total number of called verbs
+   */
+  nbCalls: long;
+
+  /**
+   * Total number of RAM bytes
+   */
+  ram: long;
+
+}
+----

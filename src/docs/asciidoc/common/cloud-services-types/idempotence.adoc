@@ -1,0 +1,28 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Idempotence
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum Idempotence {
+
+  /**
+   * The operation will not fail if the entity already exists in a different and compatible form.
+   */
+  IGNORE_DIFFERENT = "IGNORE_DIFFERENT";
+
+  /**
+   * The operation will fail if the entity already exists
+   */
+  FAIL_IF_EXISTING = "FAIL_IF_EXISTING";
+
+  /**
+   * The operation will not fail if the entity already exists in a similar form.
+   */
+  IGNORE_IDENTICAL = "IGNORE_IDENTICAL";
+
+}
+----

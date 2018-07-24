@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== DeviceCapabilities
+
+=== Properties
+
+
+
+.answeringResource: string;
+Resource name of the answering device
+
+
+.askingResource: string;
+Resource name of the asking device
+
+
+.capabilities: string[];
+List of capabilities. Capabilities are developer-defined strings
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface DeviceCapabilities {
+
+  /**
+   * Resource name of the answering device
+   */
+  answeringResource: string;
+
+  /**
+   * Resource name of the asking device
+   */
+  askingResource: string;
+
+  /**
+   * List of capabilities. Capabilities are developer-defined strings
+   */
+  capabilities: string[];
+
+}
+----

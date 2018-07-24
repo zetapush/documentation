@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroScriptParamConstraint
+
+=== Properties
+
+
+
+.config: Map<string,Object>;
+Constraint configuration
+
+
+.name: string;
+Constraint name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroScriptParamConstraint {
+
+  /**
+   * Constraint configuration
+   */
+  config: Map<string,Object>;
+
+  /**
+   * Constraint name
+   */
+  name: string;
+
+}
+----

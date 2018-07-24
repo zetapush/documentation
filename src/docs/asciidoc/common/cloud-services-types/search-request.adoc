@@ -1,0 +1,80 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SearchRequest
+
+=== Properties
+
+
+
+.filter: Map<string,Object>;
+ElasticSearch filter. Follows the syntax defined in the elastic search manual.
+
+
+.indices: string[];
+List of indices to be searched.
+
+
+.page: Pagination;
+Pagination information
+
+
+.query: Map<string,Object>;
+ElasticSearch query. Follows the syntax defined in the elastic search manual.
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.sort: SearchRequestSortField[];
+Sort information
+
+
+.types: string[];
+The document types to execute the search against. Defaults to be executed against all types.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SearchRequest {
+
+  /**
+   * ElasticSearch filter. Follows the syntax defined in the elastic search manual.
+   */
+  filter: Map<string,Object>;
+
+  /**
+   * List of indices to be searched.
+   */
+  indices: string[];
+
+  /**
+   * Pagination information
+   */
+  page: Pagination;
+
+  /**
+   * ElasticSearch query. Follows the syntax defined in the elastic search manual.
+   */
+  query: Map<string,Object>;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * Sort information
+   */
+  sort: SearchRequestSortField[];
+
+  /**
+   * The document types to execute the search against. Defaults to be executed against all types.
+   */
+  types: string[];
+
+}
+----

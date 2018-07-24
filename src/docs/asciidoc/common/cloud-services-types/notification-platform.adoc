@@ -1,0 +1,33 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== NotificationPlatform
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum NotificationPlatform {
+
+  /**
+   * Apple
+   */
+  APNS = "APNS";
+
+  /**
+   * Apple sandbox
+   */
+  APNS_VOIP_SANDBOX = "APNS_VOIP_SANDBOX";
+
+  /**
+   * Apple VOIP sandbox
+   */
+  APNS_SANDBOX = "APNS_SANDBOX";
+
+  /**
+   * Google Cloud Messaging
+   */
+  GCM = "GCM";
+
+}
+----

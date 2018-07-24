@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SoapFaultDefinition
+
+=== Properties
+
+
+
+.targetNamespace: string;
+undefined
+
+
+.type: MacroTypeDefinition;
+undefined
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SoapFaultDefinition {
+
+  /**
+   * undefined
+   */
+  targetNamespace: string;
+
+  /**
+   * undefined
+   */
+  type: MacroTypeDefinition;
+
+}
+----

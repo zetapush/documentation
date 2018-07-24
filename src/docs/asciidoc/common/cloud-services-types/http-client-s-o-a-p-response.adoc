@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientSOAPResponse
+
+=== Properties
+
+
+
+.content: Object;
+received content
+
+
+.fault: SoapFault;
+undefined
+
+
+.headers: HttpClientHeader[];
+received headers
+
+
+.httpStatus: int;
+response http status code
+
+
+.requestId: string;
+optional client generated call ID to identify responses
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientSOAPResponse {
+
+  /**
+   * received content
+   */
+  content: Object;
+
+  /**
+   * undefined
+   */
+  fault: SoapFault;
+
+  /**
+   * received headers
+   */
+  headers: HttpClientHeader[];
+
+  /**
+   * response http status code
+   */
+  httpStatus: int;
+
+  /**
+   * optional client generated call ID to identify responses
+   */
+  requestId: string;
+
+}
+----

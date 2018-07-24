@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SearchRequestSortField
+
+=== Properties
+
+
+
+.name: string;
+Field name
+
+
+.sort: Map<string,Object>;
+Field sort information. Follows elasticsearch syntax.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SearchRequestSortField {
+
+  /**
+   * Field name
+   */
+  name: string;
+
+  /**
+   * Field sort information. Follows elasticsearch syntax.
+   */
+  sort: Map<string,Object>;
+
+}
+----

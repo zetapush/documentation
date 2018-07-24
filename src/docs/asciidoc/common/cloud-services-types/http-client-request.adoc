@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientRequest
+
+=== Properties
+
+
+
+.content: Object;
+Request body. String (passed as is) or complex object (serialized to json)
+
+
+.headers: HttpClientHeader[];
+Headers to be sent
+
+
+.method: string;
+HTTP method
+
+
+.parseMode: HttpClientParseMode;
+How to parse the response content
+
+
+.requestId: string;
+optional client generated call ID to identify responses
+
+
+.url: string;
+Remote URL. a literal string
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientRequest {
+
+  /**
+   * Request body. String (passed as is) or complex object (serialized to json)
+   */
+  content: Object;
+
+  /**
+   * Headers to be sent
+   */
+  headers: HttpClientHeader[];
+
+  /**
+   * HTTP method
+   */
+  method: string;
+
+  /**
+   * How to parse the response content
+   */
+  parseMode: HttpClientParseMode;
+
+  /**
+   * optional client generated call ID to identify responses
+   */
+  requestId: string;
+
+  /**
+   * Remote URL. a literal string
+   */
+  url: string;
+
+}
+----

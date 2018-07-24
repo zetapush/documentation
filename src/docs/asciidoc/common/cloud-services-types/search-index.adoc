@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SearchIndex
+
+=== Properties
+
+
+
+.index: string;
+Index name
+
+
+.mappings: Map<string,Map<string,Object>>;
+ElasticSearch field mappings
+
+
+.settings: Map<string,Object>;
+ElasticSearch index settings.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SearchIndex {
+
+  /**
+   * Index name
+   */
+  index: string;
+
+  /**
+   * ElasticSearch field mappings
+   */
+  mappings: Map<string,Map<string,Object>>;
+
+  /**
+   * ElasticSearch index settings.
+   */
+  settings: Map<string,Object>;
+
+}
+----

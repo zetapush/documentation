@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Email
+
+=== Properties
+
+
+
+.bcc: string[];
+Email recipients
+
+
+.cc: string[];
+Email recipients
+
+
+.html: string;
+Email html body. you can use text and/or html
+
+
+.subject: string;
+Email subject
+
+
+.text: string;
+Email plain text body
+
+
+.to: string[];
+Email recipients
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Email {
+
+  /**
+   * Email recipients
+   */
+  bcc: string[];
+
+  /**
+   * Email recipients
+   */
+  cc: string[];
+
+  /**
+   * Email html body. you can use text and/or html
+   */
+  html: string;
+
+  /**
+   * Email subject
+   */
+  subject: string;
+
+  /**
+   * Email plain text body
+   */
+  text: string;
+
+  /**
+   * Email recipients
+   */
+  to: string[];
+
+}
+----

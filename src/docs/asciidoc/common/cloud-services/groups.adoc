@@ -1,0 +1,327 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Groups
+
+User API for groups and rights.
+
+Groups are stored per user.
+This means that two users can own a group with the same identifier. A couple (owner, group) is needed to uniquely identify a group inside a group management service.
+The triplet (deploymentId, owner, group) is actually needed to fully qualify a group outside of the scope of this service.
+
+
+=== grant
+
+The granting API does not do any check when storing permissions.
+In particular when granting rights on a verb and resource of another API, the existence of said verb and resource is not checked.
+
+.grant(parameters: <<common/cloud-services-types/grant.adoc#,Grant>>): Promise<<<common/cloud-services-types/grant.adoc#,Grant>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.grant(parameters);
+----
+
+=== createGroup
+
+Creates a group owned by the current user.
+Group creation may fail if the group already exists.
+
+.createGroup(parameters: <<common/cloud-services-types/group-info.adoc#,GroupInfo>>): Promise<<<common/cloud-services-types/group-info.adoc#,GroupInfo>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.createGroup(parameters);
+----
+
+=== listOwnedGroups
+
+Returns the whole list of groups owned by the current user
+
+.listOwnedGroups(parameters: <<common/cloud-services-types/traceable-paginated-impersonated-request.adoc#,TraceablePaginatedImpersonatedRequest>>): Promise<<<common/cloud-services-types/owned-groups.adoc#,OwnedGroups>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listOwnedGroups(parameters);
+----
+
+=== listDetailedOwnedGroups
+
+Returns the whole list of groups owned by the current user, with their members
+
+.listDetailedOwnedGroups(parameters: <<common/cloud-services-types/traceable-paginated-impersonated-request.adoc#,TraceablePaginatedImpersonatedRequest>>): Promise<<<common/cloud-services-types/owned-groups-with-details.adoc#,OwnedGroupsWithDetails>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listDetailedOwnedGroups(parameters);
+----
+
+=== myGroups
+
+Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.
+
+.myGroups(parameters: <<common/cloud-services-types/impersonated-request.adoc#,ImpersonatedRequest>>): Promise<<<common/cloud-services-types/group-info.adoc#,GroupInfo>>[]>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.myGroups(parameters);
+----
+
+=== listJoinedGroups
+
+Returns the whole list of groups the current user is part of.
+Groups may be owned by anyone, including the current user.
+
+.listJoinedGroups(parameters: <<common/cloud-services-types/traceable-paginated-impersonated-request.adoc#,TraceablePaginatedImpersonatedRequest>>): Promise<<<common/cloud-services-types/joined-groups.adoc#,JoinedGroups>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listJoinedGroups(parameters);
+----
+
+=== delGroup
+
+Removes the given group owned by the current user or the given owner.
+Also removes all grants to that group.
+
+.delGroup(parameters: <<common/cloud-services-types/group-related.adoc#,GroupRelated>>): Promise<<<common/cloud-services-types/group-related.adoc#,GroupRelated>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.delGroup(parameters);
+----
+
+=== addMe
+
+Adds me (the caller) to a group.
+This verb exists so that group owners may grant the right to join their groups without granting the right to add other users to those groups.
+The 'user' field is implicitly set to the current user's key.
+
+.addMe(parameters: <<common/cloud-services-types/user-group.adoc#,UserGroup>>): Promise<<<common/cloud-services-types/user-group.adoc#,UserGroup>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.addMe(parameters);
+----
+
+=== memberOf
+
+Tests whether I (the caller) am a member of the given group.
+This verb exists so that users can determine if they are part of a group without being granted particular rights.
+The 'user' field is implicitly set to the current user's key.
+
+.memberOf(parameters: <<common/cloud-services-types/user-membership.adoc#,UserMembership>>): Promise<<<common/cloud-services-types/user-group-membership.adoc#,UserGroupMembership>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.memberOf(parameters);
+----
+
+=== addUsers
+
+Users are processed in the given order
+In case of failure in the middle of a user list, this verb may have succeeded to add the first users, but will not continue processing the end of the list.
+
+.addUsers(parameters: <<common/cloud-services-types/group-users.adoc#,GroupUsers>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.addUsers(parameters);
+----
+
+=== delUsers
+
+
+
+.delUsers(parameters: <<common/cloud-services-types/group-users.adoc#,GroupUsers>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.delUsers(parameters);
+----
+
+=== mgrant
+
+Grant several rights at once.
+
+.mgrant(parameters: <<common/cloud-services-types/grants.adoc#,Grants>>): Promise<<<common/cloud-services-types/grants.adoc#,Grants>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.mgrant(parameters);
+----
+
+=== mrevoke
+
+
+
+.mrevoke(parameters: <<common/cloud-services-types/grants.adoc#,Grants>>): Promise<<<common/cloud-services-types/grants.adoc#,Grants>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.mrevoke(parameters);
+----
+
+=== listGrants
+
+This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.
+
+.listGrants(parameters: <<common/cloud-services-types/group-related.adoc#,GroupRelated>>): Promise<<<common/cloud-services-types/grant-list.adoc#,GrantList>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listGrants(parameters);
+----
+
+=== listGroupGrants
+
+This API lists explicitly configured rights.
+Effective rights include configured rights, implicit rights and inherited rights.
+
+.listGroupGrants(parameters: <<common/cloud-services-types/group-related-and-paged.adoc#,GroupRelatedAndPaged>>): Promise<<<common/cloud-services-types/paged-grant-list.adoc#,PagedGrantList>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listGroupGrants(parameters);
+----
+
+=== listPresences
+
+Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.
+
+.listPresences(parameters: <<common/cloud-services-types/group-related.adoc#,GroupRelated>>): Promise<<<common/cloud-services-types/group-presence.adoc#,GroupPresence>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listPresences(parameters);
+----
+
+=== listGroupPresences
+
+Returns the list of members of the given groups, along with their actual and current presence on the zetapush server.
+The current implementation does not include information about the particular devices users are connected with.
+If a user is connected twice with two different devices, two identical entries will be returned.
+
+.listGroupPresences(parameters: <<common/cloud-services-types/group-related-and-paged.adoc#,GroupRelatedAndPaged>>): Promise<<<common/cloud-services-types/paged-group-presence.adoc#,PagedGroupPresence>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.listGroupPresences(parameters);
+----
+
+=== addUser
+
+Adds the given user to the given group.
+Addition may fail if the given group does not already exist.
+
+.addUser(parameters: <<common/cloud-services-types/user-group.adoc#,UserGroup>>): Promise<<<common/cloud-services-types/user-group.adoc#,UserGroup>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.addUser(parameters);
+----
+
+=== delUser
+
+
+
+.delUser(parameters: <<common/cloud-services-types/user-group.adoc#,UserGroup>>): Promise<<<common/cloud-services-types/user-group.adoc#,UserGroup>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.delUser(parameters);
+----
+
+=== groupUsers
+
+Returns the whole list of users configured inside the given group.
+
+.groupUsers(parameters: <<common/cloud-services-types/group-related.adoc#,GroupRelated>>): Promise<<<common/cloud-services-types/group-users.adoc#,GroupUsers>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.groupUsers(parameters);
+----
+
+=== revoke
+
+
+
+.revoke(parameters: <<common/cloud-services-types/grant.adoc#,Grant>>): Promise<<<common/cloud-services-types/grant.adoc#,Grant>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.revoke(parameters);
+----
+
+=== allGroups
+
+Returns the whole list of groups owned by the current user, with their members
+
+.allGroups(parameters: <<common/cloud-services-types/impersonated-request.adoc#,ImpersonatedRequest>>): Promise<<<common/cloud-services-types/group-users.adoc#,GroupUsers>>[]>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.allGroups(parameters);
+----
+
+=== groups
+
+Returns the whole list of groups owned by the current user
+
+.groups(parameters: <<common/cloud-services-types/impersonated-request.adoc#,ImpersonatedRequest>>): Promise<<<common/cloud-services-types/group-info.adoc#,GroupInfo>>[]>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.groups(parameters);
+----
+
+=== check
+
+This API checks if the given user has the proper authorizations to perform the given action on the owner's resource.
+If you give the same value for 'user' and 'owner', the check always passes.
+
+.check(parameters: <<common/cloud-services-types/grant-check-request.adoc#,GrantCheckRequest>>): Promise<<<common/cloud-services-types/grant-check-result.adoc#,GrantCheckResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.check(parameters);
+----
+
+=== exists
+
+Returns whether a group exists or not.
+
+.exists(parameters: <<common/cloud-services-types/group-related.adoc#,GroupRelated>>): Promise<<<common/cloud-services-types/group-existence.adoc#,GroupExistence>>>
+
+[source,typescript,linenums]
+----
+const response = await this.groups.exists(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Groups, Grant } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private groups: Groups <2>
+  ) {}
+  async doStuff(parameters: Grant) {
+    const response = await this.groups.grant(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Groups` from platform
+<2> Declare injected service
+<3> Call injected service

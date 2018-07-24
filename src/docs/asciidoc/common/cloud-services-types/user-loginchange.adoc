@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserLoginchange
+
+=== Properties
+
+
+
+.newKey: string;
+New account key within this realm. Must not be already in use.
+
+
+.oldKey: string;
+Existing account key within this realm (login). Will be free for use upon successful completion.
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserLoginchange {
+
+  /**
+   * New account key within this realm. Must not be already in use.
+   */
+  newKey: string;
+
+  /**
+   * Existing account key within this realm (login). Will be free for use upon successful completion.
+   */
+  oldKey: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+}
+----

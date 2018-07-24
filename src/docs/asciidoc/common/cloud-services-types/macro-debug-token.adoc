@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroDebugToken
+
+=== Properties
+
+
+
+.token: string;
+Token suitable for use by debug verbs
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroDebugToken {
+
+  /**
+   * Token suitable for use by debug verbs
+   */
+  token: string;
+
+}
+----

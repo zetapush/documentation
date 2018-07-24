@@ -1,0 +1,38 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TraceLevel
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum TraceLevel {
+
+  /**
+   * Debug (server-generated traces are DEBUG)
+   */
+  DEBUG = "DEBUG";
+
+  /**
+   * Currently unused
+   */
+  ERROR = "ERROR";
+
+  /**
+   * From the 'trace' keyword
+   */
+  TRACE = "TRACE";
+
+  /**
+   * Currently unused
+   */
+  WARN = "WARN";
+
+  /**
+   * Currently unused
+   */
+  INFO = "INFO";
+
+}
+----

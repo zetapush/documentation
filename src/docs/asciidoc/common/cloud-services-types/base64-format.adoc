@@ -1,0 +1,28 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Base64Format
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum Base64Format {
+
+  /**
+   * missing enum desc
+   */
+  RFC2045 = "RFC2045";
+
+  /**
+   * missing enum desc
+   */
+  RFC4648 = "RFC4648";
+
+  /**
+   * missing enum desc
+   */
+  RFC4648_URLSAFE = "RFC4648_URLSAFE";
+
+}
+----

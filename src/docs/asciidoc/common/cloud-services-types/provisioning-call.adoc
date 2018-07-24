@@ -1,0 +1,17 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ProvisioningCall
+
+=== Properties
+
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ProvisioningCall {
+
+}
+----

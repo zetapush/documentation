@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroJump
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.line: int;
+Line number in source file
+
+
+.type: Type;
+jump type
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroJump {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+  /**
+   * jump type
+   */
+  type: Type;
+
+}
+----

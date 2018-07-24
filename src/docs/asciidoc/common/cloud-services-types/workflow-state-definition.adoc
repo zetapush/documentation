@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowStateDefinition
+
+=== Properties
+
+
+
+.stateId: string;
+ID of the state
+
+
+.stateName: string;
+State name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowStateDefinition {
+
+  /**
+   * ID of the state
+   */
+  stateId: string;
+
+  /**
+   * State name
+   */
+  stateName: string;
+
+}
+----

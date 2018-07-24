@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroFunctionResult
+
+=== Properties
+
+
+
+.result: Object;
+Function evaluation result
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroFunctionResult {
+
+  /**
+   * Function evaluation result
+   */
+  result: Object;
+
+}
+----

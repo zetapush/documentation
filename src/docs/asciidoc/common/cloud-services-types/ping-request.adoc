@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== PingRequest
+
+=== Properties
+
+
+
+.action: string;
+The action to probe
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface PingRequest {
+
+  /**
+   * The action to probe
+   */
+  action: string;
+
+}
+----

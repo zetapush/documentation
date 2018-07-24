@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientResponse
+
+=== Properties
+
+
+
+.content: Object;
+received content
+
+
+.headers: HttpClientHeader[];
+received headers
+
+
+.httpStatus: int;
+response http status code
+
+
+.requestId: string;
+optional client generated call ID to identify responses
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientResponse {
+
+  /**
+   * received content
+   */
+  content: Object;
+
+  /**
+   * received headers
+   */
+  headers: HttpClientHeader[];
+
+  /**
+   * response http status code
+   */
+  httpStatus: int;
+
+  /**
+   * optional client generated call ID to identify responses
+   */
+  requestId: string;
+
+}
+----

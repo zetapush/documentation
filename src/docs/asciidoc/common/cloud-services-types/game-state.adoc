@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameState
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Game specific data
+
+
+.gameId: string;
+Server attributed game identifier
+
+
+.status: GameStatus;
+Current game status
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameState {
+
+  /**
+   * Game specific data
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Server attributed game identifier
+   */
+  gameId: string;
+
+  /**
+   * Current game status
+   */
+  status: GameStatus;
+
+}
+----

@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroServiceDebugConfig
+
+=== Properties
+
+
+
+.debug: boolean;
+Whether this macro service is currently in debug mode
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroServiceDebugConfig {
+
+  /**
+   * Whether this macro service is currently in debug mode
+   */
+  debug: boolean;
+
+}
+----

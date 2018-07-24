@@ -1,0 +1,33 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameStatus
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum GameStatus {
+
+  /**
+   * The game is running
+   */
+  RUNNING = "RUNNING";
+
+  /**
+   * The game is finished
+   */
+  FINISHED = "FINISHED";
+
+  /**
+   * The game has been created
+   */
+  CREATED = "CREATED";
+
+  /**
+   * The game is starting
+   */
+  STARTING = "STARTING";
+
+}
+----

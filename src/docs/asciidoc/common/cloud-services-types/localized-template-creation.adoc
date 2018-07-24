@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LocalizedTemplateCreation
+
+=== Properties
+
+
+
+.languageTag: string;
+IETF BCP 47 language tag
+
+
+.name: string;
+template name
+
+
+.template: string;
+template contents, as a character string
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface LocalizedTemplateCreation {
+
+  /**
+   * IETF BCP 47 language tag
+   */
+  languageTag: string;
+
+  /**
+   * template name
+   */
+  name: string;
+
+  /**
+   * template contents, as a character string
+   */
+  template: string;
+
+}
+----

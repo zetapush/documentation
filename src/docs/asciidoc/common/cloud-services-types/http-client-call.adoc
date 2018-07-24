@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientCall
+
+=== Properties
+
+
+
+.name: string;
+name of the configured template
+
+
+.requestId: string;
+optional client generated call ID to identify responses
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface HttpClientCall {
+
+  /**
+   * name of the configured template
+   */
+  name: string;
+
+  /**
+   * optional client generated call ID to identify responses
+   */
+  requestId: string;
+
+}
+----

@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== OwnerResource
+
+=== Properties
+
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.resource: string;
+Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface OwnerResource {
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * Optional resource name, used to distinguish between two sessions of the same user on different devices. A given device SHOULD provide a resource name, and SHOULD always use the same resource name (it needs to be persisted by the client code)
+   */
+  resource: string;
+
+}
+----

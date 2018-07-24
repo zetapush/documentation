@@ -1,0 +1,28 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== HttpClientParseMode
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum HttpClientParseMode {
+
+  /**
+   * Content is interpreted as a UTF8 character string
+   */
+  STRING = "STRING";
+
+  /**
+   * Content is parsed as UTF8 JSON
+   */
+  OBJECT = "OBJECT";
+
+  /**
+   * Content is not interpreted, but available as a raw array of bytes
+   */
+  BYTES = "BYTES";
+
+}
+----

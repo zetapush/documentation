@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TemplateRemoval
+
+=== Properties
+
+
+
+.languageTag: string;
+IETF BCP 47 language tag
+
+
+.name: string;
+template name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TemplateRemoval {
+
+  /**
+   * IETF BCP 47 language tag
+   */
+  languageTag: string;
+
+  /**
+   * template name
+   */
+  name: string;
+
+}
+----

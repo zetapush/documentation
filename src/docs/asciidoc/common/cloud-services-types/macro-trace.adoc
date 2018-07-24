@@ -1,0 +1,89 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroTrace
+
+=== Properties
+
+
+
+.ctx: long;
+Trace context (differentiates client calls)
+
+
+.data: Object;
+Trace data
+
+
+.level: TraceLevel;
+Trace level
+
+
+.line: int;
+Line number in the source code.
+
+
+.location: string;
+Location of the source code.
+
+
+.n: int;
+Trace number (monotonous increase)
+
+
+.owner: string;
+Zetapush key of the user generating the trace
+
+
+.type: TraceType;
+Trace type (differentiates client calls)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroTrace {
+
+  /**
+   * Trace context (differentiates client calls)
+   */
+  ctx: long;
+
+  /**
+   * Trace data
+   */
+  data: Object;
+
+  /**
+   * Trace level
+   */
+  level: TraceLevel;
+
+  /**
+   * Line number in the source code.
+   */
+  line: int;
+
+  /**
+   * Location of the source code.
+   */
+  location: string;
+
+  /**
+   * Trace number (monotonous increase)
+   */
+  n: int;
+
+  /**
+   * Zetapush key of the user generating the trace
+   */
+  owner: string;
+
+  /**
+   * Trace type (differentiates client calls)
+   */
+  type: TraceType;
+
+}
+----

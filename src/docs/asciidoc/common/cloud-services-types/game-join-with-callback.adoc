@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameJoinWithCallback
+
+=== Properties
+
+
+
+.callerId: string;
+callback info
+
+
+.msgId: string;
+unique ID for this message
+
+
+.payload: GameJoin;
+message payload
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameJoinWithCallback {
+
+  /**
+   * callback info
+   */
+  callerId: string;
+
+  /**
+   * unique ID for this message
+   */
+  msgId: string;
+
+  /**
+   * message payload
+   */
+  payload: GameJoin;
+
+}
+----

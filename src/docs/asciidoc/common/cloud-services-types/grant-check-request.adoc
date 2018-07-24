@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GrantCheckRequest
+
+=== Properties
+
+
+
+.action: string;
+The action to check
+
+
+.owner: string;
+Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+.resource: string;
+The resource to check
+
+
+.user: string;
+The user needing authorization
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GrantCheckRequest {
+
+  /**
+   * The action to check
+   */
+  action: string;
+
+  /**
+   * Optional User key. When calling the API, defaults to the current (calling) user's primary key. For impersonation purposes, the caller may use the key of another user, provided that the proper authorizations have been given by the impersonated user
+   */
+  owner: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+  /**
+   * The resource to check
+   */
+  resource: string;
+
+  /**
+   * The user needing authorization
+   */
+  user: string;
+
+}
+----

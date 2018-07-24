@@ -1,0 +1,38 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaDataType
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum GdaDataType {
+
+  /**
+   * 64-bit signed integer. This is the only eligible type for the 'inc' API call
+   */
+  LONG = "LONG";
+
+  /**
+   * Character String
+   */
+  STRING = "STRING";
+
+  /**
+   * Boolean value : true or false
+   */
+  BOOLEAN = "BOOLEAN";
+
+  /**
+   * Floating point number
+   */
+  DOUBLE = "DOUBLE";
+
+  /**
+   * Complex object
+   */
+  OBJECT = "OBJECT";
+
+}
+----

@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaPutsRow
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Stored data, as a map of columns to values
+
+
+.key: string;
+Row key
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaPutsRow {
+
+  /**
+   * Stored data, as a map of columns to values
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Row key
+   */
+  key: string;
+
+}
+----

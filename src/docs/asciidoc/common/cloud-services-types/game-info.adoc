@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GameInfo
+
+=== Properties
+
+
+
+.commands: Map<string,string>;
+Available commands when playing
+
+
+.description: string;
+Game description
+
+
+.name: string;
+Game type identifier
+
+
+.options: Map<string,string>;
+Available options whan creating
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GameInfo {
+
+  /**
+   * Available commands when playing
+   */
+  commands: Map<string,string>;
+
+  /**
+   * Game description
+   */
+  description: string;
+
+  /**
+   * Game type identifier
+   */
+  name: string;
+
+  /**
+   * Available options whan creating
+   */
+  options: Map<string,string>;
+
+}
+----

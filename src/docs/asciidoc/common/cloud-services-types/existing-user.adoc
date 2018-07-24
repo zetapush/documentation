@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ExistingUser
+
+=== Properties
+
+
+
+.key: string;
+User key within the realm
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ExistingUser {
+
+  /**
+   * User key within the realm
+   */
+  key: string;
+
+}
+----

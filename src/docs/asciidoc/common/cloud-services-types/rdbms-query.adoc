@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== RdbmsQuery
+
+=== Properties
+
+
+
+.parameters: Object[];
+Parameters of the query
+
+
+.statement: string;
+SQL query
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface RdbmsQuery {
+
+  /**
+   * Parameters of the query
+   */
+  parameters: Object[];
+
+  /**
+   * SQL query
+   */
+  statement: string;
+
+}
+----

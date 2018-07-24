@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ResetRequest
+
+=== Properties
+
+
+
+.key: string;
+account key in the realm. (configured 'unique key' used for authentication)
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ResetRequest {
+
+  /**
+   * account key in the realm. (configured 'unique key' used for authentication)
+   */
+  key: string;
+
+}
+----

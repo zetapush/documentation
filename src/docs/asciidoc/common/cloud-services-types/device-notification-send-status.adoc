@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== DeviceNotificationSendStatus
+
+=== Properties
+
+
+
+.deviceToken: string;
+Token for target device
+
+
+.endpoint: string;
+Endpoint for target device
+
+
+.success: boolean;
+Whether the message was sent
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface DeviceNotificationSendStatus {
+
+  /**
+   * Token for target device
+   */
+  deviceToken: string;
+
+  /**
+   * Endpoint for target device
+   */
+  endpoint: string;
+
+  /**
+   * Whether the message was sent
+   */
+  success: boolean;
+
+}
+----

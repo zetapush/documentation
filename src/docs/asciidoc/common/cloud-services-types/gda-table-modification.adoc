@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaTableModification
+
+=== Properties
+
+
+
+.columns: GdaTableColumn[];
+List of column specifications
+
+
+.idempotence: Idempotence;
+Specify the behavior when the table already exists. The default value is IGNORE_DIFFERENT.IGNORE_IDENTICAL ignores all pre-existing (identical or additional) columns, but does not allow to change or add columns.IGNORE_DIFFERENT ignores all pre-existing (identical or additional) columns, can add columns, but does not allow to change column types.
+
+
+.name: string;
+Table name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaTableModification {
+
+  /**
+   * List of column specifications
+   */
+  columns: GdaTableColumn[];
+
+  /**
+   * Specify the behavior when the table already exists. The default value is IGNORE_DIFFERENT.IGNORE_IDENTICAL ignores all pre-existing (identical or additional) columns, but does not allow to change or add columns.IGNORE_DIFFERENT ignores all pre-existing (identical or additional) columns, can add columns, but does not allow to change column types.
+   */
+  idempotence: Idempotence;
+
+  /**
+   * Table name
+   */
+  name: string;
+
+}
+----

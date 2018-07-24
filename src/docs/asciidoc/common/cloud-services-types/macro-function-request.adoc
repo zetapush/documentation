@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroFunctionRequest
+
+=== Properties
+
+
+
+.name: string;
+Function name
+
+
+.params: Object[];
+Function parameter values
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroFunctionRequest {
+
+  /**
+   * Function name
+   */
+  name: string;
+
+  /**
+   * Function parameter values
+   */
+  params: Object[];
+
+}
+----

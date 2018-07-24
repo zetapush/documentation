@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== GdaTableColumn
+
+=== Properties
+
+
+
+.map: boolean;
+False if the column contains a single piece of data or true when it can contain several data, mapped by (sub-)keys. Defaults to 'false'
+
+
+.name: string;
+Column name
+
+
+.type: GdaDataType;
+Column type
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface GdaTableColumn {
+
+  /**
+   * False if the column contains a single piece of data or true when it can contain several data, mapped by (sub-)keys. Defaults to 'false'
+   */
+  map: boolean;
+
+  /**
+   * Column name
+   */
+  name: string;
+
+  /**
+   * Column type
+   */
+  type: GdaDataType;
+
+}
+----

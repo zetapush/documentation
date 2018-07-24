@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ProvisioningResult
+
+=== Properties
+
+
+
+.users: UserToken[];
+List of provisioned tokens
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ProvisioningResult {
+
+  /**
+   * List of provisioned tokens
+   */
+  users: UserToken[];
+
+}
+----

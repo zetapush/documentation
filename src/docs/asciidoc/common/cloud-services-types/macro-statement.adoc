@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroStatement
+
+=== Properties
+
+
+
+.description: string;
+Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+
+
+.exec: string;
+Statement to be executed
+
+
+.line: int;
+Line number in source file
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroStatement {
+
+  /**
+   * Informative text, for the macro creator. You SHOULD always fill this field, as reported errors will include this description.
+   */
+  description: string;
+
+  /**
+   * Statement to be executed
+   */
+  exec: string;
+
+  /**
+   * Line number in source file
+   */
+  line: int;
+
+}
+----

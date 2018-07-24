@@ -1,0 +1,26 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== RdbmsSimpleQuery
+
+=== Properties
+
+
+
+.statement: string;
+SQL query
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface RdbmsSimpleQuery {
+
+  /**
+   * SQL query
+   */
+  statement: string;
+
+}
+----

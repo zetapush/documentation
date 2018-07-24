@@ -1,0 +1,38 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== LogLevel
+
+=== Source
+
+[source,typescript,linenums]
+----
+enum LogLevel {
+
+  /**
+   * All information usually needed by developers or administrators to help diagnose problems.
+   */
+  DEBUG = "DEBUG";
+
+  /**
+   * Something is wrong enough to compromise the correct processing of a request (for example a mandatory external resource, e.g. another HTTP server, is not responding)
+   */
+  ERROR = "ERROR";
+
+  /**
+   * Lowest level of traces. All service verbs at the TRACE level will dump all input and output. DO NOT enable TRACE unless you are prepared to go through a very high volume of logs. Enabling TRACE may degrade application performance.
+   */
+  TRACE = "TRACE";
+
+  /**
+   * Anything that can cause application misbehaviour, but that does not need human intervention.
+   */
+  WARN = "WARN";
+
+  /**
+   * Events meaningful for your application should go there : the creation of a user, a purchase, etc ...
+   */
+  INFO = "INFO";
+
+}
+----

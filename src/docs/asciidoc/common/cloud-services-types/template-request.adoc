@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== TemplateRequest
+
+=== Properties
+
+
+
+.data: Map<string,Object>;
+Data model
+
+
+.languageTag: string;
+Locale, as defined by IETF BCP 47
+
+
+.name: string;
+Template name, as configured by an admin
+
+
+.requestId: string;
+User field for traceability of requests. Synchronous SDK APIs use this field for you.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface TemplateRequest {
+
+  /**
+   * Data model
+   */
+  data: Map<string,Object>;
+
+  /**
+   * Locale, as defined by IETF BCP 47
+   */
+  languageTag: string;
+
+  /**
+   * Template name, as configured by an admin
+   */
+  name: string;
+
+  /**
+   * User field for traceability of requests. Synchronous SDK APIs use this field for you.
+   */
+  requestId: string;
+
+}
+----

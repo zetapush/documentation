@@ -1,0 +1,53 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== UserSearchResponse
+
+=== Properties
+
+
+
+.page: Pagination;
+Requested pagination
+
+
+.requestId: string;
+Request ID, as given by the user
+
+
+.totalHits: long;
+Total number of users matching the query
+
+
+.users: Map<string,Map<string,Object>>;
+Maps user keys to maps of their public data. Note that user data maps may have different formats for different authentication providers
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface UserSearchResponse {
+
+  /**
+   * Requested pagination
+   */
+  page: Pagination;
+
+  /**
+   * Request ID, as given by the user
+   */
+  requestId: string;
+
+  /**
+   * Total number of users matching the query
+   */
+  totalHits: long;
+
+  /**
+   * Maps user keys to maps of their public data. Note that user data maps may have different formats for different authentication providers
+   */
+  users: Map<string,Map<string,Object>>;
+
+}
+----

@@ -1,0 +1,71 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== MacroInfos
+
+=== Properties
+
+
+
+.deploymentId: string;
+Deployment ID of the macro service
+
+
+.functions: MacroFunction[];
+List of functions
+
+
+.globals: Map<string,Object>;
+Global data
+
+
+.macros: MacroInfo[];
+List of macros
+
+
+.purge: boolean;
+Whether to wipe out all existing macros before taking the given ones into account
+
+
+.types: MacroTypeDefinition[];
+List of user types
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface MacroInfos {
+
+  /**
+   * Deployment ID of the macro service
+   */
+  deploymentId: string;
+
+  /**
+   * List of functions
+   */
+  functions: MacroFunction[];
+
+  /**
+   * Global data
+   */
+  globals: Map<string,Object>;
+
+  /**
+   * List of macros
+   */
+  macros: MacroInfo[];
+
+  /**
+   * Whether to wipe out all existing macros before taking the given ones into account
+   */
+  purge: boolean;
+
+  /**
+   * List of user types
+   */
+  types: MacroTypeDefinition[];
+
+}
+----

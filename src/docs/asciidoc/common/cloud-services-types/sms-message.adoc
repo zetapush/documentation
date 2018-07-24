@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== SmsMessage
+
+=== Properties
+
+
+
+.message: string;
+Text message. Standard restrictions for text messages apply
+
+
+.receivers: string[];
+List of recipients
+
+
+.sender: string;
+Sender name
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface SmsMessage {
+
+  /**
+   * Text message. Standard restrictions for text messages apply
+   */
+  message: string;
+
+  /**
+   * List of recipients
+   */
+  receivers: string[];
+
+  /**
+   * Sender name
+   */
+  sender: string;
+
+}
+----

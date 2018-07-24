@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== ExistenceCheck
+
+=== Properties
+
+
+
+.key: string;
+User key within the realm
+
+
+.softFail: boolean;
+Whether to fail is the user does not exist. When true, fails silently.
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface ExistenceCheck {
+
+  /**
+   * User key within the realm
+   */
+  key: string;
+
+  /**
+   * Whether to fail is the user does not exist. When true, fails silently.
+   */
+  softFail: boolean;
+
+}
+----

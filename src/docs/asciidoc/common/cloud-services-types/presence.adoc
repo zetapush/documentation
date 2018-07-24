@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Presence
+
+=== Properties
+
+
+
+.group: GroupRelated;
+Group information
+
+
+.presence: string;
+Presence status. OFF or ON
+
+
+.user: OwnerResource;
+User information
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface Presence {
+
+  /**
+   * Group information
+   */
+  group: GroupRelated;
+
+  /**
+   * Presence status. OFF or ON
+   */
+  presence: string;
+
+  /**
+   * User information
+   */
+  user: OwnerResource;
+
+}
+----

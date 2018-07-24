@@ -1,0 +1,35 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== WorkflowTransitionDefinition
+
+=== Properties
+
+
+
+.from: string;
+Starting state
+
+
+.to: string;
+Destination state
+
+
+=== Source
+
+[source,typescript,linenums]
+----
+interface WorkflowTransitionDefinition {
+
+  /**
+   * Starting state
+   */
+  from: string;
+
+  /**
+   * Destination state
+   */
+  to: string;
+
+}
+----
