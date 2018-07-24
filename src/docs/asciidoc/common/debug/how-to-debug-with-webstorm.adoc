@@ -1,0 +1,19 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Intellij's WebStorm provide a powerfull debugging feature https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/.
+
+On the top menu, select Run -> Edit Configurations
+
+
+then select a new NodeJs Template : 
+
+ - Node interpreter : path to nodeJS executable. 
+ - Node parameters : must be "node_modules/.bin/zeta".
+ - Working directory : path to your project.
+ - Javascript file : should be blank.
+ - Application parameters : zeta command to launch, with optionals flags.
+
+image::{images-dir}/debug/webstorm-debug.png[Configure WebStorm Debug]
+
+You can now use Intellij in debug mode with breakpoints and all the debugs features.
