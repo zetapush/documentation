@@ -28,9 +28,9 @@ Note that this will not automatically update your path for the remainder of the 
 
 [source,console,subs="attributes+"]
 ----
-$ source ~/.zshrc 
-$ source ~/.profile 
-$ source ~/.bashrc 
+$ source ~/.zshrc
+$ source ~/.profile
+$ source ~/.bashrc
 ----
 
 [role=tab]
@@ -92,7 +92,7 @@ $ npx zeta <command>
 
 [source,console,subs="attributes+"]
 ----
-$ npm i -g @angular/cli
+$ npm i -g @zetapush/cli
 ----
 
 With the CLI, you can run your worker with:
