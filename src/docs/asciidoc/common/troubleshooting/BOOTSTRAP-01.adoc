@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+There is an exception in one of your onApplicationBoostrap method.
+
+// [NOTE]
+// .onApplicationBoostrap failure
+// ====
+// ${message}
+// ====
