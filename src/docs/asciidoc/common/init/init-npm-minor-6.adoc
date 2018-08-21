@@ -9,13 +9,13 @@ npm 5-
 [role=tab]
 Upgrade npm
 
-.Upgrade npm
+.➊ - Upgrade npm
 [source, console]
 ----
 $ npm install -g npm@latest
 ----
 
-.Use npm init
+.➋ - Use npm init
 [source, console, subs="attributes+"]
 ----
 $ npm init @zetapush {appName}
