@@ -5,7 +5,13 @@ include::{docdir}/variables.adoc[]
 
 == ZetaPush Celtia
 
-TODO: Write presentation
+ZetaPush accelerates the creation of connected applications by providing turnkey services. The developer consumes the services needed to run his application using development kits ready to be integrated into his front end code.
+
+ZetaPush Celtia represents a major version of ZetaPush with a major change: the developer can write business code in languages such as JavaScript and TypeScript.
+
+The developer will focus on his business code and ZetaPush will make his life easier by providing him with all the common components such as user management, data storage, etc.
+
+In addition, ZetaPush hosts business code and front-end code.
 
 == Sections
 
