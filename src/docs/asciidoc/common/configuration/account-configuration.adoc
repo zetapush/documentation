@@ -28,7 +28,7 @@ include::{docdir}/common/definitions/developer-password.adoc[]
 | developerLogin
 | --developer-password <password>
 
-| Developer login
+| Application name
 | 
 include::{docdir}/common/definitions/app-name.adoc[]
 | ZP_APP_NAME
