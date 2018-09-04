@@ -25,7 +25,8 @@ const response = await this.logs.log(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Logs, LogRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Logs, LogRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

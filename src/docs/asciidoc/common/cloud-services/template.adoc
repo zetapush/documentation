@@ -26,7 +26,8 @@ const response = await this.template.evaluate(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Template, TemplateRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Template, TemplateRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

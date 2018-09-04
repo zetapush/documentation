@@ -4,7 +4,7 @@ include::{docdir}/variables.adoc[]
 .worker/index.ts
 [source,typescript,linenums,role="highlight-lines:15"]
 ----
-import { Injectable } from '@zetapush/platform';
+import { Injectable } from '@zetapush/core';
 
 class Calendar { <1>
   getNow() {

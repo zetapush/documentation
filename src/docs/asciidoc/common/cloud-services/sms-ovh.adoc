@@ -25,7 +25,8 @@ const response = await this.sms_ovh.send(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Sms_ovh, SmsMessage } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Sms_ovh, SmsMessage } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

@@ -10,7 +10,7 @@ You can check if you already installed the CLI with:
 $ zeta --version
 ----
 
-If the CLI returns a result as `0.18.4`, the CLI is installed.
+If the CLI returns a result as `0.32.0`, the CLI is installed.
 
 Otherwise, you can install it with:
 

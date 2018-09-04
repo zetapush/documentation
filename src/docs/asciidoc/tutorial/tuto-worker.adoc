@@ -24,7 +24,8 @@ You also need to import _Injectable_ that is useful for the dependencies injecti
 .Imports and constants
 [source,typescript,linenums]
 ----
-import { Stack, Messaging, Groups, Injectable } from '@zetapush/platform';
+import { Injectable } from '@zetapush/core';
+import { Stack, Messaging, Groups } from '@zetapush/platform-legacy';
 
 const CONVERSATION_ID = 'avengersChat';
 const CHANNEL_MESSAGING = 'avengersChannel'; <1>
@@ -159,7 +160,8 @@ Now your _custom cloud service_ is ready with this following content:
 
 [source,typescript,linenums]
 ----
-import { Stack, Messaging, Groups, Injectable } from "@zetapush/platform";
+import { Injectable } from '@zetapush/core';
+import { Stack, Messaging, Groups } from "@zetapush/platform-legacy";
 
 const CONVERSATION_ID = "avengersChat";
 const CHANNEL_MESSAGING = "avengersChannel";

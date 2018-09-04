@@ -309,7 +309,8 @@ const response = await this.groups.exists(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Groups, Grant } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Groups, Grant } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

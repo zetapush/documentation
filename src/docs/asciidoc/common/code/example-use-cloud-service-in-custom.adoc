@@ -15,7 +15,8 @@ NOTE: The `Stack` service has asynchronous methods
 .MyStorageService
 [source,typescript,linenums,role="highlight-lines:6-8"]
 ----
-import { Injectable, Stack } from '@zetapush/platform';
+import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
 
 @Injectable()
 export default class MyStorageService {

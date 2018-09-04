@@ -178,7 +178,8 @@ const response = await this.gda.reduce(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Gda, GdaPuts } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Gda, GdaPuts } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

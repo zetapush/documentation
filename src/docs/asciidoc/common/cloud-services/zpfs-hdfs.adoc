@@ -202,7 +202,8 @@ const response = await this.zpfs_hdfs.mkdir(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {
