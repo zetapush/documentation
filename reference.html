@@ -304,8 +304,10 @@ The password and token fields are always null in the output.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Simple, BasicAuthenticatedUser } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Simple, BasicAuthenticatedUser } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -433,8 +435,10 @@ The token can be used to log in as the same weak user another time.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Weak, UserControlRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Weak, UserControlRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -516,8 +520,10 @@ export default class Api {
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Userdir, UserInfoRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Userdir, UserInfoRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -984,8 +990,10 @@ If you give the same value for 'user' and 'owner', the check always passes.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Groups, Grant } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Groups, Grant } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -1281,8 +1289,10 @@ You can specify partial keys for the start and stop fields.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Gda, GdaPuts } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Gda, GdaPuts } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -1457,8 +1467,10 @@ Content is sorted according to the statically configured order.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack, StackRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack, StackRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -1578,8 +1590,10 @@ export default class Api {
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Search, SearchData } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Search, SearchData } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -1903,8 +1917,10 @@ May fail if the target location is not empty.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Zpfs_hdfs, ZpfsRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -1980,8 +1996,10 @@ Templates are parsed the first time they are evaluated. Evaluation may fail earl
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Template, TemplateRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Template, TemplateRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2060,8 +2078,10 @@ The administratively given default channel name is used when none is provided in
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Messaging, Message } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Messaging, Message } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2174,8 +2194,10 @@ Device registration can be &lt;b&gt;neither impersonated nor called indirectly&l
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Notif, NotificationMessage } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Notif, NotificationMessage } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2251,8 +2273,10 @@ Users call the API here to actually send emails.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Sendmail, Email } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Sendmail, Email } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2327,8 +2351,10 @@ export default class Api {
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Sms_ovh, SmsMessage } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Sms_ovh, SmsMessage } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2463,8 +2489,10 @@ Does absolutely nothing if asked to remove a non-existent task.</p>
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Cron, CronTaskRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Cron, CronTaskRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2539,8 +2567,10 @@ export default class Api {
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Logs, LogRequest } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Logs, LogRequest } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {
@@ -2616,8 +2646,10 @@ All listeners previously registered for that event will be called, in no particu
 10
 11
 12
+13
 </pre></td>
-  <td class="code"><pre>import { Injectable, Trigger, EventTrigger } from '@zetapush/platform'; <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Trigger, EventTrigger } from '@zetapush/platform-legacy'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class Api {

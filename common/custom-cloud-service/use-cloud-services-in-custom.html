@@ -153,8 +153,10 @@ The <code>Stack</code> service has asynchronous methods
 28
 29
 30
+31
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
 
 @Injectable()
 export default class MyStorageService {

@@ -644,7 +644,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
     <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
@@ -705,7 +705,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>,
     <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
@@ -736,8 +736,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/platform
-$ npm install --save @zetapush/cli</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli @zetapush/platform-legacy</code></pre>
 </div>
 </div>
 </div>
@@ -943,7 +942,7 @@ If you want to create a new application, you can leave the <em>appName</em> prop
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
@@ -1586,7 +1585,7 @@ module.exports = {
 16
 17
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
 
 class Calendar { <i class="conum" data-value="1"></i><b>(1)</b>
   getNow() {
@@ -1652,7 +1651,7 @@ export default class MyPublicCustomCloudService { <i class="conum" data-value="2
 22
 23
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
 
 @Injectable()
 class Calendar {
@@ -1694,15 +1693,15 @@ export default  { <i class="conum" data-value="1"></i><b>(1)</b>
 <p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/platform</code> in order to use <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>You need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/platform</div>
+<div class="title">Install @zetapush/core</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/platform</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -1717,6 +1716,19 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You need to import the package <code>@zetapush/platform-legacy</code> in order to use <code>Stack</code> <em>cloud services</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Install @zetapush/platform-legacy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+</tr></table></code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>For example, to import an other service, you simply need to write:</p>
@@ -1734,8 +1746,10 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 7
 8
 9
+10
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack } = require('@zetapush/platform'); <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } = require('@zetapush/platform-legacy'); <i class="conum" data-value="1"></i><b>(1)</b>
 import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
 
 @Injectable()
@@ -1835,8 +1849,10 @@ The <code>Stack</code> service has asynchronous methods
 28
 29
 30
+31
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
 
 @Injectable()
 export default class MyStorageService {
@@ -1952,7 +1968,7 @@ export default class MyStorageService {
 14
 15
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
 import { Calendar } from './calendar'; <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()

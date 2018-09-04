@@ -99,15 +99,15 @@
 <p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/platform</code> in order to use <code>Inject()</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
+<p>You need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/platform</div>
+<div class="title">Install @zetapush/core</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/platform</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -122,6 +122,19 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You need to import the package <code>@zetapush/platform-legacy</code> in order to use <code>Stack</code> <em>cloud services</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Install @zetapush/platform-legacy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+</tr></table></code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>For example, to import an other service, you simply need to write:</p>
@@ -139,8 +152,10 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 7
 8
 9
+10
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack } = require('@zetapush/platform'); <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } = require('@zetapush/platform-legacy'); <i class="conum" data-value="1"></i><b>(1)</b>
 import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
 
 @Injectable()
@@ -242,8 +257,10 @@ The <code>Stack</code> service has asynchronous methods
 28
 29
 30
+31
 </pre></td>
-  <td class="code"><pre>import { Injectable, Stack } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
 
 @Injectable()
 export default class MyStorageService {

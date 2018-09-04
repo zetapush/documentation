@@ -354,8 +354,10 @@ To use your <em>custom cloud services</em> you need to export them. To do this, 
 2
 3
 4
+5
 </pre></td>
-  <td class="code"><pre>import { Stack, Messaging, Groups, Injectable } from '@zetapush/platform';
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack, Messaging, Groups } from '@zetapush/platform-legacy';
 
 const CONVERSATION_ID = 'avengersChat';
 const CHANNEL_MESSAGING = 'avengersChannel'; <i class="conum" data-value="1"></i><b>(1)</b></pre></td>
@@ -717,8 +719,10 @@ async getMessages() {
 75
 76
 77
+78
 </pre></td>
-  <td class="code"><pre>import { Stack, Messaging, Groups, Injectable } from &quot;@zetapush/platform&quot;;
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack, Messaging, Groups } from &quot;@zetapush/platform-legacy&quot;;
 
 const CONVERSATION_ID = &quot;avengersChat&quot;;
 const CHANNEL_MESSAGING = &quot;avengersChannel&quot;;
