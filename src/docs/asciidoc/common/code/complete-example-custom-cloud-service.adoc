@@ -4,7 +4,8 @@ include::{docdir}/variables.adoc[]
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Stack } from '@zetapush/platform';
+import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
 
 class DateCustomService {
   <1>

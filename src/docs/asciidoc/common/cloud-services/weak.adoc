@@ -63,7 +63,8 @@ const response = await this.weak.getToken(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Weak, UserControlRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Weak, UserControlRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

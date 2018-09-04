@@ -3,7 +3,6 @@ include::{docdir}/variables.adoc[]
 
 [source,console]
 ----
-$ npm install --save @zetapush/platform
-$ npm install --save @zetapush/cli
+$ npm install --save @zetapush/cli @zetapush/core @zetapush/platform-legacy
 ----
 

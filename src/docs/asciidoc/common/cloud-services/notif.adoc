@@ -53,7 +53,8 @@ const response = await this.notif.register(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Notif, NotificationMessage } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Notif, NotificationMessage } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

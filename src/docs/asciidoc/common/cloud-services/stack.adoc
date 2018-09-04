@@ -95,7 +95,8 @@ const response = await this.stack.list(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Stack, StackRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Stack, StackRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

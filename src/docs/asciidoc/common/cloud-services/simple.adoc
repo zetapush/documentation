@@ -130,7 +130,8 @@ const response = await this.simple.checkPassword(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Simple, BasicAuthenticatedUser } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Simple, BasicAuthenticatedUser } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

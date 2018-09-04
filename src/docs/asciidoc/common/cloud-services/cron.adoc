@@ -67,7 +67,8 @@ const response = await this.cron.list(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Cron, CronTaskRequest } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Cron, CronTaskRequest } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {

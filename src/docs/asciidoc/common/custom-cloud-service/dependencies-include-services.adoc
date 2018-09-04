@@ -3,22 +3,31 @@ include::{docdir}/variables.adoc[]
 
 First of all, if you want to include some services (custom or not), you need to use the _dependency injection_ of ZetaPush. This will ease the injection of your dependencies.
 
-You need to import the package `@zetapush/platform` in order to use `Inject()`. This object will resolve the dependency injection of _cloud services_ and _custom cloud services_.
+You need to import the package `@zetapush/core` in order to use `Injectable`. This object will resolve the dependency injection of _cloud services_ and _custom cloud services_.
 
-.Install @zetapush/platform
+.Install @zetapush/core
 [source, console, linenums]
 ----
-$ npm install --save @zetapush/platform
+$ npm install --save @zetapush/core
 ----
 
 NOTE: The dependency injection of ZetaPush uses Angular https://github.com/mgechev/injection-js[injection-js^] library.
+
+You need to import the package `@zetapush/platform-legacy` in order to use `Stack` _cloud services_.
+
+.Install @zetapush/platform-legacy
+[source, console, linenums]
+----
+$ npm install --save @zetapush/platform-legacy
+----
 
 For example, to import an other service, you simply need to write:
 
 .Import service
 [source,typescript,linenums,role="highlight-lines:6"]
 ----
-import { Injectable, Stack } = require('@zetapush/platform'); <1>
+import { Injectable } from '@zetapush/core';
+import { Stack } = require('@zetapush/platform-legacy'); <1>
 import { MyOtherService } from './services'; <2>
 
 @Injectable()

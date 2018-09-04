@@ -24,7 +24,7 @@ Then, we have the `HelloWorldService` that use our `Calendar` service. It is in 
 .worker/index.ts
 [source,typescript,linenums,role="highlight-lines:7,13"]
 ----
-import { Injectable } from '@zetapush/platform';
+import { Injectable } from '@zetapush/core';
 import { Calendar } from './calendar'; <1>
 
 @Injectable()

@@ -26,7 +26,8 @@ const response = await this.messaging.send(parameters);
 .worker/index.ts
 [source,typescript,linenums]
 ----
-import { Injectable, Messaging, Message } from '@zetapush/platform'; <1>
+import { Injectable } from '@zetapush/core';
+import { Messaging, Message } from '@zetapush/platform-legacy'; <1>
 
 @Injectable()
 export default class Api {
