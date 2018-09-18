@@ -7,5 +7,5 @@ You need to install some dependencies in your application. To do this, you can r
 
 [source,console]
 ----
-$ npm install --save @zetapush/core @zetapush/cli @zetapush/platform-legacy
+$ npm install --save @zetapush/core @zetapush/cli
 ----

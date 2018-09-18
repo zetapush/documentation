@@ -8,10 +8,13 @@ include::{docdir}/variables.adoc[]
 ├── .zetarc
 ├── .gitignore
 ├── front
+│   ├── index.css
 │   ├── index.html
-│   └── index.js
+│   ├── index.js
+│   └── logo.png
 ├── worker
 │   └── index.ts
+├── package.json
 ├── README.md
-└── package.json
+└── tsconfig.json
 ----
