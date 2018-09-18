@@ -12,7 +12,7 @@ My configuration in the `package.json` is the following:
   "main": "worker/index.ts",
   "dependencies": {
     "@zetapush/client": "^0.33.4",
-    "@zetapush/plaform-legacy": "^0.33.4"
+    "@zetapush/platform-legacy": "^0.33.4"
   }
 }
 ----
