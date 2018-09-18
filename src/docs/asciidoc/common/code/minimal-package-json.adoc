@@ -8,11 +8,11 @@ include::{docdir}/variables.adoc[]
   "name": "myApp",
   "main": "worker/index.ts", <1>
   "dependencies": {
-    "@zetapush/platform-legacy": "^0.30.0", <2>
-    "@zetapush/cli": "^0.30.0" <3>
+    "@zetapush/cli": "^0.33.4" <2>
+    "@zetapush/core": "^0.33.4", <3>
   }
 }
 ----
 <1> Entry point of your link:#_worker[worker]. In this file you will expose your __custom cloud services__
-<2> Dependency to the _ZetaPush Platform_ to write some _custom cloud services_ and access existing _cloud services_ exposed by ZetaPush
-<3> Dependency to the link:#_command_line_interface_cli[CLI] (Command Line Interface). Use it to run your worker or deploy your code.
+<2> Dependency to the link:#_command_line_interface_cli[CLI] (Command Line Interface). Use it to run your worker or deploy your code.
+<2> Dependency to the _ZetaPush Core_ to write some _custom cloud services_
