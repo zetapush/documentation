@@ -1,0 +1,4 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+A worker is already registerer with --grab-all-traffic option.
