@@ -5,36 +5,41 @@ include::{docdir}/variables.adoc[]
 
 == Available cloud services
 
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/index.adoc[leveloffset=+2]
+
+== Legacy cloud services
+
 === User Management
 
-include::{docdir}/common/cloud-services/simple.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/weak.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/userdir.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/groups.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/simple.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/weak.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/userdir.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/groups.adoc[leveloffset=+2]
 
 === Data Management
 
-include::{docdir}/common/cloud-services/gda.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/stack.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/search.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/gda.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/stack.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/search.adoc[leveloffset=+2]
 
 === File Management
 
-include::{docdir}/common/cloud-services/zpfs-hdfs.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/template.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/zpfs-hdfs.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/template.adoc[leveloffset=+2]
 
 === Communication
 
-include::{docdir}/common/cloud-services/messaging.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/notif.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/sendmail.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/sms-ovh.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/messaging.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/notif.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/sendmail.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/sms-ovh.adoc[leveloffset=+2]
 
 === Utilities Management
 
-include::{docdir}/common/cloud-services/cron.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/logs.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services/trigger.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/cron.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/logs.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/trigger.adoc[leveloffset=+2]
 
 == Command Line Interface
 

@@ -176,3 +176,21 @@ TODO: https://github.com/zetapush/documentation/issues/59
 === Functional testing / end-to-end testing
 
 TODO: https://github.com/zetapush/documentation/issues/60
+
+// ADVANCED CONFIGURATION OF CLOUD SERVICES
+== Advanced configuration of cloud services
+
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/advanced-configuration.adoc[leveloffset=+2]
+
+// EXTENSION OF CLOUD SERVICES
+== Extension of cloud services
+
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/extension.adoc[leveloffset=+2]
+
+// ADDING IMPLEMENTATION ON CLOUD SERVICES
+== Adding own implementations on cloud services
+
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/adding-implementations.adoc[leveloffset=+2]

@@ -1,0 +1,4 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+Advanced configuration of **Standard User Worflow**.
