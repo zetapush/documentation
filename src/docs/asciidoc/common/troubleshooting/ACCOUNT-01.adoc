@@ -14,16 +14,51 @@ TODO: https://github.com/zetapush/documentation/issues/14
 
 === I use ZetaPush console
 
+The ZetaPush console will come soon.
+
 TODO: https://github.com/zetapush/documentation/issues/15
 
 
 == I have a ZetaPush account, how to use it ?
 
-TODO: https://github.com/zetapush/documentation/issues/16
+You can put the credentials of your ZetaPush account to your application by different ways :
 
-=== I provide my crendentials manually
+. environment variables
+. `.zetarc` file variables
+. CLI parameters
 
-TODO: https://github.com/zetapush/documentation/issues/17
+*There are listed by order of priority.*
+
+You can put your credentials via environment variables using _ZETAPUSH_DEVELOPER_LOGIN_ and _ZETAPUSH_DEVELOPER_PASSWORD_ variables.
+
+Then this variables are override if some properties named _developerLogin_ or _developerPassword_ are present in the `.zetarc` file of the application.
+
+Finally, the credentials are override if the CLI have some parameters named _ZETAPUSH_DEVELOPER_LOGIN_ or _ZETAPUSH_DEVELOPER_PASSWORD_.
+
+Naturally, you can specify your developer login via the environment variable and specify your developer password via the CLI parameter (for example).
+
+
+=== I provide my credentials manually
+
+You need to put your credentials in a dedicated file named `.zetarc`. +
+The format of this file is the JSON.
+
+If the file is missing, you need to create it.
+
+Here is an example :
+
+[source,json]
+.+.zetarc+
+----
+{
+  "developerLogin": "<your login>",
+  "developerPassword": "<your password>"
+}
+----
+
+It is useful to add this file in the `.gitignore` file to avoid to publish your credentials. +
+When you create your application with the CLI, the file is added to `.gitignore` file by default.
+
 
 === I use the CLI
 
