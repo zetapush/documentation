@@ -11,5 +11,6 @@
         "**/.gitignore": true,
         "**/mvnw": true,
         "**/mvnw.cmd": true
-    }
+    },
+    "eslint.enable": true
 }
