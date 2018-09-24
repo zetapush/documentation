@@ -5,4 +5,8 @@ Loading of configuration from CLI has failed.
 
 Please contact the support
 
-TODO: https://github.com/zetapush/documentation/issues/24
+You can do this in several ways :
+
+- GitHub : Post an issue on the repository (https://github.com/zetapush/zetapush/issues[issues])
+- Email : mailto:celtia@zetapush.com[contact]
+- Spectrum : https://spectrum.chat/zetapush[ZetaPush community]
