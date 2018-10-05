@@ -59,6 +59,7 @@
       <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
     </ul>
     <div>
       <div class="contact-us">
@@ -71,7 +72,7 @@
       <div class="search">
         <input id="search-input" placeholder="Search for products">
         <div class="search-results">
-            <div id="search-hits"></div>
+          <div id="search-hits"></div>
         </div>
       </div>
       <div class="logo">
@@ -137,6 +138,16 @@
 <li><a href="#_integration_testing_your_front">Integration testing your front</a></li>
 <li><a href="#_integration_testing_your_custom_cloud_services">Integration testing your custom cloud services</a></li>
 <li><a href="#_functional_testing_end_to_end_testing">Functional testing / end-to-end testing</a></li>
+</ul>
+</li>
+<li><a href="#_configuration_of_cloud_services">Configuration of cloud services</a>
+<ul class="sectlevel2">
+<li><a href="#configuration-of-standard-user-workflow">Standard User Workflow</a></li>
+</ul>
+</li>
+<li><a href="#_extension_of_cloud_services">Extension of cloud services</a>
+<ul class="sectlevel2">
+<li><a href="#extension-of-standard-user-workflow">Standard User Workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -644,8 +655,8 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -659,11 +670,11 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency to the <em>ZetaPush Platform</em> to write some <em>custom cloud services</em> and access existing <em>cloud services</em> exposed by ZetaPush</td>
+<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
+<td>Dependency to the <em>ZetaPush Core</em> to write some <em>custom cloud services</em></td>
 </tr>
 </table>
 </div>
@@ -705,8 +716,8 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front/dist</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -736,7 +747,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli @zetapush/platform-legacy</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli</code></pre>
 </div>
 </div>
 </div>
@@ -1271,24 +1282,9 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 </td>
 <td class="content">
 <div class="title">List of available built-in services</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Cloud service</th>
-<th class="tableblock halign-center valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="./reference.html#_user_management">User management</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">TODO: <a href="https://github.com/zetapush/documentation/issues/45" class="bare">https://github.com/zetapush/documentation/issues/45</a></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Unresolved directive in developer-manual.adoc - include::/mnt/harddisk/workspace/celtia/documentation/src/docs/asciidoc/common/cloud-services/summary.adoc[leveloffset=+3]</p>
+</div>
 </td>
 </tr>
 </table>
@@ -2559,10 +2555,32 @@ The command that is executed under the hood is:</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_configuration_of_cloud_services"><a class="anchor" href="#_configuration_of_cloud_services"></a>Configuration of cloud services</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="configuration-of-standard-user-workflow"><a class="anchor" href="#configuration-of-standard-user-workflow"></a>Standard User Workflow</h3>
+<div class="paragraph">
+<p>Configuration of <strong>Standard User Worflow</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extension_of_cloud_services"><a class="anchor" href="#_extension_of_cloud_services"></a>Extension of cloud services</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="extension-of-standard-user-workflow"><a class="anchor" href="#extension-of-standard-user-workflow"></a>Standard User Workflow</h3>
+<div class="paragraph">
+<p>Extension of <strong>Standard User Worflow</strong>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-24 15:05:19 UTC
+Last updated 2018-10-05 16:01:27 CEST
 </div>
 </div>
 </body>

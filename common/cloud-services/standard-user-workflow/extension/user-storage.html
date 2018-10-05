@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Untitled</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../../../../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../../../../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+            <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, when you create a user in your application, it is saved in the ZetaPush legacy storage.
+You can change it by implementing the <em>UserRegistry</em> interface.</p>
+</div>
+<div class="paragraph">
+<p>To use our new implementation, we need to define a provider in our module.
+Here, we need to associate our implementation to the <em>UserRepositoryInjectable</em> provider.</p>
+</div>
+<div class="paragraph">
+<p>You will see in this example how to add behavior to the default implementation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the following example we keep the default behavior of the user storage.
+You can fully rewrite it implementing only <em>UserRepository</em> (no extend the <em>LegacyAdapterUserRepository</em>)
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of <em>UserRegistry</em> implementation</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre></td>
+  <td class="code"><pre>import { Module, Injectable } from '@zetapush/core';
+import {
+  StandardUserManagementModule,
+  StandardUserWorkflow,
+  ConfirmationUrlHttpHandler,
+  Account,
+  AccountStatus,
+  UserProfile,
+  LoginPasswordCredentials,
+  LegacyAdapterUserRepository
+} from '@zetapush/user-management';
+import { UserRepository, UserRepositoryInjectable } from '@zetapush/user-management/lib/common/api/User';
+import { Simple, Gda, GdaConfigurer } from '@zetapush/platform-legacy';
+
+@Injectable()
+class MyUserRepository extends LegacyAdapterUserRepository implements UserRepository { <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(simple: Simple, gda: Gda, gdaConfigurer: GdaConfigurer) {
+    super(simple, gda, gdaConfigurer);
+  }
+
+  <i class="conum" data-value="2"></i><b>(2)</b>
+  exists(credentials: LoginPasswordCredentials): Promise&lt;boolean&gt; {
+    console.log('exists');
+    return super.exists(credentials);
+  }
+
+  addUser(
+    credentials: LoginPasswordCredentials,
+    userProfile: UserProfile,
+    accountStatus: AccountStatus,
+    accountId: string
+  ): Promise&lt;Account&gt; {
+    console.log('addUser');
+    return super.addUser(credentials, userProfile, accountStatus, accountId);
+  }
+
+  getProfile(accountId: string): Promise&lt;UserProfile&gt; {
+    console.log('getProfile');
+    return super.getProfile(accountId);
+  }
+
+  updateStatus(accountId: string, newStatus: AccountStatus): Promise&lt;void&gt; {
+    console.log('updateStatus');
+    return super.updateStatus(accountId, newStatus);
+  }
+}
+
+@Module({
+  imports: [StandardUserManagementModule],
+  expose: {
+    user: StandardUserWorkflow,
+    http: ConfirmationUrlHttpHandler
+  },
+  providers: [
+    {
+      provide: UserRepositoryInjectable, <i class="conum" data-value="3"></i><b>(3)</b>
+      useClass: MyUserRepository
+    }
+  ]
+})
+export default class Api {}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We implement <em>UserRegistry</em> to add new behavior for our use case but we also extend <em>LegacyAdapterUserRepository</em> to keep the default behavior.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We only add some <code>console.log()</code> to our default implementation.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We use our <em>MyUserRepository</em> for the <em>UserRepositoryInjectable</em> provider.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Currently the authentication use the <em>Simple</em> cloud service to retrieve the user.
+So if you want to fully rewrite the implementation, we advise you to create the user with the <em>Simple</em> cloud service and save the user profile with whatever you want.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can extend the existing implementations, like the above example. The existing implementations of <em>UserRepository</em> are the following :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>LegacyAdapterUserRepository</em> : Using the ZetaPush legacy storage to save the user profile</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-09-27 11:43:15 CEST
+</div>
+</div>
+</body>
+</html>

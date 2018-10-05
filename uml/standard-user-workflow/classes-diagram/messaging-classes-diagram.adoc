@@ -1,0 +1,39 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, messaging-classes-diagram, png]
+....
+package "Messaging" {
+    abstract class Message {
+        to: MessageTarget
+        body: MessageBody
+        subject: MessageSubject
+    }
+    abstract class SentMessage {
+        to: MessageTarget
+    }
+
+    abstract class MessageTarget
+    class StringMessageTarget {
+        target: string
+    }
+
+    abstract class MessageBody
+    class StringMessageBody {
+        body: string
+    }
+
+    abstract class MessageSubject
+    class StringMessageSubject {
+        subject: string
+    }
+
+    MessageTarget --> StringMessageTarget
+    MessageBody --> StringMessageBody
+    MessageSubject --> StringMessageSubject
+
+
+}
+
+....

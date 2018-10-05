@@ -1,0 +1,43 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, templating-classes-diagram, png]
+
+....
+package "Templating" {
+
+    abstract class Location
+    class LocalPath {
+        path: string
+    }
+
+    Location --> LocalPath
+
+    abstract class Resource
+    class StringResource {
+        content: string
+    }
+
+    Resource --> StringResource
+
+    abstract class ParsedTemplate
+    class ParsedStringTemplate {
+        template: string
+    }
+
+    ParsedTemplate --> ParsedStringTemplate
+
+    abstract class Variables
+
+    abstract class Template
+    abstract class StringTemplate
+    class SubjectAndBodyTemplate {
+        subject: string
+        body: string
+    }
+
+    Template --> StringTemplate
+    StringTemplate <|-- SubjectAndBodyTemplate
+}
+....

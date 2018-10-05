@@ -1,0 +1,21 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, redirection-link-page-classes-diagram, png]
+....
+package "Link redirection" {
+    abstract class ConfirmationRedirection 
+
+    abstract class FullUrlConfirmationRedirection {
+        url: string
+    }
+
+    abstract class AnchorConfirmationRedirection {
+        anchor: string
+    }
+
+    ConfirmationRedirection --> FullUrlConfirmationRedirection
+    ConfirmationRedirection --> AnchorConfirmationRedirection
+}
+....

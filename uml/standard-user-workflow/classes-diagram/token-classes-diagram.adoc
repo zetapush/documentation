@@ -1,0 +1,28 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, token-classes-diagram, png]
+....
+package "Token" {
+    abstract class TokenGenerator {
+        generate(): Token
+    }
+
+    class ExpirableTokenGenerator {
+        generate(): ExpirableToken
+    }
+
+    abstract class Token {
+        value: string
+    }
+
+    class ExpirableToken {
+        value: string
+        expires: number
+    }
+
+    TokenGenerator --> ExpirableTokenGenerator
+    Token --> ExpirableToken
+}
+....

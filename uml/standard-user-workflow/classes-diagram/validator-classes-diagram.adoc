@@ -1,0 +1,18 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, validation-classes-diagram, png]
+....
+package "Validation" {
+    abstract class AccountCreationValidator {
+        accountCreationValidation(constructor: Function): void
+    }
+
+    class UsernamePasswordAccountCreationValidator {
+        accountCreationValidation(constructor: Function): void
+    }
+
+    AccountCreationValidator --> UsernamePasswordAccountCreationValidator
+}
+....

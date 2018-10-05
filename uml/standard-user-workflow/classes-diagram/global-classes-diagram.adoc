@@ -1,0 +1,124 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+
+[plantuml, global-classes-diagram, png]
+....
+package "Global" {
+    interface StandardUserWorkflow {
+        signup(accountCreationDetails: AccountCreationDetails, confirmationRedirection: ConfirmationRedirection): Account
+        login(credentials: Credentials): Account
+        logout(): Account;
+    }
+
+    class DefaultStandardUserWorkflow {
+        signup(accountCreationDetails: AccountCreationDetails, confirmationRedirection: ConfirmationRedirection): Account
+        login(credentials: Credentials): Account
+        logout(): Account;
+    }
+
+    StandardUserWorkflow ^-- DefaultStandardUserWorkflow
+
+    abstract class AccountCreationManager {
+        signup(accountCreationDetails: AccountCreationDetails): Account
+    }
+    
+    class UsernamePasswordAccountCreationManager {
+        signup(accountCreationDetails: UsernamePasswordAccountCreationDetails, confirmationRedirection: ConfirmationRedirection): Account
+    }
+
+
+    abstract class AccountConfirmationManager {
+        askConfirmation(accountToConfirm: Account): PendingAccountConfirmation
+        confirm(token: Token): ConfirmedAccount
+    }
+
+    class TemplatedMessageAccountConfirmationManager {
+        askConfirmation(accountToConfirm: Account): PendingAccountConfirmation
+        confirm(token: Token): ConfirmedAccount
+    }
+
+    abstract class AuthenticationManager {
+        login(credentials: Credentials): Account
+        logout(): Account
+    }
+
+    class UsernamePasswordAuthenticationManager {
+        login(credentials: Credentials): Account
+        logout(): Account
+    }
+
+    DefaultStandardUserWorkflow *-- AccountCreationManager : accountCreationManager
+    DefaultStandardUserWorkflow *-- AccountConfirmationManager : accountConfirmationManager
+    DefaultStandardUserWorkflow *-- AuthenticationManager : authenticationManager
+
+    AuthenticationManager ^.. UsernamePasswordAuthenticationManager
+    AccountCreationManager ^.. UsernamePasswordAccountCreationManager
+    AccountConfirmationManager ^.. TemplatedMessageAccountConfirmationManager
+    
+
+
+
+    abstract class AccountConfirmationMessageManager {
+        send(message: Message): SentMessage
+    }
+
+    abstract class MessageSender {
+        send(message: Message): SentMessage
+    }
+
+    class EmailManager {
+        send(message: Message): SentMessage
+    }
+
+    abstract class EmailConfiguration
+    class SmtpEmailConfiguration {
+        string username
+        string password
+        string host
+        string port
+        string sender
+        string replyTo
+        boolean ssl
+        boolean startTls
+    }
+
+    TemplatedMessageAccountConfirmationManager *-- AccountConfirmationMessageManager : accountConfirmationMessageManager
+    AccountConfirmationMessageManager *-- MessageSender : messageSender 
+    MessageSender <|.. EmailManager : emailManager
+    EmailManager *-- EmailConfiguration : emailConfiguration
+    EmailConfiguration <|.. SmtpEmailConfiguration
+
+    abstract class TemplateManager {
+        loadAndParse(location: Location, variables: Variables): Template  
+    }
+
+    class StringTemplateManager {
+        loadAndParse(location: Location, variables: Variables): StringTemplate 
+    }
+
+    abstract class ResourceResolver {
+        resolve(location: Location): Resource
+    }
+    
+    abstract class TemplateParser {
+        parse(resource: Resource, variables: Variables): ParsedTemplate
+    }
+
+    AccountConfirmationMessageManager *-- TemplateManager : templateManager
+    TemplateManager ^-- StringTemplateManager
+    StringTemplateManager *-- ResourceResolver : resourceResolver
+    StringTemplateManager *-- TemplateParser : templateParser
+
+    class LocalResourceResolver {
+        resolve(location: LocalPath): Resource
+    }
+
+    class StringTemplateParser {
+        parse(resource: Resource, variables: Variables): ParsedStringTemplate
+    }
+
+    ResourceResolver <|.. LocalResourceResolver
+    TemplateParser <|.. StringTemplateParser
+}
+....

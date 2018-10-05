@@ -59,6 +59,7 @@
       <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
     </ul>
     <div>
       <div class="contact-us">
@@ -71,7 +72,7 @@
       <div class="search">
         <input id="search-input" placeholder="Search for products">
         <div class="search-results">
-            <div id="search-hits"></div>
+          <div id="search-hits"></div>
         </div>
       </div>
       <div class="logo">
@@ -194,12 +195,15 @@
 ├── .zetarc
 ├── .gitignore
 ├── front
+│   ├── index.css
 │   ├── index.html
-│   └── index.js
+│   ├── index.js
+│   └── logo.png
 ├── worker
 │   └── index.ts
+├── package.json
 ├── README.md
-└── package.json</code></pre>
+└── tsconfig.json</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -805,8 +809,8 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -820,11 +824,11 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency to the <em>ZetaPush Platform</em> to write some <em>custom cloud services</em> and access existing <em>cloud services</em> exposed by ZetaPush</td>
+<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
+<td>Dependency to the <em>ZetaPush Core</em> to write some <em>custom cloud services</em></td>
 </tr>
 </table>
 </div>
@@ -866,8 +870,8 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.30.0</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front/dist</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -897,7 +901,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli @zetapush/platform-legacy</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli</code></pre>
 </div>
 </div>
 </div>
@@ -1104,7 +1108,7 @@ $ source ~/.bashrc</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-25 16:34:09 UTC
+Last updated 2018-10-05 11:42:58 CEST
 </div>
 </div>
 </body>
