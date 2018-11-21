@@ -1,0 +1,13 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.zetarc file is not a valid JSON file. 
+
+Please check it. 
+It should look like below :
+
+{
+  "developerLogin": "my-login",
+  "developerPassword": "my-password",
+  "appName": "my-app-name"
+}
