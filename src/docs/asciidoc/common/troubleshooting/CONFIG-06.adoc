@@ -1,0 +1,7 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+"main" property in "package.json" is wrong.
+
+The specified path in the "main" property of your "package.json" file is wrong.
+Please check it.

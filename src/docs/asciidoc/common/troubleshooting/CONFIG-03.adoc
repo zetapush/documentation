@@ -1,0 +1,8 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Front directory is missing.
+
+To deploy or run with the "--serve-front" flag, you need to have a directory that contains your front code.
+
+By default the directory is named "front", check if it exists.

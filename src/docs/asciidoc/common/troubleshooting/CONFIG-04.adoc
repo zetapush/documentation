@@ -1,0 +1,7 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+"package.json" file is missing.
+
+Inside the worker part of your application, you need to have a "package.json" file.
+Please create it at the root of your application.

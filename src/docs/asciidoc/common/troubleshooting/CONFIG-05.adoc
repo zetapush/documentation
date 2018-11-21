@@ -1,0 +1,7 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+"package.json" has no "main" property.
+
+The "package.json" file needs to have the "main" property setted with the path of the worker directory.
+Please add it.
