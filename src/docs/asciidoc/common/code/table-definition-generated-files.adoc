@@ -11,10 +11,10 @@ include::{docdir}/variables.adoc[]
 | Contains the developer's credentials. Useful to deploy or run your code. The content is auto generated if the file is empty.
 
 | `.gitignore`
-| Prevents publication of your developer credentials (on GitHub for example)
+| Standard file used by Git to prevent commiting some files. It is preconfigured to prevent publication of your developer credentials (on GitHub for example).
 
 | `package.json`
-| Contains the dependencies, the name of your application, the entry point of your _custom cloud services_ (`main` property) and many useful other informations for your application.
+| Standard file for NPM to handle a module. It contains the dependencies, the name of your application, the entry point of your _custom cloud services_ (`main` property) and many useful other informations for your application.
 
 | `README.md`
 | Gives you some information about how to use your application. 

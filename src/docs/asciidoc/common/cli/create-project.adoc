@@ -11,7 +11,7 @@ $ npm init @zetapush {appName} <1>
 You will be prompted for a developer login and a developer password in order to create a new account.
 
 NOTE: The developer login and the developer password will be stored in the `.zetarc` file.
-By default, the `.gitignore` file is configured to doesn't deploy this file.
+By default, the `.gitignore` file is configured to not deploy this file.
 
 
 
