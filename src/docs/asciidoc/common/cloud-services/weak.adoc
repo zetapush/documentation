@@ -1,0 +1,81 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Weak
+
+User API for weak devices control
+
+User API for control and release of weakly authenticated user sessions.
+
+
+=== control
+
+Takes control of a weak user session, identified by the given public token.
+The public token has been previously made available by the controlled device, for example by displaying a QRCode.
+Upon control notification, the client SDK of the controlled session is expected to re-handshake.
+
+.control(parameters: <<common/cloud-services-types/user-control-request.adoc#,UserControlRequest>>): Promise<<<common/cloud-services-types/user-control-status.adoc#,UserControlStatus>>>
+
+[source,typescript,linenums]
+----
+const response = await this.weak.control(parameters);
+----
+
+=== release
+
+Releases control of a weak user session, identified by the given public token.
+The weak user session must have been previously controlled by a call to 'control'.
+
+.release(parameters: <<common/cloud-services-types/user-control-request.adoc#,UserControlRequest>>): Promise<<<common/cloud-services-types/user-control-status.adoc#,UserControlStatus>>>
+
+[source,typescript,linenums]
+----
+const response = await this.weak.release(parameters);
+----
+
+=== provision
+
+Provisions an arbitrary number of accounts.
+The maximum number of accounts that you can create in one single call is configured per server.
+
+.provision(parameters: <<common/cloud-services-types/provisioning-request.adoc#,ProvisioningRequest>>): Promise<<<common/cloud-services-types/provisioning-result.adoc#,ProvisioningResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.weak.provision(parameters);
+----
+
+=== getToken
+
+Returns your current session's private token. The token field may be null, if you did not log in with this authentication.
+The token can be used to log in as the same weak user another time.
+
+.getToken(parameters: <<common/cloud-services-types/.adoc#,undefined>>): Promise<<<common/cloud-services-types/user-token.adoc#,UserToken>>>
+
+[source,typescript,linenums]
+----
+const response = await this.weak.getToken(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Weak, UserControlRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private weak: Weak <2>
+  ) {}
+  async doStuff(parameters: UserControlRequest) {
+    const response = await this.weak.control(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Weak` from platform
+<2> Declare injected service
+<3> Call injected service

@@ -26,6 +26,20 @@ To generate the PDF documentation, you can run the following command:
 
 The generated PDF documentation is available in the folder `target/generated-docs`. Each `.adoc` source file has its own PDF file.
 
+#### Change ZetaPush version in generated documentation
+
+To generate the HTML documentation for a particular ZetaPush version, you can run the following command:
+
+```
+./mvnw generate-resources -P html -DzetapushVersion=<version>
+```
+
+To generate the PDF documentation for a particular ZetaPush version, you can run the following command:
+
+```
+./mvnw generate-resources -P pdf -DzetapushVersion=<version>
+```
+
 #### Generate documentation and publish on gh-pages
 
 Assuming you have cloned this documentation project a second time in `../documentation-site` and made a checkout of `gh-pages` branch.

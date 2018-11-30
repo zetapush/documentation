@@ -1,0 +1,148 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Simple
+
+End-user API for the simple local authentication
+
+These API verbs allow end-users to manage their account(s).
+
+
+=== createUser
+
+Creates a new account in this 'simple' authentication realm.
+Returns a map of account fields, including a field named <i>zetapushKey</i> containing the global user key of the user (value of the <b>__userKey</b> pseudo-constant when this new account will be used)
+
+.createUser(parameters: <<common/cloud-services-types/basic-authenticated-user.adoc#,BasicAuthenticatedUser>>): Promise<<<common/cloud-services-types/map<-string,-object>.adoc#,Map<String,Object>>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.createUser(parameters);
+----
+
+=== credentials
+
+Returns the list of account credentials in this service for the asking user.
+Might return an empty list.
+
+.credentials(parameters: <<common/cloud-services-types/impersonated-traceable-request.adoc#,ImpersonatedTraceableRequest>>): Promise<<<common/cloud-services-types/all-credentials.adoc#,AllCredentials>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.credentials(parameters);
+----
+
+=== updateKey
+
+Updates an existing account primary key (login, NOT <b>__userKey</b>) in this 'simple' authentication realm.
+The updated account MUST belong to the user making the call.
+The configured login field MUST be given, as a user (identified by his zetapush userKey) might possess several accounts.
+Returns a map of account fields
+
+.updateKey(parameters: <<common/cloud-services-types/user-loginchange.adoc#,UserLoginchange>>): Promise<<<common/cloud-services-types/map<-string,-object>.adoc#,Map<String,Object>>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.updateKey(parameters);
+----
+
+=== updateUser
+
+Updates an existing account in this 'simple' authentication realm.
+The updated account MUST belong to the user making the call.
+The configured login field MUST be given, as a user (identified by his zetapush userKey) might possess several accounts.
+Returns a map of account fields
+
+.updateUser(parameters: <<common/cloud-services-types/basic-authenticated-user.adoc#,BasicAuthenticatedUser>>): Promise<<<common/cloud-services-types/map<-string,-object>.adoc#,Map<String,Object>>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.updateUser(parameters);
+----
+
+=== deleteUser
+
+Deletes an existing account in this 'simple' authentication realm.
+
+.deleteUser(parameters: <<common/cloud-services-types/existence-check.adoc#,ExistenceCheck>>): Promise<<<common/cloud-services-types/existence-check.adoc#,ExistenceCheck>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.deleteUser(parameters);
+----
+
+=== checkUser
+
+Checks whether the given account already exists in this 'simple' authentication realm.
+This verb returns all the information about the user, including non public fields.
+
+.checkUser(parameters: <<common/cloud-services-types/existence-check.adoc#,ExistenceCheck>>): Promise<<<common/cloud-services-types/map<-string,-object>.adoc#,Map<String,Object>>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.checkUser(parameters);
+----
+
+=== requestReset
+
+Requests a password reset for the given unique account key.
+The account key must exist and must be given, as it cannot obviously be deduced from the currently logged in user.
+The returned token needs to be sent to the intended recipient only. The typical use case is to define a macro that requests a reset, generates a email template and emails the user. The macro can then be safely called by a weakly authenticated user.
+Requesting a reset does not invalidate the password.
+Requesting a reset again invalidates previous reset requests (only the last token is usable)
+
+.requestReset(parameters: <<common/cloud-services-types/reset-request.adoc#,ResetRequest>>): Promise<<<common/cloud-services-types/reset-info.adoc#,ResetInfo>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.requestReset(parameters);
+----
+
+=== changePassword
+
+Changes a user password for this authentication realm.
+The user can be either explicit, implicit (one of the current user's accounts) or deduced from the token.
+You should provide at least one of 'key' and 'token'. If you do not, the server will try and find any key for the current user.
+The change is effective immediately. However, already logged in users might stay connected.
+The password and token fields are always null in the output.
+
+.changePassword(parameters: <<common/cloud-services-types/change-password-request.adoc#,ChangePasswordRequest>>): Promise<<<common/cloud-services-types/change-password-request.adoc#,ChangePasswordRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.changePassword(parameters);
+----
+
+=== checkPassword
+
+
+
+.checkPassword(parameters: <<common/cloud-services-types/check-password-request.adoc#,CheckPasswordRequest>>): Promise<<<common/cloud-services-types/check-password-result.adoc#,CheckPasswordResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.simple.checkPassword(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Simple, BasicAuthenticatedUser } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private simple: Simple <2>
+  ) {}
+  async doStuff(parameters: BasicAuthenticatedUser) {
+    const response = await this.simple.createUser(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Simple` from platform
+<2> Declare injected service
+<3> Call injected service

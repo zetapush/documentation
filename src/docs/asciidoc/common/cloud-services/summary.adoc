@@ -1,0 +1,63 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.List of ZetaPush cloud services
+[cols="2*<", options="header"]
+|===
+| Cloud service
+| Description
+
+| <<reference.adoc#_standard_user_workflow, Standard User Workflow>>
+a| The `StandardUserWorkflow` corresponds to the most common inscription process on the Internet. It handles:
+
+* Inscription of your end-users into your application: the user fills some information and `StandardUserWorkflow` sends an email 
+(or SMS or anything else) to the user in order to confirm its account. Once the user has confirmed its account, he can authenticate
+himself and he is ready to use your application.
+* Authentication of your end-users
+* Lost password of your end-users: the user ask for resetting its password. `StandardUserWorkflow` sends an email (or SMS or anything else) to the user.
+The user clicks the link in the email to choose another password. Once confirmed, its account is updated with the new password.
+* Profile edition: your end-users can update their information
+
+| <<reference.adoc#_user_management, User management>>
+a| This section describes several services that provide basic user management functions:
+
+* <<reference.adoc#_simple, Simple>>: cloud functions to create a user, change credentials of a user, update a user or delete a user.
+* <<reference.adoc#_weak, Weak>>: cloud functions to control and release of weakly authenticated user sessions.
+* <<reference.adoc#_userdir, Userdir>>: cloud functions to retrieve and search users created by Simple.
+* <<reference.adoc#_groups, Groups>>: cloud functions to handle group of users.
+
+[NOTE]
+====
+This APIs are available if `StandardUserWorkflow` doesn't fit your needs or you want to go further.
+Under the hood, `StandardUserWorkflow` use these services.
+====
+
+| <<reference.adoc#_data_management, Data management>>
+a| This section describes several services that provide basic data management functions:
+
+* <<reference.adoc#_gda, Gda>>: NoSQL database that can store values, objects and arrays as document in columns.
+* <<reference.adoc#_stack, Stack>>: Store values, objects and arrays in a stack. Each item is pushed in the stack and can be accessed later.
+* <<reference.adoc#_search_2, Search>>: Search engine to make full text searches.
+
+| <<reference.adoc#_file_management, File management>>
+a| This section describes several services that provide basic file management functions:
+
+* <<reference.adoc#_zpfs_hdfs, Zpfs_hdfs>>: Store files on a file system.
+* <<reference.adoc#_template, Template>>: Define a template and then evaluate it with an execution context.
+
+| <<reference.adoc#_communication, Communication>>
+a| It is possible to interact with your end-users using these services:
+
+* <<reference.adoc#_messaging, Messaging>>: Send messages to a particular user (or a group of users). This is the service you use for a chat.
+* <<reference.adoc#_notif, Notif>>: Send notifications to your end-users mobile phone (Android, iOS or Windows Phone).
+* <<reference.adoc#_sendmail, Sendmail>>: Send emails to your end-users.
+* <<reference.adoc#_sms_ovh, Sms_ovh>>: Send SMS to your end-users.
+
+| <<reference.adoc#_utilities_management, Utilities>>
+a| This section provides some utility tools:
+
+* <<reference.adoc#_cron, Cron>>: Schedule a task to be executed periodically.
+* <<reference.adoc#_logs, Logs>>: Log some information. Logs will be available on ZetaPush cloud.
+* <<reference.adoc#_trigger, Trigger>>: Listen to some event that is triggered by ZetaPush cloud and react to that event.
+
+|===

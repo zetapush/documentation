@@ -19,7 +19,7 @@ include::{docdir}/common/cli/create-project.adoc[leveloffset=+2]
 
 [TIP]
 ====
-See <<developer-manual.adoc#_account_management, Account management>> to learn how to manage your account and your applications.
+See <<developer-manual.adoc#_zetapush_account_management, ZetaPush account management>> to learn how to manage your account and your applications.
 ====
 
 === Generated project

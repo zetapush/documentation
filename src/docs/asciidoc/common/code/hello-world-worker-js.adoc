@@ -4,12 +4,22 @@ include::{docdir}/variables.adoc[]
 .worker/index.ts
 [source,typescript,linenums]
 ----
-export default class Api {
+export default class Api {                                    // <1>
   /**
    * Get an Hello World string with server side timestamp value
    */
-  hello() {
-    return `Hello World from JavaScript ${Date.now()}`;
+  hello() {                                                   // <2>
+    return `Hello World from JavaScript ${Date.now()}`;       // <3>
   }
 }
 ----
+<1> You export a `class` with the name you want.
+<2> You define a custom cloud function just by writing a normal function. This example has no parameters but you could have any parameters you want.
+<3> You can write any code you want and return a value (or not). 
+In this sample, the function is synchronous but you could also return a link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise[Promise]
+or even use link:https://javascript.info/async-await[async/await syntax].
+
+[TIP]
+====
+`export` is the standard way to make anything importable in an other file in TypeScript. You need to export your class so ZetaPush can import it and instantiate it.
+====

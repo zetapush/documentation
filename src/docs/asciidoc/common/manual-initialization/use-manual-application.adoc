@@ -1,14 +1,83 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-Once your have your application ready you can:
+Once your have your application ready (see <<quick-start.adoc#, Quick start>> if you don't have created an application) you can:
 
 * Run the backend code (Worker) locally
 * Deploy your application
 
-To do this you need to use the _CLI_. To install it, launch:
+To do this we provide a _CLI_ (Command Line Interface) to help you focus on your code and not spend time on writing commands or scripts.
 
-== Update your PATH environement variable (recommended)
+The _CLI_ module is declared in the `package.json` of the project so it is installed by npm when you create your project
+(see <<quick-start.adoc#_create_your_first_application, how to create an application using npm>> if you haven't created a project). 
+
+When the project is created, we configure the `package.json` with a `scripts` section to make aliases that work
+directly with npm.
+
+== Use npm script aliases to run the _CLI_
+
+[source,console,subs="attributes+"]
+----
+$ npm run <alias>
+----
+
+If you want to run your worker locally using script alias, you can execute:
+
+[source,console,subs="attributes+"]
+----
+$ npm run start
+----
+
+[TIP]
+====
+The `start` alias calls `zeta run` under the hood.
+
+The `start` alias is used because it is the standard alias to use in development. 
+We follow npm conventions so a user that is used to npm know which command to
+execute to start is project locally.
+====
+
+
+If you want to deploy your application using script alias, you can execute:
+
+[source,console,subs="attributes+"]
+----
+$ npm run deploy
+----
+
+[TIP]
+====
+The `start` alias calls `zeta push` under the hood.
+====
+
+== Use _CLI_ directly
+
+
+With the CLI, you can run your worker with:
+
+.Run worker
+[source, console, linenums]
+----
+$ zeta run
+----
+
+Or deploy your application with:
+
+.Deploy the application
+[source, console, linenums]
+----
+$ zeta push
+----
+
+There are 3 ways to use directly `zeta` commands provided by the _CLI_:
+
+- Set an environment variable that points to your local `node_modules/.bin` (recommended)
+- Use `npx` tool
+- Install _CLI_ as global (not recommended)
+
+=== Update your PATH environment variable (recommended)
+
+In order to be able to run `zeta` commands directly, you need to update your PATH.
 
 [role=tab-container]
 Update environement variables
@@ -34,8 +103,6 @@ $ source ~/.bashrc
 ----
 
 [role=tab]
-Windows
-
 Windows 10 and Windows 8
 
 - In Search, search for and then select: System (Control Panel)
@@ -44,6 +111,7 @@ Windows 10 and Windows 8
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
 - Reopen Command prompt window, and run zeta command.
 
+[role=tab]
 Windows 7
 
 - From the desktop, right click the Computer icon.
@@ -53,6 +121,7 @@ Windows 7
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
 - Reopen Command prompt window, and run zeta command.
 
+[role=tab]
 Windows Vista
 
 - From the desktop, right click the My Computer icon.
@@ -62,6 +131,8 @@ Windows Vista
 - In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.
 - Reopen Command prompt window, and run zeta command.
 
+
+[role=tab]
 Windows XP
 
 - Select Start, select Control Panel. double click System, and select the Advanced tab.
@@ -72,14 +143,7 @@ Windows XP
 [role=tab-container-end]
 -
 
-== Use aliases command npm run <command>
-
-[source,console,subs="attributes+"]
-----
-$ npm run start
-----
-
-== Use npx tool
+=== Use npx tool
 
 npx is shipped with npm standard install
 
@@ -88,25 +152,10 @@ npx is shipped with npm standard install
 $ npx zeta <command>
 ----
 
-== Install @zetapush/cli as a global command (not recommended)
+=== Install @zetapush/cli as a global command (not recommended)
 
 [source,console,subs="attributes+"]
 ----
 $ npm i -g @zetapush/cli
 ----
 
-With the CLI, you can run your worker with:
-
-.Run worker
-[source, console, linenums]
-----
-$ zeta run
-----
-
-Or deploy your application with:
-
-.Deploy the application
-[source, console, linenums]
-----
-$ zeta push
-----

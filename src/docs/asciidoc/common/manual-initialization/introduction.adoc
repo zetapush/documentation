@@ -7,4 +7,4 @@ Here the basic source tree you need to create:
 include::{docdir}/common/code/minimal-tree.adoc[]
 
 
-You will see what you need to do for each file in the following section.
+You will see what you need to do for each file in the following sections.

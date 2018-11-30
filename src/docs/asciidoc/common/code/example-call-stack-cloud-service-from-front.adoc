@@ -1,0 +1,66 @@
+
+.front/index.html
+[source, html, linenumbers]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtia</title>
+  </head>
+
+  <body>
+    <input type="text" id="text" />                               <!--1-->
+    <button onclick="storeData()">store data</button>             <!--2-->
+    <button onclick="displayAll()">display all</button>           <!--3-->
+    <ul id="results"></ul>                                        <!--4-->
+
+    <script src="https://unpkg.com/@zetapush/client"></script>    <!--5-->
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+----
+<1> A simple input to fill some text to send to our cloud service
+<2> Each time the button is clicked, it calls `storeData()` defined in `index.js` which in turns calls our _custom cloud service_
+<3> Each time the button is clicked, it calls `displayAll()` defined in `index.js` which in turns calls our _custom cloud service_
+<4> A container for all results
+<5> Dependency to ZetaPush client
+
+Finally, we have the front-side code call our services:
+
+.front/index.js
+[source, javascript, linenumbers]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();             // <1>
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();                // <2>
+// Handle connection
+client.connect().then(                                      // <3>
+  () => (
+    console.debug('onConnectionEstablished'),
+    [...document.querySelectorAll('button')].forEach((node) => node.removeAttribute('disabled'))
+  )
+);
+const storeData = async function() {
+  const text = document.getElementById('text').value;
+  await api.storeWithTimestamp(text);                       // <4>
+  document.getElementById('text').value = '';
+};
+const displayAll = async function() {
+  const response = await api.getAllData();                  // <5>
+  let resultsAsStr = '';
+  for (let result of response.result.content) {
+    resultsAsStr += `<li>${JSON.stringify(result.data)}</li>`;
+  }
+  document.getElementById('results').innerHTML = resultsAsStr;
+};
+
+----
+<1> Create the ZetaPush client
+<2> API to access our custom service(s)
+<3> Connect to the ZetaPush cloud
+<4> Call our _cloud function_ named `storeWithTimestamp` to store a new text
+<4> Call our _cloud function_ named `getAllData` and display all the results

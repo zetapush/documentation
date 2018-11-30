@@ -5,11 +5,11 @@ include::{docdir}/variables.adoc[]
 [source,javascript,linenums]
 ----
 // Create new ZetaPush Client
-const client = new ZetaPushClient.WeakClient();
+const client = new ZetaPushClient.WeakClient();   // <1>
 // Create a proxy to invoked worker methods
-const api = client.createProxyTaskService();
+const api = client.createProxyTaskService();      // <2>
 // Handle connection
-client.connect().then(() => (
+client.connect().then(() => (                     // <3>
   console.debug('onConnectionEstablished'),
   [...document.querySelectorAll('button')].forEach((node) =>
     node.removeAttribute('disabled'),
@@ -17,6 +17,14 @@ client.connect().then(() => (
 ));
 // Handle DOM events
 document.querySelector('.js-Hello').addEventListener('click', async () => {
-  console.log(await api.hello());
+  console.log(await api.hello());                 // <4>
 });
 ----
+<1> Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)
+<2> Custom cloud service provides some functions that can be called from a client. For example, the custom cloud service exposes a `hello` function. 
+Instead of having to write the signature of the function in the client too, we simply use a JavaScript link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy[Proxy].
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.
+<3> The client is ready, now connect it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in `then` callback.
+<4> On each click on the button, the code `api.hello()` is called. It sends a message through the previously opened connection to the ZetaPush cloud. The ZetaPush cloud routes the message
+to the worker that contains the custom cloud service. The function `hello()` defined in the custom cloud service is called and returns a result.
+The result of this called in then sent back to the client. In this example, the result is displayed in the web browser console (using `console.log`).

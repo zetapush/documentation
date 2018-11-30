@@ -1,0 +1,44 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Template
+
+User API for templates
+
+Users use this API to evaluate pre-configured templates.
+
+
+=== evaluate
+
+Evaluates the given template and returns the result as a string.
+Templates are parsed the first time they are evaluated. Evaluation may fail early due to a parsing error.
+
+.evaluate(parameters: <<common/cloud-services-types/template-request.adoc#,TemplateRequest>>): Promise<<<common/cloud-services-types/template-result.adoc#,TemplateResult>>>
+
+[source,typescript,linenums]
+----
+const response = await this.template.evaluate(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Template, TemplateRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private template: Template <2>
+  ) {}
+  async doStuff(parameters: TemplateRequest) {
+    const response = await this.template.evaluate(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Template` from platform
+<2> Declare injected service
+<3> Call injected service
