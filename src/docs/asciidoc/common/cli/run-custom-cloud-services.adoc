@@ -9,7 +9,7 @@ $ npm run start
 
 [TIP]
 ====
-`npm run start` is a script alias defined in the `package.json` file.
+`npm run start` is a https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378[script alias^] defined in the `package.json` file.
 The command that is executed under the hood is:
 [source, console, subs="attributes+"]
 ----

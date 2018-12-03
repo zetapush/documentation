@@ -1,9 +1,131 @@
 :relative-path: ./
 include::{docdir}/variables.adoc[]
 
+:appName: hello-world
+
+////
+
+Objectifs : apprendre à utiliser ZetaPush, comprendre les concepts et gagner du temps sur mon dev
+
+== Requirements
+
+X si déjà installé, on peut passer la section
+
+=== System requirements
+
+X installation
+
+=== Using CLI
+
+X ok
+
+== ZetaPush concepts
+
+Objectif : faire comprendre et utiliser les concepts fondamentaux de ZetaPush
+
+X compte
+  X expliquer qu'on doit avoir un compte
+  X expliquer comment obtenir un compte (formulaire de demande)
+  X expliquer que dans le futur, on pourra créer un compte soi-même
+X organisation
+X application
+X env (futur)
+
+== Develop your front with ZetaPush
+
+Objectif : dire que ZetaPush fourni des services prêts à l'usage qui pourront à l'avenir être consommé directement.
+
+X liste des services dispos
+X requirements
+
+X enlever la partie consommer un custom cloud service
+
+== Develop your business logic
+
+Objectif : accompagner le développeur à comprendre comment écrire son code métier rapidement et l'utiliser depuis son front
+
+X définition
+X coder un cloud service simple
+  X define a custom cloud service
+    X note pour dire qu'on peut créer plusieurs cloud services dans le même worker (+ namespace)
+  X expose a custom cloud service
+    X note pour dire qu'on peut exposer plusieurs cloud services
+  X use your custom cloud service in your front
+    X note pour dire qu'on peut faire autre chose que du web ?
+  X run a custom cloud service
+    X note pour lancer que le cloud service
+  X compose cloud services
+    X dependency injection
+      X note pour aller voir plus en profondeur dans le fonctionnement de l'injection de dépendance
+    X use built-in cloud service
+      -> note pour voir comment configurer les cloud services
+    X use another custom cloud service
+      X note pour dire qu'on peut créer un module réutilisable
+      X note pour distinguer qu'on peut avoir des clouds services privés et d'autres exposés
+
+- develop fast
+  - hot reload
+    -> montrer comment gagner du temps
+  - logs
+    -> montrer comment logguer pour gagner du temps d'analyse
+  - debug
+    -> montrer comment débugger rapidement du code
+  - testing ?
+    -> montrer comment les tests peuvent faire gagner du temps
+
+== Deploy/publish your application
+
+Objectif : montrer comment déployer une application complète (front + worker)
+
+indiquer qu'on peut redéployer à n'importe quel moment
+
+.How to have initialization code
+[NOTE]
+====
+A _custom cloud service_ may have initialization code to configure and prepare your application.
+
+As said before, once published in the ZetaPush cloud, ZetaPush handles scalability and
+high availability. So several worker instances will run in the same time and ZetaPush will
+load-balance traffic between worker instances. In order to ensure only one ...
+====
+
+
+-> retirer parties avec déploiement partiel et mettre des liens à la place
+
+== User management in your application
+
+Objectif : montrer comment rapidement obtenir une gestion des utilisateurs pour se concentrer sur le code utile
+
+- import user-management module
+- configure for your needs
+  -> note pour configuration avancée
+  -> note pour adaptation (utiliser implementations custom)
+- write your front to consume it
+- test it locally
+- test it remotely
+
+== Store data in your application
+
+Objectif : montrer comment rapidement stocker, lister, rechercher des données pour se concentrer sur le code utile
+
+futur
+
+== Secure your application
+
+Objectif : montrer comment rapidement isoler, bloquer et filtrer l'accès à des fonctions/données
+
+futur
+
+////
+
 = Developer manual
 
 == Requirements
+
+[NOTE]
+====
+If you already prepared your environment, you can skip this section.
+====
 
 === System requirements
 
@@ -13,22 +135,59 @@ include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+1]
 
 include::{docdir}/common/manual-initialization/use-manual-application.adoc[leveloffset=+2]
 
-== ZetaPush account management
+== ZetaPush concepts
 
-[TODO]
+
+In order to be able to use ZetaPush, you need a *ZetaPush account*. Your account is used when
+you develop to run your project locally or to deploy it on ZetaPush cloud.
+
+The code you produce is bound to an *application*.
+
+An account belongs to an *organization*. An organization is useful to work in team.
+You can have several applications for your organization.
+You can manage access rights on applications according to members of your team.
+
+As usual in development, you may need to run your application in different contexts (dev, continuous integration, 
+prod...).
+Each application may have several *environments*.
+You can also manage access rights on environments according to members of your team.
+
+[TIP]
 ====
-This section will describe the concepts behind a ZetaPush account and the links between them:
+Learn how to <<reference.adoc#add_application, add an application to your organization>>.
 
-- What is an account
-- What is an organization
-- What is a product
-- What is an environment
+Learn how to <<reference.adoc#add_environment, add an environment to your application>>.
 
-You can make a PR if you want to contribute: https://github.com/zetapush/documentation/issues/48
+Learn how to <<reference.adoc#access_control_per_application, control access for an application>>.
+
+Learn how to <<reference.adoc#access_control_per_environment, control access for a particular environment>>.
 ====
 
-=== Create a new account and a new application
+[IMPORTANT]
+====
+For now, environments are not fully supported but this feature will be available soon.
+====
 
+
+=== Create your account
+
+Currently, the only way to get a ZetaPush account is by contacting us. The aim is to understand your needs
+and to advise you even if you just want to test it:
+
+* link:https://www.zetapush.com/sign-up-for-a-free-trial/[Signup for a free trial]
+* link:https://www.zetapush.com/contact/[Contact us for more suitable account]
+
+Your account will be created soon after the first contact and an application that fits your
+needs will be available. Then you are ready to start working with ZetaPush.
+
+[NOTE]
+====
+Soon we will open access to everyone for free trial. Account creation will be available through
+our CLI tool, from the main site and the web console.
+====
+
+
+////
 When you use ZetaPush the first time, you need to create an account. Once your account is ready, you
 can already start to work. You work is associated with an application.
 
@@ -59,7 +218,6 @@ To create an account and an application, you can use the _CLI_ we provide.
 This tool will detect that you are using a new account and will automatically create a new application.
 
 include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+3]
-
 
 === Add a new application to your account
 
@@ -115,6 +273,7 @@ include::{docdir}/common/manual-initialization/details-front.adoc[leveloffset=+3
 include::{docdir}/common/manual-initialization/details-worker.adoc[leveloffset=+3]
 
 
+////
 
 
 
@@ -142,16 +301,16 @@ available through the web console.
 
 Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
 "creation" process is automatically handled by the worker.
+
+See the next section to know how to develop _custom cloud services_ and use _ZetaPush cloud services_.
 ====
 
+////
 === Requirements
 include::{docdir}/common/usage-service/requirement-use-service.adoc[leveloffset=+3]
 
 
 === Use _cloud services_
-////
-include::{docdir}/common/usage-service/intro-use-service.adoc[leveloffset=+2]
-////
 
 ==== Use a ZetaPush _cloud service_
 
@@ -199,39 +358,58 @@ You need to have a least worker to create and configure ZetaPush services.
 This section will be later described when this feature will be supported.
 https://github.com/zetapush/documentation/issues/52
 ====
-
+////
 
 
 
 == Develop your business logic
 
+Even if ZetaPush provides ready to use cloud services, we know that any application needs some
+specific behaviors. Instead of limiting your possibilities, we provide a way to help you develop
+quickly your own business logic.
+
 === What is a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.adoc[leveloffset=+2]
 
-=== Define a _custom cloud service_
-include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+2]
+=== Develop a _custom cloud services_
+
+==== Define a _custom cloud service_
+include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+3]
 
 ==== Expose a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/expose-custom-cloud-service.adoc[leveloffset=+3]
 
-==== Dependency injection
+==== Use a _custom cloud service_ in your front
+include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+3]
+
+==== Run application
+include::{docdir}/common/usage-service/run-application.adoc[leveloffset=+3]
+
+==== Compose cloud services
+
+You can compose _cloud services_ either by using _built-in cloud services_ provided by ZetaPush or 
+by using another of your _custom cloud services_.
+
+===== Dependency injection
 include::{docdir}/common/custom-cloud-service/dependencies-include-services.adoc[leveloffset=+3]
 
-==== Use built-in _cloud service_
+===== Use built-in _cloud service_
 include::{docdir}/common/custom-cloud-service/use-cloud-services-in-custom.adoc[leveloffset=+3]
 
-==== Use another _custom cloud service_
+===== Use another _custom cloud service_
 include::{docdir}/common/custom-cloud-service/use-custom-cloud-services-in-custom.adoc[leveloffset=+3]
 
-=== Run a _custom cloud service_
-include::{docdir}/common/cli/run-custom-cloud-services.adoc[leveloffset=+2]
+=== Develop fast
 
-=== Use a _custom cloud service_ in your front
-include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+2]
-
-=== Hot reload
+==== Hot reload
 
 TODO: https://github.com/zetapush/documentation/issues/53
+
+==== Log from a _custom cloud service_
+
+==== Debug a _custom cloud service_
+
+==== Test a _custom cloud service_
 
 == Deploy/publish your application
 
@@ -255,7 +433,13 @@ include::{docdir}/common/deploy/how-to-deploy-front.adoc[leveloffset=+2]
 === Deploy your _custom cloud services_ on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
 
+== User management in your application
 
+== Store data in your application
+
+== Secure your application
+
+////
 == Debug
 
 === Debug your application with VSCode
@@ -301,3 +485,4 @@ include::{docdir}/common/cloud-services/standard-user-workflow/configuration.ado
 [#extension-of-standard-user-workflow]
 === Standard User Workflow
 include::{docdir}/common/cloud-services/standard-user-workflow/extension.adoc[leveloffset=+2]
+////

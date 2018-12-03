@@ -10,40 +10,52 @@ skinparam component {
     ArrowFontSize 14
 }
 
-node "Local" as local {
+node "Your computer" as local {
    rectangle "worker" {
-        node "custom cloud service 1"
-        node "custom cloud service 2"
+        node "custom cloud service 1" as customCloudService1
+        node "custom cloud service 2" as customCloudService2
    }
 
-   rectangle "front"
-
-   note left of [front]
-        Front code that use
-        your custom cloud services
-    end note
-    worker <.> [front]
+   rectangle "front" {
+        node "client" as front1
+   }
 }
 
-node "ZetaPush platform" as zp {
-    rectangle "application"
-    note right of [application]
-        Application on your
-        ZetaPush account
-    end note
+cloud "                                                                            ZetaPush Cloud" as zp {
+    queue "bidirectional connection" as connection
 
     rectangle "cloud services" {
-        node "cloud service 1"
-        node "cloud service 2"
-        node "cloud service 3"
+        node "cloud service 1" as cloudService1
+        node "cloud service 2" as cloudService2
+        node "cloud service 3" as cloudService3
     }
 }
 
-local <..> zp
+front1 <..> connection
+customCloudService1 <..> connection
+customCloudService2 <..> connection
+cloudService1 <.up.> connection
+cloudService2 <.up.> connection
+cloudService3 <.up.> connection
 ....
 
-The worker is running "locally" and interacts with the existing _cloud services_ on the ZetaPush platform and the front code interacts *only* with the _custom cloud services_ that are running "locally"
+Both front and worker are running locally. The front interacts with _custom cloud services_ contained in the worker through
+ZetaPush Cloud.
+As ZetaPush Cloud provides bidirectional connection, the _custom cloud services_ can also interact with the front through
+ZetaPush Cloud too.
 
+A _custom cloud service_ can interact with _built-in cloud services_ provided by ZetaPush.
+
+[NOTE]
+====
+When you start using ZetaPush, you only develop locally so from your point of vue,
+your front seems to directly interact with your _custom cloud services_.
+
+In fact, all messages go through the Internet and ZetaPush Cloud.
+It means that a published front can interact with a worker that is running locally and vice versa.
+
+See <<reference.adoc#mix_local_and_remote, how to mix local worker with worker running in cloud>>
+====
 
 
 

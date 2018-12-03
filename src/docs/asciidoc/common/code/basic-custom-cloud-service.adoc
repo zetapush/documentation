@@ -4,16 +4,17 @@ include::{docdir}/variables.adoc[]
 .Basic custom cloud service
 [source, javascript, linenums]
 ----
-class HelloWorldAsCustomCloudService {
+class HelloWorldAsCustomCloudService {     // <1>
 
-    constructor() {} <1>
+    constructor() {}                       // <2>
     
-    helloWorld() { <2>
+    helloWorld() {                         // <3>
         return "Hello World";
     }
 }
 ----
-<1> You always need to add a constructor in a _custom cloud service_
-<2> `helloWorld` is your first _cloud function_ in your _custom cloud service_ named *HelloWorldAsCustomCloudService*
+<1> A custom cloud service is encapsulated in a JavaScript/TypeScript class. *HelloWorldAsCustomCloudService* is your first _custom cloud service_.
+<2> A class can define a constructor. We will see later why it is important
+<3> `helloWorld` is your first _custom cloud function_
 
 TIP: A _cloud function_ is always asynchronous (with the _async_ keyword or not)

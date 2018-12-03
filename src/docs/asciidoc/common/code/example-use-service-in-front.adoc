@@ -1,32 +1,87 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-In our example we use this _custom cloud service_ named `HelloService`:
+In this chapter we will see how to consume our _cloud functions_ from a web page.
+At the end of this example, we will have one button to call `helloWorld` _cloud function_ and
+one section with a message, a number of repetitions and a button to call `saySomething` _cloud function_.
+
+.Mobile applications
+[NOTE]
+====
+Here we show how to create a web page that consumes our _custom cloud service_.
+
+You can also create a mobile application for Android, iOS and Windows Phone as well
+as code for a device. You can use any language you want for the client part.
+
+By default we target web because it is currently the most used technology (even to build
+some mobile applications using hybrid technologies).
+====
+
+As a reminder, here is the code of _custom cloud service_ named `HelloWorldAsCustomCloudService`:
 
 .worker/index.ts
 [source,typescript,linenumbers]
 ----
-export default class HelloService {       <1>
-  hello() {                               <2>
-    return `Hello World`;                 <3>
-  }
+export default class HelloWorldAsCustomCloudService {                     
+    constructor() {}
+
+    helloWorld() {
+        return "Hello World";
+    }
+
+    saySomething(message: string, times: number) {
+        let fullMessage = '';
+        for(let i=0 ; i<times ; i++) {
+            fullMessage += `${message}\n`
+        }
+        return fullMessage
+    }
 }
 ----
-<1> The service is exported in roder to be instantiated by ZetaPush _CLI_
-<2> A _custom cloud function_ name `hello` is defined in this _custom cloud service_.
-<3> The _custom cloud function_ simply returns a message. You can write any code you want here.
 
+== Prepare your front for using ZetaPush client
+
+By convention the directory structure of a ZetaPush application is defined below. You place
+the code of your web page in the `front` directory:
+
+.Tree structure convention
+[source, console, subs="attributes,quotes"]
+----
+{appName}
+├── _.zetarc_
+├── _.gitignore_
+├── *front*
+│   ├── ...
+│   ├── *index.js*
+│   └── *index.html*
+├── _worker_
+│   ├── ...
+│   ├── ...
+│   └── index.ts
+├── _package.json_
+├── _README.md_
+└── _tsconfig.json_
+----
+
+.Other front files
 [TIP]
 ====
-A _custom cloud service_ can have as many _custom cloud functions_ as you want.
+For this example, we only need an HTML page and a JavaScript file. Needless to say that you can
+have CSS files, images and anything you want too.
 
-A _custom cloud function_ can have as many parameters as you want.
+See more information about <<reference.adoc#different_directory_structures, directory structure convention and how to adapt the structure>>.
 
-A _custom cloud function_ can return anything including a link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise[Promise]. 
-You can also write your code using link:https://javascript.info/async-await[async/await syntax].
+Moreover, you are not limited to write pure JavaScript code. You can also use any framework you want:
+
+* <<reference.adoc#develop_with_angular, Angular>>
+* <<reference.adoc#develop_with_react, React>>
+* <<reference.adoc#develop_with_vue, Vue.js>>
+* ...
+
 ====
 
-Now we create the HTML page with a button to display the _HelloWorld_ message in the console:
+For the example, we create an HTML page with a button to display the _HelloWorld_ message in the page each time
+the button is clicked:
 
 .front/index.html
 [source, html, linenumbers]
@@ -41,19 +96,23 @@ Now we create the HTML page with a button to display the _HelloWorld_ message in
 </head>
 
 <body>
-    <button onclick="hello()">hello</button> <1>
-    <ul></ul>
+    <button onclick="hello()">hello</button>                    <!--1-->
+    <ul id="result-container"></ul>                             <!--2-->
 
-    <script src="https://unpkg.com/@zetapush/client"></script> <2>
-    <script src="./index.js"></script>
+    <script src="https://unpkg.com/@zetapush/client"></script>  <!--2-->
+    <script src="./index.js"></script>                          <!--3-->
 </body>
 
 </html>
 ----
-<1> We call `hello()`, which in turns calls our _custom cloud service_
-<2> Dependency to ZetaPush Core
+<1> We call `hello()` function that is defined later in `index.js`
+<2> Define a node that will display received messages
+<3> We include the `client` module provided by ZetaPush
+<4> We include a JavaScript file to distinguish HTML code from JavaScript code. All could be written in the HTML
 
-Finally, we have the front-side code call our services:
+
+Then, in order to interact with ZetaPush cloud, we need to create a client instance
+and to connect to the cloud:
 
 .front/index.js
 [source, javascript, linenumbers]
@@ -63,59 +122,130 @@ const client = new ZetaPushClient.WeakClient();     // <1>
 // Create a proxy to invoked worker methods
 const api = client.createProxyTaskService();        // <2>
 // Handle connection
-client.connect().then(() => (                       // <3>
-  console.debug('onConnectionEstablished'),
-  [...document.querySelectorAll('button')].forEach((node) =>
-    node.removeAttribute('disabled'),
-  )
-));
-// Handle DOM events
-document.querySelector('.js-Hello').addEventListener('click', async () => {
-  console.log(await api.hello());                   // <4>
-});
+client.connect()                                    // <3>
+  .then(() => {                                     // <4>
+    console.debug('onConnectionEstablished');
+    [...document.querySelectorAll('button')].forEach((node) =>
+      node.removeAttribute('disabled'));
+  });
 ----
-<1> Create the ZetaPush client (using automatic injection of `appName`)
-<2> API to access our custom service(s)
-<3> Connection to the ZetaPush platform
-<4> Call our _cloud function_ and display the result
+<1> Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)
+<2> Custom cloud service provides some functions that can be called from a client. For example, the _custom cloud service_ exposes `helloWorld` and `saySomething` _cloud functions_. 
+Instead of having to write the signature of these functions in the client too, we simply use a JavaScript link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy[Proxy].
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.
+<3> The client is ready, now connects it to the ZetaPush cloud.
+<4> Once the connection is established, the Promise is resolved and you can write some code in `then` callback.
 
-*Now when we click the button, "Hello World" is displayed on the page.*
+.Available client types
+[TIP]
+====
+`ZetaPushClient` provides several factories to get instances of a client according to
+what you want to do. Here we are using a `WeakClient` instance but there are other
+<<reference.adoc#client_types, client types>>. 
+====
 
 
-.How it works ?
-[plantuml, call-zetapush-cloud-service, png, role="center"]     
-....
-participant client order 10
-participant "ZetaPush cloud" order 20
-participant worker order 30
-participant "custom cloud service" order 40
+== Call `hello` _cloud function_
 
-box "Initialization"
-  autonumber
-  worker --> "ZetaPush cloud" : Establish connection
-  "ZetaPush cloud" --> worker : connection established
+Our client is ready and now we want to call _cloud function_ named `helloWorld`, we add the following code:
 
-  client --> "ZetaPush cloud" : Establish connection
-  "ZetaPush cloud" --> client : connection established
-end box
+.front/index.js
+[source, javascript, linenumbers, role="highlight-lines:13-16"]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect()
+  .then(() => {
+    console.debug('onConnectionEstablished');
+    [...document.querySelectorAll('button')].forEach((node) =>
+      node.removeAttribute('disabled'));
+  });
+// Handle DOM events
+async function hello() {                                                                                // <1>
+  const messageFromCloudFunction = await api.helloWorld();                                        // <2>
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>` // <3>
+}
+----
+<1> Each time a user clicks on the button defined in the HTML, this method is called.
+<2> Calls the `helloWorld` _cloud function_ and store the result in a variable.
+<3> Add a new list item in the HTML page
 
-client --> "ZetaPush cloud" : send message to call 'hello' in worker
-"ZetaPush cloud" --> worker : send message to call 'hello'
-worker -> "custom cloud service" : hello()
-"custom cloud service" -\ worker : "Hello World"
-worker --> "ZetaPush cloud" : send message "Hello World"
-"ZetaPush cloud" --> client : send message "Hello World"
-client -> client : display message
-....
 
-When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].
+Before running this sample, we improve our front in order to also understand
+how to call a _cloud function_ that has parameters.
 
-Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].
+== Call `saySomething` _cloud function_
 
-When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
-remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
-and calls the `hello` _cloud function_ [7].
+We add two inputs to be able to send values to the `saySomething` _cloud function_.
+The first input is a text to repeat. The second input is the number of times to repeat the message.
+Here is the updated code:
 
-The _cloud function_ generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
-to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
-and the response is parsed [12] and available in your JavaScript.
+.front/index.html
+[source, html, linenumbers, role="highlight-lines:12-16"]
+----
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtia</title>
+</head>
+
+<body>
+    <button onclick="hello()">hello</button>
+    <div style="border: 1px solid #ccc">
+      Message: <input type="text" id="message-input" />             <!--1-->
+      Repeat: <input type="text" value="1" id="repeat-input" />     <!--2-->
+      <button onclick="saySeveralTimes()">say something</button>    <!--3-->
+    </div>
+    <ul id="result-container"></ul>
+
+    <script src="https://unpkg.com/@zetapush/client"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+----
+<1> The first input to enter a message
+<2> The second input to enter the number of times to repeat the message
+<3> A new button to call `saySeveralTimes()` function defined in `index.js`
+
+
+.front/index.js
+[source, javascript, linenumbers, role="highlight-lines:16-22"]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect()
+  .then(() => {
+    console.debug('onConnectionEstablished');
+    [...document.querySelectorAll('button')].forEach((node) =>
+      node.removeAttribute('disabled'));
+  });
+// Handle DOM events
+async function hello() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`
+}
+async function saySeveralTimes() {                                                      // <1>
+  const message = document.getElementById('message-input').value;                 // <2>
+  const repeat = document.getElementById('repeat-input').value;                   // <3>
+  const messages = await api.saySomething(message, parseInt(repeat));             // <4>
+  document.getElementById('result-container').innerHTML += `<li>${messages}</li>` // <5>
+}
+----
+<1> Each time a user clicks on the button 'say something' defined in the HTML, this method is called.
+<2> Reads the value of the input for getting the message.
+<3> Reads the value of the input for getting the number of times to display the message.
+<4> Calls `saySomething` _cloud function_ with parameters. Note that as second parameter is a number, we have to convert the string from
+the input to a number using `parseInt`.
+<5> Add a new list item in the HTML page containing the repeated messages
+
+Now everything is ready to run our application.

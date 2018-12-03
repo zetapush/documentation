@@ -6,8 +6,19 @@ Generally, you will want to put the *business logic* of your application in the 
 
 == Architecture
 
-=== Development phase
+You develop _cloud services_ that are contained in a concept named *worker*. In your code it is
+materialized by a folder named `worker`. The worker is the ZetaPush handler that starts your code (your _custom cloud services_).
+
+Your application is composed of a logic part (the worker) and a UI part (the front).
+
+There are two ways of running an application (worker and front):
+
+* You develop on your machine and iterate to provide features. Your application runs locally and interacts with ZetaPush Cloud.
+* Once you are ready to make the developed features available to your end-users, you publish your application. Your application runs directly in ZetaPush Cloud.
+
+
+=== Run on your machine
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-dev.adoc[leveloffset=+2]
 
-=== Production phase
+=== Run in cloud
 include::{docdir}/common/diagrams/architecture-custom-cloud-service-prod.adoc[leveloffset=+2]

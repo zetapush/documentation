@@ -1,19 +1,18 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-In this example, we will use the `Stack` _cloud service_ provided by ZetaPush.
+In the following example, we will use the `Stack` _cloud service_ provided by ZetaPush.
 In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.
 
-For this the `Stack` service provides some methods:
+To do this, the `Stack` service already provides some methods:
 
 * `push({ _stack_: string, _data_: object });`
 * `list({ _stack_: string });`
 
-NOTE: The `Stack` service has asynchronous methods
 
 
 .MyStorageService
-[source,typescript,linenums]
+[source,javascript,linenums]
 ----
 import { Injectable } from '@zetapush/core';
 import { Stack } from '@zetapush/platform-legacy';  // <1>
@@ -48,6 +47,29 @@ export default class MyStorageService {
 }
 ----
 <1> We import the `Stack` service so that TypeScript knows it
-<2> We ask ZetaPush to inject a dependency of type `Stack` (`stack` is an instance of `Stack`)
-<3> Call `Stack` service to store data (method `push`)
-<4> Call `Stack` service to list data (method `list`)
+<2> We ask ZetaPush to inject a dependency of type `Stack` (`stack` is an instance of `Stack`).
+Here we use the https://kendaleiv.com/typescript-constructor-assignment-public-and-private-keywords/[shorthand syntax^] for declaring a constructor parameter as well as a property.
+So the property `this.stack` is defined and is initialized with `stack` parameter.
+<3> Calls the `Stack` service to store data (method `push`)
+<4> Calls the `Stack` service to list data (method `list`)
+
+The example defines a _custom cloud service_ named `MyStorageService` that provides two _cloud functions_:
+
+* `storeWithTimestamp` that receives a value from a client and calls the `Stack` service to
+store received value (`value` parameter) as well as the current timestamp (using `Date.now()`)
+* `getAllData` that has no parameters and calls `Stack` service to get all previsouly stored
+pairs of `<value, timestamp>`.
+
+The most important part to understand is in the `constructor`. As described before, 
+the example uses dependency injection. You simply tell ZetaPush that you need a dependency of type `Stack`.
+You don't create it in your _custom cloud service_ because it is not the responsibility of
+your _custom cloud service_ to create the `Stack` service. Instead, you let ZetaPush
+handle the creation. Thanks to `@Injectable` decorator, ZetaPush detects that you have
+a _custom cloud services_ with needed dependencies. ZetaPush understands that you need a `Stack`
+instance so it instantiates it before instantiating your _custom cloud service_. Then
+ZetaPush instantiates your _custom cloud service_ by providing, as the first argument of your
+constructor here, the instance of `Stack`.
+
+This behavior avoids you to have complex code to instantiate _built-in cloud services_. Moreover,
+if you have several _custom cloud services_ that are using the `Stack` service, thanks to
+dependency injection, there will be only one instance shared between your _custom cloud services_. 

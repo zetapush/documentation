@@ -6,10 +6,11 @@ In this example, we will have 2 _custom cloud services_:
 * `Calendar`: Utils function to return the current date
 * `HelloWorldService`: Basic example using `Calendar` _cloud function_
 
-The first _custom cloud service_ (`Calendar`) is in the file: "worker/calendar.js".
+The first _custom cloud service_ (`Calendar`) is defined in the file `worker/calendar.js`.
+
 
 .worker/calendar.ts
-[source,typescript,linenums]
+[source,javascript,linenums]
 ----
 export class Calendar {
   getNow() { <1>
@@ -19,17 +20,17 @@ export class Calendar {
 ----
 <1> The only _cloud function_ of the `Calendar` service
 
-Then, we have the `HelloWorldService` that use our `Calendar` service. It is in the file: "./worker/index.ts".
+Then, we have the `HelloWorldWithDateService` that use our `Calendar` service. It is defined in the file `worker/index.ts`.
 
 .worker/index.ts
-[source,typescript,linenums,role="highlight-lines:7,13"]
+[source,javascript,linenums,role="highlight-lines:7,13"]
 ----
 import { Injectable } from '@zetapush/core';
-import { Calendar } from './calendar'; <1>
+import { Calendar } from './calendar';        // <1>
 
 @Injectable()
-class HelloWorldService {
-  constructor( <2> 
+export default class HelloWorldWithDateService {
+  constructor(                                // <2> 
     private calendar: Calendar
   ) {}
   /**
@@ -40,5 +41,34 @@ class HelloWorldService {
  }
 }
 ----
-<1> We import the `Calendar` service
-<2> `calendar` is an instance of `Calendar`
+<1> We import the `Calendar` service from the `worker/calendar.ts` file
+<2> `calendar` is an instance of `Calendar` and `this.calendar` is initialized with `calendar` value
+
+As for _built-in cloud services_, dependency injection works for your _custom cloud services_.
+Here it was an example 
+
+.Private _custom cloud service_
+[NOTE]
+====
+In this example, we still have only one _custom cloud service_ exposed.
+
+One `HelloWorldWithDateService` is exposed and delegates some work to `Calendar`.
+`Calendar` is not exposed and can't be directly called from a client. So it can be considered
+as a private _custom cloud service_.
+
+Sometimes you may want to <<reference.adoc#expose_several_cloud_services, expose several _custom cloud services_>>.
+====
+
+
+.Shared module of _custom cloud services_
+[TIP]
+====
+As you can see, a _custom cloud service_ is no more than just a standard class with methods written
+in TypeScript. If you want to develop reusable _custom cloud services_ that could be
+used in different applications, you can do it easily by following standards.
+Actually, you can <<reference.adoc#shared_module, just create a npm module>> and import it like we do with `@zetapush/core` or
+`@zetapush/platform-legacy`.
+
+You can also import any existing library that is available in the community.
+====
+
