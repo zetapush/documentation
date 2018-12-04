@@ -13,6 +13,7 @@
 
 		<!-- Documentation -->
 		<docProjectVersion>${project.version}</docProjectVersion>
+		<zetapushVersion>v0.37.1</zetapushVersion>
 		<dependency.locations.enabled>false</dependency.locations.enabled>
 		<outputdir>${project.build.directory}/generated-docs</outputdir>
 
@@ -59,6 +60,7 @@
 					<attributes>
 						<imagesdir></imagesdir>
 						<project-version>${docProjectVersion}</project-version>
+						<zetapushVersion>${zetapushVersion}</zetapushVersion>
 						<docdir>${basedir}/src/docs/asciidoc</docdir>
 						<templatesdir>${basedir}/src/docs/resources/templates</templatesdir>
 					</attributes>

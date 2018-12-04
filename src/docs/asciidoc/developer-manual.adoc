@@ -13,21 +13,51 @@ include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+1]
 
 include::{docdir}/common/manual-initialization/use-manual-application.adoc[leveloffset=+2]
 
-== Account management
+== ZetaPush account management
 
-TODO: https://github.com/zetapush/documentation/issues/48
+[TODO]
+====
+This section will describe the concepts behind a ZetaPush account and the links between them:
+
+- What is an account
+- What is an organization
+- What is a product
+- What is an environment
+
+You can make a PR if you want to contribute: https://github.com/zetapush/documentation/issues/48
+====
 
 === Create a new account and a new application
 
+When you use ZetaPush the first time, you need to create an account. Once your account is ready, you
+can already start to work. You work is associated with an application.
+
+Here we explain how to create both an account and an application quickly.
+
 ==== Using ZetaPush main site
 
-TODO: https://github.com/zetapush/documentation/issues/47
+[TODO]
+====
+This section will describe how to register your account through main site (mainly using screenshots).
+
+You can make a PR if you want to contribute: https://github.com/zetapush/documentation/issues/47
+====
 
 ==== Using ZetaPush web Console
 
-TODO: https://github.com/zetapush/documentation/issues/49
+
+[TODO]
+====
+This section will describe how to register your account through web console (mainly using screenshots).
+
+You can make a PR if you want to contribute: https://github.com/zetapush/documentation/issues/49
+====
 
 ==== Using your terminal
+
+To create an account and an application, you can use the _CLI_ we provide.
+This tool will detect that you are using a new account and will automatically create a new application.
+
 include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset=+3]
 
 
@@ -35,21 +65,51 @@ include::{docdir}/common/diagrams/workflow-init-without-account.adoc[leveloffset
 
 ==== Using ZetaPush web Console
 
-TODO: https://github.com/zetapush/documentation/issues/50
+[TODO]
+====
+This section will describe how to add a new application through web console (mainly using screenshots).
+
+You can make a PR if you want to contribute: https://github.com/zetapush/documentation/issues/50
+====
+
 
 ==== Using your terminal
+
+To add an application to your account, you can also use the _CLI_.
+This time you provide your credentials so it will use your account but as you are creating a new
+application from the _CLI_, this application will be registered on ZetaPush.
+
 include::{docdir}/common/diagrams/workflow-init-with-account-without-app.adoc[leveloffset=+3]
 
 
 === Configure your project to use an existing application
 
 ==== Using your terminal
+
+When you work in team, you may want to share an application. The _CLI_ also
+provides a parameter to specify the application to reuse. By providing both
+credentials and application name, it will just reuse existing application.
+
 include::{docdir}/common/diagrams/workflow-init-with-account-and-app.adoc[leveloffset=+3]
 
 ==== Configure your project manually
 
+If you don't want to use the _CLI_, you can also start your project manually by creating some files.
+
 include::{docdir}/common/manual-initialization/introduction.adoc[leveloffset=+3]
+
 include::{docdir}/common/manual-initialization/details-package-json.adoc[leveloffset=+3]
+
+[NOTE]
+====
+Once your package.json is ready, install the dependencies by running:
+
+[source, console]
+----
+$ npm install
+----
+====
+
 include::{docdir}/common/manual-initialization/details-zetarc.adoc[leveloffset=+3]
 include::{docdir}/common/manual-initialization/details-front.adoc[leveloffset=+3]
 include::{docdir}/common/manual-initialization/details-worker.adoc[leveloffset=+3]
@@ -63,31 +123,82 @@ include::{docdir}/common/manual-initialization/details-worker.adoc[leveloffset=+
 You may want to quickly provide a web application by just focusing on the visible part and the user experience
 instead of wasting time on technical concerns.
 
-ZetaPush provides built-in _cloud services_ to increase your productivity that are directly usable by your front.
+ZetaPush provides built-in _cloud services_ to increase your productivity:
 
-=== Use built-in ZetaPush _cloud services_
-include::{docdir}/common/usage-service/intro-use-service.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+3]
 
-==== Requirements
+
+ZetaPush cloud services need to be "created" before being able to use them. This way, you
+can choose which services are part of your application instead of having them all.
+
+[IMPORTANT]
+====
+Currently, using a front to interact with ZetaPush cloud services directly is not really possible due to
+this "creation" phase. For security reasons, service creation and configuration can't be done via
+a client. 
+
+When the web console will be fully ready, ZetaPush cloud services "creation" will be
+available through the web console.
+
+Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
+"creation" process is automatically handled by the worker.
+====
+
+=== Requirements
 include::{docdir}/common/usage-service/requirement-use-service.adoc[leveloffset=+3]
 
-==== Use a built-in _cloud service_
-include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+3]
+
+=== Use _cloud services_
+////
+include::{docdir}/common/usage-service/intro-use-service.adoc[leveloffset=+2]
+////
+
+==== Use a ZetaPush _cloud service_
+
+Here we show how to create a worker that use the ZetaPush cloud service named `Stack`.
+
+
+include::{docdir}/common/code/example-use-cloud-service-in-custom.adoc[]
 
 [TIP]
-.List of available built-in services
 ====
-include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+3]
+`Stack` cloud service "creation" is automatically handled thanks to dependency injection.
+ZetaPush detects that you need a ZetaPush service and prepare it.
+so you focus your code on the usage of the service
+not on its creation, you just ask for it.
 ====
+
+include::{docdir}/common/code/example-call-stack-cloud-service-from-front.adoc[]
+
+
+IMPORTANT: When you call a _cloud function_ from the client, the result is always a Promise even if the _custom cloud function_ is synchronous
+because everything goes through the network.
+
+
+==== Use a custom _cloud service_
+include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+3]
+
 
 === Configure/adapt ZetaPush cloud services
 
-TODO: https://github.com/zetapush/documentation/issues/51
+[TODO]
+====
+This section will describe how to configure a ZetaPush cloud service.
+The configuration will be possible either through console or through worker.
+
+https://github.com/zetapush/documentation/issues/51
+====
 
 === Run your front locally
 
-TODO: https://github.com/zetapush/documentation/issues/52
+[TODO]
+====
+As described above, currently running only a front is not possible.
+You need to have a least worker to create and configure ZetaPush services.
 
+This section will be later described when this feature will be supported.
+https://github.com/zetapush/documentation/issues/52
+====
 
 
 

@@ -66,9 +66,11 @@ include::{docdir}/variables.adoc[]
   <main>
     <ul></ul>
   </main>
-  <script src="https://unpkg.com/@zetapush/client"></script>
-  <script src="https://unpkg.com/@zetapush/platform-legacy"></script>
+  <script src="https://unpkg.com/@zetapush/client"></script>  <!--1-->
+  <script src="https://unpkg.com/@zetapush/platform-legacy"></script>  <!--2-->
   <script src="./index.js"></script>
 </body>
 </html>
 ----
+<1> Include the ZetaPush client in order to connect to the ZetaPush cloud
+<2> Include the ZetaPush SDK in order to interact with the ZetaPush services

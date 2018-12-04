@@ -3,13 +3,18 @@ include::{docdir}/variables.adoc[]
 
 == worker
 
-By convention, the directory contains the back code. For example you can have this tree structure:
+By convention, the directory `worker` contains the back code (algorithms, business logic, ...). For example you can have this tree structure:
 
 ```console
 └── worker
-    └── index.ts
+    └── index.ts    // <1>
 ```
+<1> The file that contains the declaration of the custom cloud service
+
+There is one main file by worker. By default, this is index.ts but you can change this in the `package.json` file (property `main`).
 
 === Basic example of Hello World (custom cloud service)
+
+Here is the most simple sample to show how to declare a custom cloud service:
 
 include::{docdir}/common/code/hello-world-worker-js.adoc[]

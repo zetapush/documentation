@@ -1,0 +1,113 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Stack
+
+Data stack user API
+
+Data is stored on a per user basis. However, notifications can be sent to a configurable set of listeners.
+Stack names are arbitrary and do not need to be explicitly initialized.
+
+
+=== purge
+
+Removes all items from the given stack.
+
+.purge(parameters: <<common/cloud-services-types/stack-request.adoc#,StackRequest>>): Promise<<<common/cloud-services-types/stack-request.adoc#,StackRequest>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.purge(parameters);
+----
+
+=== getListeners
+
+Returns the whole list of listeners for the given stack.
+
+.getListeners(parameters: <<common/cloud-services-types/stack-request.adoc#,StackRequest>>): Promise<<<common/cloud-services-types/stack-listeners.adoc#,StackListeners>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.getListeners(parameters);
+----
+
+=== setListeners
+
+Sets the listeners for the given stack.
+
+.setListeners(parameters: <<common/cloud-services-types/stack-listeners.adoc#,StackListeners>>): Promise<<<common/cloud-services-types/stack-listeners.adoc#,StackListeners>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.setListeners(parameters);
+----
+
+=== remove
+
+Removes the item with the given guid from the given stack.
+
+.remove(parameters: <<common/cloud-services-types/stack-item-remove.adoc#,StackItemRemove>>): Promise<<<common/cloud-services-types/stack-item-remove.adoc#,StackItemRemove>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.remove(parameters);
+----
+
+=== update
+
+Updates an existing item of the given stack.
+The item MUST exist prior to the call.
+
+.update(parameters: <<common/cloud-services-types/stack-item-add.adoc#,StackItemAdd>>): Promise<<<common/cloud-services-types/stack-item-add.adoc#,StackItemAdd>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.update(parameters);
+----
+
+=== push
+
+Pushes an item onto the given stack.
+The stack does not need to be created.
+
+.push(parameters: <<common/cloud-services-types/stack-item-add.adoc#,StackItemAdd>>): Promise<<<common/cloud-services-types/stack-item-add.adoc#,StackItemAdd>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.push(parameters);
+----
+
+=== list
+
+Returns a paginated list of contents for the given stack.
+Content is sorted according to the statically configured order.
+
+.list(parameters: <<common/cloud-services-types/stack-list-request.adoc#,StackListRequest>>): Promise<<<common/cloud-services-types/stack-list-response.adoc#,StackListResponse>>>
+
+[source,typescript,linenums]
+----
+const response = await this.stack.list(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Stack, StackRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private stack: Stack <2>
+  ) {}
+  async doStuff(parameters: StackRequest) {
+    const response = await this.stack.purge(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Stack` from platform
+<2> Declare injected service
+<3> Call injected service

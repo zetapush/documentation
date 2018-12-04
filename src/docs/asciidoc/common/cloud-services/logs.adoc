@@ -1,0 +1,43 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Logs
+
+Log API
+
+User API for logging.
+
+
+=== log
+
+Adds some server generated data and stores the entry into the sink defined by configuration.
+
+.log(parameters: <<common/cloud-services-types/log-request.adoc#,LogRequest>>): Promise<<<common/cloud-services-types/void.adoc#,void>>>
+
+[source,typescript,linenums]
+----
+const response = await this.logs.log(parameters);
+----
+
+
+=== How to use it ?
+
+.worker/index.ts
+[source,typescript,linenums]
+----
+import { Injectable, Logs, LogRequest } from '@zetapush/platform'; <1>
+
+@Injectable()
+export default class Api {
+  constructor(
+    private logs: Logs <2>
+  ) {}
+  async doStuff(parameters: LogRequest) {
+    const response = await this.logs.log(parameters); <3>
+    return response;
+  }
+}
+----
+<1> Import `Logs` from platform
+<2> Declare injected service
+<3> Call injected service

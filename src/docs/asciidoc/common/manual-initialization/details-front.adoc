@@ -3,7 +3,7 @@ include::{docdir}/variables.adoc[]
 
 == front
 
-By convention, the directory contains the front code. For example you can have this tree structure:
+By convention, the `front` directory contains the front code (web page or web application). For example you can have this tree structure:
 
 ```console
 └── front
@@ -16,3 +16,20 @@ By convention, the directory contains the front code. For example you can have t
 include::{docdir}/common/code/hello-world-front-html.adoc[]
 
 include::{docdir}/common/code/hello-world-front-js.adoc[]
+
+
+[IMPORTANT]
+====
+As you can see, there is no information about your application at all in this sample code (the `appName` defined in `.zetarc` is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the `appName`.
+
+The ZetaPush _CLI_ automatically injects the `appName` from `.zetarc`.
+
+When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the `appName`. 
+This information is then automatically read by the ZetaPush client.
+
+When your project is run in the cloud, the same principle is applied.
+
+This way, you just use `.zetarc` file for your credentials and `appName` and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush `appName` per developer.
+====

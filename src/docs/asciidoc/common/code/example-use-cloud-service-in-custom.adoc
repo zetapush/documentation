@@ -13,22 +13,22 @@ NOTE: The `Stack` service has asynchronous methods
 
 
 .MyStorageService
-[source,typescript,linenums,role="highlight-lines:6-8"]
+[source,typescript,linenums]
 ----
 import { Injectable } from '@zetapush/core';
-import { Stack } from '@zetapush/platform-legacy';
+import { Stack } from '@zetapush/platform-legacy';  // <1>
 
 @Injectable()
 export default class MyStorageService {
   private stackName = 'stack-example';
-  constructor(<2> 
-    private stack: Stack
-  ) {}
+
+  constructor(private stack: Stack) {}              // <2> 
+  
   /**
    *  Store data with associated timestamp
    */
   storeWithTimestamp(value: any) {
-    return this.stack.push({
+    return this.stack.push({                        // <3>
       stack: this.stackName,
       data: {
         value,
@@ -41,11 +41,13 @@ export default class MyStorageService {
    * List all stored data
    */
   getAllData() {
-    return this.stack.list({
+    return this.stack.list({                        // <4>
       stack: this.stackName
     });
   }
 }
 ----
-<1> We import the `Stack` service
-<2> `stack` is an instance of `Stack`
+<1> We import the `Stack` service so that TypeScript knows it
+<2> We ask ZetaPush to inject a dependency of type `Stack` (`stack` is an instance of `Stack`)
+<3> Call `Stack` service to store data (method `push`)
+<4> Call `Stack` service to list data (method `list`)
