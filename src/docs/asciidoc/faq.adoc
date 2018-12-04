@@ -8,3 +8,8 @@ Do I have to develop _custom cloud services_ ?::
   No. Developing _custom cloud services_ is not required. You can use _cloud services_ that are already provided by ZetaPush. You may need to develop _custom cloud services_ in different situations:
   - You have several devices so you want to mutualize your business code
   - ZetaPush services are not fully compatible with your business needs
+
+[qanda]
+Can I use ZetaPush CLI with and npm version lower than 6 ?::
+
+include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]

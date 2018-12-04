@@ -8,18 +8,7 @@ $ npm init @zetapush {appName} <1>
 ----
 <1> _{appName}_ is the name of the folder that will be created with all the generated files
 
-You will be prompted for a developer login and a developer password in order to create a new account.
+You will be prompted for a developer login and a developer password in order to communicate with the platform.
 
 NOTE: The developer login and the developer password will be stored in the `.zetarc` file.
 By default, the `.gitignore` file is configured to not deploy this file.
-
-
-
-[WARNING]
-====
-**Using npm lower than 6**
-
-`npm` provides `npm init` command since version 6.
-
-include::{docdir}/common/init/init-npm-minor-6.adoc[]
-====

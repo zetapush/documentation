@@ -14,7 +14,7 @@ include::{docdir}/variables.adoc[]
 
 include::{docdir}/introduction.adoc[]
 
-include::{docdir}/quick-start.adoc[]
+include::{docdir}/getting-started.adoc[]
 
 include::{docdir}/developer-manual.adoc[]
 
