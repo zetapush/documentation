@@ -225,11 +225,11 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents publication of your developer credentials (on GitHub for example)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file used by Git to prevent commiting some files. It is preconfigured to prevent publication of your developer credentials (on GitHub for example).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>package.json</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the dependencies, the name of your application, the entry point of your <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file for NPM to handle a module. It contains the dependencies, the name of your application, the entry point of your <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>README.md</code></p></td>
@@ -259,7 +259,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters<br>
+<p>➊ You launch <code>npm init @zetapush myApp</code> without parameters<br>
 ➋ You type your email and a password to create your ZetaPush account<br>
 ➌ The application is created in the <code>myApp</code> folder<br>
 ➍ The <em>.zetarc</em> file looks like:</p>
@@ -288,7 +288,7 @@
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You need to confirm your ZetaPush account to run or deploy your application.
+You need to confirm your ZetaPush account by clicking in the link in the email to run or deploy your application.
 </td>
 </tr>
 </table>
@@ -457,7 +457,7 @@ Above all, you need to have a ZetaPush account with an existing application. So 
 </div>
 </div>
 <div class="paragraph">
-<p>You will see what you need to do for each file in the following section.</p>
+<p>You will see what you need to do for each file in the following sections.</p>
 </div>
 </div>
 <div class="sect3">
@@ -470,7 +470,7 @@ Above all, you need to have a ZetaPush account with an existing application. So 
 <p>To specify which account (on the ZetaPush platform) you use for an application, you fill the file <code>.zetarc</code> with the account information.</p>
 </div>
 <div class="paragraph">
-<p>This file is in <strong>JSON</strong> format. The possible properties are below:</p>
+<p>This file is in <strong>JSON</strong> format. The minimal properties are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -552,7 +552,7 @@ node_modules/ <i class="conum" data-value="2"></i><b>(2)</b></pre></td>
 <div class="sect3">
 <h4 id="_front"><a class="anchor" href="#_front"></a>front</h4>
 <div class="paragraph">
-<p>By convention, the directory contains the front code. For example you can have this tree structure:</p>
+<p>By convention, the <code>front</code> directory contains the front code (web page or web application). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -697,13 +697,25 @@ node_modules/ <i class="conum" data-value="2"></i><b>(2)</b></pre></td>
   <span class="tag">&lt;main&gt;</span>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Include the ZetaPush client in order to connect to the ZetaPush cloud</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Include the ZetaPush SDK in order to interact with the ZetaPush services</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">front/index.js</div>
@@ -726,11 +738,11 @@ node_modules/ <i class="conum" data-value="2"></i><b>(2)</b></pre></td>
 15
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();   <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService();
+const api = client.createProxyTaskService();      <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; (
+client.connect().then(() =&gt; (                     <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -738,26 +750,93 @@ client.connect().then(() =&gt; (
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello());
+  console.log(await api.hello());                 <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom cloud service provides some functions that can be called from a client. For example, the custom cloud service exposes a <code>hello</code> function.
+Instead of having to write the signature of the function in the client too, we simply use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>.
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The client is ready, now connect it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in <code>then</code> callback.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>On each click on the button, the code <code>api.hello()</code> is called. It sends a message through the previously opened connection to the ZetaPush cloud. The ZetaPush cloud routes the message
+to the worker that contains the custom cloud service. The function <code>hello()</code> defined in the custom cloud service is called and returns a result.
+The result of this called in then sent back to the client. In this example, the result is displayed in the web browser console (using <code>console.log</code>).</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As you can see, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_worker"><a class="anchor" href="#_worker"></a>worker</h4>
 <div class="paragraph">
-<p>By convention, the directory contains the back code. For example you can have this tree structure:</p>
+<p>By convention, the directory <code>worker</code> contains the back code (algorithms, business logic, &#8230;&#8203;). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console">└── worker
-    └── index.ts</code></pre>
+    └── index.ts    <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The file that contains the declaration of the custom cloud service</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There is one main file by worker. By default, this is index.ts but you can change this in the <code>package.json</code> file (property <code>main</code>).</p>
 </div>
 <div class="sect4">
 <h5 id="_basic_example_of_hello_world_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_custom_cloud_service"></a>Basic example of Hello World (custom cloud service)</h5>
+<div class="paragraph">
+<p>Here is the most simple sample to show how to declare a custom cloud service:</p>
+</div>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
@@ -771,23 +850,69 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 7
 8
 </pre></td>
-  <td class="code"><pre>export default class Api {
+  <td class="code"><pre>export default class Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
   /**
    * Get an Hello World string with server side timestamp value
    */
-  hello() {
-    return `Hello World from JavaScript ${Date.now()}`;
+  hello() {                                                   <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World from JavaScript ${Date.now()}`;       <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You export a <code>class</code> with the name you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You define a custom cloud function just by writing a normal function. This example has no parameters but you could have any parameters you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You can write any code you want and return a value (or not).
+In this sample, the function is synchronous but you could also return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+or even use <a href="https://javascript.info/async-await">async/await syntax</a>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>export</code> is the standard way to make anything importable in an other file in TypeScript. You need to export your class so ZetaPush can import it and instantiate it.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_package_json"><a class="anchor" href="#_package_json"></a>package.json</h4>
 <div class="paragraph">
-<p>The <code>package.json</code> is the most important file in the application. It contains all the information needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the <code>.zetarc</code>).</p>
+<p>The <code>package.json</code> is the most important file in the application. It contains all the information needed to deploy or run your application on the ZetaPush platform.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The credentials of the ZetaPush account are in the <code>.zetarc</code> and not in <code>package.json</code> to avoid leaking sensitive information.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The minimal <code>package.json</code> is below:</p>
@@ -809,8 +934,8 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -870,8 +995,8 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front/dist</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -894,22 +1019,11 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </table>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_install_dependencies"><a class="anchor" href="#_install_dependencies"></a>Install dependencies</h5>
-<div class="paragraph">
-<p>You need to install some dependencies in your application. To do this, you can run:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli</code></pre>
-</div>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_use_your_application"><a class="anchor" href="#_use_your_application"></a>Use your application</h4>
 <div class="paragraph">
-<p>Once your have your application ready you can:</p>
+<p>Once your have your application ready (see <a href="../../quick-start.html">Quick start</a> if you don&#8217;t have created an application) you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -922,159 +1036,76 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </ul>
 </div>
 <div class="paragraph">
-<p>To do this you need to use the <em>CLI</em>. To install it, launch:</p>
+<p>To do this we provide a <em>CLI</em> (Command Line Interface) to help you focus on your code and not spend time on writing commands or scripts.</p>
+</div>
+<div class="paragraph">
+<p>The <em>CLI</em> module is declared in the <code>package.json</code> of the project so it is installed by npm when you create your project
+(see <a href="../../quick-start.html#_create_your_first_application">how to create an application using npm</a> if you haven&#8217;t created a project).</p>
+</div>
+<div class="paragraph">
+<p>When the project is created, we configure the <code>package.json</code> with a <code>scripts</code> section to make aliases that work
+directly with npm.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_update_your_path_environement_variable_recommended"><a class="anchor" href="#_update_your_path_environement_variable_recommended"></a>Update your PATH environement variable (recommended)</h4>
-<div class="paragraph tab-container">
-<p>Update environement variables</p>
-</div>
-<div class="paragraph tab">
-<p>Debian/Ubuntu/MacOSX</p>
-</div>
-<div class="paragraph">
-<p>You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.</p>
-</div>
+<h4 id="_use_npm_script_aliases_to_run_the_em_cli_em"><a class="anchor" href="#_use_npm_script_aliases_to_run_the_em_cli_em"></a>Use npm script aliases to run the <em>CLI</em></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ export PATH=./node_modules/.bin:$PATH</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run &lt;alias&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that this will not automatically update your path for the remainder of the session. To do this, you should run:</p>
+<p>If you want to run your worker locally using script alias, you can execute:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ source ~/.zshrc
-$ source ~/.profile
-$ source ~/.bashrc</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Windows</p>
-</div>
-<div class="paragraph">
-<p>Windows 10 and Windows 8</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>In Search, search for and then select: System (Control Panel)</p>
-</li>
-<li>
-<p>Click the Advanced system settings link.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows 7</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the desktop, right click the Computer icon.</p>
-</li>
-<li>
-<p>Choose Properties from the context menu.</p>
-</li>
-<li>
-<p>Click the Advanced system settings link.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows Vista</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the desktop, right click the My Computer icon.</p>
-</li>
-<li>
-<p>Choose Properties from the context menu.</p>
-</li>
-<li>
-<p>Click the Advanced tab (Advanced system settings link in Vista).</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows XP</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Select Start, select Control Panel. double click System, and select the Advanced tab.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_use_aliases_command_npm_run_command"><a class="anchor" href="#_use_aliases_command_npm_run_command"></a>Use aliases command npm run &lt;command&gt;</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console">$ npm run start</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_use_npx_tool"><a class="anchor" href="#_use_npx_tool"></a>Use npx tool</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>npx is shipped with npm standard install</p>
+<p>The <code>start</code> alias calls <code>zeta run</code> under the hood.</p>
+</div>
+<div class="paragraph">
+<p>The <code>start</code> alias is used because it is the standard alias to use in development.
+We follow npm conventions so a user that is used to npm know which command to
+execute to start is project locally.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to deploy your application using script alias, you can execute:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx zeta &lt;command&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>start</code> alias calls <code>zeta push</code> under the hood.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_install_zetapush_cli_as_a_global_command_not_recommended"><a class="anchor" href="#_install_zetapush_cli_as_a_global_command_not_recommended"></a>Install @zetapush/cli as a global command (not recommended)</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm i -g @zetapush/cli</code></pre>
-</div>
-</div>
+<h4 id="_use_em_cli_em_directly"><a class="anchor" href="#_use_em_cli_em_directly"></a>Use <em>CLI</em> directly</h4>
 <div class="paragraph">
 <p>With the CLI, you can run your worker with:</p>
 </div>
@@ -1101,6 +1132,165 @@ $ source ~/.bashrc</code></pre>
 </tr></table></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>There are 3 ways to use directly <code>zeta</code> commands provided by the <em>CLI</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set an environment variable that points to your local <code>node_modules/.bin</code> (recommended)</p>
+</li>
+<li>
+<p>Use <code>npx</code> tool</p>
+</li>
+<li>
+<p>Install <em>CLI</em> as global (not recommended)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_update_your_path_environment_variable_recommended"><a class="anchor" href="#_update_your_path_environment_variable_recommended"></a>Update your PATH environment variable (recommended)</h5>
+<div class="paragraph">
+<p>In order to be able to run <code>zeta</code> commands directly, you need to update your PATH.</p>
+</div>
+<div class="paragraph tab-container">
+<p>Update environement variables</p>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu/MacOSX</p>
+</div>
+<div class="paragraph">
+<p>You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ export PATH=./node_modules/.bin:$PATH</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this will not automatically update your path for the remainder of the session. To do this, you should run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ source ~/.zshrc
+$ source ~/.profile
+$ source ~/.bashrc</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Windows 10 and Windows 8</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Search, search for and then select: System (Control Panel)</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows 7</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows Vista</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the My Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced tab (Advanced system settings link in Vista).</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows XP</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select Start, select Control Panel. double click System, and select the Advanced tab.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_use_npx_tool"><a class="anchor" href="#_use_npx_tool"></a>Use npx tool</h5>
+<div class="paragraph">
+<p>npx is shipped with npm standard install</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx zeta &lt;command&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_install_zetapush_cli_as_a_global_command_not_recommended"><a class="anchor" href="#_install_zetapush_cli_as_a_global_command_not_recommended"></a>Install @zetapush/cli as a global command (not recommended)</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm i -g @zetapush/cli</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1108,7 +1298,7 @@ $ source ~/.bashrc</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-11-20 17:20:23 UTC
 </div>
 </div>
 </body>

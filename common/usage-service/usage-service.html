@@ -134,32 +134,8 @@ The usage of a <em>cloud service</em> or a <em>custom cloud service</em> <strong
 </div>
 <div class="sect2">
 <h3 id="_use_a_service"><a class="anchor" href="#_use_a_service"></a>Use a service</h3>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provided by ZetaPush is exactly the same process.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>An example is worth a thousand words, so here is an example of usage of services.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-When you call a <em>cloud function</em>, the result is always a Promise.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>In our example we use this <em>custom cloud service</em> named <code>HelloService</code>:</p>
@@ -174,9 +150,9 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 4
 5
 </pre></td>
-  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
-  hello() {
-    return `Hello World`;
+  <td class="code"><pre>export default class HelloService {       <i class="conum" data-value="1"></i><b>(1)</b>
+  hello() {                               <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World`;                 <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -186,7 +162,36 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The service is exported</td>
+<td>The service is exported in roder to be instantiated by ZetaPush <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A <em>custom cloud function</em> name <code>hello</code> is defined in this <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <em>custom cloud function</em> simply returns a message. You can write any code you want here.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can have as many parameters as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+</div>
+</td>
 </tr>
 </table>
 </div>
@@ -271,19 +276,13 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 13
 14
 15
-16
-17
-18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key">appName</span>: &lt;yourAppName&gt;,
-  <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
-});
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService(); <i class="conum" data-value="2"></i><b>(2)</b>
+const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
+client.connect().then(() =&gt; (                       <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -291,7 +290,7 @@ client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello()); <i class="conum" data-value="4"></i><b>(4)</b>
+  console.log(await api.hello());                   <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
@@ -300,7 +299,7 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Create the ZetaPush client with a specific appName and optional URL</td>
+<td>Create the ZetaPush client (using automatic injection of <code>appName</code>)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -319,13 +318,48 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <div class="paragraph">
 <p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
 </div>
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 1. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
+to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
+and the response is parsed [12] and available in your JavaScript.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you call a <em>cloud function</em> from the client, the result is always a Promise even if the <em>custom cloud function</em> is synchronous
+because everything goes through the network.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-11-20 17:20:23 UTC
 </div>
 </div>
 </body>

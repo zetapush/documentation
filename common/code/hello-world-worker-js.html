@@ -101,23 +101,55 @@
 7
 8
 </pre></td>
-  <td class="code"><pre>export default class Api {
+  <td class="code"><pre>export default class Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
   /**
    * Get an Hello World string with server side timestamp value
    */
-  hello() {
-    return `Hello World from JavaScript ${Date.now()}`;
+  hello() {                                                   <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World from JavaScript ${Date.now()}`;       <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You export a <code>class</code> with the name you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You define a custom cloud function just by writing a normal function. This example has no parameters but you could have any parameters you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You can write any code you want and return a value (or not).
+In this sample, the function is synchronous but you could also return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+or even use <a href="https://javascript.info/async-await">async/await syntax</a>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>export</code> is the standard way to make anything importable in an other file in TypeScript. You need to export your class so ZetaPush can import it and instantiate it.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-12-04 14:36:14 UTC
 </div>
 </div>
 </body>

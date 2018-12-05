@@ -94,7 +94,7 @@
 <li><a href="#_using_cli">Using CLI</a></li>
 </ul>
 </li>
-<li><a href="#_account_management">Account management</a>
+<li><a href="#_zetapush_account_management">ZetaPush account management</a>
 <ul class="sectlevel2">
 <li><a href="#_create_a_new_account_and_a_new_application">Create a new account and a new application</a></li>
 <li><a href="#_add_a_new_application_to_your_account">Add a new application to your account</a></li>
@@ -103,7 +103,8 @@
 </li>
 <li><a href="#_develop_your_front_with_zetapush">Develop your front with ZetaPush</a>
 <ul class="sectlevel2">
-<li><a href="#_use_built_in_zetapush_em_cloud_services_em">Use built-in ZetaPush <em>cloud services</em></a></li>
+<li><a href="#_requirements_2">Requirements</a></li>
+<li><a href="#_use_em_cloud_services_em">Use <em>cloud services</em></a></li>
 <li><a href="#_configure_adapt_zetapush_cloud_services">Configure/adapt ZetaPush cloud services</a></li>
 <li><a href="#_run_your_front_locally">Run your front locally</a></li>
 </ul>
@@ -268,7 +269,7 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 <div class="sect2">
 <h3 id="_using_cli"><a class="anchor" href="#_using_cli"></a>Using CLI</h3>
 <div class="paragraph">
-<p>Once your have your application ready you can:</p>
+<p>Once your have your application ready (see <a href="./quick-start.html">Quick start</a> if you don&#8217;t have created an application) you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -281,158 +282,75 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 </ul>
 </div>
 <div class="paragraph">
-<p>To do this you need to use the <em>CLI</em>. To install it, launch:</p>
+<p>To do this we provide a <em>CLI</em> (Command Line Interface) to help you focus on your code and not spend time on writing commands or scripts.</p>
+</div>
+<div class="paragraph">
+<p>The <em>CLI</em> module is declared in the <code>package.json</code> of the project so it is installed by npm when you create your project
+(see <a href="./quick-start.html#_create_your_first_application">how to create an application using npm</a> if you haven&#8217;t created a project).</p>
+</div>
+<div class="paragraph">
+<p>When the project is created, we configure the <code>package.json</code> with a <code>scripts</code> section to make aliases that work
+directly with npm.</p>
 </div>
 <div class="sect3">
-<h4 id="_update_your_path_environement_variable_recommended"><a class="anchor" href="#_update_your_path_environement_variable_recommended"></a>Update your PATH environement variable (recommended)</h4>
-<div class="paragraph tab-container">
-<p>Update environement variables</p>
-</div>
-<div class="paragraph tab">
-<p>Debian/Ubuntu/MacOSX</p>
-</div>
-<div class="paragraph">
-<p>You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.</p>
-</div>
+<h4 id="_use_npm_script_aliases_to_run_the_em_cli_em"><a class="anchor" href="#_use_npm_script_aliases_to_run_the_em_cli_em"></a>Use npm script aliases to run the <em>CLI</em></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ export PATH=./node_modules/.bin:$PATH</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run &lt;alias&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that this will not automatically update your path for the remainder of the session. To do this, you should run:</p>
+<p>If you want to run your worker locally using script alias, you can execute:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ source ~/.zshrc
-$ source ~/.profile
-$ source ~/.bashrc</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Windows</p>
-</div>
-<div class="paragraph">
-<p>Windows 10 and Windows 8</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>In Search, search for and then select: System (Control Panel)</p>
-</li>
-<li>
-<p>Click the Advanced system settings link.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows 7</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the desktop, right click the Computer icon.</p>
-</li>
-<li>
-<p>Choose Properties from the context menu.</p>
-</li>
-<li>
-<p>Click the Advanced system settings link.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows Vista</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the desktop, right click the My Computer icon.</p>
-</li>
-<li>
-<p>Choose Properties from the context menu.</p>
-</li>
-<li>
-<p>Click the Advanced tab (Advanced system settings link in Vista).</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Windows XP</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Select Start, select Control Panel. double click System, and select the Advanced tab.</p>
-</li>
-<li>
-<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
-</li>
-<li>
-<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
-</li>
-<li>
-<p>Reopen Command prompt window, and run zeta command.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_use_aliases_command_npm_run_command"><a class="anchor" href="#_use_aliases_command_npm_run_command"></a>Use aliases command npm run &lt;command&gt;</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console">$ npm run start</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_use_npx_tool"><a class="anchor" href="#_use_npx_tool"></a>Use npx tool</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>npx is shipped with npm standard install</p>
+<p>The <code>start</code> alias calls <code>zeta run</code> under the hood.</p>
+</div>
+<div class="paragraph">
+<p>The <code>start</code> alias is used because it is the standard alias to use in development.
+We follow npm conventions so a user that is used to npm know which command to
+execute to start is project locally.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to deploy your application using script alias, you can execute:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx zeta &lt;command&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>start</code> alias calls <code>zeta push</code> under the hood.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_install_zetapush_cli_as_a_global_command_not_recommended"><a class="anchor" href="#_install_zetapush_cli_as_a_global_command_not_recommended"></a>Install @zetapush/cli as a global command (not recommended)</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm i -g @zetapush/cli</code></pre>
-</div>
-</div>
+<h4 id="_use_em_cli_em_directly"><a class="anchor" href="#_use_em_cli_em_directly"></a>Use <em>CLI</em> directly</h4>
 <div class="paragraph">
 <p>With the CLI, you can run your worker with:</p>
 </div>
@@ -459,39 +377,246 @@ $ source ~/.bashrc</code></pre>
 </tr></table></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>There are 3 ways to use directly <code>zeta</code> commands provided by the <em>CLI</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set an environment variable that points to your local <code>node_modules/.bin</code> (recommended)</p>
+</li>
+<li>
+<p>Use <code>npx</code> tool</p>
+</li>
+<li>
+<p>Install <em>CLI</em> as global (not recommended)</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_update_your_path_environment_variable_recommended"><a class="anchor" href="#_update_your_path_environment_variable_recommended"></a>Update your PATH environment variable (recommended)</h5>
+<div class="paragraph">
+<p>In order to be able to run <code>zeta</code> commands directly, you need to update your PATH.</p>
+</div>
+<div class="paragraph tab-container">
+<p>Update environement variables</p>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu/MacOSX</p>
+</div>
+<div class="paragraph">
+<p>You need to add it to your shell config file ~/.zshrc ~/.profile or ~/.bashrc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ export PATH=./node_modules/.bin:$PATH</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this will not automatically update your path for the remainder of the session. To do this, you should run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ source ~/.zshrc
+$ source ~/.profile
+$ source ~/.bashrc</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Windows 10 and Windows 8</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Search, search for and then select: System (Control Panel)</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows 7</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced system settings link.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows Vista</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the desktop, right click the My Computer icon.</p>
+</li>
+<li>
+<p>Choose Properties from the context menu.</p>
+</li>
+<li>
+<p>Click the Advanced tab (Advanced system settings link in Vista).</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab">
+<p>Windows XP</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Select Start, select Control Panel. double click System, and select the Advanced tab.</p>
+</li>
+<li>
+<p>Click Environment Variables. In the section System Variables, find the PATH environment variable and select it. Click Edit. If the PATH environment variable does not exist, click New.</p>
+</li>
+<li>
+<p>In the Edit System Variable (or New System Variable) window, specify the value of the PATH environment variable. Click OK. Close all remaining windows by clicking OK.</p>
+</li>
+<li>
+<p>Reopen Command prompt window, and run zeta command.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_use_npx_tool"><a class="anchor" href="#_use_npx_tool"></a>Use npx tool</h5>
+<div class="paragraph">
+<p>npx is shipped with npm standard install</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx zeta &lt;command&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_install_zetapush_cli_as_a_global_command_not_recommended"><a class="anchor" href="#_install_zetapush_cli_as_a_global_command_not_recommended"></a>Install @zetapush/cli as a global command (not recommended)</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm i -g @zetapush/cli</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_account_management"><a class="anchor" href="#_account_management"></a>Account management</h2>
+<h2 id="_zetapush_account_management"><a class="anchor" href="#_zetapush_account_management"></a>ZetaPush account management</h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/48" class="bare">https://github.com/zetapush/documentation/issues/48</a></p>
+<p>This section will describe the concepts behind a ZetaPush account and the links between them:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is an account</p>
+</li>
+<li>
+<p>What is an organization</p>
+</li>
+<li>
+<p>What is a product</p>
+</li>
+<li>
+<p>What is an environment</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can make a PR if you want to contribute: <a href="https://github.com/zetapush/documentation/issues/48" class="bare">https://github.com/zetapush/documentation/issues/48</a></p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_create_a_new_account_and_a_new_application"><a class="anchor" href="#_create_a_new_account_and_a_new_application"></a>Create a new account and a new application</h3>
+<div class="paragraph">
+<p>When you use ZetaPush the first time, you need to create an account. Once your account is ready, you
+can already start to work. You work is associated with an application.</p>
+</div>
+<div class="paragraph">
+<p>Here we explain how to create both an account and an application quickly.</p>
+</div>
 <div class="sect3">
 <h4 id="_using_zetapush_main_site"><a class="anchor" href="#_using_zetapush_main_site"></a>Using ZetaPush main site</h4>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/47" class="bare">https://github.com/zetapush/documentation/issues/47</a></p>
+<p>This section will describe how to register your account through main site (mainly using screenshots).</p>
+</div>
+<div class="paragraph">
+<p>You can make a PR if you want to contribute: <a href="https://github.com/zetapush/documentation/issues/47" class="bare">https://github.com/zetapush/documentation/issues/47</a></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_using_zetapush_web_console"><a class="anchor" href="#_using_zetapush_web_console"></a>Using ZetaPush web Console</h4>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/49" class="bare">https://github.com/zetapush/documentation/issues/49</a></p>
+<p>This section will describe how to register your account through web console (mainly using screenshots).</p>
+</div>
+<div class="paragraph">
+<p>You can make a PR if you want to contribute: <a href="https://github.com/zetapush/documentation/issues/49" class="bare">https://github.com/zetapush/documentation/issues/49</a></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_using_your_terminal"><a class="anchor" href="#_using_your_terminal"></a>Using your terminal</h4>
+<div class="paragraph">
+<p>To create an account and an application, you can use the <em>CLI</em> we provide.
+This tool will detect that you are using a new account and will automatically create a new application.</p>
+</div>
 <div class="imageblock center">
 <div class="content">
 <img src="init-without-account.png" alt="init without account" width="378" height="459">
 </div>
 </div>
 <div class="paragraph">
-<p>➊ I launch <code>npm init @zetapush myApp</code> without parameters<br>
+<p>➊ You launch <code>npm init @zetapush myApp</code> without parameters<br>
 ➋ You type your email and a password to create your ZetaPush account<br>
 ➌ The application is created in the <code>myApp</code> folder<br>
 ➍ The <em>.zetarc</em> file looks like:</p>
@@ -520,7 +645,7 @@ $ source ~/.bashrc</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You need to confirm your ZetaPush account to run or deploy your application.
+You need to confirm your ZetaPush account by clicking in the link in the email to run or deploy your application.
 </td>
 </tr>
 </table>
@@ -531,12 +656,24 @@ You need to confirm your ZetaPush account to run or deploy your application.
 <h3 id="_add_a_new_application_to_your_account"><a class="anchor" href="#_add_a_new_application_to_your_account"></a>Add a new application to your account</h3>
 <div class="sect3">
 <h4 id="_using_zetapush_web_console_2"><a class="anchor" href="#_using_zetapush_web_console_2"></a>Using ZetaPush web Console</h4>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/50" class="bare">https://github.com/zetapush/documentation/issues/50</a></p>
+<p>This section will describe how to add a new application through web console (mainly using screenshots).</p>
+</div>
+<div class="paragraph">
+<p>You can make a PR if you want to contribute: <a href="https://github.com/zetapush/documentation/issues/50" class="bare">https://github.com/zetapush/documentation/issues/50</a></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_using_your_terminal_2"><a class="anchor" href="#_using_your_terminal_2"></a>Using your terminal</h4>
+<div class="paragraph">
+<p>To add an application to your account, you can also use the <em>CLI</em>.
+This time you provide your credentials so it will use your account but as you are creating a new
+application from the <em>CLI</em>, this application will be registered on ZetaPush.</p>
+</div>
 <div class="imageblock center">
 <div class="content">
 <img src="init-with-account-without-app.png" alt="init with account without app" width="434" height="351">
@@ -582,6 +719,11 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <h3 id="_configure_your_project_to_use_an_existing_application"><a class="anchor" href="#_configure_your_project_to_use_an_existing_application"></a>Configure your project to use an existing application</h3>
 <div class="sect3">
 <h4 id="_using_your_terminal_3"><a class="anchor" href="#_using_your_terminal_3"></a>Using your terminal</h4>
+<div class="paragraph">
+<p>When you work in team, you may want to share an application. The <em>CLI</em> also
+provides a parameter to specify the application to reuse. By providing both
+credentials and application name, it will just reuse existing application.</p>
+</div>
 <div class="imageblock center">
 <div class="content">
 <img src="init-with-account-and-app.png" alt="init with account and app" width="495" height="351">
@@ -613,6 +755,9 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <div class="sect3">
 <h4 id="_configure_your_project_manually"><a class="anchor" href="#_configure_your_project_manually"></a>Configure your project manually</h4>
 <div class="paragraph">
+<p>If you don&#8217;t want to use the <em>CLI</em>, you can also start your project manually by creating some files.</p>
+</div>
+<div class="paragraph">
 <p>Here the basic source tree you need to create:</p>
 </div>
 <div class="listingblock">
@@ -628,12 +773,26 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </div>
 </div>
 <div class="paragraph">
-<p>You will see what you need to do for each file in the following section.</p>
+<p>You will see what you need to do for each file in the following sections.</p>
 </div>
 <div class="sect4">
 <h5 id="_package_json"><a class="anchor" href="#_package_json"></a>package.json</h5>
 <div class="paragraph">
-<p>The <code>package.json</code> is the most important file in the application. It contains all the information needed to deploy or run your application on the ZetaPush platform (Except the credentials of the ZetaPush account in the <code>.zetarc</code>).</p>
+<p>The <code>package.json</code> is the most important file in the application. It contains all the information needed to deploy or run your application on the ZetaPush platform.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The credentials of the ZetaPush account are in the <code>.zetarc</code> and not in <code>package.json</code> to avoid leaking sensitive information.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The minimal <code>package.json</code> is below:</p>
@@ -655,8 +814,8 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -716,8 +875,8 @@ By convention, ZetaPush Celtia considers that your front code is in the director
   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^0.33.4</span><span class="delimiter">&quot;</span></span>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>
   },
   <span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
     <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./front/dist</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
@@ -739,16 +898,24 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 </tr>
 </table>
 </div>
-</div>
-<div class="sect5">
-<h6 id="_install_dependencies"><a class="anchor" href="#_install_dependencies"></a>Install dependencies</h6>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>You need to install some dependencies in your application. To do this, you can run:</p>
+<p>Once your package.json is ready, install the dependencies by running:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/core @zetapush/cli</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install</code></pre>
 </div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -758,7 +925,7 @@ By convention, ZetaPush Celtia considers that your front code is in the director
 <p>To specify which account (on the ZetaPush platform) you use for an application, you fill the file <code>.zetarc</code> with the account information.</p>
 </div>
 <div class="paragraph">
-<p>This file is in <strong>JSON</strong> format. The possible properties are below:</p>
+<p>This file is in <strong>JSON</strong> format. The minimal properties are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -807,7 +974,7 @@ If you want to create a new application, you can leave the <em>appName</em> prop
 <div class="sect4">
 <h5 id="_front"><a class="anchor" href="#_front"></a>front</h5>
 <div class="paragraph">
-<p>By convention, the directory contains the front code. For example you can have this tree structure:</p>
+<p>By convention, the <code>front</code> directory contains the front code (web page or web application). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -952,13 +1119,25 @@ If you want to create a new application, you can leave the <em>appName</em> prop
   <span class="tag">&lt;main&gt;</span>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Include the ZetaPush client in order to connect to the ZetaPush cloud</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Include the ZetaPush SDK in order to interact with the ZetaPush services</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">front/index.js</div>
@@ -981,11 +1160,11 @@ If you want to create a new application, you can leave the <em>appName</em> prop
 15
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();   <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService();
+const api = client.createProxyTaskService();      <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; (
+client.connect().then(() =&gt; (                     <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -993,26 +1172,93 @@ client.connect().then(() =&gt; (
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello());
+  console.log(await api.hello());                 <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom cloud service provides some functions that can be called from a client. For example, the custom cloud service exposes a <code>hello</code> function.
+Instead of having to write the signature of the function in the client too, we simply use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>.
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The client is ready, now connect it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in <code>then</code> callback.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>On each click on the button, the code <code>api.hello()</code> is called. It sends a message through the previously opened connection to the ZetaPush cloud. The ZetaPush cloud routes the message
+to the worker that contains the custom cloud service. The function <code>hello()</code> defined in the custom cloud service is called and returns a result.
+The result of this called in then sent back to the client. In this example, the result is displayed in the web browser console (using <code>console.log</code>).</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As you can see, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_worker"><a class="anchor" href="#_worker"></a>worker</h5>
 <div class="paragraph">
-<p>By convention, the directory contains the back code. For example you can have this tree structure:</p>
+<p>By convention, the directory <code>worker</code> contains the back code (algorithms, business logic, &#8230;&#8203;). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console">└── worker
-    └── index.ts</code></pre>
+    └── index.ts    <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The file that contains the declaration of the custom cloud service</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There is one main file by worker. By default, this is index.ts but you can change this in the <code>package.json</code> file (property <code>main</code>).</p>
 </div>
 <div class="sect5">
 <h6 id="_basic_example_of_hello_world_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_custom_cloud_service"></a>Basic example of Hello World (custom cloud service)</h6>
+<div class="paragraph">
+<p>Here is the most simple sample to show how to declare a custom cloud service:</p>
+</div>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
@@ -1026,16 +1272,48 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 7
 8
 </pre></td>
-  <td class="code"><pre>export default class Api {
+  <td class="code"><pre>export default class Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
   /**
    * Get an Hello World string with server side timestamp value
    */
-  hello() {
-    return `Hello World from JavaScript ${Date.now()}`;
+  hello() {                                                   <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World from JavaScript ${Date.now()}`;       <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You export a <code>class</code> with the name you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You define a custom cloud function just by writing a normal function. This example has no parameters but you could have any parameters you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You can write any code you want and return a value (or not).
+In this sample, the function is synchronous but you could also return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+or even use <a href="https://javascript.info/async-await">async/await syntax</a>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>export</code> is the standard way to make anything importable in an other file in TypeScript. You need to export your class so ZetaPush can import it and instantiate it.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1051,16 +1329,191 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 instead of wasting time on technical concerns.</p>
 </div>
 <div class="paragraph">
-<p>ZetaPush provides built-in <em>cloud services</em> to increase your productivity that are directly usable by your front.</p>
+<p>ZetaPush provides built-in <em>cloud services</em> to increase your productivity:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. List of ZetaPush cloud services</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Cloud service</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_standard_user_workflow">Standard User Workflow</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The <code>StandardUserWorkflow</code> corresponds to the most common inscription process on the Internet. It handles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inscription of your end-users into your application: the user fills some information and <code>StandardUserWorkflow</code> sends an email
+(or SMS or anything else) to the user in order to confirm its account. Once the user has confirmed its account, he can authenticate
+himself and he is ready to use your application.</p>
+</li>
+<li>
+<p>Authentication of your end-users</p>
+</li>
+<li>
+<p>Lost password of your end-users: the user ask for resetting its password. <code>StandardUserWorkflow</code> sends an email (or SMS or anything else) to the user.
+The user clicks the link in the email to choose another password. Once confirmed, its account is updated with the new password.</p>
+</li>
+<li>
+<p>Profile edition: your end-users can update their information</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_user_management">User management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic user management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./reference.html#_simple">Simple</a>: cloud functions to create a user, change credentials of a user, update a user or delete a user.</p>
+</li>
+<li>
+<p><a href="./reference.html#_weak">Weak</a>: cloud functions to control and release of weakly authenticated user sessions.</p>
+</li>
+<li>
+<p><a href="./reference.html#_userdir">Userdir</a>: cloud functions to retrieve and search users created by Simple.</p>
+</li>
+<li>
+<p><a href="./reference.html#_groups">Groups</a>: cloud functions to handle group of users.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This APIs are available if <code>StandardUserWorkflow</code> doesn&#8217;t fit your needs or you want to go further.
+Under the hood, <code>StandardUserWorkflow</code> use these services.</p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_data_management">Data management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic data management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./reference.html#_gda">Gda</a>: NoSQL database that can store values, objects and arrays as document in columns.</p>
+</li>
+<li>
+<p><a href="./reference.html#_stack">Stack</a>: Store values, objects and arrays in a stack. Each item is pushed in the stack and can be accessed later.</p>
+</li>
+<li>
+<p><a href="./reference.html#_search_2">Search</a>: Search engine to make full text searches.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_file_management">File management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic file management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./reference.html#_zpfs_hdfs">Zpfs_hdfs</a>: Store files on a file system.</p>
+</li>
+<li>
+<p><a href="./reference.html#_template">Template</a>: Define a template and then evaluate it with an execution context.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_communication">Communication</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>It is possible to interact with your end-users using these services:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./reference.html#_messaging">Messaging</a>: Send messages to a particular user (or a group of users). This is the service you use for a chat.</p>
+</li>
+<li>
+<p><a href="./reference.html#_notif">Notif</a>: Send notifications to your end-users mobile phone (Android, iOS or Windows Phone).</p>
+</li>
+<li>
+<p><a href="./reference.html#_sendmail">Sendmail</a>: Send emails to your end-users.</p>
+</li>
+<li>
+<p><a href="./reference.html#_sms_ovh">Sms_ovh</a>: Send SMS to your end-users.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./reference.html#_utilities_management">Utilities</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section provides some utility tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./reference.html#_cron">Cron</a>: Schedule a task to be executed periodically.</p>
+</li>
+<li>
+<p><a href="./reference.html#_logs">Logs</a>: Log some information. Logs will be available on ZetaPush cloud.</p>
+</li>
+<li>
+<p><a href="./reference.html#_trigger">Trigger</a>: Listen to some event that is triggered by ZetaPush cloud and react to that event.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>ZetaPush cloud services need to be "created" before being able to use them. This way, you
+can choose which services are part of your application instead of having them all.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, using a front to interact with ZetaPush cloud services directly is not really possible due to
+this "creation" phase. For security reasons, service creation and configuration can&#8217;t be done via
+a client.</p>
+</div>
+<div class="paragraph">
+<p>When the web console will be fully ready, ZetaPush cloud services "creation" will be
+available through the web console.</p>
+</div>
+<div class="paragraph">
+<p>Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
+"creation" process is automatically handled by the worker.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="_use_built_in_zetapush_em_cloud_services_em"><a class="anchor" href="#_use_built_in_zetapush_em_cloud_services_em"></a>Use built-in ZetaPush <em>cloud services</em></h3>
-<div class="paragraph">
-<p>On the front-side, you will want to use the <em>cloud services</em> provided by ZetaPush or your <em>custom cloud services</em>.
-The usage of a <em>cloud service</em> or a <em>custom cloud service</em> <strong>is exactly the same process</strong>.</p>
-</div>
-<div class="sect3">
-<h4 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a>Requirements</h4>
+<h3 id="_requirements_2"><a class="anchor" href="#_requirements_2"></a>Requirements</h3>
 <div class="paragraph">
 <p>To use services (custom or not), you need to install the ZetaPush Core dependency (<code>@zetapush/client</code>).</p>
 </div>
@@ -1087,8 +1540,132 @@ The usage of a <em>cloud service</em> or a <em>custom cloud service</em> <strong
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_use_em_cloud_services_em"><a class="anchor" href="#_use_em_cloud_services_em"></a>Use <em>cloud services</em></h3>
 <div class="sect3">
-<h4 id="_use_a_built_in_em_cloud_service_em"><a class="anchor" href="#_use_a_built_in_em_cloud_service_em"></a>Use a built-in <em>cloud service</em></h4>
+<h4 id="_use_a_zetapush_em_cloud_service_em"><a class="anchor" href="#_use_a_zetapush_em_cloud_service_em"></a>Use a ZetaPush <em>cloud service</em></h4>
+<div class="paragraph">
+<p>Here we show how to create a worker that use the ZetaPush cloud service named <code>Stack</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
+In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.</p>
+</div>
+<div class="paragraph">
+<p>For this the <code>Stack</code> service provides some methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>push({ <em>stack</em>: string, <em>data</em>: object });</code></p>
+</li>
+<li>
+<p><code>list({ <em>stack</em>: string });</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Stack</code> service has asynchronous methods
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">MyStorageService</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td>
+  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';  <i class="conum" data-value="1"></i><b>(1)</b>
+
+@Injectable()
+export default class MyStorageService {
+  private stackName = 'stack-example';
+
+  constructor(private stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
+
+  /**
+   *  Store data with associated timestamp
+   */
+  storeWithTimestamp(value: any) {
+    return this.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
+      stack: this.stackName,
+      data: {
+        value,
+        timestamp: Date.now()
+      }
+    });
+  }
+
+  /**
+   * List all stored data
+   */
+  getAllData() {
+    return this.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
+      stack: this.stackName
+    });
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We import the <code>Stack</code> service so that TypeScript knows it</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call <code>Stack</code> service to store data (method <code>push</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call <code>Stack</code> service to list data (method <code>list</code>)</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1096,13 +1673,168 @@ The usage of a <em>cloud service</em> or a <em>custom cloud service</em> <strong
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provided by ZetaPush is exactly the same process.
+<div class="paragraph">
+<p><code>Stack</code> cloud service "creation" is automatically handled thanks to dependency injection.
+ZetaPush detects that you need a ZetaPush service and prepare it.
+so you focus your code on the usage of the service
+not on its creation, you just ask for it.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
+<div class="listingblock">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>                               <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>storeData()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>store data<span class="tag">&lt;/button&gt;</span>             <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>displayAll()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>display all<span class="tag">&lt;/button&gt;</span>           <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">results</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>                                        <i class="conum" data-value="4"></i><b>(4)</b>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>    <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A simple input to fill some text to send to our cloud service</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Each time the button is clicked, it calls <code>storeData()</code> defined in <code>index.js</code> which in turns calls our <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Each time the button is clicked, it calls <code>displayAll()</code> defined in <code>index.js</code> which in turns calls our <em>custom cloud service</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>A container for all results</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Dependency to ZetaPush client</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>An example is worth a thousand words, so here is an example of usage of services.</p>
+<p>Finally, we have the front-side code call our services:</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();             <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();                <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="comment">// Handle connection</span>
+client.connect().then(                                      <i class="conum" data-value="3"></i><b>(3)</b>
+  () =&gt; (
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
+    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt; node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>))
+  )
+);
+const storeData = async <span class="keyword">function</span>() {
+  const text = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">text</span><span class="delimiter">'</span></span>).value;
+  await api.storeWithTimestamp(text);                       <i class="conum" data-value="4"></i><b>(4)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">text</span><span class="delimiter">'</span></span>).value = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+};
+const displayAll = async <span class="keyword">function</span>() {
+  const response = await api.getAllData();                  <i class="conum" data-value="5"></i><b>(5)</b>
+  let resultsAsStr = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+  <span class="keyword">for</span> (let result of response.result.content) {
+    resultsAsStr += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${JSON.stringify(result.data)}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>;
+  }
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">results</span><span class="delimiter">'</span></span>).innerHTML = resultsAsStr;
+};
+</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Create the ZetaPush client</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>API to access our custom service(s)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Connect to the ZetaPush cloud</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call our <em>cloud function</em> named <code>storeWithTimestamp</code> to store a new text</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Call our <em>cloud function</em> named <code>getAllData</code> and display all the results</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1111,10 +1843,17 @@ The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provid
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-When you call a <em>cloud function</em>, the result is always a Promise.
+When you call a <em>cloud function</em> from the client, the result is always a Promise even if the <em>custom cloud function</em> is synchronous
+because everything goes through the network.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_a_custom_em_cloud_service_em"><a class="anchor" href="#_use_a_custom_em_cloud_service_em"></a>Use a custom <em>cloud service</em></h4>
+<div class="paragraph">
+<p>An example is worth a thousand words, so here is an example of usage of services.</p>
 </div>
 <div class="paragraph">
 <p>In our example we use this <em>custom cloud service</em> named <code>HelloService</code>:</p>
@@ -1129,9 +1868,9 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 4
 5
 </pre></td>
-  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
-  hello() {
-    return `Hello World`;
+  <td class="code"><pre>export default class HelloService {       <i class="conum" data-value="1"></i><b>(1)</b>
+  hello() {                               <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World`;                 <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -1141,7 +1880,36 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The service is exported</td>
+<td>The service is exported in roder to be instantiated by ZetaPush <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A <em>custom cloud function</em> name <code>hello</code> is defined in this <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <em>custom cloud function</em> simply returns a message. You can write any code you want here.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can have as many parameters as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+</div>
+</td>
 </tr>
 </table>
 </div>
@@ -1226,19 +1994,13 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 13
 14
 15
-16
-17
-18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key">appName</span>: &lt;yourAppName&gt;,
-  <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
-});
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService(); <i class="conum" data-value="2"></i><b>(2)</b>
+const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
+client.connect().then(() =&gt; (                       <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -1246,7 +2008,7 @@ client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello()); <i class="conum" data-value="4"></i><b>(4)</b>
+  console.log(await api.hello());                   <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
@@ -1255,7 +2017,7 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Create the ZetaPush client with a specific appName and optional URL</td>
+<td>Create the ZetaPush client (using automatic injection of <code>appName</code>)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1274,17 +2036,37 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <div class="paragraph">
 <p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
 </div>
-<div class="admonitionblock tip">
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 1. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
+to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
+and the response is parsed [12] and available in your JavaScript.</p>
+</div>
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-<div class="title">List of available built-in services</div>
-<div class="paragraph">
-<p>Unresolved directive in developer-manual.adoc - include::/mnt/harddisk/workspace/celtia/documentation/src/docs/asciidoc/common/cloud-services/summary.adoc[leveloffset=+3]</p>
-</div>
+When you call a <em>cloud function</em> from the client, the result is always a Promise even if the <em>custom cloud function</em> is synchronous
+because everything goes through the network.
 </td>
 </tr>
 </table>
@@ -1293,14 +2075,31 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 </div>
 <div class="sect2">
 <h3 id="_configure_adapt_zetapush_cloud_services"><a class="anchor" href="#_configure_adapt_zetapush_cloud_services"></a>Configure/adapt ZetaPush cloud services</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/51" class="bare">https://github.com/zetapush/documentation/issues/51</a></p>
+<p>This section will describe how to configure a ZetaPush cloud service.
+The configuration will be possible either through console or through worker.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/zetapush/documentation/issues/51" class="bare">https://github.com/zetapush/documentation/issues/51</a></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_run_your_front_locally"><a class="anchor" href="#_run_your_front_locally"></a>Run your front locally</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/52" class="bare">https://github.com/zetapush/documentation/issues/52</a></p>
+<p>As described above, currently running only a front is not possible.
+You need to have a least worker to create and configure ZetaPush services.</p>
+</div>
+<div class="paragraph">
+<p>This section will be later described when this feature will be supported.
+<a href="https://github.com/zetapush/documentation/issues/52" class="bare">https://github.com/zetapush/documentation/issues/52</a></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1322,7 +2121,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <div class="content">
 <img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="946" height="591">
 </div>
-<div class="title">Figure 1. Custom Cloud Service in development phase</div>
+<div class="title">Figure 2. Custom Cloud Service in development phase</div>
 </div>
 <div class="paragraph">
 <p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "locally"</p>
@@ -1334,7 +2133,7 @@ Generally, you will want to put the <strong>business logic</strong> of your appl
 <div class="content">
 <img src="custom-cloud-service-prod.png" alt="custom cloud service prod" width="744" height="251">
 </div>
-<div class="title">Figure 2. Custom Cloud Service in production phase</div>
+<div class="title">Figure 3. Custom Cloud Service in production phase</div>
 </div>
 <div class="paragraph">
 <p>The front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "remotely"</p>
@@ -1811,7 +2610,7 @@ The <code>Stack</code> service has asynchronous methods
 </tr>
 </table>
 </div>
-<div class="listingblock highlight-lines:6-8">
+<div class="listingblock">
 <div class="title">MyStorageService</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
@@ -1848,19 +2647,19 @@ The <code>Stack</code> service has asynchronous methods
 31
 </pre></td>
   <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } from '@zetapush/platform-legacy';
+import { Stack } from '@zetapush/platform-legacy';  <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class MyStorageService {
   private stackName = 'stack-example';
-  constructor(<i class="conum" data-value="2"></i><b>(2)</b>
-    private stack: Stack
-  ) {}
+
+  constructor(private stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
+
   /**
    *  Store data with associated timestamp
    */
   storeWithTimestamp(value: any) {
-    return this.stack.push({
+    return this.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
       stack: this.stackName,
       data: {
         value,
@@ -1873,7 +2672,7 @@ export default class MyStorageService {
    * List all stored data
    */
   getAllData() {
-    return this.stack.list({
+    return this.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
       stack: this.stackName
     });
   }
@@ -1885,11 +2684,19 @@ export default class MyStorageService {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We import the <code>Stack</code> service</td>
+<td>We import the <code>Stack</code> service so that TypeScript knows it</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>stack</code> is an instance of <code>Stack</code></td>
+<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call <code>Stack</code> service to store data (method <code>push</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call <code>Stack</code> service to list data (method <code>list</code>)</td>
 </tr>
 </table>
 </div>
@@ -2027,32 +2834,8 @@ The command that is executed under the hood is:</p>
 </div>
 <div class="sect2">
 <h3 id="_use_a_em_custom_cloud_service_em_in_your_front"><a class="anchor" href="#_use_a_em_custom_cloud_service_em_in_your_front"></a>Use a <em>custom cloud service</em> in your front</h3>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The usage of a <em>custom cloud service</em> and a <em>cloud service</em> provided by ZetaPush is exactly the same process.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>An example is worth a thousand words, so here is an example of usage of services.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-When you call a <em>cloud function</em>, the result is always a Promise.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>In our example we use this <em>custom cloud service</em> named <code>HelloService</code>:</p>
@@ -2067,9 +2850,9 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 4
 5
 </pre></td>
-  <td class="code"><pre>export default class HelloService { <i class="conum" data-value="1"></i><b>(1)</b>
-  hello() {
-    return `Hello World`;
+  <td class="code"><pre>export default class HelloService {       <i class="conum" data-value="1"></i><b>(1)</b>
+  hello() {                               <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World`;                 <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -2079,7 +2862,36 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The service is exported</td>
+<td>The service is exported in roder to be instantiated by ZetaPush <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A <em>custom cloud function</em> name <code>hello</code> is defined in this <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <em>custom cloud function</em> simply returns a message. You can write any code you want here.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can have as many parameters as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+</div>
+</td>
 </tr>
 </table>
 </div>
@@ -2164,19 +2976,13 @@ When you call a <em>cloud function</em>, the result is always a Promise.
 13
 14
 15
-16
-17
-18
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient({ <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key">appName</span>: &lt;yourAppName&gt;,
-  <span class="key">platformUrl</span>: &lt;optionalUrl&gt;
-});
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService(); <i class="conum" data-value="2"></i><b>(2)</b>
+const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
+client.connect().then(() =&gt; (                       <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -2184,7 +2990,7 @@ client.connect().then(() =&gt; ( <i class="conum" data-value="3"></i><b>(3)</b>
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello()); <i class="conum" data-value="4"></i><b>(4)</b>
+  console.log(await api.hello());                   <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
@@ -2193,7 +2999,7 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Create the ZetaPush client with a specific appName and optional URL</td>
+<td>Create the ZetaPush client (using automatic injection of <code>appName</code>)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -2211,6 +3017,41 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 </div>
 <div class="paragraph">
 <p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 4. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
+to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
+and the response is parsed [12] and available in your JavaScript.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you call a <em>cloud function</em> from the client, the result is always a Promise even if the <em>custom cloud function</em> is synchronous
+because everything goes through the network.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2580,7 +3421,7 @@ The command that is executed under the hood is:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 16:01:27 CEST
+Last updated 2018-12-04 14:36:14 UTC
 </div>
 </div>
 </body>

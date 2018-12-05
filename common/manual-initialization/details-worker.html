@@ -100,16 +100,30 @@
 <h2 id="_worker"><a class="anchor" href="#_worker"></a>worker</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By convention, the directory contains the back code. For example you can have this tree structure:</p>
+<p>By convention, the directory <code>worker</code> contains the back code (algorithms, business logic, &#8230;&#8203;). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console">└── worker
-    └── index.ts</code></pre>
+    └── index.ts    <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The file that contains the declaration of the custom cloud service</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There is one main file by worker. By default, this is index.ts but you can change this in the <code>package.json</code> file (property <code>main</code>).</p>
 </div>
 <div class="sect2">
 <h3 id="_basic_example_of_hello_world_custom_cloud_service"><a class="anchor" href="#_basic_example_of_hello_world_custom_cloud_service"></a>Basic example of Hello World (custom cloud service)</h3>
+<div class="paragraph">
+<p>Here is the most simple sample to show how to declare a custom cloud service:</p>
+</div>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
@@ -123,16 +137,48 @@
 7
 8
 </pre></td>
-  <td class="code"><pre>export default class Api {
+  <td class="code"><pre>export default class Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
   /**
    * Get an Hello World string with server side timestamp value
    */
-  hello() {
-    return `Hello World from JavaScript ${Date.now()}`;
+  hello() {                                                   <i class="conum" data-value="2"></i><b>(2)</b>
+    return `Hello World from JavaScript ${Date.now()}`;       <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You export a <code>class</code> with the name you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You define a custom cloud function just by writing a normal function. This example has no parameters but you could have any parameters you want.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>You can write any code you want and return a value (or not).
+In this sample, the function is synchronous but you could also return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+or even use <a href="https://javascript.info/async-await">async/await syntax</a>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>export</code> is the standard way to make anything importable in an other file in TypeScript. You need to export your class so ZetaPush can import it and instantiate it.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -140,7 +186,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-12-04 14:36:14 UTC
 </div>
 </div>
 </body>

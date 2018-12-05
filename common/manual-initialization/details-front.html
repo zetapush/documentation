@@ -100,7 +100,7 @@
 <h2 id="_front"><a class="anchor" href="#_front"></a>front</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By convention, the directory contains the front code. For example you can have this tree structure:</p>
+<p>By convention, the <code>front</code> directory contains the front code (web page or web application). For example you can have this tree structure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -245,13 +245,25 @@
   <span class="tag">&lt;main&gt;</span>
     <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
   <span class="tag">&lt;/main&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Include the ZetaPush client in order to connect to the ZetaPush cloud</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Include the ZetaPush SDK in order to interact with the ZetaPush services</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">front/index.js</div>
@@ -274,11 +286,11 @@
 15
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();   <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService();
+const api = client.createProxyTaskService();      <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; (
+client.connect().then(() =&gt; (                     <i class="conum" data-value="3"></i><b>(3)</b>
   console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
   [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
     node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
@@ -286,10 +298,63 @@ client.connect().then(() =&gt; (
 ));
 <span class="comment">// Handle DOM events</span>
 document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello());
+  console.log(await api.hello());                 <i class="conum" data-value="4"></i><b>(4)</b>
 });</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom cloud service provides some functions that can be called from a client. For example, the custom cloud service exposes a <code>hello</code> function.
+Instead of having to write the signature of the function in the client too, we simply use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>.
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The client is ready, now connect it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in <code>then</code> callback.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>On each click on the button, the code <code>api.hello()</code> is called. It sends a message through the previously opened connection to the ZetaPush cloud. The ZetaPush cloud routes the message
+to the worker that contains the custom cloud service. The function <code>hello()</code> defined in the custom cloud service is called and returns a result.
+The result of this called in then sent back to the client. In this example, the result is displayed in the web browser console (using <code>console.log</code>).</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As you can see, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -297,7 +362,7 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-12-04 14:36:14 UTC
 </div>
 </div>
 </body>

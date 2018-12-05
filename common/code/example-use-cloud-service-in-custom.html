@@ -117,7 +117,7 @@ The <code>Stack</code> service has asynchronous methods
 </tr>
 </table>
 </div>
-<div class="listingblock highlight-lines:6-8">
+<div class="listingblock">
 <div class="title">MyStorageService</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
@@ -154,19 +154,19 @@ The <code>Stack</code> service has asynchronous methods
 31
 </pre></td>
   <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } from '@zetapush/platform-legacy';
+import { Stack } from '@zetapush/platform-legacy';  <i class="conum" data-value="1"></i><b>(1)</b>
 
 @Injectable()
 export default class MyStorageService {
   private stackName = 'stack-example';
-  constructor(<i class="conum" data-value="2"></i><b>(2)</b>
-    private stack: Stack
-  ) {}
+
+  constructor(private stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
+
   /**
    *  Store data with associated timestamp
    */
   storeWithTimestamp(value: any) {
-    return this.stack.push({
+    return this.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
       stack: this.stackName,
       data: {
         value,
@@ -179,7 +179,7 @@ export default class MyStorageService {
    * List all stored data
    */
   getAllData() {
-    return this.stack.list({
+    return this.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
       stack: this.stackName
     });
   }
@@ -191,11 +191,19 @@ export default class MyStorageService {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We import the <code>Stack</code> service</td>
+<td>We import the <code>Stack</code> service so that TypeScript knows it</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>stack</code> is an instance of <code>Stack</code></td>
+<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Call <code>Stack</code> service to store data (method <code>push</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call <code>Stack</code> service to list data (method <code>list</code>)</td>
 </tr>
 </table>
 </div>
@@ -204,7 +212,7 @@ export default class MyStorageService {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-05 11:42:58 CEST
+Last updated 2018-12-04 14:36:14 UTC
 </div>
 </div>
 </body>
