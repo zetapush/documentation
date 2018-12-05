@@ -18,15 +18,12 @@ pipeline {
         dir('target') {
           deleteDir()
         }
-        dir('/tmp/gh-pages') {
-          deleteDir()
-        }
       }
     }
 
     stage('Generate API doc') {
       steps {
-        dir('${WORKSPACE}/src/docs/asciidoc/resources/api') {
+        dir('src/docs/asciidoc/resources/api') {
           deleteDir()
           sh 'echo "<h1>Hello</h1>" >> index.html'
         }
