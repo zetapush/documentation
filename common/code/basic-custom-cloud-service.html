@@ -101,11 +101,11 @@
 7
 8
 </pre></td>
-  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {     <i class="conum" data-value="1"></i><b>(1)</b>
 
-    constructor() {} <i class="conum" data-value="1"></i><b>(1)</b>
+    constructor() {}                       <i class="conum" data-value="2"></i><b>(2)</b>
 
-    helloWorld() { <i class="conum" data-value="2"></i><b>(2)</b>
+    helloWorld() {                         <i class="conum" data-value="3"></i><b>(3)</b>
         <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
     }
 }</pre></td>
@@ -116,11 +116,15 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>You always need to add a constructor in a <em>custom cloud service</em></td>
+<td>A custom cloud service is encapsulated in a JavaScript/TypeScript class. <strong>HelloWorldAsCustomCloudService</strong> is your first <em>custom cloud service</em>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>helloWorld</code> is your first <em>cloud function</em> in your <em>custom cloud service</em> named <strong>HelloWorldAsCustomCloudService</strong></td>
+<td>A class can define a constructor. We will see later why it is important</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>helloWorld</code> is your first <em>custom cloud function</em></td>
 </tr>
 </table>
 </div>
@@ -141,7 +145,7 @@ A <em>cloud function</em> is always asynchronous (with the <em>async</em> keywor
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-06 13:51:27 UTC
 </div>
 </div>
 </body>

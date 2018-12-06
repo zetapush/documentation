@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Prepare your front for using ZetaPush client</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -82,14 +82,50 @@
   </nav>
 </header>
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_prepare_your_front_for_using_zetapush_client">Prepare your front for using ZetaPush client</a></li>
+<li><a href="#_call_code_hello_code_em_cloud_function_em">Call <code>hello</code> <em>cloud function</em></a></li>
+<li><a href="#_call_code_saysomething_code_em_cloud_function_em">Call <code>saySomething</code> <em>cloud function</em></a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In our example we use this <em>custom cloud service</em> named <code>HelloService</code>:</p>
+<p>In this chapter we will see how to consume our <em>cloud functions</em> from a web page.
+At the end of this example, we will have one button to call <code>helloWorld</code> <em>cloud function</em> and
+one section with a message, a number of repetitions and a button to call <code>saySomething</code> <em>cloud function</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mobile applications</div>
+<div class="paragraph">
+<p>Here we show how to create a web page that consumes our <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a mobile application for Android, iOS and Windows Phone as well
+as code for a device. You can use any language you want for the client part.</p>
+</div>
+<div class="paragraph">
+<p>By default we target web because it is currently the most used technology (even to build
+some mobile applications using hybrid technologies).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As a reminder, here is the code of <em>custom cloud service</em> named <code>HelloWorldAsCustomCloudService</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
@@ -100,30 +136,62 @@
 3
 4
 5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
 </pre></td>
-  <td class="code"><pre>export default class HelloService {       <i class="conum" data-value="1"></i><b>(1)</b>
-  hello() {                               <i class="conum" data-value="2"></i><b>(2)</b>
-    return `Hello World`;                 <i class="conum" data-value="3"></i><b>(3)</b>
-  }
+  <td class="code"><pre>export default class HelloWorldAsCustomCloudService {
+    constructor() {}
+
+    helloWorld() {
+        return &quot;Hello World&quot;;
+    }
+
+    saySomething(message: string, times: number) {
+        let fullMessage = '';
+        for(let i=0 ; i&lt;times ; i++) {
+            fullMessage += `${message}\n`
+        }
+        return fullMessage
+    }
 }</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The service is exported in roder to be instantiated by ZetaPush <em>CLI</em></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <em>custom cloud function</em> name <code>hello</code> is defined in this <em>custom cloud service</em>.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <em>custom cloud function</em> simply returns a message. You can write any code you want here.</td>
-</tr>
-</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prepare_your_front_for_using_zetapush_client"><a class="anchor" href="#_prepare_your_front_for_using_zetapush_client"></a>Prepare your front for using ZetaPush client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By convention the directory structure of a ZetaPush application is defined below. You place
+the code of your web page in the <code>front</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="title">Tree structure convention</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">myApp
+├── <em>.zetarc</em>
+├── <em>.gitignore</em>
+├── <strong>front</strong>
+│   ├── ...
+│   ├── <strong>index.js</strong>
+│   └── <strong>index.html</strong>
+├── <em>worker</em>
+│   ├── ...
+│   ├── ...
+│   └── index.ts
+├── <em>package.json</em>
+├── <em>README.md</em>
+└── <em>tsconfig.json</em></code></pre>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -132,22 +200,40 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
+<div class="title">Other front files</div>
 <div class="paragraph">
-<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+<p>For this example, we only need an HTML page and a JavaScript file. Needless to say that you can
+have CSS files, images and anything you want too.</p>
 </div>
 <div class="paragraph">
-<p>A <em>custom cloud function</em> can have as many parameters as you want.</p>
+<p>See more information about <a href="../../reference.html#different_directory_structures">directory structure convention and how to adapt the structure</a>.</p>
 </div>
 <div class="paragraph">
-<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
-You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+<p>Moreover, you are not limited to write pure JavaScript code. You can also use any framework you want:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#develop_with_angular">Angular</a></p>
+</li>
+<li>
+<p><a href="../../reference.html#develop_with_react">React</a></p>
+</li>
+<li>
+<p><a href="../../reference.html#develop_with_vue">Vue.js</a></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Now we create the HTML page with a button to display the <em>HelloWorld</em> message in the console:</p>
+<p>For the example, we create an HTML page with a button to display the <em>HelloWorld</em> message in the page each time
+the button is clicked:</p>
 </div>
 <div class="listingblock">
 <div class="title">front/index.html</div>
@@ -182,11 +268,11 @@ You can also write your code using <a href="https://javascript.info/async-await"
 <span class="tag">&lt;/head&gt;</span>
 
 <span class="tag">&lt;body&gt;</span>
-    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="tag">&lt;ul&gt;</span><span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>                    <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>                             <i class="conum" data-value="2"></i><b>(2)</b>
 
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>                          <i class="conum" data-value="3"></i><b>(3)</b>
 <span class="tag">&lt;/body&gt;</span>
 
 <span class="tag">&lt;/html&gt;</span></pre></td>
@@ -197,18 +283,104 @@ You can also write your code using <a href="https://javascript.info/async-await"
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We call <code>hello()</code>, which in turns calls our <em>custom cloud service</em></td>
+<td>We call <code>hello()</code> function that is defined later in <code>index.js</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Dependency to ZetaPush Core</td>
+<td>Define a node that will display received messages</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We include the <code>client</code> module provided by ZetaPush</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We include a JavaScript file to distinguish HTML code from JavaScript code. All could be written in the HTML</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Finally, we have the front-side code call our services:</p>
+<p>Then, in order to interact with ZetaPush cloud, we need to create a client instance
+and to connect to the cloud:</p>
 </div>
 <div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="comment">// Handle connection</span>
+client.connect()                                    <i class="conum" data-value="3"></i><b>(3)</b>
+  .then(() =&gt; {                                     <i class="conum" data-value="4"></i><b>(4)</b>
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
+      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
+  });</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom cloud service provides some functions that can be called from a client. For example, the <em>custom cloud service</em> exposes <code>helloWorld</code> and <code>saySomething</code> <em>cloud functions</em>.
+Instead of having to write the signature of these functions in the client too, we simply use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>.
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The client is ready, now connects it to the ZetaPush cloud.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Once the connection is established, the Promise is resolved and you can write some code in <code>then</code> callback.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Available client types</div>
+<div class="paragraph">
+<p><code>ZetaPushClient</code> provides several factories to get instances of a client according to
+what you want to do. Here we are using a <code>WeakClient</code> instance but there are other
+<a href="../../reference.html#client_types">client types</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_call_code_hello_code_em_cloud_function_em"><a class="anchor" href="#_call_code_hello_code_em_cloud_function_em"></a>Call <code>hello</code> <em>cloud function</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our client is ready and now we want to call <em>cloud function</em> named <code>helloWorld</code>, we add the following code:</p>
+</div>
+<div class="listingblock highlight-lines:13-16">
 <div class="title">front/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
@@ -227,22 +399,24 @@ You can also write your code using <a href="https://javascript.info/async-await"
 13
 14
 15
+16
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
-const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
 <span class="comment">// Create a proxy to invoked worker methods</span>
-const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
+const api = client.createProxyTaskService();
 <span class="comment">// Handle connection</span>
-client.connect().then(() =&gt; (                       <i class="conum" data-value="3"></i><b>(3)</b>
-  console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>),
-  [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
-    node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>),
-  )
-));
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
+      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
+  });
 <span class="comment">// Handle DOM events</span>
-document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
-  console.log(await api.hello());                   <i class="conum" data-value="4"></i><b>(4)</b>
-});</pre></td>
+async <span class="keyword">function</span> <span class="function">hello</span>() {                                                                                <i class="conum" data-value="1"></i><b>(1)</b>
+  const messageFromCloudFunction = await api.helloWorld();                                        <i class="conum" data-value="2"></i><b>(2)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span> <i class="conum" data-value="3"></i><b>(3)</b>
+}</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
@@ -250,53 +424,188 @@ document.querySelector(<span class="string"><span class="delimiter">'</span><spa
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Create the ZetaPush client (using automatic injection of <code>appName</code>)</td>
+<td>Each time a user clicks on the button defined in the HTML, this method is called.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>API to access our custom service(s)</td>
+<td>Calls the <code>helloWorld</code> <em>cloud function</em> and store the result in a variable.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Connection to the ZetaPush platform</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Call our <em>cloud function</em> and display the result</td>
+<td>Add a new list item in the HTML page</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Now when we click the button, "Hello World" is displayed on the page.</strong></p>
+<p>Before running this sample, we improve our front in order to also understand
+how to call a <em>cloud function</em> that has parameters.</p>
 </div>
-<div class="imageblock center">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_call_code_saysomething_code_em_cloud_function_em"><a class="anchor" href="#_call_code_saysomething_code_em_cloud_function_em"></a>Call <code>saySomething</code> <em>cloud function</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We add two inputs to be able to send values to the <code>saySomething</code> <em>cloud function</em>.
+The first input is a text to repeat. The second input is the number of times to repeat the message.
+Here is the updated code:</p>
+</div>
+<div class="listingblock highlight-lines:12-16">
+<div class="title">front/index.html</div>
 <div class="content">
-<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#ccc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Message: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>             <i class="conum" data-value="1"></i><b>(1)</b>
+      Repeat: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">repeat-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>     <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>saySeveralTimes()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>say something<span class="tag">&lt;/button&gt;</span>    <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
 </div>
-<div class="title">Figure 1. How it works ?</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The first input to enter a message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The second input to enter the number of times to repeat the message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A new button to call <code>saySeveralTimes()</code> function defined in <code>index.js</code></td>
+</tr>
+</table>
+</div>
+<div class="listingblock highlight-lines:16-22">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
+      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
+  });
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {                                                      <i class="conum" data-value="1"></i><b>(1)</b>
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;                 <i class="conum" data-value="2"></i><b>(2)</b>
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;                   <i class="conum" data-value="3"></i><b>(3)</b>
+  const messages = await api.saySomething(message, parseInt(repeat));             <i class="conum" data-value="4"></i><b>(4)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messages}<span class="tag">&lt;/li&gt;</span><span class="error">`</span> <i class="conum" data-value="5"></i><b>(5)</b>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each time a user clicks on the button 'say something' defined in the HTML, this method is called.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Reads the value of the input for getting the message.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Reads the value of the input for getting the number of times to display the message.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Calls <code>saySomething</code> <em>cloud function</em> with parameters. Note that as second parameter is a number, we have to convert the string from
+the input to a number using <code>parseInt</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Add a new list item in the HTML page containing the repeated messages</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
-</div>
-<div class="paragraph">
-<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
-</div>
-<div class="paragraph">
-<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
-remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
-and calls the <code>hello</code> <em>cloud function</em> [7].</p>
-</div>
-<div class="paragraph">
-<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
-to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
-and the response is parsed [12] and available in your JavaScript.</p>
+<p>Now everything is ready to run our application.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-04 14:36:14 UTC
+Last updated 2018-12-06 13:51:27 UTC
 </div>
 </div>
 </body>

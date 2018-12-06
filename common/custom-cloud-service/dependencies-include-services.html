@@ -89,20 +89,13 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency injection</a> is a powerful software technique that is
+totally managed by the worker.</p>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Install @zetapush/core</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
-</tr></table></code></pre>
-</div>
+<p>You don&#8217;t need to manage the creation of neither <em>built-in cloud services</em> nor your <em>custom cloud services</em>.
+You just indicate in your code that you need a dependency and ZetaPush instantiates it
+for you. The instantiated dependency is then injected everywhere the dependency is needed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -117,25 +110,27 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </table>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/platform-legacy</code> in order to use <code>Stack</code> <em>cloud services</em>.</p>
+<p>To mark a <em>custom cloud service</em> injectable (meaning that can be automatically created by ZetaPush
+and then injected everywhere the dependency is aksed),
+you need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code> decorator.</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/platform-legacy</div>
+<div class="title">Install @zetapush/core using npm</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service, you simply need to write:</p>
+<p>Once the npm package is installed, you can import <code>Injectable</code> decorator and place it on your <em>custom cloud service</em>:</p>
 </div>
-<div class="listingblock highlight-lines:6">
-<div class="title">Import service</div>
+<div class="listingblock highlight-lines:1,3">
+<div class="title">Use @Injectable on a <em>custom cloud service</em></div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -146,16 +141,32 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 8
 9
 10
+11
+12
+13
+14
+15
+16
+17
+18
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } = require('@zetapush/platform-legacy'); <i class="conum" data-value="1"></i><b>(1)</b>
-import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;            <i class="conum" data-value="1"></i><b>(1)</b>
 
-@Injectable()
-class MyOwnService {
-    constructor(private myOtherService: MyOtherService, private stack: Stack) { <i class="conum" data-value="3"></i><b>(3)</b>
-        ...
-    }
+<span class="error">@</span>Injectable()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  constructor() {}
+
+  helloWorld() {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+  }
+
+  saySomething(message: string, <span class="key">times</span>: number) {
+      let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+      <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+          fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+      }
+      <span class="keyword">return</span> fullMessage
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -164,27 +175,29 @@ class MyOwnService {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We import the <code>Inject</code> object and a service (<em>Stack</em>) provided by ZetaPush</td>
+<td>Import the ZetaPush module that contains core features for <em>custom cloud services</em> such as <code>injectable</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We import an other custom cloud service</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We use instances of our injected services in our service throught the constructor</td>
+<td>Mark you <em>custom cloud service</em> candidate for dependency injection</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similarily</p>
+<p>Here we just indicate that this <em>custom cloud service</em> can have dependencies that
+will be automatically injected and also that this <em>custom cloud service</em> can be injected
+anywhere it is needed.</p>
+</div>
+<div class="paragraph">
+<p>In the next sections, we will see in concrete terms how to use it to reuse either a <em>built-in cloud service</em>
+or one of your <em>custom cloud services</em>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-06 13:51:27 UTC
 </div>
 </div>
 </body>

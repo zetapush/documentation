@@ -97,20 +97,13 @@
 <h2 id="_dependency_injection"><a class="anchor" href="#_dependency_injection"></a>Dependency injection</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First of all, if you want to include some services (custom or not), you need to use the <em>dependency injection</em> of ZetaPush. This will ease the injection of your dependencies.</p>
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency injection</a> is a powerful software technique that is
+totally managed by the worker.</p>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code>. This object will resolve the dependency injection of <em>cloud services</em> and <em>custom cloud services</em>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Install @zetapush/core</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
-</tr></table></code></pre>
-</div>
+<p>You don&#8217;t need to manage the creation of neither <em>built-in cloud services</em> nor your <em>custom cloud services</em>.
+You just indicate in your code that you need a dependency and ZetaPush instantiates it
+for you. The instantiated dependency is then injected everywhere the dependency is needed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -125,25 +118,27 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 </table>
 </div>
 <div class="paragraph">
-<p>You need to import the package <code>@zetapush/platform-legacy</code> in order to use <code>Stack</code> <em>cloud services</em>.</p>
+<p>To mark a <em>custom cloud service</em> injectable (meaning that can be automatically created by ZetaPush
+and then injected everywhere the dependency is aksed),
+you need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code> decorator.</p>
 </div>
 <div class="listingblock">
-<div class="title">Install @zetapush/platform-legacy</div>
+<div class="title">Install @zetapush/core using npm</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, to import an other service, you simply need to write:</p>
+<p>Once the npm package is installed, you can import <code>Injectable</code> decorator and place it on your <em>custom cloud service</em>:</p>
 </div>
-<div class="listingblock highlight-lines:6">
-<div class="title">Import service</div>
+<div class="listingblock highlight-lines:1,3">
+<div class="title">Use @Injectable on a <em>custom cloud service</em></div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -154,16 +149,32 @@ The dependency injection of ZetaPush uses Angular <a href="https://github.com/mg
 8
 9
 10
+11
+12
+13
+14
+15
+16
+17
+18
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } = require('@zetapush/platform-legacy'); <i class="conum" data-value="1"></i><b>(1)</b>
-import { MyOtherService } from './services'; <i class="conum" data-value="2"></i><b>(2)</b>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;            <i class="conum" data-value="1"></i><b>(1)</b>
 
-@Injectable()
-class MyOwnService {
-    constructor(private myOtherService: MyOtherService, private stack: Stack) { <i class="conum" data-value="3"></i><b>(3)</b>
-        ...
-    }
+<span class="error">@</span>Injectable()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  constructor() {}
+
+  helloWorld() {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+  }
+
+  saySomething(message: string, <span class="key">times</span>: number) {
+      let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+      <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+          fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+      }
+      <span class="keyword">return</span> fullMessage
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
@@ -172,20 +183,22 @@ class MyOwnService {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We import the <code>Inject</code> object and a service (<em>Stack</em>) provided by ZetaPush</td>
+<td>Import the ZetaPush module that contains core features for <em>custom cloud services</em> such as <code>injectable</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We import an other custom cloud service</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We use instances of our injected services in our service throught the constructor</td>
+<td>Mark you <em>custom cloud service</em> candidate for dependency injection</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you import a <em>custom cloud service</em> or a <em>cloud service</em> provided by ZetaPush, you use both similarily</p>
+<p>Here we just indicate that this <em>custom cloud service</em> can have dependencies that
+will be automatically injected and also that this <em>custom cloud service</em> can be injected
+anywhere it is needed.</p>
+</div>
+<div class="paragraph">
+<p>In the next sections, we will see in concrete terms how to use it to reuse either a <em>built-in cloud service</em>
+or one of your <em>custom cloud services</em>.</p>
 </div>
 </div>
 </div>
@@ -193,14 +206,40 @@ class MyOwnService {
 <h2 id="_use_imported_cloud_services"><a class="anchor" href="#_use_imported_cloud_services"></a>Use imported cloud services</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you have imported the services, you can use them.</p>
+<p>ZetaPush <em>built-in cloud services</em> are available in <code>@zetapush/platform-legacy</code> module.
+Add this module to your <code>package.json</code> by running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Install @zetapush/platform-legacy using npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">List of <em>cloud services</em> provided by ZetaPush</div>
+<div class="paragraph">
+<p>As a reminder, here is the <a href="../../reference.html#builtin_cloud_services">list of <em>built-in cloud services</em></a></p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>In this example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
+<p>In the following example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
 In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.</p>
 </div>
 <div class="paragraph">
-<p>For this the <code>Stack</code> service provides some methods:</p>
+<p>To do this, the <code>Stack</code> service already provides some methods:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -212,22 +251,10 @@ In our use-case, we want to put some data associated with the current timestamp 
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>Stack</code> service has asynchronous methods
-</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
 <div class="title">MyStorageService</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -260,34 +287,34 @@ The <code>Stack</code> service has asynchronous methods
 30
 31
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } from '@zetapush/platform-legacy';  <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;  <i class="conum" data-value="1"></i><b>(1)</b>
 
-@Injectable()
-export default class MyStorageService {
-  private stackName = 'stack-example';
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyStorageService {
+  <span class="reserved">private</span> stackName = <span class="string"><span class="delimiter">'</span><span class="content">stack-example</span><span class="delimiter">'</span></span>;
 
-  constructor(private stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
+  constructor(<span class="reserved">private</span> stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
 
-  /**
+  <span class="comment">/**
    *  Store data with associated timestamp
-   */
+   */</span>
   storeWithTimestamp(value: any) {
-    return this.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
-      stack: this.stackName,
-      data: {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">stack</span>: <span class="local-variable">this</span>.stackName,
+      <span class="key">data</span>: {
         value,
-        timestamp: Date.now()
+        <span class="key">timestamp</span>: Date.now()
       }
     });
   }
 
-  /**
+  <span class="comment">/**
    * List all stored data
-   */
+   */</span>
   getAllData() {
-    return this.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
-      stack: this.stackName
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="key">stack</span>: <span class="local-variable">this</span>.stackName
     });
   }
 }</pre></td>
@@ -302,17 +329,50 @@ export default class MyStorageService {
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>)</td>
+<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>).
+Here we use the <a href="https://kendaleiv.com/typescript-constructor-assignment-public-and-private-keywords/" target="_blank" rel="noopener">shorthand syntax</a> for declaring a constructor parameter as well as a property.
+So the property <code>this.stack</code> is defined and is initialized with <code>stack</code> parameter.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Call <code>Stack</code> service to store data (method <code>push</code>)</td>
+<td>Calls the <code>Stack</code> service to store data (method <code>push</code>)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Call <code>Stack</code> service to list data (method <code>list</code>)</td>
+<td>Calls the <code>Stack</code> service to list data (method <code>list</code>)</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>The example defines a <em>custom cloud service</em> named <code>MyStorageService</code> that provides two <em>cloud functions</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>storeWithTimestamp</code> that receives a value from a client and calls the <code>Stack</code> service to
+store received value (<code>value</code> parameter) as well as the current timestamp (using <code>Date.now()</code>)</p>
+</li>
+<li>
+<p><code>getAllData</code> that has no parameters and calls <code>Stack</code> service to get all previsouly stored
+pairs of <code>&lt;value, timestamp&gt;</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The most important part to understand is in the <code>constructor</code>. As described before,
+the example uses dependency injection. You simply tell ZetaPush that you need a dependency of type <code>Stack</code>.
+You don&#8217;t create it in your <em>custom cloud service</em> because it is not the responsibility of
+your <em>custom cloud service</em> to create the <code>Stack</code> service. Instead, you let ZetaPush
+handle the creation. Thanks to <code>@Injectable</code> decorator, ZetaPush detects that you have
+a <em>custom cloud services</em> with needed dependencies. ZetaPush understands that you need a <code>Stack</code>
+instance so it instantiates it before instantiating your <em>custom cloud service</em>. Then
+ZetaPush instantiates your <em>custom cloud service</em> by providing, as the first argument of your
+constructor here, the instance of <code>Stack</code>.</p>
+</div>
+<div class="paragraph">
+<p>This behavior avoids you to have complex code to instantiate <em>built-in cloud services</em>. Moreover,
+if you have several <em>custom cloud services</em> that are using the <code>Stack</code> service, thanks to
+dependency injection, there will be only one instance shared between your <em>custom cloud services</em>.</p>
 </div>
 </div>
 </div>

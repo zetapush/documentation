@@ -89,21 +89,13 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>When you define a <em>custom cloud service</em> that you want to expose to the client,
-you need to declare it. There are 2 cases:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Only one <em>custom cloud service</em> exposed</p>
-</li>
-<li>
-<p>Many <em>custom cloud services</em> exposed</p>
-</li>
-</ul>
+<p>You have now defined a <em>custom cloud service</em> with one or several <em>cloud function(s)</em>. You
+have also exposed your <em>custom cloud service</em>. So it is ready to be called from a client.
+Your client is also ready to call the <em>custom cloud service</em>.</p>
 </div>
 <div class="paragraph">
-<p>In this section we only address one <em>custom cloud service</em> exposed.</p>
+<p>The next step is to start the project (both front and worker) using the ZetaPush <em>CLI</em>
+on your computer.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -112,81 +104,46 @@ you need to declare it. There are 2 cases:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">How to expose several <em>custom cloud services</em></div>
+<div class="title">Npm script aliases</div>
 <div class="paragraph">
-<p>You can also learn <a href="../../reference.html#expose_several_custom_cloud_services">how to expose several <em>custom cloud services</em></a> in the advanced sections.</p>
+<p>Npm provides a handy feature
+to run scripts provided by dependencies without needing to change your computer settings or
+install the tool. ZetaPush defines npm <a href="https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378" target="_blank" rel="noopener">script aliases</a>
+to run the ZetaPush <em>CLI</em> through npm.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../../developer-manual.html#_using_cli">for more information about the ways of using the CLI</a>.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>We follow npm conventions to indicate the entry point of your worker. Indeed, the <code>package.json</code> defines a property named <code>main</code>.
-We use this property to indicate which file is the main file that declares the exposed <em>custom cloud service</em>.
-By default, the main file is named <code>index.ts</code> and this file is placed in <code>worker</code> directory. So the <code>main</code>
-property is by default <code>worker/index.ts</code>.</p>
+<p>To start your worker and you front using the ZetaPush <em>CLI</em> through npm, you simply run:</p>
 </div>
-<div class="imageblock center">
+<div class="listingblock">
+<div class="title">Start application (front and custom cloud services)</div>
 <div class="content">
-<img src="custom-cloud-service-entry-point.png" alt="custom cloud service entry point" width="678" height="161">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Now that your <em>custom cloud service</em> is marked as the entry point, it can be exposed by ZetaPush.
-However you still have a little change to make on your code:</p>
-</div>
-<div class="listingblock highlight-lines:1">
-<div class="title">A more realistic <em>cloud function</em></div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td>
-  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {                    <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
-    constructor() {}
-
-    helloWorld() {
-        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
-    }
-
-    saySomething(message: string, <span class="key">times</span>: number) {
-        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
-        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
-            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
-        }
-        <span class="keyword">return</span> fullMessage
-    }
-}</pre></td>
-</tr></table></code></pre>
-</div>
-</div>
-<div class="colist arabic">
+<div class="admonitionblock tip">
 <table>
 <tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>export</code>: <a href="https://www.typescriptlang.org/docs/handbook/modules.html" target="_blank" rel="noopener">this is required by TypeScript</a>.
-In fact, declaring a class in a file makes it private.
-It means that if you have another <code>.ts</code> file and you want to import <code>HelloWorldAsCustomCloudService</code> declaration,
-it won&#8217;t be possible without <code>export</code> keyword. This is for code encapsulation.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>default</code>: <a href="https://www.typescriptlang.org/docs/handbook/modules.html#default-exports">TypeScript provides this keyword</a>.
-When exposing only one <em>custom cloud service</em>, <code>default</code> tells the worker that there is only one class (only one
-<em>custom cloud service</em> defined in the <code>index.ts</code>). So the worker can directly analyze it and instantiate it.</td>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The command that is executed under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
 </tr>
 </table>
 </div>
@@ -197,21 +154,94 @@ When exposing only one <em>custom cloud service</em>, <code>default</code> tells
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="title">How to expose several <em>custom cloud services</em></div>
+<div class="title">Run only the worker</div>
 <div class="paragraph">
-<p>As seen above, you can also learn <a href="../../reference.html#expose_several_custom_cloud_services">how to expose several <em>custom cloud services</em></a> in the advanced sections.</p>
+<p>It is also possible to <a href="../../reference.html#run_worker_only">run only your worker</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Automatic injection of ZetaPush information in your front</div>
+<div class="paragraph">
+<p>If you look closely to the code we have written, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Now your <em>custom cloud service</em> can be loaded by the ZetaPush worker and your <em>custom cloud service</em>
-is automatically exposed.
-It means that now a client can call the <em>cloud functions</em> defined in your <em>custom cloud service</em>.</p>
+<p><strong>Now when we click the "hello" button, "Hello World" is displayed on the page.</strong></p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 1. How it works ?</div>
 </div>
 <div class="paragraph">
-<p>The next section shows how to call a <em>cloud function</em> from a web page using pure JavaScript.</p>
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
+to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
+and the response is parsed [12] and available in your JavaScript.</p>
+</div>
+<div class="paragraph">
+<p><strong>You can also try to enter a message and a number of repetitions and hit the "say something" button.</strong></p>
+</div>
+<div class="paragraph">
+<p>The behavior is exactly the same. This time a message is sent to call the <em>cloud function</em> with also the parameters.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Serialization/deserailization between client and <em>custom cloud service</em></div>
+<div class="paragraph">
+<p>When you call a <em>cloud function</em> from the client, under the hood, the values are serialized in JSON.
+This is understandable because everything goes through the network.</p>
+</div>
+<div class="paragraph">
+<p>On the worker side, everything is deserialized by the worker and your <em>custom cloud service</em>
+receives the values as they were written in the front side.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

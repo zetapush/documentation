@@ -90,19 +90,47 @@
 <div class="sectionbody">
 <div class="imageblock center">
 <div class="content">
-<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="946" height="591">
+<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="709" height="430">
 </div>
 <div class="title">Figure 1. Custom Cloud Service in development phase</div>
 </div>
 <div class="paragraph">
-<p>The worker is running "locally" and interacts with the existing <em>cloud services</em> on the ZetaPush platform and the front code interacts <strong>only</strong> with the <em>custom cloud services</em> that are running "locally"</p>
+<p>Both front and worker are running locally. The front interacts with <em>custom cloud services</em> contained in the worker through
+ZetaPush Cloud.
+As ZetaPush Cloud provides bidirectional connection, the <em>custom cloud services</em> can also interact with the front through
+ZetaPush Cloud too.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can interact with <em>built-in cloud services</em> provided by ZetaPush.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you start using ZetaPush, you only develop locally so from your point of vue,
+your front seems to directly interact with your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>In fact, all messages go through the Internet and ZetaPush Cloud.
+It means that a published front can interact with a worker that is running locally and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../../reference.html#mix_local_and_remote">how to mix local worker with worker running in cloud</a></p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-06 13:51:27 UTC
 </div>
 </div>
 </body>
