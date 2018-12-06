@@ -3,17 +3,20 @@ include::{docdir}/variables.adoc[]
 
 = FAQ
 
-[qanda]
-Do I have to develop _custom cloud services_ ?::
-  No. Developing _custom cloud services_ is not required. You can use _cloud services_ that are already provided by ZetaPush. You may need to develop _custom cloud services_ in different situations:
+=== Do I have to develop _custom cloud services_ ?
+
+No. Developing _custom cloud services_ is not required. You can use _cloud services_ that are already provided by ZetaPush. You may need to develop _custom cloud services_ in different situations:
   - You have several devices so you want to mutualize your business code
   - ZetaPush services are not fully compatible with your business needs
 
-Can I use ZetaPush CLI with and npm version lower than 6 ?::
+=== Can I use ZetaPush CLI with and npm version lower than 6 ?
+
 include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]
 
-What is the NodeJS version used to run my worker remotely ?::
-  Your worker run with a `NodeJS` lts/dubnium version.
+=== What is the NodeJS version used to run my worker remotely ?
 
-Can I use a NodeJS version lower than 10 ?::
-  Using a `NodeJS` version different from the remote one is not currently supported.
+Your worker run with a `NodeJS` lts/dubnium version.
+
+=== Can I use a NodeJS version lower than 10 ?
+
+Using a `NodeJS` version different from the remote one is not currently supported.
