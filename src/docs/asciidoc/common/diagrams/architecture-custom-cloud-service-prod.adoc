@@ -10,25 +10,36 @@ skinparam component {
     ArrowFontSize 14
 }
 
-node "ZetaPush platform" {
-    rectangle "application" {
-        node "front"
-        node "worker"
+cloud "ZetaPush Cloud" as zp {
+    queue "bidirectional connection" as connection
+
+    rectangle "worker" {
+        node "custom cloud service 1" as customCloudService1
+        node "custom cloud service 2" as customCloudService2
     }
 
-    note left of [worker]
-        Back code with
-        custom cloud services that
-        interacts with cloud services
-    end note
+    rectangle "front" {
+            node "client" as front1
+    }
 
-    note right of [front]
-        Front code that use
-        only the deployed worker
-    end note
-
-    [worker] <.> [front]
+    rectangle "cloud services" {
+        node "cloud service 1" as cloudService1
+        node "cloud service 2" as cloudService2
+        node "cloud service 3" as cloudService3
+    }
 }
+
+
+front1 <..> connection
+customCloudService1 <..> connection
+customCloudService2 <..> connection
+cloudService1 <.up.> connection
+cloudService2 <.up.> connection
+cloudService3 <.up.> connection
 ....
 
-The front code interacts *only* with the _custom cloud services_ that are running "remotely"
+Once published, everything runs in the ZetaPush Cloud. However the behavior is the same.
+Every interaction between the front and _custom cloud services_ goes through the ZetaPush Cloud.
+
+The only main difference is that ZetaPush Cloud manages the hosting, the scalability and the
+high availability for you.

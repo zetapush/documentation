@@ -1,14 +1,93 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-When you create a _custom cloud service_ that you want to expose to the client, you need to declare it. You have 2 cases:
+When you define a _custom cloud service_ that you want to expose to the client, 
+you need to declare it. There are 2 cases:
 
 * Only one _custom cloud service_ exposed
 * Many _custom cloud services_ exposed 
 
-NOTE: The `package.json` has a property named `main`. It defines the file where the _custom cloud services_ are exposed. The following examples define them in `worker/index.ts`.
+In this section we only address one _custom cloud service_ exposed. 
+
+.How to expose several _custom cloud services_
+[NOTE]
+====
+You can also learn <<reference.adoc#expose_several_custom_cloud_services, how to expose several _custom cloud services_>> in the advanced sections.
+====
+
+We follow npm conventions to indicate the entry point of your worker. Indeed, the `package.json` defines a property named `main`.
+We use this property to indicate which file is the main file that declares the exposed _custom cloud service_.
+By default, the main file is named `index.ts` and this file is placed in `worker` directory. So the `main`
+property is by default `worker/index.ts`.
+
+[plantuml, custom-cloud-service-entry-point, png, role="center"]     
+....
+file packagejson [
+<b>package.json</b>
+====
+{
+\t"name": "<name of your npm module>",
+\t"version" "<version of your module>",
+\t<b>"main": "worker/index.ts"</b>,
+\t...
+}    
+]
+
+folder worker [
+├── <b>index.ts</b>
+├── file1.ts
+├── file2.ts
+├── ...
+└── fileN.ts
+]
+
+packagejson -> worker: indicates entry point file 
+....
+
+Now that your _custom cloud service_ is marked as the entry point, it can be exposed by ZetaPush.
+However you still have a little change to make on your code:
+
+.A more realistic _cloud function_
+[source, javascript, linenums, role="highlight-lines:1"]
+----
+export default class HelloWorldAsCustomCloudService {                   // <1> <2>
+    constructor() {}                       
+
+    helloWorld() {                         
+        return "Hello World";
+    }
+
+    saySomething(message: string, times: number) { 
+        let fullMessage = '';
+        for(let i=0 ; i<times ; i++) {             
+            fullMessage += `${message}\n`
+        }
+        return fullMessage                 
+    }
+}
+----
+<1> `export`: https://www.typescriptlang.org/docs/handbook/modules.html[this is required by TypeScript^]. 
+In fact, declaring a class in a file makes it private.
+It means that if you have another `.ts` file and you want to import `HelloWorldAsCustomCloudService` declaration,
+it won't be possible without `export` keyword. This is for code encapsulation.
+<2> `default`: https://www.typescriptlang.org/docs/handbook/modules.html#default-exports[TypeScript provides this keyword]. 
+When exposing only one _custom cloud service_, `default` tells the worker that there is only one class (only one
+_custom cloud service_ defined in the `index.ts`). So the worker can directly analyze it and instantiate it.
+
+.How to expose several _custom cloud services_
+[TIP]
+====
+As seen above, you can also learn <<reference.adoc#expose_several_custom_cloud_services, how to expose several _custom cloud services_>> in the advanced sections.
+====
+
+Now your _custom cloud service_ can be loaded by the ZetaPush worker and your _custom cloud service_
+is automatically exposed.
+It means that now a client can call the _cloud functions_ defined in your _custom cloud service_.
+
+The next section shows how to call a _cloud function_ from a web page using pure JavaScript.
 
 
+////
 == Namespace
 
 When you call a _cloud function_ from a _custom cloud service_, you can specify a _namespace_ (if you have 2 _cloud functions_ on 2 differents _custom cloud services_). 
@@ -54,3 +133,4 @@ include::{docdir}/common/code/expose-one-custom-cloud-service.adoc[leveloffset=+
 In this example, we want to expose 2 _custom cloud services_. In this case, we need to specify the namespace of each _custom cloud service_:
 
 include::{docdir}/common/code/expose-many-custom-cloud-services.adoc[leveloffset=+1]
+////

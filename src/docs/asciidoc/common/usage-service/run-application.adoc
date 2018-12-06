@@ -1,0 +1,105 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You have now defined a _custom cloud service_ with one or several _cloud function(s)_. You 
+have also exposed your _custom cloud service_. So it is ready to be called from a client.
+Your client is also ready to call the _custom cloud service_.
+
+The next step is to start the project (both front and worker) using the ZetaPush _CLI_
+on your computer. 
+
+.Npm script aliases
+[NOTE]
+====
+Npm provides a handy feature
+to run scripts provided by dependencies without needing to change your computer settings or
+install the tool. ZetaPush defines npm https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378[script aliases^]
+to run the ZetaPush _CLI_ through npm.
+
+See <<developer-manual.adoc#_using_cli, for more information about the ways of using the CLI>>.
+====
+
+To start your worker and you front using the ZetaPush _CLI_ through npm, you simply run:
+
+include::{docdir}/common/cli/run-project.adoc[leveloffset=+3]
+
+.Run only the worker
+[TIP]
+====
+It is also possible to <<reference.adoc#run_worker_only, run only your worker>>.
+====
+
+
+.Automatic injection of ZetaPush information in your front
+[IMPORTANT]
+====
+If you look closely to the code we have written, there is no information about your application at all in this sample code (the `appName` defined in `.zetarc` is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the `appName`.
+
+The ZetaPush _CLI_ automatically injects the `appName` from `.zetarc`.
+
+When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the `appName`. 
+This information is then automatically read by the ZetaPush client.
+
+When your project is run in the cloud, the same principle is applied.
+
+This way, you just use `.zetarc` file for your credentials and `appName` and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush `appName` per developer.
+====
+
+
+*Now when we click the "hello" button, "Hello World" is displayed on the page.*
+
+
+.How it works ?
+[plantuml, call-zetapush-cloud-service, png, role="center"]     
+....
+participant client order 10
+participant "ZetaPush cloud" order 20
+participant worker order 30
+participant "custom cloud service" order 40
+
+box "Initialization"
+  autonumber
+  worker --> "ZetaPush cloud" : Establish connection
+  "ZetaPush cloud" --> worker : connection established
+
+  client --> "ZetaPush cloud" : Establish connection
+  "ZetaPush cloud" --> client : connection established
+end box
+
+client --> "ZetaPush cloud" : send message to call 'hello' in worker
+"ZetaPush cloud" --> worker : send message to call 'hello'
+worker -> "custom cloud service" : hello()
+"custom cloud service" -\ worker : "Hello World"
+worker --> "ZetaPush cloud" : send message "Hello World"
+"ZetaPush cloud" --> client : send message "Hello World"
+client -> client : display message
+....
+
+When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].
+
+Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].
+
+When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
+and calls the `hello` _cloud function_ [7].
+
+The _cloud function_ generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
+to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
+and the response is parsed [12] and available in your JavaScript.
+
+*You can also try to enter a message and a number of repetitions and hit the "say something" button.*
+
+The behavior is exactly the same. This time a message is sent to call the _cloud function_ with also the parameters.
+
+
+.Serialization/deserailization between client and _custom cloud service_
+[NOTE]
+====
+When you call a _cloud function_ from the client, under the hood, the values are serialized in JSON.
+This is understandable because everything goes through the network.
+
+On the worker side, everything is deserialized by the worker and your _custom cloud service_
+receives the values as they were written in the front side.
+====

@@ -24,7 +24,7 @@ document.querySelector('.js-Hello').addEventListener('click', async () => {
 <2> Custom cloud service provides some functions that can be called from a client. For example, the custom cloud service exposes a `hello` function. 
 Instead of having to write the signature of the function in the client too, we simply use a JavaScript link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy[Proxy].
 Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.
-<3> The client is ready, now connect it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in `then` callback.
+<3> The client is ready, now connects it to the ZetaPush cloud. Once the connection is established, the Promise is resolved and you can write some code in `then` callback.
 <4> On each click on the button, the code `api.hello()` is called. It sends a message through the previously opened connection to the ZetaPush cloud. The ZetaPush cloud routes the message
 to the worker that contains the custom cloud service. The function `hello()` defined in the custom cloud service is called and returns a result.
 The result of this called in then sent back to the client. In this example, the result is displayed in the web browser console (using `console.log`).

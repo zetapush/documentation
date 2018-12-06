@@ -1,18 +1,60 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-First of all, if you want to include some services (custom or not), you need to use the _dependency injection_ of ZetaPush. This will ease the injection of your dependencies.
+link:https://en.wikipedia.org/wiki/Dependency_injection[Dependency injection^] is a powerful software technique that is
+totally managed by the worker.
 
-You need to import the package `@zetapush/core` in order to use `Injectable`. This object will resolve the dependency injection of _cloud services_ and _custom cloud services_.
+You don't need to manage the creation of neither _built-in cloud services_ nor your _custom cloud services_.
+You just indicate in your code that you need a dependency and ZetaPush instantiates it
+for you. The instantiated dependency is then injected everywhere the dependency is needed.
 
-.Install @zetapush/core
+NOTE: The dependency injection of ZetaPush uses Angular https://github.com/mgechev/injection-js[injection-js^] library.
+
+To mark a _custom cloud service_ injectable (meaning that can be automatically created by ZetaPush
+and then injected everywhere the dependency is aksed), 
+you need to import the package `@zetapush/core` in order to use `Injectable` decorator.
+
+.Install @zetapush/core using npm
 [source, console, linenums]
 ----
 $ npm install --save @zetapush/core
 ----
 
-NOTE: The dependency injection of ZetaPush uses Angular https://github.com/mgechev/injection-js[injection-js^] library.
+Once the npm package is installed, you can import `Injectable` decorator and place it on your _custom cloud service_:
 
+.Use @Injectable on a _custom cloud service_
+[source, javascript, linenums, role="highlight-lines:1,3"]
+----
+import { Injectable } from '@zetapush/core';            // <1>
+
+@Injectable()                                           // <2>
+export default class HelloWorldAsCustomCloudService {
+  constructor() {}
+
+  helloWorld() {
+      return "Hello World";
+  }
+
+  saySomething(message: string, times: number) {
+      let fullMessage = '';
+      for(let i=0 ; i<times ; i++) {
+          fullMessage += `${message}\n`
+      }
+      return fullMessage
+  }
+}
+----
+<1> Import the ZetaPush module that contains core features for _custom cloud services_ such as `injectable`
+<2> Mark you _custom cloud service_ candidate for dependency injection
+
+Here we just indicate that this _custom cloud service_ can have dependencies that
+will be automatically injected and also that this _custom cloud service_ can be injected
+anywhere it is needed.
+
+In the next sections, we will see in concrete terms how to use it to reuse either a _built-in cloud service_
+or one of your _custom cloud services_.
+
+////
 You need to import the package `@zetapush/platform-legacy` in order to use `Stack` _cloud services_.
 
 .Install @zetapush/platform-legacy
@@ -30,6 +72,7 @@ import { Injectable } from '@zetapush/core';
 import { Stack } = require('@zetapush/platform-legacy'); <1>
 import { MyOtherService } from './services'; <2>
 
+import { Injectable } from '@zetapush/core';
 @Injectable()
 class MyOwnService {
     constructor(private myOtherService: MyOtherService, private stack: Stack) { <3>
@@ -37,8 +80,9 @@ class MyOwnService {
     }
 }
 ----
-<1> We import the `Inject` object and a service (_Stack_) provided by ZetaPush
+<1> We import the `Injectable` decorator and a service (_Stack_) provided by ZetaPush
 <2> We import an other custom cloud service
 <3> We use instances of our injected services in our service throught the constructor
 
 If you import a _custom cloud service_ or a _cloud service_ provided by ZetaPush, you use both similarily
+////

@@ -1,6 +1,20 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-Once you have imported the services, you can use them.
+ZetaPush _built-in cloud services_ are available in `@zetapush/platform-legacy` module.
+Add this module to your `package.json` by running the following command:
+
+.Install @zetapush/platform-legacy using npm
+[source, console, linenums]
+----
+$ npm install --save @zetapush/platform-legacy
+----
+
+.List of _cloud services_ provided by ZetaPush
+[NOTE]
+====
+As a reminder, here is the <<reference.adoc#builtin_cloud_services, list of _built-in cloud services_>>
+====
+
 
 include::{docdir}/common/code/example-use-cloud-service-in-custom.adoc[]
