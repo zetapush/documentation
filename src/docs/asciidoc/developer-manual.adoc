@@ -368,6 +368,7 @@ Even if ZetaPush provides ready to use cloud services, we know that any applicat
 specific behaviors. Instead of limiting your possibilities, we provide a way to help you develop
 quickly your own business logic.
 
+[#definition_custom_cloud_service]
 === What is a _custom cloud service_
 include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.adoc[leveloffset=+2]
 

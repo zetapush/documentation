@@ -1,0 +1,17 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+// Presentation of custom cloud services in the reference section
+include::{docdir}/common/custom-cloud-service/ref-presentation-custom-cloud-service.adoc[]
+
+== Create a Custom Cloud Service
+include::{docdir}/common/custom-cloud-service/ref-create-custom-cloud-service.adoc[]
+
+== Use the context
+include::{docdir}/common/custom-cloud-service/ref-custom-cloud-service-use-context.adoc[]
+
+== Use the _application.json_ file
+include::{docdir}/common/custom-cloud-service/ref-custom-cloud-service-use-applicationjson.adoc[]
+
+== Use Cloud Services
+include::{docdir}/common/custom-cloud-service/ref-custom-cloud-service-use-services.adoc[]

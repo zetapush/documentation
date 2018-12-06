@@ -1,0 +1,18 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Translated into code, a _custom cloud service_ is just a `class` and its `methods` are the  _cloud functions_. 
+The code is written in any `ts` file defined in `worker` directory. For small application like a "hello world",
+write your code directly in `index.ts` file.
+So the most basic example of a _custom cloud service_ is below:
+
+include::{docdir}/common/code/basic-custom-cloud-service.adoc[leveloffset=+1]
+
+All _cloud functions_, that you have create (in a _custom cloud service_) or from a _built-in cloud service_, are asynchronous.
+You are not have to add the keyword `async`, a _cloud function_ is systematically asynchronous.
+
+This particularity is due to our ZetaPush Cloud, that works with a set of *channels*. When a _cloud function_ is executed, a *message* is published on a channel and you can listen the response. This method eases the communication in realtime with many users or devices. The *SDK* prodives you an abstraction to use the *Promises*. When you call a _cloud function_, *the response is always a promise*.
+
+include::{docdir}/common/custom-cloud-service/define-cloud-function.adoc[leveloffset=+1]
+
+Now we have a basic _custom cloud service_. So in the next sections we will see link:#custom-cloud-service-use-context[how to use the context], link:#custom-cloud-service-use-applicationjson[use the `application.json` file] or link:#ref-compose-custom-cloud-service[compose custom cloud service with others].

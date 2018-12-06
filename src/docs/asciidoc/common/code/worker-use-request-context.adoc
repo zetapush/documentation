@@ -1,0 +1,18 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.worker/index.ts
+[source,javascript,linenums]
+----
+import { Context } from "@zetapush/core";
+
+export default class {
+  private requestContext!: Context;                               // <1>
+
+  hello() {
+    return `Hello World called by ${this.requestContext.owner}`;  // <2>
+  }
+}
+----
+<1> The _ZetaPush Cloud_ injects the context in the `requestContext` property
+<2> We get the property `owner` from the `requestContext`

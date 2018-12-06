@@ -1,0 +1,5 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+In this section we will show how to develop _custom cloud services_. If you don't know what is it, go to the link:#definition_custom_cloud_service[Getting Started section about _custom cloud services_] to learn the main concepts.
+

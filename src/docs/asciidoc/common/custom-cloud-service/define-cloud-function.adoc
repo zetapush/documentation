@@ -1,0 +1,55 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Define a _cloud function_
+
+Each _cloud function_ in a _custom cloud service_ is a standard JavaScript/TypeScript
+method.
+For example, if you want a _cloud function_ that receives two parameters you write:
+
+.A more realistic _cloud function_
+[source, javascript, linenums, role="highlight-lines:8-14"]
+----
+class HelloWorldAsCustomCloudService {                            // <1>
+    constructor() {}                       
+
+    helloWorld() {                         
+        return "Hello World";
+    }
+
+    saySomething(message: string, times: number) {                // <2>
+        let fullMessage = '';
+        for(let i=0 ; i<times ; i++) {                            // <3>
+            fullMessage += `${message}\n`
+        }
+        return fullMessage                                        // <4>
+    }
+}
+----
+<1> The _custom cloud service_ definition as seen before
+<2> Declaration of a _cloud function_ named `saySomething`. This _cloud function_ accepts
+two parameters. As <<reference.adoc#javascript_vs_typescript, TypeScript is the recommended way>>, each parameter is typed.
+<3> Just for an example, the business logic consists in looping a number of times 
+and concatenating the message. You can obviously write any code you want here.
+<4> The _custom cloud function_ simply returns the contactenated string. 
+
+.Why typing ?
+[TIP]
+====
+Typing is optional but recommended to have a well defined API. Thanks to typing,
+ZetaPush is able to generate more accurate <<reference.adoc#generate_api_documentation, documentation based on your code>> and also
+<<reference.adoc#generate_sdks, generate mobile/web/IoT SDKs>> from your code with the right types so it
+makes developing your clients easier (for example, auto-completion can be used).
+====
+
+.Tips about cloud functions
+[TIP]
+====
+A _custom cloud service_ can have as many _custom cloud functions_ as you want.
+
+A _custom cloud function_ can have as many parameters as you want. Parameters can be anything: `string`, `number`,
+`boolean`, `array` or `object`. You can code your function as you always do.
+
+A _custom cloud function_ can return anything including a link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise[Promise]. 
+You can also write your code using link:https://javascript.info/async-await[async/await syntax].
+====

@@ -3,6 +3,11 @@ include::{docdir}/variables.adoc[]
 
 = Reference
 
+
+[#ref_develop_cloud_service]
+== Develop cloud services
+include::{docdir}/common/custom-cloud-service/index-reference-custom-cloud-service.adoc[leveloffset=+1]
+
 == Available cloud services
 
 === Standard User Workflow

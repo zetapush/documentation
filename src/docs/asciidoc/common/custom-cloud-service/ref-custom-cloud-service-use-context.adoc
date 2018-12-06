@@ -1,0 +1,25 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+When you some _cloud functions_, you can use inside them the context. There are 2 useful features with this context:
+
+* Use the logger associated with the context
+* Know the *caller* of this _cloud function_
+
+.How to use the context
+
+The context is a dependency that is provided by the ZetaPush Cloud. So you need to use the dependency injection to get it. (link:#dependency-injection[See more details about dependency injection])
+
+include::{docdir}/common/code/worker-use-request-context.adoc[]
+
+NOTE: The context injected by the _ZetaPush Cloud_ is injected in the property named `requestContext`. You need to use this name for use this context.
+
+In the above example, we use the `owner` property. This is the unique technical ID to identify a user on the _ZetaPush Cloud_. This is the same ID that is used in the _built-in cloud services_ named `userKey`.
+
+.Use the logger
+
+// TODO:
+
+.Use the caller informations
+
+// TODO:
