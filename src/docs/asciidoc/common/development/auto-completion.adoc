@@ -1,0 +1,28 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You can use an IDE for speeding up your development:
+
+* https://code.visualstudio.com/[Visual Studio Code^]
+* https://www.jetbrains.com/webstorm/[WebStorm^]
+* https://atom.io/[Atom^]
+* ...
+
+Thanks to typing provided by TypeScript, these IDE can provide accurate auto-completion when
+you develop your _custom cloud services_. 
+
+That's why auto-completion also works with ZetaPush _built-in cloud services_:
+
+.Auto-completion on _cloud functions_
+image::{images-dir}/auto-completion/method.png[role=center]
+
+.Auto-completion on _cloud functions_ parameters
+image::{images-dir}/auto-completion/parameters.png[role=center]
+
+.Auto-completion on _cloud functions_ return value
+image::{images-dir}/auto-completion/returned-values.png[role=center]
+
+
+As you can see, in addition to auto-completion, documentation of _cloud services_ is
+also available.
+

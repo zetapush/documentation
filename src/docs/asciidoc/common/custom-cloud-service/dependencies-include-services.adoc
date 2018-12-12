@@ -66,7 +66,7 @@ $ npm install --save @zetapush/platform-legacy
 For example, to import an other service, you simply need to write:
 
 .Import service
-[source,typescript,linenums,role="highlight-lines:6"]
+[source,javascript,linenums,role="highlight-lines:6"]
 ----
 import { Injectable } from '@zetapush/core';
 import { Stack } = require('@zetapush/platform-legacy'); <1>

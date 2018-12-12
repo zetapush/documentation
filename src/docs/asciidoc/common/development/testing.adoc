@@ -1,0 +1,1232 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Test your _custom cloud service_
+
+Testing not only ensures that you don't make regression but also can help you code faster.
+
+=== Unit testing
+
+Unit testing is a great way to provide quickly a feature without losing time
+on going back to the right execution context. The component (or `class` here)
+is tested alone (all dependencies are mocked).
+
+This section shows that you don't need ZetaPush for unit testing and that you can
+use any testing library you want. For the example, we use https://jasmine.github.io/[jasmine^] because
+in addition to testing tools, it also provides basic mocking features.
+For the example, we will reuse our *HelloWorldAsCustomCloudService* and we will improve it.
+
+As a reminder, here is the complete code of the _custom cloud service_ and front:
+
+[role=tab-container]
+HelloWorldAsCustomCloudService
+
+[role=tab]
+worker/index.ts
+
+.worker/index.ts
+[source,javascript,linenumbers]
+----
+import { Injectable, RequestContextAware, RequestContext } from '@zetapush/core';    
+import { Stack } from '@zetapush/platform-legacy';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService implements RequestContextAware { 
+  requestContext!: RequestContext;                                                  
+
+  constructor(private stack: Stack) {}
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    let fullMessage = '';
+    for (let i = 0; i < times; i++) {
+      fullMessage += `${message}\n`;
+    }
+    this.requestContext.logger.debug('fullMessage=', fullMessage);                  
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    const response = await this.stack.push({
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    this.requestContext.logger.debug('stack.push response=', response);             
+    return fullMessage;
+  }
+
+  async getStoredMessages() {
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+
+
+[role=tab]
+front/index.html
+
+.front/index.html
+[source, html, linenumbers]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtia</title>
+  </head>
+
+  <body>
+    <button onclick="hello()">hello</button>
+    <div style="border: 1px solid #ccc">
+      Message: <input type="text" id="message-input" /> Repeat: <input type="text" value="1" id="repeat-input" />
+      <button onclick="saySeveralTimes()">say something</button>
+    </div>
+    <ul id="result-container"></ul>
+
+    <script src="https://unpkg.com/@zetapush/client"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
+----
+
+
+[role=tab]
+front/index.js
+
+.front/index.js
+[source, javascript, linenumbers]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect().then(() => {
+  console.debug('onConnectionEstablished');
+  return updateAllMessages();
+});
+// Handle DOM events
+async function hello() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`;
+}
+async function saySeveralTimes() {
+  const message = document.getElementById('message-input').value;
+  const repeat = document.getElementById('repeat-input').value;
+  const messages = await api.saySomething(message + ' - ', parseInt(repeat));
+  await updateAllMessages();
+}
+async function updateAllMessages() {
+  const storedMessages = await api.getStoredMessages();
+  const messagesAsString = storedMessages.map((msg) => `<li>${JSON.stringify(msg)}</li>`);
+  document.getElementById('result-container').innerHTML = messagesAsString.join('');
+}
+----
+
+[role=tab-container-end]
+-
+
+Firstly, we add `jasmine` by running:
+
+[source, console]
+----
+$ npm install --save-dev jasmine                    <1>
+$ node node_modules/jasmine/bin/jasmine init        <2>
+----
+<1> Add `jasmine` module in your project (save it in `devDependencies` using `--save-dev` argument)
+<2> Add some files required by jasmine to your project (`spec` folder is created)
+
+We want to test `saySomething` _cloud function_ to ensure that the generated message
+corresponds to what we really want. Let's start by writing the skeleton of the tests. Create the file
+`spec/hello-world-custom-cloud-service/say-something.spec.js` with the following content:
+
+.spec/hellp-world-custom-cloud-service/say-something.spec.js
+[source, javascript, linenumbers]
+----
+describe("HelloWorldCustomCloudService.", () => {
+  beforeEach(() => {
+    this.helloWorldService = null;                                          // <1>
+  });
+
+  /**
+   * Nominal case with a message repeated 1 time
+   */
+  describe("saySomething('hello', 1)", () => {
+    it("returns the message written 1 time", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 1);
+      expect(result).toBe('hello');
+    });
+  });
+
+  /**
+   * Nominal case with a message repeated 5 times
+   */
+  describe("saySomething('hello', 5)", () => {
+    it("returns the message written 5 times separated by new lines", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 5);
+      expect(result).toBe('hello\nhello\nhello\nhello\nhello');
+    });
+  });
+
+  /**
+   * Edge case with a message but nothing written due to no repetition
+   */
+  describe("saySomething('hello', 0)", () => {
+    it("returns empty message", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 0);
+      expect(result).toBe('');
+    });
+  });
+
+  /**
+   * Edge case with a message that is not a string
+   */
+  describe("saySomething(5, 2)", () => {
+    it("returns the message written 2 times", async () => {
+      const result = await this.helloWorldService.saySomething(5, 2);
+      expect(result).toBe('5\n5');
+    });
+  });
+
+  /**
+   * Exception case with a string for the number of repetitions
+   */
+  describe("saySomething('hello', '5')", () => {
+    it("returns the message written 5 times separated by new lines", async () => {
+      try {
+        await this.helloWorldService.saySomething('hello', '5');
+        fail('should have failed');
+      } catch(e) {
+        expect(e.message).toBe('Only integer values are allowed for number of repetitions');
+      }
+    });
+  });
+});
+----
+<1> We need an instance of your _custom cloud service_ here. We will see later how to do that
+in unit testing
+
+We have prepared the tests and the expectations. Now we need to instantiate
+the *HelloWorldCustomCloudService* for testing it. However this function has a
+dependency to the `Stack` _built-in cloud service_.
+So normally, to test it we need the ZetaPush worker and the ZetaPush cloud to instantiate
+this service. But in unit testing, we mock *all* dependencies to test only
+*HelloWorldCustomCloudService*:
+
+
+.spec/hellp-world-custom-cloud-service/say-something.spec.js
+[source, javascript, linenumbers, role="highlight-lines:1-2,6-11"]
+----
+const customCloudService = require('../../worker/index');                         // <1>
+const HelloWorldAsCustomCloudService = customCloudService['default'];             // <2>
+
+describe('HelloWorldCustomCloudService.', () => {
+  beforeEach(() => {
+    const mockedStack = jasmine.createSpyObj('Stack', ['push']);                  // <3>
+    const mockedRequestContext = {                                                // <4>
+      logger: jasmine.createSpyObj('RequestContextLogger', ['debug'])
+    };
+    this.helloWorldService = new HelloWorldAsCustomCloudService(mockedStack);     // <5>
+    this.helloWorldService.requestContext = mockedRequestContext;                 // <6>
+  });
+
+  /**
+   * Nominal case with a message repeated 1 time
+   */
+  describe("saySomething('hello', 1)", () => {
+    it("returns the message written 1 time", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 1);
+      expect(result).toBe('hello');
+    });
+  });
+
+  /**
+   * Nominal case with a message repeated 5 times
+   */
+  describe("saySomething('hello', 5)", () => {
+    it("returns the message written 5 times separated by new lines", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 5);
+      expect(result).toBe('hello\nhello\nhello\nhello\nhello');
+    });
+  });
+
+  /**
+   * Edge case with a message but nothing written due to no repetition
+   */
+  describe("saySomething('hello', 0)", () => {
+    it("returns empty message", async () => {
+      const result = await this.helloWorldService.saySomething('hello', 0);
+      expect(result).toBe('');
+    });
+  });
+
+  /**
+   * Edge case with a message that is not a string
+   */
+  describe("saySomething(5, 2)", () => {
+    it("returns the message written 2 times", async () => {
+      const result = await this.helloWorldService.saySomething(5, 2);
+      expect(result).toBe('5\n5');
+    });
+  });
+
+  /**
+   * Exception case with a string for the number of repetitions
+   */
+  describe("saySomething('hello', '5')", () => {
+    it("returns the message written 5 times separated by new lines", async () => {
+      try {
+        await this.helloWorldService.saySomething('hello', '5');
+        fail('should have failed');
+      } catch(e) {
+        expect(e.message).toBe('Only integer values are allowed for number of repetitions');
+      }
+    });
+  });
+});
+----
+<1> Import code of your _custom cloud service_. As it is declared in `index.ts` with `export default`,
+the `require` imports an object `{default: HelloWorldCustomCloudService}`
+<2> Get only a reference to `HelloWorldCustomCloudService` class
+<3> Use jasmine to create a mock object of `Stack` _cloud service_ with a method `push` that does nothing
+<4> Create an object that has a property `logger` with a mocked `debug` method. This object is used
+to mock `requestContext` attribute.
+<5> Instantiate the `HelloWorldCustomCloudService` _cloud service_ with the mocked instance of `Stack`
+<6> Manually inject the mocked `requestContext` (as the worker would do automatically in ZetaPush context)
+
+
+Now our cloud service is ready to be tested. We can run jasmine but as the _custom cloud service_
+is written in TypeScript, we need to run jasmine with https://github.com/TypeStrong/ts-node[ts-node^]:
+
+[source, console]
+----
+$ node -r ts-node/register node_modules/jasmine/bin/jasmine
+----
+
+.TypeScript
+[TIP]
+====
+As your project is initialized for using TypeScript, `ts-node` is already available
+in your project (imported by the `@zetapush/cli` module).
+
+You can also write your <<reference.adoc#test_in_typescript, tests directly in TypeScript>> to benefit from auto-completion and
+type checking in your test suites too.
+====
+
+
+.Run directly from VSCode
+[TIP]
+====
+You can configure VSCode to run your tests. In the main menu, click on menu:Debug[Add Configuration...]:
+
+image::{images-dir}/debug/add-debug-menu.png[role=center]
+
+Add these lines in the `launch.json` file:
+
+[source, json, role="highlight-lines:7-22"]
+----
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "tests", 
+      "type": "node",
+      "request": "launch",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [ 
+        "node_modules/jasmine/bin/jasmine.js"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+----
+
+Then you can select the `tests` launch configuration and hit kbd:[F5]. You can
+have every information directly in your editor.
+====
+
+If you run the tests, you will see that only one test succeeds. This is normal because if you
+look closely at the tests, you can see that the expected behavior is to have no
+new line at the end of the string. So the code of the _custom cloud service_ doesn't
+match the expected behavior. Let's fix the code of the _cloud function_:
+
+.worker/index.ts
+[source,javascript,linenumbers, role="highlight-lines:15-19"]
+----
+import { Injectable, RequestContextAware, RequestContext } from '@zetapush/core'; 
+import { Stack } from '@zetapush/platform-legacy';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService implements RequestContextAware {
+  requestContext!: RequestContext;                                                  
+
+  constructor(private stack: Stack) {}
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    let parts = [];
+    for (let i = 0; i < times; i++) {
+      parts.push(`${message}`);
+    }
+    let fullMessage = parts.join('\n');
+    this.requestContext.logger.debug('fullMessage=', fullMessage);                    
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    const response = await this.stack.push({
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    this.requestContext.logger.debug('stack.push response=', response);               
+    return fullMessage;
+  }
+
+  async getStoredMessages() {
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+
+Now if you run again the tests, you can see that 4 tests are succeeding and only 1 left in
+failure. The test in failure is normal because we expect a particular message if
+times parameter is not a number.
+We can fix it by updating the code of the _cloud function_ like this:
+
+.worker/index.ts
+[source,javascript,linenumbers, role="highlight-lines:15-17"]
+----
+import { Injectable, RequestContextAware, RequestContext } from '@zetapush/core';     
+import { Stack } from '@zetapush/platform-legacy';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService implements RequestContextAware {  
+  requestContext!: RequestContext;                                                    
+
+  constructor(private stack: Stack) {}
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    if (typeof times !== 'number') {
+      throw new Error('Only integer values are allowed for number of repetitions');
+    }
+    let parts = [];
+    for (let i = 0; i < times; i++) {
+      parts.push(`${message}`);
+    }
+    let fullMessage = parts.join('\n');
+    this.requestContext.logger.debug('fullMessage=', fullMessage);                    
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    const response = await this.stack.push({
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    this.requestContext.logger.debug('stack.push response=', response);               
+    return fullMessage;
+  }
+
+  async getStoredMessages() {
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+
+Now you can run again the tests and everything is ok.
+You can notice that running unit tests allows to develop faster because you just 
+need to run everything at once instead of entering messages and number of repeats
+manually in your web browser several times.
+
+
+
+.Provide behavior to mocks
+[TIP]
+====
+In this sample, we only show how to define objects and methods that do nothing.
+Obviously mocking systems also allow to define a <<reference.adoc#advanced_mocks, behavior for calls on mock objects>>.
+====
+
+
+=== Local integration test
+
+Testing a _custom cloud service_ alone is good but you often need to tests
+interactions between several _cloud services_ or interaction with _built-in cloud services_.
+ZetaPush provides tools to help you write integration tests and to setup 
+a ZetaPush context for your tests.
+
+First, you need to install the `@zetapush/testing` module:
+
+[source, console]
+----
+$ npm install --save-dev @zetapush/testing
+----
+
+Then, as done before we will write the skeleton of the tests.
+Create a new test file `spec/hellp-world-custom-cloud-service/say-something.it.spec.js` with the following content:
+
+.spec/hellp-world-custom-cloud-service/say-something.it.spec.js
+[source, javascript, linenumbers]
+----
+describe('HelloWorldAsCustomCloudService.', () => {
+  beforeEach(async () => {                                                          // <1>
+  }, 30 * 1000);                                                                    // <2>
+
+  /**
+   * Nominal case with a message repeated 5 times
+   */
+  describe("saySomething('hello', 5)", () => {
+    it('stores the message, the number of repetitions and the generated message',
+      async () => {                                                                 // <3>
+          // call the method to test
+          await helloWorldService.saySomething('hello', 5);                         // <4>
+
+          // check that everything works fine
+          const storedMessages = await helloWorldService.getStoredMessages();       // <5>
+          expect(storedMessages.length).toBe(1);                                    // <6>
+          expect(storedMessages[0]).toEqual({                                       // <7>
+            message: 'hello',
+            times: 5,
+            fullMessage: 'hello\nhello\nhello\nhello\nhello'
+          });
+      },
+      5 * 60 * 1000                                                                 // <8>
+    );
+  });
+});
+----
+<1> Empty for now, we will fill it later. Don't forget the `async` keyword.
+<2> Change the default timeout of jasmine for test preparation (we will see why later)
+<3> Run the test using async/await syntax to have a cleaner code
+<4> The call to the _cloud function_ to test
+<5> Retrieve all previously stored messages
+<6> Assertion to ensure there is exactly one entry
+<7> Assertion to ensure that the stored value is correct
+<8> Change the default timeout of jasmine for this test (we will see why later)
+
+We have defined what we need to test. Now to make it work, we need to run
+the test in a ZetaPush worker. As a reminder, using ZetaPush _built-in cloud services_
+requires a creation of the services on the ZetaPush cloud. As a reminder too, 
+ZetaPush worker detects needed dependencies and instantiate them.
+In the context of a test, we also need these mechanisms in order to instantiate
+the dependencies and to inject them in our test.
+
+ZetaPush testing module provides several utilities to define an execution context
+and to run the test in that context. Add the following code to your test:
+
+
+.spec/hellp-world-custom-cloud-service/say-something.spec.js
+[source, javascript, linenumbers, role="highlight-lines:1-4,8-18,27-29,42"]
+----
+const { given, runInWorker } = require('@zetapush/testing');
+const customCloudService = require('../../worker/index');
+const HelloWorldAsCustomCloudService = customCloudService['default'];
+const { Stack } = require('@zetapush/platform-legacy');
+
+describe('HelloWorldAsCustomCloudService.', () => {
+  beforeEach(async () => {
+    await given()                                                       // <1>
+      /**/ .credentials()                                               // <2>
+      /*   */ .fromZetarc()                                             // <3>
+      /*   */ .and()
+      /**/ .worker()                                                    // <4>
+      /*   */ .testModule(() => ({                                      // <5>
+        expose: [HelloWorldAsCustomCloudService]
+      }))
+      /*   */ .dependencies(HelloWorldAsCustomCloudService, Stack)      // <6>
+      /**/ .and()
+      .apply(this);                                                     // <7>
+  }, 5 * 60 * 1000);
+
+  /**
+   * Nominal case with a message repeated 5 times
+   */
+  describe("saySomething('hello', 5)", () => {
+    it('stores the message, the number of repetitions and the generated message',
+      async () => {
+        await runInWorker(this, async (helloWorldService, stack) => {   // <8>
+          // clean the stack before adding into it
+          await stack.purge({ stack: 'messages' });                     // <9>
+
+          // call the method to test
+          await helloWorldService.saySomething('hello', 5);
+
+          // check that everything works fine
+          const storedMessages = await helloWorldService.getStoredMessages();
+          expect(storedMessages.length).toBe(1);
+          expect(storedMessages[0]).toEqual({
+            message: 'hello',
+            times: 5,
+            fullMessage: 'hello\nhello\nhello\nhello\nhello'
+          });
+        });
+      },
+      5 * 60 * 1000
+    );
+  });
+
+  afterEach(async () => {                                               // <10>
+    await autoclean(this);                                              // <11>
+  });
+});
+----
+<1> `given` utility is designed to prepare the test context. This is the entry
+point to a fluent API
+<2> `credentials` is used to configure the source of the ZetaPush credentials and application information.
+This information is required in order to be able to connect to the ZetaPush cloud
+<3> `fromZetarc` indicates that the test must load `developerLogin`, `developerPassword`, `platformUrl` and `appName` 
+from your `.zetarc` file. It means that it automatically loads the credentials you are using
+in development
+<4> `worker` is used to configure the ZetaPush worker context for the test
+<5> `testModule` indicates that the worker context must provide a standalone module.
+For now, we have only seen a _custom cloud service_ exposed. But in fact, it is an implicit
+<<reference.adoc#modules, ZetaPush module>>. In our test, we define a really simple module that exposes the
+_custom cloud service_. Basically, it means that your test is exactly like your `index.ts`
+<6> Indicate which dependencies will be injected in the test (see parameters of `runInWorker`).
+<7> Now all the preparation of the test context is ready, `apply` really executes building of test context.
+It also stores some information needed by the test in `this` (the current jasmine test context)
+<8> `runInWorker` as its name says, runs the code in the worker context started for the test.
+Note the `this` as first argument that is used to retrieve information set by `given().apply(this)`.
+The callback takes here two parameters. Those parameters correspond to the dependencies declared
+in `given().worker().dependencies()`
+<9> As `Stack` service is the same between the development and every test execution,
+the `Stack` may already contain some items. That's why we force to empty the stack before executing the real test.
+<10> After each test don't forget to clean everything
+<11> ZetaPush provides test utility to automatically remove everything that has been done
+by the `given()` (like stopping properly the worker).
+
+
+.Timeouts
+[NOTE]
+====
+As execution context needs the ZetaPush worker to create _built-in cloud services_, 
+the default jasmine timeout is too low: 5 seconds only for both preparation of the test 
+(`beforeEach`) and the execution of the test (`it`). We need to increase it because
+the creation may take more than 5 seconds.
+
+In the example, we set to 30 seconds for preparation and 5 minutes for the test. 
+Hopefully, ZetaPush worker doesn't need 5 minutes to start and execute code. 
+But 5 minutes can be useful to place a debugger in the code and to 
+debug the test execution.
+====
+
+Now you can run the test using jasmine too:
+
+[source, console]
+----
+$ node -r ts-node/register node_modules/jasmine/bin/jasmine
+----
+
+You can see that contrary to unit testing, the worker prepares the test context.
+You should see something like:
+
+[source, console]
+----
+[TRACE] register [ 'queue_0', { port: 2999, type: 'queue_0' } ] ‌
+[TRACE] register [ 'ZETAPUSH_HTTP_SERVER', { port: 2999, type: 'queue_0' } ] ‌
+[TRACE] confPath [ '/tmp/foobar/' ] ‌
+[TRACE] externalConfPath [ undefined ] ‌
+[TRACE] env [ LocalServerRegistryZetaPushContext {
+    config:
+     { developerLogin: '*******',
+       developerPassword: '*******',
+       platformUrl: 'https://celtia.zetapush.com/zbo/pub/business',
+       appName: '********' },
+    registry: LocalServerRegistry { servers: [Object] },
+    urlProvider: [Function] } ] ‌
+[TRACE] analyzed providers [ [ { provide: [Function: TestDeclarationWrapper],
+      useClass: [Function: TestDeclarationWrapper] },
+    { provide: [Function: Environment], useValue: [Object] },
+    { provide: [Function: ConfigurationProperties],
+      useValue: [PriorizedConfigurationProperties] },
+    { provide: [Function: ZetaPushContext],
+      useValue: [LocalServerRegistryZetaPushContext] },
+    { provide: [Function: Stack], useValue: [Stack] },
+    { provide: [Function: HelloWorldAsCustomCloudService],
+      useClass: [Function: HelloWorldAsCustomCloudService] },
+    { provide: [Function: Wrapper],
+      useFactory: [Function: useFactory],
+      deps: [Array] } ] ] ‌
+[TRACE] analyzed platformServices [ [ [Function: Stack] ] ] ‌
+[TRACE] bootstrap layers [ [ [ [Function: HelloWorldAsCustomCloudService],
+      [Function: Wrapper],
+      [Function: TestDeclarationWrapper] ],
+    [],
+    [ [Function: HelloWorldAsCustomCloudService],
+      [Function: Stack] ] ] ] ‌
+[LOG] GET [ 'https://celtia.zetapush.com:/zbo/orga/item/list/v79ivn00l',
+  undefined ] ‌
+[LOG] Provisioning [ [Function: Stack] ] ‌
+[TRACE] instantiate [ { '0':
+     HelloWorldAsCustomCloudService {
+       stack: [Stack],
+       [Symbol(ZetaPush.CloudServiceInstance)]: true },
+    ZetaTest:
+     TestDeclarationWrapper {
+       wrapper: [Wrapper],
+       [Symbol(ZetaPush.CloudServiceInstance)]: true },
+    bootLayers: [ [Array], [], [Array] ] } ] ‌
+[TRACE] Worker successfully started
+----
+
+.Verbosity level in tests
+[NOTE]
+====
+The test is by default started with high verbosity in order to let you know
+what happens in ZetaPush worker. Therefore, if something fails you can have enough information
+to know where and why it has failed.
+
+You can <<reference.adoc#verbosity_level_in_tests, change the verbosity level>>.
+====
+
+The following sequence diagram explains how it works:
+
+.How it works ?
+[plantuml, local-integration-testing, png, role="center"]
+....
+participant jasmine order 10
+participant "testing utilities" order 20
+participant worker order 40
+participant "test code" order 50
+participant helloWorldService order 60
+participant stack order 70
+participant "ZetaPush cloud" order 80
+
+== beforeEach() ==
+
+autonumber
+activate jasmine
+jasmine -> "testing utilities" : given()
+activate "testing utilities"
+"testing utilities" -> "testing utilities" : does nothing
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().credentials()
+"testing utilities" -> "testing utilities" : save choices for later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().project()
+"testing utilities" -> "testing utilities" : save choices for later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().worker()
+"testing utilities" -> "testing utilities" : save choices for later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : .apply(this)
+"testing utilities" -> worker : prepare context
+activate "testing utilities"
+
+activate worker
+worker --> "ZetaPush cloud" : Establish connection
+"ZetaPush cloud" --> worker : connection established
+
+worker --> "ZetaPush cloud" : create built-in cloud services
+worker <-- "ZetaPush cloud" : done
+
+|||
+
+worker -> worker: instantiate custom cloud services
+activate worker
+worker -\ stack : instantiate
+activate stack
+worker -\ helloWorldService : instantiate
+activate helloWorldService
+deactivate worker
+"testing utilities" <- worker : instances
+
+"testing utilities" -> "testing utilities" : store test context in this
+activate "testing utilities"
+deactivate "testing utilities"
+deactivate "testing utilities"
+
+
+== it() ==
+
+jasmine -> "testing utilities" : runInWorker(this, callback)
+"testing utilities" -> worker : execute callback
+activate worker
+worker -> "test code" : execute
+activate "test code"
+
+"test code" -> stack : purge()
+activate stack
+stack --> "ZetaPush cloud": send purge message
+stack <-- "ZetaPush cloud": done
+"test code" <- stack
+deactivate stack
+|||
+"test code" -> helloWorldService : saySomething()
+activate helloWorldService
+"test code" <- helloWorldService : fullMessage
+deactivate helloWorldService
+"test code" -> helloWorldService : getStoredMessages()
+activate helloWorldService
+"test code" <- helloWorldService : storedMessages
+deactivate helloWorldService
+deactivate "test code"
+deactivate worker
+
+== afterEach() ==
+
+jasmine -> "testing utilities": autoclean(this)
+"testing utilities" -> worker: stop worker
+worker -> worker : clean
+activate worker
+worker ->x helloWorldService : clean
+deactivate helloWorldService
+worker ->x stack : clean
+deactivate stack
+deactivate worker
+|||
+deactivate worker
+deactivate "testing utilities"
+deactivate jasmine
+....
+
+Jasmine executes the code of the test and starts by running code of the `beforeEach` function.
+`given()` fluent API is called [.sequence-step]#1# but does nothing. In fact, `given()` is just the
+entry point to the fluent API.
+`given().credentials()`, `given().project()` and `given().worker()` only store information
+about what you need for your test [.sequence-step]#3# [.sequence-step]#4#
+[.sequence-step]#5# [.sequence-step]#6# [.sequence-step]#7# [.sequence-step]#8#. Nothing is initialized here. We don't show
+all calls to the fluent API in the sequence diagram because it is the same principle, we just
+store information about what you need in your test.
+As all needed information is grabbed, you ask the testing utilities to prepare the
+context by calling `apply(this)` [.sequence-step]#9#. The testing utilities prepare the context
+by asking to the worker to start your "virtual" module defined with `testModule` [.sequence-step]#10#. 
+The worker connects to the ZetaPush cloud using your credentials [.sequence-step]#11#
+[.sequence-step]#12#. 
+As a reminder, we used `given().credentials().fromZetarc()` so it will use
+the credentials defined in the `.zetarc` file directly.
+Then the worker resolves all needed dependencies (for dependency injection)
+and for each _built-in cloud service_, it sends a message to the ZetaPush cloud
+to create the service [.sequence-step]#13# [.sequence-step]#14#. Once all _built-in cloud services_ are ready, the worker
+instantiates all _built-in cloud services_ and _custom cloud services_ needed for
+the test (indicated by `given().worker().dependencies()`) [.sequence-step]#15#
+[.sequence-step]#16# [.sequence-step]#17# [.sequence-step]#18#.
+Once everything is instantiated, your _custom cloud service_ is ready to be called.
+At the end of the `apply` function of the testing utilities, the information
+about the execution context (credentials, dependencies, instances, ...) are stored
+in `this` [.sequence-step]#19#. `this` refers to the current test execution context in jasmine.
+
+Now, everything is ready to really start the test. The `it` function provided by jasmine is 
+executed. This function calls `runInWorker(this, callback)` [.sequence-step]#20#. As said above, `this` refers
+to the current test execution context in jasmine. So everything stored in `this` in 
+`beforeEach` is available in `this` of `it`. `runInWorker` starts the worker using
+the code written in the `callback` as source code for a "virtual" _cloud function_ [.sequence-step]#21#.
+The "virtual" _cloud function_ (`callback`) receives parameters. Each parameter
+is the instance of a needed dependency (defined with `given().worker().dependencies()` 
+in the *same order*).
+As it is like a real _cloud function_, the code is executed by the worker [.sequence-step]#22#.
+Then each line of code is executed. In our test, we first empty the `Stack` by calling
+`purge()` [.sequence-step]#23# [.sequence-step]#26#. This sends a message to 
+the ZetaPush cloud [.sequence-step]#24# [.sequence-step]#25#.
+The test then calls `helloWorldService.saySomething('hello', 5)` _cloud function_ 
+[.sequence-step]#27# [.sequence-step]#28#.
+`helloWorldService.getStoredMessages()` _cloud function_ is called to retrieve all
+stored messages [.sequence-step]#29# [.sequence-step]#30#.
+At the end of the test we use `expect` function provided by jasmine in order to ensure
+that results correspond to what we expect.
+
+The test is now finished (either successfully or with failure). `afterEach` is called by jasmine 
+which calls `autoclean(this)` utility [.sequence-step]#31#. As the worker has been started locally and
+it has instantiated dependencies, we need to clean everything. `autoclean` will
+use information stored in `this` to know exactly what it has to do. In our case, 
+we just need to stop the worker properly [.sequence-step]#32#
+[.sequence-step]#33# [.sequence-step]#34# [.sequence-step]#35#.
+
+
+
+Notice that local tests allow to test part of your application. 
+You don't need to develop all your _custom cloud services_ before testing them partially.
+This is a great advantage for developing fast because you can define a closed and
+well defined context that doesn't depend directly on the code you write in your
+_custom cloud services_. Maintainability is easier because even if your
+code change, the context dedicated to the test may be the same.
+
+.Advanced integration testing
+[NOTE]
+====
+For more advanced usage, you can find information about 
+<<reference.adoc#testing_utilities, testing utilities>> and 
+<<reference.adoc#integration_testing, integration testing>>
+====
+
+.Trial account
+[WARNING]
+====
+If you have a free trial account, you have only one environment shared between
+local development, published application and tests.
+
+The execution of the tests may impact the published application because there
+are two workers started in the same time on the same environment.
+So the load-balancer may send request either to the worker running on ZetaPush cloud
+or to the local worker started in tests. You could also have false positives
+in your tests due to the load-balancing (because worker running in the ZetaPush
+cloud could answer in place of the runner in tests).
+====
+
+.Remote integration testing
+[TIP]
+====
+Running tests locally may differ a little compared to running the tests in the cloud.
+Indeed, the running context is different especially when working with HTTP because
+URLs, load-balancing and network infrastructure are different.
+
+ZetaPush also provides tools to run your <<reference.adoc#tests_in_cloud, tests with a worker running in the ZetaPush cloud>>.
+This is totally transparent for you.
+====
+
+
+
+=== Local end-to-end test
+
+Here the tests are run exclusively in a worker context. ZetaPush also provides
+a way to write end-to-end (often named e2e) tests. This means that a client
+really make requests to the _cloud service_ instead of calling directly a method.
+
+You can copy the file `.spec/hellp-world-custom-cloud-service/say-something.it.spec.js`
+into the new file `.spec/hellp-world-custom-cloud-service/say-something.e2e.spec.js`
+and transform code to an e2e test:
+
+.spec/hellp-world-custom-cloud-service/say-something.e2e.spec.js
+[source, javascript, linenumbers, role="highlight-lines:1,9-14,25-27"]
+----
+const { given, frontAction, autoclean } = require('@zetapush/testing');
+
+describe('HelloWorldAsCustomCloudService.', () => {
+  beforeEach(async () => {
+    await given()
+      /**/ .credentials()
+      /*   */ .fromZetarc()
+      /*   */ .and()
+      /**/ .project()                                               // <1>
+      /*   */ .currentProject()                                     // <2>
+      /*     */ .and()
+      /*   */ .and()
+      /**/ .worker()                                                // <3>
+      /*   */ .up()                                                 // <4>
+      /*   */ .and()
+      .apply(this);
+  }, 5 * 60 * 1000);
+
+  /**
+   * Nominal case with a message repeated 5 times
+   */
+  describe("saySomething('hello', 5)", () => {
+    it('stores the message, the number of repetitions and the generated message',
+      async () => {
+        await frontAction(this)                                     // <5>
+          .name('call saySomething')                                // <6>
+          .execute(async (api) => {                                 // <7>
+            // call the method to test
+            await api.saySomething('hello', 5);                     // <8>
+
+            // check that everything works fine
+            const storedMessages = await api.getStoredMessages();   // <9>
+            expect(storedMessages.length).toBe(1);
+            expect(storedMessages[0]).toEqual({
+              message: 'hello',
+              times: 5,
+              fullMessage: 'hello\nhello\nhello\nhello\nhello'
+            });
+          });
+      },
+      5 * 60 * 1000
+    );
+  });
+
+  afterEach(async () => {
+    await autoclean(this);
+  });
+});
+----
+<1> Instead of defining a module that contains a part of your application to test (using `worker().testModule()`),
+here you need the full application. That's the purpose of `project()` fluent API.
+<2> Indicate that the source project is your current project.
+<3> There is a `worker` section too...
+<4> But this time, we just ask for testing utility to start the worker with
+your _custom cloud service_ defined in `index.ts` and wait until
+the worker is really started before executing the test.
+<5> Instead of running in the context of the worker, now we run code directly from
+a client point of vue. Like `runInWorker`, `frontAction` needs the test context (`this`)
+to retrieve information initialized by the `given()` utility.
+<6> Give a name to the action (useful for logs)
+<7> Execute code in front context. The function that is executed receives the parameter `api`.
+Under the hood, the test utility creates a client (`const client = new ZetaPushClient.WeakClient()`) and then
+creates the proxy to the API (`api = client.createProxyTaskService()`). So `api` parameter is the object you can use
+to directly call your _cloud functions_ from a client.
+<8> Call the _cloud function_ we want to test.
+<9> Retrieve all stored messages and make assertions on the result.
+
+
+As always, you run the tests by running jasmine:
+
+[source, console]
+----
+$ node -r ts-node/register node_modules/jasmine/bin/jasmine
+----
+
+Running the test may fail and it is normal because the `Stack` may already contain data. 
+As said before here we are in the context of a client so we don't have access to `Stack` 
+service to empty it before running the test.
+To empty the `Stack` you have to either add a _cloud function_ that can empty the stack or use 
+<<reference.adoc#test-snapshot, ZetaPush snapshots>> to restore your application
+to a particular state before running your tests.
+
+.Snapshots
+[WARNING]
+====
+The snapshot feature is already available in ZetaPush but it is not currently
+exposed for use directly in tests.
+
+This feature will be available soon.
+====
+
+
+The following sequence diagram explains how it works:
+
+.How it works ?
+[plantuml, local-e2e-testing, png, role="center"]
+....
+participant jasmine order 10
+participant "testing utilities" order 20
+participant "test code" order 30
+participant client order 40
+participant worker order 50
+participant helloWorldService order 60
+participant stack order 70
+participant "ZetaPush cloud" order 45
+
+== beforeEach() ==
+
+autonumber
+activate jasmine
+jasmine -> "testing utilities" : given()
+activate "testing utilities"
+"testing utilities" -> "testing utilities" : does nothing
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().credentials()
+"testing utilities" -> "testing utilities" : save choices\nfor later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().project()
+"testing utilities" -> "testing utilities" : save choices\nfor later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : given().worker()
+"testing utilities" -> "testing utilities" : save choices\nfor later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : .apply(this)
+"testing utilities" -> worker : prepare context
+activate "testing utilities"
+
+activate worker
+worker --> "ZetaPush cloud" : Establish connection
+"ZetaPush cloud" --> worker : connection established
+
+worker --> "ZetaPush cloud" : create built-in\ncloud services
+worker <-- "ZetaPush cloud" : done
+
+|||
+
+worker -> worker: instantiate custom\ncloud services
+activate worker
+worker -\ stack : instantiate
+activate stack
+worker -\ helloWorldService : instantiate
+activate helloWorldService
+deactivate worker
+"testing utilities" <- worker : instances
+
+"testing utilities" -> "testing utilities" : store test\ncontext in this
+activate "testing utilities"
+deactivate "testing utilities"
+deactivate "testing utilities"
+
+
+== it() ==
+
+jasmine -> "testing utilities" : front(this)
+"testing utilities" -> "testing utilities" : does nothing 
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : front(this).name()
+"testing utilities" -> "testing utilities" : store the name\nfor later use
+activate "testing utilities"
+deactivate "testing utilities"
+
+jasmine -> "testing utilities" : front(this).execute(callback)
+"testing utilities" -> "testing utilities" : initialize a client
+activate "testing utilities"
+"testing utilities" -\ client : create a client
+activate client
+client --> "ZetaPush cloud" : Establish connection
+"ZetaPush cloud" --> client : connection established
+"testing utilities" -> client : initialize api
+deactivate "testing utilities"
+
+||45||
+
+"testing utilities" -> "testing utilities" : execute callback
+activate "testing utilities"
+"testing utilities" -> "test code" : execute
+activate "test code"
+
+
+"test code" -> client : api.saySomething()
+activate client
+client --> "ZetaPush cloud" : send message to\ncall saySomething()
+"ZetaPush cloud" --> worker : send message to\ncall saySomething()
+worker -> helloWorldService : saySomething()
+activate helloWorldService
+worker <- helloWorldService : fullMessage
+deactivate helloWorldService
+"ZetaPush cloud" <-- worker : send result\nmessage
+client <-- "ZetaPush cloud" : send result\nmessage
+"test code" <- client : fullMessage
+deactivate client
+"test code" -> client : api.getStoredMessages()
+activate client
+client --> "ZetaPush cloud" : send message to\ncall getStoredMessages()
+"ZetaPush cloud" --> worker : send message to\ncall getStoredMessages()
+worker -> helloWorldService : getStoredMessages()
+activate helloWorldService
+worker <- helloWorldService : storedMessages
+deactivate helloWorldService
+"ZetaPush cloud" <-- worker : send result\nmessage
+client <-- "ZetaPush cloud" : send result\nmessage
+"test code" <- client : storedMessages
+deactivate client
+deactivate "test code"
+
+
+== afterEach() ==
+
+jasmine -> "testing utilities": autoclean(this)
+"testing utilities" -> worker: stop worker
+worker -> worker : clean
+activate worker
+worker ->x helloWorldService : clean
+deactivate helloWorldService
+worker ->x stack : clean
+deactivate stack
+deactivate worker
+|||
+deactivate client
+deactivate worker
+deactivate "testing utilities"
+deactivate jasmine
+....
+
+Context initialization done by `given()` [.sequence-step]#1# utility has exactly the same behavior as
+integration testing. The only difference is that instead of creating a "virtual"
+module to define a "virtual" _custom cloud service_, `given().project().currentProject()` 
+[.sequence-step]#2# [.sequence-step]#3#
+indicates that you want directly the code of your application to be tested.
+`given().worker().up()` [.sequence-step]#4# [.sequence-step]#5# indicates that you need the worker fully started
+before running the test.
+
+`it()` code now uses `front(this)` [.sequence-step]#20# that is a fluent API to
+create a client based on what you need. `front(this).name()` [.sequence-step]#22# is used to 
+add an information message in logs during test execution. It is useful if you
+want to separate several calls to simulate several end-users for example.
+Until now, no client is created.
+It is `front(this).execute(callback)` [.sequence-step]#24# that uses information
+defined before (name and current test context in this case) in order to create
+a client instance [.sequence-step]#26#. The testing utilities connect the client
+to the ZetaPush cloud [.sequence-step]#27# [.sequence-step]#28# using information provided in `given().credentials()`.
+In addition to a client, this function also creates the client
+API (`api`) [.sequence-step]#29# by calling `client.createProxyTaskService` under the hood. As a
+reminder, `api` created with `client.createProxyTaskService` provides directly
+same methods to the client that the _cloud functions_ defined in the _custom cloud service_
+without writing a single line of code (no need to manually define a function `saySomething` 
+on the client side). Once the client is ready, the code defined inside the `callback`
+is executed [.sequence-step]#30# [.sequence-step]#31#.
+In the test, the _cloud function_ `saySomething` is called through `api` [.sequence-step]#32#.
+Contrary to integration testing which calls _cloud functions_ directly, calls to 
+`api` sends messages through network from the client to the ZetaPush cloud [.sequence-step]#33#.
+ZetaPush cloud routes the message to the worker started by testing utilities [.sequence-step]#34#.
+The worker receives the request and calls the _cloud function_ [.sequence-step]#35#.
+The result is sent by the worker to the ZetaPush cloud [.sequence-step]#37# which routes the result
+to the client [.sequence-step]#38#. The client receives the result and can use it [.sequence-step]#39#.
+The same process applies when calling `getStoredMessages()` [.sequence-step]#40# [.sequence-step]#41#
+[.sequence-step]#42# [.sequence-step]#43# [.sequence-step]#44# [.sequence-step]#45#
+[.sequence-step]#46# [.sequence-step]#47#.
+
+The `autoclean(this)` works exactly the same as in integration tests.
+
+.Client authentication
+[NOTE]
+====
+In the example, the _custom cloud service_ exposes _cloud functions_ that
+don't need authentication and that don't have any security restrictions.
+So implicitly we can use an anonymous connection using `WeakClient`.
+
+But in a real application you may need to authenticate as a real user in your
+tests. Hopefully, you can <<reference.adoc#testing_utilities, provide end-user credentials>>
+when using `front(this)`. In this case, a `Simple` client instance is automatically
+used.
+====
+
+.Advanced e2e testing
+[NOTE]
+====
+For more advanced usage, you can find information about 
+<<reference.adoc#testing_utilities, testing utilities>> and 
+<<reference.adoc#e2e_testing, integration testing>>
+====

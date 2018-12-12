@@ -77,17 +77,17 @@ worker --> "ZetaPush cloud" : send message "Hello World"
 client -> client : display message
 ....
 
-When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].
+When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [.sequence-step]#1# [.sequence-step]#2#.
 
-Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].
+Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [.sequence-step]#3# [.sequence-step]#4#.
 
 When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
-remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
-and calls the `hello` _cloud function_ [7].
+remote code [.sequence-step]#5#. ZetaPush cloud routes the message to your worker [.sequence-step]#6# (that is running on your machine here). The worker receives the message
+and calls the `hello` _cloud function_ [.sequence-step]#7#.
 
-The _cloud function_ generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
-to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
-and the response is parsed [12] and available in your JavaScript.
+The _cloud function_ generates a result [.sequence-step]#8#. The worker picks this result and transform it to a message [.sequence-step]#9#. This message is then sent
+to the ZetaPush cloud [.sequence-step]#10#. The ZetaPush cloud routes the response message to the calling client [.sequence-step]#11#. The client receives the message
+and the response is parsed [.sequence-step]#12# and available in your JavaScript.
 
 *You can also try to enter a message and a number of repetitions and hit the "say something" button.*
 
