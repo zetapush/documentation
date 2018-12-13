@@ -1,0 +1,38 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.
+Deploying means that your code is sent to the ZetaPush cloud and your applications
+runs directly on it. The ZetaPush cloud
+hosts your application and makes it available on the Internet for your end-users.
+
+Usually, you deploy/publish your application when you are ready to promote it in production.
+
+Unlike in standard development of an application, with ZetaPush you don't need to bother to 
+buy, install, configure and manage the machines anymore.
+Everything is already provided by the ZetaPush cloud. Moreover, the ZetaPush cloud
+guarantees that your application is always available. You don't need
+to worry about how to handle technical complexities like:
+
+* https://en.wikipedia.org/wiki/Redundancy_(engineering)[Redundancy^] (duplication of your application to increase reliability)
+* https://en.wikipedia.org/wiki/Load_balancing_(computing)[Load-balancing^] (automatic distribution of tasks accross several workers)
+* https://en.wikipedia.org/wiki/High_availability[High availability^] (ensure that your application is always up)
+* https://en.wikipedia.org/wiki/Scalability[Scalability^] (increase the number of worker instances when the application usage increases)
+* Supervision (monitor machines and your application to alert you in case of a performance, machine or availability issue)
+
+[NOTE]
+====
+ZetaPush already monitors the machines and your applications. However, the supervision is currently
+not direclty available to you.
+
+Soon the link:{web-console-url}[ZetaPush web console^] will display monitoring
+information.
+====
+
+[WARNING]
+====
+With a free trial account there is no scalability, high availability and load-balancing
+because the trial plan only allows one worker per application.
+
+You can link:{contact-url}[contact us^] if you want to test those features.
+====

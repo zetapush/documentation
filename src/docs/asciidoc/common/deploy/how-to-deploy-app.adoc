@@ -5,9 +5,69 @@ The deployment is very easy, to do this you only need to launch this command in 
 
 include::{docdir}/common/code/command-to-deploy.adoc[]
 
-The command will read the `.zetarc` file. If there is no _developerLogin_ and _developerPassword_ properties or if the ZetaPush account is not validated, you will not be able to push your application.
+The command will read the `.zetarc` file. If there is no _appName_, _developerLogin_ and _developerPassword_ properties or if the ZetaPush account is not validated, you will not be able to push your application.
 
-About the _appName_ property, if it is empty, the CLI will deploy your code on a new application.
+When you deploy your application (Front + Worker), the CLI displays the URLs to use it.
+Run the command and you should see something like:
+
+[source, console]
+----
+> zeta push
+
+[INFO] Using application defined in configuration: v79ivn00l  ‌
+[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code                                       <1>
+[INFO] ▇▇▇▇▇▇▇▇▇▇░░░░░░░░░░ Prepare environment
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Publish web application
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Preparing custom cloud services for deployment
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Publish custom cloud service on worker instance
+----
+<1> The _CLI_ displays progress bars to indicate all deployment tasks and 
+which tasks are currently being executed
 
 
-TIP: When you deploy your application (Front + Worker), the CLI returns you an unique URL to use it.
+Once the deployment has succeeded, you should see the URLs where your worker and
+front are available:
+
+[source, console]
+----
+
+> zeta push
+
+[INFO] Using application defined in configuration: v79ivn00l  ‌
+[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Prepare environment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish web application
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Preparing custom cloud services for deployment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish custom cloud service on worker instance
+[INFO] Web application front is available at http://front-v79ivn00l.celtia.zetapush.app:80/  ‌      <1>
+[INFO] Worker application queue_0 is available at http://queuea0-v79ivn00l.test.zetapush.app  ‌     <2>
+[INFO] Worker applications works only if you listen process.env.HTTP_PORT  ‌
+----
+<1> The URL for your front available on the Internet
+<2> The URL for the HTTP endpoint of your worker (if you have one)
+
+You can click (kbd:[Ctrl+click]) in the terminal on the front URL (or open a web browser
+and enter the front URL).
+You can see that your application is deployed.
+
+[NOTE]
+====
+You can notice that the data that was stored when you were running your application
+locally is also available once the application is deployed.
+
+This is normal because this is the same application.
+So the application uses the same _built-in cloud services_.
+
+If you want to separate data between your local development and the deployed application,
+you need to define several <<reference.adoc#manage_environments, environments>>.
+====
+
+[NOTE]
+====
+It is possible to <<reference.adoc#partial_deployment, deploy only one part of your application>> (only the front or only the worker).
+
+This can be useful for example when there is a bug that is fixed by exclusively patching the front part.
+So you just want to deploy your front but not deploy the same worker code again (and vice versa).
+====
