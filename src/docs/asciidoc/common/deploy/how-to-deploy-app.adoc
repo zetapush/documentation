@@ -52,6 +52,13 @@ You can click (kbd:[Ctrl+click]) in the terminal on the front URL (or open a web
 and enter the front URL).
 You can see that your application is deployed.
 
+.Redeploy
+[TIP]
+====
+Obviously, you can publish your application again anytime you want to update it.
+====
+
+.Shared _built-in cloud services_
 [NOTE]
 ====
 You can notice that the data that was stored when you were running your application
@@ -64,10 +71,31 @@ If you want to separate data between your local development and the deployed app
 you need to define several <<reference.adoc#manage_environments, environments>>.
 ====
 
+.Partial deployment
 [NOTE]
 ====
 It is possible to <<reference.adoc#partial_deployment, deploy only one part of your application>> (only the front or only the worker).
 
 This can be useful for example when there is a bug that is fixed by exclusively patching the front part.
 So you just want to deploy your front but not deploy the same worker code again (and vice versa).
+====
+
+
+.How to have initialization code
+[NOTE]
+====
+A _custom cloud service_ may have initialization code to configure and prepare your application.
+
+As said before, once published in the ZetaPush cloud, ZetaPush handles scalability and
+high availability. So several worker instances will run in the same time and ZetaPush will
+load-balance traffic between worker instances. In order to ensure that *only one worker* executes
+some initialization code, ZetaPush provides <<reference.adoc#onapplicationbootstrap, `onApplicationBootstrap` special method>>.
+====
+
+.Snapshot and rollback
+[NOTE]
+====
+In future version, every deployment will trigger a <<reference.adoc#snapshots, snapshot>> to store
+the whole application state and data. The aim is to provide you a tool to
+quickly restore the previous version.
 ====

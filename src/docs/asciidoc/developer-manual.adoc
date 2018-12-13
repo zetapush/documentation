@@ -79,20 +79,8 @@ X coder un cloud service simple
 
 Objectif : montrer comment déployer une application complète (front + worker)
 
-indiquer qu'on peut redéployer à n'importe quel moment
-
-.How to have initialization code
-[NOTE]
-====
-A _custom cloud service_ may have initialization code to configure and prepare your application.
-
-As said before, once published in the ZetaPush cloud, ZetaPush handles scalability and
-high availability. So several worker instances will run in the same time and ZetaPush will
-load-balance traffic between worker instances. In order to ensure only one ...
-====
-
-
--> retirer parties avec déploiement partiel et mettre des liens à la place
+x indiquer qu'on peut redéployer à n'importe quel moment
+x retirer parties avec déploiement partiel et mettre des liens à la place
 
 == User management in your application
 
