@@ -110,7 +110,7 @@ so levels below the selected level are not displayed at all.
 
 == Log using ZetaPush _built-in cloud service_
 
-In order to to provide a logger with more features, ZetaPush provides the <<reference.adoc#_logs, `Logs` cloud service>>.
+In order to provide a logger with more features, ZetaPush provides the <<reference.adoc#_logs, `Logs` cloud service>>.
 Thanks to this service you can provide more context to your log entries (a logger name, levels, tags or an identifier, ...).
 
 The service <<reference.adoc#log_service, can be used directly>> but code for logging may be a quite verbose if you provide

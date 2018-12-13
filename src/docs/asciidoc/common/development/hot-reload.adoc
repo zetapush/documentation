@@ -124,7 +124,7 @@ Your application is started locally. Now we will test this feature by updating y
 Update the `worker/index.ts` file as following:
 
 .worker/index.ts
-[source,javascript,linenumbers, role="highlight-lines:8"]
+[source,javascript,linenumbers, role="highlight-lines:8 collapse-lines:10-17"]
 ----
 import { Injectable } from '@zetapush/core';            
 
@@ -170,7 +170,7 @@ To demonstrate a change in your front, we will update the code of the
 `saySeveralTimes` function:
 
 .front/index.js
-[source, javascript, linenumbers, role="highlight-lines:18"]
+[source, javascript, linenumbers, role="highlight-lines:18 collapse-lines:1-14"]
 ----
 // Create new ZetaPush Client
 const client = new ZetaPushClient.WeakClient();
@@ -280,7 +280,7 @@ You can save your file and if you look in your terminal, you can see something l
 To ensure that everything works fine, you need to update your front:
 
 .front/index.js
-[source, javascript, linenumbers, role="highlight-lines:8,19,21-25"]
+[source, javascript, linenumbers, role="highlight-lines:8,19,21-25 collapse-lines:1-4"]
 ----
 // Create new ZetaPush Client
 const client = new ZetaPushClient.WeakClient();
@@ -351,3 +351,4 @@ that is not code loaded by the worker, your _custom cloud services_ won't be aut
 
 This feature will be supported in a future version.
 ====
+
