@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 .worker/index.ts
-[source,typescript,linenums,role="highlight-lines:15"]
+[source,javascript,linenums,role="highlight-lines:15"]
 ----
 import { Injectable } from '@zetapush/core';
 

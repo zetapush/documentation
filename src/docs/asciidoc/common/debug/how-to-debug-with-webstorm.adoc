@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-Intellij's WebStorm provide a powerfull debugging feature https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/.
+Intellij's WebStorm provides a powerfull debugging feature https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/.
 
 On the top menu, select Run -> Edit Configurations
 

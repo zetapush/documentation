@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 .worker/index.ts
-[source,typescript,linenums]
+[source,javascript,linenums]
 ----
 export default class Api {                                    // <1>
   /**

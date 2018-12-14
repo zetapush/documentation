@@ -12,13 +12,13 @@ Add a launch configuration with the following structure.
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "zeta run", <1>
+      "name": "zeta run",                                       <1>
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/node_modules/.bin/zeta",
+      "program": "${workspaceRoot}/node_modules/.bin/zeta",     <2>
       "stopOnEntry": false,
       "sourceMaps": true,
-      "args": [ <2>
+      "args": [                                                 <3>
         "run",
         "--serve-front"
       ],
@@ -28,11 +28,33 @@ Add a launch configuration with the following structure.
   ]
 }
 ----
-<1> Launch configuration name
-<2> zeta command arguments
+<1> Launch configuration name (the name you want)
+<2> Path to local zeta _CLI_
+<3> zeta command arguments 
 
-Run VSCode debugger
+[NOTE]
+====
+Under the hood, VSCode runs a NodeJS process that runs `node_modules/.bin/zeta` script
+with two parameters `run` and `--serve-front`.
+
+It is exactly the same as doing:
+
+[source, console]
+----
+$ node_modules/.bin/zeta run --serve-front
+----
+====
+
+[WARNING]
+====
+VSCode may use a different version of the NodeJS you use in an external terminal.
+====
+
+Once the configuration is ready, you can start your application in debug mode as indicated
+in https://code.visualstudio.com/docs/editor/debugging[VSCode documentation^].
+
+In the following picture, we show that the debugger stops in the code of your _custom cloud service_.
+You can also see the values of the parameters and now you can execute the code step by step.
 
 image::{images-dir}/debug/run-vscode-debugger.png[Run VSCode debugger]
 
-You can run Debugger by following the official  VSCode documentation: https://code.visualstudio.com/docs/editor/debugging.

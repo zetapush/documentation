@@ -20,7 +20,7 @@ some mobile applications using hybrid technologies).
 As a reminder, here is the code of _custom cloud service_ named `HelloWorldAsCustomCloudService`:
 
 .worker/index.ts
-[source,typescript,linenumbers]
+[source,javascript,linenumbers]
 ----
 export default class HelloWorldAsCustomCloudService {                     
     constructor() {}
@@ -125,8 +125,6 @@ const api = client.createProxyTaskService();        // <2>
 client.connect()                                    // <3>
   .then(() => {                                     // <4>
     console.debug('onConnectionEstablished');
-    [...document.querySelectorAll('button')].forEach((node) =>
-      node.removeAttribute('disabled'));
   });
 ----
 <1> Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)
@@ -150,7 +148,7 @@ what you want to do. Here we are using a `WeakClient` instance but there are oth
 Our client is ready and now we want to call _cloud function_ named `helloWorld`, we add the following code:
 
 .front/index.js
-[source, javascript, linenumbers, role="highlight-lines:13-16"]
+[source, javascript, linenumbers, role="highlight-lines:11-14"]
 ----
 // Create new ZetaPush Client
 const client = new ZetaPushClient.WeakClient();
@@ -160,11 +158,9 @@ const api = client.createProxyTaskService();
 client.connect()
   .then(() => {
     console.debug('onConnectionEstablished');
-    [...document.querySelectorAll('button')].forEach((node) =>
-      node.removeAttribute('disabled'));
   });
 // Handle DOM events
-async function hello() {                                                                                // <1>
+async function hello() {                                                                          // <1>
   const messageFromCloudFunction = await api.helloWorld();                                        // <2>
   document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>` // <3>
 }
@@ -216,7 +212,7 @@ Here is the updated code:
 
 
 .front/index.js
-[source, javascript, linenumbers, role="highlight-lines:16-22"]
+[source, javascript, linenumbers, role="highlight-lines:15-20"]
 ----
 // Create new ZetaPush Client
 const client = new ZetaPushClient.WeakClient();
@@ -226,15 +222,13 @@ const api = client.createProxyTaskService();
 client.connect()
   .then(() => {
     console.debug('onConnectionEstablished');
-    [...document.querySelectorAll('button')].forEach((node) =>
-      node.removeAttribute('disabled'));
   });
 // Handle DOM events
 async function hello() {
   const messageFromCloudFunction = await api.helloWorld();
   document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`
 }
-async function saySeveralTimes() {                                                      // <1>
+async function saySeveralTimes() {                                                // <1>
   const message = document.getElementById('message-input').value;                 // <2>
   const repeat = document.getElementById('repeat-input').value;                   // <3>
   const messages = await api.saySomething(message, parseInt(repeat));             // <4>

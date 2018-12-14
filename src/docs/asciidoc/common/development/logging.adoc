@@ -1,0 +1,242 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+== Log using local console
+
+NodeJS provides `console` object that you can use in your code. For example, update
+the code of your _custom cloud service_ to add some logs:
+
+.worker/index.ts
+[source,javascript,linenumbers,role="highlight-lines:13,18,29"]
+----
+import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService {
+  constructor(private stack: Stack) {}
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    console.log('message=', message, 'times=', times);
+    let fullMessage = '';
+    for (let i = 0; i < times; i++) {
+      fullMessage += `${message}\n`;
+    }
+    console.debug('fullMessage=', fullMessage);
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    const response = await this.stack.push({
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    console.debug('stack.push response=', response);
+    return fullMessage;
+  }
+
+  async getStoredMessages() {
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+
+Running your application and hitting 'say something' button with a "hello" message and 5 repetitions,
+your terminal will print something like this:
+
+[source, console]
+----
+[INFO] Worker is up!  ‌
+message= hello -  times= 5                                                          <1>
+fullMessage= hello -                                                                <2>
+hello - 
+hello - 
+hello - 
+hello - 
+
+stack.push response= { contextId: '3303/4rU/4934',                                  <3>
+  owner: 'v79ivn00l:root',
+  stack: 'messages',
+  ts: 1544096927555,
+  guid: '///+mHymsL1sq8jZZa1F2g==',
+  data:
+   { message: 'hello - ',
+     times: 5,
+     fullMessage: 'hello - \nhello - \nhello - \nhello - \nhello - \n' } }
+----
+<1> The first `console.log` that displays parameters
+<2> The first `console.debug` that displays the generated message
+<3> The second `console.debug` that displays the response of the `Stack` service
+
+As you can see, you can have any number of parameters you want and of any type.
+For objects, the `console` will display it as JSON string.
+
+.Logs in production
+[IMPORTANT]
+====
+Logging using `console` only logs in your terminal. It means that nothing is neither written to a file
+nor sent to a logging server. You will then loose all logs if you close your terminal.
+
+However, when you will later publish your application on the ZetaPush cloud, everything
+written in standard and error outputs will be available in the 
+<<reference.adoc#logs_in_web_console, ZetaPush web console>>.
+====
+
+.Levels and colors in local console
+[TIP]
+====
+ZetaPush also provides a logger object that can be useful to distinguish levels.
+Levels are explicitly written (for example `[INFO]`). Each level has its own
+name displayed in color and may have a color for the message too.
+This is useful to quickly view what is important.
+
+You can learn <<reference.adoc#local_logger, how to use the local logger>>.
+
+Moreover, thanks to levels you <<reference.adoc#verbosity_level, can start your application with a particular level>>
+so levels below the selected level are not displayed at all.
+====
+
+
+== Log using ZetaPush _built-in cloud service_
+
+In order to provide a logger with more features, ZetaPush provides the <<reference.adoc#_logs, `Logs` cloud service>>.
+Thanks to this service you can provide more context to your log entries (a logger name, levels, tags or an identifier, ...).
+
+The service <<reference.adoc#log_service, can be used directly>> but code for logging may be a quite verbose if you provide
+all information manually.
+
+So ZetaPush also provides an automatic logging feature that magically adds:
+
+* the name of the called _cloud function_
+* the parameter values of the called _cloud function_
+* the returned value of the called _cloud function_
+* the current date
+* the unique identifier of the request
+* which user has made the call
+
+It also automatically logs all calls to _builtin cloud services_ that could be 
+made in the _cloud function_.
+
+
+.worker/index.ts
+[source,javascript,linenumbers, role="highlight-lines:1,5,6,19,30"]
+----
+import { Injectable, RequestContextAware, RequestContext } from '@zetapush/core';     // <1>
+import { Stack } from '@zetapush/platform-legacy';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService implements RequestContextAware {  // <2>
+  requestContext!: RequestContext;                                                    // <3>
+
+  constructor(private stack: Stack) {}
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    let fullMessage = '';
+    for (let i = 0; i < times; i++) {
+      fullMessage += `${message}\n`;
+    }
+    this.requestContext.logger.debug('fullMessage=', fullMessage);                           // <4>
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    const response = await this.stack.push({
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    this.requestContext.logger.debug('stack.push response=', response);                      // <5>
+    return fullMessage;
+  }
+
+  async getStoredMessages() {
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+<1> Import `RequestContext` and `RequestContextAware` from `@zetapush/core`
+<2> Implements `RequestContextAware` to indicate that we use `requestContext`
+<3> `requestContext` magic property that is automatically provided by the worker. No need to initialize it.
+The `!` character is here to guide TypeScript otherwise there is a compilation error because
+`requestContext` is not initialized.
+<4> Calls logger of `requestContext` to log `fullMessage`
+<5> Calls logger of `requestContext` to log `response`
+
+.RequestContextAware
+[NOTE]
+====
+Implementing `RequestContextAware` is totally optional but recommended even if it works
+without it.
+If you work in team, it indicates to other developers that 
+the use of `requestContext` attribute is intentional and that it is not dead code.
+Moreover, implementing this interface gives you some documentation about `requestContext`
+attribute.
+====
+
+.Definite Assignment Assertions
+[NOTE]
+====
+TypeScript checks that a 
+link:https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#strict-class-initialization[class attribute is initialized^].
+
+As `requestContext` is an injected attribute, its value is not directly initialized in your class.
+The https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript#definite-assignment-assertions[Definite Assignment Assertions^]
+allows to explicitly indicate to TypeScript type checker that 
+the attribute is initialized outside of the class (using `!` character after attribute name).
+====
+
+Internally, the logger uses the _Logs cloud service_. The logs are by default sent to
+ZetaPush cloud and then available in ZetaPush web console. The ZetaPush worker is aware
+of the current context. So every log entry is enhanced with current context call.
+
+For the example, start your application and hit the 'say something' button.
+Here is the result of the logs in the web console:
+
+////
+TODO: montrer résultat sur l'exemple (screenshot)
+TODO: montrer comment retrouver rapidement de l'information
+////
+
+.Advanced usage
+[TIP]
+====
+You can find more information about <<reference.adoc#log_with_requestcontext, advance usage of the logger provided by `RequestContext`>> 
+in reference documentation.
+
+You can also learn how to <<reference.adoc#persist_logs, persist logs>> and how to <<reference.adoc#custom_logging_server, send logs to a custom log server>>.
+
+You can learn how to <<reference.adoc#use_custom_tags, use custom tags>>.
+====
+
+.Integration with libraries
+[NOTE]
+====
+NodeJS community provides several logging libraries like https://github.com/winstonjs/winston[winston^],
+https://github.com/trentm/node-bunyan[bunyan^], https://github.com/expressjs/morgan[morgan^], ...
+
+Currently, you can use them to log into the local console but as said before, the current
+context is not automatically provided.
+In the futur, ZetaPush will provide bridges to fully support those libraries to automatically
+provide the current context.
+====

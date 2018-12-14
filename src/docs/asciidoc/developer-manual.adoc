@@ -64,14 +64,16 @@ X coder un cloud service simple
       X note pour distinguer qu'on peut avoir des clouds services privés et d'autres exposés
 
 - develop fast
-  - hot reload
-    -> montrer comment gagner du temps
+  X hot reload
+    X montrer comment gagner du temps
+    X note pour autres fichiers (fichiers de conf dans futur)
+  X auto-completion
   - logs
     -> montrer comment logguer pour gagner du temps d'analyse
-  - debug
-    -> montrer comment débugger rapidement du code
-  - testing ?
-    -> montrer comment les tests peuvent faire gagner du temps
+  X debug
+    X montrer comment débugger rapidement du code
+  X testing
+    X montrer comment les tests peuvent faire gagner du temps
 
 == Deploy/publish your application
 
@@ -402,14 +404,24 @@ include::{docdir}/common/custom-cloud-service/use-custom-cloud-services-in-custo
 === Develop fast
 
 ==== Hot reload
+include::{docdir}/common/development/hot-reload.adoc[leveloffset=+3]
 
-TODO: https://github.com/zetapush/documentation/issues/53
+==== Auto-completion
+include::{docdir}/common/development/auto-completion.adoc[leveloffset=+3]
 
 ==== Log from a _custom cloud service_
+include::{docdir}/common/development/logging.adoc[leveloffset=+3]
 
 ==== Debug a _custom cloud service_
 
+===== Debug your application with VSCode
+include::{docdir}/common/debug/how-to-debug-with-vscode.adoc[leveloffset=+2]
+
+===== Debug your application with IntelliJ based IDE
+include::{docdir}/common/debug/how-to-debug-with-webstorm.adoc[leveloffset=+2]
+
 ==== Test a _custom cloud service_
+include::{docdir}/common/development/testing.adoc[leveloffset=+3]
 
 == Deploy/publish your application
 
@@ -440,14 +452,6 @@ include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
 == Secure your application
 
 ////
-== Debug
-
-=== Debug your application with VSCode
-include::{docdir}/common/debug/how-to-debug-with-vscode.adoc[leveloffset=+2]
-
-=== Debug your application with IntelliJ based IDE
-include::{docdir}/common/debug/how-to-debug-with-webstorm.adoc[leveloffset=+2]
-
 == Testing
 
 TODO: https://github.com/zetapush/documentation/issues/55
@@ -482,6 +486,37 @@ include::{docdir}/common/cloud-services/standard-user-workflow/configuration.ado
 // EXTENSION OF CLOUD SERVICES
 == Extension of cloud services
 
+.Run directly from VSCode
+[TIP]
+====
+You can configure VSCode to run your tests. In the main menu, click on menu:Debug[Add Configuration...]:
+
+image::{images-dir}/debug/add-debug-mendu.png[role=center]
+
+Add these lines in the `launch.json` file:
+
+[source, json]
+----
+    {
+      "name": "tests", 
+      "type": "node",
+      "request": "launch",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [ 
+        "node_modules/jasmine/bin/jasmine.js"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
+    }
+----
+
+Then you can select the `tests' launch configuration and hit kbd:[F5].
+====
 [#extension-of-standard-user-workflow]
 === Standard User Workflow
 include::{docdir}/common/cloud-services/standard-user-workflow/extension.adoc[leveloffset=+2]

@@ -1,0 +1,354 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+In order to improve productivity, ZetaPush provides *hot reload* feature.
+Once you have started your application on your computer, you just focus on writing your code.
+
+Each time you make a change in your _custom cloud services_ code, ZetaPush detects the change
+and reload your _custom cloud services_ code. The time to wait for code to be ready is drastically reduced so
+you can develop really faster thanks to this feature.
+
+As front part is simply HTML and JavaScript, the local HTTP server always serves the 
+latest version of your code. The cache is explicitly disabled in local development.
+
+== Test the feature
+
+To test this feature, we will reuse the *HelloWorldAsCustomCloudService* sample.
+As a reminder, here is the code:
+
+[role=tab-container]
+HelloWorldAsCustomCloudService
+
+[role=tab]
+worker/index.ts
+
+.worker/index.ts
+[source,javascript,linenumbers]
+----
+import { Injectable } from '@zetapush/core';
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService {                     
+    constructor() {}
+
+    helloWorld() {
+        return "Hello World";
+    }
+
+    saySomething(message: string, times: number) {
+        let fullMessage = '';
+        for(let i=0 ; i<times ; i++) {
+            fullMessage += `${message}\n`
+        }
+        return fullMessage
+    }
+}
+----
+
+
+[role=tab]
+front/index.html
+
+.front/index.html
+[source, html, linenumbers]
+----
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celtia</title>
+</head>
+
+<body>
+    <button onclick="hello()">hello</button>
+    <div style="border: 1px solid #ccc">
+      Message: <input type="text" id="message-input" /> 
+      Repeat: <input type="text" value="1" id="repeat-input" />
+      <button onclick="saySeveralTimes()">say something</button>
+    </div>
+    <ul id="result-container"></ul>
+
+    <script src="https://unpkg.com/@zetapush/client"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+----
+
+
+[role=tab]
+front/index.js
+
+.front/index.js
+[source, javascript, linenumbers]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect()
+  .then(() => {
+    console.debug('onConnectionEstablished');
+  });
+// Handle DOM events
+async function hello() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`
+}
+async function saySeveralTimes() {
+  const message = document.getElementById('message-input').value;
+  const repeat = document.getElementById('repeat-input').value;
+  const messages = await api.saySomething(message, parseInt(repeat));
+  document.getElementById('result-container').innerHTML += `<li>${messages}</li>`
+}
+----
+
+[role=tab-container-end]
+-
+
+Now start your application by running:
+
+[source, console]
+----
+$ npm run start -- --serve-front
+----
+
+Click on 'hello' button, the message "Hello World" appears in the web page.
+
+=== Simple change in code of your _custom cloud service_
+
+Your application is started locally. Now we will test this feature by updating your code.
+Update the `worker/index.ts` file as following:
+
+.worker/index.ts
+[source,javascript,linenumbers, role="highlight-lines:8 collapse-lines:10-17"]
+----
+import { Injectable } from '@zetapush/core';            
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService {                     
+    constructor() {}
+
+    helloWorld() {
+        return "Hello World !!!";                       // <1>
+    }
+
+    saySomething(message: string, times: number) {
+        let fullMessage = '';
+        for(let i=0 ; i<times ; i++) {
+            fullMessage += `${message}\n`
+        }
+        return fullMessage
+    }
+}
+----
+<1> Add " !!!" at the end of the string
+
+Save the file and check your terminal. You should see something like this:
+
+[source, console]
+----
+⠋ Reloading worker... 
+[INFO] Worker is up!
+----
+
+You can check that the code is really updated by clicking on the 'hello' button.
+Now you see that "Hello World !!!" is displayed in the web page.
+
+.No change is needed on the front
+[TIP]
+====
+You don't need to reload the web page or to reconnect the client to the ZetaPush cloud.
+====
+
+=== Change code of your front
+
+To demonstrate a change in your front, we will update the code of the
+`saySeveralTimes` function:
+
+.front/index.js
+[source, javascript, linenumbers, role="highlight-lines:18 collapse-lines:1-14"]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect()
+  .then(() => {
+    console.debug('onConnectionEstablished');
+  });
+// Handle DOM events
+async function hello() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`
+}
+async function saySeveralTimes() {
+  const message = document.getElementById('message-input').value;
+  const repeat = document.getElementById('repeat-input').value;
+  const messages = await api.saySomething(message + ' - ', parseInt(repeat));               // <1>
+  document.getElementById('result-container').innerHTML += `<li>${messages}</li>`
+}
+----
+<1> We add ' - ' on the message parameter
+
+Save your file and reload your web page. Enter a message ("hello" for example) and click on 'say something' button.
+You should see "hello - hello - " (if you have chosen 2 repetitions).
+
+=== Use a _cloud service_ on the fly
+
+As your application grows, you will need to use other _built-in cloud services_ or _custom cloud services_.
+
+We will improve our _custom cloud service_ to use the `Stack` _built-in cloud service_ to store messages.
+First `Stack` service is provided by `@zetapush/platform-legacy` module. So you have to install it.
+You can keep your application running in your terminal and open another terminal in the same folder.
+Execute this command in the new terminal:
+
+[source, console]
+----
+$ npm install --save @zetapush/platform-legacy
+----
+
+
+You can now import `Stack` service in your code and use it:
+
+.worker/index.ts
+[source, javascript, linenumbers, role="highlight-lines:2,6,17-26,30-37"]
+----
+import { Injectable } from '@zetapush/core';
+import { Stack } from '@zetapush/platform-legacy';          // <1>
+
+@Injectable()
+export default class HelloWorldAsCustomCloudService {
+  constructor(private stack: Stack) {}                      // <2>
+
+  helloWorld() {
+    return 'Hello World';
+  }
+
+  async saySomething(message: string, times: number) {
+    let fullMessage = '';
+    for (let i = 0; i < times; i++) {
+      fullMessage += `${message}\n`;
+    }
+    // store source information (message and times)
+    // and generated information (fullMessage)
+    await this.stack.push({                                 // <3>
+      stack: 'messages',
+      data: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    return fullMessage;
+  }
+
+  async getStoredMessages() {                               // <4>
+    // get all values
+    const response = await this.stack.list({
+      stack: 'messages'
+    });
+    // get only useful part (message, times, fullMessage)
+    return response.result ? response.result.content.map((item) => item.data) : [];
+  }
+}
+----
+<1> Import the module `@zetapush/platform-legacy` that we just installed with npm
+<2> Indicate that we need a dependency of type `Stack` that will be provided by ZetaPush worker
+<3> Add some code to store the messages. Here we store both received parameters and the generated message
+<4> A new _cloud function_ in order to display what's in the database
+
+You can save your file and if you look in your terminal, you can see something like this:
+
+[source, console]
+----
+⠋ Reloading worker... 
+[INFO] Create services [ [ { itemId: 'stack',
+      businessId: 'v79ivn00l',
+      deploymentId: 'stack_0',
+      description: 'stack',
+      options: {},
+      forbiddenVerbs: [Array],
+⠴ Reloading worker... 
+[INFO] Worker is up!
+----
+
+To ensure that everything works fine, you need to update your front:
+
+.front/index.js
+[source, javascript, linenumbers, role="highlight-lines:8,19,21-25 collapse-lines:1-4"]
+----
+// Create new ZetaPush Client
+const client = new ZetaPushClient.WeakClient();
+// Create a proxy to invoked worker methods
+const api = client.createProxyTaskService();
+// Handle connection
+client.connect().then(() => {
+  console.debug('onConnectionEstablished');
+  return displayAllMessages();                                                                 // <1>
+});
+// Handle DOM events
+async function hello() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById('result-container').innerHTML += `<li>${messageFromCloudFunction}</li>`;
+}
+async function saySeveralTimes() {
+  const message = document.getElementById('message-input').value;
+  const repeat = document.getElementById('repeat-input').value;
+  const messages = await api.saySomething(message + ' - ', parseInt(repeat));
+  await displayAllMessages();                                                                  // <2>
+}
+async function displayAllMessages() {                                                          // <3>
+  const storedMessages = await api.getStoredMessages();                                        // <4>
+  const messagesAsString = storedMessages.map((msg) => `<li>${JSON.stringify(msg)}</li>`);     // <5>
+  document.getElementById('result-container').innerHTML = messagesAsString.join('');           // <6>
+}
+----
+<1> Load all messages once connected.
+<2> Replace code that writes `fullMessage` in the HTML by a call to the function below.
+<3> Define another function to display all messages.
+<4> Call the _cloud function_ to retrieve all stored messages in database. This is the
+important part of the code because it calls a _cloud function_ freshly written.
+<5> Convert object of values to a JSON string.
+<6> Write all stored messages in the HTML.
+
+Save your file and reload your web page. You can enter a message ("foo" for example) and a number
+of repetitions (5 for example). Then hit the 'say something' button. Now you will see something like:
+
+`{"message":"foo - ","times":5,"fullMessage":"foo - foo - foo - foo - foo - "}`
+
+This means that your _custom cloud service_ has been reloaded and the `Stack` service
+is really used. You can ensure that by reloading the web page, you will see the message 
+displayed in the web page.
+
+
+.Import npm module
+[NOTE]
+====
+As you can see, you can add a npm module even if your application is running
+and then import it in your code. The hot reload takes effect only when
+you update the code handled by the ZetaPush worker (i.e. your _custom cloud services_ code).
+====
+
+.Hot reload with _built-in cloud services_
+[TIP]
+====
+Thanks to dependency injection, ZetaPush worker can detect if a _built-in cloud service_
+is newly needed as a dependency. In fact, the worker keeps tracking of all dependencies to _built-in cloud services_
+and check if a new service is asked. If so, the worker creates it on ZetaPush cloud, 
+instantiates it, and injects it everywhere it is needed.
+====
+
+.Hot reload on other files
+[CAUTION]
+====
+Currently, if you update `.zetarc` or you update a configuration file or any other file
+that is not code loaded by the worker, your _custom cloud services_ won't be automatically reloaded.
+
+This feature will be supported in a future version.
+====
+
