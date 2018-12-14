@@ -1,7 +1,7 @@
 :relative-path: ../../../
 include::{docdir}/variables.adoc[]
 
-In this part we will explain how to use the **Standard User Workflow** in the default behavior, i.e. using the default implementations of each parts of the workflow (For example, the default implementation to send the confirmation email use the _Mailjet_ API).
+In this part we will explain how to use the **Standard User Workflow** in the default behavior, i.e. using the default implementations of each parts of the workflow.
 
 To use the Standard User Workflow, you just need 4 steps :
 
@@ -16,10 +16,10 @@ In this Quickstart, we begin with a generated application using the CLI. So you 
 
 [source, console]
 ----
-$ npm init @zetapush myApp
+$ npm init @zetapush app-with-user-management
 ----
 
-We import the library @zetapush/user-management that provides the Standard User Workflow using NPM:
+We import the library `@zetapush/user-management` that provides the Standard User Workflow using NPM:
 
 [source, console]
 ----
@@ -28,67 +28,181 @@ $ npm install --save @zetapush/user-management
 
 == Import and use the Standard User Workflow in your worker
 
-Your worker contains just this code :
+Change the code of the _custom cloud service_ defined in `worker/index.ts` file:
 
 .worker/index.ts
-[source,typescript,linenums]
+[source,javascript,linenums]
 ----
-import { Module } from '@zetapush/core';
-import { StandardUserManagementModule, StandardUserWorkflow, ConfirmationUrlHttpHandler } from '@zetapush/user-management';
+import { 
+  StandardUserWorkflow,                       // <1>
+  StandardUserManagementModule,               // <2>
+  ConfirmationUrlHttpHandler                  // <3>
+} from '@zetapush/user-management';
+import { Module } from '@zetapush/core';      // <4>
 
-@Module({ <1>
-  imports: [StandardUserManagementModule], <2>
+@Module({                                     // <5>
+  imports: [StandardUserManagementModule],    // <6>
   expose: {
-    user: StandardUserWorkflow, <3>
-    http: ConfirmationUrlHttpHandler <4>
+    user: StandardUserWorkflow,               // <7>
+    http: ConfirmationUrlHttpHandler          // <8>
   }
 })
-export default class Api {}
+export default class Api {}                   // <9>
 ----
-<1> As usual, the worker code exports a class (maned _Api_ here). As we import another module (@zetapush/user-management) we need to use @module annotation.
-<2> First you need to export a class (named _Api_ here) that is a module (configured with the _@Module()_ annotation). You import the **StandardUserManagementModule** to use it into your application.
-<3> The @zetapush/user-management library/cloud service provides the StandardUserWorkflow class. The front needs to call methods of the StandardUserWorkflow class that's why StandardUserWorkflow class is exposed. In this example, the StandardUserWorflow methods are exposed in user namespace.
-<4> We also expose _ConfirmationUrlHttpHandler_ to instanciate a web server in your worker that will listen the account confirmation event (When the user clicks on the link in the email).
+<1> `StandardUserWorkflow` is the _cloud service_ we want to use. It is this class
+that provides the _cloud functions_ to handle user registration, password reset, login and logout.
+Here we just import the TypeScript class.
+<2> The `StandardUserWorkflow` _cloud service_ is encapsulated in the `StandardUserManagementModule` module.
+We also need to import TypeScript class for later use.
+<3> The `StandardUserManagementModule` module also provides `ConfirmationUrlHttpHandler` in
+order to provide an HTTP endpoint to handle the confirmation link that will be clicked in the email.
+<4> Import the `Module` annotation for TypeScript.
+<5> The `@Module` annotation is used here to indicate to the worker 
+which _cloud services_ you want to use and how you want to use it
+in your _custom cloud service_.
+<6> We indicate to the worker that we import the module `StandardUserManagementModule`.
+It means that everything provided by the module is now available to
+your _custom cloud service_.
+<7> We indicate that we directly expose `StandardUserWorkflow` _cloud service_. It means that
+_cloud functions_ defined by `StandardUserWorkflow` are directly callable from a client.
+<8> We indicate that we also expose `ConfirmationUrlHttpHandler`. It means that
+the HTTP endpoint is directly callable by opening the confirmation URL in a web browser.
+<9> As usual we export the entry point of your _custom cloud services_.
 
-That all for the worker !
+
+**That all for the worker code !**
+
+The code above basiclly declares your _custom cloud service_ as a new <<reference.adoc#modules, ZetaPush module>>.
+In this case, we don't need to create a module but the `@Module` is needed to import another module.
+Importing a module (using `imports` option) only indicates that you want to use a module somewhere in your _custom cloud service_.
+It doesn't automatically expose anything. This is deliberate because you may want to not directly 
+expose the `StandardUserWorkflow` _cloud functions_ to the client. You could then define a _custom cloud service_
+that is exposed and delegate user management to the `StandardUserWorkflow` _cloud functions_. 
+
+The quickest way to benefit from user management is to directly expose `StandardUserWorflow` to the client.
+It means that the _cloud functions_ provided by `StandardUserWorkflow` are directly callable from a client.
+So you don't need to code anything in your _custom cloud service_ and you can focus on the front side.
+To expose the `StandardUserWorkflow` you simply need to add the `expose` option on the `@Module`
+annotation. In addition to exposing `StandardUserWorkflow` to a client that uses the bidirectional
+connection to interact with `StandardUserWorflow` _cloud functions_, we also expose `ConfirmationUrlHttpHandler`
+in order to start a web server that listens to HTTP requests done on the account confirmation URL.
+The aim is to directly provide you the verification of the confirmation of the account when the user clicks
+on the confirmation link in the email. You don't need to bother to check if the confirmation token
+is valid and to handle token expiration.
+
+
+.Modules
+[NOTE]
+====
+ZetaPush provides <<reference.adoc#modules, modules>> to encapsulate
+several _cloud services_ and to be able to reuse them.
+
+As seen before, when you have a really simple _custom cloud service_,
+you just expose a class (without `@Module` annotation). In this case, 
+ZetaPush worker defines an implicit module that imports nothing and 
+exposes your class.
+====
+
+.Expose several _cloud services_
+[TIP]
+====
+As we expose several classes, we define a map:
+
+[source, javascript]
+----
+expose: {
+  user: StandardUserWorflow,
+  http: ConfirmationUrlHttpHandler
+}
+----
+
+The keys of the map correspond to <<reference.adoc#namespaces, namespaces>>.
+ZetaPush provides namespaces in order to be able to expose several
+_cloud services_ each isolated by a name. The aim is to be able to have
+for example two _cloud functions_ named `hello` in two different 
+_cloud services_ that are exposed. So on the client side, the name
+is used to specify which _cloud service_ to use when we call
+the _cloud function_ `hello`.
+====
+
+.Listen to HTTP requests
+[NOTE]
+====
+ZetaPush uses a bidirectional connection to interact between client and _cloud services_ (and vice versa).
+But in some cases, the bidirectional connection can't be used as for the confirmation link.
+Indeed the confirmation link is just an URL that opens a web browser when it is clicked by the
+end-user. The web browser performs an HTTP `GET` request on that URL.
+That's why ZetaPush also handles HTTP.
+
+You can even provide your own HTTP routes to listen to:
+
+* Either by registering a route in the <<reference.adoc#internal_http_server, ZetaPush web server>>
+* Or by using your <<reference.adoc#custom_http_server, own HTTP server>> (you can even use any library 
+or framework you want like http://expressjs.com/[express^] for example)
+
+In this example, `ConfirmationUrlHttpHandler` registers a route for the confirmation URL in the ZetaPush web server.
+====
 
 == Configure some properties
 
-Some configuration properties are required (like Mailjet API keys for example) to make the whole workflow work. To configure those properties, you need to create a file named application.json at the root of your application:
+The code is ready but in order to adapt the workflow to your needs, some configuration properties are required. 
+To configure those properties, you need to create a file named `application.json` at the root of your application:
 
 .application.json
 [source,json,linenums]
 ----
 {
   "email": {
-    "from": "celtia@zetapush.com" <1>
+    "from": "no-reply@your-application-name.com"    // <1>
   },
-  "registration": {
-    "confirmation": {
-      "base-url": "http://localhost:2999", <2>
-      "email": {
-        "subject": "Please confirm your account registration"
-      },
-      "success-url": "http://localhost:3000#login", <3>
-      "failure-url": "http://localhost:3000#confirmation-failed" <4>
-    }
-  },
-  "mailjet": {  <5>
-    "apikey-public": "", 
-    "apikey-private": ""
+  "smtp": {  
+    "host": "smtp.mailtrap.io",                     // <2>
+    "port": 2525,                                   // <3>
+    "username": "",                                 // <4>
+    "password": "",                                 // <5>
+    "ssl": false,                                   // <6>
+    "starttls": false                               // <7>
   }
 }
 ----
-<1> We configure the email sender
-<2> the `base-url` property is necessary to run the application in local. This property will soon be optional.
-<3> Link of your application where the user will be redirected when he confirms his account.
-<4> Link of your application where the user will be redirected when the confirmation failed.
-<5> Your Mailjet properties.
+<1> As an email is sent to the end user for confirming its account, you need to configure the email sender.
+<2> Configure the domain or the host for the SMTP server
+<3> Configure the port of the SMTP server
+<4> Configure username used to authenticate on the SMTP server
+<5> Configure password used to authenticate on the SMTP server
+<6> Set to true if your SMTP server requires SSL
+<7> Set to true if your SMTP server requires TLS
 
+
+In this example, we provide only the minimal required configuration. We only need to configure email
+sending. All other configuration properties are optional.
+
+.Test inscription and confirmation using Mailtrap
+[TIP]
+====
+For the example, we show the usage of https://mailtrap.io/[mailtrap^]. This is an online
+service that provides a SMTP server. There is a free plan to test email sending.
+
+If you want to test, just signup to mailtrap and fill `username` and `password` in `application.json`.
+
+If you already have your own SMTP server, you can directly enter your SMTP configuration in `application.json`.
+====
+
+
+.Configuration properties
+[NOTE]
+====
+The `application.json` file is not pure JSON. In fact, it accepts comments. This can
+be useful to document some properties.
+
+You can learn more about <<reference.adoc#configuration_properties, `application.json` and how to use configuration properties>>.
+
+You can also learn <<reference.adoc#configuration-of-standard-user-workflow, how to deeply configure the Standard User Workflow>>.
+====
 
 == Develop your front by calling the Standard User Workflow API
 
-Finally, we just need to call the cloud functions to create a user account, log in and log out from the client part.
+Finally, we just need to call the _cloud function_ to create a user account, log in and log out from the client part.
 You can replace the `front/index.js` file by the following content :
 
 .front/index.js
@@ -96,18 +210,14 @@ You can replace the `front/index.js` file by the following content :
 ----
 // Create the ZetaPush API
 const client = new ZetaPushClient.SmartClient();
-const userApi = client.createProxyTaskService({ <1>
+const userApi = client.createProxyTaskService({                               // <1>
   namespace: 'user'
 });
 
-// The user is hard-coded because we only show the front -> worker interaction
-const user = {
-  login: 'test',
-  password: 'password',
-  email: 'test-zetapush@yopmail.com'
-};
-
-async function signUpUser() { <2>
+async function signUpUser(form) {                                             // <2>
+  const login = form[0].value;
+  const password = form[1].value;
+  const email = form[2].value;
   // First connection as anonymous user to allow us to create a user
   await client.connect();
 
@@ -115,11 +225,11 @@ async function signUpUser() { <2>
   try {
     await userApi.signup({
       credentials: {
-        login: user.login,
-        password: user.password
+        login,
+        password
       },
       profile: {
-        email: user.email
+        email
       }
     });
     console.log('User account created');
@@ -131,8 +241,11 @@ async function signUpUser() { <2>
 /**
  * Connection of a user
  */
-async function connectUser() { <3>
-  await client.setCredentials({ login: user.login, password: user.password });
+async function loginUser(form) {                                              // <3>
+  const login = form[0].value;
+  const password = form[1].value;
+
+  await client.setCredentials({ login, password });
   client
     .connect()
     .then(() => {
@@ -146,17 +259,19 @@ async function connectUser() { <3>
 /**
  * Disconnection of a user
  */
-async function disconnectUser() { <4>
+async function logoutUser() {                                                 // <4>
   await client.disconnect();
   console.log('User disconnected');
 }
 ----
-<1> We created a ZetaPush client and his API to call our cloud functions (We use the namespace 'user' to call the **Standard User Workflow**).
+<1> We created a ZetaPush client and his API to call our cloud functions.
+We use the namespace `user` to call the `StandardUserWorkflow` _cloud functions_.
+Remember the `expose` option on `@Module` configuration and the `user` key in the map.
 <2> Function to create an account of the ZetaPush platform for this application.
 <3> Function to connect a user.
 <4> Function to disconnect a user.
 
-Here is a very basic HTML page to see the result in the console :
+Here is a very basic HTML page with two forms (one to create an account, the other to login):
 
 .front/index.html
 [source, html, linenums]
@@ -171,8 +286,20 @@ Here is a very basic HTML page to see the result in the console :
 </head>
 
 <body>
-  <button onclick="signUpUser()">Sign up</button>
-  <button onclick="connectUser()">Connect</button>
+  <h1>Signup</h1>
+  <form onsubmit="event.preventDefault(); signUpUser(this);">   <!--1-->
+    Login: <input type="text" name="login" />
+    Password: <input type="password" name="password" />
+    Email: <input type="email" name="email" />
+    <button type="submit">Sign up</button>
+  </form>
+
+  <h1>Login</h1>
+  <form onsubmit="event.preventDefault(); loginUser(this);">    <!--2-->
+    Login: <input type="text" name="login" />
+    Password: <input type="password" name="password" />
+    <button type="submit">Login</button>
+  </form>
 
   <script src="https://unpkg.com/@zetapush/client"></script>
   <script src="./index.js"></script>
@@ -180,6 +307,8 @@ Here is a very basic HTML page to see the result in the console :
 
 </html>
 ----
+<1> Form to create a new user
+<2> Form to login a user
 
 Run the following command to run your application in local and serve the front part :
 
@@ -189,6 +318,62 @@ Run the following command to run your application in local and serve the front p
 $ npm run start -- --serve-front
 ----
 
-NOTE: For a more real-world sample with a complete UI (signup form and login form) you can go to https://github.com/zetapush/zetapush-examples/tree/master/standard-user-workflow[GitHub ZetaPush Examples].
+To test the workflow, just enter a login, a password and an email in the "Signup" part.
+Then if you use https://mailtrap.io/[mailtrap^] for email sending, you can go
+into the inbox provided by mailtrap and check that email has been received.
+You can click on the link provided in the email. The account is then confirmed and
+you are automatically redirected to something like `http://localhost:2999#login`.
+Now you can login using the same login and password pair (open your web browser console 
+to see connection messages).
 
-You can now learn link:#configuration-of-standard-user-workflow[how to deeply configure the Standard User Workflow] or learn link:#extension-of-standard-user-workflow[how to extend this cloud service].
+You can also check that if you try to connect with wrong login or password, it doesn't work
+as expected. You can also create a new user but do not click on the link in the email.
+You can check that you are not allowed to login.
+
+.Automatic configuration according to execution context
+[IMPORTANT]
+====
+You can notice that you didn't configure any URL for confirmation link and for
+redirection to `http://localhost:2999/#login` once the account is confirmed.
+Actually, ZetaPush automatically provides base URL of your front and your worker.
+So you don't bother to configure the base URLs. This is particularly useful
+when your application is published on the ZetaPush cloud because you don't
+need to change configuration at all.
+====
+
+.Automatic adaptation of the implementations
+[NOTE]
+====
+In the example, we use a SMTP server to send the confirmation email.
+But you may want to use something else like https://fr.mailjet.com/[Mailjet^].
+ZetaPush provides an auto-adaptation system based on configuration.
+
+In concrete terms, if you don't configure `smtp` part in `application.json`
+but instead you configure `mailjet` part, `StandardUserWorkflow` will
+<<reference.adoc#auto_implementation_selection, automatically switch implementation>> used for sending email and will
+use Mailjet instead of SMTP.
+
+In future versions, other providers will be directly integrated.
+The advantage is to configure the minimum as for Mailjet which
+you only need to provide your Mailjet credentials.
+
+Moreover, you could also choose to change the workflow by replacing
+email by a <<reference.adoc#extension-of-standard-user-workflow, SMS or anything else>>.
+====
+
+.Extend and adapt the default workflow
+[NOTE]
+====
+The default behavior is totally adaptable. You can replace default implementations
+provided by ZetaPush by your own implementations (for exemple, change token generation
+algorithm, replace email by something else, replace templating system, ...).
+
+You can learn <<reference.adoc#extension-of-standard-user-workflow, how to extend this cloud service>>.
+====
+
+.User management samples
+[NOTE]
+====
+For a more real-world sample with a complete UI (signup form and login form) you can 
+go to https://github.com/zetapush/zetapush-examples/tree/master/standard-user-workflow[GitHub ZetaPush Examples^].
+====
