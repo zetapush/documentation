@@ -1,0 +1,8 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+If you want to delete your ZetaPush account, you can contact us to do this :
+
+* link:https://www.zetapush.com/contact/[Contact us for delete your accounts]
+
+WARNING: The removal is irreversible and permanent. All of your applications will be deleted.
