@@ -168,9 +168,10 @@
 <li><a href="#_develop_fast">12.3. Develop fast</a>
 <ul class="sectlevel3">
 <li><a href="#_hot_reload">12.3.1. Hot reload</a></li>
-<li><a href="#_log_from_a_em_custom_cloud_service_em">12.3.2. Log from a <em>custom cloud service</em></a></li>
-<li><a href="#_debug_a_em_custom_cloud_service_em">12.3.3. Debug a <em>custom cloud service</em></a></li>
-<li><a href="#_test_a_em_custom_cloud_service_em">12.3.4. Test a <em>custom cloud service</em></a></li>
+<li><a href="#_auto_completion">12.3.2. Auto-completion</a></li>
+<li><a href="#_log_from_a_em_custom_cloud_service_em">12.3.3. Log from a <em>custom cloud service</em></a></li>
+<li><a href="#_debug_a_em_custom_cloud_service_em">12.3.4. Debug a <em>custom cloud service</em></a></li>
+<li><a href="#_test_a_em_custom_cloud_service_em">12.3.5. Test a <em>custom cloud service</em></a></li>
 </ul>
 </li>
 </ul>
@@ -2292,7 +2293,7 @@ some mobile applications using hybrid technologies).</p>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -2309,19 +2310,19 @@ some mobile applications using hybrid technologies).</p>
 14
 15
 </pre></td>
-  <td class="code"><pre>export default class HelloWorldAsCustomCloudService {
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
     constructor() {}
 
     helloWorld() {
-        return &quot;Hello World&quot;;
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
     }
 
-    saySomething(message: string, times: number) {
-        let fullMessage = '';
-        for(let i=0 ; i&lt;times ; i++) {
-            fullMessage += `${message}\n`
+    saySomething(message: string, <span class="key">times</span>: number) {
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
         }
-        return fullMessage
+        <span class="keyword">return</span> fullMessage
     }
 }</pre></td>
 </tr></table></code></pre>
@@ -2475,8 +2476,6 @@ and to connect to the cloud:</p>
 7
 8
 9
-10
-11
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
 const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2486,8 +2485,6 @@ const api = client.createProxyTaskService();        <i class="conum" data-value=
 client.connect()                                    <i class="conum" data-value="3"></i><b>(3)</b>
   .then(() =&gt; {                                     <i class="conum" data-value="4"></i><b>(4)</b>
     console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
-    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
-      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
   });</pre></td>
 </tr></table></code></pre>
 </div>
@@ -2537,7 +2534,7 @@ what you want to do. Here we are using a <code>WeakClient</code> instance but th
 <div class="paragraph">
 <p>Our client is ready and now we want to call <em>cloud function</em> named <code>helloWorld</code>, we add the following code:</p>
 </div>
-<div class="listingblock highlight-lines:13-16">
+<div class="listingblock highlight-lines:11-14">
 <div class="title">front/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
@@ -2555,8 +2552,6 @@ what you want to do. Here we are using a <code>WeakClient</code> instance but th
 12
 13
 14
-15
-16
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
 const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
@@ -2566,11 +2561,9 @@ const api = client.createProxyTaskService();
 client.connect()
   .then(() =&gt; {
     console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
-    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
-      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
   });
 <span class="comment">// Handle DOM events</span>
-async <span class="keyword">function</span> <span class="function">hello</span>() {                                                                                <i class="conum" data-value="1"></i><b>(1)</b>
+async <span class="keyword">function</span> <span class="function">hello</span>() {                                                                          <i class="conum" data-value="1"></i><b>(1)</b>
   const messageFromCloudFunction = await api.helloWorld();                                        <i class="conum" data-value="2"></i><b>(2)</b>
   document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span> <i class="conum" data-value="3"></i><b>(3)</b>
 }</pre></td>
@@ -2675,7 +2668,7 @@ Here is the updated code:</p>
 </tr>
 </table>
 </div>
-<div class="listingblock highlight-lines:16-22">
+<div class="listingblock highlight-lines:15-20">
 <div class="title">front/index.js</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
@@ -2699,8 +2692,6 @@ Here is the updated code:</p>
 18
 19
 20
-21
-22
 </pre></td>
   <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
 const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
@@ -2710,15 +2701,13 @@ const api = client.createProxyTaskService();
 client.connect()
   .then(() =&gt; {
     console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
-    [...document.querySelectorAll(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>)].forEach((node) =&gt;
-      node.removeAttribute(<span class="string"><span class="delimiter">'</span><span class="content">disabled</span><span class="delimiter">'</span></span>));
   });
 <span class="comment">// Handle DOM events</span>
 async <span class="keyword">function</span> <span class="function">hello</span>() {
   const messageFromCloudFunction = await api.helloWorld();
   document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
 }
-async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {                                                      <i class="conum" data-value="1"></i><b>(1)</b>
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {                                                <i class="conum" data-value="1"></i><b>(1)</b>
   const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;                 <i class="conum" data-value="2"></i><b>(2)</b>
   const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;                   <i class="conum" data-value="3"></i><b>(3)</b>
   const messages = await api.saySomething(message, parseInt(repeat));             <i class="conum" data-value="4"></i><b>(4)</b>
@@ -2886,20 +2875,20 @@ in team if you want different ZetaPush <code>appName</code> per developer.</p>
 <div class="title">Figure 6. How it works ?</div>
 </div>
 <div class="paragraph">
-<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud <span class="sequence-step">1</span> <span class="sequence-step">2</span>.</p>
 </div>
 <div class="paragraph">
-<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud <span class="sequence-step">3</span> <span class="sequence-step">4</span>.</p>
 </div>
 <div class="paragraph">
 <p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
-remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
-and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+remote code <span class="sequence-step">5</span>. ZetaPush cloud routes the message to your worker <span class="sequence-step">6</span> (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> <span class="sequence-step">7</span>.</p>
 </div>
 <div class="paragraph">
-<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
-to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
-and the response is parsed [12] and available in your JavaScript.</p>
+<p>The <em>cloud function</em> generates a result <span class="sequence-step">8</span>. The worker picks this result and transform it to a message <span class="sequence-step">9</span>. This message is then sent
+to the ZetaPush cloud <span class="sequence-step">10</span>. The ZetaPush cloud routes the response message to the calling client <span class="sequence-step">11</span>. The client receives the message
+and the response is parsed <span class="sequence-step">12</span> and available in your JavaScript.</p>
 </div>
 <div class="paragraph">
 <p><strong>You can also try to enter a message and a number of repetitions and hit the "say something" button.</strong></p>
@@ -3367,20 +3356,3025 @@ Actually, you can <a href="#shared_module">just create a npm module</a> and impo
 <div class="sect3">
 <h4 id="_hot_reload"><a class="anchor" href="#_hot_reload"></a><a class="link" href="#_hot_reload">12.3.1. Hot reload</a></h4>
 <div class="paragraph">
-<p>TODO: <a href="https://github.com/zetapush/documentation/issues/53" class="bare">https://github.com/zetapush/documentation/issues/53</a></p>
+<p>In order to improve productivity, ZetaPush provides <strong>hot reload</strong> feature.
+Once you have started your application on your computer, you just focus on writing your code.</p>
+</div>
+<div class="paragraph">
+<p>Each time you make a change in your <em>custom cloud services</em> code, ZetaPush detects the change
+and reload your <em>custom cloud services</em> code. The time to wait for code to be ready is drastically reduced so
+you can develop really faster thanks to this feature.</p>
+</div>
+<div class="paragraph">
+<p>As front part is simply HTML and JavaScript, the local HTTP server always serves the
+latest version of your code. The cache is explicitly disabled in local development.</p>
+</div>
+<div class="sect4">
+<h5 id="_test_the_feature"><a class="anchor" href="#_test_the_feature"></a><a class="link" href="#_test_the_feature">12.3.1.1. Test the feature</a></h5>
+<div class="paragraph">
+<p>To test this feature, we will reuse the <strong>HelloWorldAsCustomCloudService</strong> sample.
+As a reminder, here is the code:</p>
+</div>
+<div class="paragraph tab-container">
+<p>HelloWorldAsCustomCloudService</p>
+</div>
+<div class="paragraph tab">
+<p>worker/index.ts</p>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>front/index.html</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#ccc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Message: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      Repeat: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">repeat-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>saySeveralTimes()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>say something<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>front/index.js</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  });
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;
+  const messages = await api.saySomething(message, parseInt(repeat));
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messages}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+<div class="paragraph">
+<p>Now start your application by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click on 'hello' button, the message "Hello World" appears in the web page.</p>
+</div>
+<div class="sect5">
+<h6 id="_simple_change_in_code_of_your_em_custom_cloud_service_em"><a class="anchor" href="#_simple_change_in_code_of_your_em_custom_cloud_service_em"></a><a class="link" href="#_simple_change_in_code_of_your_em_custom_cloud_service_em">Simple change in code of your <em>custom cloud service</em></a></h6>
+<div class="paragraph">
+<p>Your application is started locally. Now we will test this feature by updating your code.
+Update the <code>worker/index.ts</code> file as following:</p>
+</div>
+<div class="listingblock highlight-lines:8 collapse-lines:10-17">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World !!!</span><span class="delimiter">&quot;</span></span>;                       <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Add " !!!" at the end of the string</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Save the file and check your terminal. You should see something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">⠋ Reloading worker...
+[INFO] Worker is up!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can check that the code is really updated by clicking on the 'hello' button.
+Now you see that "Hello World !!!" is displayed in the web page.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">No change is needed on the front</div>
+<div class="paragraph">
+<p>You don&#8217;t need to reload the web page or to reconnect the client to the ZetaPush cloud.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_change_code_of_your_front"><a class="anchor" href="#_change_code_of_your_front"></a><a class="link" href="#_change_code_of_your_front">Change code of your front</a></h6>
+<div class="paragraph">
+<p>To demonstrate a change in your front, we will update the code of the
+<code>saySeveralTimes</code> function:</p>
+</div>
+<div class="listingblock highlight-lines:18 collapse-lines:1-14">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  });
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;
+  const messages = await api.saySomething(message + <span class="string"><span class="delimiter">'</span><span class="content"> - </span><span class="delimiter">'</span></span>, parseInt(repeat));               <i class="conum" data-value="1"></i><b>(1)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messages}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We add ' - ' on the message parameter</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Save your file and reload your web page. Enter a message ("hello" for example) and click on 'say something' button.
+You should see "hello - hello - " (if you have chosen 2 repetitions).</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_use_a_em_cloud_service_em_on_the_fly"><a class="anchor" href="#_use_a_em_cloud_service_em_on_the_fly"></a><a class="link" href="#_use_a_em_cloud_service_em_on_the_fly">Use a <em>cloud service</em> on the fly</a></h6>
+<div class="paragraph">
+<p>As your application grows, you will need to use other <em>built-in cloud services</em> or <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>We will improve our <em>custom cloud service</em> to use the <code>Stack</code> <em>built-in cloud service</em> to store messages.
+First <code>Stack</code> service is provided by <code>@zetapush/platform-legacy</code> module. So you have to install it.
+You can keep your application running in your terminal and open another terminal in the same folder.
+Execute this command in the new terminal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/platform-legacy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now import <code>Stack</code> service in your code and use it:</p>
+</div>
+<div class="listingblock highlight-lines:2,6,17-26,30-37">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;          <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  constructor(<span class="reserved">private</span> stack: Stack) {}                      <i class="conum" data-value="2"></i><b>(2)</b>
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>;
+    }
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    await <span class="local-variable">this</span>.stack.push({                                 <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {                               <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import the module <code>@zetapush/platform-legacy</code> that we just installed with npm</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Indicate that we need a dependency of type <code>Stack</code> that will be provided by ZetaPush worker</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Add some code to store the messages. Here we store both received parameters and the generated message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>A new <em>cloud function</em> in order to display what&#8217;s in the database</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can save your file and if you look in your terminal, you can see something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">⠋ Reloading worker...
+[INFO] Create services [ [ { itemId: 'stack',
+      businessId: 'v79ivn00l',
+      deploymentId: 'stack_0',
+      description: 'stack',
+      options: {},
+      forbiddenVerbs: [Array],
+⠴ Reloading worker...
+[INFO] Worker is up!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To ensure that everything works fine, you need to update your front:</p>
+</div>
+<div class="listingblock highlight-lines:8,19,21-25 collapse-lines:1-4">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect().then(() =&gt; {
+  console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  <span class="keyword">return</span> displayAllMessages();                                                                 <i class="conum" data-value="1"></i><b>(1)</b>
+});
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>;
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;
+  const messages = await api.saySomething(message + <span class="string"><span class="delimiter">'</span><span class="content"> - </span><span class="delimiter">'</span></span>, parseInt(repeat));
+  await displayAllMessages();                                                                  <i class="conum" data-value="2"></i><b>(2)</b>
+}
+async <span class="keyword">function</span> <span class="function">displayAllMessages</span>() {                                                          <i class="conum" data-value="3"></i><b>(3)</b>
+  const storedMessages = await api.getStoredMessages();                                        <i class="conum" data-value="4"></i><b>(4)</b>
+  const messagesAsString = storedMessages.map((msg) =&gt; <span class="error">`</span><span class="tag">&lt;li&gt;</span>${JSON.stringify(msg)}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>);     <i class="conum" data-value="5"></i><b>(5)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML = messagesAsString.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);           <i class="conum" data-value="6"></i><b>(6)</b>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Load all messages once connected.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Replace code that writes <code>fullMessage</code> in the HTML by a call to the function below.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Define another function to display all messages.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call the <em>cloud function</em> to retrieve all stored messages in database. This is the
+important part of the code because it calls a <em>cloud function</em> freshly written.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Convert object of values to a JSON string.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Write all stored messages in the HTML.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Save your file and reload your web page. You can enter a message ("foo" for example) and a number
+of repetitions (5 for example). Then hit the 'say something' button. Now you will see something like:</p>
+</div>
+<div class="paragraph">
+<p><code>{"message":"foo - ","times":5,"fullMessage":"foo - foo - foo - foo - foo - "}</code></p>
+</div>
+<div class="paragraph">
+<p>This means that your <em>custom cloud service</em> has been reloaded and the <code>Stack</code> service
+is really used. You can ensure that by reloading the web page, you will see the message
+displayed in the web page.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Import npm module</div>
+<div class="paragraph">
+<p>As you can see, you can add a npm module even if your application is running
+and then import it in your code. The hot reload takes effect only when
+you update the code handled by the ZetaPush worker (i.e. your <em>custom cloud services</em> code).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Hot reload with <em>built-in cloud services</em></div>
+<div class="paragraph">
+<p>Thanks to dependency injection, ZetaPush worker can detect if a <em>built-in cloud service</em>
+is newly needed as a dependency. In fact, the worker keeps tracking of all dependencies to <em>built-in cloud services</em>
+and check if a new service is asked. If so, the worker creates it on ZetaPush cloud,
+instantiates it, and injects it everywhere it is needed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Hot reload on other files</div>
+<div class="paragraph">
+<p>Currently, if you update <code>.zetarc</code> or you update a configuration file or any other file
+that is not code loaded by the worker, your <em>custom cloud services</em> won&#8217;t be automatically reloaded.</p>
+</div>
+<div class="paragraph">
+<p>This feature will be supported in a future version.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_log_from_a_em_custom_cloud_service_em"><a class="anchor" href="#_log_from_a_em_custom_cloud_service_em"></a><a class="link" href="#_log_from_a_em_custom_cloud_service_em">12.3.2. Log from a <em>custom cloud service</em></a></h4>
-
+<h4 id="_auto_completion"><a class="anchor" href="#_auto_completion"></a><a class="link" href="#_auto_completion">12.3.2. Auto-completion</a></h4>
+<div class="paragraph">
+<p>You can use an IDE for speeding up your development:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></p>
+</li>
+<li>
+<p><a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">WebStorm</a></p>
+</li>
+<li>
+<p><a href="https://atom.io/" target="_blank" rel="noopener">Atom</a></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thanks to typing provided by TypeScript, these IDE can provide accurate auto-completion when
+you develop your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s why auto-completion also works with ZetaPush <em>built-in cloud services</em>:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//auto-completion/method.png" alt="method">
+</div>
+<div class="title">Figure 7. Auto-completion on <em>cloud functions</em></div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//auto-completion/parameters.png" alt="parameters">
+</div>
+<div class="title">Figure 8. Auto-completion on <em>cloud functions</em> parameters</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//auto-completion/returned-values.png" alt="returned values">
+</div>
+<div class="title">Figure 9. Auto-completion on <em>cloud functions</em> return value</div>
+</div>
+<div class="paragraph">
+<p>As you can see, in addition to auto-completion, documentation of <em>cloud services</em> is
+also available.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_debug_a_em_custom_cloud_service_em"><a class="anchor" href="#_debug_a_em_custom_cloud_service_em"></a><a class="link" href="#_debug_a_em_custom_cloud_service_em">12.3.3. Debug a <em>custom cloud service</em></a></h4>
+<h4 id="_log_from_a_em_custom_cloud_service_em"><a class="anchor" href="#_log_from_a_em_custom_cloud_service_em"></a><a class="link" href="#_log_from_a_em_custom_cloud_service_em">12.3.3. Log from a <em>custom cloud service</em></a></h4>
+<div class="sect4">
+<h5 id="_log_using_local_console"><a class="anchor" href="#_log_using_local_console"></a><a class="link" href="#_log_using_local_console">12.3.3.1. Log using local console</a></h5>
+<div class="paragraph">
+<p>NodeJS provides <code>console</code> object that you can use in your code. For example, update
+the code of your <em>custom cloud service</em> to add some logs:</p>
+</div>
+<div class="listingblock highlight-lines:13,18,29">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  constructor(<span class="reserved">private</span> stack: Stack) {}
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">message=</span><span class="delimiter">'</span></span>, message, <span class="string"><span class="delimiter">'</span><span class="content">times=</span><span class="delimiter">'</span></span>, times);
+    let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>;
+    }
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">fullMessage=</span><span class="delimiter">'</span></span>, fullMessage);
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    const response = await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">stack.push response=</span><span class="delimiter">'</span></span>, response);
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running your application and hitting 'say something' button with a "hello" message and 5 repetitions,
+your terminal will print something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">[INFO] Worker is up!  ‌
+message= hello -  times= 5                                                          <i class="conum" data-value="1"></i><b>(1)</b>
+fullMessage= hello -                                                                <i class="conum" data-value="2"></i><b>(2)</b>
+hello -
+hello -
+hello -
+hello -
+
+stack.push response= { contextId: '3303/4rU/4934',                                  <i class="conum" data-value="3"></i><b>(3)</b>
+  owner: 'v79ivn00l:root',
+  stack: 'messages',
+  ts: 1544096927555,
+  guid: '///+mHymsL1sq8jZZa1F2g==',
+  data:
+   { message: 'hello - ',
+     times: 5,
+     fullMessage: 'hello - \nhello - \nhello - \nhello - \nhello - \n' } }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The first <code>console.log</code> that displays parameters</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The first <code>console.debug</code> that displays the generated message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The second <code>console.debug</code> that displays the response of the <code>Stack</code> service</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As you can see, you can have any number of parameters you want and of any type.
+For objects, the <code>console</code> will display it as JSON string.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Logs in production</div>
+<div class="paragraph">
+<p>Logging using <code>console</code> only logs in your terminal. It means that nothing is neither written to a file
+nor sent to a logging server. You will then loose all logs if you close your terminal.</p>
+</div>
+<div class="paragraph">
+<p>However, when you will later publish your application on the ZetaPush cloud, everything
+written in standard and error outputs will be available in the
+<a href="#logs_in_web_console">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Levels and colors in local console</div>
+<div class="paragraph">
+<p>ZetaPush also provides a logger object that can be useful to distinguish levels.
+Levels are explicitly written (for example <code>[INFO]</code>). Each level has its own
+name displayed in color and may have a color for the message too.
+This is useful to quickly view what is important.</p>
+</div>
+<div class="paragraph">
+<p>You can learn <a href="#local_logger">how to use the local logger</a>.</p>
+</div>
+<div class="paragraph">
+<p>Moreover, thanks to levels you <a href="#verbosity_level">can start your application with a particular level</a>
+so levels below the selected level are not displayed at all.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_log_using_zetapush_em_built_in_cloud_service_em"><a class="anchor" href="#_log_using_zetapush_em_built_in_cloud_service_em"></a><a class="link" href="#_log_using_zetapush_em_built_in_cloud_service_em">12.3.3.2. Log using ZetaPush <em>built-in cloud service</em></a></h5>
+<div class="paragraph">
+<p>In order to provide a logger with more features, ZetaPush provides the <a href="#_logs"><code>Logs</code> cloud service</a>.
+Thanks to this service you can provide more context to your log entries (a logger name, levels, tags or an identifier, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>The service <a href="#log_service">can be used directly</a> but code for logging may be a quite verbose if you provide
+all information manually.</p>
+</div>
+<div class="paragraph">
+<p>So ZetaPush also provides an automatic logging feature that magically adds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the name of the called <em>cloud function</em></p>
+</li>
+<li>
+<p>the parameter values of the called <em>cloud function</em></p>
+</li>
+<li>
+<p>the returned value of the called <em>cloud function</em></p>
+</li>
+<li>
+<p>the current date</p>
+</li>
+<li>
+<p>the unique identifier of the request</p>
+</li>
+<li>
+<p>which user has made the call</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It also automatically logs all calls to <em>builtin cloud services</em> that could be
+made in the <em>cloud function</em>.</p>
+</div>
+<div class="listingblock highlight-lines:1,5,6,19,30">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, RequestContextAware, RequestContext } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;     <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService <span class="reserved">implements</span> RequestContextAware {  <i class="conum" data-value="2"></i><b>(2)</b>
+  requestContext!: RequestContext;                                                    <i class="conum" data-value="3"></i><b>(3)</b>
+
+  constructor(<span class="reserved">private</span> stack: Stack) {}
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>;
+    }
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">fullMessage=</span><span class="delimiter">'</span></span>, fullMessage);                           <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    const response = await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">stack.push response=</span><span class="delimiter">'</span></span>, response);                      <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import <code>RequestContext</code> and <code>RequestContextAware</code> from <code>@zetapush/core</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Implements <code>RequestContextAware</code> to indicate that we use <code>requestContext</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>requestContext</code> magic property that is automatically provided by the worker. No need to initialize it.
+The <code>!</code> character is here to guide TypeScript otherwise there is a compilation error because
+<code>requestContext</code> is not initialized.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Calls logger of <code>requestContext</code> to log <code>fullMessage</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Calls logger of <code>requestContext</code> to log <code>response</code></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">RequestContextAware</div>
+<div class="paragraph">
+<p>Implementing <code>RequestContextAware</code> is totally optional but recommended even if it works
+without it.
+If you work in team, it indicates to other developers that
+the use of <code>requestContext</code> attribute is intentional and that it is not dead code.
+Moreover, implementing this interface gives you some documentation about <code>requestContext</code>
+attribute.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Definite Assignment Assertions</div>
+<div class="paragraph">
+<p>TypeScript checks that a
+<a href="https://github.com/Microsoft/TypeScript/wiki/What&#8217;s-new-in-TypeScript#strict-class-initialization" target="_blank" rel="noopener">class attribute is initialized</a>.</p>
+</div>
+<div class="paragraph">
+<p>As <code>requestContext</code> is an injected attribute, its value is not directly initialized in your class.
+The <a href="https://github.com/Microsoft/TypeScript/wiki/What&#8217;s-new-in-TypeScript#definite-assignment-assertions" target="_blank" rel="noopener">Definite Assignment Assertions</a>
+allows to explicitly indicate to TypeScript type checker that
+the attribute is initialized outside of the class (using <code>!</code> character after attribute name).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Internally, the logger uses the <em>Logs cloud service</em>. The logs are by default sent to
+ZetaPush cloud and then available in ZetaPush web console. The ZetaPush worker is aware
+of the current context. So every log entry is enhanced with current context call.</p>
+</div>
+<div class="paragraph">
+<p>For the example, start your application and hit the 'say something' button.
+Here is the result of the logs in the web console:</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Advanced usage</div>
+<div class="paragraph">
+<p>You can find more information about <a href="#log_with_requestcontext">advance usage of the logger provided by <code>RequestContext</code></a>
+in reference documentation.</p>
+</div>
+<div class="paragraph">
+<p>You can also learn how to <a href="#persist_logs">persist logs</a> and how to <a href="#custom_logging_server">send logs to a custom log server</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can learn how to <a href="#use_custom_tags">use custom tags</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Integration with libraries</div>
+<div class="paragraph">
+<p>NodeJS community provides several logging libraries like <a href="https://github.com/winstonjs/winston" target="_blank" rel="noopener">winston</a>,
+<a href="https://github.com/trentm/node-bunyan" target="_blank" rel="noopener">bunyan</a>, <a href="https://github.com/expressjs/morgan" target="_blank" rel="noopener">morgan</a>, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Currently, you can use them to log into the local console but as said before, the current
+context is not automatically provided.
+In the futur, ZetaPush will provide bridges to fully support those libraries to automatically
+provide the current context.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_test_a_em_custom_cloud_service_em"><a class="anchor" href="#_test_a_em_custom_cloud_service_em"></a><a class="link" href="#_test_a_em_custom_cloud_service_em">12.3.4. Test a <em>custom cloud service</em></a></h4>
+<h4 id="_debug_a_em_custom_cloud_service_em"><a class="anchor" href="#_debug_a_em_custom_cloud_service_em"></a><a class="link" href="#_debug_a_em_custom_cloud_service_em">12.3.4. Debug a <em>custom cloud service</em></a></h4>
+<div class="sect4">
+<h5 id="_debug_your_application_with_vscode"><a class="anchor" href="#_debug_your_application_with_vscode"></a><a class="link" href="#_debug_your_application_with_vscode">12.3.4.1. Debug your application with VSCode</a></h5>
+<div class="paragraph">
+<p>VSCode provide a powerfull debugging feature <a href="https://code.visualstudio.com/docs/editor/debugging" class="bare">https://code.visualstudio.com/docs/editor/debugging</a>.</p>
+</div>
+<div class="paragraph">
+<p>Add a launch configuration with the following structure.</p>
+</div>
+<div class="listingblock">
+<div class="title">Configure .vscode/launch.json file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.2.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">configurations</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">zeta run</span><span class="delimiter">&quot;</span></span>,                                       <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">node</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">request</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">launch</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">program</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}/node_modules/.bin/zeta</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">stopOnEntry</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">sourceMaps</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [                                                 <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">run</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">--serve-front</span><span class="delimiter">&quot;</span></span>
+      ],
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">cwd</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">console</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">internalConsole</span><span class="delimiter">&quot;</span></span>
+    }
+  ]
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Launch configuration name (the name you want)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Path to local zeta <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>zeta command arguments</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Under the hood, VSCode runs a NodeJS process that runs <code>node_modules/.bin/zeta</code> script
+with two parameters <code>run</code> and <code>--serve-front</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is exactly the same as doing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node_modules/.bin/zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>VSCode may use a different version of the NodeJS you use in an external terminal.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the configuration is ready, you can start your application in debug mode as indicated
+in <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">VSCode documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the following picture, we show that the debugger stops in the code of your <em>custom cloud service</em>.
+You can also see the values of the parameters and now you can execute the code step by step.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//debug/run-vscode-debugger.png" alt="Run VSCode debugger">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_debug_your_application_with_intellij_based_ide"><a class="anchor" href="#_debug_your_application_with_intellij_based_ide"></a><a class="link" href="#_debug_your_application_with_intellij_based_ide">12.3.4.2. Debug your application with IntelliJ based IDE</a></h5>
+<div class="paragraph">
+<p>Intellij&#8217;s WebStorm provides a powerfull debugging feature <a href="https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/" class="bare">https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/</a>.</p>
+</div>
+<div class="paragraph">
+<p>On the top menu, select Run &#8594; Edit Configurations</p>
+</div>
+<div class="paragraph">
+<p>then select a new NodeJs Template :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Node interpreter : path to nodeJS executable.</p>
+</li>
+<li>
+<p>Node parameters : must be "node_modules/.bin/zeta".</p>
+</li>
+<li>
+<p>Working directory : path to your project.</p>
+</li>
+<li>
+<p>Javascript file : should be blank.</p>
+</li>
+<li>
+<p>Application parameters : zeta command to launch, with optionals flags.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//debug/webstorm-debug.png" alt="Configure WebStorm Debug">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now use Intellij in debug mode with breakpoints and all the debugs features.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test_a_em_custom_cloud_service_em"><a class="anchor" href="#_test_a_em_custom_cloud_service_em"></a><a class="link" href="#_test_a_em_custom_cloud_service_em">12.3.5. Test a <em>custom cloud service</em></a></h4>
+<div class="sect4">
+<h5 id="_test_your_em_custom_cloud_service_em"><a class="anchor" href="#_test_your_em_custom_cloud_service_em"></a><a class="link" href="#_test_your_em_custom_cloud_service_em">12.3.5.1. Test your <em>custom cloud service</em></a></h5>
+<div class="paragraph">
+<p>Testing not only ensures that you don&#8217;t make regression but also can help you code faster.</p>
+</div>
+<div class="sect5">
+<h6 id="_unit_testing"><a class="anchor" href="#_unit_testing"></a><a class="link" href="#_unit_testing">Unit testing</a></h6>
+<div class="paragraph">
+<p>Unit testing is a great way to provide quickly a feature without losing time
+on going back to the right execution context. The component (or <code>class</code> here)
+is tested alone (all dependencies are mocked).</p>
+</div>
+<div class="paragraph">
+<p>This section shows that you don&#8217;t need ZetaPush for unit testing and that you can
+use any testing library you want. For the example, we use <a href="https://jasmine.github.io/" target="_blank" rel="noopener">jasmine</a> because
+in addition to testing tools, it also provides basic mocking features.
+For the example, we will reuse our <strong>HelloWorldAsCustomCloudService</strong> and we will improve it.</p>
+</div>
+<div class="paragraph">
+<p>As a reminder, here is the complete code of the <em>custom cloud service</em> and front:</p>
+</div>
+<div class="paragraph tab-container">
+<p>HelloWorldAsCustomCloudService</p>
+</div>
+<div class="paragraph tab">
+<p>worker/index.ts</p>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, RequestContextAware, RequestContext } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService <span class="reserved">implements</span> RequestContextAware {
+  requestContext!: RequestContext;
+
+  constructor(<span class="reserved">private</span> stack: Stack) {}
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>;
+    }
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">fullMessage=</span><span class="delimiter">'</span></span>, fullMessage);
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    const response = await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">stack.push response=</span><span class="delimiter">'</span></span>, response);
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>front/index.html</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#ccc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Message: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> Repeat: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">repeat-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>saySeveralTimes()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>say something<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>front/index.js</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect().then(() =&gt; {
+  console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  <span class="keyword">return</span> updateAllMessages();
+});
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>;
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;
+  const messages = await api.saySomething(message + <span class="string"><span class="delimiter">'</span><span class="content"> - </span><span class="delimiter">'</span></span>, parseInt(repeat));
+  await updateAllMessages();
+}
+async <span class="keyword">function</span> <span class="function">updateAllMessages</span>() {
+  const storedMessages = await api.getStoredMessages();
+  const messagesAsString = storedMessages.map((msg) =&gt; <span class="error">`</span><span class="tag">&lt;li&gt;</span>${JSON.stringify(msg)}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>);
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML = messagesAsString.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+<div class="paragraph">
+<p>Firstly, we add <code>jasmine</code> by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save-dev jasmine                    <i class="conum" data-value="1"></i><b>(1)</b>
+$ node node_modules/jasmine/bin/jasmine init        <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Add <code>jasmine</code> module in your project (save it in <code>devDependencies</code> using <code>--save-dev</code> argument)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Add some files required by jasmine to your project (<code>spec</code> folder is created)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We want to test <code>saySomething</code> <em>cloud function</em> to ensure that the generated message
+corresponds to what we really want. Let&#8217;s start by writing the skeleton of the tests. Create the file
+<code>spec/hello-world-custom-cloud-service/say-something.spec.js</code> with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="title">spec/hellp-world-custom-cloud-service/say-something.spec.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td>
+  <td class="code"><pre>describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">HelloWorldCustomCloudService.</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+  beforeEach(() =&gt; {
+    <span class="local-variable">this</span>.helloWorldService = <span class="predefined-constant">null</span>;                                          <i class="conum" data-value="1"></i><b>(1)</b>
+  });
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 1 time
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 1)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 1 time</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">1</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 5 times
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 5)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 5 times separated by new lines</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">5</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Edge case with a message but nothing written due to no repetition
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 0)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns empty message</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">0</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Edge case with a message that is not a string
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething(5, 2)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 2 times</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="integer">5</span>, <span class="integer">2</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">5</span><span class="content">\n</span><span class="content">5</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Exception case with a string for the number of repetitions
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', '5')</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 5 times separated by new lines</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      <span class="keyword">try</span> {
+        await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">5</span><span class="delimiter">'</span></span>);
+        fail(<span class="string"><span class="delimiter">'</span><span class="content">should have failed</span><span class="delimiter">'</span></span>);
+      } <span class="keyword">catch</span>(e) {
+        expect(e.message).toBe(<span class="string"><span class="delimiter">'</span><span class="content">Only integer values are allowed for number of repetitions</span><span class="delimiter">'</span></span>);
+      }
+    });
+  });
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We need an instance of your <em>custom cloud service</em> here. We will see later how to do that
+in unit testing</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We have prepared the tests and the expectations. Now we need to instantiate
+the <strong>HelloWorldCustomCloudService</strong> for testing it. However this function has a
+dependency to the <code>Stack</code> <em>built-in cloud service</em>.
+So normally, to test it we need the ZetaPush worker and the ZetaPush cloud to instantiate
+this service. But in unit testing, we mock <strong>all</strong> dependencies to test only
+<strong>HelloWorldCustomCloudService</strong>:</p>
+</div>
+<div class="listingblock highlight-lines:1-2,6-11">
+<div class="title">spec/hellp-world-custom-cloud-service/say-something.spec.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+</pre></td>
+  <td class="code"><pre>const customCloudService = require(<span class="string"><span class="delimiter">'</span><span class="content">../../worker/index</span><span class="delimiter">'</span></span>);                         <i class="conum" data-value="1"></i><b>(1)</b>
+const HelloWorldAsCustomCloudService = customCloudService[<span class="string"><span class="delimiter">'</span><span class="content">default</span><span class="delimiter">'</span></span>];             <i class="conum" data-value="2"></i><b>(2)</b>
+
+describe(<span class="string"><span class="delimiter">'</span><span class="content">HelloWorldCustomCloudService.</span><span class="delimiter">'</span></span>, () =&gt; {
+  beforeEach(() =&gt; {
+    const mockedStack = jasmine.createSpyObj(<span class="string"><span class="delimiter">'</span><span class="content">Stack</span><span class="delimiter">'</span></span>, [<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>]);                  <i class="conum" data-value="3"></i><b>(3)</b>
+    const mockedRequestContext = {                                                <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="key">logger</span>: jasmine.createSpyObj(<span class="string"><span class="delimiter">'</span><span class="content">RequestContextLogger</span><span class="delimiter">'</span></span>, [<span class="string"><span class="delimiter">'</span><span class="content">debug</span><span class="delimiter">'</span></span>])
+    };
+    <span class="local-variable">this</span>.helloWorldService = <span class="keyword">new</span> HelloWorldAsCustomCloudService(mockedStack);     <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="local-variable">this</span>.helloWorldService.requestContext = mockedRequestContext;                 <i class="conum" data-value="6"></i><b>(6)</b>
+  });
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 1 time
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 1)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 1 time</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">1</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 5 times
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 5)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 5 times separated by new lines</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">5</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Edge case with a message but nothing written due to no repetition
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 0)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns empty message</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">0</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Edge case with a message that is not a string
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething(5, 2)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 2 times</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      const result = await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="integer">5</span>, <span class="integer">2</span>);
+      expect(result).toBe(<span class="string"><span class="delimiter">'</span><span class="content">5</span><span class="content">\n</span><span class="content">5</span><span class="delimiter">'</span></span>);
+    });
+  });
+
+  <span class="comment">/**
+   * Exception case with a string for the number of repetitions
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', '5')</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">&quot;</span><span class="content">returns the message written 5 times separated by new lines</span><span class="delimiter">&quot;</span></span>, async () =&gt; {
+      <span class="keyword">try</span> {
+        await <span class="local-variable">this</span>.helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">5</span><span class="delimiter">'</span></span>);
+        fail(<span class="string"><span class="delimiter">'</span><span class="content">should have failed</span><span class="delimiter">'</span></span>);
+      } <span class="keyword">catch</span>(e) {
+        expect(e.message).toBe(<span class="string"><span class="delimiter">'</span><span class="content">Only integer values are allowed for number of repetitions</span><span class="delimiter">'</span></span>);
+      }
+    });
+  });
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import code of your <em>custom cloud service</em>. As it is declared in <code>index.ts</code> with <code>export default</code>,
+the <code>require</code> imports an object <code>{default: HelloWorldCustomCloudService}</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Get only a reference to <code>HelloWorldCustomCloudService</code> class</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Use jasmine to create a mock object of <code>Stack</code> <em>cloud service</em> with a method <code>push</code> that does nothing</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Create an object that has a property <code>logger</code> with a mocked <code>debug</code> method. This object is used
+to mock <code>requestContext</code> attribute.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Instantiate the <code>HelloWorldCustomCloudService</code> <em>cloud service</em> with the mocked instance of <code>Stack</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Manually inject the mocked <code>requestContext</code> (as the worker would do automatically in ZetaPush context)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now our cloud service is ready to be tested. We can run jasmine but as the <em>custom cloud service</em>
+is written in TypeScript, we need to run jasmine with <a href="https://github.com/TypeStrong/ts-node" target="_blank" rel="noopener">ts-node</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node -r ts-node/register node_modules/jasmine/bin/jasmine</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">TypeScript</div>
+<div class="paragraph">
+<p>As your project is initialized for using TypeScript, <code>ts-node</code> is already available
+in your project (imported by the <code>@zetapush/cli</code> module).</p>
+</div>
+<div class="paragraph">
+<p>You can also write your <a href="#test_in_typescript">tests directly in TypeScript</a> to benefit from auto-completion and
+type checking in your test suites too.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Run directly from VSCode</div>
+<div class="paragraph">
+<p>You can configure VSCode to run your tests. In the main menu, click on <span class="menuseq"><b class="menu">Debug</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Add Configuration&#8230;&#8203;</b></span>:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//debug/add-debug-menu.png" alt="add debug menu">
+</div>
+</div>
+<div class="paragraph">
+<p>Add these lines in the <code>launch.json</code> file:</p>
+</div>
+<div class="listingblock highlight-lines:7-22">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="error">/</span><span class="error">/</span> <span class="error">U</span><span class="error">s</span><span class="error">e</span> <span class="error">I</span><span class="error">n</span><span class="error">t</span><span class="error">e</span><span class="error">l</span><span class="error">l</span><span class="error">i</span><span class="error">S</span><span class="error">e</span><span class="error">n</span><span class="error">s</span><span class="error">e</span> <span class="error">t</span><span class="error">o</span> <span class="error">l</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">n</span> <span class="error">a</span><span class="error">b</span><span class="error">o</span><span class="error">u</span><span class="error">t</span> <span class="error">p</span><span class="error">o</span><span class="error">s</span><span class="error">s</span><span class="error">i</span><span class="error">b</span><span class="error">l</span><span class="error">e</span> <span class="error">a</span><span class="error">t</span><span class="error">t</span><span class="error">r</span><span class="error">i</span><span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">e</span><span class="error">s</span><span class="error">.</span>
+  <span class="error">/</span><span class="error">/</span> <span class="error">H</span><span class="error">o</span><span class="error">v</span><span class="error">e</span><span class="error">r</span> <span class="error">t</span><span class="error">o</span> <span class="error">v</span><span class="error">i</span><span class="error">e</span><span class="error">w</span> <span class="error">d</span><span class="error">e</span><span class="error">s</span><span class="error">c</span><span class="error">r</span><span class="error">i</span><span class="error">p</span><span class="error">t</span><span class="error">i</span><span class="error">o</span><span class="error">n</span><span class="error">s</span> <span class="error">o</span><span class="error">f</span> <span class="error">e</span><span class="error">x</span><span class="error">i</span><span class="error">s</span><span class="error">t</span><span class="error">i</span><span class="error">n</span><span class="error">g</span> <span class="error">a</span><span class="error">t</span><span class="error">t</span><span class="error">r</span><span class="error">i</span><span class="error">b</span><span class="error">u</span><span class="error">t</span><span class="error">e</span><span class="error">s</span><span class="error">.</span>
+  <span class="error">/</span><span class="error">/</span> <span class="error">F</span><span class="error">o</span><span class="error">r</span> <span class="error">m</span><span class="error">o</span><span class="error">r</span><span class="error">e</span> <span class="error">i</span><span class="error">n</span><span class="error">f</span><span class="error">o</span><span class="error">r</span><span class="error">m</span><span class="error">a</span><span class="error">t</span><span class="error">i</span><span class="error">o</span><span class="error">n</span>, <span class="error">v</span><span class="error">i</span><span class="error">s</span><span class="error">i</span><span class="error">t</span>: <span class="error">h</span><span class="error">t</span><span class="error">t</span><span class="error">p</span><span class="error">s</span>:<span class="error">/</span><span class="error">/</span><span class="error">g</span><span class="error">o</span><span class="error">.</span><span class="error">m</span><span class="error">i</span><span class="error">c</span><span class="error">r</span><span class="error">o</span><span class="error">s</span><span class="error">o</span><span class="error">f</span><span class="error">t</span><span class="error">.</span><span class="error">c</span><span class="error">o</span><span class="error">m</span><span class="error">/</span><span class="error">f</span><span class="error">w</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">k</span><span class="error">/</span><span class="error">?</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">k</span><span class="error">i</span><span class="error">d</span><span class="error">=</span><span class="integer">830387</span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.2.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">configurations</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">tests</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">node</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">request</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">launch</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">stopOnEntry</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">sourceMaps</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">runtimeArgs</span><span class="delimiter">&quot;</span></span>: [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-r</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">ts-node/register</span><span class="delimiter">&quot;</span></span>
+      ],
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">node_modules/jasmine/bin/jasmine.js</span><span class="delimiter">&quot;</span></span>
+      ],
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">cwd</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">console</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">integratedTerminal</span><span class="delimiter">&quot;</span></span>
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you can select the <code>tests</code> launch configuration and hit <kbd>F5</kbd>. You can
+have every information directly in your editor.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you run the tests, you will see that only one test succeeds. This is normal because if you
+look closely at the tests, you can see that the expected behavior is to have no
+new line at the end of the string. So the code of the <em>custom cloud service</em> doesn&#8217;t
+match the expected behavior. Let&#8217;s fix the code of the <em>cloud function</em>:</p>
+</div>
+<div class="listingblock highlight-lines:15-19">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, RequestContextAware, RequestContext } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService <span class="reserved">implements</span> RequestContextAware {
+  requestContext!: RequestContext;
+
+  constructor(<span class="reserved">private</span> stack: Stack) {}
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    let parts = [];
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      parts.push(<span class="error">`</span><span class="predefined">$</span>{message}<span class="error">`</span>);
+    }
+    let fullMessage = parts.join(<span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">fullMessage=</span><span class="delimiter">'</span></span>, fullMessage);
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    const response = await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">stack.push response=</span><span class="delimiter">'</span></span>, response);
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now if you run again the tests, you can see that 4 tests are succeeding and only 1 left in
+failure. The test in failure is normal because we expect a particular message if
+times parameter is not a number.
+We can fix it by updating the code of the <em>cloud function</em> like this:</p>
+</div>
+<div class="listingblock highlight-lines:15-17">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, RequestContextAware, RequestContext } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService <span class="reserved">implements</span> RequestContextAware {
+  requestContext!: RequestContext;
+
+  constructor(<span class="reserved">private</span> stack: Stack) {}
+
+  helloWorld() {
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">Hello World</span><span class="delimiter">'</span></span>;
+  }
+
+  async saySomething(message: string, <span class="key">times</span>: number) {
+    <span class="keyword">if</span> (<span class="keyword">typeof</span> times !== <span class="string"><span class="delimiter">'</span><span class="content">number</span><span class="delimiter">'</span></span>) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string"><span class="delimiter">'</span><span class="content">Only integer values are allowed for number of repetitions</span><span class="delimiter">'</span></span>);
+    }
+    let parts = [];
+    <span class="keyword">for</span> (let i = <span class="integer">0</span>; i &lt; times; i++) {
+      parts.push(<span class="error">`</span><span class="predefined">$</span>{message}<span class="error">`</span>);
+    }
+    let fullMessage = parts.join(<span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span>);
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">fullMessage=</span><span class="delimiter">'</span></span>, fullMessage);
+    <span class="comment">// store source information (message and times)</span>
+    <span class="comment">// and generated information (fullMessage)</span>
+    const response = await <span class="local-variable">this</span>.stack.push({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        message,
+        times,
+        fullMessage
+      }
+    });
+    <span class="local-variable">this</span>.requestContext.logger.debug(<span class="string"><span class="delimiter">'</span><span class="content">stack.push response=</span><span class="delimiter">'</span></span>, response);
+    <span class="keyword">return</span> fullMessage;
+  }
+
+  async getStoredMessages() {
+    <span class="comment">// get all values</span>
+    const response = await <span class="local-variable">this</span>.stack.list({
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span>
+    });
+    <span class="comment">// get only useful part (message, times, fullMessage)</span>
+    <span class="keyword">return</span> response.result ? response.result.content.map((item) =&gt; item.data) : [];
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can run again the tests and everything is ok.
+You can notice that running unit tests allows to develop faster because you just
+need to run everything at once instead of entering messages and number of repeats
+manually in your web browser several times.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Provide behavior to mocks</div>
+<div class="paragraph">
+<p>In this sample, we only show how to define objects and methods that do nothing.
+Obviously mocking systems also allow to define a <a href="#advanced_mocks">behavior for calls on mock objects</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_local_integration_test"><a class="anchor" href="#_local_integration_test"></a><a class="link" href="#_local_integration_test">Local integration test</a></h6>
+<div class="paragraph">
+<p>Testing a <em>custom cloud service</em> alone is good but you often need to tests
+interactions between several <em>cloud services</em> or interaction with <em>built-in cloud services</em>.
+ZetaPush provides tools to help you write integration tests and to setup
+a ZetaPush context for your tests.</p>
+</div>
+<div class="paragraph">
+<p>First, you need to install the <code>@zetapush/testing</code> module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save-dev @zetapush/testing</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, as done before we will write the skeleton of the tests.
+Create a new test file <code>spec/hellp-world-custom-cloud-service/say-something.it.spec.js</code> with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="title">spec/hellp-world-custom-cloud-service/say-something.it.spec.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+  <td class="code"><pre>describe(<span class="string"><span class="delimiter">'</span><span class="content">HelloWorldAsCustomCloudService.</span><span class="delimiter">'</span></span>, () =&gt; {
+  beforeEach(async () =&gt; {                                                          <i class="conum" data-value="1"></i><b>(1)</b>
+  }, <span class="integer">30</span> * <span class="integer">1000</span>);                                                                    <i class="conum" data-value="2"></i><b>(2)</b>
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 5 times
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 5)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">'</span><span class="content">stores the message, the number of repetitions and the generated message</span><span class="delimiter">'</span></span>,
+      async () =&gt; {                                                                 <i class="conum" data-value="3"></i><b>(3)</b>
+          <span class="comment">// call the method to test</span>
+          await helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">5</span>);                         <i class="conum" data-value="4"></i><b>(4)</b>
+
+          <span class="comment">// check that everything works fine</span>
+          const storedMessages = await helloWorldService.getStoredMessages();       <i class="conum" data-value="5"></i><b>(5)</b>
+          expect(storedMessages.length).toBe(<span class="integer">1</span>);                                    <i class="conum" data-value="6"></i><b>(6)</b>
+          expect(storedMessages[<span class="integer">0</span>]).toEqual({                                       <i class="conum" data-value="7"></i><b>(7)</b>
+            <span class="key">message</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+            <span class="key">times</span>: <span class="integer">5</span>,
+            <span class="key">fullMessage</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="delimiter">'</span></span>
+          });
+      },
+      <span class="integer">5</span> * <span class="integer">60</span> * <span class="integer">1000</span>                                                                 <i class="conum" data-value="8"></i><b>(8)</b>
+    );
+  });
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Empty for now, we will fill it later. Don&#8217;t forget the <code>async</code> keyword.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Change the default timeout of jasmine for test preparation (we will see why later)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Run the test using async/await syntax to have a cleaner code</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The call to the <em>cloud function</em> to test</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Retrieve all previously stored messages</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Assertion to ensure there is exactly one entry</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Assertion to ensure that the stored value is correct</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Change the default timeout of jasmine for this test (we will see why later)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We have defined what we need to test. Now to make it work, we need to run
+the test in a ZetaPush worker. As a reminder, using ZetaPush <em>built-in cloud services</em>
+requires a creation of the services on the ZetaPush cloud. As a reminder too,
+ZetaPush worker detects needed dependencies and instantiate them.
+In the context of a test, we also need these mechanisms in order to instantiate
+the dependencies and to inject them in our test.</p>
+</div>
+<div class="paragraph">
+<p>ZetaPush testing module provides several utilities to define an execution context
+and to run the test in that context. Add the following code to your test:</p>
+</div>
+<div class="listingblock highlight-lines:1-4,8-18,27-29,42">
+<div class="title">spec/hellp-world-custom-cloud-service/say-something.spec.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td>
+  <td class="code"><pre>const { given, runInWorker } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/testing</span><span class="delimiter">'</span></span>);
+const customCloudService = require(<span class="string"><span class="delimiter">'</span><span class="content">../../worker/index</span><span class="delimiter">'</span></span>);
+const HelloWorldAsCustomCloudService = customCloudService[<span class="string"><span class="delimiter">'</span><span class="content">default</span><span class="delimiter">'</span></span>];
+const { Stack } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>);
+
+describe(<span class="string"><span class="delimiter">'</span><span class="content">HelloWorldAsCustomCloudService.</span><span class="delimiter">'</span></span>, () =&gt; {
+  beforeEach(async () =&gt; {
+    await given()                                                       <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="comment">/**/</span> .credentials()                                               <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="comment">/*   */</span> .fromZetarc()                                             <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="comment">/*   */</span> .and()
+      <span class="comment">/**/</span> .worker()                                                    <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="comment">/*   */</span> .testModule(() =&gt; ({                                      <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="key">expose</span>: [HelloWorldAsCustomCloudService]
+      }))
+      <span class="comment">/*   */</span> .dependencies(HelloWorldAsCustomCloudService, Stack)      <i class="conum" data-value="6"></i><b>(6)</b>
+      <span class="comment">/**/</span> .and()
+      .apply(<span class="local-variable">this</span>);                                                     <i class="conum" data-value="7"></i><b>(7)</b>
+  }, <span class="integer">5</span> * <span class="integer">60</span> * <span class="integer">1000</span>);
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 5 times
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 5)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">'</span><span class="content">stores the message, the number of repetitions and the generated message</span><span class="delimiter">'</span></span>,
+      async () =&gt; {
+        await runInWorker(<span class="local-variable">this</span>, async (helloWorldService, stack) =&gt; {   <i class="conum" data-value="8"></i><b>(8)</b>
+          <span class="comment">// clean the stack before adding into it</span>
+          await stack.purge({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">messages</span><span class="delimiter">'</span></span> });                     <i class="conum" data-value="9"></i><b>(9)</b>
+
+          <span class="comment">// call the method to test</span>
+          await helloWorldService.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">5</span>);
+
+          <span class="comment">// check that everything works fine</span>
+          const storedMessages = await helloWorldService.getStoredMessages();
+          expect(storedMessages.length).toBe(<span class="integer">1</span>);
+          expect(storedMessages[<span class="integer">0</span>]).toEqual({
+            <span class="key">message</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+            <span class="key">times</span>: <span class="integer">5</span>,
+            <span class="key">fullMessage</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="delimiter">'</span></span>
+          });
+        });
+      },
+      <span class="integer">5</span> * <span class="integer">60</span> * <span class="integer">1000</span>
+    );
+  });
+
+  afterEach(async () =&gt; {                                               <i class="conum" data-value="10"></i><b>(10)</b>
+    await autoclean(<span class="local-variable">this</span>);                                              <i class="conum" data-value="11"></i><b>(11)</b>
+  });
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>given</code> utility is designed to prepare the test context. This is the entry
+point to a fluent API</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>credentials</code> is used to configure the source of the ZetaPush credentials and application information.
+This information is required in order to be able to connect to the ZetaPush cloud</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>fromZetarc</code> indicates that the test must load <code>developerLogin</code>, <code>developerPassword</code>, <code>platformUrl</code> and <code>appName</code>
+from your <code>.zetarc</code> file. It means that it automatically loads the credentials you are using
+in development</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code>worker</code> is used to configure the ZetaPush worker context for the test</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>testModule</code> indicates that the worker context must provide a standalone module.
+For now, we have only seen a <em>custom cloud service</em> exposed. But in fact, it is an implicit
+<a href="#modules">ZetaPush module</a>. In our test, we define a really simple module that exposes the
+<em>custom cloud service</em>. Basically, it means that your test is exactly like your <code>index.ts</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Indicate which dependencies will be injected in the test (see parameters of <code>runInWorker</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Now all the preparation of the test context is ready, <code>apply</code> really executes building of test context.
+It also stores some information needed by the test in <code>this</code> (the current jasmine test context)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td><code>runInWorker</code> as its name says, runs the code in the worker context started for the test.
+Note the <code>this</code> as first argument that is used to retrieve information set by <code>given().apply(this)</code>.
+The callback takes here two parameters. Those parameters correspond to the dependencies declared
+in <code>given().worker().dependencies()</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>As <code>Stack</code> service is the same between the development and every test execution,
+the <code>Stack</code> may already contain some items. That&#8217;s why we force to empty the stack before executing the real test.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>After each test don&#8217;t forget to clean everything</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>ZetaPush provides test utility to automatically remove everything that has been done
+by the <code>given()</code> (like stopping properly the worker).</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Timeouts</div>
+<div class="paragraph">
+<p>As execution context needs the ZetaPush worker to create <em>built-in cloud services</em>,
+the default jasmine timeout is too low: 5 seconds only for both preparation of the test
+(<code>beforeEach</code>) and the execution of the test (<code>it</code>). We need to increase it because
+the creation may take more than 5 seconds.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we set to 30 seconds for preparation and 5 minutes for the test.
+Hopefully, ZetaPush worker doesn&#8217;t need 5 minutes to start and execute code.
+But 5 minutes can be useful to place a debugger in the code and to
+debug the test execution.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now you can run the test using jasmine too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node -r ts-node/register node_modules/jasmine/bin/jasmine</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see that contrary to unit testing, the worker prepares the test context.
+You should see something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">[TRACE] register [ 'queue_0', { port: 2999, type: 'queue_0' } ] ‌
+[TRACE] register [ 'ZETAPUSH_HTTP_SERVER', { port: 2999, type: 'queue_0' } ] ‌
+[TRACE] confPath [ '/tmp/foobar/' ] ‌
+[TRACE] externalConfPath [ undefined ] ‌
+[TRACE] env [ LocalServerRegistryZetaPushContext {
+    config:
+     { developerLogin: '*******',
+       developerPassword: '*******',
+       platformUrl: 'https://celtia.zetapush.com/zbo/pub/business',
+       appName: '********' },
+    registry: LocalServerRegistry { servers: [Object] },
+    urlProvider: [Function] } ] ‌
+[TRACE] analyzed providers [ [ { provide: [Function: TestDeclarationWrapper],
+      useClass: [Function: TestDeclarationWrapper] },
+    { provide: [Function: Environment], useValue: [Object] },
+    { provide: [Function: ConfigurationProperties],
+      useValue: [PriorizedConfigurationProperties] },
+    { provide: [Function: ZetaPushContext],
+      useValue: [LocalServerRegistryZetaPushContext] },
+    { provide: [Function: Stack], useValue: [Stack] },
+    { provide: [Function: HelloWorldAsCustomCloudService],
+      useClass: [Function: HelloWorldAsCustomCloudService] },
+    { provide: [Function: Wrapper],
+      useFactory: [Function: useFactory],
+      deps: [Array] } ] ] ‌
+[TRACE] analyzed platformServices [ [ [Function: Stack] ] ] ‌
+[TRACE] bootstrap layers [ [ [ [Function: HelloWorldAsCustomCloudService],
+      [Function: Wrapper],
+      [Function: TestDeclarationWrapper] ],
+    [],
+    [ [Function: HelloWorldAsCustomCloudService],
+      [Function: Stack] ] ] ] ‌
+[LOG] GET [ 'https://celtia.zetapush.com:/zbo/orga/item/list/v79ivn00l',
+  undefined ] ‌
+[LOG] Provisioning [ [Function: Stack] ] ‌
+[TRACE] instantiate [ { '0':
+     HelloWorldAsCustomCloudService {
+       stack: [Stack],
+       [Symbol(ZetaPush.CloudServiceInstance)]: true },
+    ZetaTest:
+     TestDeclarationWrapper {
+       wrapper: [Wrapper],
+       [Symbol(ZetaPush.CloudServiceInstance)]: true },
+    bootLayers: [ [Array], [], [Array] ] } ] ‌
+[TRACE] Worker successfully started</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Verbosity level in tests</div>
+<div class="paragraph">
+<p>The test is by default started with high verbosity in order to let you know
+what happens in ZetaPush worker. Therefore, if something fails you can have enough information
+to know where and why it has failed.</p>
+</div>
+<div class="paragraph">
+<p>You can <a href="#verbosity_level_in_tests">change the verbosity level</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram explains how it works:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="local-integration-testing.png" alt="local integration testing" width="1306" height="1592">
+</div>
+<div class="title">Figure 10. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>Jasmine executes the code of the test and starts by running code of the <code>beforeEach</code> function.
+<code>given()</code> fluent API is called <span class="sequence-step">1</span> but does nothing. In fact, <code>given()</code> is just the
+entry point to the fluent API.
+<code>given().credentials()</code>, <code>given().project()</code> and <code>given().worker()</code> only store information
+about what you need for your test <span class="sequence-step">3</span> <span class="sequence-step">4</span>
+<span class="sequence-step">5</span> <span class="sequence-step">6</span> <span class="sequence-step">7</span> <span class="sequence-step">8</span>. Nothing is initialized here. We don&#8217;t show
+all calls to the fluent API in the sequence diagram because it is the same principle, we just
+store information about what you need in your test.
+As all needed information is grabbed, you ask the testing utilities to prepare the
+context by calling <code>apply(this)</code> <span class="sequence-step">9</span>. The testing utilities prepare the context
+by asking to the worker to start your "virtual" module defined with <code>testModule</code> <span class="sequence-step">10</span>.
+The worker connects to the ZetaPush cloud using your credentials <span class="sequence-step">11</span>
+<span class="sequence-step">12</span>.
+As a reminder, we used <code>given().credentials().fromZetarc()</code> so it will use
+the credentials defined in the <code>.zetarc</code> file directly.
+Then the worker resolves all needed dependencies (for dependency injection)
+and for each <em>built-in cloud service</em>, it sends a message to the ZetaPush cloud
+to create the service <span class="sequence-step">13</span> <span class="sequence-step">14</span>. Once all <em>built-in cloud services</em> are ready, the worker
+instantiates all <em>built-in cloud services</em> and <em>custom cloud services</em> needed for
+the test (indicated by <code>given().worker().dependencies()</code>) <span class="sequence-step">15</span>
+<span class="sequence-step">16</span> <span class="sequence-step">17</span> <span class="sequence-step">18</span>.
+Once everything is instantiated, your <em>custom cloud service</em> is ready to be called.
+At the end of the <code>apply</code> function of the testing utilities, the information
+about the execution context (credentials, dependencies, instances, &#8230;&#8203;) are stored
+in <code>this</code> <span class="sequence-step">19</span>. <code>this</code> refers to the current test execution context in jasmine.</p>
+</div>
+<div class="paragraph">
+<p>Now, everything is ready to really start the test. The <code>it</code> function provided by jasmine is
+executed. This function calls <code>runInWorker(this, callback)</code> <span class="sequence-step">20</span>. As said above, <code>this</code> refers
+to the current test execution context in jasmine. So everything stored in <code>this</code> in
+<code>beforeEach</code> is available in <code>this</code> of <code>it</code>. <code>runInWorker</code> starts the worker using
+the code written in the <code>callback</code> as source code for a "virtual" <em>cloud function</em> <span class="sequence-step">21</span>.
+The "virtual" <em>cloud function</em> (<code>callback</code>) receives parameters. Each parameter
+is the instance of a needed dependency (defined with <code>given().worker().dependencies()</code>
+in the <strong>same order</strong>).
+As it is like a real <em>cloud function</em>, the code is executed by the worker <span class="sequence-step">22</span>.
+Then each line of code is executed. In our test, we first empty the <code>Stack</code> by calling
+<code>purge()</code> <span class="sequence-step">23</span> <span class="sequence-step">26</span>. This sends a message to
+the ZetaPush cloud <span class="sequence-step">24</span> <span class="sequence-step">25</span>.
+The test then calls <code>helloWorldService.saySomething('hello', 5)</code> <em>cloud function</em>
+<span class="sequence-step">27</span> <span class="sequence-step">28</span>.
+<code>helloWorldService.getStoredMessages()</code> <em>cloud function</em> is called to retrieve all
+stored messages <span class="sequence-step">29</span> <span class="sequence-step">30</span>.
+At the end of the test we use <code>expect</code> function provided by jasmine in order to ensure
+that results correspond to what we expect.</p>
+</div>
+<div class="paragraph">
+<p>The test is now finished (either successfully or with failure). <code>afterEach</code> is called by jasmine
+which calls <code>autoclean(this)</code> utility <span class="sequence-step">31</span>. As the worker has been started locally and
+it has instantiated dependencies, we need to clean everything. <code>autoclean</code> will
+use information stored in <code>this</code> to know exactly what it has to do. In our case,
+we just need to stop the worker properly <span class="sequence-step">32</span>
+<span class="sequence-step">33</span> <span class="sequence-step">34</span> <span class="sequence-step">35</span>.</p>
+</div>
+<div class="paragraph">
+<p>Notice that local tests allow to test part of your application.
+You don&#8217;t need to develop all your <em>custom cloud services</em> before testing them partially.
+This is a great advantage for developing fast because you can define a closed and
+well defined context that doesn&#8217;t depend directly on the code you write in your
+<em>custom cloud services</em>. Maintainability is easier because even if your
+code change, the context dedicated to the test may be the same.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Advanced integration testing</div>
+<div class="paragraph">
+<p>For more advanced usage, you can find information about
+<a href="#testing_utilities">testing utilities</a> and
+<a href="#integration_testing">integration testing</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Trial account</div>
+<div class="paragraph">
+<p>If you have a free trial account, you have only one environment shared between
+local development, published application and tests.</p>
+</div>
+<div class="paragraph">
+<p>The execution of the tests may impact the published application because there
+are two workers started in the same time on the same environment.
+So the load-balancer may send request either to the worker running on ZetaPush cloud
+or to the local worker started in tests. You could also have false positives
+in your tests due to the load-balancing (because worker running in the ZetaPush
+cloud could answer in place of the runner in tests).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Remote integration testing</div>
+<div class="paragraph">
+<p>Running tests locally may differ a little compared to running the tests in the cloud.
+Indeed, the running context is different especially when working with HTTP because
+URLs, load-balancing and network infrastructure are different.</p>
+</div>
+<div class="paragraph">
+<p>ZetaPush also provides tools to run your <a href="#tests_in_cloud">tests with a worker running in the ZetaPush cloud</a>.
+This is totally transparent for you.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_local_end_to_end_test"><a class="anchor" href="#_local_end_to_end_test"></a><a class="link" href="#_local_end_to_end_test">Local end-to-end test</a></h6>
+<div class="paragraph">
+<p>Here the tests are run exclusively in a worker context. ZetaPush also provides
+a way to write end-to-end (often named e2e) tests. This means that a client
+really make requests to the <em>cloud service</em> instead of calling directly a method.</p>
+</div>
+<div class="paragraph">
+<p>You can copy the file <code>.spec/hellp-world-custom-cloud-service/say-something.it.spec.js</code>
+into the new file <code>.spec/hellp-world-custom-cloud-service/say-something.e2e.spec.js</code>
+and transform code to an e2e test:</p>
+</div>
+<div class="listingblock highlight-lines:1,9-14,25-27">
+<div class="title">spec/hellp-world-custom-cloud-service/say-something.e2e.spec.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td>
+  <td class="code"><pre>const { given, frontAction, autoclean } = require(<span class="string"><span class="delimiter">'</span><span class="content">@zetapush/testing</span><span class="delimiter">'</span></span>);
+
+describe(<span class="string"><span class="delimiter">'</span><span class="content">HelloWorldAsCustomCloudService.</span><span class="delimiter">'</span></span>, () =&gt; {
+  beforeEach(async () =&gt; {
+    await given()
+      <span class="comment">/**/</span> .credentials()
+      <span class="comment">/*   */</span> .fromZetarc()
+      <span class="comment">/*   */</span> .and()
+      <span class="comment">/**/</span> .project()                                               <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="comment">/*   */</span> .currentProject()                                     <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="comment">/*     */</span> .and()
+      <span class="comment">/*   */</span> .and()
+      <span class="comment">/**/</span> .worker()                                                <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="comment">/*   */</span> .up()                                                 <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="comment">/*   */</span> .and()
+      .apply(<span class="local-variable">this</span>);
+  }, <span class="integer">5</span> * <span class="integer">60</span> * <span class="integer">1000</span>);
+
+  <span class="comment">/**
+   * Nominal case with a message repeated 5 times
+   */</span>
+  describe(<span class="string"><span class="delimiter">&quot;</span><span class="content">saySomething('hello', 5)</span><span class="delimiter">&quot;</span></span>, () =&gt; {
+    it(<span class="string"><span class="delimiter">'</span><span class="content">stores the message, the number of repetitions and the generated message</span><span class="delimiter">'</span></span>,
+      async () =&gt; {
+        await frontAction(<span class="local-variable">this</span>)                                     <i class="conum" data-value="5"></i><b>(5)</b>
+          .name(<span class="string"><span class="delimiter">'</span><span class="content">call saySomething</span><span class="delimiter">'</span></span>)                                <i class="conum" data-value="6"></i><b>(6)</b>
+          .execute(async (api) =&gt; {                                 <i class="conum" data-value="7"></i><b>(7)</b>
+            <span class="comment">// call the method to test</span>
+            await api.saySomething(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="integer">5</span>);                     <i class="conum" data-value="8"></i><b>(8)</b>
+
+            <span class="comment">// check that everything works fine</span>
+            const storedMessages = await api.getStoredMessages();   <i class="conum" data-value="9"></i><b>(9)</b>
+            expect(storedMessages.length).toBe(<span class="integer">1</span>);
+            expect(storedMessages[<span class="integer">0</span>]).toEqual({
+              <span class="key">message</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>,
+              <span class="key">times</span>: <span class="integer">5</span>,
+              <span class="key">fullMessage</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="content">\n</span><span class="content">hello</span><span class="delimiter">'</span></span>
+            });
+          });
+      },
+      <span class="integer">5</span> * <span class="integer">60</span> * <span class="integer">1000</span>
+    );
+  });
+
+  afterEach(async () =&gt; {
+    await autoclean(<span class="local-variable">this</span>);
+  });
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Instead of defining a module that contains a part of your application to test (using <code>worker().testModule()</code>),
+here you need the full application. That&#8217;s the purpose of <code>project()</code> fluent API.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Indicate that the source project is your current project.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>There is a <code>worker</code> section too&#8230;&#8203;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>But this time, we just ask for testing utility to start the worker with
+your <em>custom cloud service</em> defined in <code>index.ts</code> and wait until
+the worker is really started before executing the test.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Instead of running in the context of the worker, now we run code directly from
+a client point of vue. Like <code>runInWorker</code>, <code>frontAction</code> needs the test context (<code>this</code>)
+to retrieve information initialized by the <code>given()</code> utility.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Give a name to the action (useful for logs)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Execute code in front context. The function that is executed receives the parameter <code>api</code>.
+Under the hood, the test utility creates a client (<code>const client = new ZetaPushClient.WeakClient()</code>) and then
+creates the proxy to the API (<code>api = client.createProxyTaskService()</code>). So <code>api</code> parameter is the object you can use
+to directly call your <em>cloud functions</em> from a client.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Call the <em>cloud function</em> we want to test.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Retrieve all stored messages and make assertions on the result.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As always, you run the tests by running jasmine:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node -r ts-node/register node_modules/jasmine/bin/jasmine</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running the test may fail and it is normal because the <code>Stack</code> may already contain data.
+As said before here we are in the context of a client so we don&#8217;t have access to <code>Stack</code>
+service to empty it before running the test.
+To empty the <code>Stack</code> you have to either add a <em>cloud function</em> that can empty the stack or use
+<a href="#test-snapshot">ZetaPush snapshots</a> to restore your application
+to a particular state before running your tests.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Snapshots</div>
+<div class="paragraph">
+<p>The snapshot feature is already available in ZetaPush but it is not currently
+exposed for use directly in tests.</p>
+</div>
+<div class="paragraph">
+<p>This feature will be available soon.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram explains how it works:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="local-e2e-testing.png" alt="local e2e testing" width="1425" height="2446">
+</div>
+<div class="title">Figure 11. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>Context initialization done by <code>given()</code> <span class="sequence-step">1</span> utility has exactly the same behavior as
+integration testing. The only difference is that instead of creating a "virtual"
+module to define a "virtual" <em>custom cloud service</em>, <code>given().project().currentProject()</code>
+<span class="sequence-step">2</span> <span class="sequence-step">3</span>
+indicates that you want directly the code of your application to be tested.
+<code>given().worker().up()</code> <span class="sequence-step">4</span> <span class="sequence-step">5</span> indicates that you need the worker fully started
+before running the test.</p>
+</div>
+<div class="paragraph">
+<p><code>it()</code> code now uses <code>front(this)</code> <span class="sequence-step">20</span> that is a fluent API to
+create a client based on what you need. <code>front(this).name()</code> <span class="sequence-step">22</span> is used to
+add an information message in logs during test execution. It is useful if you
+want to separate several calls to simulate several end-users for example.
+Until now, no client is created.
+It is <code>front(this).execute(callback)</code> <span class="sequence-step">24</span> that uses information
+defined before (name and current test context in this case) in order to create
+a client instance <span class="sequence-step">26</span>. The testing utilities connect the client
+to the ZetaPush cloud <span class="sequence-step">27</span> <span class="sequence-step">28</span> using information provided in <code>given().credentials()</code>.
+In addition to a client, this function also creates the client
+API (<code>api</code>) <span class="sequence-step">29</span> by calling <code>client.createProxyTaskService</code> under the hood. As a
+reminder, <code>api</code> created with <code>client.createProxyTaskService</code> provides directly
+same methods to the client that the <em>cloud functions</em> defined in the <em>custom cloud service</em>
+without writing a single line of code (no need to manually define a function <code>saySomething</code>
+on the client side). Once the client is ready, the code defined inside the <code>callback</code>
+is executed <span class="sequence-step">30</span> <span class="sequence-step">31</span>.
+In the test, the <em>cloud function</em> <code>saySomething</code> is called through <code>api</code> <span class="sequence-step">32</span>.
+Contrary to integration testing which calls <em>cloud functions</em> directly, calls to
+<code>api</code> sends messages through network from the client to the ZetaPush cloud <span class="sequence-step">33</span>.
+ZetaPush cloud routes the message to the worker started by testing utilities <span class="sequence-step">34</span>.
+The worker receives the request and calls the <em>cloud function</em> <span class="sequence-step">35</span>.
+The result is sent by the worker to the ZetaPush cloud <span class="sequence-step">37</span> which routes the result
+to the client <span class="sequence-step">38</span>. The client receives the result and can use it <span class="sequence-step">39</span>.
+The same process applies when calling <code>getStoredMessages()</code> <span class="sequence-step">40</span> <span class="sequence-step">41</span>
+<span class="sequence-step">42</span> <span class="sequence-step">43</span> <span class="sequence-step">44</span> <span class="sequence-step">45</span>
+<span class="sequence-step">46</span> <span class="sequence-step">47</span>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>autoclean(this)</code> works exactly the same as in integration tests.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Client authentication</div>
+<div class="paragraph">
+<p>In the example, the <em>custom cloud service</em> exposes <em>cloud functions</em> that
+don&#8217;t need authentication and that don&#8217;t have any security restrictions.
+So implicitly we can use an anonymous connection using <code>WeakClient</code>.</p>
+</div>
+<div class="paragraph">
+<p>But in a real application you may need to authenticate as a real user in your
+tests. Hopefully, you can <a href="#testing_utilities">provide end-user credentials</a>
+when using <code>front(this)</code>. In this case, a <code>Simple</code> client instance is automatically
+used.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Advanced e2e testing</div>
+<div class="paragraph">
+<p>For more advanced usage, you can find information about
+<a href="#testing_utilities">testing utilities</a> and
+<a href="#e2e_testing">integration testing</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -7610,7 +10604,7 @@ An environment is one stage in the development of the application.</p>
 <div class="content">
 <img src="init-without-account.png" alt="init without account" width="378" height="459">
 </div>
-<div class="title">Figure 7. I want to create an account</div>
+<div class="title">Figure 12. I want to create an account</div>
 </div>
 <div class="paragraph">
 <p>➊ You launch <code>npm init @zetapush myApp</code> without parameters<br>
@@ -7654,7 +10648,7 @@ You need to confirm your ZetaPush account by clicking in the link in the email t
 <div class="content">
 <img src="init-with-account-and-app.png" alt="init with account and app" width="495" height="351">
 </div>
-<div class="title">Figure 8. I want to use an existing application</div>
+<div class="title">Figure 13. I want to use an existing application</div>
 </div>
 <div class="paragraph">
 <p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code>, <code>--developer-password</code> and <code>--appName</code> parameters<br>
@@ -7685,7 +10679,7 @@ You need to confirm your ZetaPush account by clicking in the link in the email t
 <div class="content">
 <img src="init-with-account-without-app.png" alt="init with account without app" width="434" height="351">
 </div>
-<div class="title">Figure 9. I want to create a new application</div>
+<div class="title">Figure 14. I want to create a new application</div>
 </div>
 <div class="paragraph">
 <p>➊ I launch <code>npm init @zetapush myApp</code> with the <code>--developer-login</code> and <code>--developer-password</code> parameters<br>

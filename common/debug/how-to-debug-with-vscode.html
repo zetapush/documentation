@@ -122,13 +122,13 @@
   <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.2.0</span><span class="delimiter">&quot;</span></span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">configurations</span><span class="delimiter">&quot;</span></span>: [
     {
-      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">zeta run</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">zeta run</span><span class="delimiter">&quot;</span></span>,                                       <i class="conum" data-value="1"></i><b>(1)</b>
       <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">node</span><span class="delimiter">&quot;</span></span>,
       <span class="key"><span class="delimiter">&quot;</span><span class="content">request</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">launch</span><span class="delimiter">&quot;</span></span>,
-      <span class="key"><span class="delimiter">&quot;</span><span class="content">program</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}/node_modules/.bin/zeta</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">program</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}/node_modules/.bin/zeta</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="2"></i><b>(2)</b>
       <span class="key"><span class="delimiter">&quot;</span><span class="content">stopOnEntry</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
       <span class="key"><span class="delimiter">&quot;</span><span class="content">sourceMaps</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
-      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [ <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [                                                 <i class="conum" data-value="3"></i><b>(3)</b>
         <span class="string"><span class="delimiter">&quot;</span><span class="content">run</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">--serve-front</span><span class="delimiter">&quot;</span></span>
       ],
@@ -144,31 +144,74 @@
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Launch configuration name</td>
+<td>Launch configuration name (the name you want)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Path to local zeta <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>zeta command arguments</td>
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Run VSCode debugger</p>
+<p>Under the hood, VSCode runs a NodeJS process that runs <code>node_modules/.bin/zeta</code> script
+with two parameters <code>run</code> and <code>--serve-front</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is exactly the same as doing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node_modules/.bin/zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>VSCode may use a different version of the NodeJS you use in an external terminal.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the configuration is ready, you can start your application in debug mode as indicated
+in <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">VSCode documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the following picture, we show that the debugger stops in the code of your <em>custom cloud service</em>.
+You can also see the values of the parameters and now you can execute the code step by step.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../../images//debug/run-vscode-debugger.png" alt="Run VSCode debugger">
 </div>
 </div>
-<div class="paragraph">
-<p>You can run Debugger by following the official  VSCode documentation: <a href="https://code.visualstudio.com/docs/editor/debugging" class="bare">https://code.visualstudio.com/docs/editor/debugging</a>.</p>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-14 15:25:12 UTC
 </div>
 </div>
 </body>

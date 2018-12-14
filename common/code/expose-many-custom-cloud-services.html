@@ -91,7 +91,7 @@
 <div class="listingblock highlight-lines:21-22">
 <div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -116,28 +116,28 @@
 22
 23
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/core';
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
 
-@Injectable()
-class Calendar {
+<span class="error">@</span>Injectable()
+<span class="reserved">class</span> Calendar {
   getNow() {
-    return new Date().toLocaleDateString();
+    <span class="keyword">return</span> <span class="keyword">new</span> Date().toLocaleDateString();
   }
 }
 
-@Injectable()
-class HelloService {
+<span class="error">@</span>Injectable()
+<span class="reserved">class</span> HelloService {
   constructor(
-    private calendar: Calendar
+    <span class="reserved">private</span> calendar: Calendar
   ) {}
   hello() {
-    return `Hello World at ${this.calendar.getNow()}`;
+    <span class="keyword">return</span> <span class="error">`</span>Hello World at <span class="predefined">$</span>{<span class="local-variable">this</span>.calendar.getNow()}<span class="error">`</span>;
   }
 }
 
-export default  { <i class="conum" data-value="1"></i><b>(1)</b>
-  helloService: HelloService,
-  calendar: Calendar
+<span class="reserved">export</span> <span class="keyword">default</span>  { <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key">helloService</span>: HelloService,
+  <span class="key">calendar</span>: Calendar
 };</pre></td>
 </tr></table></code></pre>
 </div>
@@ -155,7 +155,7 @@ export default  { <i class="conum" data-value="1"></i><b>(1)</b>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-14 15:25:12 UTC
 </div>
 </div>
 </body>

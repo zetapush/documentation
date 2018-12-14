@@ -1152,7 +1152,7 @@ It means that now a client can call the <em>cloud functions</em> defined in your
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -1183,33 +1183,33 @@ It means that now a client can call the <em>cloud functions</em> defined in your
 28
 29
 </pre></td>
-  <td class="code"><pre>import { Injectable } from '@zetapush/core';
-import { Stack } from '@zetapush/platform-legacy';
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
 
-class DateCustomService {
+<span class="reserved">class</span> DateCustomService {
   <i class="conum" data-value="1"></i><b>(1)</b>
   formatDate(date) {
-    return date.toLocalDateString(&quot;fr-FR&quot;);
+    <span class="keyword">return</span> date.toLocalDateString(<span class="string"><span class="delimiter">&quot;</span><span class="content">fr-FR</span><span class="delimiter">&quot;</span></span>);
   }
 }
 
-@Injectable()
-export default class SimpleStorageWithDate { <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> SimpleStorageWithDate { <i class="conum" data-value="1"></i><b>(1)</b>
   constructor(<i class="conum" data-value="2"></i><b>(2)</b>
-    private stack: Stack,
-    private dateCustomService: DateCustomService
+    <span class="reserved">private</span> stack: Stack,
+    <span class="reserved">private</span> dateCustomService: DateCustomService
   ) {}
   push(item: any) {
-    return this.stack.push({<i class="conum" data-value="3"></i><b>(3)</b>
-      stack: 'test',
-      data: {
-        value: item,
-        date: this.dateService.formateDate(new Date()); <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.push({<i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>,
+      <span class="key">data</span>: {
+        <span class="key">value</span>: item,
+        <span class="key">date</span>: <span class="local-variable">this</span>.dateService.formateDate(<span class="keyword">new</span> Date()); <i class="conum" data-value="4"></i><b>(4)</b>
       }
     });
   }
   list() {
-    return this.stack.list({ stack: 'demo'});
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.list({ <span class="key">stack</span>: <span class="string"><span class="delimiter">'</span><span class="content">demo</span><span class="delimiter">'</span></span>});
   }
 }</pre></td>
 </tr></table></code></pre>

@@ -840,7 +840,7 @@ in team if you want different ZetaPush <code>appName</code> per developer.</p>
 <div class="listingblock">
 <div class="title">worker/index.ts</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="typescript"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
@@ -850,12 +850,12 @@ in team if you want different ZetaPush <code>appName</code> per developer.</p>
 7
 8
 </pre></td>
-  <td class="code"><pre>export default class Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
-  /**
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {                                    <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="comment">/**
    * Get an Hello World string with server side timestamp value
-   */
+   */</span>
   hello() {                                                   <i class="conum" data-value="2"></i><b>(2)</b>
-    return `Hello World from JavaScript ${Date.now()}`;       <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="keyword">return</span> <span class="error">`</span>Hello World from JavaScript <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;       <i class="conum" data-value="3"></i><b>(3)</b>
   }
 }</pre></td>
 </tr></table></code></pre>

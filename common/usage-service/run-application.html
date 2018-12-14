@@ -202,20 +202,20 @@ in team if you want different ZetaPush <code>appName</code> per developer.</p>
 <div class="title">Figure 1. How it works ?</div>
 </div>
 <div class="paragraph">
-<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud [1][2].</p>
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud <span class="sequence-step">1</span> <span class="sequence-step">2</span>.</p>
 </div>
 <div class="paragraph">
-<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud [3][4].</p>
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud <span class="sequence-step">3</span> <span class="sequence-step">4</span>.</p>
 </div>
 <div class="paragraph">
 <p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
-remote code [5]. ZetaPush cloud routes the message to your worker [6] (that is running on your machine here). The worker receives the message
-and calls the <code>hello</code> <em>cloud function</em> [7].</p>
+remote code <span class="sequence-step">5</span>. ZetaPush cloud routes the message to your worker <span class="sequence-step">6</span> (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> <span class="sequence-step">7</span>.</p>
 </div>
 <div class="paragraph">
-<p>The <em>cloud function</em> generates a result [8]. The worker picks this result and transform it to a message [9]. This message is then sent
-to the ZetaPush cloud [10]. The ZetaPush cloud routes the response message to the calling client [11]. The client receives the message
-and the response is parsed [12] and available in your JavaScript.</p>
+<p>The <em>cloud function</em> generates a result <span class="sequence-step">8</span>. The worker picks this result and transform it to a message <span class="sequence-step">9</span>. This message is then sent
+to the ZetaPush cloud <span class="sequence-step">10</span>. The ZetaPush cloud routes the response message to the calling client <span class="sequence-step">11</span>. The client receives the message
+and the response is parsed <span class="sequence-step">12</span> and available in your JavaScript.</p>
 </div>
 <div class="paragraph">
 <p><strong>You can also try to enter a message and a number of repetitions and hit the "say something" button.</strong></p>
@@ -248,7 +248,7 @@ receives the values as they were written in the front side.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-06 13:51:27 UTC
+Last updated 2018-12-14 15:25:12 UTC
 </div>
 </div>
 </body>
