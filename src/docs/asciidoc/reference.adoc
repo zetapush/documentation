@@ -3,6 +3,9 @@ include::{docdir}/variables.adoc[]
 
 = Reference
 
+== ZetaPush management
+include::{docdir}/common/manage/index.adoc[leveloffset=+1] 
+
 == Available cloud services
 
 === Standard User Workflow
