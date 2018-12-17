@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Getting Started</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=".//javascripts/menu.js"></script>
+<script type="text/javascript" src=".//javascripts/sidebar.js"></script>
+<script type="text/javascript" src=".//javascripts/steps.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src=".//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src=".//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src=".//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href=".//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href=".//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Getting Started</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_system_requirements">System requirements</a></li>
+<li><a href="#_create_your_first_application">Create your first application</a>
+<ul class="sectlevel2">
+<li><a href="#_from_the_command_line">From the command line</a></li>
+<li><a href="#_generated_project">Generated project</a></li>
+</ul>
+</li>
+<li><a href="#_run_locally_your_first_project">Run locally your first project</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_run">What is run ?</a></li>
+<li><a href="#_from_your_terminal">From your terminal</a></li>
+<li><a href="#_how_it_works">How it works</a></li>
+</ul>
+</li>
+<li><a href="#_push_your_first_project_in_the_cloud">Push your first project in the Cloud</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_push">What is push ?</a></li>
+<li><a href="#_from_your_terminal_2">From your terminal</a></li>
+<li><a href="#_how_it_works_2">How it works</a></li>
+</ul>
+</li>
+<li><a href="#_what_s_next">What&#8217;s next</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_system_requirements"><a class="anchor" href="#_system_requirements"></a>System requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a ZetaPush application you only need the Node.js ecosystem:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Node.js version 10.3.0 (LTS) or higher</p>
+</li>
+<li>
+<p>npm version &gt;= 6.4</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Install Node.js and npm</strong></p>
+</div>
+<div class="paragraph">
+<p>Go to <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js Downloads</a> and follow the installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>You also need to install additional tools for Node.js:</p>
+</div>
+<div class="paragraph tab-container">
+<p>Additional tools</p>
+</div>
+<div class="paragraph tab">
+<p>Windows</p>
+</div>
+<div class="paragraph">
+<p>You must install development tools on Windows (Visual Studio Build Tools and Python).
+Fortunately, there is a npm tool that helps you to install all required dependencies.
+You must run this command line using <strong>PowerShell</strong> as <strong>Administrator</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">npm install --global --production windows-build-tools</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Be patient! It may take a while.</p>
+</div>
+<div class="paragraph tab">
+<p>Debian/Ubuntu</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo apt-get install -y build-essential</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Enterprise Linux and Fedora</p>
+</div>
+<div class="paragraph">
+<p>Install build tools:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">sudo yum install gcc-c++ make
+# or: sudo yum groupinstall 'Development Tools'</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_your_first_application"><a class="anchor" href="#_create_your_first_application"></a>Create your first application</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_from_the_command_line"><a class="anchor" href="#_from_the_command_line"></a>From the command line</h3>
+<div class="listingblock">
+<div class="title">Generate application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><em>hello-world</em> is the name of the folder that will be created with all the generated files</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You will be prompted for a developer login and a developer password in order to communicate with the platform.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The developer login and the developer password will be stored in the <code>.zetarc</code> file.
+By default, the <code>.gitignore</code> file is configured to not deploy this file.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See <a href="./developer-manual.html#_zetapush_account_management">ZetaPush account management</a> to learn how to manage your account and your applications.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generated_project"><a class="anchor" href="#_generated_project"></a>Generated project</h3>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//hello-world/result.png" alt="result">
+</div>
+<div class="title">Figure 1. Result of hello-world project</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The project <code>hello-world</code> generated by the CLI is available on <a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/">Github</a>.
+This sample is also available using different front frameworks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-react">React</a></p>
+</li>
+<li>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-vue">Vue.js</a></p>
+</li>
+<li>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-angular">Angular</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_what_it_does"><a class="anchor" href="#_what_it_does"></a>What it does ?</h4>
+<div class="paragraph">
+<p>The generated project is really simple. It is just a web page that uses some JavaScript to call a cloud function named <code>hello</code> when button is clicked.
+The cloud function is a custom cloud function that simply returns a message with the current date.
+The result is retrieved by the JavaScript code and displayed in the browser console (using <code>console.log</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_structure_of_generated_project"><a class="anchor" href="#_structure_of_generated_project"></a>Structure of generated project</h4>
+<div class="paragraph">
+<p>The files of the generated project are structured as followed:</p>
+</div>
+<div class="listingblock">
+<div class="title">Generated tree structure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">{appName}
+├── .zetarc
+├── .gitignore
+├── front
+│   ├── index.css
+│   ├── index.html
+│   ├── index.js
+│   └── logo.png
+├── worker
+│   └── index.ts
+├── package.json
+├── README.md
+└── tsconfig.json</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Definition of generated files</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File / Folder</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.zetarc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the developer&#8217;s credentials. Useful to deploy or run your code. The content is auto generated if the file is empty.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.gitignore</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file used by Git to prevent commiting some files. It is preconfigured to prevent publication of your developer credentials (on GitHub for example).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file for NPM to handle a module. It contains the dependencies, the name of your application, the entry point of your <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>README.md</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gives you some information about how to use your application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>front/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>worker/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run_locally_your_first_project"><a class="anchor" href="#_run_locally_your_first_project"></a>Run locally your first project</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_run"><a class="anchor" href="#_what_is_run"></a>What is run ?</h3>
+<div class="paragraph">
+<p>Run is used in development phase. You run your code locally on your development machine. You can then iterate on your code to provide new features quickly or even debug your code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_from_your_terminal"><a class="anchor" href="#_from_your_terminal"></a>From your terminal</h3>
+<div class="paragraph">
+<p>Go into the generated folder (<code>hello-world</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ cd hello-world</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Start application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The command that is executed under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This command launches both a local web server on <code>localhost:3000</code> and the custom cloud services.
+You can open a web browser on <code>localhost:3000</code> and open the browser console.</p>
+</div>
+<div class="paragraph">
+<p>You can click on the button and see the result of the custom cloud service call in the browser console.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works</h3>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//schemas/run-locally.png" alt="run locally">
+</div>
+<div class="title">Figure 2. Exchanges between web page and custom cloud services</div>
+</div>
+<div class="paragraph">
+<p><span class="exchange-call">➊</span> Clicking on the button triggers a call to the ZetaPush cloud. ZetaPush routes the call to the local Node.js (the Node.js has been registered automatically by the CLI)<br>
+<span class="exchange-response">➋</span> The custom cloud service does its job and provides a response. ZetaPush routes the response to the connected web page</p>
+</div>
+<div class="paragraph">
+<p>There are 3 parts that are working together:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The web page that initiates a connection to the ZetaPush cloud</p>
+</li>
+<li>
+<p>The ZetaPush cloud</p>
+</li>
+<li>
+<p>The worker that provides the custom cloud function implementation</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Firstly, the web page is loaded in the browser and a JavaScript code automatically connects the <em>ZetaPush client</em> to the <em>ZetaPush cloud</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The connection is requested with <code>client.connect()</code> in <code>hello-world/front/index.html</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The connection between <em>ZetaPush client</em> and the <em>ZetaPush cloud</em> is established and is bi-directional. Any message sent by <em>ZetaPush client</em> will go through this opened connection.
+The <em>ZetaPush cloud</em> can also send messages to the <em>ZetaPush client</em> through this opened connection.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then, when the user clicks on the button, a message is sent to the <em>ZetaPush cloud</em> in order to execute some code.
+The <em>ZetaPush cloud</em> routes the message to the worker to call the custom cloud function.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The button is defined in <code>hello-world/front/index.html</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The action of the button is done in <code>hello-world/front/index.js</code> and it calls <code>api.hello()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The custom cloud function is simply a JavaScript or TypeScript function. This function is called and it generates a result that is returned to <em>ZetaPush cloud</em>.
+<em>ZetaPush cloud</em> routes the response message to the <em>ZetaPush client</em> to send the result.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The code of the cloud function is available in <code>hello-world/worker/index.ts</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally, the <em>ZetaPush client</em> receives the result and the JavaScript code of the web page displays it in the browser console (using <code>console.log</code>).</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The result is handled in <code>hello-world/front/index.js</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Even if you run locally, the cloud functions defined by your worker are available on the Internet through <em>ZetaPush cloud</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_push_your_first_project_in_the_cloud"><a class="anchor" href="#_push_your_first_project_in_the_cloud"></a>Push your first project in the Cloud</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_push"><a class="anchor" href="#_what_is_push"></a>What is push ?</h3>
+<div class="paragraph">
+<p>Push is used to make your code "public". It will publish your web page(s) and also upload the code of your worker on <em>ZetaPush cloud</em>.
+You can push when you think that your code is ready to be used by your end-users.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_from_your_terminal_2"><a class="anchor" href="#_from_your_terminal_2"></a>From your terminal</h3>
+<div class="listingblock">
+<div class="title">Deploy application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
+The command that is executed under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta push</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This command uploads your code (front and worker) to the ZetaPush cloud. ZetaPush then handles the deployment
+by publishing your front and your custom cloud services.</p>
+</div>
+<div class="paragraph">
+<p>The CLI displays the URL to access the published web page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_it_works_2"><a class="anchor" href="#_how_it_works_2"></a>How it works</h3>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//schemas/run-in-cloud.png" alt="run in cloud">
+</div>
+<div class="title">Figure 3. Exchanges between web page and custom cloud services</div>
+</div>
+<div class="paragraph">
+<p><span class="exchange-call">➊</span> Clicking on the button triggers a call to the ZetaPush cloud which in turn routes directly the call to the hosted Node.js<br>
+<span class="exchange-response">➋</span> The custom cloud service does its job and provides a response that ZetaPush routes back to the hosted web page</p>
+</div>
+<div class="paragraph">
+<p>Now, the web page (front) and the custom cloud functions (defined in a worker) are hosted directly on <em>ZetaPush cloud</em>.
+The behavior remains the same as when code is executed local machine:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There are still the same 3 parts working together (web page, <em>ZetaPush cloud</em> and custom cloud function)</p>
+</li>
+<li>
+<p>There is still a connection established by the client from the web page</p>
+</li>
+<li>
+<p>There is still a message sent by the client to <em>ZetaPush cloud</em> that is routed to call the custom cloud function</p>
+</li>
+<li>
+<p>There is still a message sent by the <em>ZetaPush cloud</em> that is routed to the client with the result of the custom cloud function</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_s_next"><a class="anchor" href="#_what_s_next"></a>What&#8217;s next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have created a new application, executed it locally and then published it.</p>
+</div>
+<div class="paragraph">
+<p>Now, you are ready to code your own application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>See <a href="./developer-manual.html#_develop_your_front_with_zetapush">how to use built-in ZetaPush cloud services</a></p>
+</li>
+<li>
+<p>See <a href="./developer-manual.html#_account_management">how to add user management to my application</a></p>
+</li>
+<li>
+<p>See <a href="./developer-manual.html#_develop_your_business_logic">how to add your custom business logic</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-17 08:48:24 UTC
+</div>
+</div>
+</body>
+</html>

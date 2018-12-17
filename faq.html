@@ -54,7 +54,7 @@
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
     <ul>
       <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
-      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
@@ -82,37 +82,80 @@
   </nav>
 </header>
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>FAQ</h1>
-</div>
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="qlist qanda">
-<ol>
-<li>
-<p><em>Do I have to develop <em>custom cloud services</em> ?</em></p>
-<p>No. Developing <em>custom cloud services</em> is not required. You can use <em>cloud services</em> that are already provided by ZetaPush. You may need to develop <em>custom cloud services</em> in different situations:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You have several devices so you want to mutualize your business code</p>
-</li>
-<li>
-<p>ZetaPush services are not fully compatible with your business needs</p>
-</li>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#_do_i_have_to_develop_em_custom_cloud_services_em">Do I have to develop <em>custom cloud services</em> ?</a></li>
+<li><a href="#_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6">Can I use ZetaPush CLI with and npm version lower than 6 ?</a></li>
+<li><a href="#_what_is_the_nodejs_version_used_to_run_my_worker_remotely">What is the NodeJS version used to run my worker remotely ?</a></li>
+<li><a href="#_can_i_use_a_nodejs_version_lower_than_10">Can I use a NodeJS version lower than 10 ?</a></li>
 </ul>
 </div>
-</li>
-</ol>
 </div>
+<div id="content">
+<div class="sect2">
+<h3 id="_do_i_have_to_develop_em_custom_cloud_services_em"><a class="anchor" href="#_do_i_have_to_develop_em_custom_cloud_services_em"></a>Do I have to develop <em>custom cloud services</em> ?</h3>
+<div class="paragraph">
+<p>No. Developing <em>custom cloud services</em> is not required. You can use <em>cloud services</em> that are already provided by ZetaPush. You may need to develop <em>custom cloud services</em> in different situations:
+  - You have several devices so you want to mutualize your business code
+  - ZetaPush services are not fully compatible with your business needs</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6"><a class="anchor" href="#_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6"></a>Can I use ZetaPush CLI with and npm version lower than 6 ?</h3>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">➊ - Upgrade npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">➋ - Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create myApp</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_the_nodejs_version_used_to_run_my_worker_remotely"><a class="anchor" href="#_what_is_the_nodejs_version_used_to_run_my_worker_remotely"></a>What is the NodeJS version used to run my worker remotely ?</h3>
+<div class="paragraph">
+<p>Your worker run with a <code>NodeJS</code> lts/dubnium version.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_can_i_use_a_nodejs_version_lower_than_10"><a class="anchor" href="#_can_i_use_a_nodejs_version_lower_than_10"></a>Can I use a NodeJS version lower than 10 ?</h3>
+<div class="paragraph">
+<p>We recommend to use the same version of <code>NodeJS</code> in local development as the version that runs your code remotely. For now, it is not possible to choose a different <code>NodeJS</code> version for remote run. This feature will be available in a future version.</p>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-17 08:48:24 UTC
 </div>
 </div>
 </body>

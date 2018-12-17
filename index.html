@@ -55,7 +55,7 @@
     <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
     <ul>
       <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
-      <li><a href="/documentation/quick-start.html"><span>Quick start</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
       <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
@@ -99,7 +99,7 @@
 <li><a href="#_terms_and_concepts">3. Terms and concepts</a></li>
 </ul>
 </li>
-<li><a href="#_quick_start">Quick Start</a>
+<li><a href="#_getting_started">Getting Started</a>
 <ul class="sectlevel1">
 <li><a href="#_system_requirements">4. System requirements</a></li>
 <li><a href="#_create_your_first_application">5. Create your first application</a>
@@ -222,7 +222,14 @@
 </ul>
 </li>
 <li><a href="#_guides">Guides</a></li>
-<li><a href="#_faq">FAQ</a></li>
+<li><a href="#_faq">FAQ</a>
+<ul class="sectlevel2">
+<li><a href="#_do_i_have_to_develop_em_custom_cloud_services_em">1.1. Do I have to develop <em>custom cloud services</em> ?</a></li>
+<li><a href="#_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6">1.2. Can I use ZetaPush CLI with and npm version lower than 6 ?</a></li>
+<li><a href="#_what_is_the_nodejs_version_used_to_run_my_worker_remotely">1.3. What is the NodeJS version used to run my worker remotely ?</a></li>
+<li><a href="#_can_i_use_a_nodejs_version_lower_than_10">1.4. Can I use a NodeJS version lower than 10 ?</a></li>
+</ul>
+</li>
 <li><a href="#_reference">Reference</a>
 <ul class="sectlevel1">
 <li><a href="#_available_cloud_services">18. Available cloud services</a>
@@ -230,7 +237,7 @@
 <li><a href="#_standard_user_workflow">18.1. Standard User Workflow</a>
 <ul class="sectlevel3">
 <li><a href="#_presentation">18.1.1. Presentation</a></li>
-<li><a href="#_quick_start_2">18.1.2. Quick start</a></li>
+<li><a href="#_quick_start">18.1.2. Quick start</a></li>
 </ul>
 </li>
 </ul>
@@ -347,7 +354,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_quick_start">Quick Start</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_getting_started">Getting Started</a></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_tutorials">Tutorials</a></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_guides">Guides</a></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><a href="#_developer_manual">Developer Manual</a></p></td>
@@ -460,12 +467,12 @@ For example, you can have <code>prod</code>, <code>pre-prod</code>, <code>dev</c
 </table>
 </div>
 </div>
-<h1 id="_quick_start" class="sect0"><a class="anchor" href="#_quick_start"></a><a class="link" href="#_quick_start">Quick Start</a></h1>
+<h1 id="_getting_started" class="sect0"><a class="anchor" href="#_getting_started"></a><a class="link" href="#_getting_started">Getting Started</a></h1>
 <div class="sect1">
 <h2 id="_system_requirements"><a class="anchor" href="#_system_requirements"></a><a class="link" href="#_system_requirements">4. System requirements</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create an application with ZetaPush you only need the Node.js ecosystem:</p>
+<p>To create a ZetaPush application you only need the Node.js ecosystem:</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -477,37 +484,10 @@ For example, you can have <code>prod</code>, <code>pre-prod</code>, <code>dev</c
 <div class="ulist">
 <ul>
 <li>
-<p>Node.js version 8.11.2 (LTS) or higher</p>
+<p>Node.js version 10.3.0 (LTS) or higher</p>
 </li>
 <li>
-<p>npm version 5.x or higher</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Node.js is used to:</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>create custom cloud services</p>
-</li>
-<li>
-<p>locally run custom cloud services</p>
-</li>
-<li>
-<p>deploy your application on ZetaPush</p>
+<p>npm version &gt;= 6.4</p>
 </li>
 </ul>
 </div>
@@ -579,19 +559,19 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 <div class="listingblock">
 <div class="title">Generate application</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush first-hello-world <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><em>first-hello-world</em> is the name of the folder that will be created with all the generated files</td>
+<td><em>hello-world</em> is the name of the folder that will be created with all the generated files</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You will be prompted for a developer login and a developer password in order to create a new account.</p>
+<p>You will be prompted for a developer login and a developer password in order to communicate with the platform.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -602,56 +582,6 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 <td class="content">
 The developer login and the developer password will be stored in the <code>.zetarc</code> file.
 By default, the <code>.gitignore</code> file is configured to not deploy this file.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>Using npm lower than 6</strong></p>
-</div>
-<div class="paragraph">
-<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
-</div>
-<div class="paragraph">
-<p>You can either upgrade your npm version or use npx utility.</p>
-</div>
-<div class="paragraph tab-container">
-<p>npm 5-</p>
-</div>
-<div class="paragraph tab">
-<p>Upgrade npm</p>
-</div>
-<div class="listingblock">
-<div class="title">➊ - Upgrade npm</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">➋ - Use npm init</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush first-hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Use <em>npx</em> to launch the script</p>
-</div>
-<div class="listingblock">
-<div class="title">Launch with npx</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create first-hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
 </td>
 </tr>
 </table>
@@ -677,7 +607,7 @@ By default, the <code>.gitignore</code> file is configured to not deploy this fi
 <div class="content">
 <img src="./images//hello-world/result.png" alt="result">
 </div>
-<div class="title">Figure 1. Result of first-hello-world project</div>
+<div class="title">Figure 1. Result of hello-world project</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -687,19 +617,19 @@ By default, the <code>.gitignore</code> file is configured to not deploy this fi
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The project <code>first-hello-world</code> generated by the CLI is available on <a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world-custom-cloud-service">Github</a>.
+<p>The project <code>hello-world</code> generated by the CLI is available on <a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/">Github</a>.
 This sample is also available using different front frameworks:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world-react">React</a></p>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-react">React</a></p>
 </li>
 <li>
-<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world-vue">Vue.js</a></p>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-vue">Vue.js</a></p>
 </li>
 <li>
-<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world-angular">Angular</a></p>
+<p><a href="https://github.com/zetapush/zetapush-examples/tree/master/hello-world/hello-world-angular">Angular</a></p>
 </li>
 </ul>
 </div>
@@ -793,11 +723,11 @@ The result is retrieved by the JavaScript code and displayed in the browser cons
 <div class="sect2">
 <h3 id="_from_your_terminal"><a class="anchor" href="#_from_your_terminal"></a><a class="link" href="#_from_your_terminal">6.2. From your terminal</a></h3>
 <div class="paragraph">
-<p>Go into the generated folder (<code>first-hello-world</code>):</p>
+<p>Go into the generated folder (<code>hello-world</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ cd first-hello-world</code></pre>
+<pre class="CodeRay highlight"><code data-lang="console">$ cd hello-world</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -876,7 +806,7 @@ You can open a web browser on <code>localhost:3000</code> and open the browser c
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The connection is requested with <code>client.connect()</code> in <code>first-hello-world/front/index.html</code>.</p>
+<p>The connection is requested with <code>client.connect()</code> in <code>hello-world/front/index.html</code>.</p>
 </div>
 </td>
 </tr>
@@ -909,7 +839,7 @@ The <em>ZetaPush cloud</em> routes the message to the worker to call the custom 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The button is defined in <code>first-hello-world/front/index.html</code></p>
+<p>The button is defined in <code>hello-world/front/index.html</code></p>
 </div>
 </td>
 </tr>
@@ -923,7 +853,7 @@ The <em>ZetaPush cloud</em> routes the message to the worker to call the custom 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The action of the button is done in <code>first-hello-world/front/index.js</code> and it calls <code>api.hello()</code>.</p>
+<p>The action of the button is done in <code>hello-world/front/index.js</code> and it calls <code>api.hello()</code>.</p>
 </div>
 </td>
 </tr>
@@ -941,7 +871,7 @@ The <em>ZetaPush cloud</em> routes the message to the worker to call the custom 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The code of the cloud function is available in <code>first-hello-world/worker/index.ts</code></p>
+<p>The code of the cloud function is available in <code>hello-world/worker/index.ts</code></p>
 </div>
 </td>
 </tr>
@@ -958,7 +888,7 @@ The <em>ZetaPush cloud</em> routes the message to the worker to call the custom 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The result is handled in <code>first-hello-world/front/index.js</code>.</p>
+<p>The result is handled in <code>hello-world/front/index.js</code>.</p>
 </div>
 </td>
 </tr>
@@ -1077,7 +1007,10 @@ The behavior remains the same as when code is executed local machine:</p>
 <p>See <a href="#_develop_your_front_with_zetapush">how to use built-in ZetaPush cloud services</a></p>
 </li>
 <li>
-<p>See <a href="#_develop_your_business_logic">how to develop your custom cloud services</a></p>
+<p>See <a href="#_account_management">how to add user management to my application</a></p>
+</li>
+<li>
+<p>See <a href="#_develop_your_business_logic">how to add your custom business logic</a></p>
 </li>
 </ul>
 </div>
@@ -1104,7 +1037,7 @@ The behavior remains the same as when code is executed local machine:</p>
 <div class="sect2">
 <h3 id="_system_requirements_2"><a class="anchor" href="#_system_requirements_2"></a><a class="link" href="#_system_requirements_2">9.1. System requirements</a></h3>
 <div class="paragraph">
-<p>To create an application with ZetaPush you only need the Node.js ecosystem:</p>
+<p>To create a ZetaPush application you only need the Node.js ecosystem:</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1116,37 +1049,10 @@ The behavior remains the same as when code is executed local machine:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Node.js version 8.11.2 (LTS) or higher</p>
+<p>Node.js version 10.3.0 (LTS) or higher</p>
 </li>
 <li>
-<p>npm version 5.x or higher</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Node.js is used to:</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>create custom cloud services</p>
-</li>
-<li>
-<p>locally run custom cloud services</p>
-</li>
-<li>
-<p>deploy your application on ZetaPush</p>
+<p>npm version &gt;= 6.4</p>
 </li>
 </ul>
 </div>
@@ -1212,7 +1118,7 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 <div class="sect2">
 <h3 id="_using_cli"><a class="anchor" href="#_using_cli"></a><a class="link" href="#_using_cli">9.2. Using CLI</a></h3>
 <div class="paragraph">
-<p>Once your have your application ready (see <a href="#">Quick start</a> if you don&#8217;t have created an application) you can:</p>
+<p>Once your have your application ready (see <a href="./quick-start.html">Quick start</a> if you don&#8217;t have created an application) you can:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1229,7 +1135,7 @@ You must run this command line using <strong>PowerShell</strong> as <strong>Admi
 </div>
 <div class="paragraph">
 <p>The <em>CLI</em> module is declared in the <code>package.json</code> of the project so it is installed by npm when you create your project
-(see <a href="#_create_your_first_application">how to create an application using npm</a> if you haven&#8217;t created a project).</p>
+(see <a href="./quick-start.html#_create_your_first_application">how to create an application using npm</a> if you haven&#8217;t created a project).</p>
 </div>
 <div class="paragraph">
 <p>When the project is created, we configure the <code>package.json</code> with a <code>scripts</code> section to make aliases that work
@@ -7414,26 +7320,60 @@ const controller = <span class="keyword">new</span> AvengersController(client);
 <h1 id="_guides" class="sect0"><a class="anchor" href="#_guides"></a><a class="link" href="#_guides">Guides</a></h1>
 
 <h1 id="_faq" class="sect0"><a class="anchor" href="#_faq"></a><a class="link" href="#_faq">FAQ</a></h1>
-<div class="openblock partintro">
+<div class="sect2">
+<h3 id="_do_i_have_to_develop_em_custom_cloud_services_em"><a class="anchor" href="#_do_i_have_to_develop_em_custom_cloud_services_em"></a><a class="link" href="#_do_i_have_to_develop_em_custom_cloud_services_em">1.1. Do I have to develop <em>custom cloud services</em> ?</a></h3>
+<div class="paragraph">
+<p>No. Developing <em>custom cloud services</em> is not required. You can use <em>cloud services</em> that are already provided by ZetaPush. You may need to develop <em>custom cloud services</em> in different situations:
+  - You have several devices so you want to mutualize your business code
+  - ZetaPush services are not fully compatible with your business needs</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6"><a class="anchor" href="#_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6"></a><a class="link" href="#_can_i_use_zetapush_cli_with_and_npm_version_lower_than_6">1.2. Can I use ZetaPush CLI with and npm version lower than 6 ?</a></h3>
+<div class="paragraph">
+<p>You can either upgrade your npm version or use npx utility.</p>
+</div>
+<div class="paragraph tab-container">
+<p>npm 5-</p>
+</div>
+<div class="paragraph tab">
+<p>Upgrade npm</p>
+</div>
+<div class="listingblock">
+<div class="title">➊ - Upgrade npm</div>
 <div class="content">
-<div class="qlist qanda">
-<ol>
-<li>
-<p><em>Do I have to develop <em>custom cloud services</em> ?</em></p>
-<p>No. Developing <em>custom cloud services</em> is not required. You can use <em>cloud services</em> that are already provided by ZetaPush. You may need to develop <em>custom cloud services</em> in different situations:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You have several devices so you want to mutualize your business code</p>
-</li>
-<li>
-<p>ZetaPush services are not fully compatible with your business needs</p>
-</li>
-</ul>
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
 </div>
-</li>
-</ol>
 </div>
+<div class="listingblock">
+<div class="title">➋ - Use npm init</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world</code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>Use <em>npx</em> to launch the script</p>
+</div>
+<div class="listingblock">
+<div class="title">Launch with npx</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create hello-world</code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_is_the_nodejs_version_used_to_run_my_worker_remotely"><a class="anchor" href="#_what_is_the_nodejs_version_used_to_run_my_worker_remotely"></a><a class="link" href="#_what_is_the_nodejs_version_used_to_run_my_worker_remotely">1.3. What is the NodeJS version used to run my worker remotely ?</a></h3>
+<div class="paragraph">
+<p>Your worker run with a <code>NodeJS</code> lts/dubnium version.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_can_i_use_a_nodejs_version_lower_than_10"><a class="anchor" href="#_can_i_use_a_nodejs_version_lower_than_10"></a><a class="link" href="#_can_i_use_a_nodejs_version_lower_than_10">1.4. Can I use a NodeJS version lower than 10 ?</a></h3>
+<div class="paragraph">
+<p>We recommend to use the same version of <code>NodeJS</code> in local development as the version that runs your code remotely. For now, it is not possible to choose a different <code>NodeJS</code> version for remote run. This feature will be available in a future version.</p>
 </div>
 </div>
 <h1 id="_reference" class="sect0"><a class="anchor" href="#_reference"></a><a class="link" href="#_reference">Reference</a></h1>
@@ -7535,7 +7475,7 @@ If the user tries to log into the application before he confirmed his account, a
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quick_start_2"><a class="anchor" href="#_quick_start_2"></a><a class="link" href="#_quick_start_2">18.1.2. Quick start</a></h4>
+<h4 id="_quick_start"><a class="anchor" href="#_quick_start"></a><a class="link" href="#_quick_start">18.1.2. Quick start</a></h4>
 <div class="paragraph">
 <p>In this part we will explain how to use the <strong>Standard User Workflow</strong> in the default behavior, i.e. using the default implementations of each parts of the workflow (For example, the default implementation to send the confirmation email use the <em>Mailjet</em> API).</p>
 </div>
@@ -10736,7 +10676,7 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 </table>
 </div>
 <div class="paragraph">
-<p>You will be prompted for a developer login and a developer password in order to create a new account.</p>
+<p>You will be prompted for a developer login and a developer password in order to communicate with the platform.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -10747,56 +10687,6 @@ If the <em>appName</em> property in the <em>.zetarc</em> is empty or missing, Ze
 <td class="content">
 The developer login and the developer password will be stored in the <code>.zetarc</code> file.
 By default, the <code>.gitignore</code> file is configured to not deploy this file.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>Using npm lower than 6</strong></p>
-</div>
-<div class="paragraph">
-<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
-</div>
-<div class="paragraph">
-<p>You can either upgrade your npm version or use npx utility.</p>
-</div>
-<div class="paragraph tab-container">
-<p>npm 5-</p>
-</div>
-<div class="paragraph tab">
-<p>Upgrade npm</p>
-</div>
-<div class="listingblock">
-<div class="title">➊ - Upgrade npm</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">➋ - Use npm init</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Use <em>npx</em> to launch the script</p>
-</div>
-<div class="listingblock">
-<div class="title">Launch with npx</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
 </td>
 </tr>
 </table>
@@ -10831,56 +10721,6 @@ By default, the <code>.gitignore</code> file is configured to not deploy this fi
 <div class="paragraph">
 <p>You will be prompted for a password in order to log in to ZetaPush.</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>Using npm lower than 6</strong></p>
-</div>
-<div class="paragraph">
-<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
-</div>
-<div class="paragraph">
-<p>You can either upgrade your npm version or use npx utility.</p>
-</div>
-<div class="paragraph tab-container">
-<p>npm 5-</p>
-</div>
-<div class="paragraph tab">
-<p>Upgrade npm</p>
-</div>
-<div class="listingblock">
-<div class="title">➊ - Upgrade npm</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">➋ - Use npm init</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Use <em>npx</em> to launch the script</p>
-</div>
-<div class="listingblock">
-<div class="title">Launch with npx</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_add_an_application_to_my_account"><a class="anchor" href="#_add_an_application_to_my_account"></a><a class="link" href="#_add_an_application_to_my_account">20.1.1.4. Add an application to my account</a></h5>
@@ -10905,56 +10745,6 @@ By default, the <code>.gitignore</code> file is configured to not deploy this fi
 </div>
 <div class="paragraph">
 <p>You will be prompted for a password in order to log in to ZetaPush.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>Using npm lower than 6</strong></p>
-</div>
-<div class="paragraph">
-<p><code>npm</code> provides <code>npm init</code> command since version 6.</p>
-</div>
-<div class="paragraph">
-<p>You can either upgrade your npm version or use npx utility.</p>
-</div>
-<div class="paragraph tab-container">
-<p>npm 5-</p>
-</div>
-<div class="paragraph tab">
-<p>Upgrade npm</p>
-</div>
-<div class="listingblock">
-<div class="title">➊ - Upgrade npm</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm install -g npm@latest</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">➋ - Use npm init</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab">
-<p>Use <em>npx</em> to launch the script</p>
-</div>
-<div class="listingblock">
-<div class="title">Launch with npx</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npx @zetapush/create hello-world</code></pre>
-</div>
-</div>
-<div class="paragraph tab-container-end">
-<p>-</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -11329,7 +11119,7 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-17 08:48:24 UTC
 </div>
 </div>
 </body>
