@@ -67,7 +67,7 @@ pipeline {
         changeRequest()
       }
       steps {
-        commentGithubPR(comment: "Preview of generated documentation: ${env.JOB_URL}/Generated%20documentation/index.html", credentials: 'github-saml')
+        commentGithubPR(comment: "Preview of generated documentation: ${env.JOB_URL}/Generated_20documentation/index.html", credentials: 'github-saml')
       }
     }
 
