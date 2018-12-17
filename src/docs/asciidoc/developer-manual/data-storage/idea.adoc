@@ -1,0 +1,62 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+[TODO]
+====
+ZetaPush provides several technical services to manipulate data.
+These services have the same complexity as the databases that are used
+underneath. For example, you can use Elastic Search to index and search
+but you have to understand how Elastic Search works. This can be time consuming.
+
+ZetaPush wants to provide you the best developer experience in order to
+focus on the functional and not technical issues. We want to offer
+a way to quickly store, retrieve, search data. We aim to cover about 80%
+of usages with our system. For example, you could write something like this in your
+code:
+
+.Data object
+[source, javascript]
+----
+@Storable()
+@Searchable({name: ['firstname', 'lastname']})
+class User {
+  private firstname: string;
+  private lastname: string;
+  private birthdate: Date;
+  @Searchable()
+  @Unique()
+  private email: EmailAddress;
+  @Searchable()
+  @Unique()
+  private phoneNumber: PhoneNumber;
+}
+----
+
+Then you could save data using:
+
+[source, javascript]
+----
+userRepository.save(user);
+----
+
+You could also retrieve users:
+[source, javascript]
+----
+// get all users that exactly match the lastname
+userRepository.findAll({lastname: 'Doe'});
+----
+
+You could also search users:
+[source, javascript]
+----
+// search for users that combination of firstname and lastname
+// matches the search terms
+userRepository.search('name', 'Jo Do');
+// search for users which email that partially matches the search terms
+userRepository.search('email', '@yopmail');
+----
+
+This feature is under construction and the API is not
+fixed for the moment
+====

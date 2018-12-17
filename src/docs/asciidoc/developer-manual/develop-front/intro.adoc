@@ -1,0 +1,27 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You may want to quickly provide a web application by just focusing on the visible part and the user experience
+instead of wasting time on technical concerns.
+
+ZetaPush provides built-in _cloud services_ to increase your productivity:
+
+include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+3]
+
+ZetaPush cloud services need to be "created" before being able to use them. This way, you
+can choose which services are part of your application instead of having them all.
+
+[IMPORTANT]
+====
+Currently, using a front to interact with ZetaPush cloud services directly is not really possible due to
+this "creation" phase. For security reasons, service creation and configuration can't be done via
+a client. 
+
+When the web console will be fully ready, ZetaPush cloud services "creation" will be
+available through the web console.
+
+Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
+"creation" process is automatically handled by the worker.
+
+See the next section to know how to develop _custom cloud services_ and use _ZetaPush cloud services_.
+====

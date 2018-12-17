@@ -3,613 +3,108 @@ include::{docdir}/variables.adoc[]
 
 :appName: hello-world
 
-////
-
-Objectifs : apprendre à utiliser ZetaPush, comprendre les concepts et gagner du temps sur mon dev
-
-== Requirements
-
-X si déjà installé, on peut passer la section
-
-=== System requirements
-
-X installation
-
-=== Using CLI
-
-X ok
-
-== ZetaPush concepts
-
-Objectif : faire comprendre et utiliser les concepts fondamentaux de ZetaPush
-
-X compte
-  X expliquer qu'on doit avoir un compte
-  X expliquer comment obtenir un compte (formulaire de demande)
-  X expliquer que dans le futur, on pourra créer un compte soi-même
-X organisation
-X application
-X env (futur)
-
-== Develop your front with ZetaPush
-
-Objectif : dire que ZetaPush fourni des services prêts à l'usage qui pourront à l'avenir être consommé directement.
-
-X liste des services dispos
-X requirements
-
-X enlever la partie consommer un custom cloud service
-
-== Develop your business logic
-
-Objectif : accompagner le développeur à comprendre comment écrire son code métier rapidement et l'utiliser depuis son front
-
-X définition
-X coder un cloud service simple
-  X define a custom cloud service
-    X note pour dire qu'on peut créer plusieurs cloud services dans le même worker (+ namespace)
-  X expose a custom cloud service
-    X note pour dire qu'on peut exposer plusieurs cloud services
-  X use your custom cloud service in your front
-    X note pour dire qu'on peut faire autre chose que du web ?
-  X run a custom cloud service
-    X note pour lancer que le cloud service
-  X compose cloud services
-    X dependency injection
-      X note pour aller voir plus en profondeur dans le fonctionnement de l'injection de dépendance
-    X use built-in cloud service
-      -> note pour voir comment configurer les cloud services
-    X use another custom cloud service
-      X note pour dire qu'on peut créer un module réutilisable
-      X note pour distinguer qu'on peut avoir des clouds services privés et d'autres exposés
-
-- develop fast
-  X hot reload
-    X montrer comment gagner du temps
-    X note pour autres fichiers (fichiers de conf dans futur)
-  X auto-completion
-  - logs
-    -> montrer comment logguer pour gagner du temps d'analyse
-  X debug
-    X montrer comment débugger rapidement du code
-  X testing
-    X montrer comment les tests peuvent faire gagner du temps
-
-== Deploy/publish your application
-
-Objectif : montrer comment déployer une application complète (front + worker)
-
-x indiquer qu'on peut redéployer à n'importe quel moment
-x retirer parties avec déploiement partiel et mettre des liens à la place
-
-== User management in your application
-
-Objectif : montrer comment rapidement obtenir une gestion des utilisateurs pour se concentrer sur le code utile
-
-- import user-management module
-- configure for your needs
-  -> note pour configuration avancée
-  -> note pour adaptation (utiliser implementations custom)
-- write your front to consume it
-- test it locally
-- test it remotely
-
-== Store data in your application
-
-Objectif : montrer comment rapidement stocker, lister, rechercher des données pour se concentrer sur le code utile
-
-futur
-
-== Secure your application
-
-Objectif : montrer comment rapidement isoler, bloquer et filtrer l'accès à des fonctions/données
-
-futur
-
-////
 
 = Developer manual
 
-== Requirements
 
-[NOTE]
-====
-If you already prepared your environment, you can skip this section.
-====
+
+== Requirements
+include::{docdir}/developer-manual/requirements/intro.adoc[leveloffset=+1]
 
 === System requirements
-
-include::{docdir}/common/prerequisites/prerequisites.adoc[leveloffset=+1]
+include::{docdir}/developer-manual/requirements/system-requirements.adoc[leveloffset=+2]
 
 === Using CLI
+include::{docdir}/developer-manual/requirements/cli.adoc[leveloffset=+2]
 
-include::{docdir}/common/manual-initialization/use-manual-application.adoc[leveloffset=+2]
+
 
 == ZetaPush concepts
-
-
-In order to be able to use ZetaPush, you need a *ZetaPush account*. Your account is used when
-you develop to run your project locally or to deploy it on ZetaPush cloud.
-
-The code you produce is bound to an *application*.
-
-An account belongs to an *organization*. An organization is useful to work in team.
-You can have several applications for your organization.
-You can manage access rights on applications according to members of your team.
-
-As usual in development, you may need to run your application in different contexts (dev, continuous integration, 
-prod...).
-Each application may have several *environments*.
-You can also manage access rights on environments according to members of your team.
-
-[TIP]
-====
-Learn how to <<reference.adoc#add_application, add an application to your organization>>.
-
-Learn how to <<reference.adoc#add_environment, add an environment to your application>>.
-
-Learn how to <<reference.adoc#access_control_per_application, control access for an application>>.
-
-Learn how to <<reference.adoc#access_control_per_environment, control access for a particular environment>>.
-====
-
-[IMPORTANT]
-====
-For now, environments are not fully supported but this feature will be available soon.
-====
-
+include::{docdir}/developer-manual/concepts/intro.adoc[leveloffset=+1]
 
 === Create your account
-include::{docdir}/common/manage/create-account.adoc[leveloffset=+2]
+include::{docdir}/developer-manual/concepts/create-account.adoc[leveloffset=+2]
 
 
 
 == Develop your front with ZetaPush
-
-You may want to quickly provide a web application by just focusing on the visible part and the user experience
-instead of wasting time on technical concerns.
-
-ZetaPush provides built-in _cloud services_ to increase your productivity:
-
-include::{docdir}/common/cloud-services/summary.adoc[leveloffset=+3]
-
-
-ZetaPush cloud services need to be "created" before being able to use them. This way, you
-can choose which services are part of your application instead of having them all.
-
-[IMPORTANT]
-====
-Currently, using a front to interact with ZetaPush cloud services directly is not really possible due to
-this "creation" phase. For security reasons, service creation and configuration can't be done via
-a client. 
-
-When the web console will be fully ready, ZetaPush cloud services "creation" will be
-available through the web console.
-
-Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
-"creation" process is automatically handled by the worker.
-
-See the next section to know how to develop _custom cloud services_ and use _ZetaPush cloud services_.
-====
-
-////
-=== Requirements
-include::{docdir}/common/usage-service/requirement-use-service.adoc[leveloffset=+3]
-
-
-=== Use _cloud services_
-
-==== Use a ZetaPush _cloud service_
-
-Here we show how to create a worker that use the ZetaPush cloud service named `Stack`.
-
-
-include::{docdir}/common/code/example-use-cloud-service-in-custom.adoc[]
-
-[TIP]
-====
-`Stack` cloud service "creation" is automatically handled thanks to dependency injection.
-ZetaPush detects that you need a ZetaPush service and prepare it.
-so you focus your code on the usage of the service
-not on its creation, you just ask for it.
-====
-
-include::{docdir}/common/code/example-call-stack-cloud-service-from-front.adoc[]
-
-
-IMPORTANT: When you call a _cloud function_ from the client, the result is always a Promise even if the _custom cloud function_ is synchronous
-because everything goes through the network.
-
-
-==== Use a custom _cloud service_
-include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+3]
-
-
-=== Configure/adapt ZetaPush cloud services
-
-[TODO]
-====
-This section will describe how to configure a ZetaPush cloud service.
-The configuration will be possible either through console or through worker.
-
-https://github.com/zetapush/documentation/issues/51
-====
-
-=== Run your front locally
-
-[TODO]
-====
-As described above, currently running only a front is not possible.
-You need to have a least worker to create and configure ZetaPush services.
-
-This section will be later described when this feature will be supported.
-https://github.com/zetapush/documentation/issues/52
-====
-////
+include::{docdir}/developer-manual/develop-front/intro.adoc[leveloffset=+1]
 
 
 
 == Develop your business logic
-
-Even if ZetaPush provides ready to use cloud services, we know that any application needs some
-specific behaviors. Instead of limiting your possibilities, we provide a way to help you develop
-quickly your own business logic.
+include::{docdir}/developer-manual/develop-cloud-services/intro.adoc[leveloffset=+1]
 
 === What is a _custom cloud service_
-include::{docdir}/common/custom-cloud-service/presentation-custom-cloud-service.adoc[leveloffset=+2]
+include::{docdir}/developer-manual/develop-cloud-services/definition.adoc[leveloffset=+2]
 
 === Develop a _custom cloud services_
 
 ==== Define a _custom cloud service_
-include::{docdir}/common/custom-cloud-service/create-custom-cloud-service.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/create-custom-cloud-service.adoc[leveloffset=+3]
 
 ==== Expose a _custom cloud service_
-include::{docdir}/common/custom-cloud-service/expose-custom-cloud-service.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/expose-custom-cloud-service.adoc[leveloffset=+3]
 
 ==== Use a _custom cloud service_ in your front
-include::{docdir}/common/usage-service/utilization-service.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/use-in-front.adoc[leveloffset=+3]
 
 ==== Run application
-include::{docdir}/common/usage-service/run-application.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/run-application.adoc[leveloffset=+3]
 
 ==== Compose cloud services
-
-You can compose _cloud services_ either by using _built-in cloud services_ provided by ZetaPush or 
-by using another of your _custom cloud services_.
+include::{docdir}/developer-manual/develop-cloud-services/compose-intro.adoc[leveloffset=+3]
 
 ===== Dependency injection
-include::{docdir}/common/custom-cloud-service/dependencies-include-services.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/compose-dependency-injection.adoc[leveloffset=+4]
 
 ===== Use built-in _cloud service_
-include::{docdir}/common/custom-cloud-service/use-cloud-services-in-custom.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/compose-use-builtin.adoc[leveloffset=+4]
 
 ===== Use another _custom cloud service_
-include::{docdir}/common/custom-cloud-service/use-custom-cloud-services-in-custom.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/compose-use-custom.adoc[leveloffset=+4]
 
 === Develop fast
 
 ==== Hot reload
-include::{docdir}/common/development/hot-reload.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/hot-reload.adoc[leveloffset=+3]
 
 ==== Auto-completion
-include::{docdir}/common/development/auto-completion.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/auto-completion.adoc[leveloffset=+3]
 
 ==== Log from a _custom cloud service_
-include::{docdir}/common/development/logging.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/logs.adoc[leveloffset=+3]
 
 ==== Debug a _custom cloud service_
-
-===== Debug your application with VSCode
-include::{docdir}/common/debug/how-to-debug-with-vscode.adoc[leveloffset=+2]
-
-===== Debug your application with IntelliJ based IDE
-include::{docdir}/common/debug/how-to-debug-with-webstorm.adoc[leveloffset=+2]
+include::{docdir}/developer-manual/develop-cloud-services/debug.adoc[leveloffset=+3]
 
 ==== Test a _custom cloud service_
-include::{docdir}/common/development/testing.adoc[leveloffset=+3]
+include::{docdir}/developer-manual/develop-cloud-services/testing.adoc[leveloffset=+3]
+
+
 
 == Deploy/publish your application
-
-include::{docdir}/common/deploy/deploy-introduction.adoc[leveloffset=+2]
+include::{docdir}/developer-manual/deploy/intro.adoc[leveloffset=+1]
 
 === What will be deployed ?
-
-include::{docdir}/common/deploy/what-is-deployment.adoc[leveloffset=+2]
+include::{docdir}/developer-manual/deploy/definition.adoc[leveloffset=+2]
 
 === Environments
-
-
-[TODO]
-====
-This section will describe how to deploy your application 
-in the ZetaPush cloud for a particular environment.
-
-It will also give you information about configuration properties
-and property override per environment.
-
-see https://github.com/zetapush/documentation/issues/54
-====
-
+include::{docdir}/developer-manual/deploy/environments.adoc[leveloffset=+2]
 
 === Deploy application on the ZetaPush Cloud
+include::{docdir}/developer-manual/deploy/deploy-application.adoc[leveloffset=+2]
 
-include::{docdir}/common/deploy/how-to-deploy-app.adoc[leveloffset=+2]
 
-////
-TODO: move in reference documentation
-=== Deploy your front on the ZetaPush Cloud
-include::{docdir}/common/deploy/how-to-deploy-front.adoc[leveloffset=+2]
-
-=== Deploy your _custom cloud services_ on the ZetaPush Cloud
-include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
-////
 
 == User management in your application
 
+
+
 == Store data in your application
+include::{docdir}/developer-manual/data-storage/idea.adoc[leveloffset=+1]
 
 
-[TODO]
-====
-ZetaPush provides several technical services to manipulate data.
-These services have the same complexity as the databases that are used
-underneath. For example, you can use Elastic Search to index and search
-but you have to understand how Elastic Search works. This can be time consuming.
-
-ZetaPush wants to provide you the best developer experience in order to
-focus on the functional and not technical issues. We want to offer
-a way to quickly store, retrieve, search data. We aim to cover about 80%
-of usages with our system. For example, you could write something like this in your
-code:
-
-.Data object
-[source, javascript]
-----
-@Storable()
-@Searchable({name: ['firstname', 'lastname']})
-class User {
-  private firstname: string;
-  private lastname: string;
-  private birthdate: Date;
-  @Searchable()
-  @Unique()
-  private email: EmailAddress;
-  @Searchable()
-  @Unique()
-  private phoneNumber: PhoneNumber;
-}
-----
-
-Then you could save data using:
-
-[source, javascript]
-----
-userRepository.save(user);
-----
-
-You could also retrieve users:
-[source, javascript]
-----
-// get all users that exactly match the lastname
-userRepository.findAll({lastname: 'Doe'});
-----
-
-You could also search users:
-[source, javascript]
-----
-// search for users that combination of firstname and lastname
-// matches the search terms
-userRepository.search('name', 'Jo Do');
-// search for users which email that partially matches the search terms
-userRepository.search('email', '@yopmail');
-----
-
-This feature is under construction and the API is not
-fixed for the moment
-====
 
 == Secure your application
-
-
-[TODO]
-====
-ZetaPush wants to provide you the best developer experience in order to
-focus on the functional and not technical issues. We want to offer
-a way to quickly secure your application. We aim to cover about 80%
-of usages with our system. For example, you could write something like this in your
-code:
-
-.Cloud service
-[source, javascript]
-----
-@Injectable()
-export default class MyCustomCloudService {
-  @CanChangePassword
-  changePassword(user) {
-    // code for changing a password of a user
-  }
-}
-----
-
-Instead of using technical annotations or calls, we want
-to provide you the possibility to define your own security
-annotations. It makes the code easier to read and to maintain.
-
-Here is an example of the code a custom annotation:
-
-[source, javascript]
-----
-import { isAdmin, isCurrentUser, SecurityException } from '@zetapush/security';
-
-export const CanChangePassword = (user) => {
-  // an admin can change password of anyone
-  if(isAdmin()) {
-    return;
-  }
-  // a user can change only its own password
-  if(isCurrentUser(user)) {
-    return;
-  }
-  // not allowed
-  throw new SecurityException(`You are not allowed to change password of ${user.login}`, user);
-}
-----
-
-In addition to control who can execute actions, we want
-to provide a simple way to retrieve filtered data that comes from
-database. For example, an admin could view everything while
-a user could only see his friends.
-
-.Data object
-[source, javascript]
-----
-@CanSeeAccount()
-@Storable()
-@Searchable({name: ['firstname', 'lastname']})
-class User {
-  private firstname: string;
-  private lastname: string;
-  private birthdate: Date;
-  @Searchable()
-  private email: EmailAddress;
-  @Searchable()
-  @Sensitive()
-  private phoneNumber: PhoneNumber;
-}
-----
-
-
-Here is an example of the code a custom annotation:
-
-[source, javascript]
-----
-import { isAdmin, isCurrentUser, currentUser } from '@zetapush/security';
-
-const areFriends = (userFromDatabase, otherUser) => {
-  // ... (your code to check if the users are friends)
-}
-
-export const CanSeeAccount = (userFromDatabase) => {
-  // an admin can see all accounts
-  if(isAdmin()) {
-    return true;
-  }
-  // a user can see its account
-  if(isCurrentUser(userFromDatabase)) {
-    return true;
-  }
-  // a user can see accounts of his friends
-  if(areFriends(currentUser(), userFromDatabase)) {
-    return true;
-  }
-  // not allowed to see
-  return false;
-}
-----
-
-Moreover, you could filter fields for example to prevent some sensitive
-information to be visible to other users. Here we want to make phone
-number only visible for an admin and the user that owns the phone number
-(look at `@Sensitive()` annotation that indicates that the data
-must not be visible unless we explicitly want it):
-
-[source, javascript]
-----
-import { isAdmin, isCurrentUser, currentUser, accessSensitiveField } from '@zetapush/security';
-
-const areFriends = (userFromDatabase, otherUser) => {
-  // ... (your code to check if the users are friends)
-}
-
-export const CanSeeAccount = (userFromDatabase) => {
-  // an admin can see all accounts
-  if(isAdmin()) {
-    return accessSensitiveField('phoneNumber');
-  }
-  // a user can see its account
-  if(isCurrentUser(userFromDatabase)) {
-    return true;
-  }
-  // a user can see accounts of his friends
-  if(areFriends(currentUser(), userFromDatabase)) {
-    return true;
-  }
-  // not allowed to see
-  return false;
-}
-----
-
-These features are under construction and the API is not
-fixed for the moment
-====
-
-////
-== Testing
-
-TODO: https://github.com/zetapush/documentation/issues/55
-
-=== Unit testing your front
-
-TODO: https://github.com/zetapush/documentation/issues/56
-
-=== Unit testing your custom cloud services
-
-TODO: https://github.com/zetapush/documentation/issues/57
-
-=== Integration testing your front
-
-TODO: https://github.com/zetapush/documentation/issues/58
-
-=== Integration testing your custom cloud services
-
-TODO: https://github.com/zetapush/documentation/issues/59
-
-=== Functional testing / end-to-end testing
-
-TODO: https://github.com/zetapush/documentation/issues/60
-
-// CONFIGURATION OF CLOUD SERVICES
-== Configuration of cloud services
-
-[#configuration-of-standard-user-workflow]
-=== Standard User Workflow
-include::{docdir}/common/cloud-services/standard-user-workflow/configuration.adoc[leveloffset=+2]
-
-// EXTENSION OF CLOUD SERVICES
-== Extension of cloud services
-
-.Run directly from VSCode
-[TIP]
-====
-You can configure VSCode to run your tests. In the main menu, click on menu:Debug[Add Configuration...]:
-
-image::{images-dir}/debug/add-debug-mendu.png[role=center]
-
-Add these lines in the `launch.json` file:
-
-[source, json]
-----
-    {
-      "name": "tests", 
-      "type": "node",
-      "request": "launch",
-      "stopOnEntry": false,
-      "sourceMaps": true,
-      "runtimeArgs": [
-        "-r",
-        "ts-node/register"
-      ],
-      "args": [ 
-        "node_modules/jasmine/bin/jasmine.js"
-      ],
-      "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal"
-    }
-----
-
-Then you can select the `tests' launch configuration and hit kbd:[F5].
-====
-[#extension-of-standard-user-workflow]
-=== Standard User Workflow
-include::{docdir}/common/cloud-services/standard-user-workflow/extension.adoc[leveloffset=+2]
-////
+include::{docdir}/developer-manual/security/idea.adoc[leveloffset=+1]

@@ -1,0 +1,6 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Even if ZetaPush provides ready to use cloud services, we know that any application needs some
+specific behaviors. Instead of limiting your possibilities, we provide a way to help you develop
+quickly your own business logic.

@@ -1,0 +1,4 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+include::{docdir}/common/deploy/how-to-deploy-app.adoc[leveloffset=+2]

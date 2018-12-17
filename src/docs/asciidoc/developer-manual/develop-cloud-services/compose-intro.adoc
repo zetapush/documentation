@@ -1,0 +1,5 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+You can compose _cloud services_ either by using _built-in cloud services_ provided by ZetaPush or 
+by using another of your _custom cloud services_.
