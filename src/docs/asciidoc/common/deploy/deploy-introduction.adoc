@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.
-Deploying means that your code is sent to the ZetaPush cloud and your applications
+Deploying means that your code is sent to the ZetaPush cloud and your application
 runs directly on it. The ZetaPush cloud
 hosts your application and makes it available on the Internet for your end-users.
 
