@@ -1,3 +1,10 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+Your *application* may be deployed and executed in separate zones called *environments*. Each environment is a particular zone that you can organize as you wish. For example, you can have one environment based on your application lifecycle: `dev`, `pre-prod`, `prod`.
+
+.Environment for free trial
+[WARNING]
+====
+If you are using a free trial account, only one environment is available. In the case of you need to test more ZetaPush, you can link:{contact-url}[contact us] to have several environments.
+====

@@ -1,3 +1,8 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+.Environment support
+[NOTE]
+====
+The *environment* support is not completely done. It will be soon because it is our next high priority. The management of this environments will be done via the *web console*. If you want to use environments you can anyway link:{contact-url}[contact us] to manage them for you.
+====
