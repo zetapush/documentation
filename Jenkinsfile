@@ -62,6 +62,15 @@ pipeline {
       }
     }
 
+    stage('Add preview URL in PR') {
+      when {
+        changeRequest()
+      }
+      steps {
+        commentGithubPR(comment: "Preview of generated documentation: ${env.JOB_URL}/Generated%20documentation/index.html", credentials: 'github-saml')
+      }
+    }
+
     stage('Publish html documentation') {
       when {
         branch 'master'
