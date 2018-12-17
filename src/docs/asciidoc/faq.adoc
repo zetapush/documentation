@@ -19,4 +19,4 @@ Your worker run with a `NodeJS` lts/dubnium version.
 
 === Can I use a NodeJS version lower than 10 ?
 
-Using a `NodeJS` version different from the remote one is not currently supported.
+We recommend to use the same version of `NodeJS` in local development as the version that runs your code remotely. For now, it is not possible to choose a different `NodeJS` version for remote run. This feature will be available in a future version.
