@@ -5573,19 +5573,224 @@ The command that is executed under the hood is:</p>
 <div class="sect1">
 <h2 id="_store_data_in_your_application"><a class="anchor" href="#_store_data_in_your_application"></a>Store data in your application</h2>
 <div class="sectionbody">
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>ZetaPush provides several technical services to manipulate data.
+These services have the same complexity as the databases that are used
+underneath. For example, you can use Elastic Search to index and search
+but you have to understand how Elastic Search works. This can be time consuming.</p>
+</div>
+<div class="paragraph">
+<p>ZetaPush wants to provide you the best developer experience in order to
+focus on the functional and not technical issues. We want to offer
+a way to quickly store, retrieve, search data. We aim to cover about 80%
+of usages with our system. For example, you could write something like this in your
+code:</p>
+</div>
+<div class="listingblock">
+<div class="title">Data object</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="error">@</span>Storable()
+<span class="error">@</span>Searchable({<span class="key">name</span>: [<span class="string"><span class="delimiter">'</span><span class="content">firstname</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastname</span><span class="delimiter">'</span></span>]})
+<span class="reserved">class</span> User {
+  <span class="reserved">private</span> firstname: string;
+  <span class="reserved">private</span> lastname: string;
+  <span class="reserved">private</span> birthdate: Date;
+  <span class="error">@</span>Searchable()
+  <span class="error">@</span>Unique()
+  <span class="reserved">private</span> email: EmailAddress;
+  <span class="error">@</span>Searchable()
+  <span class="error">@</span>Unique()
+  <span class="reserved">private</span> phoneNumber: PhoneNumber;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you could save data using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">userRepository.save(user);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You could also retrieve users:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// get all users that exactly match the lastname</span>
+userRepository.findAll({<span class="key">lastname</span>: <span class="string"><span class="delimiter">'</span><span class="content">Doe</span><span class="delimiter">'</span></span>});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You could also search users:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="comment">// search for users that combination of firstname and lastname</span>
+<span class="comment">// matches the search terms</span>
+userRepository.search(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Jo Do</span><span class="delimiter">'</span></span>);
+<span class="comment">// search for users which email that partially matches the search terms</span>
+userRepository.search(<span class="string"><span class="delimiter">'</span><span class="content">email</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">@yopmail</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This feature is under construction and the API is not
+fixed for the moment</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_secure_your_application"><a class="anchor" href="#_secure_your_application"></a>Secure your application</h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>ZetaPush wants to provide you the best developer experience in order to
+focus on the functional and not technical issues. We want to offer
+a way to quickly secure your application. We aim to cover about 80%
+of usages with our system. For example, you could write something like this in your
+code:</p>
+</div>
+<div class="listingblock">
+<div class="title">Cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyCustomCloudService {
+  <span class="error">@</span>CanChangePassword
+  changePassword(user) {
+    <span class="comment">// code for changing a password of a user</span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of using technical annotations or calls, we want
+to provide you the possibility to define your own security
+annotations. It makes the code easier to read and to maintain.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example of the code a custom annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> { isAdmin, isCurrentUser, SecurityException } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/security</span><span class="delimiter">'</span></span>;
 
+<span class="reserved">export</span> const CanChangePassword = (user) =&gt; {
+  <span class="comment">// an admin can change password of anyone</span>
+  <span class="keyword">if</span>(isAdmin()) {
+    <span class="keyword">return</span>;
+  }
+  <span class="comment">// a user can change only its own password</span>
+  <span class="keyword">if</span>(isCurrentUser(user)) {
+    <span class="keyword">return</span>;
+  }
+  <span class="comment">// not allowed</span>
+  <span class="keyword">throw</span> <span class="keyword">new</span> SecurityException(<span class="error">`</span>You are not allowed to change password of <span class="predefined">$</span>{user.login}<span class="error">`</span>, user);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to control who can execute actions, we want
+to provide a simple way to retrieve filtered data that comes from
+database. For example, an admin could view everything while
+a user could only see his friends.</p>
+</div>
+<div class="listingblock">
+<div class="title">Data object</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="error">@</span>CanSeeAccount()
+<span class="error">@</span>Storable()
+<span class="error">@</span>Searchable({<span class="key">name</span>: [<span class="string"><span class="delimiter">'</span><span class="content">firstname</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">lastname</span><span class="delimiter">'</span></span>]})
+<span class="reserved">class</span> User {
+  <span class="reserved">private</span> firstname: string;
+  <span class="reserved">private</span> lastname: string;
+  <span class="reserved">private</span> birthdate: Date;
+  <span class="error">@</span>Searchable()
+  <span class="reserved">private</span> email: EmailAddress;
+  <span class="error">@</span>Searchable()
+  <span class="error">@</span>Sensitive()
+  <span class="reserved">private</span> phoneNumber: PhoneNumber;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is an example of the code a custom annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> { isAdmin, isCurrentUser, currentUser } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/security</span><span class="delimiter">'</span></span>;
+
+const areFriends = (userFromDatabase, otherUser) =&gt; {
+  <span class="comment">// ... (your code to check if the users are friends)</span>
+}
+
+<span class="reserved">export</span> const CanSeeAccount = (userFromDatabase) =&gt; {
+  <span class="comment">// an admin can see all accounts</span>
+  <span class="keyword">if</span>(isAdmin()) {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="comment">// a user can see its account</span>
+  <span class="keyword">if</span>(isCurrentUser(userFromDatabase)) {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="comment">// a user can see accounts of his friends</span>
+  <span class="keyword">if</span>(areFriends(currentUser(), userFromDatabase)) {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="comment">// not allowed to see</span>
+  <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Moreover, you could filter fields for example to prevent some sensitive
+information to be visible to other users. Here we want to make phone
+number only visible for an admin and the user that owns the phone number
+(look at <code>@Sensitive()</code> annotation that indicates that the data
+must not be visible unless we explicitly want it):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="reserved">import</span> { isAdmin, isCurrentUser, currentUser, accessSensitiveField } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/security</span><span class="delimiter">'</span></span>;
+
+const areFriends = (userFromDatabase, otherUser) =&gt; {
+  <span class="comment">// ... (your code to check if the users are friends)</span>
+}
+
+<span class="reserved">export</span> const CanSeeAccount = (userFromDatabase) =&gt; {
+  <span class="comment">// an admin can see all accounts</span>
+  <span class="keyword">if</span>(isAdmin()) {
+    <span class="keyword">return</span> accessSensitiveField(<span class="string"><span class="delimiter">'</span><span class="content">phoneNumber</span><span class="delimiter">'</span></span>);
+  }
+  <span class="comment">// a user can see its account</span>
+  <span class="keyword">if</span>(isCurrentUser(userFromDatabase)) {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="comment">// a user can see accounts of his friends</span>
+  <span class="keyword">if</span>(areFriends(currentUser(), userFromDatabase)) {
+    <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+  }
+  <span class="comment">// not allowed to see</span>
+  <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These features are under construction and the API is not
+fixed for the moment</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 15:25:12 UTC
+Last updated 2018-12-17 08:50:05 UTC
 </div>
 </div>
 </body>
