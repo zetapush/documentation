@@ -13,12 +13,3 @@ $ npm init @zetapush {appName} <1>
 <3> _<your application name>_ is the application name registered on ZetaPush
 
 You will be prompted for a password in order to log in to ZetaPush.
-
-[WARNING]
-====
-**Using npm lower than 6**
-
-`npm` provides `npm init` command since version 6.
-
-include::{docdir}/common/init/init-npm-minor-6.adoc[]
-====

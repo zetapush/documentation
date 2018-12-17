@@ -17,7 +17,7 @@ In addition, ZetaPush hosts business code and front-end code.
 
 [cols="5*^", role="sections-shortcut"]
 |===
-| <<quick-start.adoc#_quick_start, Quick Start>>
+| <<getting-started.adoc#_getting_started, Getting Started>>
 | <<tutorials.adoc#_tutorials, Tutorials>>
 | <<how-to.adoc#_guides, Guides>>
 | <<developer-manual.adoc#_developer_manual, Developer Manual>>

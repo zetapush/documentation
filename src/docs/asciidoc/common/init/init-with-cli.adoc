@@ -10,15 +10,6 @@ $ npm init @zetapush myApp <1>
 ----
 <1> _myApp_ is the name of the folder that will be created with all the generated files
 
-[WARNING]
-====
-This command works only with npm >= 6.
-
-**Using npm lower than 6**
-
-include::{docdir}/common/init/init-npm-minor-6.adoc[leveloffset=+1]
-====
-
 This command can takes several parameters: 
 
 * *--developer-login*: Define which developer login (ZetaPush account) to use

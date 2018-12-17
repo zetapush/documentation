@@ -11,12 +11,3 @@ $ npm init @zetapush {appName} <1>
 <2> _<your email address>_ is the email you used when you registered on ZetaPush
 
 You will be prompted for a password in order to log in to ZetaPush.
-
-[WARNING]
-====
-**Using npm lower than 6**
-
-`npm` provides `npm init` command since version 6.
-
-include::{docdir}/common/init/init-npm-minor-6.adoc[]
-====
