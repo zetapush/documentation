@@ -1,3 +1,21 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+As <<reference.adoc#manage_organization, seen previously>>, an *organization* can have several teams or/and several applications. So you may want to control who can work on which application.
+
+== Grant access rights
+
+
+.Contact us to manage access rights
+[NOTE]
+====
+Security per application is not currently available to our clients. Instead we prefer that you link:{contact-url}[contact us] to understand your needs and to guide you how to organize your teams and application.
+====
+
+== Remove access rights
+
+.Contact us to remove access rights
+[NOTE]
+====
+Security per application is not currently available to our clients. Instead we prefer that you link:{contact-url}[contact us] to understand your needs and to guide you how to organize your teams and application.
+====
