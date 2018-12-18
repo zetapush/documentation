@@ -165,7 +165,11 @@ To configure those properties, you need to create a file named `application.json
   }
 }
 ----
-<1> As an email is sent to the end user for confirming its account, you need to configure the email sender.
+<1> As an email is sent to the end user for confirming its account, 
+you need to configure the email sender. The email sender address 
+may not be totally what you want and may depend on your email 
+provider. For the example, we use a testing service that allows 
+any email address as email sender (see tip about Mailtrap below).
 <2> Configure the domain or the host for the SMTP server
 <3> Configure the port of the SMTP server
 <4> Configure username used to authenticate on the SMTP server
