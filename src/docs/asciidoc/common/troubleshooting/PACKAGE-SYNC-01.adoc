@@ -1,0 +1,6 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Your package-lock.json is out of sync with your package.json file.
+
+Run 'npm install' command before running 'zeta push'
