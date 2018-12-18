@@ -72,7 +72,7 @@ the HTTP endpoint is directly callable by opening the confirmation URL in a web 
 
 **That all for the worker code !**
 
-The code above basiclly declares your _custom cloud service_ as a new <<reference.adoc#modules, ZetaPush module>>.
+The code above basically declares your _custom cloud service_ as a new <<reference.adoc#modules, ZetaPush module>>.
 In this case, we don't need to create a module but the `@Module` is needed to import another module.
 Importing a module (using `imports` option) only indicates that you want to use a module somewhere in your _custom cloud service_.
 It doesn't automatically expose anything. This is deliberate because you may want to not directly 
