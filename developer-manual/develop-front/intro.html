@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Untitled</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may want to quickly provide a web application by just focusing on the visible part and the user experience
+instead of wasting time on technical concerns.</p>
+</div>
+<div class="paragraph">
+<p>ZetaPush provides built-in <em>cloud services</em> to increase your productivity:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. List of ZetaPush cloud services</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Cloud service</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_standard_user_workflow">Standard User Workflow</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The <code>StandardUserWorkflow</code> corresponds to the most common inscription process on the Internet. It handles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inscription of your end-users into your application: the user fills some information and <code>StandardUserWorkflow</code> sends an email
+(or SMS or anything else) to the user in order to confirm its account. Once the user has confirmed its account, he can authenticate
+himself and he is ready to use your application.</p>
+</li>
+<li>
+<p>Authentication of your end-users</p>
+</li>
+<li>
+<p>Lost password of your end-users: the user ask for resetting its password. <code>StandardUserWorkflow</code> sends an email (or SMS or anything else) to the user.
+The user clicks the link in the email to choose another password. Once confirmed, its account is updated with the new password.</p>
+</li>
+<li>
+<p>Profile edition: your end-users can update their information</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_user_management">User management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic user management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#_simple">Simple</a>: cloud functions to create a user, change credentials of a user, update a user or delete a user.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_weak">Weak</a>: cloud functions to control and release of weakly authenticated user sessions.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_userdir">Userdir</a>: cloud functions to retrieve and search users created by Simple.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_groups">Groups</a>: cloud functions to handle group of users.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This APIs are available if <code>StandardUserWorkflow</code> doesn&#8217;t fit your needs or you want to go further.
+Under the hood, <code>StandardUserWorkflow</code> use these services.</p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_data_management">Data management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic data management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#_gda">Gda</a>: NoSQL database that can store values, objects and arrays as document in columns.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_stack">Stack</a>: Store values, objects and arrays in a stack. Each item is pushed in the stack and can be accessed later.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_search_2">Search</a>: Search engine to make full text searches.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_file_management">File management</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section describes several services that provide basic file management functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#_zpfs_hdfs">Zpfs_hdfs</a>: Store files on a file system.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_template">Template</a>: Define a template and then evaluate it with an execution context.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_communication">Communication</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>It is possible to interact with your end-users using these services:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#_messaging">Messaging</a>: Send messages to a particular user (or a group of users). This is the service you use for a chat.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_notif">Notif</a>: Send notifications to your end-users mobile phone (Android, iOS or Windows Phone).</p>
+</li>
+<li>
+<p><a href="../../reference.html#_sendmail">Sendmail</a>: Send emails to your end-users.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_sms_ovh">Sms_ovh</a>: Send SMS to your end-users.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../../reference.html#_utilities_management">Utilities</a></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This section provides some utility tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#_cron">Cron</a>: Schedule a task to be executed periodically.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_logs">Logs</a>: Log some information. Logs will be available on ZetaPush cloud.</p>
+</li>
+<li>
+<p><a href="../../reference.html#_trigger">Trigger</a>: Listen to some event that is triggered by ZetaPush cloud and react to that event.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>ZetaPush cloud services need to be "created" before being able to use them. This way, you
+can choose which services are part of your application instead of having them all.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently, using a front to interact with ZetaPush cloud services directly is not really possible due to
+this "creation" phase. For security reasons, service creation and configuration can&#8217;t be done via
+a client.</p>
+</div>
+<div class="paragraph">
+<p>When the web console will be fully ready, ZetaPush cloud services "creation" will be
+available through the web console.</p>
+</div>
+<div class="paragraph">
+<p>Hopefully, you can use a worker to declare the use of a ZetaPush cloud service and even configure it. The
+"creation" process is automatically handled by the worker.</p>
+</div>
+<div class="paragraph">
+<p>See the next section to know how to develop <em>custom cloud services</em> and use <em>ZetaPush cloud services</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>

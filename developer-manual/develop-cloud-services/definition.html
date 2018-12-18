@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Architecture</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_architecture">Architecture</a>
+<ul class="sectlevel2">
+<li><a href="#_run_on_your_machine">Run on your machine</a></li>
+<li><a href="#_run_in_cloud">Run in cloud</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that <strong>you</strong> create the <em>cloud functions</em>.
+Generally, you will want to put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You develop <em>cloud services</em> that are contained in a concept named <strong>worker</strong>. In your code it is
+materialized by a folder named <code>worker</code>. The worker is the ZetaPush handler that starts your code (your <em>custom cloud services</em>).</p>
+</div>
+<div class="paragraph">
+<p>Your application is composed of a logic part (the worker) and a UI part (the front).</p>
+</div>
+<div class="paragraph">
+<p>There are two ways of running an application (worker and front):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You develop on your machine and iterate to provide features. Your application runs locally and interacts with ZetaPush Cloud.</p>
+</li>
+<li>
+<p>Once you are ready to make the developed features available to your end-users, you publish your application. Your application runs directly in ZetaPush Cloud.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_run_on_your_machine"><a class="anchor" href="#_run_on_your_machine"></a>Run on your machine</h3>
+<div class="imageblock center">
+<div class="content">
+<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="709" height="430">
+</div>
+<div class="title">Figure 1. Custom Cloud Service in development phase</div>
+</div>
+<div class="paragraph">
+<p>Both front and worker are running locally. The front interacts with <em>custom cloud services</em> contained in the worker through
+ZetaPush Cloud.
+As ZetaPush Cloud provides bidirectional connection, the <em>custom cloud services</em> can also interact with the front through
+ZetaPush Cloud too.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can interact with <em>built-in cloud services</em> provided by ZetaPush.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you start using ZetaPush, you only develop locally so from your point of vue,
+your front seems to directly interact with your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>In fact, all messages go through the Internet and ZetaPush Cloud.
+It means that a published front can interact with a worker that is running locally and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../../reference.html#mix_local_and_remote">how to mix local worker with worker running in cloud</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_in_cloud"><a class="anchor" href="#_run_in_cloud"></a>Run in cloud</h3>
+<div class="imageblock center">
+<div class="content">
+<img src="custom-cloud-service-prod.png" alt="custom cloud service prod" width="681" height="387">
+</div>
+<div class="title">Figure 2. Custom Cloud Service in production phase</div>
+</div>
+<div class="paragraph">
+<p>Once published, everything runs in the ZetaPush Cloud. However the behavior is the same.
+Every interaction between the front and <em>custom cloud services</em> goes through the ZetaPush Cloud.</p>
+</div>
+<div class="paragraph">
+<p>The only main difference is that ZetaPush Cloud manages the hosting, the scalability and the
+high availability for you.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>

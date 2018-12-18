@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Worker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_worker">Worker</a></li>
+<li><a href="#_front_end">Front end</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you <em>deploy</em> your application on the ZetaPush cloud,
+actually your application is split in two parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The worker that contains your <em>custom cloud services</em></p>
+</li>
+<li>
+<p>The static files for the front end</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_worker"><a class="anchor" href="#_worker"></a>Worker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you deploy the worker (<em>custom cloud services</em>) of your application, we take care of the hosting of your code.
+In addition we manage the redundancy, the load-balancing,
+the high availability and the automatic scability of your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>A worker may also provide HTTP endpoints in addition to bidirectionnal connection provided as-is by ZetaPush.
+If so, once published on the ZetaPush cloud, the HTTP url is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your worker in HTTP(s) are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_front_end"><a class="anchor" href="#_front_end"></a>Front end</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the front end part, the ZetaPush cloud hosts your application.
+ZetaPush also manages redundancy of the static files in order to ensure
+the high availability of you front end application.</p>
+</div>
+<div class="paragraph">
+<p>The URL to access to your application is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your front end are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>

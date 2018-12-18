@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Debug your application with VSCode</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_debug_your_application_with_vscode">Debug your application with VSCode</a></li>
+<li><a href="#_debug_your_application_with_intellij_based_ide">Debug your application with IntelliJ based IDE</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_debug_your_application_with_vscode"><a class="anchor" href="#_debug_your_application_with_vscode"></a>Debug your application with VSCode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>VSCode provide a powerfull debugging feature <a href="https://code.visualstudio.com/docs/editor/debugging" class="bare">https://code.visualstudio.com/docs/editor/debugging</a>.</p>
+</div>
+<div class="paragraph">
+<p>Add a launch configuration with the following structure.</p>
+</div>
+<div class="listingblock">
+<div class="title">Configure .vscode/launch.json file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.2.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">configurations</span><span class="delimiter">&quot;</span></span>: [
+    {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">zeta run</span><span class="delimiter">&quot;</span></span>,                                       <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">node</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">request</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">launch</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">program</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}/node_modules/.bin/zeta</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">stopOnEntry</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">sourceMaps</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [                                                 <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">run</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">--serve-front</span><span class="delimiter">&quot;</span></span>
+      ],
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">cwd</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${workspaceRoot}</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">console</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">internalConsole</span><span class="delimiter">&quot;</span></span>
+    }
+  ]
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Launch configuration name (the name you want)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Path to local zeta <em>CLI</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>zeta command arguments</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Under the hood, VSCode runs a NodeJS process that runs <code>node_modules/.bin/zeta</code> script
+with two parameters <code>run</code> and <code>--serve-front</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is exactly the same as doing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ node_modules/.bin/zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>VSCode may use a different version of the NodeJS you use in an external terminal.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the configuration is ready, you can start your application in debug mode as indicated
+in <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank" rel="noopener">VSCode documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the following picture, we show that the debugger stops in the code of your <em>custom cloud service</em>.
+You can also see the values of the parameters and now you can execute the code step by step.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../images//debug/run-vscode-debugger.png" alt="Run VSCode debugger">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_debug_your_application_with_intellij_based_ide"><a class="anchor" href="#_debug_your_application_with_intellij_based_ide"></a>Debug your application with IntelliJ based IDE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Intellij&#8217;s WebStorm provides a powerfull debugging feature <a href="https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/" class="bare">https://blog.jetbrains.com/webstorm/2018/01/how-to-debug-with-webstorm/</a>.</p>
+</div>
+<div class="paragraph">
+<p>On the top menu, select Run &#8594; Edit Configurations</p>
+</div>
+<div class="paragraph">
+<p>then select a new NodeJs Template :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Node interpreter : path to nodeJS executable.</p>
+</li>
+<li>
+<p>Node parameters : must be "node_modules/.bin/zeta".</p>
+</li>
+<li>
+<p>Working directory : path to your project.</p>
+</li>
+<li>
+<p>Javascript file : should be blank.</p>
+</li>
+<li>
+<p>Application parameters : zeta command to launch, with optionals flags.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../images//debug/webstorm-debug.png" alt="Configure WebStorm Debug">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now use Intellij in debug mode with breakpoints and all the debugs features.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Define a cloud function</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_define_a_em_cloud_function_em">Define a <em>cloud function</em></a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>As a reminder worker is the ZetaPush container that will handle your code that defines <em>custom cloud services</em>.
+By convention, the code of your <em>custom cloud services</em> is placed in files under <code>worker</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="title">Tree structure convention</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">myApp
+├── <em>.zetarc</em>
+├── <em>.gitignore</em>
+├── <em>front</em>
+│   ├── ...
+│   └── ...
+├── <strong>worker</strong>
+│   ├── file1.ts
+│   ├── file2.ts
+│   ├── ...
+│   ├── fileN.ts
+│   └── index.ts
+├── <em>package.json</em>
+├── <em>README.md</em>
+└── <em>tsconfig.json</em></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Change directory structure</div>
+<div class="paragraph">
+<p>See more information about <a href="../../reference.html#different_directory_structures">directory structure convention and how to adapt the structure</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Translated into code, a <em>custom cloud service</em> is just a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>.
+The code is written in any <code>ts</code> file defined in <code>worker</code> directory. For small application like a "hello world",
+write your code directly in <code>index.ts</code> file.
+So the most basic example of a <em>custom cloud service</em> is below:</p>
+</div>
+<div class="listingblock">
+<div class="title">Basic custom cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {     <i class="conum" data-value="1"></i><b>(1)</b>
+
+    constructor() {}                       <i class="conum" data-value="2"></i><b>(2)</b>
+
+    helloWorld() {                         <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A custom cloud service is encapsulated in a JavaScript/TypeScript class. <strong>HelloWorldAsCustomCloudService</strong> is your first <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A class can define a constructor. We will see later why it is important</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>helloWorld</code> is your first <em>custom cloud function</em></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A <em>cloud function</em> is always asynchronous (with the <em>async</em> keyword or not)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Change entry point</div>
+<div class="paragraph">
+<p>By default, the code above is directly written in <code>index.ts</code> file. This is done in order
+to follow NodeJS conventions. Indeed, <code>index.ts</code> is the usually the file that imports
+all other files.</p>
+</div>
+<div class="paragraph">
+<p>You can write code of your <em>custom cloud services</em> in any other file named as you want.
+You will see later how to indicate to ZetaPush worker how to find your files if you don&#8217;t
+want to follow convention.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_define_a_em_cloud_function_em"><a class="anchor" href="#_define_a_em_cloud_function_em"></a>Define a <em>cloud function</em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each <em>cloud function</em> in a <em>custom cloud service</em> is a standard JavaScript/TypeScript
+method.
+For example, if you want a <em>cloud function</em> that receives two parameters you write:</p>
+</div>
+<div class="listingblock highlight-lines:8-14">
+<div class="title">A more realistic <em>cloud function</em></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {                            <i class="conum" data-value="1"></i><b>(1)</b>
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {                <i class="conum" data-value="2"></i><b>(2)</b>
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {                            <i class="conum" data-value="3"></i><b>(3)</b>
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage                                        <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>custom cloud service</em> definition as seen before</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declaration of a <em>cloud function</em> named <code>saySomething</code>. This <em>cloud function</em> accepts
+two parameters. As <a href="../../reference.html#javascript_vs_typescript">TypeScript is the recommended way</a>, each parameter is typed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Just for an example, the business logic consists in looping a number of times
+and concatenating the message. You can obviously write any code you want here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <em>custom cloud function</em> simply returns the contactenated string.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Why typing ?</div>
+<div class="paragraph">
+<p>Typing is optional but recommended to have a well defined API. Thanks to typing,
+ZetaPush is able to generate more accurate <a href="../../reference.html#generate_api_documentation">documentation based on your code</a> and also
+<a href="../../reference.html#generate_sdks">generate mobile/web/IoT SDKs</a> from your code with the right types so it
+makes developing your clients easier (for example, auto-completion can be used).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Tips about cloud functions</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can have as many parameters as you want. Parameters can be anything: <code>string</code>, <code>number</code>,
+<code>boolean</code>, <code>array</code> or <code>object</code>. You can code your function as you always do.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Define several <em>custom cloud services</em></div>
+<div class="paragraph">
+<p>Obviously when your application grows, you need to split your <em>custom cloud service</em> into several classes in order
+to make your API more understandable and more maintainable.</p>
+</div>
+<div class="paragraph">
+<p>You can learn <a href="../../reference.html#several_custom_cloud services">how to define several <em>custom cloud services</em></a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You have now a <em>custom cloud service</em> that provides two <em>cloud functions</em>.
+But until it is exposed, it can&#8217;t be called from outside of the worker.</p>
+</div>
+<div class="paragraph">
+<p>The next section describes how you can expose your <em>custom cloud service</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>

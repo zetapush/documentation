@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Untitled</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
+  /> -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-content">
+      <div class="context">
+        <a href="{{sourceFile.url}}">{{sourceFile.title}}</a>
+        {{#parents}}
+          <a href="{{url}}">{{title}}</a>
+        {{/parents}}
+        <a href="{{url}}">{{{_highlightResult.title.value}}}</a>
+      </div>
+      <pre class="hit-description">{{{_highlightResult.content.value}}}</pre>
+    </div>
+  </div>
+</script>
+<header>
+  <nav>
+    <div class="main-title"><span></span><i class="fa fa-caret-down"></i></div>
+    <ul>
+      <li><a href="/documentation"><span>ZetaPush documentation</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/getting-started.html"><span>Getting Started</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/developer-manual.html"><span>Developer manual</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/how-to.html"><span>How to guides</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/tutorials.html"><span>Tutorials</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="/documentation/reference.html"><span>Reference</span><i class="fa fa-angle-right"></i></a></li>
+      <li><a href="http://docv2.zetapush.com"><span>Documentation v2</span><i class="fa fa-angle-right"></i></a></li>
+    </ul>
+    <div>
+      <div class="contact-us">
+        <a href="https://spectrum.chat/zetapush" target="_blank">Contact us</a>
+      </div>
+      <div class="github">
+        <a href="https://github.com/zetapush" target="_blank">
+          <span>Join us on</span><i class="fa fa-github-alt" title="Github"></i></a>
+      </div>
+      <div class="search">
+        <input id="search-input" placeholder="Search for products">
+        <div class="search-results">
+          <div id="search-hits"></div>
+        </div>
+      </div>
+      <div class="logo">
+        <a href="https://zetapush.com"><span class="icon"></span></a>
+      </div>
+    </div>
+  </nav>
+</header>
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have now defined a <em>custom cloud service</em> with one or several <em>cloud function(s)</em>. You
+have also exposed your <em>custom cloud service</em>. So it is ready to be called from a client.
+Your client is also ready to call the <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>The next step is to start the project (both front and worker) using the ZetaPush <em>CLI</em>
+on your computer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Npm script aliases</div>
+<div class="paragraph">
+<p>Npm provides a handy feature
+to run scripts provided by dependencies without needing to change your computer settings or
+install the tool. ZetaPush defines npm <a href="https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378" target="_blank" rel="noopener">script aliases</a>
+to run the ZetaPush <em>CLI</em> through npm.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../../developer-manual.html#_using_cli">for more information about the ways of using the CLI</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To start your worker and you front using the ZetaPush <em>CLI</em> through npm, you simply run:</p>
+</div>
+<div class="listingblock">
+<div class="title">Start application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The command that is executed under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Run only the worker</div>
+<div class="paragraph">
+<p>It is also possible to <a href="../../reference.html#run_worker_only">run only your worker</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Automatic injection of ZetaPush information in your front</div>
+<div class="paragraph">
+<p>If you look closely to the code we have written, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Now when we click the "hello" button, "Hello World" is displayed on the page.</strong></p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 1. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud <span class="sequence-step">1</span> <span class="sequence-step">2</span>.</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud <span class="sequence-step">3</span> <span class="sequence-step">4</span>.</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code <span class="sequence-step">5</span>. ZetaPush cloud routes the message to your worker <span class="sequence-step">6</span> (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> <span class="sequence-step">7</span>.</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result <span class="sequence-step">8</span>. The worker picks this result and transform it to a message <span class="sequence-step">9</span>. This message is then sent
+to the ZetaPush cloud <span class="sequence-step">10</span>. The ZetaPush cloud routes the response message to the calling client <span class="sequence-step">11</span>. The client receives the message
+and the response is parsed <span class="sequence-step">12</span> and available in your JavaScript.</p>
+</div>
+<div class="paragraph">
+<p><strong>You can also try to enter a message and a number of repetitions and hit the "say something" button.</strong></p>
+</div>
+<div class="paragraph">
+<p>The behavior is exactly the same. This time a message is sent to call the <em>cloud function</em> with also the parameters.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Serialization/deserailization between client and <em>custom cloud service</em></div>
+<div class="paragraph">
+<p>When you call a <em>cloud function</em> from the client, under the hood, the values are serialized in JSON.
+This is understandable because everything goes through the network.</p>
+</div>
+<div class="paragraph">
+<p>On the worker side, everything is deserialized by the worker and your <em>custom cloud service</em>
+receives the values as they were written in the front side.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-12-18 09:26:37 UTC
+</div>
+</div>
+</body>
+</html>
