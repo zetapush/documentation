@@ -1,0 +1,6 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+The ZetaPush account gives you access to the ZetaPush cloud.
+As a developer, you need an account to be authorized to develop your product.
+As a manager, you need an account to <<reference.adoc#manage_organization, organize your teams>>.

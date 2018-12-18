@@ -1,0 +1,5 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+The management of your ZetaPush account and profile will soon be available on the web console.
+Now you can link:{contact-url}[contact us] if you want us to manage your informations.
