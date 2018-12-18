@@ -1,0 +1,32 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+In order to be able to use ZetaPush, you need a *ZetaPush account*. Your account is used when
+you develop to run your project locally or to deploy it on ZetaPush cloud.
+
+The code you produce is bound to an *application*.
+
+An account belongs to an *organization*. An organization is useful to work in team.
+You can have several applications for your organization.
+You can manage access rights on applications according to members of your team.
+
+As usual in development, you may need to run your application in different contexts (dev, continuous integration, 
+prod...).
+Each application may have several *environments*.
+You can also manage access rights on environments according to members of your team.
+
+[TIP]
+====
+Learn how to <<reference.adoc#add_application, add an application to your organization>>.
+
+Learn how to <<reference.adoc#add_environment, add an environment to your application>>.
+
+Learn how to <<reference.adoc#access_control_per_application, control access for an application>>.
+
+Learn how to <<reference.adoc#access_control_per_environment, control access for a particular environment>>.
+====
+
+[IMPORTANT]
+====
+For now, environments are not fully supported but this feature will be available soon.
+====

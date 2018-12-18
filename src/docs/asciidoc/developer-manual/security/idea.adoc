@@ -1,0 +1,135 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+[TODO]
+====
+ZetaPush wants to provide you the best developer experience in order to
+focus on the functional and not technical issues. We want to offer
+a way to quickly secure your application. We aim to cover about 80%
+of usages with our system. For example, you could write something like this in your
+code:
+
+.Cloud service
+[source, javascript]
+----
+@Injectable()
+export default class MyCustomCloudService {
+  @CanChangePassword
+  changePassword(user) {
+    // code for changing a password of a user
+  }
+}
+----
+
+Instead of using technical annotations or calls, we want
+to provide you the possibility to define your own security
+annotations. It makes the code easier to read and to maintain.
+
+Here is an example of the code a custom annotation:
+
+[source, javascript]
+----
+import { isAdmin, isCurrentUser, SecurityException } from '@zetapush/security';
+
+export const CanChangePassword = (user) => {
+  // an admin can change password of anyone
+  if(isAdmin()) {
+    return;
+  }
+  // a user can change only its own password
+  if(isCurrentUser(user)) {
+    return;
+  }
+  // not allowed
+  throw new SecurityException(`You are not allowed to change password of ${user.login}`, user);
+}
+----
+
+In addition to control who can execute actions, we want
+to provide a simple way to retrieve filtered data that comes from
+database. For example, an admin could view everything while
+a user could only see his friends.
+
+.Data object
+[source, javascript]
+----
+@CanSeeAccount()
+@Storable()
+@Searchable({name: ['firstname', 'lastname']})
+class User {
+  private firstname: string;
+  private lastname: string;
+  private birthdate: Date;
+  @Searchable()
+  private email: EmailAddress;
+  @Searchable()
+  @Sensitive()
+  private phoneNumber: PhoneNumber;
+}
+----
+
+
+Here is an example of the code a custom annotation:
+
+[source, javascript]
+----
+import { isAdmin, isCurrentUser, currentUser } from '@zetapush/security';
+
+const areFriends = (userFromDatabase, otherUser) => {
+  // ... (your code to check if the users are friends)
+}
+
+export const CanSeeAccount = (userFromDatabase) => {
+  // an admin can see all accounts
+  if(isAdmin()) {
+    return true;
+  }
+  // a user can see its account
+  if(isCurrentUser(userFromDatabase)) {
+    return true;
+  }
+  // a user can see accounts of his friends
+  if(areFriends(currentUser(), userFromDatabase)) {
+    return true;
+  }
+  // not allowed to see
+  return false;
+}
+----
+
+Moreover, you could filter fields for example to prevent some sensitive
+information to be visible to other users. Here we want to make phone
+number only visible for an admin and the user that owns the phone number
+(look at `@Sensitive()` annotation that indicates that the data
+must not be visible unless we explicitly want it):
+
+[source, javascript]
+----
+import { isAdmin, isCurrentUser, currentUser, accessSensitiveField } from '@zetapush/security';
+
+const areFriends = (userFromDatabase, otherUser) => {
+  // ... (your code to check if the users are friends)
+}
+
+export const CanSeeAccount = (userFromDatabase) => {
+  // an admin can see all accounts
+  if(isAdmin()) {
+    return accessSensitiveField('phoneNumber');
+  }
+  // a user can see its account
+  if(isCurrentUser(userFromDatabase)) {
+    return true;
+  }
+  // a user can see accounts of his friends
+  if(areFriends(currentUser(), userFromDatabase)) {
+    return true;
+  }
+  // not allowed to see
+  return false;
+}
+----
+
+These features are under construction and the API is not
+fixed for the moment
+====

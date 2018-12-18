@@ -1,5 +1,0 @@
-:relative-path: ../../
-include::{docdir}/variables.adoc[]
-
-== Manage ZetaPush account
-include::{docdir}/common/manage/manage-account.adoc[leveloffset=+1]

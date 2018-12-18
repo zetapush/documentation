@@ -3,56 +3,464 @@ include::{docdir}/variables.adoc[]
 
 = Reference
 
+
+
 == ZetaPush management
-include::{docdir}/common/manage/index.adoc[leveloffset=+1] 
+include::{docdir}/reference/manage/intro.adoc[leveloffset=+13]
+
+=== Manage ZetaPush account
+include::{docdir}/reference/manage/account-intro.adoc[leveloffset=+2]
+
+==== Create your account
+include::{docdir}/reference/manage/create-account.adoc[leveloffset=+3]
+
+==== Manage my informations
+include::{docdir}/reference/manage/manage-informations.adoc[leveloffset=+3]
+
+==== Delete your account
+include::{docdir}/reference/manage/delete-account.adoc[leveloffset=+3]
+
+[#manage_organization]
+=== Manage your organization
+include::{docdir}/reference/manage/organization.adoc[leveloffset=+2]
+
+=== Manage applications
+include::{docdir}/reference/manage/application-intro.adoc[leveloffset=+2]
+
+[#add_application]
+==== Add an application
+include::{docdir}/reference/manage/application-add.adoc[leveloffset=+3]
+
+[#access_control_per_application]
+==== Access control per application
+include::{docdir}/reference/manage/application-access-control.adoc[leveloffset=+3]
+
+[#manage_environments]
+=== Manage environments
+include::{docdir}/reference/manage/application-intro.adoc[leveloffset=+2]
+
+[#add_environment]
+==== Add an environment
+include::{docdir}/reference/manage/environment-add.adoc[leveloffset=+3]
+
+[#access_control_per_environment]
+==== Access control per environment
+include::{docdir}/reference/manage/environment-access-control.adoc[leveloffset=+3]
+
+
+
+== Architecture
+include::{docdir}/reference/architecture/intro.adoc[leveloffset=+1]
+
+=== General architecture
+include::{docdir}/reference/architecture/general-architecture.adoc[leveloffset=+2]
+
+=== ZetaPush choices
+include::{docdir}/reference/architecture/choices.adoc[leveloffset=+2]
+
+==== High availability
+include::{docdir}/reference/architecture/high-availability.adoc[leveloffset=+3]
+
+==== Load-balancing
+include::{docdir}/reference/architecture/load-balancing.adoc[leveloffset=+3]
+
+==== Scalability
+include::{docdir}/reference/architecture/scalability.adoc[leveloffset=+3]
+
+==== Supervision
+include::{docdir}/reference/architecture/supervision.adoc[leveloffset=+3]
+
+[#javascript_vs_typescript]
+==== JavaScript vs TypeScript
+include::{docdir}/reference/architecture/javascript-vs-typescript.adoc[leveloffset=+3]
+
+=== Application code structure
+include::{docdir}/reference/architecture/code-structure.adoc[leveloffset=+2]
+
+
+
+== ZetaPush development concepts
+include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+1]
+
+=== Npm modules provided by ZetaPush
+include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+2]
+
+=== Dependency injection
+include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
+
+[#modules]
+=== Modules
+include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
+
+=== Current running context
+include::{docdir}/reference/concepts/running-context.adoc[leveloffset=+2]
+
+==== Environment
+include::{docdir}/reference/concepts/environment.adoc[leveloffset=+3]
+
+==== ConfigurationProperties
+include::{docdir}/reference/concepts/configuration-properties.adoc[leveloffset=+3]
+
+==== ZetaPushContext
+include::{docdir}/reference/concepts/zetapush-context.adoc[leveloffset=+3]
+
+
+
+== Develop with ZetaPush
+
+[TODO]
+====
+Intro
+====
+
+=== Develop your front only
+include::{docdir}/reference/development/front-only.adoc[leveloffset=+4]
+
+[#client_types]
+==== ZetaPush client
+include::{docdir}/reference/development/client-sdk.adoc[leveloffset=+4]
+
+==== Web development
+include::{docdir}/reference/development/web-development.adoc[leveloffset=+4]
+
+[#develop_with_angular]
+===== Angular
+include::{docdir}/reference/development/angular.adoc[leveloffset=+4]
+
+[#develop_with_react]
+===== React
+include::{docdir}/reference/development/react.adoc[leveloffset=+4]
+
+[#develop_with_vue]
+===== Vue.js
+include::{docdir}/reference/development/vue.adoc[leveloffset=+4]
+
+==== Mobile development
+include::{docdir}/reference/development/mobile-development.adoc[leveloffset=+4]
+
+===== Android (Java)
+include::{docdir}/reference/development/android-java.adoc[leveloffset=+4]
+
+===== Android (Kotlin)
+include::{docdir}/reference/development/android-kotlin.adoc[leveloffset=+4]
+
+===== iOS
+include::{docdir}/reference/development/ios.adoc[leveloffset=+4]
+
+[#generate_sdks]
+=== Generate SDKs from custom cloud service code
+include::{docdir}/reference/development/generate-sdks.adoc[leveloffset=+2]
+
+=== Develop custom cloud services
+include::{docdir}/reference/development/custom-cloud-services.adoc[leveloffset=+2]
+
+=== Advanced usage of cloud services
+include::{docdir}/reference/development/custom-cloud-services-advanced.adoc[leveloffset=+2]
+
+[#several_custom_cloud_services]
+==== Several custom cloud services
+include::{docdir}/reference/development/custom-cloud-services-several.adoc[leveloffset=+3]
+
+[#shared_module]
+==== Create a shared module of cloud services
+include::{docdir}/reference/development/custom-cloud-services-shared-module.adoc[leveloffset=+3]
+
+
 
 == Available cloud services
-
-=== Standard User Workflow
+include::{docdir}/reference/cloud-services/intro.adoc[leveloffset=+1]
+////
+TODO: reuse some parts of 
 include::{docdir}/common/cloud-services/standard-user-workflow/index.adoc[leveloffset=+2]
 
-== Legacy cloud services
+TODO: reuse summary of cloud services ?
+TODO: add functional cartography ?
+////
 
-=== User Management
+=== Standard User Workflow
+include::{docdir}/reference/cloud-services/standard-user-workflow-intro.adoc[leveloffset=+2]
 
-include::{docdir}/common/cloud-services-legacy/simple.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/weak.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/userdir.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/groups.adoc[leveloffset=+2]
+==== Usage
+include::{docdir}/reference/cloud-services/standard-user-workflow-usage.adoc[leveloffset=+3]
 
-=== Data Management
+==== API
+include::{docdir}/reference/cloud-services/standard-user-workflow-api.adoc[leveloffset=+3]
 
-include::{docdir}/common/cloud-services-legacy/gda.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/stack.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/search.adoc[leveloffset=+2]
+[#builtin_cloud_services]
+=== Technical cloud services
 
-=== File Management
+==== User Management
 
-include::{docdir}/common/cloud-services-legacy/zpfs-hdfs.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/template.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/simple.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/weak.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/userdir.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/groups.adoc[leveloffset=+3]
 
-=== Communication
+==== Data Management
 
-include::{docdir}/common/cloud-services-legacy/messaging.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/notif.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/sendmail.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/sms-ovh.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/gda.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/stack.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/search.adoc[leveloffset=+3]
 
-=== Utilities Management
+==== File Management
 
-include::{docdir}/common/cloud-services-legacy/cron.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/logs.adoc[leveloffset=+2]
-include::{docdir}/common/cloud-services-legacy/trigger.adoc[leveloffset=+2]
+include::{docdir}/common/cloud-services-legacy/zpfs-hdfs.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/template.adoc[leveloffset=+3]
+
+==== Communication
+
+include::{docdir}/common/cloud-services-legacy/messaging.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/notif.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/sendmail.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/sms-ovh.adoc[leveloffset=+3]
+
+==== Utilities Management
+
+include::{docdir}/common/cloud-services-legacy/cron.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/logs.adoc[leveloffset=+3]
+include::{docdir}/common/cloud-services-legacy/trigger.adoc[leveloffset=+3]
+
+
 
 == Command Line Interface
 
-include::{docdir}/common/cli/cli.adoc[leveloffset=+1]
+=== Config
+include::{docdir}/reference/cli/config.adoc[leveloffset=+2]
+
+=== Run
+include::{docdir}/reference/cli/run.adoc[leveloffset=+2]
+
+=== Push
+include::{docdir}/reference/cli/push.adoc[leveloffset=+2]
+
+[#verbosity_level]
+=== Change verbosity
+include::{docdir}/reference/cli/verbosity.adoc[leveloffset=+2]
+
+
 
 == Configuration
-include::{docdir}/common/configuration/configuration.adoc[leveloffset=+1]
+include::{docdir}/reference/configuration/intro.adoc[leveloffset=+2]
 
-=== User Management
+=== Account configuration
+include::{docdir}/reference/configuration/account-configuration.adoc[leveloffset=+2]
+
+=== Code structure configuration
+include::{docdir}/reference/configuration/structure-configuration.adoc[leveloffset=+2]
+
+[#configuration_properties]
+=== Configuration properties
+include::{docdir}/reference/configuration/configuration-properties.adoc[leveloffset=+2]
+
+////
+TODO: remove this section but keep content and split it in each section above. When
+we describe account configuration, we also show how to change it.
+=== Configuration override
+include::{docdir}/reference/configuration/override-configuration.adoc[leveloffset=+2]
+////
+
+=== Customize cloud services
+
+==== User Management
+
+[TODO]
+====
+Update this section to match new plan
+
+https://github.com/zetapush/documentation/issues/61
 
 include::{docdir}/common/cloud-services/user-management.adoc[leveloffset=+2]
+====
 
-TODO: https://github.com/zetapush/documentation/issues/61
+
+
+== Logs
+include::{docdir}/reference/logs/intro.adoc[leveloffset=+1]
+
+=== Console.log
+include::{docdir}/reference/logs/console.adoc[leveloffset=+2]
+
+[#local_logger]
+=== Utility methods provided by @zetapush/common
+include::{docdir}/reference/logs/utility-methods.adoc[leveloffset=+2]
+
+[#log_service]
+=== Built-in log cloud service
+include::{docdir}/reference/logs/log-cloud-service.adoc[leveloffset=+2]
+
+[log_with_requestcontext]
+=== Logs using requestContext
+include::{docdir}/reference/logs/request-context.adoc[leveloffset=+2]
+
+=== Use another logging library
+include::{docdir}/reference/logs/external-libs.adoc[leveloffset=+2]
+
+[#logs_in_web_console]
+=== View logs in web console
+include::{docdir}/reference/logs/web-console.adoc[leveloffset=+2]
+
+=== Persist logs
+include::{docdir}/reference/logs/persistence.adoc[leveloffset=+2]
+
+=== External log visualization
+include::{docdir}/reference/logs/external-visualization.adoc[leveloffset=+2]
+
+
+
+== Tests
+
+=== Test your custom cloud services
+include::{docdir}/reference/tests/intro.adoc[leveloffset=+2]
+
+[#testing_utilities]
+==== Testing utilities provided by ZetaPush
+include::{docdir}/reference/tests/testing-utilities.adoc[leveloffset=+3]
+
+==== Unit testing
+include::{docdir}/reference/tests/unit-testing.adoc[leveloffset=+3]
+
+[#integration_testing]
+==== Integration testing
+include::{docdir}/reference/tests/integration-testing.adoc[leveloffset=+3]
+
+[#tests_in_cloud]
+===== Integration testing on published worker
+include::{docdir}/reference/tests/test-in-cloud.adoc[leveloffset=+3]
+
+[#e2e_testing]
+==== Test your application (end to end)
+include::{docdir}/reference/tests/e2e-testing.adoc[leveloffset=+3]
+
+[#test_in_typescript]
+=== Write tests in TypeScript
+include::{docdir}/reference/tests/typescript.adoc[leveloffset=+2]
+
+[#advanced_mocks]
+=== Mocks
+include::{docdir}/reference/tests/advanced-mocks.adoc[leveloffset=+2]
+
+[#test_snapshot]
+=== Initialize test with data
+include::{docdir}/reference/tests/test-snapshot.adoc[leveloffset=+2]
+
+=== Logs in tests
+include::{docdir}/reference/tests/logs.adoc[leveloffset=+2]
+
+[#verbosity_level_in_tests]
+==== Verbosity level
+include::{docdir}/reference/tests/verbosity-level.adoc[leveloffset=+3]
+
+
+
+== Advanced run of your application
+include::{docdir}/reference/run/intro.adoc[leveloffset=+1]
+
+[#run_worker_only]
+=== Run cloud services only
+include::{docdir}/reference/run/cloud-service-only.adoc[leveloffset=+2]
+
+=== Run front only
+include::{docdir}/reference/run/front-only.adoc[leveloffset=+2]
+
+
+
+== Advanced deployment of your application
+include::{docdir}/reference/push/intro.adoc[leveloffset=+1]
+
+[#partial_deployment]
+=== Partial deployment
+include::{docdir}/reference/push/partial-deployment.adoc[leveloffset=+2]
+
+=== Environment variables
+include::{docdir}/reference/push/environment-variables.adoc[leveloffset=+2]
+
+=== Custom npm registry
+include::{docdir}/reference/push/custom-npm-registry.adoc[leveloffset=+2]
+
+
+
+== HTTP server
+include::{docdir}/reference/http-server/intro.adoc[leveloffset=+1]
+
+[#internal_http_server]
+=== HTTP server provided by ZetaPush
+include::{docdir}/reference/http-server/internal-http-server.adoc[leveloffset=+2]
+
+[#custom_http_server]
+=== Custom HTTP server
+include::{docdir}/reference/http-server/custom-http-server.adoc[leveloffset=+2]
+
+
+
+== Extend a cloud service
+
+////
+== Testing
+
+TODO: https://github.com/zetapush/documentation/issues/55
+
+=== Unit testing your front
+
+TODO: https://github.com/zetapush/documentation/issues/56
+
+=== Unit testing your custom cloud services
+
+TODO: https://github.com/zetapush/documentation/issues/57
+
+=== Integration testing your front
+
+TODO: https://github.com/zetapush/documentation/issues/58
+
+=== Integration testing your custom cloud services
+
+TODO: https://github.com/zetapush/documentation/issues/59
+
+=== Functional testing / end-to-end testing
+
+TODO: https://github.com/zetapush/documentation/issues/60
+
+// CONFIGURATION OF CLOUD SERVICES
+== Configuration of cloud services
+
+[#configuration-of-standard-user-workflow]
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/configuration.adoc[leveloffset=+2]
+
+// EXTENSION OF CLOUD SERVICES
+== Extension of cloud services
+
+.Run directly from VSCode
+[TIP]
+====
+You can configure VSCode to run your tests. In the main menu, click on menu:Debug[Add Configuration...]:
+
+image::{images-dir}/debug/add-debug-mendu.png[role=center]
+
+Add these lines in the `launch.json` file:
+
+[source, json]
+----
+    {
+      "name": "tests", 
+      "type": "node",
+      "request": "launch",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [ 
+        "node_modules/jasmine/bin/jasmine.js"
+      ],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
+    }
+----
+
+Then you can select the `tests' launch configuration and hit kbd:[F5].
+====
+[#extension-of-standard-user-workflow]
+=== Standard User Workflow
+include::{docdir}/common/cloud-services/standard-user-workflow/extension.adoc[leveloffset=+2]
+////

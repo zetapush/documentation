@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+== Debug your application with VSCode
+include::{docdir}/common/debug/how-to-debug-with-vscode.adoc[leveloffset=+1]
+
+== Debug your application with IntelliJ based IDE
+include::{docdir}/common/debug/how-to-debug-with-webstorm.adoc[leveloffset=+1]
+

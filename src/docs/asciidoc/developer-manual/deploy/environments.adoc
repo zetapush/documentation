@@ -1,0 +1,13 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+This section will describe how to deploy your application 
+in the ZetaPush cloud for a particular environment.
+
+It will also give you information about configuration properties
+and property override per environment.
+
+see https://github.com/zetapush/documentation/issues/54
+====
