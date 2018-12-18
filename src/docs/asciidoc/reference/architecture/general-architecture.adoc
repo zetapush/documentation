@@ -1,2 +1,29 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+One of the most important thing to understand with ZetaPush is that you can use it in two steps: The *run* and the *push*. The `run` mode is when you develop your application, your *worker* is running locally and the `push` mode is when you have pushed your application on the *ZetaPush Cloud* and that your worker is running on it.
+
+.Process of development with ZetaPush
+[plantuml, process-dev-run-and-push, png, role="center"]     
+....
+start
+:I received my application provided by
+a free trial or by ZetaPush CSO;
+floating note left: I fill my <i>.zetarc</i> file with given informations 
+:I am in development phase
+of my application;
+floating note right: I run my application with <i>zeta run</i> command to test it
+:My application works well,
+it is ready to be deployed;
+:I am in production phase, I push my application;
+floating note left: I push my application with <i>zeta push</i> command
+stop
+....
+
+.Data between the two phases
+[IMPORTANT]
+====
+Whether you run or push your application, you use the same data. For example, if you store data during your development phase (using the `zeta run` command), They will always be present in the database when you will deploy your application with `zeta push`. For a more comprehensive working, look that scheme below :
+====
+
+include::{docdir}/common/diagrams/architecture-custom-cloud-service-dev.adoc[]
