@@ -16,14 +16,14 @@ include::{docdir}/getting-started/requirements/system-requirements.adoc[leveloff
 == Create your first application
 
 === From the command line
-include::{docdir}/getting-started/init/create-project.adoc[leveloffset=+2]
+include::{docdir}/getting-started/init/create-application.adoc[leveloffset=+2]
 
-=== Generated project
-include::{docdir}/getting-started/init/generated-project.adoc[leveloffset=+2]
+=== Generated application
+include::{docdir}/getting-started/init/generated-application.adoc[leveloffset=+2]
 
 
 
-== Run locally your first project
+== Run locally your first application
 
 === What is run ?
 include::{docdir}/getting-started/run/definition.adoc[leveloffset=+2]
@@ -36,7 +36,7 @@ include::{docdir}/getting-started/run/explanation.adoc[leveloffset=+2]
 
 
 
-== Push your first project in the Cloud
+== Push your first application in the Cloud
 
 === What is push ?
 include::{docdir}/getting-started/push/definition.adoc[leveloffset=+2]
