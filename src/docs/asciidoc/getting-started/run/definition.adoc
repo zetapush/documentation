@@ -1,0 +1,4 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Run is used in development phase. You run your code locally on your development machine. You can then iterate on your code to provide new features quickly or even debug your code.

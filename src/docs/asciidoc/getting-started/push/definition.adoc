@@ -1,0 +1,5 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Push is used to make your code "public". It will publish your web page(s) and also upload the code of your worker on _ZetaPush cloud_.
+You can push when you think that your code is ready to be used by your end-users.

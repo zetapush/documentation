@@ -1,0 +1,61 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+include::{docdir}/common/diagrams/run-locally-exchanges.adoc[]
+
+There are 3 parts that are working together:
+
+1. The web page that initiates a connection to the ZetaPush cloud
+2. The ZetaPush cloud
+3. The worker that provides the custom cloud function implementation
+
+Firstly, the web page is loaded in the browser and a JavaScript code automatically connects the _ZetaPush client_ to the _ZetaPush cloud_.
+
+.Client connection
+[TIP]
+====
+The connection is requested with `client.connect()` in `{appName}/front/index.html`.
+====
+
+.Bidirectional connection
+[IMPORTANT]
+====
+The connection between _ZetaPush client_ and the _ZetaPush cloud_ is established and is bi-directional. Any message sent by _ZetaPush client_ will go through this opened connection.
+The _ZetaPush cloud_ can also send messages to the _ZetaPush client_ through this opened connection.
+====
+
+Then, when the user clicks on the button, a message is sent to the _ZetaPush cloud_ in order to execute some code. 
+The _ZetaPush cloud_ routes the message to the worker to call the custom cloud function.
+
+.Code to handle clicks on the button
+[TIP]
+====
+The button is defined in `{appName}/front/index.html`
+
+The action of the button is done in `{appName}/front/index.js` and it calls `api.hello()`.
+====
+
+
+The custom cloud function is simply a JavaScript or TypeScript function. This function is called and it generates a result that is returned to _ZetaPush cloud_.
+_ZetaPush cloud_ routes the response message to the _ZetaPush client_ to send the result.
+
+.Code of the cloud function
+[TIP]
+====
+The code of the cloud function is available in `{appName}/worker/index.ts`
+====
+
+Finally, the _ZetaPush client_ receives the result and the JavaScript code of the web page displays it in the browser console (using `console.log`).
+
+.Code to handle the result
+[TIP]
+====
+The result is handled in `{appName}/front/index.js`.
+====
+
+.Everything goes through the Internet
+[IMPORTANT]
+====
+Even if you run locally, the cloud functions defined by your worker are available on the Internet through _ZetaPush cloud_.
+====

@@ -1,0 +1,5 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+// PREREQUISITES
+include::{docdir}/common/prerequisites/prerequisites.adoc[]

@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+include::{docdir}/common/cli/create-project.adoc[]
+
+.Manage account and applications
+[TIP]
+====
+See <<developer-manual.adoc#_zetapush_account_management, ZetaPush account management>> to learn how to manage your account and your applications.
+====
