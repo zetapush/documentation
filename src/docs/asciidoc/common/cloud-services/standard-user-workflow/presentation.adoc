@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 In a software application, we (almost) always need to manage users. The **Standard User Workflow** helps you to do this, in the most common use case (for
-business to customer application on the Internet).This cloud service helps you to: 
+business to customer application on the Internet). This cloud service helps you to:  
 
 * Signup a user
 * Log in a user 
