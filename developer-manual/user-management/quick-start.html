@@ -5,35 +5,35 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Presentation</title>
+<title>Create a ZetaPush application as usual</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../..//javascripts/menu.js"></script>
-<script type="text/javascript" src="../../..//javascripts/sidebar.js"></script>
-<script type="text/javascript" src="../../..//javascripts/steps.js"></script>
-<script type="text/javascript" src="../../..//javascripts/sourcecode/source-utils.js"></script>
-<script type="text/javascript" src="../../..//javascripts/sourcecode/highlight-lines.js"></script>
-<script type="text/javascript" src="../../..//javascripts/sourcecode/collapse-lines.js"></script>
-<script type="text/javascript" src="../../..//javascripts/tabcontainer.js"></script>
+<script type="text/javascript" src="../..//javascripts/menu.js"></script>
+<script type="text/javascript" src="../..//javascripts/sidebar.js"></script>
+<script type="text/javascript" src="../..//javascripts/steps.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/source-utils.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/highlight-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/sourcecode/collapse-lines.js"></script>
+<script type="text/javascript" src="../..//javascripts/tabcontainer.js"></script>
 <script type="text/javascript" src="//unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
-<script type="text/javascript" src="../../..//javascripts/clipboard.js"></script>
+<script type="text/javascript" src="../..//javascripts/clipboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
-<script type="text/javascript" src="../../..//javascripts/search.js"></script>
+<script type="text/javascript" src="../..//javascripts/search.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css"
   /> -->
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../../..//styles/zetapush-styles.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/custom-styles.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/tabcontainer.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/steps.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/sourcecode/collapse-lines.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/sourcecode/highlight-lines.css" />
-<link rel="stylesheet" type="text/css" href="../../..//styles/clipboard.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/zetapush-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/custom-styles.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/tabcontainer.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/steps.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/collapse-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/sourcecode/highlight-lines.css" />
+<link rel="stylesheet" type="text/css" href="../..//styles/clipboard.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
 <script type="text/html" id="hit-template">
   <div class="hit">
@@ -87,130 +87,15 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_presentation">Presentation</a></li>
-<li><a href="#_quick_start">Quick start</a>
-<ul class="sectlevel2">
 <li><a href="#_create_a_zetapush_application_as_usual">Create a ZetaPush application as usual</a></li>
 <li><a href="#_import_and_use_the_standard_user_workflow_in_your_worker">Import and use the Standard User Workflow in your worker</a></li>
 <li><a href="#_configure_some_properties">Configure some properties</a></li>
 <li><a href="#_develop_your_front_by_calling_the_standard_user_workflow_api">Develop your front by calling the Standard User Workflow API</a></li>
 </ul>
-</li>
-</ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_presentation"><a class="anchor" href="#_presentation"></a>Presentation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In a software application, we (almost) always need to manage users. The <strong>Standard User Workflow</strong> helps you to do this, in the most common use case (for
-business to customer application on the Internet). This cloud service helps you to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Signup a user</p>
-</li>
-<li>
-<p>Log in a user</p>
-</li>
-<li>
-<p>Log out a user</p>
-</li>
-<li>
-<p>Manage a forgotten password</p>
-</li>
-<li>
-<p>Manage permissions of users</p>
-</li>
-<li>
-<p>etc&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Authentication</div>
-<div class="paragraph">
-<p>At this moment, the connection and the disconnection of a user is done through the ZetaPush SDK (We will see below how to do this).</p>
-</div>
-<div class="paragraph">
-<p>In the future, the connection and disconnection will be handled by <code>StandardUserWorkflow</code> in order to provide you
-a clearer API.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For us, the most common use case is when a user can create its own account using a login and a password and needs to confirm his account via a link in an email.
-Once its account is validated, he can login and use the application.</p>
-</div>
-<div class="paragraph">
-<p><strong>Sign up: </strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../../../images//schemas/standarduserworkflow-signup.png" alt="standarduserworkflow signup">
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The user creates his account using a login, a password and an email. When the user submits the form, the account is created on the ZetaPush platform. In order to ensure that the user is not a bot, the account has to be confirmed before the user is authorized to login.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>An email is sent to the user in order to confirm its account. The email contains the confirmation link. He needs to confirm his account before connection.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>When the user clicks on the link in the email, he is authorized to login.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Log in: </strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../../../images//schemas/standarduserworkflow-login.png" alt="standarduserworkflow login">
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>When the user account is confirmed, he can log in the application using the his login and his password.</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Account not confirmed</div>
-<div class="paragraph">
-<p>If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_quick_start"><a class="anchor" href="#_quick_start"></a>Quick start</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this part we will explain how to use the <strong>Standard User Workflow</strong> in the default behavior, i.e. using the default implementations of each parts of the workflow.</p>
@@ -234,8 +119,11 @@ Once its account is validated, he can login and use the application.</p>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_create_a_zetapush_application_as_usual"><a class="anchor" href="#_create_a_zetapush_application_as_usual"></a>Create a ZetaPush application as usual</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_zetapush_application_as_usual"><a class="anchor" href="#_create_a_zetapush_application_as_usual"></a>Create a ZetaPush application as usual</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>In this Quickstart, we begin with a generated application using the CLI. So you can run:</p>
 </div>
@@ -253,8 +141,10 @@ Once its account is validated, he can login and use the application.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_import_and_use_the_standard_user_workflow_in_your_worker"><a class="anchor" href="#_import_and_use_the_standard_user_workflow_in_your_worker"></a>Import and use the Standard User Workflow in your worker</h3>
+</div>
+<div class="sect1">
+<h2 id="_import_and_use_the_standard_user_workflow_in_your_worker"><a class="anchor" href="#_import_and_use_the_standard_user_workflow_in_your_worker"></a>Import and use the Standard User Workflow in your worker</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Change the code of the <em>custom cloud service</em> defined in <code>worker/index.ts</code> file:</p>
 </div>
@@ -350,7 +240,7 @@ the HTTP endpoint is directly callable by opening the confirmation URL in a web 
 <p><strong>That all for the worker code !</strong></p>
 </div>
 <div class="paragraph">
-<p>The code above basically declares your <em>custom cloud service</em> as a new <a href="../../../reference.html#modules">ZetaPush module</a>.
+<p>The code above basically declares your <em>custom cloud service</em> as a new <a href="../../reference.html#modules">ZetaPush module</a>.
 In this case, we don&#8217;t need to create a module but the <code>@Module</code> is needed to import another module.
 Importing a module (using <code>imports</code> option) only indicates that you want to use a module somewhere in your <em>custom cloud service</em>.
 It doesn&#8217;t automatically expose anything. This is deliberate because you may want to not directly
@@ -378,7 +268,7 @@ is valid and to handle token expiration.</p>
 <td class="content">
 <div class="title">Modules</div>
 <div class="paragraph">
-<p>ZetaPush provides <a href="../../../reference.html#modules">modules</a> to encapsulate
+<p>ZetaPush provides <a href="../../reference.html#modules">modules</a> to encapsulate
 several <em>cloud services</em> and to be able to reuse them.</p>
 </div>
 <div class="paragraph">
@@ -411,7 +301,7 @@ exposes your class.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The keys of the map correspond to <a href="../../../reference.html#namespaces">namespaces</a>.
+<p>The keys of the map correspond to <a href="../../reference.html#namespaces">namespaces</a>.
 ZetaPush provides namespaces in order to be able to expose several
 <em>cloud services</em> each isolated by a name. The aim is to be able to have
 for example two <em>cloud functions</em> named <code>hello</code> in two different
@@ -444,10 +334,10 @@ That&#8217;s why ZetaPush also handles HTTP.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Either by registering a route in the <a href="../../../reference.html#internal_http_server">ZetaPush web server</a></p>
+<p>Either by registering a route in the <a href="../../reference.html#internal_http_server">ZetaPush web server</a></p>
 </li>
 <li>
-<p>Or by using your <a href="../../../reference.html#custom_http_server">own HTTP server</a> (you can even use any library
+<p>Or by using your <a href="../../reference.html#custom_http_server">own HTTP server</a> (you can even use any library
 or framework you want like <a href="http://expressjs.com/" target="_blank" rel="noopener">express</a> for example)</p>
 </li>
 </ul>
@@ -460,8 +350,10 @@ or framework you want like <a href="http://expressjs.com/" target="_blank" rel="
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_configure_some_properties"><a class="anchor" href="#_configure_some_properties"></a>Configure some properties</h3>
+</div>
+<div class="sect1">
+<h2 id="_configure_some_properties"><a class="anchor" href="#_configure_some_properties"></a>Configure some properties</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The code is ready but in order to adapt the workflow to your needs, some configuration properties are required.
 To configure those properties, you need to create a file named <code>application.json</code> at the root of your application:</p>
@@ -575,18 +467,20 @@ service that provides a SMTP server. There is a free plan to test email sending.
 be useful to document some properties.</p>
 </div>
 <div class="paragraph">
-<p>You can learn more about <a href="../../../reference.html#configuration_properties"><code>application.json</code> and how to use configuration properties</a>.</p>
+<p>You can learn more about <a href="../../reference.html#configuration_properties"><code>application.json</code> and how to use configuration properties</a>.</p>
 </div>
 <div class="paragraph">
-<p>You can also learn <a href="../../../reference.html#configuration-of-standard-user-workflow">how to deeply configure the Standard User Workflow</a>.</p>
+<p>You can also learn <a href="../../reference.html#configuration-of-standard-user-workflow">how to deeply configure the Standard User Workflow</a>.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_develop_your_front_by_calling_the_standard_user_workflow_api"><a class="anchor" href="#_develop_your_front_by_calling_the_standard_user_workflow_api"></a>Develop your front by calling the Standard User Workflow API</h3>
+</div>
+<div class="sect1">
+<h2 id="_develop_your_front_by_calling_the_standard_user_workflow_api"><a class="anchor" href="#_develop_your_front_by_calling_the_standard_user_workflow_api"></a>Develop your front by calling the Standard User Workflow API</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Finally, we just need to call the <em>cloud function</em> to create a user account, log in and log out from the client part.</p>
 </div>
@@ -887,7 +781,7 @@ ZetaPush provides an auto-adaptation system based on configuration.</p>
 <div class="paragraph">
 <p>In concrete terms, if you don&#8217;t configure <code>smtp</code> part in <code>application.json</code>
 but instead you configure <code>mailjet</code> part, <code>StandardUserWorkflow</code> will
-<a href="../../../reference.html#auto_implementation_selection">automatically switch implementation</a> used for sending email and will
+<a href="../../reference.html#auto_implementation_selection">automatically switch implementation</a> used for sending email and will
 use Mailjet instead of SMTP.</p>
 </div>
 <div class="paragraph">
@@ -897,7 +791,7 @@ you only need to provide your Mailjet credentials.</p>
 </div>
 <div class="paragraph">
 <p>Moreover, you could also choose to change the workflow by replacing
-email by a <a href="../../../reference.html#extension-of-standard-user-workflow">SMS or anything else</a>.</p>
+email by a <a href="../../reference.html#extension-of-standard-user-workflow">SMS or anything else</a>.</p>
 </div>
 </td>
 </tr>
@@ -917,7 +811,7 @@ provided by ZetaPush by your own implementations (for exemple, change token gene
 algorithm, replace email by something else, replace templating system, &#8230;&#8203;).</p>
 </div>
 <div class="paragraph">
-<p>You can learn <a href="../../../reference.html#extension-of-standard-user-workflow">how to extend this cloud service</a>.</p>
+<p>You can learn <a href="../../reference.html#extension-of-standard-user-workflow">how to extend this cloud service</a>.</p>
 </div>
 </td>
 </tr>
@@ -942,10 +836,9 @@ go to <a href="https://github.com/zetapush/zetapush-examples/tree/master/standar
 </div>
 </div>
 </div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-18 11:12:17 UTC
 </div>
 </div>
 </body>

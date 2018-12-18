@@ -114,7 +114,12 @@
 <li><a href="#_deploy_application_on_the_zetapush_cloud">Deploy application on the ZetaPush Cloud</a></li>
 </ul>
 </li>
-<li><a href="#_user_management_in_your_application">User management in your application</a></li>
+<li><a href="#_user_management_in_your_application">User management in your application</a>
+<ul class="sectlevel2">
+<li><a href="#_presentation">Presentation</a></li>
+<li><a href="#_quick_start">Quick start</a></li>
+</ul>
+</li>
 <li><a href="#_store_data_in_your_application">Store data in your application</a></li>
 <li><a href="#_secure_your_application">Secure your application</a></li>
 </ul>
@@ -5750,7 +5755,844 @@ quickly restore the previous version.</p>
 <div class="sect1">
 <h2 id="_user_management_in_your_application"><a class="anchor" href="#_user_management_in_your_application"></a>User management in your application</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_presentation"><a class="anchor" href="#_presentation"></a>Presentation</h3>
+<div class="paragraph">
+<p>In a software application, we (almost) always need to manage users. The <strong>Standard User Workflow</strong> helps you to do this, in the most common use case (for
+business to customer application on the Internet). This cloud service helps you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Signup a user</p>
+</li>
+<li>
+<p>Log in a user</p>
+</li>
+<li>
+<p>Log out a user</p>
+</li>
+<li>
+<p>Manage a forgotten password</p>
+</li>
+<li>
+<p>Manage permissions of users</p>
+</li>
+<li>
+<p>etc&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Authentication</div>
+<div class="paragraph">
+<p>At this moment, the connection and the disconnection of a user is done through the ZetaPush SDK (We will see below how to do this).</p>
+</div>
+<div class="paragraph">
+<p>In the future, the connection and disconnection will be handled by <code>StandardUserWorkflow</code> in order to provide you
+a clearer API.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For us, the most common use case is when a user can create its own account using a login and a password and needs to confirm his account via a link in an email.
+Once its account is validated, he can login and use the application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sign up: </strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//schemas/standarduserworkflow-signup.png" alt="standarduserworkflow signup">
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The user creates his account using a login, a password and an email. When the user submits the form, the account is created on the ZetaPush platform. In order to ensure that the user is not a bot, the account has to be confirmed before the user is authorized to login.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>An email is sent to the user in order to confirm its account. The email contains the confirmation link. He needs to confirm his account before connection.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When the user clicks on the link in the email, he is authorized to login.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Log in: </strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//schemas/standarduserworkflow-login.png" alt="standarduserworkflow login">
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>When the user account is confirmed, he can log in the application using the his login and his password.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Account not confirmed</div>
+<div class="paragraph">
+<p>If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quick_start"><a class="anchor" href="#_quick_start"></a>Quick start</h3>
+<div class="paragraph">
+<p>In this part we will explain how to use the <strong>Standard User Workflow</strong> in the default behavior, i.e. using the default implementations of each parts of the workflow.</p>
+</div>
+<div class="paragraph">
+<p>To use the Standard User Workflow, you just need 4 steps :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a ZetaPush application as usual</p>
+</li>
+<li>
+<p>Import and use the Standard User Workflow in your worker</p>
+</li>
+<li>
+<p>Configure some properties</p>
+</li>
+<li>
+<p>Develop your front by calling the Standard User Workflow API</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_create_a_zetapush_application_as_usual"><a class="anchor" href="#_create_a_zetapush_application_as_usual"></a>Create a ZetaPush application as usual</h4>
+<div class="paragraph">
+<p>In this Quickstart, we begin with a generated application using the CLI. So you can run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush app-with-user-management</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We import the library <code>@zetapush/user-management</code> that provides the Standard User Workflow using NPM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm install --save @zetapush/user-management</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_import_and_use_the_standard_user_workflow_in_your_worker"><a class="anchor" href="#_import_and_use_the_standard_user_workflow_in_your_worker"></a>Import and use the Standard User Workflow in your worker</h4>
+<div class="paragraph">
+<p>Change the code of the <em>custom cloud service</em> defined in <code>worker/index.ts</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> {
+  StandardUserWorkflow,                       <i class="conum" data-value="1"></i><b>(1)</b>
+  StandardUserManagementModule,               <i class="conum" data-value="2"></i><b>(2)</b>
+  ConfirmationUrlHttpHandler                  <i class="conum" data-value="3"></i><b>(3)</b>
+} from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/user-management</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Module } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;      <i class="conum" data-value="4"></i><b>(4)</b>
 
+<span class="error">@</span>Module({                                     <i class="conum" data-value="5"></i><b>(5)</b>
+  <span class="key">imports</span>: [StandardUserManagementModule],    <i class="conum" data-value="6"></i><b>(6)</b>
+  <span class="key">expose</span>: {
+    <span class="key">user</span>: StandardUserWorkflow,               <i class="conum" data-value="7"></i><b>(7)</b>
+    <span class="key">http</span>: ConfirmationUrlHttpHandler          <i class="conum" data-value="8"></i><b>(8)</b>
+  }
+})
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {}                   <i class="conum" data-value="9"></i><b>(9)</b></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>StandardUserWorkflow</code> is the <em>cloud service</em> we want to use. It is this class
+that provides the <em>cloud functions</em> to handle user registration, password reset, login and logout.
+Here we just import the TypeScript class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>StandardUserWorkflow</code> <em>cloud service</em> is encapsulated in the <code>StandardUserManagementModule</code> module.
+We also need to import TypeScript class for later use.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>StandardUserManagementModule</code> module also provides <code>ConfirmationUrlHttpHandler</code> in
+order to provide an HTTP endpoint to handle the confirmation link that will be clicked in the email.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Import the <code>Module</code> annotation for TypeScript.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <code>@Module</code> annotation is used here to indicate to the worker
+which <em>cloud services</em> you want to use and how you want to use it
+in your <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>We indicate to the worker that we import the module <code>StandardUserManagementModule</code>.
+It means that everything provided by the module is now available to
+your <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>We indicate that we directly expose <code>StandardUserWorkflow</code> <em>cloud service</em>. It means that
+<em>cloud functions</em> defined by <code>StandardUserWorkflow</code> are directly callable from a client.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>We indicate that we also expose <code>ConfirmationUrlHttpHandler</code>. It means that
+the HTTP endpoint is directly callable by opening the confirmation URL in a web browser.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>As usual we export the entry point of your <em>custom cloud services</em>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>That all for the worker code !</strong></p>
+</div>
+<div class="paragraph">
+<p>The code above basically declares your <em>custom cloud service</em> as a new <a href="./reference.html#modules">ZetaPush module</a>.
+In this case, we don&#8217;t need to create a module but the <code>@Module</code> is needed to import another module.
+Importing a module (using <code>imports</code> option) only indicates that you want to use a module somewhere in your <em>custom cloud service</em>.
+It doesn&#8217;t automatically expose anything. This is deliberate because you may want to not directly
+expose the <code>StandardUserWorkflow</code> <em>cloud functions</em> to the client. You could then define a <em>custom cloud service</em>
+that is exposed and delegate user management to the <code>StandardUserWorkflow</code> <em>cloud functions</em>.</p>
+</div>
+<div class="paragraph">
+<p>The quickest way to benefit from user management is to directly expose <code>StandardUserWorflow</code> to the client.
+It means that the <em>cloud functions</em> provided by <code>StandardUserWorkflow</code> are directly callable from a client.
+So you don&#8217;t need to code anything in your <em>custom cloud service</em> and you can focus on the front side.
+To expose the <code>StandardUserWorkflow</code> you simply need to add the <code>expose</code> option on the <code>@Module</code>
+annotation. In addition to exposing <code>StandardUserWorkflow</code> to a client that uses the bidirectional
+connection to interact with <code>StandardUserWorflow</code> <em>cloud functions</em>, we also expose <code>ConfirmationUrlHttpHandler</code>
+in order to start a web server that listens to HTTP requests done on the account confirmation URL.
+The aim is to directly provide you the verification of the confirmation of the account when the user clicks
+on the confirmation link in the email. You don&#8217;t need to bother to check if the confirmation token
+is valid and to handle token expiration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Modules</div>
+<div class="paragraph">
+<p>ZetaPush provides <a href="./reference.html#modules">modules</a> to encapsulate
+several <em>cloud services</em> and to be able to reuse them.</p>
+</div>
+<div class="paragraph">
+<p>As seen before, when you have a really simple <em>custom cloud service</em>,
+you just expose a class (without <code>@Module</code> annotation). In this case,
+ZetaPush worker defines an implicit module that imports nothing and
+exposes your class.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Expose several <em>cloud services</em></div>
+<div class="paragraph">
+<p>As we expose several classes, we define a map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">expose: {
+  <span class="key">user</span>: StandardUserWorflow,
+  <span class="key">http</span>: ConfirmationUrlHttpHandler
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The keys of the map correspond to <a href="./reference.html#namespaces">namespaces</a>.
+ZetaPush provides namespaces in order to be able to expose several
+<em>cloud services</em> each isolated by a name. The aim is to be able to have
+for example two <em>cloud functions</em> named <code>hello</code> in two different
+<em>cloud services</em> that are exposed. So on the client side, the name
+is used to specify which <em>cloud service</em> to use when we call
+the <em>cloud function</em> <code>hello</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Listen to HTTP requests</div>
+<div class="paragraph">
+<p>ZetaPush uses a bidirectional connection to interact between client and <em>cloud services</em> (and vice versa).
+But in some cases, the bidirectional connection can&#8217;t be used as for the confirmation link.
+Indeed the confirmation link is just an URL that opens a web browser when it is clicked by the
+end-user. The web browser performs an HTTP <code>GET</code> request on that URL.
+That&#8217;s why ZetaPush also handles HTTP.</p>
+</div>
+<div class="paragraph">
+<p>You can even provide your own HTTP routes to listen to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Either by registering a route in the <a href="./reference.html#internal_http_server">ZetaPush web server</a></p>
+</li>
+<li>
+<p>Or by using your <a href="./reference.html#custom_http_server">own HTTP server</a> (you can even use any library
+or framework you want like <a href="http://expressjs.com/" target="_blank" rel="noopener">express</a> for example)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this example, <code>ConfirmationUrlHttpHandler</code> registers a route for the confirmation URL in the ZetaPush web server.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configure_some_properties"><a class="anchor" href="#_configure_some_properties"></a>Configure some properties</h4>
+<div class="paragraph">
+<p>The code is ready but in order to adapt the workflow to your needs, some configuration properties are required.
+To configure those properties, you need to create a file named <code>application.json</code> at the root of your application:</p>
+</div>
+<div class="listingblock">
+<div class="title">application.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">from</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">no-reply@your-application-name.com</span><span class="delimiter">&quot;</span></span>    <i class="conum" data-value="1"></i><b>(1)</b>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">smtp</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">smtp.mailtrap.io</span><span class="delimiter">&quot;</span></span>,                     <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="integer">2525</span>,                                   <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,                                 <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,                                 <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ssl</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,                                   <i class="conum" data-value="6"></i><b>(6)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">starttls</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>                               <i class="conum" data-value="7"></i><b>(7)</b>
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>As an email is sent to the end user for confirming its account,
+you need to configure the email sender. The email sender address
+may not be totally what you want and may depend on your email
+provider. For the example, we use a testing service that allows
+any email address as email sender (see tip about Mailtrap below).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Configure the domain or the host for the SMTP server</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Configure the port of the SMTP server</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Configure username used to authenticate on the SMTP server</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Configure password used to authenticate on the SMTP server</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Set to true if your SMTP server requires SSL</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Set to true if your SMTP server requires TLS</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this example, we provide only the minimal required configuration. We only need to configure email
+sending. All other configuration properties are optional.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Test inscription and confirmation using Mailtrap</div>
+<div class="paragraph">
+<p>For the example, we show the usage of <a href="https://mailtrap.io/" target="_blank" rel="noopener">mailtrap</a>. This is an online
+service that provides a SMTP server. There is a free plan to test email sending.</p>
+</div>
+<div class="paragraph">
+<p>If you want to test, just signup to mailtrap and fill <code>username</code> and <code>password</code> in <code>application.json</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you already have your own SMTP server, you can directly enter your SMTP configuration in <code>application.json</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Configuration properties</div>
+<div class="paragraph">
+<p>The <code>application.json</code> file is not pure JSON. In fact, it accepts comments. This can
+be useful to document some properties.</p>
+</div>
+<div class="paragraph">
+<p>You can learn more about <a href="./reference.html#configuration_properties"><code>application.json</code> and how to use configuration properties</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also learn <a href="./reference.html#configuration-of-standard-user-workflow">how to deeply configure the Standard User Workflow</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_develop_your_front_by_calling_the_standard_user_workflow_api"><a class="anchor" href="#_develop_your_front_by_calling_the_standard_user_workflow_api"></a>Develop your front by calling the Standard User Workflow API</h4>
+<div class="paragraph">
+<p>Finally, we just need to call the <em>cloud function</em> to create a user account, log in and log out from the client part.</p>
+</div>
+<div class="paragraph tab-container">
+<p>Front code</p>
+</div>
+<div class="paragraph tab">
+<p>index.js</p>
+</div>
+<div class="paragraph">
+<p>You can replace the <code>front/index.js</code> file by the following content :</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create the ZetaPush API</span>
+const client = <span class="keyword">new</span> ZetaPushClient.SmartClient();
+const userApi = client.createProxyTaskService({                               <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span>
+});
+
+async <span class="keyword">function</span> <span class="function">signUpUser</span>(form) {                                             <i class="conum" data-value="2"></i><b>(2)</b>
+  const login = form[<span class="integer">0</span>].value;
+  const password = form[<span class="integer">1</span>].value;
+  const email = form[<span class="integer">2</span>].value;
+  <span class="comment">// First connection as anonymous user to allow us to create a user</span>
+  await client.connect();
+
+  <span class="comment">// Creation of the user account</span>
+  <span class="keyword">try</span> {
+    await userApi.signup({
+      <span class="key">credentials</span>: {
+        login,
+        password
+      },
+      <span class="key">profile</span>: {
+        email
+      }
+    });
+    console.log(<span class="string"><span class="delimiter">'</span><span class="content">User account created</span><span class="delimiter">'</span></span>);
+  } <span class="keyword">catch</span> (err) {
+    console.error(<span class="string"><span class="delimiter">'</span><span class="content">Failed to create user account : </span><span class="delimiter">'</span></span>, err);
+  }
+}
+
+<span class="comment">/**
+ * Connection of a user
+ */</span>
+async <span class="keyword">function</span> <span class="function">loginUser</span>(form) {                                              <i class="conum" data-value="3"></i><b>(3)</b>
+  const login = form[<span class="integer">0</span>].value;
+  const password = form[<span class="integer">1</span>].value;
+
+  await client.setCredentials({ login, password });
+  client
+    .connect()
+    .then(() =&gt; {
+      console.log(<span class="string"><span class="delimiter">'</span><span class="content">User connected</span><span class="delimiter">'</span></span>);
+    })
+    .<span class="keyword">catch</span>(err =&gt; {
+      console.error(<span class="string"><span class="delimiter">'</span><span class="content">Failed to connect user : </span><span class="delimiter">'</span></span>, err);
+    });
+}
+
+<span class="comment">/**
+ * Disconnection of a user
+ */</span>
+async <span class="keyword">function</span> <span class="function">logoutUser</span>() {                                                 <i class="conum" data-value="4"></i><b>(4)</b>
+  await client.disconnect();
+  console.log(<span class="string"><span class="delimiter">'</span><span class="content">User disconnected</span><span class="delimiter">'</span></span>);
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We created a ZetaPush client and his API to call our cloud functions.
+We use the namespace <code>user</code> to call the <code>StandardUserWorkflow</code> <em>cloud functions</em>.
+Remember the <code>expose</code> option on <code>@Module</code> configuration and the <code>user</code> key in the map.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Function to create an account of the ZetaPush platform for this application.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Function to connect a user.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Function to disconnect a user.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="paragraph">
+<p>Here is a very basic HTML page with two forms (one to create an account, the other to login):</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Standard User Workflow<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;h1&gt;</span>Signup<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); signUpUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b>
+    Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    Password: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    Email: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Sign up<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+
+  <span class="tag">&lt;h1&gt;</span>Login<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); loginUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>    <i class="conum" data-value="2"></i><b>(2)</b>
+    Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    Password: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Login<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/form&gt;</span>
+
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Form to create a new user</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Form to login a user</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+<div class="paragraph">
+<p>Run the following command to run your application in local and serve the front part :</p>
+</div>
+<div class="listingblock">
+<div class="title">Run the application</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To test the workflow, just enter a login, a password and an email in the "Signup" part.
+Then if you use <a href="https://mailtrap.io/" target="_blank" rel="noopener">mailtrap</a> for email sending, you can go
+into the inbox provided by mailtrap and check that email has been received.
+You can click on the link provided in the email. The account is then confirmed and
+you are automatically redirected to something like <code><a href="http://localhost:2999#login" class="bare">http://localhost:2999#login</a></code>.
+Now you can login using the same login and password pair (open your web browser console
+to see connection messages).</p>
+</div>
+<div class="paragraph">
+<p>You can also check that if you try to connect with wrong login or password, it doesn&#8217;t work
+as expected. You can also create a new user but do not click on the link in the email.
+You can check that you are not allowed to login.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Automatic configuration according to execution context</div>
+<div class="paragraph">
+<p>You can notice that you didn&#8217;t configure any URL for confirmation link and for
+redirection to <code><a href="http://localhost:2999/#login" class="bare">http://localhost:2999/#login</a></code> once the account is confirmed.
+Actually, ZetaPush automatically provides base URL of your front and your worker.
+So you don&#8217;t bother to configure the base URLs. This is particularly useful
+when your application is published on the ZetaPush cloud because you don&#8217;t
+need to change configuration at all.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Automatic adaptation of the implementations</div>
+<div class="paragraph">
+<p>In the example, we use a SMTP server to send the confirmation email.
+But you may want to use something else like <a href="https://fr.mailjet.com/" target="_blank" rel="noopener">Mailjet</a>.
+ZetaPush provides an auto-adaptation system based on configuration.</p>
+</div>
+<div class="paragraph">
+<p>In concrete terms, if you don&#8217;t configure <code>smtp</code> part in <code>application.json</code>
+but instead you configure <code>mailjet</code> part, <code>StandardUserWorkflow</code> will
+<a href="./reference.html#auto_implementation_selection">automatically switch implementation</a> used for sending email and will
+use Mailjet instead of SMTP.</p>
+</div>
+<div class="paragraph">
+<p>In future versions, other providers will be directly integrated.
+The advantage is to configure the minimum as for Mailjet which
+you only need to provide your Mailjet credentials.</p>
+</div>
+<div class="paragraph">
+<p>Moreover, you could also choose to change the workflow by replacing
+email by a <a href="./reference.html#extension-of-standard-user-workflow">SMS or anything else</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Extend and adapt the default workflow</div>
+<div class="paragraph">
+<p>The default behavior is totally adaptable. You can replace default implementations
+provided by ZetaPush by your own implementations (for exemple, change token generation
+algorithm, replace email by something else, replace templating system, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>You can learn <a href="./reference.html#extension-of-standard-user-workflow">how to extend this cloud service</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">User management samples</div>
+<div class="paragraph">
+<p>For a more real-world sample with a complete UI (signup form and login form) you can
+go to <a href="https://github.com/zetapush/zetapush-examples/tree/master/standard-user-workflow" target="_blank" rel="noopener">GitHub ZetaPush Examples</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -5973,7 +6815,7 @@ fixed for the moment</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2018-12-18 11:12:17 UTC
 </div>
 </div>
 </body>
