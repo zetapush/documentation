@@ -99,6 +99,12 @@ include::{docdir}/developer-manual/deploy/deploy-application.adoc[leveloffset=+2
 
 == User management in your application
 
+=== Presentation
+include::{docdir}/developer-manual/user-management/presentation.adoc[leveloffset=+2]
+
+=== Quick start
+include::{docdir}/developer-manual/user-management/quick-start.adoc[leveloffset=+2]
+
 
 
 == Store data in your application

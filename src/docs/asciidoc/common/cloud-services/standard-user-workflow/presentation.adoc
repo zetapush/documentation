@@ -1,17 +1,27 @@
 :relative-path: ../../../
 include::{docdir}/variables.adoc[]
 
-In a software application, we (almost) always need to manage users. The **Standard User Workflow** helps you to do this, in the most common use case. Currently, it only handles the registration of a user. In the following versions, this cloud service will help you to: 
+In a software application, we (almost) always need to manage users. The **Standard User Workflow** helps you to do this, in the most common use case (for
+business to customer application on the Internet). This cloud service helps you to:  
 
+* Signup a user
 * Log in a user 
 * Log out a user
 * Manage a forgotten password
 * Manage permissions of users
 * etc... 
 
-NOTE: At this moment, the connection and the disconnection of a user is done through the ZetaPush SDK (We will see below how to do this).
+.Authentication
+[NOTE]
+====
+At this moment, the connection and the disconnection of a user is done through the ZetaPush SDK (We will see below how to do this).
 
-For us, the most common use case is when a user can create an account using a login and a password and needs to confirm his account via a link in an email.
+In the future, the connection and disconnection will be handled by `StandardUserWorkflow` in order to provide you
+a clearer API.
+====
+
+For us, the most common use case is when a user can create its own account using a login and a password and needs to confirm his account via a link in an email.
+Once its account is validated, he can login and use the application.
 
 
 **Sign up: **
@@ -19,7 +29,7 @@ For us, the most common use case is when a user can create an account using a lo
 image::{images-dir}/schemas/standarduserworkflow-signup.png[]
 <1> The user creates his account using a login, a password and an email. When the user submits the form, the account is created on the ZetaPush platform. In order to ensure that the user is not a bot, the account has to be confirmed before the user is authorized to login.
 <2> An email is sent to the user in order to confirm its account. The email contains the confirmation link. He needs to confirm his account before connection.
-<3> When the user clicks on the lonk in the email, he is authorized to login.
+<3> When the user clicks on the link in the email, he is authorized to login.
 
 
 **Log in: **
@@ -27,4 +37,8 @@ image::{images-dir}/schemas/standarduserworkflow-signup.png[]
 image::{images-dir}/schemas/standarduserworkflow-login.png[]
 <1> When the user account is confirmed, he can log in the application using the his login and his password.
 
-NOTE: If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.
+.Account not confirmed
+[NOTE]
+====
+If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.
+====
