@@ -98,7 +98,12 @@ include::{docdir}/developer-manual/deploy/deploy-application.adoc[leveloffset=+2
 
 
 == User management in your application
-include::{docdir}/common/cloud-services/standard-user-workflow/index.adoc[leveloffset=+2]
+
+=== Presentation
+include::{docdir}/developer-manual/user-management/presentation.adoc[leveloffset=+2]
+
+=== Quick start
+include::{docdir}/developer-manual/user-management/quick-start.adoc[leveloffset=+2]
 
 
 

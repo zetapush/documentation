@@ -207,6 +207,13 @@ You can also learn <<reference.adoc#configuration-of-standard-user-workflow, how
 == Develop your front by calling the Standard User Workflow API
 
 Finally, we just need to call the _cloud function_ to create a user account, log in and log out from the client part.
+
+[role=tab-container]
+Front code
+
+[role=tab]
+index.js
+
 You can replace the `front/index.js` file by the following content :
 
 .front/index.js
@@ -275,6 +282,9 @@ Remember the `expose` option on `@Module` configuration and the `user` key in th
 <3> Function to connect a user.
 <4> Function to disconnect a user.
 
+[role=tab]
+index.html
+
 Here is a very basic HTML page with two forms (one to create an account, the other to login):
 
 .front/index.html
@@ -313,6 +323,9 @@ Here is a very basic HTML page with two forms (one to create an account, the oth
 ----
 <1> Form to create a new user
 <2> Form to login a user
+
+[role=tab-container-end]
+-
 
 Run the following command to run your application in local and serve the front part :
 
