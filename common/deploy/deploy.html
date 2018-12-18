@@ -108,28 +108,68 @@
 <div class="sect2">
 <h3 id="_what_is_deployment"><a class="anchor" href="#_what_is_deployment"></a>What is deployment ?</h3>
 <div class="paragraph">
-<p>In the <em>deployment</em> with ZetaPush, you have 2 parts:</p>
+<p>When you <em>deploy</em> your application on the ZetaPush cloud,
+actually your application is split in two parts:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Hosting and scalability of the worker (<em>custom cloud services</em>)</p>
+<p>The worker that contains your <em>custom cloud services</em></p>
 </li>
 <li>
-<p>Hosting of the front end</p>
+<p>The static files for the front end</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="_worker"><a class="anchor" href="#_worker"></a>Worker</h4>
 <div class="paragraph">
-<p>When you deploy the worker (<em>custom cloud services</em>) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.</p>
+<p>When you deploy the worker (<em>custom cloud services</em>) of your application, we take care of the hosting of your code.
+In addition we manage the redundancy, the load-balancing,
+the high availability and the automatic scability of your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>A worker may also provide HTTP endpoints in addition to bidirectionnal connection provided as-is by ZetaPush.
+If so, once published on the ZetaPush cloud, the HTTP url is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your worker in HTTP(s) are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_front_end"><a class="anchor" href="#_front_end"></a>Front end</h4>
 <div class="paragraph">
-<p>For the front end part, we host your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (<em>custom cloud services</em> or <em>cloud services</em> provided by ZetaPush).</p>
+<p>For the front end part, the ZetaPush cloud hosts your application.
+ZetaPush also manages redundancy of the static files in order to ensure
+the high availability of you front end application.</p>
+</div>
+<div class="paragraph">
+<p>The URL to access to your application is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your front end are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -176,6 +216,7 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
+<div class="title">Npm script alias</div>
 <div class="paragraph">
 <p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
 The command that is executed under the hood is:</p>
@@ -190,10 +231,70 @@ The command that is executed under the hood is:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>The command will read the <code>.zetarc</code> file. If there is no <em>developerLogin</em> and <em>developerPassword</em> properties or if the ZetaPush account is not validated, you will not be able to push your application.</p>
+<p>The command will read the <code>.zetarc</code> file. If there is no <em>appName</em>, <em>developerLogin</em> and <em>developerPassword</em> properties or if the ZetaPush account is not validated, you will not be able to push your application.</p>
 </div>
 <div class="paragraph">
-<p>About the <em>appName</em> property, if it is empty, the CLI will deploy your code on a new application.</p>
+<p>When you deploy your application (Front + Worker), the CLI displays the URLs to use it.
+Run the command and you should see something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">&gt; zeta push
+
+[INFO] Using application defined in configuration: v79ivn00l  ‌
+[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code                                       <i class="conum" data-value="1"></i><b>(1)</b>
+[INFO] ▇▇▇▇▇▇▇▇▇▇░░░░░░░░░░ Prepare environment
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Publish web application
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Preparing custom cloud services for deployment
+[INFO] ░░░░░░░░░░░░░░░░░░░░ Publish custom cloud service on worker instance</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>CLI</em> displays progress bars to indicate all deployment tasks and
+which tasks are currently being executed</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the deployment has succeeded, you should see the URLs where your worker and
+front are available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">&gt; zeta push
+
+[INFO] Using application defined in configuration: v79ivn00l  ‌
+[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Prepare environment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish web application
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Preparing custom cloud services for deployment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish custom cloud service on worker instance
+[INFO] Web application front is available at http://front-v79ivn00l.celtia.zetapush.app:80/  ‌      <i class="conum" data-value="1"></i><b>(1)</b>
+[INFO] Worker application queue_0 is available at http://queuea0-v79ivn00l.test.zetapush.app  ‌     <i class="conum" data-value="2"></i><b>(2)</b>
+[INFO] Worker applications works only if you listen process.env.HTTP_PORT  ‌</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The URL for your front available on the Internet</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The URL for the HTTP endpoint of your worker (if you have one)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can click (<span class="keyseq"><kbd>Ctrl</kbd>+<kbd>click</kbd></span>) in the terminal on the front URL (or open a web browser
+and enter the front URL).
+You can see that your application is deployed.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -202,7 +303,91 @@ The command that is executed under the hood is:</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-When you deploy your application (Front + Worker), the CLI returns you an unique URL to use it.
+<div class="title">Redeploy</div>
+<div class="paragraph">
+<p>Obviously, you can publish your application again anytime you want to update it.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Shared <em>built-in cloud services</em></div>
+<div class="paragraph">
+<p>You can notice that the data that was stored when you were running your application
+locally is also available once the application is deployed.</p>
+</div>
+<div class="paragraph">
+<p>This is normal because this is the same application.
+So the application uses the same <em>built-in cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>If you want to separate data between your local development and the deployed application,
+you need to define several <a href="../../reference.html#manage_environments">environments</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Partial deployment</div>
+<div class="paragraph">
+<p>It is possible to <a href="../../reference.html#partial_deployment">deploy only one part of your application</a> (only the front or only the worker).</p>
+</div>
+<div class="paragraph">
+<p>This can be useful for example when there is a bug that is fixed by exclusively patching the front part.
+So you just want to deploy your front but not deploy the same worker code again (and vice versa).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">How to have initialization code</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> may have initialization code to configure and prepare your application.</p>
+</div>
+<div class="paragraph">
+<p>As said before, once published in the ZetaPush cloud, ZetaPush handles scalability and
+high availability. So several worker instances will run in the same time and ZetaPush will
+load-balance traffic between worker instances. In order to ensure that <strong>only one worker</strong> executes
+some initialization code, ZetaPush provides <a href="../../reference.html#onapplicationbootstrap"><code>onApplicationBootstrap</code> special method</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Snapshot and rollback</div>
+<div class="paragraph">
+<p>In future version, every deployment will trigger a <a href="../../reference.html#snapshots">snapshot</a> to store
+the whole application state and data. The aim is to provide you a tool to
+quickly restore the previous version.</p>
+</div>
 </td>
 </tr>
 </table>

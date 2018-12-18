@@ -88,28 +88,73 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="listingblock">
-<div class="title">Deploy the application</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm run deploy</code></pre>
+<div class="paragraph">
+<p>Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.
+Deploying means that your code is sent to the ZetaPush cloud and your application
+runs directly on it. The ZetaPush cloud
+hosts your application and makes it available on the Internet for your end-users.</p>
 </div>
+<div class="paragraph">
+<p>Usually, you deploy/publish your application when you are ready to promote it in production.</p>
 </div>
-<div class="admonitionblock tip">
+<div class="paragraph">
+<p>Unlike in standard development of an application, with ZetaPush you don&#8217;t need to bother to
+buy, install, configure and manage the machines anymore.
+Everything is already provided by the ZetaPush cloud. Moreover, the ZetaPush cloud
+guarantees that your application is always available. You don&#8217;t need
+to worry about how to handle technical complexities like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Redundancy_(engineering)" target="_blank" rel="noopener">Redundancy</a> (duplication of your application to increase reliability)</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing)" target="_blank" rel="noopener">Load-balancing</a> (automatic distribution of tasks accross several workers)</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/High_availability" target="_blank" rel="noopener">High availability</a> (ensure that your application is always up)</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Scalability" target="_blank" rel="noopener">Scalability</a> (increase the number of worker instances when the application usage increases)</p>
+</li>
+<li>
+<p>Supervision (monitor machines and your application to alert you in case of a performance, machine or availability issue)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Npm script alias</div>
 <div class="paragraph">
-<p><code>npm run deploy</code> is a script alias defined in the <code>package.json</code> file.
-The command that is executed under the hood is:</p>
+<p>ZetaPush already monitors the machines and your applications. However, the supervision is currently
+not direclty available to you.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ zeta push</code></pre>
+<div class="paragraph">
+<p>Soon the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a> will display monitoring
+information.</p>
 </div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>With a free trial account there is no scalability, high availability and load-balancing
+because the trial plan only allows one worker per application.</p>
+</div>
+<div class="paragraph">
+<p>You can <a href="https://www.zetapush.com/contact" target="_blank" rel="noopener">contact us</a> if you want to test those features.</p>
 </div>
 </td>
 </tr>

@@ -96,15 +96,16 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the <em>deployment</em> with ZetaPush, you have 2 parts:</p>
+<p>When you <em>deploy</em> your application on the ZetaPush cloud,
+actually your application is split in two parts:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Hosting and scalability of the worker (<em>custom cloud services</em>)</p>
+<p>The worker that contains your <em>custom cloud services</em></p>
 </li>
 <li>
-<p>Hosting of the front end</p>
+<p>The static files for the front end</p>
 </li>
 </ul>
 </div>
@@ -114,7 +115,27 @@
 <h2 id="_worker"><a class="anchor" href="#_worker"></a>Worker</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When you deploy the worker (<em>custom cloud services</em>) of your application, we take care of the hosting of your code. In addition, we manage the scability of your application.</p>
+<p>When you deploy the worker (<em>custom cloud services</em>) of your application, we take care of the hosting of your code.
+In addition we manage the redundancy, the load-balancing,
+the high availability and the automatic scability of your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>A worker may also provide HTTP endpoints in addition to bidirectionnal connection provided as-is by ZetaPush.
+If so, once published on the ZetaPush cloud, the HTTP url is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your worker in HTTP(s) are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -122,14 +143,33 @@
 <h2 id="_front_end"><a class="anchor" href="#_front_end"></a>Front end</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For the front end part, we host your application and return you an unique URL to access to your application. We also link your front end logic with the differents services you need (<em>custom cloud services</em> or <em>cloud services</em> provided by ZetaPush).</p>
+<p>For the front end part, the ZetaPush cloud hosts your application.
+ZetaPush also manages redundancy of the static files in order to ensure
+the high availability of you front end application.</p>
+</div>
+<div class="paragraph">
+<p>The URL to access to your application is displayed in your terminal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>URLs to access your front end are also available in the <a href="https://console-celtia.zetapush.com" target="_blank" rel="noopener">ZetaPush web console</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-20 17:20:23 UTC
+Last updated 2018-12-18 06:45:11 UTC
 </div>
 </div>
 </body>
