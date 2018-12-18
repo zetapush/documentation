@@ -79,20 +79,8 @@ X coder un cloud service simple
 
 Objectif : montrer comment déployer une application complète (front + worker)
 
-indiquer qu'on peut redéployer à n'importe quel moment
-
-.How to have initialization code
-[NOTE]
-====
-A _custom cloud service_ may have initialization code to configure and prepare your application.
-
-As said before, once published in the ZetaPush cloud, ZetaPush handles scalability and
-high availability. So several worker instances will run in the same time and ZetaPush will
-load-balance traffic between worker instances. In order to ensure only one ...
-====
-
-
--> retirer parties avec déploiement partiel et mettre des liens à la place
+x indiquer qu'on peut redéployer à n'importe quel moment
+x retirer parties avec déploiement partiel et mettre des liens à la place
 
 == User management in your application
 
@@ -322,25 +310,39 @@ include::{docdir}/common/development/testing.adoc[leveloffset=+3]
 
 == Deploy/publish your application
 
-Once you have developed your application and tested it, you may want to deploy it on the ZetaPush cloud.
+include::{docdir}/common/deploy/deploy-introduction.adoc[leveloffset=+2]
 
 === What will be deployed ?
 
 include::{docdir}/common/deploy/what-is-deployment.adoc[leveloffset=+2]
 
-==== Applications and environments
-
-TODO: https://github.com/zetapush/documentation/issues/54
+=== Environments
 
 
-=== Deploy both front and _custom cloud services_ on the ZetaPush Cloud
+[TODO]
+====
+This section will describe how to deploy your application 
+in the ZetaPush cloud for a particular environment.
+
+It will also give you information about configuration properties
+and property override per environment.
+
+see https://github.com/zetapush/documentation/issues/54
+====
+
+
+=== Deploy application on the ZetaPush Cloud
+
 include::{docdir}/common/deploy/how-to-deploy-app.adoc[leveloffset=+2]
 
+////
+TODO: move in reference documentation
 === Deploy your front on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-front.adoc[leveloffset=+2]
 
 === Deploy your _custom cloud services_ on the ZetaPush Cloud
 include::{docdir}/common/deploy/how-to-deploy-worker.adoc[leveloffset=+2]
+////
 
 == User management in your application
 

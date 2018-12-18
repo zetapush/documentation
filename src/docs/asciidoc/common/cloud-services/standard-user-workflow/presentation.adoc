@@ -16,7 +16,7 @@ For us, the most common use case is when a user can create an account using a lo
 
 **Sign up: **
 
-image::./schemas/standarduserworkflow-signup.png[]
+image::{images-dir}/schemas/standarduserworkflow-signup.png[]
 <1> The user creates his account using a login, a password and an email. When the user submits the form, the account is created on the ZetaPush platform. In order to ensure that the user is not a bot, the account has to be confirmed before the user is authorized to login.
 <2> An email is sent to the user in order to confirm its account. The email contains the confirmation link. He needs to confirm his account before connection.
 <3> When the user clicks on the lonk in the email, he is authorized to login.
@@ -24,7 +24,7 @@ image::./schemas/standarduserworkflow-signup.png[]
 
 **Log in: **
 
-image::./schemas/standarduserworkflow-login.png[]
+image::{images-dir}/schemas/standarduserworkflow-login.png[]
 <1> When the user account is confirmed, he can log in the application using the his login and his password.
 
 NOTE: If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.

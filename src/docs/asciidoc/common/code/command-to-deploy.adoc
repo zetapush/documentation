@@ -7,6 +7,7 @@ include::{docdir}/variables.adoc[]
 $ npm run deploy
 ----
 
+.Npm script alias
 [TIP]
 ====
 `npm run deploy` is a script alias defined in the `package.json` file.

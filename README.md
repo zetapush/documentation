@@ -40,6 +40,16 @@ To generate the PDF documentation for a particular ZetaPush version, you can run
 ./mvnw generate-resources -P pdf -DzetapushVersion=<version>
 ```
 
+#### Change ZetaPush URLs in generated documentation
+
+To generate the HTML documentation for a particular ZetaPush platform, you can run the following command:
+
+```
+./mvnw generate-resources -P html -DwebConsoleUrl=<url> -DcontactUrl=<url>
+```
+
+See `Documentation generation parameters` in `pom.xml` file to know which URLs and parameters can be changed.
+
 #### Generate documentation and publish on gh-pages
 
 Assuming you have cloned this documentation project a second time in `../documentation-site` and made a checkout of `gh-pages` branch.

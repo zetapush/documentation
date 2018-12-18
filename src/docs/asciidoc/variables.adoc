@@ -9,3 +9,13 @@ ifndef::appName[]
 :appName: myApp
 endif::[]
 
+ifndef::web-console-url[]
+:web-console-url: https://console.zetapush.com
+endif::[]
+ifndef::main-site-url[]
+:main-site-url: https://www.zetapush.com/
+endif::[]
+ifndef::contact-url[]
+:contact-url: {main-site-url}/contact/
+endif::[]
+
