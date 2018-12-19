@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.+.zetarc+
+.Minimal .zetarc file
 [source,json,linenums]
 ----
 {

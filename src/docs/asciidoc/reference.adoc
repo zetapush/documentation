@@ -151,6 +151,7 @@ include::{docdir}/reference/development/ios.adoc[leveloffset=+4]
 === Generate SDKs from custom cloud service code
 include::{docdir}/reference/development/generate-sdks.adoc[leveloffset=+2]
 
+[#develop_custom_cloud_services]
 === Develop custom cloud services
 include::{docdir}/reference/development/custom-cloud-services.adoc[leveloffset=+2]
 

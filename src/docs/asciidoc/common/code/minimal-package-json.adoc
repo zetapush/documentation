@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.package.json
+.Minimal `package.json` file
 [source,json,linenums, subs="attributes+"]
 ----
 {

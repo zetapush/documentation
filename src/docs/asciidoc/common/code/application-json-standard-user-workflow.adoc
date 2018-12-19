@@ -1,0 +1,41 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.application.json configuration for StandardUserWorkflow
+[source,json,linenums]
+----
+{
+  "organization": {
+    "name": "ZetaPush"
+  },
+  "email": {
+    "from": "celtia@zetapush.com"                               // <1>
+  },
+  "registration": {
+    "confirmation": {                                           // <2>
+      "email": {
+        "subject": "Please confirm your account registration"
+      },
+      "success-url": "<url-redirection>",                       // <3>
+      "failure-url": "<url-redirection>"
+    }
+  },
+  "reset-password": {
+    "ask": {                                                    // <4>
+      "base-url": "<url-redirection>",
+      "email": {
+        "subject": "Please choose a new password"
+      }
+    }
+  },
+  "mailjet": {                                                  // <5>
+    "apikey-public": "my-apikey-public",
+    "apikey-private": "my-apikey-private"
+  }
+}
+----
+<1> Configure the _from_ field of each email sent.
+<2> Configure the account confirmation process (subject of email, redirection).
+<3> Define where the user is redirected when his account is validated and when the validation failed.
+<4> Configure the _reset password_ process.
+<5> Define the Mailjet API keys for send email.
