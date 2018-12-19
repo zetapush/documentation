@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-This class is just a wrapper for <<reference#configuration-properties, ConfigurationProperties>> and <<reference#zetapush-context, ZetaPushContext>>.
+This object is just a wrapper for <<reference#configuration-properties, ConfigurationProperties>> and <<reference#zetapush-context, ZetaPushContext>>.
 
 You can use it like this :
 
@@ -21,3 +21,36 @@ export default class {
 ----
 <1> The _Environment_ class is in the `@zetapush/core` package.
 <2> The dependency injection provides us a _Environment_ instance.
+
+As the _Environment_ object is a wrapper for <<reference#configuration-properties, ConfigurationProperties>> and <<reference#zetapush-context, ZetaPushContext>> we retrieve the values for these objects with the properties `context` and `properties`.
+
+In addition to the wrapper, the _Environment_ object contains the type of environment in the property `name`.
+
+.Environment feature is not ready in the full chain
+[NOTE]
+====
+The name of the environment is already available in the current context but the *Environment management* feature is not ready yet. The integration in the _CLI_ is missing and it is our next high priority.
+====
+
+.Environment property "variables"
+[NOTE]
+====
+The _Environment_ object has also a property named `variables` that contains the environment variables and some variables provided by NPM (locally only).
+====
+
+In summary, the _Environment_ object has the following format :
+
+.Format of Environment object
+[source, json, linenums]
+----
+{
+  "context",        // <1>
+  "name",           // <2>
+  "properties",     // <3>
+  "variables"       // <4>
+}
+----
+<1> _ZetaPushContext_ object content
+<2> Name of the environment (dev, pre-prod, prod)
+<3> _ConfigurationProperties_ object content
+<4> Variables environment (+ npm variables for the local context)

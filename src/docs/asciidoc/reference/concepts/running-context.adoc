@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-When you develop your _cloud services_, you can use the current context.
+When you develop your _cloud services_, you may want to use the current context.
 The most important thing about the context is that *is not the same* during the development phase,
 when you launch your worker with `zeta run`, and when the worker is deployed with `zeta push`.
 
