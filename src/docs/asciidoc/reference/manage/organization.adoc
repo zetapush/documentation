@@ -42,5 +42,5 @@ Each application has 3 users. The users of one application cannot work on the ot
 .Manage access rights from web console
 [NOTE]
 ====
-The access rights are managed by ZetaPush for now. Thereafter, you will be able to manage them via the link:{web-console-url}[*web console*].
+The access rights are managed by ZetaPush for now in order to fit your needs. Thereafter, you will be able to manage them via the link:{web-console-url}[*web console*].
 ====
