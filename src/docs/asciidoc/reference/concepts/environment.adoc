@@ -1,2 +1,23 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+This class is just a wrapper for <<reference#configuration-properties, ConfigurationProperties>> and <<reference#zetapush-context, ZetaPushContext>>.
+
+You can use it like this :
+
+.Use Environment context
+[source, javascript, linenums]
+----
+import { Injectable, Environment } from '@zetapush/core';   // <1>
+
+@Injectable()
+export default class {
+  constructor(private environment: Environment) {}          // <2>
+
+  getEnvironment() {
+    return this.environment;
+  }
+}
+----
+<1> The _Environment_ class is in the `@zetapush/core` package.
+<2> The dependency injection provides us a _Environment_ instance.
