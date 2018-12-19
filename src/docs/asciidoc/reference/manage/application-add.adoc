@@ -1,3 +1,37 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+There are several ways to create a new application :
+
+* link:{free-trial-url}[Signup for a free trial]
+* link:{contact-url}[Contact us for more suitable application] 
+* Via the *web console* (not available yet)
+* Via the *CLI* (not available yet)
+
+== Sign up for a free trial
+
+When you ask for a free trial, a *ZetaPush account* and an *application* are provided to you.
+
+You can ask for a free trial via link:{free-trial-url}[our web site].
+
+.Get free trial
+[NOTE]
+====
+Now, when you asking for a free trial, the *ZetaPush account* and the *application* are created by ZetaPush to fit your needs. Soon we will open access to everyone for get a free trial of 30 days. In this case the account and the application will be automatically created.
+====
+
+== Create application via web console
+
+.Create application via web console
+[NOTE]
+====
+For now, the creation of an application via the *web console* is not available because we want to assist you.
+====
+
+== Create application via CLI
+
+.Create application via CLI
+[NOTE]
+====
+For now, the creation of an application via the *CLI* is not available because we want to assist you.
+====

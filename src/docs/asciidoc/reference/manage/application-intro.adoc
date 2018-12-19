@@ -1,0 +1,5 @@
+:relative-path: ../../../
+include::{docdir}/variables.adoc[]
+
+An *application* is a logical container designed to perform a group of coordinated tasks or activities for the benefit of the user.
+
