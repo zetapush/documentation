@@ -14,8 +14,8 @@ include::{docdir}/reference/manage/account-intro.adoc[leveloffset=+2]
 ==== Create your account
 include::{docdir}/reference/manage/create-account.adoc[leveloffset=+3]
 
-==== Manage my informations
-include::{docdir}/reference/manage/manage-informations.adoc[leveloffset=+3]
+==== Manage your profile
+include::{docdir}/reference/manage/manage-profile.adoc[leveloffset=+3]
 
 ==== Delete your account
 include::{docdir}/reference/manage/delete-account.adoc[leveloffset=+3]
