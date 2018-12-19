@@ -27,11 +27,13 @@ include::{docdir}/developer-manual/concepts/create-account.adoc[leveloffset=+2]
 
 
 
+[#develop_front_with_zetapush]
 == Develop your front with ZetaPush
 include::{docdir}/developer-manual/develop-front/intro.adoc[leveloffset=+1]
 
 
 
+[#develop_business_logic]
 == Develop your business logic
 include::{docdir}/developer-manual/develop-cloud-services/intro.adoc[leveloffset=+1]
 
@@ -97,6 +99,7 @@ include::{docdir}/developer-manual/deploy/deploy-application.adoc[leveloffset=+2
 
 
 
+[#integrate_user_management]
 == User management in your application
 
 === Presentation

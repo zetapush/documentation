@@ -1,0 +1,10 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+include::{docdir}/common/cli/push-project.adoc[]
+
+This command uploads your code (front and worker) to the ZetaPush cloud. ZetaPush then handles the deployment
+by publishing your front and your custom cloud services.
+
+The CLI displays the URL to access the published web page.

@@ -1,0 +1,17 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+Go into the generated folder (`{appName}`):
+[source, console, subs="attributes+"]
+----
+$ cd {appName}
+----
+
+Then run the following command:
+
+include::{docdir}/common/cli/run-project.adoc[]
+
+This command launches both a local web server on `localhost:3000` and the custom cloud services.
+You can open a web browser on `localhost:3000` and open the browser console.
+
+You can click on the button and see the result of the custom cloud service call in the browser console.

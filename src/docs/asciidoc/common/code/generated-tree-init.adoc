@@ -2,7 +2,7 @@
 include::{docdir}/variables.adoc[]
 
 .Generated tree structure
-[source, console]
+[source, console, subs="attributes+"]
 ----
 {appName}
 ├── .zetarc

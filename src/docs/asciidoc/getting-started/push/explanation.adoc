@@ -1,0 +1,13 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+
+include::{docdir}/common/diagrams/run-in-cloud-exchanges.adoc[]
+
+Now, the web page (front) and the custom cloud functions (defined in a worker) are hosted directly on _ZetaPush cloud_.
+The behavior remains the same as when code is executed local machine:
+
+- There are still the same 3 parts working together (web page, _ZetaPush cloud_ and custom cloud function)
+- There is still a connection established by the client from the web page
+- There is still a message sent by the client to _ZetaPush cloud_ that is routed to call the custom cloud function
+- There is still a message sent by the _ZetaPush cloud_ that is routed to the client with the result of the custom cloud function
