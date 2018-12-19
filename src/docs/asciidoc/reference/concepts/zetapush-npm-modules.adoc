@@ -1,2 +1,54 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+ZetaPush provides several npm modules for helping you in your development. Each module has a specific role.
+
+
+[cols="^.^,^.^"]
+|===
+| @zetapush/cli | Contains the *Command Line Interface* of ZetaPush.
+You can launch zeta run or zeta push thanks to this module. +
+You can have more information in his <<reference#cli, dedicated section>>.
+
+| @zetapush/client | When you <<reference#client_types, develop the front part of your application>>, i.e. the web pages displayed to your users.
+You use a *ZetaPush client* to interact with your worker and the *ZetaPush cloud*.
+
+| @zetapush/cometd | You don't use this module directly.
+It is used internally for the communication with the *ZetaPush cloud* via the link:{cometd-url}[CometD] protocol.
+
+| @zetapush/common | This module includes some functions or classes that are used in other modules.
+
+| @zetapush/core | This is the core of *ZetaPush*. Notably, it provides the <<reference#dependency-injection, dependency injection>>
+
+| @zetapush/create | This module is used when you create a new development project using ZetaPush through the command `npm init @zetapush myApp`
+
+| @zetapush/example | It contains a basic example of a *ZetaPush application*
+
+| @zetapush/http-server | ZetaPush uses a HTTP server for some features, for example to confirm an account in the <<reference#integrate_user_management, Standard User Workflow>>. 
+You have information about this module in his <<reference#http_server, dedicated section>>
+
+| @zetapush/testing | ZetaPush integrates testing and provides some useful features about it via this module.
+
+| @zetapush/integration | This package is used internally by ZetaPush. It contains end to end tests to ensure that each new version is well tested and that there is no regression.
+
+| @zetapush/platform-legacy | ZetaPush contains some _Technical Services_ that are the fundations to build more functional and advanced services. These services will be improved and some may be replaced by a service that matches more your needs. 
+This module contains them and you have more information about their utilization in the <<reference#builtin_cloud_services, dedicated section>>.
+
+| @zetapush/troubleshooting | When you have a technical error, it can be hard to understand what really happens. This module diagnoses all errors (errors when worker starts, errors when worker is pushed, errors in connection/network...) and gives you an help to understand the error and to help you fix it.
+
+For example, a network error can have several causes:
+
+* Your network card is disabled or misconfigured
+* Your computer can't access the Internet
+* Your computer is on a local network with a proxy but proxy is not reachable
+* Your computer is on a local network with a proxy, proxy is reachable but the proxy can't access the Internet
+* You have Internet access but ZetaPush cloud is not reachable
+* ...
+
+This module will give you help to understand where the problem is and how to fix it.
+
+| @zetapush/user-management | In almost every application, you need to provide user management features like user creation, user authentication, profile management... This module provides functional cloud services that directly provides all these features. You don't need to bother about implementing it again and again. You just consume one of these cloud services like <<reference#integrate_user_management, StandardUserWorkflow>>.
+
+| @zetapush/worker | This module provides the container that executes the code of your business logic i.e. the worker. It is internally used by the CLI when you launch `zeta run` or `zeta push` or by testing tools.
+|===
+

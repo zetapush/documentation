@@ -84,6 +84,7 @@ include::{docdir}/reference/architecture/code-structure.adoc[leveloffset=+2]
 === Npm modules provided by ZetaPush
 include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+2]
 
+[#dependency-injection]
 === Dependency injection
 include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
 
@@ -221,6 +222,7 @@ include::{docdir}/common/cloud-services-legacy/trigger.adoc[leveloffset=+3]
 
 
 
+[#cli]
 == Command Line Interface
 
 === Config
@@ -378,6 +380,7 @@ include::{docdir}/reference/push/custom-npm-registry.adoc[leveloffset=+2]
 
 
 
+[#http_server]
 == HTTP server
 include::{docdir}/reference/http-server/intro.adoc[leveloffset=+1]
 
