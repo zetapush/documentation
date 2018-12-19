@@ -1,3 +1,46 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+An *organization* is a concept to let you work in team.
+
+The organization commonly groups all *ZetaPush accounts* of your company.
+You can have several applications for your organization and you can manage access rights on applications according to members of your team.
+
+.What is an application
+[NOTE]
+==== 
+An application is a logical container designed to perform a group of coordinated tasks or activities for the benefit of the user.
+====
+
+For example, if you are in the company named "MyCompany" which has two applications named "MyApplication1" and "MyApplication2" :
+
+- One organization is created with the name "MyCompany"
+- Two applications are created and named "MyApplication1" and "MyApplication2"
+
+The *ZetaPush administrator account* of this organization can access to these two applications. He can also change the access rights  <<reference.adoc#access_control_per_application, by application>>.
+
+[plantuml, manage-organization, png, role="center"]
+....
+cloud Organization {
+  package MyApplication2 {
+    :ProjectManager2:
+    :Developer3:
+    :Developer4:
+  }
+
+  package MyApplication1 {
+    :ProjectManager1:
+    :Developer1:
+    :Developer2:
+  }
+}
+....
+
+In the above example, we have one organization which contains two separate applications.
+Each application has 3 users. The users of one application cannot work on the other application.
+
+.Manage access rights from web console
+[NOTE]
+====
+The access rights are managed by ZetaPush for now in order to fit your needs. Thereafter, you will be able to manage them via the link:{web-console-url}[*web console*].
+====
