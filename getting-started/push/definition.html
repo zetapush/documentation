@@ -89,104 +89,15 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can generate a classic application with the following command:</p>
+<p>Push is used to make your code "public". It will publish your web page(s) and also upload the code of your worker on <em>ZetaPush cloud</em>.
+You can push when you think that your code is ready to be used by your end-users.</p>
 </div>
-<div class="listingblock">
-<div class="title">Generate application</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">$ npm init @zetapush myApp <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><em>myApp</em> is the name of the folder that will be created with all the generated files</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>This command can takes several parameters:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>--developer-login</strong>: Define which developer login (ZetaPush account) to use</p>
-</li>
-<li>
-<p><strong>--developer-password</strong>: Define which developer password (ZetaPush account) to use</p>
-</li>
-<li>
-<p><strong>--appName</strong>: Define which application (defined in your ZetaPush account) to use</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This will generate a tree structure of a classic application:</p>
-</div>
-<div class="listingblock">
-<div class="title">Generated tree structure</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">myApp
-├── .zetarc
-├── .gitignore
-├── front
-│   ├── index.css
-│   ├── index.html
-│   ├── index.js
-│   └── logo.png
-├── worker
-│   └── index.ts
-├── package.json
-├── README.md
-└── tsconfig.json</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Definition of generated files</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">File / Folder</th>
-<th class="tableblock halign-left valign-top">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.zetarc</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contains the developer&#8217;s credentials. Useful to deploy or run your code. The content is auto generated if the file is empty.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.gitignore</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file used by Git to prevent commiting some files. It is preconfigured to prevent publication of your developer credentials (on GitHub for example).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>package.json</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standard file for NPM to handle a module. It contains the dependencies, the name of your application, the entry point of your <em>custom cloud services</em> (<code>main</code> property) and many useful other informations for your application.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>README.md</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Gives you some information about how to use your application.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>front/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the front end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>worker/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">By convention, the back end code of your application is in this folder. You can change it by editing <code>package.json</code>.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-17 08:48:24 UTC
+Last updated 2018-12-19 13:36:44 UTC
 </div>
 </div>
 </body>
