@@ -6,5 +6,5 @@ Your *application* may be deployed and executed in separate zones called *enviro
 .Environment for free trial
 [WARNING]
 ====
-If you are using a free trial account, only one environment is available. In the case of you need to test more ZetaPush, you can link:{contact-url}[contact us] to have several environments.
+If you are using a free trial account, only one environment is available. In the case you need to test more ZetaPush, you can link:{contact-url}[contact us] to have several environments.
 ====
