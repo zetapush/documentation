@@ -86,71 +86,7 @@
 <div id="header">
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of the most important thing to understand with ZetaPush is that you can use it in two steps: The <strong>run</strong> and the <strong>push</strong>. The <code>run</code> mode is when you develop your application, your <strong>worker</strong> is running locally and the <code>push</code> mode is when you have pushed your application on the <strong>ZetaPush Cloud</strong> and that your worker is running on it.</p>
-</div>
-<div class="imageblock center">
-<div class="content">
-<img src="process-dev-run-and-push.png" alt="process dev run and push" width="993" height="337">
-</div>
-<div class="title">Figure 1. Process of development with ZetaPush</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="title">Data between the two phases</div>
-<div class="paragraph">
-<p>Whether you run or push your application, you use the same data. For example, if you store data during your development phase (using the <code>zeta run</code> command), They will always be present in the database when you will deploy your application with <code>zeta push</code>. For a more comprehensive working, look that scheme below :</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock center">
-<div class="content">
-<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="709" height="430">
-</div>
-<div class="title">Figure 2. Interactions during development phase</div>
-</div>
-<div class="paragraph">
-<p>Both front and worker are running locally. The front interacts with <em>custom cloud services</em> contained in the worker through
-ZetaPush Cloud.
-As ZetaPush Cloud provides bidirectional connection, the <em>custom cloud services</em> can also interact with the front through
-ZetaPush Cloud too.</p>
-</div>
-<div class="paragraph">
-<p>A <em>custom cloud service</em> can interact with <em>built-in cloud services</em> provided by ZetaPush.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When you start using ZetaPush, you only develop locally so from your point of vue,
-your front seems to directly interact with your <em>custom cloud services</em>.</p>
-</div>
-<div class="paragraph">
-<p>In fact, all messages go through the Internet and ZetaPush Cloud.
-It means that a published front can interact with a worker that is running locally and vice versa.</p>
-</div>
-<div class="paragraph">
-<p>See <a href="../../reference.html#mix_local_and_remote">how to mix local worker with worker running in cloud</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
+
 </div>
 <div id="footer">
 <div id="footer-text">
