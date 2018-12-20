@@ -80,7 +80,6 @@ include::{docdir}/reference/architecture/code-structure.adoc[leveloffset=+2]
 
 
 == ZetaPush development concepts
-include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+1]
 
 === Npm modules provided by ZetaPush
 include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+2]
@@ -90,7 +89,7 @@ include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
 
 [#modules]
 === Modules
-include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
+include::{docdir}/reference/concepts/modules.adoc[leveloffset=+2]
 
 === Current running context
 include::{docdir}/reference/concepts/running-context.adoc[leveloffset=+2]
