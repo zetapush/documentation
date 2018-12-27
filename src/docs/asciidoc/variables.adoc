@@ -24,4 +24,7 @@ endif::[]
 ifndef::injection-js-url[]
 :injection-js-url: https://github.com/mgechev/injection-js
 endif::[]
+ifndef::cometd-url[]
+:cometd-url: https://cometd.org/
+endif::[]
 
