@@ -115,7 +115,7 @@
 <ul class="sectlevel2">
 <li><a href="#_develop_your_front_only">Develop your front only</a></li>
 <li><a href="#generate_sdks">Generate SDKs from custom cloud service code</a></li>
-<li><a href="#_develop_custom_cloud_services">Develop custom cloud services</a></li>
+<li><a href="#develop_custom_cloud_services">Develop custom cloud services</a></li>
 <li><a href="#_advanced_usage_of_cloud_services">Advanced usage of cloud services</a></li>
 </ul>
 </li>
@@ -599,7 +599,375 @@ It means that a published front can interact with a worker that is running local
 </div>
 <div class="sect2">
 <h3 id="_application_code_structure"><a class="anchor" href="#_application_code_structure"></a>Application code structure</h3>
-
+<div class="paragraph">
+<p>The purpose of this section is to explain the various elements of a <strong>ZetaPush application</strong> and the interaction between them.</p>
+</div>
+<div class="paragraph">
+<p>In the first instance we will see the <a href="#architecture_organization_application">organization of a ZetaPush application</a>, then we will see the <a href="#architecture_files_tree">role of each file or folder</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="architecture_organization_application"><a class="anchor" href="#architecture_organization_application"></a>Organization of an application</h4>
+<div class="paragraph">
+<p>A <strong>ZetaPush application</strong> includes several components.
+You can see this with the following picture that represents the files tree of a basic application:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images/architecture/files-tree.png" alt="files tree">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>worker</code> folder contains your business logic. this is the code that is not directly visible to your users. It is often named as backend part. The <code>front</code> folder is the visible part of your application. It contains the code of the web pages displayed to your users. It is often named the frontend part.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the files are needed for the functioning of the application. Each role of this files is explained below :</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images/architecture/organization-application.png" alt="organization application">
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A ZetaPush application is mainly based on the <code>JavaScript ecosystem</code>. An application is similar to a <code>JavaSscript module</code>. So at the root of the application, we have a <code>package.json</code> file, <a href="#role_package_json">more information</a> about his role is below.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>In addition of the <code>JavaScript ecosystem</code>, a ZetaPush application uses the <code>TypeScript ecosystem</code> by default. So a <code>tsconfig.json</code> file is necessary at the root folder. You can see <a href="#role_tsconfig">more information about his role</a> also see <a href="#javascript_vs_typescript">why we use TypeScript</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>worker</code> folder contains your business logic.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>front</code> folder contains the web pages displayed to end users.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The <code>application.json</code> file lets you configure the logic of your application. (Token, API key, Mailjet configuration, etc&#8230;&#8203;).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The <code>.zetarc</code> file contains the application and ZetaPush account information (developer login, developer password, appName, etc&#8230;&#8203;). It should not be commited (it contains login and password) so by default it is added to the <code>.gitignore</code> file.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="architecture_files_tree"><a class="anchor" href="#architecture_files_tree"></a>Files tree</h4>
+<div class="paragraph">
+<p>As seen in the last section, each file has a specific role. We will explain each of them step by step:</p>
+</div>
+<div class="sect4">
+<h5 id="role_package_json"><a class="anchor" href="#role_package_json"></a>package.json</h5>
+<div class="paragraph">
+<p>A <strong>ZetaPush application</strong> is based of the <code>JavaScript ecosystem</code>.
+So each application has his <code>package.json</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Minimal <code>package.json</code> file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/index.ts</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">dependencies</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/cli</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">^v0.37.1</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Entry point of your <a href="#_worker">worker</a>. In this file you will expose your <em>custom cloud services</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Dependency to the <a href="#_command_line_interface_cli">CLI</a> (Command Line Interface). Use it to run your worker or deploy your code.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Dependency to the <em>ZetaPush Core</em> to write some <em>custom cloud services</em></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>main</code> property defines the path of the worker entry point. That means that when you run or push your <strong>ZetaPush application</strong>, this is from this entry point that your business logic is launched.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Location of the entry point</div>
+<div class="paragraph">
+<p>At the present time, the worker code needs to be in the <code>worker</code> folder, but you can specify with the <code>main</code> property any file you want in the <code>worker</code> folder to be the entry point.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="role_tsconfig"><a class="anchor" href="#role_tsconfig"></a>tsconfig.json</h5>
+<div class="paragraph">
+<p>The <code>tsconfig.json</code> file is here because by default ZetaPush uses the <code>TypeScript ecosystem</code>. For example, the <em>cloud services</em> are written in <code>TypeScript</code> and the <code>worker</code> folder contains by default a <code>TypeScript</code> file.
+You can see <a href="#javascript_vs_typescript">why we use TypeScript</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>TypeScript ecosystem</code>, the <code>tsconfig.json</code> file is needed to define the root of the application. So in our case, the <code>tsconfig.json</code> file is placed at the root of the <strong>ZetaPush application</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If you are not familiar with <code>TypeScript</code>, you can see more informations <a href="https://en.wikipedia.org/wiki/TypeScript">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>In addition to define the root of our application, the <code>tsconfig.json</code> file defines how the transpilation from <code>TypeScript</code> to <code>JavaScript</code> is done.
+You can define a lot of configurations according to the <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">TypeScript documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>For the proper functioning of the <strong>ZetaPush application</strong>, the <code>tsconfig.json</code> file needs to have some minimal configuration like explained below :</p>
+</div>
+<div class="listingblock">
+<div class="title">Minimal tsconfig.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">compilerOptions</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">experimentalDecorators</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>      <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">emitDecoratorMetadata</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>       <i class="conum" data-value="2"></i><b>(2)</b>
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>experimentalDecorators</code> is needed to activate the <a href="https://www.typescriptlang.org/docs/handbook/decorators.html">ES7 decorators</a>. There are used in most <strong>worker</strong> code.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>emitDecoratorMetadata</code> is needed for the proper functioning of the ES7 decorators. In particular for types.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Customize my tsconfig.json</div>
+<p>In the case you need to customize your <code>tsconfig.json</code> file, for example to use features only declared in ES6 (es2015), you can customize your <code>tsconfig.json</code> like below. Of course, you can customize with any properties provided by <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">TypeScript</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Customized tsconfig.json</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">compilerOptions</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">lib</span><span class="delimiter">&quot;</span></span>: [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">es2015</span><span class="delimiter">&quot;</span></span>
+    ],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">experimentalDecorators</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">emitDecoratorMetadata</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_worker_folder"><a class="anchor" href="#_worker_folder"></a>worker folder</h5>
+<div class="paragraph">
+<p>As seen above, the <code>worker</code> folder contains the business logic of your application. It is often named "backend code.
+This is in this part that you will create your business logic and interact with the <em>built-in cloud services</em> provided by ZetaPush (User management, file system, database, notifications, etc&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>By default (When the application is generated by the <em>CLI</em>), the <code>worker</code> folder contains only one file, called <code>index.ts</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Generated worker code with the CLI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  hello() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello World from Worker at <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Develop your worker in several ways</div>
+<div class="paragraph">
+<p>In this example we see a worker that is created with only one class. You will see several ways to create a worker in the <a href="#develop_custom_cloud_services">cloud service development section</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Don&#8217;t need to transpile TypeScript</div>
+<div class="paragraph">
+<p>Even if your worker code is in <code>TypeScript</code> you don&#8217;t need to transpile it to <code>JavaScript</code>. Indeed, when you run or push your code, it will be launched with <a href="https://github.com/TypeStrong/ts-node"><code>ts-node</code></a>.<br>
+<code>ts-node</code> takes care of the transpilation, you can also configure this via the <code>tsconfig.json</code> file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_front_folder"><a class="anchor" href="#_front_folder"></a>front folder</h5>
+<div class="paragraph">
+<p>The <code>front</code> folder contains your front code.
+Like any other website host, you need to have a <code>index.html</code> file in this folder.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Use frameworks</div>
+<div class="paragraph">
+<p>You can integrate your favorite framework with ZetaPush.
+For now, we give you documentation for integration with the most famous frameworks : <a href="#develop_with_angular">Angular</a>,
+<a href="#develop_with_react">React</a>, <a href="#develop_with_vue">Vue.js</a> and anything else.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_application_json"><a class="anchor" href="#_application_json"></a>application.json</h5>
+<div class="paragraph">
+<p>This file is <strong>optional</strong> in a <strong>ZetaPush application</strong>. For now you just need to use it when you use the <a href="./developer-manual.html#integrate_user_management">StandardUserWorkflow</a>.
+Of course, you can also <a href="#configuration_properties">define your own properties</a></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">List of application.json properties</div>
+<div class="paragraph">
+<p>To know which keys are available for the <code>application.json</code> file, please refer you to the <em>cloud service</em> that use this configuration file like the <a href="./developer-manual.html#integrate_user_management">StandardUserWorkflow</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_zetarc"><a class="anchor" href="#_zetarc"></a>.zetarc</h5>
+<div class="paragraph">
+<p>The <code>.zetarc</code> file is the most important file in your application.
+It lets you define your <strong>ZetaPush account</strong> and which <strong>ZetaPush application</strong> you want to use.</p>
+</div>
+<div class="listingblock">
+<div class="title">Minimal .zetarc file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to the properties displayed in the example, 2 properties are used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><em>developerSecretToken</em></strong>: The <em>CLI</em> encrypts the <code>developerPassword</code> in the <code>.zetarc</code> file. You don&#8217;t need to modify it. If you want to change the ZetaPush account password in the <code>.zetarc</code> file, you can delete the <code>developerSecretToken</code> and type again the <code>developerPassword</code>.</p>
+</li>
+<li>
+<p><strong><em>platformUrl</em></strong>: That corresponds to the used <strong>ZetaPush Cloud</strong> for your <strong>ZetaPush application</strong>. When using ZetaPush public cloud, you don&#8217;t need to configure it. If you need a private ZetaPush cloud, you can <a href="https://www.zetapush.com/contact">contact us</a> to ask for it.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Do not commit the .zetarc</div>
+<div class="paragraph">
+<p>The <code>.zetarc</code> file contains some credentials so we advise you not to commit this file in a version control system like <code>Git</code>.
+By default (when the <strong>ZetaPush application</strong> is generated with the <strong>CLI</strong>) this file is added to the <code>.gitignore</code> file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -877,7 +1245,7 @@ This module contains them and you have more information about their utilization 
 
 </div>
 <div class="sect2">
-<h3 id="_develop_custom_cloud_services"><a class="anchor" href="#_develop_custom_cloud_services"></a>Develop custom cloud services</h3>
+<h3 id="develop_custom_cloud_services"><a class="anchor" href="#develop_custom_cloud_services"></a>Develop custom cloud services</h3>
 
 </div>
 <div class="sect2">
@@ -3831,7 +4199,7 @@ ZetaPush uses this property to host and expose it.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-27 13:21:41 UTC
+Last updated 2018-12-27 13:24:11 UTC
 </div>
 </div>
 </body>

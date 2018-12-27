@@ -89,7 +89,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Minimal .zetarc file</div>
+<div class="title">Minimal tsconfig.json</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -97,14 +97,28 @@
 3
 4
 5
+6
 </pre></td>
   <td class="code"><pre>{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">compilerOptions</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">experimentalDecorators</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>      <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">emitDecoratorMetadata</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>       <i class="conum" data-value="2"></i><b>(2)</b>
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>experimentalDecorators</code> is needed to activate the <a href="https://www.typescriptlang.org/docs/handbook/decorators.html">ES7 decorators</a>. There are used in most <strong>worker</strong> code.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>emitDecoratorMetadata</code> is needed for the proper functioning of the ES7 decorators. In particular for types.</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

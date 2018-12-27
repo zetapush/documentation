@@ -89,19 +89,19 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Minimal .zetarc file</div>
+<div class="title">Generated worker code with the CLI</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
 4
 5
 </pre></td>
-  <td class="code"><pre>{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerLogin</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user@gmail.com</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">developerPassword</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">appName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myAppName</span><span class="delimiter">&quot;</span></span>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  hello() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello World from Worker at <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;
+  }
 }</pre></td>
 </tr></table></code></pre>
 </div>
