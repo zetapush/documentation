@@ -14,7 +14,8 @@ You can see this with the following picture that represents the files tree of a 
 image::{images-dir}architecture/files-tree.png[role=center]
 
 
-The `worker` folder contains your business logic. this is the code that is not directly visible to your users. It is often named as backend part. The `front` folder is the visible part of your application. It contains the code of the web pages displayed to your users. It is often named the frontend part
+The `worker` folder contains your business logic. this is the code that is not directly visible to your users. It is often named as backend part. The `front` folder is the visible part of your application. It contains the code of the web pages displayed to your users. It is often named the frontend part.
+
 The rest of the files are needed for the functioning of the application. Each role of this files is explained below :
 
 image::{images-dir}architecture/organization-application.png[role=center]
