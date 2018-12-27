@@ -1,2 +1,151 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+== Develop a cloud service that is not exposed
+
+During the development of your _custom cloud services_ you may want to not expose some of them.
+In this case, the affected _custom cloud services_ are not reachable by the client.
+
+.Example of private _custom cloud service_
+[source, javascript, linenums]
+----
+import { Injectable } from '@zetapush/core';
+
+class MyTimeManager {                                                     // <1>
+  getCurrentTime() {                                                      // <2>
+    return Date.now();
+  }
+}
+
+@Injectable()                                                             // <3>
+export default class {
+  constructor(private timeManager: MyTimeManager) {}                      // <4>
+
+  hello() {                                                               // <5>
+    return `Hello from Worker at ${this.timeManager.getCurrentTime()}`;
+  }
+}
+----
+<1> Our private _custom cloud service_ (no `export` keyword)
+<2> `getCurrentTime()` is not reachable by the client (front part of your application)
+<3> We specify that we want to use the dependency injection in our class
+<4> We ask the dependency injection to have an instance of `MyTimeManager`
+<5> `hello()` is the only method reachable by the client (front part of your application)
+
+[#expose_several_cloud_services]
+== Expose several cloud services
+
+_ZetaPush_ provides the possibility to expose several _custom cloud services_ if you want.
+For example, you may have two _custom cloud services_ that have same _cloud function_ names.
+To differentiate them we provide _namespaces_
+
+[#namespaces]
+=== Namespaces
+
+With the _namespaces_ you can separate several _custom cloud services_.
+The result is that if a _ZetaPush API_ created by a _ZetaPush Client_ is configured to reach one _namespace_, the _cloud functions_ exposed in the others _namespaces_ will not be reachable with this API.  
+
+If we take the previous example, we may want to expose our two _custom cloud services_ in two _namespaces_ named `time` and `default`.
+
+[role="tab-container"]
+Example of several _custom cloud services_ exposed
+
+[role=tab]
+index.ts (worker)
+
+[source, javascript, linenums]
+----
+import { Injectable, Module } from '@zetapush/core';
+
+class MyTimeManager {                                                         // <1>
+  getCurrentTime() {
+    return Date.now();
+  }
+}
+
+@Injectable()
+class MyDefaultApi {                                                          // <2>
+  constructor(private timeManager: MyTimeManager) {}
+
+  hello() {
+    return `Hello from Worker at ${this.timeManager.getCurrentTime()}`;
+  }
+}
+
+@Module({                                                                     // <3>
+  expose: {
+    timer: MyTimeManager,
+    default: MyDefaultApi
+  }
+})
+export default class {}
+----
+<1> Our API that will be exposed via the `timer` _namespace_
+<2> Our API that will be exposed via the `default` _namespace_
+<3> We expose a class that is defined as a <<reference#modules, _Module_>>.
+In the property `expose` we define in which _namespace_ we expose our _custom cloud services_
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Several Custom Cloud Services</title>
+  </head>
+  <body>
+    <button class="js-Hello">call hello()</button>
+    <button class="js-Timer">call getCurrentTime()</button>
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="https://unpkg.com/@zetapush/platform-legacy"></script>
+  <script src="./index.js"></script>
+</html>
+
+----
+
+
+[role=tab]
+index.js (front)
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { WeakClient } = from '@zetapush/client';
+// import { Service } = from '@zetapush/platform-legacy';
+client = new ZetaPushClient.WeakClient();
+
+// First api to reach 'default' namespace
+const defaultApi = client.createProxyTaskService({                                // <1>
+  namespace: 'default'
+});
+
+// Second API to reach 'timer' namespace
+const timerApi = client.createProxyTaskService({                                  // <2>
+  namespace: 'timer'
+});
+
+// Handle the clicks
+document.querySelector('.js-Hello').addEventListener('click', async () => {
+  console.log(await defaultApi.hello());
+});
+document.querySelector('.js-Timer').addEventListener('click', async () => {
+  console.log(await timerApi.getCurrentTime());
+});
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+----
+
+[role=tab-container-end]
+-
+<1> We create an API that reach only the `default` namespace
+<2> We create an API that reach only the `timer` namespace
