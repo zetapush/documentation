@@ -1,2 +1,40 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+*Dependency Injection* is a technique whereby one component supplies the dependencies of another component. A dependency is a component that can be used. An injection is the passing of a dependency to a dependent component that would use it. 
+
+In our case, we the *Dependency Injection* to provides the _cloud services_ (builtin or not) and other classes. The benefic is that you don't need to instanciate a dependency. You ask it and you have it.
+
+In the following example we need to have the _GDA builtin cloud service_ (database). We ask the dependency injection to provide one.
+
+[source, javascript, linenumbers]
+----
+import { Gda } from '@zetapush/platform-legacy';
+
+@Injectable()                       // <1>
+export default class MyApi {
+  constructor(private gda: Gda) {}  // <2>
+
+  putData(name: string) {
+    return await this.gda.put({     // <3>
+      table: 'my-table',
+      column: 'my-column',
+      key: Date.now().toString(),
+      data: name
+    });
+  }
+}
+----
+<1> Say to the dependency injection that it should provide some dependencies in this class
+<2> I just say that I need a `GDA` instance in my class 
+<3> I use my dependency. I know that my dependency is automatically instantiated by the *Dependency Injection*.
+
+.Dependencies are singletons by default
+[NOTE]
+====
+By default, when you use the dependency injection, each component that is instanciated is a link:https://en.wikipedia.org/wiki/Singleton_pattern[singleton]. 
+====
+
+ZetaPush uses link:{injection-js-url}[Injection JS] library for manage the *Dependency Injection*. It is an extraction of the Angular's dependency injection.
+
+You can have more information about the dependency injection in the link:{angular-di-url}[Angular Dependency Injection Documentation]

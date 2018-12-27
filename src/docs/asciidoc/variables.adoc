@@ -30,4 +30,13 @@ endif::[]
 ifndef::es7-decorator-url[]
 :es7-decorator-url: https://www.typescriptlang.org/docs/handbook/decorators.html
 endif::[]
+ifndef::angular-di-url[]
+:angular-di-url: https://angular.io/guide/dependency-injection
+endif::[]
+ifndef::injection-js-url[]
+:injection-js-url: https://github.com/mgechev/injection-js
+endif::[]
+ifndef::cometd-url[]
+:cometd-url: https://cometd.org/
+endif::[]
 

@@ -1,7 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-.Custom Cloud Service in development phase
+.Interactions during development phase
 [plantuml, custom-cloud-service-dev, png, role="center"]     
 ....
 skinparam component {
