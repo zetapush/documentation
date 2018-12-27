@@ -1,2 +1,148 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+The purpose of this section is to explain the various elements of a *ZetaPush application* and the interaction between them.
+
+In the first instance we will see the <<reference.adoc#architecture_organization_application, organization of a ZetaPush application>>, then we will see the <<reference.adoc#architecture_files_tree, role of each file or folder>>.
+
+[#architecture_organization_application]
+== Organization of an application
+
+A *ZetaPush application* includes several components.
+You can see this with the following picture that represents the files tree of a basic application:
+
+image::{images-dir}architecture/files-tree.png[role=center]
+
+
+The `worker` folder contains your business logic. this is the code that is not directly visible to your users. It is often named as backend part. The `front` folder is the visible part of your application. It contains the code of the web pages displayed to your users. It is often named the frontend part.
+
+The rest of the files are needed for the functioning of the application. Each role of this files is explained below :
+
+image::{images-dir}architecture/organization-application.png[role=center]
+<1> A ZetaPush application is mainly based on the `JavaScript ecosystem`. An application is similar to a `JavaSscript module`. So at the root of the application, we have a `package.json` file, <<reference#role_package_json, more information>> about his role is below.
+<2> In addition of the `JavaScript ecosystem`, a ZetaPush application uses the `TypeScript ecosystem` by default. So a `tsconfig.json` file is necessary at the root folder. You can see <<reference#role_tsconfig, more information about his role>> also see <<reference#javascript_vs_typescript, why we use TypeScript>>.
+<3> The `worker` folder contains your business logic.
+<4> The `front` folder contains the web pages displayed to end users.
+<5> The `application.json` file lets you configure the logic of your application. (Token, API key, Mailjet configuration, etc...).
+<6> The `.zetarc` file contains the application and ZetaPush account information (developer login, developer password, appName, etc...). It should not be commited (it contains login and password) so by default it is added to the `.gitignore` file. 
+
+[#architecture_files_tree]
+== Files tree
+
+As seen in the last section, each file has a specific role. We will explain each of them step by step:
+
+[#role_package_json]
+=== package.json
+
+A *ZetaPush application* is based of the `JavaScript ecosystem`.
+So each application has his `package.json` file.
+
+include::{docdir}/common/code/minimal-package-json.adoc[]
+
+The `main` property defines the path of the worker entry point. That means that when you run or push your *ZetaPush application*, this is from this entry point that your business logic is launched.
+
+.Location of the entry point
+[NOTE]
+====
+At the present time, the worker code needs to be in the `worker` folder, but you can specify with the `main` property any file you want in the `worker` folder to be the entry point.
+====
+
+[#role_tsconfig]
+=== tsconfig.json
+
+The `tsconfig.json` file is here because by default ZetaPush uses the `TypeScript ecosystem`. For example, the _cloud services_ are written in `TypeScript` and the `worker` folder contains by default a `TypeScript` file.
+You can see <<reference#javascript_vs_typescript, why we use TypeScript>>.
+
+In the `TypeScript ecosystem`, the `tsconfig.json` file is needed to define the root of the application. So in our case, the `tsconfig.json` file is placed at the root of the *ZetaPush application*.
+
+If you are not familiar with `TypeScript`, you can see more informations link:{typescript-url}[here].
+
+In addition to define the root of our application, the `tsconfig.json` file defines how the transpilation from `TypeScript` to `JavaScript` is done.
+You can define a lot of configurations according to the link:{typescript-conf-url}[TypeScript documentation].
+
+For the proper functioning of the *ZetaPush application*, the `tsconfig.json` file needs to have some minimal configuration like explained below :
+
+include::{docdir}/common/code/minimal-tsconfig-needed.adoc[]
+
+.Customize my tsconfig.json
+
+In the case you need to customize your `tsconfig.json` file, for example to use features only declared in ES6 (es2015), you can customize your `tsconfig.json` like below. Of course, you can customize with any properties provided by link:{typescript-conf-url}[TypeScript].
+
+.Customized tsconfig.json
+[source,json,linenums]
+----
+{
+  "compilerOptions": {
+    "lib": [
+      "es2015"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
+----
+
+=== worker folder
+
+As seen above, the `worker` folder contains the business logic of your application. It is often named "backend code.
+This is in this part that you will create your business logic and interact with the _built-in cloud services_ provided by ZetaPush (User management, file system, database, notifications, etc...).
+
+By default (When the application is generated by the _CLI_), the `worker` folder contains only one file, called `index.ts`.
+
+include::{docdir}/common/code/generated-worker-code.adoc[]
+
+.Develop your worker in several ways
+[NOTE]
+====
+In this example we see a worker that is created with only one class. You will see several ways to create a worker in the <<reference.adoc#develop_custom_cloud_services, cloud service development section>>.
+====
+
+.Don't need to transpile TypeScript
+[NOTE]
+====
+Even if your worker code is in `TypeScript` you don't need to transpile it to `JavaScript`. Indeed, when you run or push your code, it will be launched with link:{ts-node-url}[`ts-node`]. +
+`ts-node` takes care of the transpilation, you can also configure this via the `tsconfig.json` file.
+====
+
+=== front folder
+
+The `front` folder contains your front code.
+Like any other website host, you need to have a `index.html` file in this folder.
+
+.Use frameworks
+[NOTE]
+====
+You can integrate your favorite framework with ZetaPush.
+For now, we give you documentation for integration with the most famous frameworks : <<reference#develop_with_angular, Angular>>,
+<<reference#develop_with_react, React>>, <<reference#develop_with_vue, Vue.js>> and anything else.
+====
+
+=== application.json
+
+This file is *optional* in a *ZetaPush application*. For now you just need to use it when you use the <<developer-manual.adoc#integrate_user_management, StandardUserWorkflow>>.
+Of course, you can also <<reference#configuration_properties, define your own properties>>
+
+.List of application.json properties
+[NOTE]
+====
+To know which keys are available for the `application.json` file, please refer you to the _cloud service_ that use this configuration file like the <<developer-manual.adoc#integrate_user_management, StandardUserWorkflow>>.
+====
+
+=== .zetarc
+
+The `.zetarc` file is the most important file in your application.
+It lets you define your *ZetaPush account* and which *ZetaPush application* you want to use.
+
+include::{docdir}/common/code/minimal-zetarc.adoc[]
+
+In addition to the properties displayed in the example, 2 properties are used:
+
+* *_developerSecretToken_*: The _CLI_ encrypts the `developerPassword` in the `.zetarc` file. You don't need to modify it. If you want to change the ZetaPush account password in the `.zetarc` file, you can delete the `developerSecretToken` and type again the `developerPassword`.
+* *_platformUrl_*: That corresponds to the used *ZetaPush Cloud* for your *ZetaPush application*. When using ZetaPush public cloud, you don't need to configure it. If you need a private ZetaPush cloud, you can link:{contact-url}[contact us] to ask for it.
+
+.Do not commit the .zetarc
+[NOTE]
+====
+The `.zetarc` file contains some credentials so we advise you not to commit this file in a version control system like `Git`.
+By default (when the *ZetaPush application* is generated with the *CLI*) this file is added to the `.gitignore` file.
+====

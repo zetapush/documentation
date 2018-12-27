@@ -1,0 +1,12 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.Generated worker code with the CLI
+[source,javascript,linenums]
+----
+export default class {
+  hello() {
+    return `Hello World from Worker at ${Date.now()}`;
+  }
+}
+----

@@ -18,6 +18,18 @@ endif::[]
 ifndef::contact-url[]
 :contact-url: {main-site-url}/contact/
 endif::[]
+ifndef::typescript-url[]
+:typescript-url: https://en.wikipedia.org/wiki/TypeScript
+endif::[]
+ifndef::typescript-conf-url[]
+:typescript-conf-url: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+endif::[]
+ifndef::ts-node-url[]
+:ts-node-url: https://github.com/TypeStrong/ts-node
+endif::[]
+ifndef::es7-decorator-url[]
+:es7-decorator-url: https://www.typescriptlang.org/docs/handbook/decorators.html
+endif::[]
 ifndef::angular-di-url[]
 :angular-di-url: https://angular.io/guide/dependency-injection
 endif::[]

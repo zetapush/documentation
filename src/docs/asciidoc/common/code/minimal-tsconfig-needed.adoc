@@ -1,0 +1,15 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+.Minimal tsconfig.json
+[source,json,linenums]
+----
+{
+  "compilerOptions": {
+    "experimentalDecorators": true      // <1>
+    "emitDecoratorMetadata": true       // <2>
+  }
+}
+----
+<1> `experimentalDecorators` is needed to activate the link:{es7-decorator-url}[ES7 decorators]. There are used in most *worker* code.
+<2> `emitDecoratorMetadata` is needed for the proper functioning of the ES7 decorators. In particular for types.
