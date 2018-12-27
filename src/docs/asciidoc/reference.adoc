@@ -84,7 +84,7 @@ include::{docdir}/reference/architecture/code-structure.adoc[leveloffset=+2]
 === Npm modules provided by ZetaPush
 include::{docdir}/reference/concepts/zetapush-npm-modules.adoc[leveloffset=+2]
 
-[#dependency-injection]
+[#dependency_injection]
 === Dependency injection
 include::{docdir}/reference/concepts/dependency-injection.adoc[leveloffset=+2]
 

@@ -4,21 +4,23 @@ include::{docdir}/variables.adoc[]
 ZetaPush provides several npm modules for helping you in your development. Each module has a specific role.
 
 
-[cols="^.^,^.^"]
+[cols="^.^,<.^", options="header"]
 |===
+| Module | Role
+
 | @zetapush/cli | Contains the *Command Line Interface* of ZetaPush.
-You can launch zeta run or zeta push thanks to this module. +
+You can launch `zeta run` or `zeta push` thanks to this module. +
 You can have more information in his <<reference#cli, dedicated section>>.
 
-| @zetapush/client | When you <<reference#client_types, develop the front part of your application>>, i.e. the web pages displayed to your users.
-You use a *ZetaPush client* to interact with your worker and the *ZetaPush cloud*.
+| @zetapush/client | When you <<reference#client_types, develop the front part of your application>>, i.e. the web pages displayed to your users, 
+you use a *ZetaPush client* to interact with your worker and the *ZetaPush cloud*.
 
 | @zetapush/cometd | You don't use this module directly.
 It is used internally for the communication with the *ZetaPush cloud* via the link:{cometd-url}[CometD] protocol.
 
-| @zetapush/common | This module includes some functions or classes that are used in other modules.
+| @zetapush/common | This module includes some functions and classes that are used in other modules.
 
-| @zetapush/core | This is the core of *ZetaPush*. Notably, it provides the <<reference#dependency-injection, dependency injection>>
+| @zetapush/core | This is the core of *ZetaPush*. Notably, it provides the <<reference#dependency_injection, dependency injection>>
 
 | @zetapush/create | This module is used when you create a new development project using ZetaPush through the command `npm init @zetapush myApp`
 
@@ -34,7 +36,7 @@ You have information about this module in his <<reference#http_server, dedicated
 | @zetapush/platform-legacy | ZetaPush contains some _Technical Services_ that are the fundations to build more functional and advanced services. These services will be improved and some may be replaced by a service that matches more your needs. 
 This module contains them and you have more information about their utilization in the <<reference#builtin_cloud_services, dedicated section>>.
 
-| @zetapush/troubleshooting | When you have a technical error, it can be hard to understand what really happens. This module diagnoses all errors (errors when worker starts, errors when worker is pushed, errors in connection/network...) and gives you an help to understand the error and to help you fix it.
+| @zetapush/troubleshooting a| When you have a technical error, it can be hard to understand what really happens. This module diagnoses all errors (errors when worker starts, errors when worker is pushed, errors in connection/network...) and gives you an help to understand the error and to help you fix it.
 
 For example, a network error can have several causes:
 
