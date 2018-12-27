@@ -86,11 +86,123 @@
 <div id="header">
 </div>
 <div id="content">
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>ZetaPush provides several npm modules for helping you in your development. Each module has a specific role.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Module</th>
+<th class="tableblock halign-left valign-middle">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/cli</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Contains the <strong>Command Line Interface</strong> of ZetaPush.
+You can launch <code>zeta run</code> or <code>zeta push</code> thanks to this module.<br>
+You can have more information in his <a href="../../reference.html#cli">dedicated section</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/client</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">When you <a href="../../reference.html#client_types">develop the front part of your application</a>, i.e. the web pages displayed to your users,
+you use a <strong>ZetaPush client</strong> to interact with your worker and the <strong>ZetaPush cloud</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/cometd</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">You don&#8217;t use this module directly.
+It is used internally for the communication with the <strong>ZetaPush cloud</strong> via the <a href="https://cometd.org/">CometD</a> protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/common</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">This module includes some functions and classes that are used in other modules.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/core</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">This is the core of <strong>ZetaPush</strong>. Notably, it provides the <a href="../../reference.html#dependency_injection">dependency injection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/create</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">This module is used when you create a new development project using ZetaPush through the command <code>npm init @zetapush myApp</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/example</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">It contains a basic example of a <strong>ZetaPush application</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/http-server</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ZetaPush uses a HTTP server for some features, for example to confirm an account in the <a href="../../reference.html#integrate_user_management">Standard User Workflow</a>.
+You have information about this module in his <a href="../../reference.html#http_server">dedicated section</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/testing</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ZetaPush integrates testing and provides some useful features about it via this module.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/integration</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">This package is used internally by ZetaPush. It contains end to end tests to ensure that each new version is well tested and that there is no regression.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/platform-legacy</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">ZetaPush contains some <em>Technical Services</em> that are the fundations to build more functional and advanced services. These services will be improved and some may be replaced by a service that matches more your needs.
+This module contains them and you have more information about their utilization in the <a href="../../reference.html#builtin_cloud_services">dedicated section</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/troubleshooting</p></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p>When you have a technical error, it can be hard to understand what really happens. This module diagnoses all errors (errors when worker starts, errors when worker is pushed, errors in connection/network&#8230;&#8203;) and gives you an help to understand the error and to help you fix it.</p>
+</div>
+<div class="paragraph">
+<p>For example, a network error can have several causes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your network card is disabled or misconfigured</p>
+</li>
+<li>
+<p>Your computer can&#8217;t access the Internet</p>
+</li>
+<li>
+<p>Your computer is on a local network with a proxy but proxy is not reachable</p>
+</li>
+<li>
+<p>Your computer is on a local network with a proxy, proxy is reachable but the proxy can&#8217;t access the Internet</p>
+</li>
+<li>
+<p>You have Internet access but ZetaPush cloud is not reachable</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This module will give you help to understand where the problem is and how to fix it.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/user-management</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">In almost every application, you need to provide user management features like user creation, user authentication, profile management&#8230;&#8203; This module provides functional cloud services that directly provides all these features. You don&#8217;t need to bother about implementing it again and again. You just consume one of these cloud services like <a href="../../reference.html#integrate_user_management">StandardUserWorkflow</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">@zetapush/worker</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">This module provides the container that executes the code of your business logic i.e. the worker. It is internally used by the CLI when you launch <code>zeta run</code> or <code>zeta push</code> or by testing tools.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2018-12-27 13:21:41 UTC
 </div>
 </div>
 </body>
