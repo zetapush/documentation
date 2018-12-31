@@ -254,15 +254,12 @@ include::{docdir}/reference/configuration/structure-configuration.adoc[leveloffs
 === Configuration properties
 include::{docdir}/reference/configuration/configuration-properties.adoc[leveloffset=+2]
 
-////
-TODO: remove this section but keep content and split it in each section above. When
-we describe account configuration, we also show how to change it.
 === Configuration override
 include::{docdir}/reference/configuration/override-configuration.adoc[leveloffset=+2]
-////
 
 === Customize cloud services
 
+[#customize_standard_user_workflow]
 ==== User Management
 
 [TODO]
