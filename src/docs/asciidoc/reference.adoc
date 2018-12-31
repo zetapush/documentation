@@ -136,7 +136,7 @@ include::{docdir}/reference/development/react.adoc[leveloffset=+4]
 include::{docdir}/reference/development/vue.adoc[leveloffset=+4]
 
 ==== Mobile development
-include::{docdir}/reference/development/mobile-development.adoc[leveloffset=+4]
+include::{docdir}/reference/development/mobile-development.adoc[leveloffset=+3]
 
 ===== Android (Java)
 include::{docdir}/reference/development/android-java.adoc[leveloffset=+4]

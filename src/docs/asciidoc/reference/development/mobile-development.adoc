@@ -1,2 +1,8 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+The mobile development with ZetaPush is already possible but the documentation is not ready.
+Two SDKs are available (Android and iOS). If you need to use them, please link:{contact-url}[contact us].
+====
