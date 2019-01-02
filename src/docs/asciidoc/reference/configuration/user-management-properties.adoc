@@ -5,8 +5,8 @@ Some properties are available in the `application.json` file to configure the _S
 
 == Organization
 
-[#configure_organization_name]
 .Organization name
+[#configure_organization_name]
 
 Name of your organization. It is used in the default email sender (`noreply@${organizationName}.com`).
 
@@ -27,8 +27,8 @@ This property is optional. If it is not configured, you need to <<reference#conf
 
 == Email
 
-[#configure_email_sender]
 .Email sender
+[#configure_email_sender]
 
 Let you configure the sender of the different emails used in your application. For example for account registration.
 
@@ -39,7 +39,7 @@ The default email sender is `noreply@${organizationName}.com`.
 So If this property is not set, you need to configure the <<reference#configure_organization_name, organization name>>.
 ====
 
-This property support the standard notation for email (name <email@domain.com>):
+This property support the standard notation for email (`name <email@domain.com>`):
 
 [source, json]
 ----
@@ -77,12 +77,12 @@ You can set the email subject of the confirmation account creation like below:
 .Mandatory property
 [NOTE]
 ====
-This property is mandatory.
+For now, this is a mandatory property. In a future version, the subject could be extracted from the email template. This allows you to define a single source of information about the sent email and moreover, it simplifies internationalization of your email.
 ====
 
 .URL Redirection
 
-When an end-user validate his account, he is redirected to a specific URL of your application. There are 2 cases, if the confirmation is OK or if it failed:
+When an end-user validates his account, he is redirected to a specific URL of your application. There are 2 cases, if the confirmation is OK or if it failed:
 
 [source, json]
 ----
@@ -178,7 +178,7 @@ You can configure the subject of the sent email to reset the password:
 .Mandatory property
 [NOTE]
 ====
-This property is mandatory.
+For now, this is a mandatory property. In a future version, the subject could be extracted from the email template. This allows you to define a single source of information about the sent email and moreover, it simplifies internationalization of your email.
 ====
 
 
@@ -186,6 +186,12 @@ This property is mandatory.
 
 To use the _StandardUserWorkflow_ you need to configure an email provider.
 Today, you can use two possibilities: _Mailjet_ or _SMTP_.
+
+.Future implementations
+[TIP]
+====
+In future versions, other implementatins will be provided as-is. Moreover, you will be able to replace email sending by SMS or anything else.
+====
 
 .Mandatory property
 [NOTE]
@@ -202,15 +208,16 @@ To use the _Mailjet_ configuration you need to configure the `application.json` 
 ----
 {
   "mailjet": {
-    "apikey-public": "my-mailjet-apikey-public",
+    "apikey-public": "my-mailjet-apikey-public",      // <1>
     "apikey-private": "my-mailjet-apikey-private",
-    "enable": "true",                                 // <1>
-    "url": "https://api.mailjet.com/v3.1/send"        // <2>
+    "enable": "true",                                 // <2>
+    "url": "https://api.mailjet.com/v3.1/send"        // <3>
   }
 }
 ----
-<1> Optional property to define that we use this email provider configuration. (The default value is `true`)
-<2> Define the URL to use for your _Mailjet_ email provider. By default the used URL is `https://api.mailjet.com/v3.1/send`.
+<1> The `apikey-public` and `apikey-private` are provided by _Mailjet_ and you can find them in your _Mailjet_ account information.
+<2> Optional property to define that we use this email provider configuration. (The default value is `true` if you have configured `apikey-public` and `apikey-private`)
+<3> Optional property to define the URL to use for your _Mailjet_ email provider. By default the used URL is `https://api.mailjet.com/v3.1/send`.
 
 === SMTP configuration
 
@@ -230,6 +237,16 @@ To use the _SMTP_ configuration you need to configure the `application.json` fil
   }
 }
 ----
-<1> Default to 465
-<2> Default to `true`
-<3> Optional property to define that we use this email provider configuration. (The default value is `true`)
+<1> Optional, deducted from SSL and starttls
+<2> Optional, default to `true`
+<3> Optional property to define that we use this email provider configuration. (The default value is `true` if you have configured at least host and port)
+
+
+[#auto_implementation_selection]
+== Auto implementation about properties
+
+The implementation of the _StandardUserWorkflow_ can change about the presence or not of particular properties.
+
+For example, if you <<reference#configure_email_sender, configure an email sender>>, the default email sender using the organization name will be overriden.
+
+A most common case is for email provider configuration. If you change your _STMP_ configuration to a _Mailjet_ configuration (for example), the implementation will be automatically changed.

@@ -2,14 +2,13 @@
 include::{docdir}/variables.adoc[]
 
 It is possible to configure the structure of your application.
-We list in this part the different possibilities.
+In this part, we list the different possibilities.
 
 
 [#change-worker-entry-point]
 == Entry point for worker
 
-By default, the entry point of your worker code is the file `./worker/index.ts` to follow the NodeJS convention.
-
+By default, the entry point of your worker code is the file `./worker/index.ts`.
 You can configure the entry point of the worker setting the `main` property of the `package.json` file.
 
 For example if you want to use the file `./worker/main.ts` as entry point you need to have the following `package.json` content :
@@ -26,6 +25,13 @@ For example if you want to use the file `./worker/main.ts` as entry point you ne
 ----
 <1> Path of the file used as entry point
 
+.Detail about path of entry point
+[NOTE]
+====
+For now, the entry point of your worker need to be in the `worker` folder.
+This will soon be possible to put your entry point anywhere, when the <<reference#different_directory_structures, custom directory structure>> will be released.
+====
+
 [#different_directory_structures]
 == Custom directory structure
 
@@ -33,20 +39,14 @@ For example if you want to use the file `./worker/main.ts` as entry point you ne
 ====
 This section will be useful if you want to change the structure of your application. 
 The most common case is when you want to use framework (Angular, React, VueJS for example).
-This documentation will be soon ready.
+This documentation will soon be ready.
 ====
 
 == Script alias
 
-[NOTE]
-====
-Npm provides a handy feature
-to run scripts provided by dependencies without needing to change your computer settings or
-install the tool. ZetaPush defines npm https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378[script aliases^]
-to run the ZetaPush _CLI_ through npm.
+Npm provides a handy feature to run scripts provided by dependencies without needing to change your computer settings or install the tool. ZetaPush defines npm https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378[script aliases^] to run the ZetaPush _CLI_ through npm.
 
 See <<developer-manual.adoc#_using_cli, for more information about the ways of using the CLI>>.
-====
 
 
 

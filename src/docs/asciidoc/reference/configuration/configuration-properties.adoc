@@ -3,23 +3,29 @@ include::{docdir}/variables.adoc[]
 
 ZetaPush provides the `application.json` file to let you configure the behavior of your application.
 
-For now, the `application.json` file is mainly used for the <<reference#integrate_user_management, Standard User Workflow>> but you can also <<reference#configuration-properties ,configure your own properties for your application>>.
+For now, the `application.json` file is mainly used for the <<reference#integrate_user_management, Standard User Workflow>> but you can also <<reference#configuration_properties ,configure your own properties for your application>>.
 The list of available properties for the <<reference#integrate_user_management, Standard User Workflow>> are listed in <<reference#customize_standard_user_workflow, this section>>.
 
 .New properties will added
 [NOTE]
 ====
 New _Cloud Services_ will be developed (to handle data, security, etc...).
-With them, some available properties of the `application.json` will be added.
+With them, some properties may be added and configurable through the application.json file.
 ====
 
-.Futur features
+.Future features
 [NOTE]
 ====
 New features about `application.json` file will be soon released :
-- Support of multi `application.json` file, one per worker (when the multi-worker) will be released.
-- Support of `application.json` file per environment like `application-<env>.json` for example. (When the multi-environment will be released)
-- Autocompletion of properties in VSCode (and other IDE) 
+
+* Support of multi one `application.json` file per worker (when the multi-worker will be released)
+* Support of one shared `application.json` between workers
+* Support of one shared `application.json` for the whole application (worker and front)
+* Support of `application.json` file per environment like `application-<env>.json` for example. (When the multi-environment will be released)
+* Autocompletion of properties in VSCode (and other IDE) 
 ====
 
-
+[TODO]
+====
+You will soon can add your own configuration property source. For example download properties from an external service or from a Git repository. (You will also be able to configure the priority of the source).
+====

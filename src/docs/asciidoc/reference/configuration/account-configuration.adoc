@@ -1,11 +1,11 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-To use `ZetaPush`, you need to have an account and an application.
+To use `ZetaPush`, you need to have a _ZetaPush account_ and a _ZetaPush application_.
 If you don't have any of them, you can link:{free-trial-url}[signup for a free trial] or link:{contact-url}[contact us for more suitable account].
 
 Then, you can set your account configuration in the `.zetarc` file.
-It is at the root of your application.
+This file is present at the root of your application folder.
 
 Here is the list of properties that can be used. For each of them, you also have the associated <<reference#cli, cli flag>> and environment variable. 
 

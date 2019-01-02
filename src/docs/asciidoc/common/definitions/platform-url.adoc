@@ -1,1 +1,1 @@
-By default, the developer uses the _production environment of ZetaPush_ to develop and deploy its applications. In most cases, the developer doesn't need to set this property. *This property if useful when another (on premise, or dedicated) _ZetaPush platform_ is to be used.*
+By default, the developer uses the _public ZetaPush cloud_ to develop and deploy its applications. In most cases, the developer doesn't need to set this property. *This property if useful when another (on premise, or dedicated) _ZetaPush cloud_ is to be used.*
