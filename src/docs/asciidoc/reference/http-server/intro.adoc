@@ -1,3 +1,11 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+ZetaPush provides you the possibility to add a _HTTP server_ in your application to handle _HTTP_ requests.
+A _HTTP server_ is already used in one _Cloud Service_, the _Standard User Workflow_ (To handle confirmation account registration for example).
+
+You have two possibilities:
+
+* <<reference#internal_http_server, Use the provided HTTP server>>
+* <<reference#custom_http_server, Create your own HTTP server>>
+

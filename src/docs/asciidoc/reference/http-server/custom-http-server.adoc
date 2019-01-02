@@ -1,3 +1,60 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+ZetaPush provides you the possibility to create your own _HTTP server_.
+Here is an example using the `express` library:
+
+.Custom HTTP server
+[source, javascript, linenums]
+----
+import express from 'express';                              // <1>
+
+export default class {
+  onApplicationBootstrap() {                                // <2>
+    const app = express();
+
+    const port = process.env.HTTP_PORT || 3001;             // <3>
+
+    app.get('/', (req: any, res: any) => {                  // <4>
+      res.send(`Hello World from ${port}`);
+    });
+
+    app.listen(port, () => {                                // <5>
+      console.log(`HTTP server is listening on ${port}`);
+    });
+  }
+}
+----
+<1> In this case we use the `express` library
+<2> To initialize our application we use the <<reference#onapplicationbootstrap, `onApplicationBootstrap()` method>>
+<3> The `HTTP_PORT` environment variable is provided to use a custom HTTP server when the application is running on the _ZetaPush cloud_. Locally we use the port 3001 (in this case, you can use any port).
+<4> We handle the request
+<5> We launch the _HTTP server_
+
+
+
+.HTTP_PORT environment variable
+[NOTE]
+====
+The `HTTP_PORT` environment variable is provided to let you use a custom _HTTP server_ when your application is running on the _ZetaPush cloud_.
+Indeed, the `HTTP_PORT` environment variable is a reverved port number that is redirected to a specfic URL (provided at the end of a deployment or via the link:{web-console-url}[web console]).
+====
+
+When your application is running on the _ZetaPush cloud_, you can access to _HTTP server_ via the URL given at the end of the deployment:
+
+.Deployment details
+[source, console]
+----
+[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Prepare environment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish web application
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Preparing custom cloud services for deployment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish custom cloud service on worker instance
+[INFO] Web application front is available at http://front-1ceugbp7ci.celtia.zetapush.app:80/  ‌
+[INFO] Worker application queue_0 is available at http://queuea0-1ceugbp7ci.test.zetapush.app  ‌    <1>
+[INFO] Worker applications works only if you listen process.env.HTTP_PORT  ‌
+----
+<1> URL of your _HTTP server_
+
+You can use your _http server library_ like you would do without _ZetaPush_.
