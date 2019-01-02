@@ -261,17 +261,7 @@ include::{docdir}/reference/configuration/override-configuration.adoc[leveloffse
 
 [#customize_standard_user_workflow]
 ==== User Management
-
-[TODO]
-====
-Update this section to match new plan
-
-https://github.com/zetapush/documentation/issues/61
-
-include::{docdir}/common/cloud-services/user-management.adoc[leveloffset=+2]
-====
-
-
+include::{docdir}/reference/configuration/user-management-properties.adoc[leveloffset=+3]
 
 == Logs
 include::{docdir}/reference/logs/intro.adoc[leveloffset=+1]
