@@ -1,0 +1,81 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+ZetaPush manages scalability and redundancy of your _workers_. So there may have several workers that start at the same time. And if you initialize some data or configure some cloud services at the same time, it may have conflicts or duplicated data. To avoid that ZetaPush provides a way to initialize code that will ensure that is executed by only one worker.
+
+For this, ZetaPush provides the _bootstrap_ feature. To use it you need to implement the method `onApplicationBootstrap()` in your _custom cloud service_.
+
+.Bad practice for initialization code
+[TIP]
+====
+You may want to put your initialization code in the constructor but this is a bad practice.
+Indeed, even if in the most cases, a _custom cloud service_ is a link:{singleton-url}[singleton], it may have several instances of your _custom cloud service_ and your initialization code will be called many times. An other drawback is that the constructor is synchronous and the `onApplicationBootstrap` method is asynchronous (You can also put synchronous code in your `onApplicationBootstrap` with the `await` keyword).
+====
+
+In the following example we will create a worker to store data in a database. The initialization code let you create a table in our database. Then we will create methods to add and list our data. 
+
+.Initialization code
+[source, javascript, linenums]
+----
+import { Injectable, Bootstrappable } from '@zetapush/core';
+import { GdaConfigurer, Gda, GdaDataType } from '@zetapush/platform-legacy';
+
+const NAME_TABLE = 'table';
+const NAME_COLUMN = 'column';
+
+@Injectable()
+export default class implements Bootstrappable {                              // <1>
+  constructor(private gdaConfigurer: GdaConfigurer, private gda: Gda) {}
+
+  async onApplicationBootstrap() {                                            // <2>
+    this.gdaConfigurer.createTable({                                          // <3>
+      name: NAME_TABLE,
+      columns: [{
+        name: NAME_COLUMN,
+        type: GdaDataType.STRING
+      }]
+    });
+  }
+
+  async addData(data: string) {
+    return await this.gda.put({
+      table: NAME_TABLE,
+      column: NAME_COLUMN,
+      data,
+      key: Date.now().toString()
+    });
+  }
+
+  async getData() {
+    return await this.gda.list({
+      table: NAME_TABLE
+    });
+  }
+}
+----
+<1> We implement the `Bootstrappable` interface. This is optional (see below)
+<2> The `onApplicationBootstrap()` method is always _asynchronous_, the `async` keyword is optional
+<3> In our initialization code we create a table in our database
+
+.Bootstrappable interface
+[TIP]
+====
+The implementation of the `Bootstrappable` interface is optional but it is a best practice, you just need to implement a method named `onApplicationBootstrap()`.
+Indeed, implementing it avoids you to write wrong implementation of `onApplicationBootstrap()` method. It also indicates to other developers that you really wanted to add initialization code to your _cloud service_ on purpose and it also provides documentation about `onApplicationBootstrap` method directly in code.
+====
+
+You can implement the `onApplicationBootstrap()` method in several _custom cloud services_.
+A dependency tree will be created to execute all `onApplicationBootstrap()` methods in the proper order (regarding of the needed dependencies).
+
+For example in the following scheme, we have 2 exposed API named _Dashboard_ and _Mobile_. 
+For the case of the _Dashboard_ API, it uses another service named _Admin_, that uses _User Management_ and _Stock Management_ services and so on.
+
+So the services are initialized in a specific order :
+
+1. Utils
+2. User Data / Stock Data
+3. User Management / Stock Management / Stock Market
+4. Admin / Client API / Guest Access
+5. Dashboard / Mobile
+
+image::{images-dir}/schemas/bootstrap_order.png[role=center]
