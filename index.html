@@ -9714,7 +9714,777 @@ This module contains them and you have more information about their utilization 
 <h3 id="_develop_your_front_only"><a class="anchor" href="#_develop_your_front_only"></a><a class="link" href="#_develop_your_front_only">21.1. Develop your front only</a></h3>
 <div class="sect3">
 <h4 id="client_types"><a class="anchor" href="#client_types"></a><a class="link" href="#client_types">21.1.1. ZetaPush client</a></h4>
+<div class="paragraph">
+<p>ZetaPush provides a <em>ZetaPush Client</em> to interact with the <em>ZetaPush cloud</em>.
+Each of the 3 types of <em>Client</em> has a specific purpose:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#weak_client">Weak client</a> for an anonymous connection</p>
+</li>
+<li>
+<p><a href="#simple_client">Simple client</a> for a basic authenticated connection</p>
+</li>
+<li>
+<p><a href="#smart_client">Smart client</a> that automatically chooses between <em>Weak</em> or <em>Simple</em> client according to presence or not of credentials</p>
+</li>
+</ul>
+</div>
+<div class="sect5">
+<h6 id="weak_client"><a class="anchor" href="#weak_client"></a><a class="link" href="#weak_client">Weak Client</a></h6>
+<div class="paragraph">
+<p>The <em>Weak client</em> lets you create an anonymous connection with the <em>ZetaPush cloud</em>.
+That means that you are only connected via a <a href="https://en.wikipedia.org/wiki/Token">token</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Token of anonymous user</div>
+<div class="paragraph">
+<p>The token is only used to identify the anonymous user during his session.
+Indeed, each opened connection has its own session on the <em>ZetaPush cloud</em> so we need to identify each of them.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>How to use the <em>Weak Client</em> :</p>
+</div>
+<div class="paragraph tab-container">
+<p>Connection with Weak Client</p>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Weak client<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    Weak client
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { WeakClient } = from '@zetapush/client';</span>
 
+client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));
+
+<span class="comment">// Disconnection</span>
+client.disconnect();</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="simple_client"><a class="anchor" href="#simple_client"></a><a class="link" href="#simple_client">Simple Client</a></h6>
+<div class="paragraph">
+<p>The <em>Simple Client</em> is used to have an authenticated connection with the <em>ZetaPush cloud</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Simple client authentication</div>
+<div class="paragraph">
+<p>With the <em>Simple Client</em> the authentication is done with a couple login/password of the end user previously created.
+(It&#8217;s <strong>not</strong> your ZetaPush developer credentials at all)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>How to use the <em>Simple Client</em> :</p>
+</div>
+<div class="paragraph tab-container">
+<p>Connection with Simple Client</p>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Simple client<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    Simple client
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { Client } = from '@zetapush/client';</span>
+
+client = <span class="keyword">new</span> ZetaPushClient.Client({
+  authentication() {                                <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> ZetaPushClient.Authentication.simple({
+      <span class="key">login</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-login</span><span class="delimiter">'</span></span>,
+      <span class="key">password</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-password</span><span class="delimiter">'</span></span>
+    });
+  }
+});
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));
+
+<span class="comment">// Disconnection</span>
+client.disconnect();</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We define the used authentication (<em>simple</em> in this case)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="smart_client"><a class="anchor" href="#smart_client"></a><a class="link" href="#smart_client">Smart Client</a></h6>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">SmartClient is recommended</div>
+<div class="paragraph">
+<p>We advise you to use this <em>ZetaPush Client</em> for convenience.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <em>Smart Client</em> is a combinaison of the <em>Weak Client</em> and the <em>Simple Client</em>.
+If the <em>Client</em> has credentials, a <em>Simple Client</em> is used, otherwise a <em>Weak Client</em> is used.</p>
+</div>
+<div class="paragraph">
+<p>How to use the <em>Smart Client</em> :</p>
+</div>
+<div class="paragraph tab-container">
+<p>Connection with Smart Client</p>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Smart client<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    Smart client
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { SmartClient } = from '@zetapush/client';</span>
+
+client = <span class="keyword">new</span> ZetaPushClient.SmartClient();
+
+<span class="comment">// Set credentials (optional)</span>
+client.setCredentials({ <span class="key">login</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-login</span><span class="delimiter">'</span></span>, <span class="key">password</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-password</span><span class="delimiter">'</span></span>});
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));
+
+<span class="comment">// Disconnection</span>
+client.disconnect();</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_call_your_api"><a class="anchor" href="#_call_your_api"></a><a class="link" href="#_call_your_api">Call your API</a></h6>
+<div class="paragraph">
+<p>Once you are connected to the <em>ZetaPush cloud</em>, you can call your API declared in the <code>worker</code> part of your application.
+The best way is to use the method <code>createProxyTaskService()</code>. This will use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">proxy object</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Use proxy for API</div>
+<div class="paragraph">
+<p>Using proxy avoids you to have to create a definition class of your API.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Call API through proxy :</p>
+</div>
+<div class="paragraph tab-container">
+<p>Call API through proxy</p>
+</div>
+<div class="paragraph tab">
+<p>index.ts (worker)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  hello() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello World from Worker at <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Weak client<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js-Hello</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>call hello()<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js (front)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { WeakClient } = from '@zetapush/client';</span>
+client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+api = client.createProxyTaskService();
+
+<span class="comment">// Handle the click</span>
+document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
+  console.log(await api.hello());           <i class="conum" data-value="1"></i><b>(1)</b>
+});
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Call <code>hello()</code> method of the worker</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_call_api_without_proxy"><a class="anchor" href="#_call_api_without_proxy"></a><a class="link" href="#_call_api_without_proxy">Call API without proxy</a></h6>
+<div class="paragraph">
+<p>In the case of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a> is not available on your platform, you can use the <code>createAsyncTaskService()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>For this, you need to create a definition class:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Definition class</div>
+<div class="paragraph">
+<p>A definition class is used to define which methods are available in your worker. It has always the same format.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container">
+<p>Call API without proxy</p>
+</div>
+<div class="paragraph tab">
+<p>index.ts (worker)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  hello(name: string) {
+    <span class="keyword">return</span> <span class="error">`</span>Hello <span class="predefined">$</span>{name} from Worker at <span class="predefined">$</span>{Date.now()}<span class="error">`</span>;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Weak client<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js-Hello</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>call hello()<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js (front)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { WeakClient } = from '@zetapush/client';</span>
+<span class="comment">// import { Queue } = from '@zetapush/platform-legacy';</span>
+client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+
+<span class="comment">// Handle the click</span>
+document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
+  console.log(await api.hello(<span class="string"><span class="delimiter">'</span><span class="content">test</span><span class="delimiter">'</span></span>));                   <i class="conum" data-value="1"></i><b>(1)</b>
+});
+
+<span class="comment">// Our definition API</span>
+<span class="reserved">class</span> MyApi <span class="reserved">extends</span> ZetaPushPlatPlatformLegacy.Queue {    <i class="conum" data-value="2"></i><b>(2)</b>
+  hello(name) {                                           <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="keyword">return</span> <span class="local-variable">this</span>.<span class="predefined">$publish</span>(<span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, name);                  <i class="conum" data-value="4"></i><b>(4)</b>
+  }
+}
+
+<span class="comment">// create our AsyncTaskService</span>
+const api = client.createAsyncTaskService({
+  <span class="key">Type</span>: MyApi
+});
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Call <code>hello()</code> method of the worker</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We extends the <em>Queue Technical Service</em> that allows us to communicate with <em>ZetaPush Cloud</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Each method returns a <em>Promise</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The definition API is always the same format : <code>return this.$publish('name-cloud-function', param1, paramN);</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab-container-end">
+<p>-</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_injection_of_your_application_s_information"><a class="anchor" href="#_injection_of_your_application_s_information"></a><a class="link" href="#_injection_of_your_application_s_information">Injection of your application&#8217;s information</a></h6>
+<div class="paragraph">
+<p>The creation of a <em>ZetaPush Client</em> needs to have some information for commucating with the right application.
+For this, there are the <code>appName</code> and optionally the <code>platformUrl</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example of <em>ZetaClient</em> creation with explicit information</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>client = <span class="keyword">new</span> ZetaPushClient.WeakClient({
+  <span class="key">appName</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-app-name</span><span class="delimiter">'</span></span>,           <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key">platformUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">my-platform-url</span><span class="delimiter">'</span></span>    <i class="conum" data-value="2"></i><b>(2)</b>
+});</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Your <code>application</code> name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The optional URL of your used platform (by default you don&#8217;t need to use this variable)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you develop the front part of your application in the folder defined by convention (i.e. the <code>front/</code> folder of your application) the information (<code>appName</code> and <code>platformUrl</code>) will be automatically injected by the <em>ZetaPush CLI</em>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">When define <code>appName</code> or <code>platformUrl</code> ?</div>
+<div class="paragraph">
+<p>You only need to define <code>appName</code> (and maybe <code>platformUrl</code>) in the case of you develop your application outside of the ZetaPush <em>CLI</em> context, for example if you develop a mobile app.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_storage_of_credentials"><a class="anchor" href="#_storage_of_credentials"></a><a class="link" href="#_storage_of_credentials">Storage of credentials</a></h6>
+<div class="paragraph">
+<p><em>ZetaPush client</em> is able to automatically store some information in order to reconnect the end users without requiring to enter credentials again. As said before there are two different clients:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The token for the <em>Weak Client</em></p>
+</li>
+<li>
+<p>The credentials for the <em>Simple Client</em> (and the <em>Smart Client</em> if credentials are used)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the two cases, a cookie is created to save the user session. It is related to the <code>appName</code> to avoid conflicts.</p>
+</div>
+<div class="paragraph">
+<p>The token has different expiration duration according to the client type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Weak client</code> has no expiration meaning that once the client connection is established the first time, the cookie is set. The next connections reuse the same token. It is useful to know that the connection is for the same anonymous user as a previous session.</p>
+</li>
+<li>
+<p><code>Simple client</code> stores the cookie for 30 days meaning that if a user authenticates the first time on your application and then leaves it, when he comes back he can directly use your application without authenticating again.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Obviously, token storage can be disabled and expiration duration can be configured.
+This section will later describe how to enable/disable token storage, how to change storage implementation (local storage, session storage, &#8230;&#8203;) and how to change expiration duration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_multiple_api"><a class="anchor" href="#_multiple_api"></a><a class="link" href="#_multiple_api">Multiple API</a></h6>
+<div class="paragraph">
+<p>When you expose several cloud services in your worker, some <em>cloud functions</em> may have the same name. So you need a way to indicate which <em>cloud service</em> is targeted. Therefore in your worker you can use <a href="#namespaces">namespaces</a> to name each <em>cloud service</em>. Then you also need to indicate which <em>cloud service</em> to call in your front too.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_web_development"><a class="anchor" href="#_web_development"></a><a class="link" href="#_web_development">21.1.2. Web development</a></h4>
