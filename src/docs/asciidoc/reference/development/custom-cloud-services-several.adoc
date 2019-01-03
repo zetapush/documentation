@@ -7,11 +7,17 @@ During the development of your _custom cloud services_ you may want to not expos
 In this case, the affected _custom cloud services_ are not reachable by the client.
 
 .Example of private _custom cloud service_
-[source, javascript, linenums]
+[source, javascript, linenums, role="highlight-lines:3-13"]
 ----
 import { Injectable } from '@zetapush/core';
 
+/**
+ * This is a private cloud service
+ */
 class MyTimeManager {                                                     // <1>
+  /**
+   * This is a private cloud function
+   */
   getCurrentTime() {                                                      // <2>
     return Date.now();
   }
@@ -53,13 +59,17 @@ Example of several _custom cloud services_ exposed
 [role=tab]
 index.ts (worker)
 
-[source, javascript, linenums]
+[source, javascript, linenums, role="highlight-lines:8-10,23-24"]
 ----
 import { Injectable, Module } from '@zetapush/core';
 
 class MyTimeManager {                                                         // <1>
   getCurrentTime() {
     return Date.now();
+  }
+  
+  hello() {
+    return `Hello from MyTimeManager at ${this.getCurrentTime()}`;
   }
 }
 
@@ -80,10 +90,10 @@ class MyDefaultApi {                                                          //
 })
 export default class {}
 ----
-<1> Our API that will be exposed via the `timer` _namespace_
-<2> Our API that will be exposed via the `default` _namespace_
+<1> A _custom cloud service_ definition that defines `hello` _cloud function_
+<2> Another _custom cloud service_ definition that also defines `hello` _cloud function_
 <3> We expose a class that is defined as a <<reference#modules, _Module_>>.
-In the property `expose` we define in which _namespace_ we expose our _custom cloud services_
+In the property `expose` we define in which _namespace_ we expose each of our _custom cloud services_. By explicitly associating `MyTimeManager` to `timer` key, `MyTimeManager` _cloud service_ is exposed through `timer` _namespace_. Same applies to `MyDefaultApi` that is exposed through `default` _namespace_
 
 [role=tab]
 index.html
@@ -99,8 +109,8 @@ index.html
     <title>Several Custom Cloud Services</title>
   </head>
   <body>
-    <button class="js-Hello">call hello()</button>
-    <button class="js-Timer">call getCurrentTime()</button>
+    <button class="js-Hello">call hello() in default namespace</button>
+    <button class="js-Timer">call hello() in timer namespace</button>
   </body>
   <script src="https://unpkg.com/@zetapush/client"></script>
   <script src="https://unpkg.com/@zetapush/platform-legacy"></script>
@@ -135,7 +145,7 @@ document.querySelector('.js-Hello').addEventListener('click', async () => {
   console.log(await defaultApi.hello());
 });
 document.querySelector('.js-Timer').addEventListener('click', async () => {
-  console.log(await timerApi.getCurrentTime());
+  console.log(await timerApi.hello());
 });
 
 // Connection
