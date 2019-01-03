@@ -2030,7 +2030,307 @@ Two SDKs are available (Android and iOS). If you need to use them, please <a hre
 <h3 id="_advanced_usage_of_cloud_services"><a class="anchor" href="#_advanced_usage_of_cloud_services"></a>Advanced usage of cloud services</h3>
 <div class="sect3">
 <h4 id="several_custom_cloud_services"><a class="anchor" href="#several_custom_cloud_services"></a>Several custom cloud services</h4>
+<div class="sect4">
+<h5 id="_develop_a_cloud_service_that_is_not_exposed"><a class="anchor" href="#_develop_a_cloud_service_that_is_not_exposed"></a>Develop a cloud service that is not exposed</h5>
+<div class="paragraph">
+<p>During the development of your <em>custom cloud services</em> you may want to not expose some of them.
+In this case, the affected <em>custom cloud services</em> are not reachable by the client.</p>
+</div>
+<div class="listingblock highlight-lines:3-13">
+<div class="title">Example of private <em>custom cloud service</em></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
 
+<span class="comment">/**
+ * This is a private cloud service
+ */</span>
+<span class="reserved">class</span> MyTimeManager {                                                     <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="comment">/**
+   * This is a private cloud function
+   */</span>
+  getCurrentTime() {                                                      <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="keyword">return</span> Date.now();
+  }
+}
+
+<span class="error">@</span>Injectable()                                                             <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  constructor(<span class="reserved">private</span> timeManager: MyTimeManager) {}                      <i class="conum" data-value="4"></i><b>(4)</b>
+
+  hello() {                                                               <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="keyword">return</span> <span class="error">`</span>Hello from Worker at <span class="predefined">$</span>{<span class="local-variable">this</span>.timeManager.getCurrentTime()}<span class="error">`</span>;
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Our private <em>custom cloud service</em> (no <code>export</code> keyword)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>getCurrentTime()</code> is not reachable by the client (front part of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We specify that we want to use the dependency injection in our class</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We ask the dependency injection to have an instance of <code>MyTimeManager</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>hello()</code> is the only method reachable by the client (front part of your application)</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="expose_several_cloud_services"><a class="anchor" href="#expose_several_cloud_services"></a>Expose several cloud services</h5>
+<div class="paragraph">
+<p><em>ZetaPush</em> provides the possibility to expose several <em>custom cloud services</em> if you want.
+For example, you may have two <em>custom cloud services</em> that have same <em>cloud function</em> names.
+To differentiate them we provide <em>namespaces</em></p>
+</div>
+<div class="sect5">
+<h6 id="namespaces"><a class="anchor" href="#namespaces"></a>Namespaces</h6>
+<div class="paragraph">
+<p>With the <em>namespaces</em> you can separate several <em>custom cloud services</em>.
+The result is that if a <em>ZetaPush API</em> created by a <em>ZetaPush Client</em> is configured to reach one <em>namespace</em>, the <em>cloud functions</em> exposed in the others <em>namespaces</em> will not be reachable with this API.</p>
+</div>
+<div class="paragraph">
+<p>If we take the previous example, we may want to expose our two <em>custom cloud services</em> in two <em>namespaces</em> named <code>time</code> and <code>default</code>.</p>
+</div>
+<div class="paragraph tab-container">
+<p>Example of several <em>custom cloud services</em> exposed</p>
+</div>
+<div class="paragraph tab">
+<p>index.ts (worker)</p>
+</div>
+<div class="listingblock highlight-lines:8-10,23-24">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Module } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+
+<span class="reserved">class</span> MyTimeManager {                                                         <i class="conum" data-value="1"></i><b>(1)</b>
+  getCurrentTime() {
+    <span class="keyword">return</span> Date.now();
+  }
+
+  hello() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello from MyTimeManager at <span class="predefined">$</span>{<span class="local-variable">this</span>.getCurrentTime()}<span class="error">`</span>;
+  }
+}
+
+<span class="error">@</span>Injectable()
+<span class="reserved">class</span> MyDefaultApi {                                                          <i class="conum" data-value="2"></i><b>(2)</b>
+  constructor(<span class="reserved">private</span> timeManager: MyTimeManager) {}
+
+  hello() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello from Worker at <span class="predefined">$</span>{<span class="local-variable">this</span>.timeManager.getCurrentTime()}<span class="error">`</span>;
+  }
+}
+
+<span class="error">@</span>Module({                                                                     <i class="conum" data-value="3"></i><b>(3)</b>
+  <span class="key">expose</span>: {
+    <span class="key">timer</span>: MyTimeManager,
+    <span class="keyword">default</span>: MyDefaultApi
+  }
+})
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A <em>custom cloud service</em> definition that defines <code>hello</code> <em>cloud function</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Another <em>custom cloud service</em> definition that also defines <code>hello</code> <em>cloud function</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We expose a class that is defined as a <a href="#modules"><em>Module</em></a>.
+In the property <code>expose</code> we define in which <em>namespace</em> we expose each of our <em>custom cloud services</em>. By explicitly associating <code>MyTimeManager</code> to <code>timer</code> key, <code>MyTimeManager</code> <em>cloud service</em> is exposed through <code>timer</code> <em>namespace</em>. Same applies to <code>MyDefaultApi</code> that is exposed through <code>default</code> <em>namespace</em></td>
+</tr>
+</table>
+</div>
+<div class="paragraph tab">
+<p>index.html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">X-UA-Compatible</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ie=edge</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Several Custom Cloud Services<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js-Hello</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>call hello() in default namespace<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">js-Timer</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>call hello() in timer namespace<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab">
+<p>index.js (front)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td>
+  <td class="code"><pre><span class="comment">// If you use npm you can do :</span>
+<span class="comment">// import { WeakClient } = from '@zetapush/client';</span>
+<span class="comment">// import { Service } = from '@zetapush/platform-legacy';</span>
+client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+
+<span class="comment">// First api to reach 'default' namespace</span>
+const defaultApi = client.createProxyTaskService({                                <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">default</span><span class="delimiter">'</span></span>
+});
+
+<span class="comment">// Second API to reach 'timer' namespace</span>
+const timerApi = client.createProxyTaskService({                                  <i class="conum" data-value="2"></i><b>(2)</b>
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">timer</span><span class="delimiter">'</span></span>
+});
+
+<span class="comment">// Handle the clicks</span>
+document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Hello</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
+  console.log(await defaultApi.hello());
+});
+document.querySelector(<span class="string"><span class="delimiter">'</span><span class="content">.js-Timer</span><span class="delimiter">'</span></span>).addEventListener(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, async () =&gt; {
+  console.log(await timerApi.hello());
+});
+
+<span class="comment">// Connection</span>
+client
+  .connect()
+  .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">connected</span><span class="delimiter">'</span></span>))
+  .<span class="keyword">catch</span>(() =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">connection failed</span><span class="delimiter">'</span></span>));</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph tab-container-end">
+<p>-
+&lt;1&gt; We create an API that reach only the <code>default</code> namespace
+&lt;2&gt; We create an API that reach only the <code>timer</code> namespace</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="shared_module"><a class="anchor" href="#shared_module"></a>Create a shared module of cloud services</h4>
