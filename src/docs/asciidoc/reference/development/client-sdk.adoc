@@ -80,7 +80,7 @@ The _Simple Client_ is used to have an authenticated connection with the _ZetaPu
 [NOTE]
 ====
 With the _Simple Client_ the authentication is done with a couple login/password of the end user previously created.
-(It's *not at all* your ZetaPush developer credentials)
+(It's *not* your ZetaPush developer credentials at all)
 ====
 
 How to use the _Simple Client_ :
@@ -212,7 +212,7 @@ The best way is to use the method `createProxyTaskService()`. This will use link
 .Use proxy for API
 [NOTE]
 ====
-Using proxy avoid you to have to create a definition class of your API.
+Using proxy avoids you to have to create a definition class of your API.
 ====
 
 Call API through proxy :
@@ -370,7 +370,7 @@ client
 <1> Call `hello()` method of the worker
 <2> We extends the _Queue Technical Service_ that allows us to communicate with _ZetaPush Cloud_ 
 <3> Each method returns a _Promise_
-<4> The definition API is always the same format : `return this.$publish('name-method', param1, paramN);`
+<4> The definition API is always the same format : `return this.$publish('name-cloud-function', param1, paramN);`
 
 [role=tab-container-end]
 -
@@ -380,7 +380,7 @@ client
 The creation of a _ZetaPush Client_ needs to have some information for commucating with the right application.
 For this, there are the `appName` and optionally the `platformUrl`.
 
-.Example of _ZetaClient_ creation with explicite information
+.Example of _ZetaClient_ creation with explicit information
 [source, javascript, linenums]
 ----
 client = new ZetaPushClient.WeakClient({
@@ -389,19 +389,19 @@ client = new ZetaPushClient.WeakClient({
 });
 ----
 <1> Your `application` name
-<2> The optional URL of your used platform (By default you don't need to use this variable)
+<2> The optional URL of your used platform (by default you don't need to use this variable)
 
 If you develop the front part of your application in the folder defined by convention (i.e. the `front/` folder of your application) the information (`appName` and `platformUrl`) will be automatically injected by the _ZetaPush CLI_.
 
 .When define `appName` or `platformUrl` ?
 [IMPORTANT]
 ====
-You only need to define `appName` (and maybe `platformUrl`) in the case of you don't develop your application in the standard context, for example if you develop a mobile app. 
+You only need to define `appName` (and maybe `platformUrl`) in the case of you develop your application outside of the ZetaPush _CLI_ context, for example if you develop a mobile app. 
 ====
 
 == Storage of credentials
 
-_ZetaPush client_ is able to automatically store some information in order to reconnect the end users without requiring to enter ceredentials again. As said before there are two different clients:
+_ZetaPush client_ is able to automatically store some information in order to reconnect the end users without requiring to enter credentials again. As said before there are two different clients:
 
 * The token for the _Weak Client_
 * The credentials for the _Simple Client_ (and the _Smart Client_ if credentials are used)
@@ -413,6 +413,12 @@ The token has different expiration duration according to the client type:
 * `Weak client` has no expiration meaning that once the client connection is established the first time, the cookie is set. The next connections reuse the same token. It is useful to know that the connection is for the same anonymous user as a previous session.
 
 * `Simple client` stores the cookie for 30 days meaning that if a user authenticates the first time on your application and then leaves it, when he comes back he can directly use your application without authenticating again.
+
+[TODO]
+=====
+Obviously, token storage can be disabled and expiration duration can be configured.
+This section will later describe how to enable/disable token storage, how to change storage implementation (local storage, session storage, ...) and how to change expiration duration.
+=====
 
 == Multiple API
 
