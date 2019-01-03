@@ -39,4 +39,10 @@ endif::[]
 ifndef::cometd-url[]
 :cometd-url: https://cometd.org/
 endif::[]
+ifndef::token-url[]
+:token-url: https://en.wikipedia.org/wiki/Token
+endif::[]
+ifndef::proxy-definition-url[]
+:proxy-definition-url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+endif::[]
 

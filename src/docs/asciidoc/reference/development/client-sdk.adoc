@@ -1,2 +1,425 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+ZetaPush provides a _ZetaPush Client_ to interact with the _ZetaPush cloud_.
+Each of the 3 types of _Client_ has a specific purpose:
+
+* <<reference#weak_client, Weak client>> for an anonymous connection
+* <<reference#simple_client, Simple client>> for a basic authenticated connection
+* <<reference#smart_client, Smart client>> that automatically chooses between _Weak_ or _Simple_ client according to presence or not of credentials
+
+[#weak_client]
+== Weak Client
+
+The _Weak client_ lets you create an anonymous connection with the _ZetaPush cloud_.
+That means that you are only connected via a link:{token-url}[token].
+
+.Token of anonymous user
+[NOTE]
+====
+The token is only used to identify the anonymous user during his session.
+Indeed, each opened connection has its own session on the _ZetaPush cloud_ so we need to identify each of them.
+====
+
+How to use the _Weak Client_ :
+
+[role="tab-container"]
+Connection with Weak Client
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weak client</title>
+  </head>
+  <body>
+    Weak client
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="./index.js"></script>
+</html>
+----
+
+[role=tab]
+index.js
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { WeakClient } = from '@zetapush/client';
+
+client = new ZetaPushClient.WeakClient();
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+
+// Disconnection
+client.disconnect();
+----
+
+[role=tab-container-end]
+-
+
+
+[#simple_client]
+== Simple Client
+
+The _Simple Client_ is used to have an authenticated connection with the _ZetaPush cloud_.
+
+.Simple client authentication
+[NOTE]
+====
+With the _Simple Client_ the authentication is done with a couple login/password of the end user previously created.
+(It's *not* your ZetaPush developer credentials at all)
+====
+
+How to use the _Simple Client_ :
+
+[role="tab-container"]
+Connection with Simple Client
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple client</title>
+  </head>
+  <body>
+    Simple client
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="./index.js"></script>
+</html>
+----
+
+[role=tab]
+index.js
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { Client } = from '@zetapush/client';
+
+client = new ZetaPushClient.Client({
+  authentication() {                                // <1>
+    return ZetaPushClient.Authentication.simple({
+      login: 'my-login',
+      password: 'my-password'
+    });
+  }
+});
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+
+// Disconnection
+client.disconnect();
+----
+<1> We define the used authentication (_simple_ in this case)
+
+[role=tab-container-end]
+-
+
+[#smart_client]
+== Smart Client
+
+.SmartClient is recommended
+[NOTE]
+====
+We advise you to use this _ZetaPush Client_ for convenience.
+====
+
+The _Smart Client_ is a combinaison of the _Weak Client_ and the _Simple Client_.
+If the _Client_ has credentials, a _Simple Client_ is used, otherwise a _Weak Client_ is used. 
+
+How to use the _Smart Client_ :
+
+[role="tab-container"]
+Connection with Smart Client
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Smart client</title>
+  </head>
+  <body>
+    Smart client
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="./index.js"></script>
+</html>
+----
+
+[role=tab]
+index.js
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { SmartClient } = from '@zetapush/client';
+
+client = new ZetaPushClient.SmartClient();
+
+// Set credentials (optional)
+client.setCredentials({ login: 'my-login', password: 'my-password'});
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+
+// Disconnection
+client.disconnect();
+----
+
+[role=tab-container-end]
+-
+
+== Call your API
+
+Once you are connected to the _ZetaPush cloud_, you can call your API declared in the `worker` part of your application.
+The best way is to use the method `createProxyTaskService()`. This will use link:{proxy-definition-url}[proxy object].
+
+.Use proxy for API
+[NOTE]
+====
+Using proxy avoids you to have to create a definition class of your API.
+====
+
+Call API through proxy :
+
+[role="tab-container"]
+Call API through proxy
+
+[role=tab]
+index.ts (worker)
+
+[source, javascript, linenums]
+----
+export default class {
+  hello() {
+    return `Hello World from Worker at ${Date.now()}`;
+  }
+}
+----
+
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weak client</title>
+  </head>
+  <body>
+    <button class="js-Hello">call hello()</button>
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="./index.js"></script>
+</html>
+----
+
+
+
+[role=tab]
+index.js (front)
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { WeakClient } = from '@zetapush/client';
+client = new ZetaPushClient.WeakClient();
+api = client.createProxyTaskService();
+
+// Handle the click
+document.querySelector('.js-Hello').addEventListener('click', async () => {
+  console.log(await api.hello());           // <1>
+});
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+----
+<1> Call `hello()` method of the worker
+
+[role=tab-container-end]
+-
+
+== Call API without proxy
+
+In the case of the link:{proxy-definition-url}[Proxy] is not available on your platform, you can use the `createAsyncTaskService()` method.
+
+For this, you need to create a definition class:
+
+.Definition class
+[IMPORTANT]
+====
+A definition class is used to define which methods are available in your worker. It has always the same format.  
+====
+
+[role="tab-container"]
+Call API without proxy
+
+[role=tab]
+index.ts (worker)
+
+[source, javascript, linenums]
+----
+export default class {
+  hello(name: string) {
+    return `Hello ${name} from Worker at ${Date.now()}`;
+  }
+}
+----
+
+
+[role=tab]
+index.html
+
+[source, html, linenums]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weak client</title>
+  </head>
+  <body>
+    <button class="js-Hello">call hello()</button>
+  </body>
+  <script src="https://unpkg.com/@zetapush/client"></script>
+  <script src="https://unpkg.com/@zetapush/platform-legacy"></script>
+  <script src="./index.js"></script>
+</html>
+----
+
+
+
+[role=tab]
+index.js (front)
+
+[source, javascript, linenums]
+----
+// If you use npm you can do :
+// import { WeakClient } = from '@zetapush/client';
+// import { Queue } = from '@zetapush/platform-legacy';
+client = new ZetaPushClient.WeakClient();
+
+// Handle the click
+document.querySelector('.js-Hello').addEventListener('click', async () => {
+  console.log(await api.hello('test'));                   // <1>
+});
+
+// Our definition API
+class MyApi extends ZetaPushPlatPlatformLegacy.Queue {    // <2>
+  hello(name) {                                           // <3>
+    return this.$publish('hello', name);                  // <4>
+  }
+}
+
+// create our AsyncTaskService
+const api = client.createAsyncTaskService({
+  Type: MyApi
+});
+
+// Connection
+client
+  .connect()
+  .then(() => console.log('connected'))
+  .catch(() => console.error('connection failed'));
+----
+<1> Call `hello()` method of the worker
+<2> We extends the _Queue Technical Service_ that allows us to communicate with _ZetaPush Cloud_ 
+<3> Each method returns a _Promise_
+<4> The definition API is always the same format : `return this.$publish('name-cloud-function', param1, paramN);`
+
+[role=tab-container-end]
+-
+
+== Injection of your application's information
+
+The creation of a _ZetaPush Client_ needs to have some information for commucating with the right application.
+For this, there are the `appName` and optionally the `platformUrl`.
+
+.Example of _ZetaClient_ creation with explicit information
+[source, javascript, linenums]
+----
+client = new ZetaPushClient.WeakClient({
+  appName: 'my-app-name',           // <1>
+  platformUrl: 'my-platform-url'    // <2>
+});
+----
+<1> Your `application` name
+<2> The optional URL of your used platform (by default you don't need to use this variable)
+
+If you develop the front part of your application in the folder defined by convention (i.e. the `front/` folder of your application) the information (`appName` and `platformUrl`) will be automatically injected by the _ZetaPush CLI_.
+
+.When define `appName` or `platformUrl` ?
+[IMPORTANT]
+====
+You only need to define `appName` (and maybe `platformUrl`) in the case of you develop your application outside of the ZetaPush _CLI_ context, for example if you develop a mobile app. 
+====
+
+== Storage of credentials
+
+_ZetaPush client_ is able to automatically store some information in order to reconnect the end users without requiring to enter credentials again. As said before there are two different clients:
+
+* The token for the _Weak Client_
+* The credentials for the _Simple Client_ (and the _Smart Client_ if credentials are used)
+
+In the two cases, a cookie is created to save the user session. It is related to the `appName` to avoid conflicts.
+
+The token has different expiration duration according to the client type:
+
+* `Weak client` has no expiration meaning that once the client connection is established the first time, the cookie is set. The next connections reuse the same token. It is useful to know that the connection is for the same anonymous user as a previous session.
+
+* `Simple client` stores the cookie for 30 days meaning that if a user authenticates the first time on your application and then leaves it, when he comes back he can directly use your application without authenticating again.
+
+[TODO]
+=====
+Obviously, token storage can be disabled and expiration duration can be configured.
+This section will later describe how to enable/disable token storage, how to change storage implementation (local storage, session storage, ...) and how to change expiration duration.
+=====
+
+== Multiple API
+
+When you expose several cloud services in your worker, some _cloud functions_ may have the same name. So you need a way to indicate which _cloud service_ is targeted. Therefore in your worker you can use <<reference#namespaces, namespaces>> to name each _cloud service_. Then you also need to indicate which _cloud service_ to call in your front too.
