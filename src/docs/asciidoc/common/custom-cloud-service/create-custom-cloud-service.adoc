@@ -46,7 +46,7 @@ to follow NodeJS conventions. Indeed, `index.ts` is the usually the file that im
 all other files.
 
 You can write code of your _custom cloud services_ in any other file named as you want.
-You will see later how to indicate to ZetaPush worker how to find your files if you don't
+You will see <<reference#change-worker-entry-point, in the reference part>> how to indicate to ZetaPush worker how to find your files if you don't
 want to follow convention.
 ====
 

@@ -1,44 +1,52 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
-You can configure your applications with several variables. Here is the list of them:
-
-.Application variables
-[cols="5*^.^a", options="header"]
-|===
-| Name of the property
-| Definition
-| _package.json_
-| CLI parameter
-| Default value
-
-| Front code
-| 
-include::{docdir}/common/definitions/front-code.adoc[]
-| 
-include::{docdir}/common/code/front-property-package-json.adoc[]
-| --front <path>
-| `./front/`
-
-| Worker code
-| 
-include::{docdir}/common/definitions/worker-code.adoc[]
-| 
-include::{docdir}/common/code/worker-property-package-json.adoc[]
-| --worker <path>
-| `./worker/`
-
-| Worker entry point
-| 
-include::{docdir}/common/definitions/entry-point-worker.adoc[]
-| 
-include::{docdir}/common/code/entry-point-worker-package-json.adoc[]
-| _None_
-| `./worker/index.ts`
+It is possible to configure the structure of your application.
+In this part, we list the different possibilities.
 
 
+[#change-worker-entry-point]
+== Entry point for worker
 
-|===
+By default, the entry point of your worker code is the file `./worker/index.ts`.
+You can configure the entry point of the worker setting the `main` property of the `package.json` file.
+
+For example if you want to use the file `./worker/main.ts` as entry point you need to have the following `package.json` content :
+
+.Custom worker entry point
+[source, json, linenums]
+----
+{
+  "name": "myApp",
+  "version": "0.1.0",
+  "main": "worker/main.ts",       // <1>
+  // Other properties...
+}
+----
+<1> Path of the file used as entry point
+
+.Detail about path of entry point
+[NOTE]
+====
+For now, the entry point of your worker need to be in the `worker` folder.
+This will soon be possible to put your entry point anywhere, when the <<reference#different_directory_structures, custom directory structure>> will be released.
+====
+
+[#different_directory_structures]
+== Custom directory structure
+
+[TODO]
+====
+This section will be useful if you want to change the structure of your application. 
+The most common case is when you want to use framework (Angular, React, VueJS for example).
+This documentation will soon be ready.
+====
+
+== Script alias
+
+Npm provides a handy feature to run scripts provided by dependencies without needing to change your computer settings or install the tool. ZetaPush defines npm https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378[script aliases^] to run the ZetaPush _CLI_ through npm.
+
+See <<developer-manual.adoc#_using_cli, for more information about the ways of using the CLI>>.
 
 
 
