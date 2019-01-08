@@ -1,2 +1,49 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+This last object contains (amongst others) the URL of your worker and your front (deployed on the _ZetaPush cloud_ or running locally).
+
+== Use ZetaPushContext
+
+The `ZetaPushContext` provides you some methods to interact with it:
+
+* `getAppName()`: Returns the _appName_ of your application
+* `getPlatformUrl()`: Returns the _platformUrl_ of your application
+* `getFrontUrl()`: Returns the url of the used front part of your application
+* `getWorkerUrl()`: Returns the url of the used worker
+* `getLocalZetaPushHttpPort()`: Returns the port used on <<reference#http_server, _HTTP server_>>
+
+
+.Role of URL
+[TIP]
+====
+`getFrontUrl()` and `getWorkerUrl()` provide you the URL used in your application, depending of your context
+(Locally or running on _ZetaPush cloud_). For example, the `getFrontUrl()` can be used for a redirection in your
+application.
+====
+
+The `ZetaPushContext` can be used like below:
+
+.Use ZetaPushContext
+[source, javascript, linenums]
+----
+import { ZetaPushContext, Injectable } from '@zetapush/core';       // <1>
+
+@Injectable()
+export default class Api {
+  constructor(private context: ZetaPushContext) {}                  // <2>
+
+  getContext() {
+    return {
+      front: this.context.getFrontUrl(),                            // <3>
+      worker: this.context.getWorkerUrl(),
+      zetapushPort: this.context.getLocalZetaPushHttpPort(),
+      appName: this.context.getAppName(),
+      platformUrl: this.context.getPlatformUrl()
+    };
+  }
+}
+----
+<1> `ZetaPushContext` is provided by the _@zetapush/core_ module
+<2> We ask the _Dependency Injection_ to provide an instance of `ZetaPushContext`
+<3> We use all methods provided by the `ZetaPushContext`
