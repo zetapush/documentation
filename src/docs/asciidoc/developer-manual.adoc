@@ -7,7 +7,6 @@ include::{docdir}/variables.adoc[]
 = Developer manual
 
 
-
 == Requirements
 include::{docdir}/developer-manual/requirements/intro.adoc[leveloffset=+1]
 
@@ -65,6 +64,10 @@ include::{docdir}/developer-manual/develop-cloud-services/compose-use-builtin.ad
 
 ===== Use another _custom cloud service_
 include::{docdir}/developer-manual/develop-cloud-services/compose-use-custom.adoc[leveloffset=+4]
+
+[#onapplicationbootstrap]
+==== Add initialization code
+include::{docdir}/developer-manual/develop-cloud-services/initialization-code.adoc[leveloffset=+3]
 
 === Develop fast
 

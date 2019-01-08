@@ -39,6 +39,9 @@ endif::[]
 ifndef::cometd-url[]
 :cometd-url: https://cometd.org/
 endif::[]
+ifndef::singleton-url[]
+:singleton-url: https://en.wikipedia.org/wiki/Singleton_pattern
+endif::[]
 ifndef::token-url[]
 :token-url: https://en.wikipedia.org/wiki/Token
 endif::[]
