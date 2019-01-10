@@ -1,3 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+[TODO]
+====
+The utilization of logs in the link:{web-console-url}[web console] will soon be documented.
+====

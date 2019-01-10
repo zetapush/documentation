@@ -1,3 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+[TODO]
+====
+It will soon possible to use external log visualization
+====

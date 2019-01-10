@@ -1,0 +1,8 @@
+:relative-path: ../../
+include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+Some information will soon be added about utilization of _Standard User Workflow_.
+For now, you can follow the link:#integrate_user_management[dedicated developer manual section]. 
+====

@@ -1,2 +1,8 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+This section will explain why _ZetaPush_ is useful about supervision of your applications.
+It will soon be ready. 
+====

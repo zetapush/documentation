@@ -1,2 +1,9 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+The integration with the front frameworks will soon be possible.
+We will describe in this section how to integrate your application with 
+the main frameworks (<<reference#develop_with_angular, Angular>>, <<reference#develop_with_react, React>>, <<reference#develop_with_vue, VueJS>>).
+====

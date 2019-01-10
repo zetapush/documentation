@@ -1,2 +1,35 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+=== What is a _custom cloud service_
+include::{docdir}/developer-manual/develop-cloud-services/definition.adoc[leveloffset=+2]
+
+=== Develop a _custom cloud services_
+
+==== Define a _custom cloud service_
+include::{docdir}/developer-manual/develop-cloud-services/create-custom-cloud-service.adoc[leveloffset=+3]
+
+==== Expose a _custom cloud service_
+include::{docdir}/developer-manual/develop-cloud-services/expose-custom-cloud-service.adoc[leveloffset=+3]
+
+==== Use a _custom cloud service_ in your front
+include::{docdir}/developer-manual/develop-cloud-services/use-in-front.adoc[leveloffset=+3]
+
+==== Run application
+include::{docdir}/developer-manual/develop-cloud-services/run-application.adoc[leveloffset=+3]
+
+==== Compose cloud services
+include::{docdir}/developer-manual/develop-cloud-services/compose-intro.adoc[leveloffset=+3]
+
+===== Dependency injection
+include::{docdir}/developer-manual/develop-cloud-services/compose-dependency-injection.adoc[leveloffset=+4]
+
+===== Use built-in _cloud service_
+include::{docdir}/developer-manual/develop-cloud-services/compose-use-builtin.adoc[leveloffset=+4]
+
+===== Use another _custom cloud service_
+include::{docdir}/developer-manual/develop-cloud-services/compose-use-custom.adoc[leveloffset=+4]
+
+[#onapplicationbootstrap]
+==== Add initialization code
+include::{docdir}/developer-manual/develop-cloud-services/initialization-code.adoc[leveloffset=+3]

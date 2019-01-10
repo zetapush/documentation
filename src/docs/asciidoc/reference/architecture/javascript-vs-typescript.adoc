@@ -1,2 +1,8 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+[TODO]
+====
+This section will explain why _ZetaPush_ mainly uses _TypeScript_.
+It will soon be ready. 
+====
