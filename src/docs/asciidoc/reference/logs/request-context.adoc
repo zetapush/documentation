@@ -1,3 +1,95 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+The _requestContext_ object is an abstraction of the <<reference#logs, logs service>>.
+
+The link:#developer_manual_logs[dedicated section] explains what is the _requestContext_ and how to use it. So in this section we will see a practical utilization of _requestContext_.
+
+
+.Set correct log level
+[TIP]
+====
+To be sure to see all logs, you can put the log level to `verbose` via the _CLI_ : `zeta config --logs verbose`
+====
+
+.Practical example of requestContext
+[source, javascript, linenums]
+----
+import {
+  Injectable,
+  RequestContext,
+  RequestContextAware,
+  Bootstrappable
+} from "@zetapush/core";
+import { Gda, GdaConfigurer, GdaDataType } from "@zetapush/platform-legacy";
+
+@Injectable()
+export default class Api implements RequestContextAware, Bootstrappable {           // <1>
+  requestContext!: RequestContext;                                                  // <2>      
+
+  constructor(private gda: Gda, private gdaConfigurer: GdaConfigurer) {}
+
+  async onApplicationBootstrap() {                                                  // <3>
+    await this.gdaConfigurer.createTable({
+      name: "table",
+      columns: [
+        {
+          name: "column",
+          type: GdaDataType.STRING
+        }
+      ]
+    });
+  }
+
+  async addToDatabase(data: string) {
+    this.requestContext.logger.info(`[addToDatabase] - Add ${data} info`);          // <4>
+    return await this.gda.put({
+      key: Date.now().toString(),
+      table: "table",
+      column: "column",
+      data
+    });
+  }
+
+  async getAllData() {
+    this.requestContext.logger.info(`[getAllData] - Get all data`);                 // <5>
+    try {
+      const { result: resultFromDataBase } = await this.gda.list({
+        table: "table"
+      });
+      if (resultFromDataBase && resultFromDataBase.content) {
+        this.requestContext.logger.info(                                            // <6>
+          `[getAllData] - content : ${resultFromDataBase.content}`
+        );
+        return resultFromDataBase.content;
+      } else {
+        this.requestContext.logger.warn(                                            // <7>
+          "[getAllData] - No content in database"
+        );
+      }
+    } catch (err) {
+      this.requestContext.logger.error(                                             // <8>
+        "[getAllData] - Failed to access to database"
+      );
+    }
+  }
+}
+----
+<1> Optional implementation of _RequestContextAware_
+<2> Injected property of `requestContext`
+<3> Creation of table for database
+<4> Log in `info` when we add info in database
+<5> Log in `info` when we try to get data
+<6> Log in `info` if content exists
+<7> Log in `warn` if no content in database
+<8> Log in `error` if it failed to access to database
+
+The result in the database if the following:
+
+image::{images-dir}/logs/console-log-traces.png[]
+
+.More Log levels
+[TIP]
+====
+If you need to have more log levels, you can link:{contact-url}[contact us].
+====

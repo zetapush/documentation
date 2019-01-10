@@ -280,7 +280,7 @@ include::{docdir}/reference/logs/utility-methods.adoc[leveloffset=+2]
 === Built-in log cloud service
 include::{docdir}/reference/logs/log-cloud-service.adoc[leveloffset=+2]
 
-[log_with_requestcontext]
+[#log_with_requestcontext]
 === Logs using requestContext
 include::{docdir}/reference/logs/request-context.adoc[leveloffset=+2]
 

@@ -77,6 +77,7 @@ include::{docdir}/developer-manual/develop-cloud-services/hot-reload.adoc[levelo
 ==== Auto-completion
 include::{docdir}/developer-manual/develop-cloud-services/auto-completion.adoc[leveloffset=+3]
 
+[#developer_manual_logs]
 ==== Log from a _custom cloud service_
 include::{docdir}/developer-manual/develop-cloud-services/logs.adoc[leveloffset=+3]
 
