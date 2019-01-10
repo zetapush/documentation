@@ -1,3 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+[TODO]
+====
+The utility methods from `@zetapush/common` for _Logs_ will soon be documented.
+====

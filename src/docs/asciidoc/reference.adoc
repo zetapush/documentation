@@ -111,10 +111,8 @@ include::{docdir}/reference/concepts/zetapush-context.adoc[leveloffset=+3]
 
 == Develop with ZetaPush
 
-[TODO]
-====
-Intro
-====
+In the _Getting started_ section you already see how to develop with _ZetaPush_.
+So in this section we will see in more details how to develop with _ZetaPush_ and some advanced usages.
 
 === Develop your front only
 include::{docdir}/reference/development/front-only.adoc[leveloffset=+4]
@@ -229,6 +227,12 @@ include::{docdir}/common/cloud-services-legacy/trigger.adoc[leveloffset=+3]
 [#cli]
 == Command Line Interface
 
+[TODO]
+====
+Some details about the command line interface will soon be added.
+For now, you can use the `zeta -h` command to get some information.
+====
+
 === Config
 include::{docdir}/reference/cli/config.adoc[leveloffset=+2]
 
@@ -300,6 +304,12 @@ include::{docdir}/reference/logs/external-visualization.adoc[leveloffset=+2]
 
 
 == Tests
+
+[TODO]
+====
+For now, you can use any testing library in your _ZetaPush application_.
+More documentation will soon be added.
+====
 
 === Test your custom cloud services
 include::{docdir}/reference/tests/intro.adoc[leveloffset=+2]
@@ -386,6 +396,12 @@ include::{docdir}/reference/http-server/custom-http-server.adoc[leveloffset=+2]
 
 
 == Extend a cloud service
+
+
+[TODO]
+====
+Documentation about extention of any _Cloud service_ will soon be added.
+====
 
 ////
 == Testing

@@ -1,3 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+[TODO]
+====
+It will soon be possible to see your `console.log()` in the link:{web-console-url}[web console].
+====

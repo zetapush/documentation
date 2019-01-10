@@ -1,3 +1,7 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+[TODO]
+====
+The persistence of logs will soon be documented.
+====
