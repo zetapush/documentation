@@ -1,3 +1,32 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
 
+To configure the log level of your application you use the <<reference#cli, CLI>> or from the link:{web-console-url}[web console] (Not ready yet).
+
+To do this via the <<reference#cli, CLI>>, you need to launch the `zeta config` command (See more details in <<reference#verbosity_level, this section>>).
+
+.Get the current log level
+[source, console]
+----
+$ zeta config --get
+----
+
+Today, there are only two available log levels:
+
+* verbose
+* default
+
+If you want leaner log level, you can link:{contact-url}[contact us].
+
+.Set the log level
+[source, console]
+----
+$ zeta config --logs verbose
+$ zeta config --logs default
+----
+
+.Default verbose level
+[TIP]
+====
+The default verbose level traces only errors.
+==== 
