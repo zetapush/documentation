@@ -1,2 +1,23 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+When you develop your _cloud services_, you may want to use the current context.
+The most important thing about this is that it depends of your runtime environment.
+Indeed, the properties will be not the same when your worker is running locally
+or when your worker is running on the _ZetaPush cloud_.
+
+.Different contexts
+[TIP]
+=====
+The context is not the same between locally and in the _ZetaPush cloud_ because in the first
+case the context is provided by the <<reference#cli, CLI>> and in the second case the context is provided
+by the _ZetaPush platform_. 
+=====
+
+To handle this, ZetaPush provides some util functions to get the current context.
+There are 3 classes to manage the context :
+
+* <<reference#context_environment, Environment>>
+* <<reference#configuration_properties, ConfigurationProperties>>
+* <<reference#zetapush_context, ZetaPushContext>>
+

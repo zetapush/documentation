@@ -1,2 +1,49 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+This object contains the content of your `application.json` file.
+
+== Access to application.json properties
+
+To interact with your `application.json` file, you can use these provided methods:
+
+* `get()`: Get a property value via his name, returns `undefined` if doesn't exists
+* `getOrThrow()`: Get a property value via his name, returns `API_ERROR` exception if doesn't exists
+* `has()`: Check if a property exists in the `application.json` file (returns boolean)
+
+In the case of we have the following `application.json` file:
+
+.application.json content
+[source, json, linenums]
+----
+{
+  "organization": {
+    "name": "ZetaPush"
+  },
+  "my-name": "MyName",
+}
+----
+
+We can get properties like this :
+
+.Get application.json properties
+[source, javascript, linenums]
+----
+import { Injectable, ConfigurationProperties } from '@zetapush/core';     // <1>
+
+@Injectable()
+export default class {
+  constructor(private properties: ConfigurationProperties) {}             // <2>
+
+  getUserInfo() {
+    return {
+      name: this.properties.get('my-name'),                               // <3>
+      orga: this.properties.get('organization.name')                      // <4>
+    }
+  }
+}
+----
+<1> The _ConfigurationProperties_ class is in the `@zetapush/core` package.
+<2> The dependency injection provides us a _ConfigurationProperties_ instance.
+<3> We read the `application.json` property via a _getter_
+<4> We read the `application.json` nested property via a _getter_

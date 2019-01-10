@@ -1,2 +1,63 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+This object is just a wrapper for <<reference#configuration_properties, ConfigurationProperties>> and <<reference#zetapush_context, ZetaPushContext>>.
+
+You can use it like this :
+
+.Use Environment context
+[source, javascript, linenums]
+----
+import { Injectable, Environment } from '@zetapush/core';     // <1>
+
+@Injectable()
+export default class Api {
+  constructor(private env: Environment) {}                    // <2>
+
+  getEnvironment() {
+    return {
+      context: this.env.context,                              // <3>
+      name: this.env.name,                                    // <4>
+      properties: this.env.properties,                        // <5>
+      variables: this.env.variables                           // <6>
+    };
+  }
+}
+----
+<1> The _Environment_ class is in the `@zetapush/core` package.
+<2> The dependency injection provides us a _Environment_ instance.
+<3> We get the `ZetaPushContext`
+<4> We get the name of the environment (dev, prod, etc...)
+<5> We get the `ConfigurationProperties`
+<6> We get the environment variables
+
+
+As the _Environment_ object is a wrapper for <<reference#configuration_properties, ConfigurationProperties>> and <<reference#zetapush_context, ZetaPushContext>>, we retrieve the values for these objects via the properties `context` and `properties`.
+
+.Environment feature is not ready in the full chain
+[NOTE]
+====
+The name of the environment is already available in the current context but the *Environment management* feature is not ready yet. The integration in the _CLI_ is missing and it is our next high priority.
+====
+
+Because the `Environment` object also contains the `ConfigurationProperties` and `ZetaPushContext`,
+you can use the methods of this nested properties. For example to get the _application name_ via 
+the <<reference#zetapush_context, `ZetaPushContext`>>:
+
+.Get appName via Environment
+[source, javascript, linenums]
+----
+import { Injectable, Environment } from '@zetapush/core';     // <1>
+
+@Injectable()
+export default class Api {
+  constructor(private env: Environment) {}                    // <2>
+
+  getAppName() {
+    return this.env.context.getAppName();                     // <3>
+  }
+}
+----
+<1> The _Environment_ class is in the `@zetapush/core` package.
+<2> The dependency injection provides us a _Environment_ instance.
+<3> Get the _appName_ via `getAppName()` method.
