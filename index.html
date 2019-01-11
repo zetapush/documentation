@@ -163,13 +163,14 @@
 <li><a href="#_use_a_em_custom_cloud_service_em_in_your_front">12.2.3. Use a <em>custom cloud service</em> in your front</a></li>
 <li><a href="#_run_application">12.2.4. Run application</a></li>
 <li><a href="#_compose_cloud_services">12.2.5. Compose cloud services</a></li>
+<li><a href="#onapplicationbootstrap">12.2.6. Add initialization code</a></li>
 </ul>
 </li>
 <li><a href="#_develop_fast">12.3. Develop fast</a>
 <ul class="sectlevel3">
 <li><a href="#_hot_reload">12.3.1. Hot reload</a></li>
 <li><a href="#_auto_completion">12.3.2. Auto-completion</a></li>
-<li><a href="#_log_from_a_em_custom_cloud_service_em">12.3.3. Log from a <em>custom cloud service</em></a></li>
+<li><a href="#developer_manual_logs">12.3.3. Log from a <em>custom cloud service</em></a></li>
 <li><a href="#_debug_a_em_custom_cloud_service_em">12.3.4. Debug a <em>custom cloud service</em></a></li>
 <li><a href="#_test_a_em_custom_cloud_service_em">12.3.5. Test a <em>custom cloud service</em></a></li>
 </ul>
@@ -273,7 +274,7 @@
 <ul class="sectlevel3">
 <li><a href="#_high_availability">19.2.1. High availability</a></li>
 <li><a href="#_load_balancing">19.2.2. Load-balancing</a></li>
-<li><a href="#_scalability">19.2.3. Scalability</a></li>
+<li><a href="#scalability">19.2.3. Scalability</a></li>
 <li><a href="#_supervision">19.2.4. Supervision</a></li>
 <li><a href="#javascript_vs_typescript">19.2.5. JavaScript vs TypeScript</a></li>
 </ul>
@@ -293,9 +294,9 @@
 <li><a href="#modules">20.3. Modules</a></li>
 <li><a href="#_current_running_context">20.4. Current running context</a>
 <ul class="sectlevel3">
-<li><a href="#_environment">20.4.1. Environment</a></li>
-<li><a href="#_configurationproperties">20.4.2. ConfigurationProperties</a></li>
-<li><a href="#_zetapushcontext">20.4.3. ZetaPushContext</a></li>
+<li><a href="#context_environment">20.4.1. Environment</a></li>
+<li><a href="#configuration_properties">20.4.2. ConfigurationProperties</a></li>
+<li><a href="#zetapush_context">20.4.3. ZetaPushContext</a></li>
 </ul>
 </li>
 </ul>
@@ -310,7 +311,12 @@
 </ul>
 </li>
 <li><a href="#generate_sdks">21.2. Generate SDKs from custom cloud service code</a></li>
-<li><a href="#develop_custom_cloud_services">21.3. Develop custom cloud services</a></li>
+<li><a href="#develop_custom_cloud_services">21.3. Develop custom cloud services</a>
+<ul class="sectlevel4">
+<li><a href="#_what_is_a_em_custom_cloud_service_em_2">21.3.1. What is a <em>custom cloud service</em></a></li>
+<li><a href="#_develop_a_em_custom_cloud_services_em_2">21.3.2. Develop a <em>custom cloud services</em></a></li>
+</ul>
+</li>
 <li><a href="#_advanced_usage_of_cloud_services">21.4. Advanced usage of cloud services</a>
 <ul class="sectlevel3">
 <li><a href="#several_custom_cloud_services">21.4.1. Several custom cloud services</a></li>
@@ -349,11 +355,23 @@
 <li><a href="#_configuration">24. Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_account_configuration">24.1. Account configuration</a></li>
-<li><a href="#_code_structure_configuration">24.2. Code structure configuration</a></li>
-<li><a href="#configuration_properties">24.3. Configuration properties</a></li>
-<li><a href="#_customize_cloud_services">24.4. Customize cloud services</a>
+<li><a href="#_code_structure_configuration">24.2. Code structure configuration</a>
 <ul class="sectlevel3">
-<li><a href="#_user_management_2">24.4.1. User Management</a></li>
+<li><a href="#change-worker-entry-point">24.2.1. Entry point for worker</a></li>
+<li><a href="#different_directory_structures">24.2.2. Custom directory structure</a></li>
+<li><a href="#_script_alias">24.2.3. Script alias</a></li>
+</ul>
+</li>
+<li><a href="#configuration_properties">24.3. Configuration properties</a></li>
+<li><a href="#_configuration_override">24.4. Configuration override</a>
+<ul class="sectlevel3">
+<li><a href="#_account_properties">24.4.1. Account properties</a></li>
+<li><a href="#_application_properties">24.4.2. Application properties</a></li>
+</ul>
+</li>
+<li><a href="#_customize_cloud_services">24.5. Customize cloud services</a>
+<ul class="sectlevel3">
+<li><a href="#customize_standard_user_workflow">24.5.1. User Management</a></li>
 </ul>
 </li>
 </ul>
@@ -363,11 +381,11 @@
 <li><a href="#_console_log">25.1. Console.log</a></li>
 <li><a href="#local_logger">25.2. Utility methods provided by @zetapush/common</a></li>
 <li><a href="#log_service">25.3. Built-in log cloud service</a></li>
-<li><a href="#_logs_using_requestcontext">Logs using requestContext</a></li>
-<li><a href="#_use_another_logging_library">25.4. Use another logging library</a></li>
-<li><a href="#logs_in_web_console">25.5. View logs in web console</a></li>
-<li><a href="#_persist_logs">25.6. Persist logs</a></li>
-<li><a href="#_external_log_visualization">25.7. External log visualization</a></li>
+<li><a href="#log_with_requestcontext">25.4. Logs using requestContext</a></li>
+<li><a href="#_use_another_logging_library">25.5. Use another logging library</a></li>
+<li><a href="#logs_in_web_console">25.6. View logs in web console</a></li>
+<li><a href="#_persist_logs">25.7. Persist logs</a></li>
+<li><a href="#_external_log_visualization">25.8. External log visualization</a></li>
 </ul>
 </li>
 <li><a href="#_tests">26. Tests</a>
@@ -1982,7 +2000,7 @@ all other files.</p>
 </div>
 <div class="paragraph">
 <p>You can write code of your <em>custom cloud services</em> in any other file named as you want.
-You will see later how to indicate to ZetaPush worker how to find your files if you don&#8217;t
+You will see <a href="#change-worker-entry-point">in the reference part</a> how to indicate to ZetaPush worker how to find your files if you don&#8217;t
 want to follow convention.</p>
 </div>
 </td>
@@ -3346,6 +3364,179 @@ Actually, you can <a href="#shared_module">just create a npm module</a> and impo
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="onapplicationbootstrap"><a class="anchor" href="#onapplicationbootstrap"></a><a class="link" href="#onapplicationbootstrap">12.2.6. Add initialization code</a></h4>
+<div class="paragraph">
+<p>ZetaPush manages scalability and redundancy of your <em>workers</em>. So there may have several workers that start at the same time. And if you initialize some data or configure some cloud services at the same time, it may have conflicts or duplicated data. To avoid that ZetaPush provides a way to initialize code that will ensure that is executed by only one worker.</p>
+</div>
+<div class="paragraph">
+<p>For this, ZetaPush provides the <em>bootstrap</em> feature. To use it you need to implement the method <code>onApplicationBootstrap()</code> in your <em>custom cloud service</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Bad practice for initialization code</div>
+<div class="paragraph">
+<p>You may want to put your initialization code in the constructor but this is a bad practice.
+Indeed, even if in the most cases, a <em>custom cloud service</em> is a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>, it may have several instances of your <em>custom cloud service</em> and your initialization code will be called many times. An other drawback is that the constructor is synchronous and the <code>onApplicationBootstrap</code> method is asynchronous (You can also put synchronous code in your <code>onApplicationBootstrap</code> with the <code>await</code> keyword).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the following example we will create a worker to store data in a database. The initialization code let you create a table in our database. Then we will create methods to add and list our data.</p>
+</div>
+<div class="listingblock">
+<div class="title">Initialization code</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Bootstrappable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { GdaConfigurer, Gda, GdaDataType } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
+
+const NAME_TABLE = <span class="string"><span class="delimiter">'</span><span class="content">table</span><span class="delimiter">'</span></span>;
+const NAME_COLUMN = <span class="string"><span class="delimiter">'</span><span class="content">column</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> <span class="reserved">implements</span> Bootstrappable {                              <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(<span class="reserved">private</span> gdaConfigurer: GdaConfigurer, <span class="reserved">private</span> gda: Gda) {}
+
+  async onApplicationBootstrap() {                                            <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.gdaConfigurer.createTable({                                          <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">name</span>: NAME_TABLE,
+      <span class="key">columns</span>: [{
+        <span class="key">name</span>: NAME_COLUMN,
+        <span class="key">type</span>: GdaDataType.STRING
+      }]
+    });
+  }
+
+  async addData(data: string) {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.put({
+      <span class="key">table</span>: NAME_TABLE,
+      <span class="key">column</span>: NAME_COLUMN,
+      data,
+      <span class="key">key</span>: Date.now().toString()
+    });
+  }
+
+  async getData() {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.list({
+      <span class="key">table</span>: NAME_TABLE
+    });
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We implement the <code>Bootstrappable</code> interface. This is optional (see below)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>onApplicationBootstrap()</code> method is always <em>asynchronous</em>, the <code>async</code> keyword is optional</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In our initialization code we create a table in our database</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Bootstrappable interface</div>
+<div class="paragraph">
+<p>The implementation of the <code>Bootstrappable</code> interface is optional but it is a best practice, you just need to implement a method named <code>onApplicationBootstrap()</code>.
+Indeed, implementing it avoids you to write wrong implementation of <code>onApplicationBootstrap()</code> method. It also indicates to other developers that you really wanted to add initialization code to your <em>cloud service</em> on purpose and it also provides documentation about <code>onApplicationBootstrap</code> method directly in code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can implement the <code>onApplicationBootstrap()</code> method in several <em>custom cloud services</em>.
+A dependency tree will be created to execute all <code>onApplicationBootstrap()</code> methods in the proper order (regarding of the needed dependencies).</p>
+</div>
+<div class="paragraph">
+<p>For example in the following scheme, we have 2 exposed API named <em>Dashboard</em> and <em>Mobile</em>.
+For the case of the <em>Dashboard</em> API, it uses another service named <em>Admin</em>, that uses <em>User Management</em> and <em>Stock Management</em> services and so on.</p>
+</div>
+<div class="paragraph">
+<p>So the services are initialized in a specific order :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Utils</p>
+</li>
+<li>
+<p>User Data / Stock Data</p>
+</li>
+<li>
+<p>User Management / Stock Management / Stock Market</p>
+</li>
+<li>
+<p>Admin / Client API / Guest Access</p>
+</li>
+<li>
+<p>Dashboard / Mobile</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//schemas/bootstrap_order.png" alt="bootstrap order">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_develop_fast"><a class="anchor" href="#_develop_fast"></a><a class="link" href="#_develop_fast">12.3. Develop fast</a></h3>
@@ -4046,7 +4237,7 @@ also available.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_log_from_a_em_custom_cloud_service_em"><a class="anchor" href="#_log_from_a_em_custom_cloud_service_em"></a><a class="link" href="#_log_from_a_em_custom_cloud_service_em">12.3.3. Log from a <em>custom cloud service</em></a></h4>
+<h4 id="developer_manual_logs"><a class="anchor" href="#developer_manual_logs"></a><a class="link" href="#developer_manual_logs">12.3.3. Log from a <em>custom cloud service</em></a></h4>
 <div class="sect4">
 <h5 id="_log_using_local_console"><a class="anchor" href="#_log_using_local_console"></a><a class="link" href="#_log_using_local_console">12.3.3.1. Log using local console</a></h5>
 <div class="paragraph">
@@ -9085,23 +9276,125 @@ It means that a published front can interact with a worker that is running local
 <h3 id="_zetapush_choices"><a class="anchor" href="#_zetapush_choices"></a><a class="link" href="#_zetapush_choices">19.2. ZetaPush choices</a></h3>
 <div class="sect3">
 <h4 id="_high_availability"><a class="anchor" href="#_high_availability"></a><a class="link" href="#_high_availability">19.2.1. High availability</a></h4>
-
+<div class="paragraph">
+<p><em>ZetaPush</em> ensures a high-availability of your appplications.</p>
+</div>
+<div class="paragraph">
+<p>Indeed, all systems on the <em>ZetaPush cloud</em> (servers, database, &#8230;&#8203;) are redundant.
+This will also be the case for <a href="#scalability">workers in next versions.</a></p>
+</div>
+<div class="paragraph">
+<p>If a server goes down, another takes over.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_load_balancing"><a class="anchor" href="#_load_balancing"></a><a class="link" href="#_load_balancing">19.2.2. Load-balancing</a></h4>
-
+<div class="paragraph">
+<p><em>ZetaPush</em> provides <em>Load-balancing</em> feature between workers.
+Indeed, if an application has many workers (The back part of your application), the <em>ZetaPush cloud</em> will automatically spread incoming requests between each of them.</p>
+</div>
+<div class="sect4">
+<h5 id="mix_local_and_remote"><a class="anchor" href="#mix_local_and_remote"></a><a class="link" href="#mix_local_and_remote">19.2.2.1. Running local and pushed worker on same application</a></h5>
+<div class="paragraph">
+<p>In the case of you have already deployed your application in the <em>ZetaPush cloud</em>, a worker is running on it.
+Then, if you run your application locally, a second worker is running on your computer.</p>
+</div>
+<div class="paragraph">
+<p>In this case, the <em>load-balancing</em> is always effective, the incoming requests will be spread between each worker.</p>
+</div>
+<div class="paragraph">
+<p>If you want to grab all traffic in your local worker, you need to use the flag <code>--grab-all-trafic</code> of the <a href="#cli">CLI</a>.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="title">Grab all traffic in local worker</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --grab-all-trafic</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this option, all requests will be redirected to your local worker.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You <strong>do not</strong> use this option in production because all of your client&#8217;s requests will be redirected on your local worker.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The possibility to grab traffic for a specific user (for debug for example) will be possible in a next version.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_scalability"><a class="anchor" href="#_scalability"></a><a class="link" href="#_scalability">19.2.3. Scalability</a></h4>
-
+<h4 id="scalability"><a class="anchor" href="#scalability"></a><a class="link" href="#scalability">19.2.3. Scalability</a></h4>
+<div class="paragraph">
+<p><em>ZetaPush</em> provides the scalability of yours workers.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you have deployed an application on the <em>ZetaPush cloud</em>,
+it is possible to increase the number of worker to scale the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For now, to scale your application, you need to <a href="https://www.zetapush.com/contact">contact us</a>.
+But in the next versions, the scalability will be automatic.</p>
+</div>
+<div class="paragraph">
+<p>Another feature that will be available in the next versions is the possibility to scale up your application
+on a short period to absorb peak loads without extra cost.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_supervision"><a class="anchor" href="#_supervision"></a><a class="link" href="#_supervision">19.2.4. Supervision</a></h4>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This section will explain why <em>ZetaPush</em> is useful about supervision of your applications.
+It will soon be ready.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="javascript_vs_typescript"><a class="anchor" href="#javascript_vs_typescript"></a><a class="link" href="#javascript_vs_typescript">19.2.5. JavaScript vs TypeScript</a></h4>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>This section will explain why <em>ZetaPush</em> mainly uses <em>TypeScript</em>.
+It will soon be ready.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -9685,17 +9978,399 @@ This module contains them and you have more information about their utilization 
 </div>
 <div class="sect2">
 <h3 id="_current_running_context"><a class="anchor" href="#_current_running_context"></a><a class="link" href="#_current_running_context">20.4. Current running context</a></h3>
-<div class="sect3">
-<h4 id="_environment"><a class="anchor" href="#_environment"></a><a class="link" href="#_environment">20.4.1. Environment</a></h4>
-
+<div class="paragraph">
+<p>When you develop your <em>cloud services</em>, you may want to use the current context.
+The most important thing about this is that it depends of your runtime environment.
+Indeed, the properties will be not the same when your worker is running locally
+or when your worker is running on the <em>ZetaPush cloud</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Different contexts</div>
+<div class="paragraph">
+<p>The context is not the same between locally and in the <em>ZetaPush cloud</em> because in the first
+case the context is provided by the <a href="#cli">CLI</a> and in the second case the context is provided
+by the <em>ZetaPush platform</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To handle this, ZetaPush provides some util functions to get the current context.
+There are 3 classes to manage the context :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#context_environment">Environment</a></p>
+</li>
+<li>
+<p><a href="#configuration_properties">ConfigurationProperties</a></p>
+</li>
+<li>
+<p><a href="#zetapush_context">ZetaPushContext</a></p>
+</li>
+</ul>
 </div>
 <div class="sect3">
-<h4 id="_configurationproperties"><a class="anchor" href="#_configurationproperties"></a><a class="link" href="#_configurationproperties">20.4.2. ConfigurationProperties</a></h4>
+<h4 id="context_environment"><a class="anchor" href="#context_environment"></a><a class="link" href="#context_environment">20.4.1. Environment</a></h4>
+<div class="paragraph">
+<p>This object is just a wrapper for <a href="#configuration_properties">ConfigurationProperties</a> and <a href="#zetapush_context">ZetaPushContext</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can use it like this :</p>
+</div>
+<div class="listingblock">
+<div class="title">Use Environment context</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Environment } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;     <i class="conum" data-value="1"></i><b>(1)</b>
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {
+  constructor(<span class="reserved">private</span> env: Environment) {}                    <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getEnvironment() {
+    <span class="keyword">return</span> {
+      <span class="key">context</span>: <span class="local-variable">this</span>.env.context,                              <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">name</span>: <span class="local-variable">this</span>.env.name,                                    <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="key">properties</span>: <span class="local-variable">this</span>.env.properties,                        <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="key">variables</span>: <span class="local-variable">this</span>.env.variables                           <i class="conum" data-value="6"></i><b>(6)</b>
+    };
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>Environment</em> class is in the <code>@zetapush/core</code> package.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The dependency injection provides us a <em>Environment</em> instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We get the <code>ZetaPushContext</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We get the name of the environment (dev, prod, etc&#8230;&#8203;)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>We get the <code>ConfigurationProperties</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>We get the environment variables</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As the <em>Environment</em> object is a wrapper for <a href="#configuration_properties">ConfigurationProperties</a> and <a href="#zetapush_context">ZetaPushContext</a>, we retrieve the values for these objects via the properties <code>context</code> and <code>properties</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Environment feature is not ready in the full chain</div>
+<div class="paragraph">
+<p>The name of the environment is already available in the current context but the <strong>Environment management</strong> feature is not ready yet. The integration in the <em>CLI</em> is missing and it is our next high priority.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Because the <code>Environment</code> object also contains the <code>ConfigurationProperties</code> and <code>ZetaPushContext</code>,
+you can use the methods of this nested properties. For example to get the <em>application name</em> via
+the <a href="#zetapush_context"><code>ZetaPushContext</code></a>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Get appName via Environment</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Environment } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;     <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {
+  constructor(<span class="reserved">private</span> env: Environment) {}                    <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getAppName() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.env.context.getAppName();                     <i class="conum" data-value="3"></i><b>(3)</b>
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>Environment</em> class is in the <code>@zetapush/core</code> package.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The dependency injection provides us a <em>Environment</em> instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Get the <em>appName</em> via <code>getAppName()</code> method.</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_zetapushcontext"><a class="anchor" href="#_zetapushcontext"></a><a class="link" href="#_zetapushcontext">20.4.3. ZetaPushContext</a></h4>
+<h4 id="configuration_properties"><a class="anchor" href="#configuration_properties"></a><a class="link" href="#configuration_properties">20.4.2. ConfigurationProperties</a></h4>
+<div class="paragraph">
+<p>This object contains the content of your <code>application.json</code> file.</p>
+</div>
+<div class="sect4">
+<h5 id="_access_to_application_json_properties"><a class="anchor" href="#_access_to_application_json_properties"></a><a class="link" href="#_access_to_application_json_properties">20.4.2.1. Access to application.json properties</a></h5>
+<div class="paragraph">
+<p>To interact with your <code>application.json</code> file, you can use these provided methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>get()</code>: Get a property value via his name, returns <code>undefined</code> if doesn&#8217;t exists</p>
+</li>
+<li>
+<p><code>getOrThrow()</code>: Get a property value via his name, returns <code>API_ERROR</code> exception if doesn&#8217;t exists</p>
+</li>
+<li>
+<p><code>has()</code>: Check if a property exists in the <code>application.json</code> file (returns boolean)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the case of we have the following <code>application.json</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">application.json content</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">organization</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ZetaPush</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">my-name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">MyName</span><span class="delimiter">&quot;</span></span>,
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can get properties like this :</p>
+</div>
+<div class="listingblock">
+<div class="title">Get application.json properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, ConfigurationProperties } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;     <i class="conum" data-value="1"></i><b>(1)</b>
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  constructor(<span class="reserved">private</span> properties: ConfigurationProperties) {}             <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getUserInfo() {
+    <span class="keyword">return</span> {
+      <span class="key">name</span>: <span class="local-variable">this</span>.properties.get(<span class="string"><span class="delimiter">'</span><span class="content">my-name</span><span class="delimiter">'</span></span>),                               <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">orga</span>: <span class="local-variable">this</span>.properties.get(<span class="string"><span class="delimiter">'</span><span class="content">organization.name</span><span class="delimiter">'</span></span>)                      <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>ConfigurationProperties</em> class is in the <code>@zetapush/core</code> package.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The dependency injection provides us a <em>ConfigurationProperties</em> instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We read the <code>application.json</code> property via a <em>getter</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We read the <code>application.json</code> nested property via a <em>getter</em></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="zetapush_context"><a class="anchor" href="#zetapush_context"></a><a class="link" href="#zetapush_context">20.4.3. ZetaPushContext</a></h4>
+<div class="paragraph">
+<p>This last object contains (amongst others) the URL of your worker and your front (deployed on the <em>ZetaPush cloud</em> or running locally).</p>
+</div>
+<div class="sect4">
+<h5 id="_use_zetapushcontext"><a class="anchor" href="#_use_zetapushcontext"></a><a class="link" href="#_use_zetapushcontext">20.4.3.1. Use ZetaPushContext</a></h5>
+<div class="paragraph">
+<p>The <code>ZetaPushContext</code> provides you some methods to interact with it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getAppName()</code>: Returns the <em>appName</em> of your application</p>
+</li>
+<li>
+<p><code>getPlatformUrl()</code>: Returns the <em>platformUrl</em> of your application</p>
+</li>
+<li>
+<p><code>getFrontUrl()</code>: Returns the url of the used front part of your application</p>
+</li>
+<li>
+<p><code>getWorkerUrl()</code>: Returns the url of the used worker</p>
+</li>
+<li>
+<p><code>getLocalZetaPushHttpPort()</code>: Returns the port used on <a href="#http_server"><em>HTTP server</em></a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Role of URL</div>
+<div class="paragraph">
+<p><code>getFrontUrl()</code> and <code>getWorkerUrl()</code> provide you the URL used in your application, depending of your context
+(Locally or running on <em>ZetaPush cloud</em>). For example, the <code>getFrontUrl()</code> can be used for a redirection in your
+application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ZetaPushContext</code> can be used like below:</p>
+</div>
+<div class="listingblock">
+<div class="title">Use ZetaPushContext</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { ZetaPushContext, Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;       <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {
+  constructor(<span class="reserved">private</span> context: ZetaPushContext) {}                  <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getContext() {
+    <span class="keyword">return</span> {
+      <span class="key">front</span>: <span class="local-variable">this</span>.context.getFrontUrl(),                            <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">worker</span>: <span class="local-variable">this</span>.context.getWorkerUrl(),
+      <span class="key">zetapushPort</span>: <span class="local-variable">this</span>.context.getLocalZetaPushHttpPort(),
+      <span class="key">appName</span>: <span class="local-variable">this</span>.context.getAppName(),
+      <span class="key">platformUrl</span>: <span class="local-variable">this</span>.context.getPlatformUrl()
+    };
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ZetaPushContext</code> is provided by the <em>@zetapush/core</em> module</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We ask the <em>Dependency Injection</em> to provide an instance of <code>ZetaPushContext</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We use all methods provided by the <code>ZetaPushContext</code></td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9703,12 +10378,9 @@ This module contains them and you have more information about their utilization 
 <div class="sect1">
 <h2 id="_develop_with_zetapush"><a class="anchor" href="#_develop_with_zetapush"></a><a class="link" href="#_develop_with_zetapush">21. Develop with ZetaPush</a></h2>
 <div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p>Intro</p>
-</div>
-</div>
+<p>In the <em>Getting started</em> section you already see how to develop with <em>ZetaPush</em>.
+So in this section we will see in more details how to develop with <em>ZetaPush</em> and some advanced usages.</p>
 </div>
 <div class="sect2">
 <h3 id="_develop_your_front_only"><a class="anchor" href="#_develop_your_front_only"></a><a class="link" href="#_develop_your_front_only">21.1. Develop your front only</a></h3>
@@ -10488,6 +11160,15 @@ This section will later describe how to enable/disable token storage, how to cha
 </div>
 <div class="sect3">
 <h4 id="_web_development"><a class="anchor" href="#_web_development"></a><a class="link" href="#_web_development">21.1.2. Web development</a></h4>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The integration with the front frameworks will soon be possible.
+We will describe in this section how to integrate your application with
+the main frameworks (<a href="#develop_with_angular">Angular</a>, <a href="#develop_with_react">React</a>, <a href="#develop_with_vue">VueJS</a>).</p>
+</div>
+</div>
+</div>
 <div class="sect4">
 <h5 id="develop_with_angular"><a class="anchor" href="#develop_with_angular"></a><a class="link" href="#develop_with_angular">21.1.2.1. Angular</a></h5>
 
@@ -10527,11 +11208,1758 @@ Two SDKs are available (Android and iOS). If you need to use them, please <a hre
 </div>
 <div class="sect2">
 <h3 id="generate_sdks"><a class="anchor" href="#generate_sdks"></a><a class="link" href="#generate_sdks">21.2. Generate SDKs from custom cloud service code</a></h3>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>When you develop your business logic, you may want to create a SDKs to expose your methods.
+This feature will soon be ready.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="develop_custom_cloud_services"><a class="anchor" href="#develop_custom_cloud_services"></a><a class="link" href="#develop_custom_cloud_services">21.3. Develop custom cloud services</a></h3>
+<div class="sect4">
+<h5 id="_what_is_a_em_custom_cloud_service_em_2"><a class="anchor" href="#_what_is_a_em_custom_cloud_service_em_2"></a><a class="link" href="#_what_is_a_em_custom_cloud_service_em_2">21.3.1. What is a <em>custom cloud service</em></a></h5>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> combines many <em>cloud functions</em> like the <em>cloud services</em> exposed by ZetaPush. The only difference is that <strong>you</strong> create the <em>cloud functions</em>.
+Generally, you will want to put the <strong>business logic</strong> of your application in the <em>custom cloud services</em>.</p>
+</div>
+<div class="sect5">
+<h6 id="_architecture_3"><a class="anchor" href="#_architecture_3"></a><a class="link" href="#_architecture_3">Architecture</a></h6>
+<div class="paragraph">
+<p>You develop <em>cloud services</em> that are contained in a concept named <strong>worker</strong>. In your code it is
+materialized by a folder named <code>worker</code>. The worker is the ZetaPush handler that starts your code (your <em>custom cloud services</em>).</p>
+</div>
+<div class="paragraph">
+<p>Your application is composed of a logic part (the worker) and a UI part (the front).</p>
+</div>
+<div class="paragraph">
+<p>There are two ways of running an application (worker and front):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You develop on your machine and iterate to provide features. Your application runs locally and interacts with ZetaPush Cloud.</p>
+</li>
+<li>
+<p>Once you are ready to make the developed features available to your end-users, you publish your application. Your application runs directly in ZetaPush Cloud.</p>
+</li>
+</ul>
+</div>
+<div class="sect6">
+<h7 id="_run_on_your_machine_2"><a class="anchor" href="#_run_on_your_machine_2"></a><a class="link" href="#_run_on_your_machine_2">Run on your machine</a></h7>
+<div class="imageblock center">
+<div class="content">
+<img src="custom-cloud-service-dev.png" alt="custom cloud service dev" width="709" height="430">
+</div>
+<div class="title">Figure 14. Interactions during development phase</div>
+</div>
+<div class="paragraph">
+<p>Both front and worker are running locally. The front interacts with <em>custom cloud services</em> contained in the worker through
+ZetaPush Cloud.
+As ZetaPush Cloud provides bidirectional connection, the <em>custom cloud services</em> can also interact with the front through
+ZetaPush Cloud too.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can interact with <em>built-in cloud services</em> provided by ZetaPush.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When you start using ZetaPush, you only develop locally so from your point of vue,
+your front seems to directly interact with your <em>custom cloud services</em>.</p>
+</div>
+<div class="paragraph">
+<p>In fact, all messages go through the Internet and ZetaPush Cloud.
+It means that a published front can interact with a worker that is running locally and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#mix_local_and_remote">how to mix local worker with worker running in cloud</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_run_in_cloud_2"><a class="anchor" href="#_run_in_cloud_2"></a><a class="link" href="#_run_in_cloud_2">Run in cloud</a></h7>
+<div class="imageblock center">
+<div class="content">
+<img src="custom-cloud-service-prod.png" alt="custom cloud service prod" width="681" height="387">
+</div>
+<div class="title">Figure 15. Custom Cloud Service in production phase</div>
+</div>
+<div class="paragraph">
+<p>Once published, everything runs in the ZetaPush Cloud. However the behavior is the same.
+Every interaction between the front and <em>custom cloud services</em> goes through the ZetaPush Cloud.</p>
+</div>
+<div class="paragraph">
+<p>The only main difference is that ZetaPush Cloud manages the hosting, the scalability and the
+high availability for you.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_develop_a_em_custom_cloud_services_em_2"><a class="anchor" href="#_develop_a_em_custom_cloud_services_em_2"></a><a class="link" href="#_develop_a_em_custom_cloud_services_em_2">21.3.2. Develop a <em>custom cloud services</em></a></h5>
+<div class="sect5">
+<h6 id="_define_a_em_custom_cloud_service_em_2"><a class="anchor" href="#_define_a_em_custom_cloud_service_em_2"></a><a class="link" href="#_define_a_em_custom_cloud_service_em_2">Define a <em>custom cloud service</em></a></h6>
+<div class="paragraph">
+<p>As a reminder worker is the ZetaPush container that will handle your code that defines <em>custom cloud services</em>.
+By convention, the code of your <em>custom cloud services</em> is placed in files under <code>worker</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="title">Tree structure convention</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">hello-world
+├── <em>.zetarc</em>
+├── <em>.gitignore</em>
+├── <em>front</em>
+│   ├── ...
+│   └── ...
+├── <strong>worker</strong>
+│   ├── file1.ts
+│   ├── file2.ts
+│   ├── ...
+│   ├── fileN.ts
+│   └── index.ts
+├── <em>package.json</em>
+├── <em>README.md</em>
+└── <em>tsconfig.json</em></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Change directory structure</div>
+<div class="paragraph">
+<p>See more information about <a href="#different_directory_structures">directory structure convention and how to adapt the structure</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Translated into code, a <em>custom cloud service</em> is just a <code>class</code> and its <code>methods</code> are the  <em>cloud functions</em>.
+The code is written in any <code>ts</code> file defined in <code>worker</code> directory. For small application like a "hello world",
+write your code directly in <code>index.ts</code> file.
+So the most basic example of a <em>custom cloud service</em> is below:</p>
+</div>
+<div class="listingblock">
+<div class="title">Basic custom cloud service</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {     <i class="conum" data-value="1"></i><b>(1)</b>
 
+    constructor() {}                       <i class="conum" data-value="2"></i><b>(2)</b>
+
+    helloWorld() {                         <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A custom cloud service is encapsulated in a JavaScript/TypeScript class. <strong>HelloWorldAsCustomCloudService</strong> is your first <em>custom cloud service</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A class can define a constructor. We will see later why it is important</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>helloWorld</code> is your first <em>custom cloud function</em></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A <em>cloud function</em> is always asynchronous (with the <em>async</em> keyword or not)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Change entry point</div>
+<div class="paragraph">
+<p>By default, the code above is directly written in <code>index.ts</code> file. This is done in order
+to follow NodeJS conventions. Indeed, <code>index.ts</code> is the usually the file that imports
+all other files.</p>
+</div>
+<div class="paragraph">
+<p>You can write code of your <em>custom cloud services</em> in any other file named as you want.
+You will see <a href="#change-worker-entry-point">in the reference part</a> how to indicate to ZetaPush worker how to find your files if you don&#8217;t
+want to follow convention.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect6">
+<h7 id="_define_a_em_cloud_function_em_2"><a class="anchor" href="#_define_a_em_cloud_function_em_2"></a><a class="link" href="#_define_a_em_cloud_function_em_2">Define a <em>cloud function</em></a></h7>
+<div class="paragraph">
+<p>Each <em>cloud function</em> in a <em>custom cloud service</em> is a standard JavaScript/TypeScript
+method.
+For example, if you want a <em>cloud function</em> that receives two parameters you write:</p>
+</div>
+<div class="listingblock highlight-lines:8-14">
+<div class="title">A more realistic <em>cloud function</em></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">class</span> HelloWorldAsCustomCloudService {                            <i class="conum" data-value="1"></i><b>(1)</b>
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {                <i class="conum" data-value="2"></i><b>(2)</b>
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {                            <i class="conum" data-value="3"></i><b>(3)</b>
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage                                        <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>custom cloud service</em> definition as seen before</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Declaration of a <em>cloud function</em> named <code>saySomething</code>. This <em>cloud function</em> accepts
+two parameters. As <a href="#javascript_vs_typescript">TypeScript is the recommended way</a>, each parameter is typed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Just for an example, the business logic consists in looping a number of times
+and concatenating the message. You can obviously write any code you want here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <em>custom cloud function</em> simply returns the contactenated string.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Why typing ?</div>
+<div class="paragraph">
+<p>Typing is optional but recommended to have a well defined API. Thanks to typing,
+ZetaPush is able to generate more accurate <a href="#generate_api_documentation">documentation based on your code</a> and also
+<a href="#generate_sdks">generate mobile/web/IoT SDKs</a> from your code with the right types so it
+makes developing your clients easier (for example, auto-completion can be used).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Tips about cloud functions</div>
+<div class="paragraph">
+<p>A <em>custom cloud service</em> can have as many <em>custom cloud functions</em> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can have as many parameters as you want. Parameters can be anything: <code>string</code>, <code>number</code>,
+<code>boolean</code>, <code>array</code> or <code>object</code>. You can code your function as you always do.</p>
+</div>
+<div class="paragraph">
+<p>A <em>custom cloud function</em> can return anything including a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>.
+You can also write your code using <a href="https://javascript.info/async-await">async/await syntax</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Define several <em>custom cloud services</em></div>
+<div class="paragraph">
+<p>Obviously when your application grows, you need to split your <em>custom cloud service</em> into several classes in order
+to make your API more understandable and more maintainable.</p>
+</div>
+<div class="paragraph">
+<p>You can learn <a href="#several_custom_cloud services">how to define several <em>custom cloud services</em></a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You have now a <em>custom cloud service</em> that provides two <em>cloud functions</em>.
+But until it is exposed, it can&#8217;t be called from outside of the worker.</p>
+</div>
+<div class="paragraph">
+<p>The next section describes how you can expose your <em>custom cloud service</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_expose_a_em_custom_cloud_service_em_2"><a class="anchor" href="#_expose_a_em_custom_cloud_service_em_2"></a><a class="link" href="#_expose_a_em_custom_cloud_service_em_2">Expose a <em>custom cloud service</em></a></h6>
+<div class="paragraph">
+<p>When you define a <em>custom cloud service</em> that you want to expose to the client,
+you need to declare it. There are 2 cases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only one <em>custom cloud service</em> exposed</p>
+</li>
+<li>
+<p>Many <em>custom cloud services</em> exposed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this section we only address one <em>custom cloud service</em> exposed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">How to expose several <em>custom cloud services</em></div>
+<div class="paragraph">
+<p>You can also learn <a href="#expose_several_custom_cloud_services">how to expose several <em>custom cloud services</em></a> in the advanced sections.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We follow npm conventions to indicate the entry point of your worker. Indeed, the <code>package.json</code> defines a property named <code>main</code>.
+We use this property to indicate which file is the main file that declares the exposed <em>custom cloud service</em>.
+By default, the main file is named <code>index.ts</code> and this file is placed in <code>worker</code> directory. So the <code>main</code>
+property is by default <code>worker/index.ts</code>.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="custom-cloud-service-entry-point.png" alt="custom cloud service entry point" width="678" height="161">
+</div>
+</div>
+<div class="paragraph">
+<p>Now that your <em>custom cloud service</em> is marked as the entry point, it can be exposed by ZetaPush.
+However you still have a little change to make on your code:</p>
+</div>
+<div class="listingblock highlight-lines:1">
+<div class="title">A more realistic <em>cloud function</em></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {                    <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>export</code>: <a href="https://www.typescriptlang.org/docs/handbook/modules.html" target="_blank" rel="noopener">this is required by TypeScript</a>.
+In fact, declaring a class in a file makes it private.
+It means that if you have another <code>.ts</code> file and you want to import <code>HelloWorldAsCustomCloudService</code> declaration,
+it won&#8217;t be possible without <code>export</code> keyword. This is for code encapsulation.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>default</code>: <a href="https://www.typescriptlang.org/docs/handbook/modules.html#default-exports">TypeScript provides this keyword</a>.
+When exposing only one <em>custom cloud service</em>, <code>default</code> tells the worker that there is only one class (only one
+<em>custom cloud service</em> defined in the <code>index.ts</code>). So the worker can directly analyze it and instantiate it.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">How to expose several <em>custom cloud services</em></div>
+<div class="paragraph">
+<p>As seen above, you can also learn <a href="#expose_several_custom_cloud_services">how to expose several <em>custom cloud services</em></a> in the advanced sections.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now your <em>custom cloud service</em> can be loaded by the ZetaPush worker and your <em>custom cloud service</em>
+is automatically exposed.
+It means that now a client can call the <em>cloud functions</em> defined in your <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>The next section shows how to call a <em>cloud function</em> from a web page using pure JavaScript.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_use_a_em_custom_cloud_service_em_in_your_front_2"><a class="anchor" href="#_use_a_em_custom_cloud_service_em_in_your_front_2"></a><a class="link" href="#_use_a_em_custom_cloud_service_em_in_your_front_2">Use a <em>custom cloud service</em> in your front</a></h6>
+<div class="paragraph">
+<p>In this chapter we will see how to consume our <em>cloud functions</em> from a web page.
+At the end of this example, we will have one button to call <code>helloWorld</code> <em>cloud function</em> and
+one section with a message, a number of repetitions and a button to call <code>saySomething</code> <em>cloud function</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mobile applications</div>
+<div class="paragraph">
+<p>Here we show how to create a web page that consumes our <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a mobile application for Android, iOS and Windows Phone as well
+as code for a device. You can use any language you want for the client part.</p>
+</div>
+<div class="paragraph">
+<p>By default we target web because it is currently the most used technology (even to build
+some mobile applications using hybrid technologies).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As a reminder, here is the code of <em>custom cloud service</em> named <code>HelloWorldAsCustomCloudService</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+    constructor() {}
+
+    helloWorld() {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+    }
+
+    saySomething(message: string, <span class="key">times</span>: number) {
+        let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+        <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+            fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+        }
+        <span class="keyword">return</span> fullMessage
+    }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_prepare_your_front_for_using_zetapush_client_2"><a class="anchor" href="#_prepare_your_front_for_using_zetapush_client_2"></a><a class="link" href="#_prepare_your_front_for_using_zetapush_client_2">Prepare your front for using ZetaPush client</a></h7>
+<div class="paragraph">
+<p>By convention the directory structure of a ZetaPush application is defined below. You place
+the code of your web page in the <code>front</code> directory:</p>
+</div>
+<div class="listingblock">
+<div class="title">Tree structure convention</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">hello-world
+├── <em>.zetarc</em>
+├── <em>.gitignore</em>
+├── <strong>front</strong>
+│   ├── ...
+│   ├── <strong>index.js</strong>
+│   └── <strong>index.html</strong>
+├── <em>worker</em>
+│   ├── ...
+│   ├── ...
+│   └── index.ts
+├── <em>package.json</em>
+├── <em>README.md</em>
+└── <em>tsconfig.json</em></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Other front files</div>
+<div class="paragraph">
+<p>For this example, we only need an HTML page and a JavaScript file. Needless to say that you can
+have CSS files, images and anything you want too.</p>
+</div>
+<div class="paragraph">
+<p>See more information about <a href="#different_directory_structures">directory structure convention and how to adapt the structure</a>.</p>
+</div>
+<div class="paragraph">
+<p>Moreover, you are not limited to write pure JavaScript code. You can also use any framework you want:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#develop_with_angular">Angular</a></p>
+</li>
+<li>
+<p><a href="#develop_with_react">React</a></p>
+</li>
+<li>
+<p><a href="#develop_with_vue">Vue.js</a></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For the example, we create an HTML page with a button to display the <em>HelloWorld</em> message in the page each time
+the button is clicked:</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>                    <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>                             <i class="conum" data-value="2"></i><b>(2)</b>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>                          <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We call <code>hello()</code> function that is defined later in <code>index.js</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Define a node that will display received messages</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We include the <code>client</code> module provided by ZetaPush</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We include a JavaScript file to distinguish HTML code from JavaScript code. All could be written in the HTML</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then, in order to interact with ZetaPush cloud, we need to create a client instance
+and to connect to the cloud:</p>
+</div>
+<div class="listingblock">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();     <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();        <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="comment">// Handle connection</span>
+client.connect()                                    <i class="conum" data-value="3"></i><b>(3)</b>
+  .then(() =&gt; {                                     <i class="conum" data-value="4"></i><b>(4)</b>
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  });</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use ZetaPushClient factory to instantiate a client. In this example, we ask for an anonymous connection (it means that actions are not bound to a particular user of your application)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Custom cloud service provides some functions that can be called from a client. For example, the <em>custom cloud service</em> exposes <code>helloWorld</code> and <code>saySomething</code> <em>cloud functions</em>.
+Instead of having to write the signature of these functions in the client too, we simply use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy</a>.
+Therefore, you can directly interact with your custom cloud service without writing any pass-through code on the client side.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The client is ready, now connects it to the ZetaPush cloud.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Once the connection is established, the Promise is resolved and you can write some code in <code>then</code> callback.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Available client types</div>
+<div class="paragraph">
+<p><code>ZetaPushClient</code> provides several factories to get instances of a client according to
+what you want to do. Here we are using a <code>WeakClient</code> instance but there are other
+<a href="#client_types">client types</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_call_code_hello_code_em_cloud_function_em_2"><a class="anchor" href="#_call_code_hello_code_em_cloud_function_em_2"></a><a class="link" href="#_call_code_hello_code_em_cloud_function_em_2">Call <code>hello</code> <em>cloud function</em></a></h7>
+<div class="paragraph">
+<p>Our client is ready and now we want to call <em>cloud function</em> named <code>helloWorld</code>, we add the following code:</p>
+</div>
+<div class="listingblock highlight-lines:11-14">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  });
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {                                                                          <i class="conum" data-value="1"></i><b>(1)</b>
+  const messageFromCloudFunction = await api.helloWorld();                                        <i class="conum" data-value="2"></i><b>(2)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span> <i class="conum" data-value="3"></i><b>(3)</b>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each time a user clicks on the button defined in the HTML, this method is called.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Calls the <code>helloWorld</code> <em>cloud function</em> and store the result in a variable.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Add a new list item in the HTML page</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Before running this sample, we improve our front in order to also understand
+how to call a <em>cloud function</em> that has parameters.</p>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_call_code_saysomething_code_em_cloud_function_em_2"><a class="anchor" href="#_call_code_saysomething_code_em_cloud_function_em_2"></a><a class="link" href="#_call_code_saysomething_code_em_cloud_function_em_2">Call <code>saySomething</code> <em>cloud function</em></a></h7>
+<div class="paragraph">
+<p>We add two inputs to be able to send values to the <code>saySomething</code> <em>cloud function</em>.
+The first input is a text to repeat. The second input is the number of times to repeat the message.
+Here is the updated code:</p>
+</div>
+<div class="listingblock highlight-lines:12-16">
+<div class="title">front/index.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td>
+  <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Celtia<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>hello()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>hello<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#ccc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Message: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>             <i class="conum" data-value="1"></i><b>(1)</b>
+      Repeat: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">repeat-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>     <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="tag">&lt;button</span> <span class="attribute-name">onclick</span>=<span class="string"><span class="delimiter">&quot;</span>saySeveralTimes()<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>say something<span class="tag">&lt;/button&gt;</span>    <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">result-container</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/ul&gt;</span>
+
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+
+<span class="tag">&lt;/html&gt;</span></pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The first input to enter a message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The second input to enter the number of times to repeat the message</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A new button to call <code>saySeveralTimes()</code> function defined in <code>index.js</code></td>
+</tr>
+</table>
+</div>
+<div class="listingblock highlight-lines:15-20">
+<div class="title">front/index.js</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+  <td class="code"><pre><span class="comment">// Create new ZetaPush Client</span>
+const client = <span class="keyword">new</span> ZetaPushClient.WeakClient();
+<span class="comment">// Create a proxy to invoked worker methods</span>
+const api = client.createProxyTaskService();
+<span class="comment">// Handle connection</span>
+client.connect()
+  .then(() =&gt; {
+    console.debug(<span class="string"><span class="delimiter">'</span><span class="content">onConnectionEstablished</span><span class="delimiter">'</span></span>);
+  });
+<span class="comment">// Handle DOM events</span>
+async <span class="keyword">function</span> <span class="function">hello</span>() {
+  const messageFromCloudFunction = await api.helloWorld();
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messageFromCloudFunction}<span class="tag">&lt;/li&gt;</span><span class="error">`</span>
+}
+async <span class="keyword">function</span> <span class="function">saySeveralTimes</span>() {                                                <i class="conum" data-value="1"></i><b>(1)</b>
+  const message = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">message-input</span><span class="delimiter">'</span></span>).value;                 <i class="conum" data-value="2"></i><b>(2)</b>
+  const repeat = document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">repeat-input</span><span class="delimiter">'</span></span>).value;                   <i class="conum" data-value="3"></i><b>(3)</b>
+  const messages = await api.saySomething(message, parseInt(repeat));             <i class="conum" data-value="4"></i><b>(4)</b>
+  document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">result-container</span><span class="delimiter">'</span></span>).innerHTML += <span class="error">`</span><span class="tag">&lt;li&gt;</span>${messages}<span class="tag">&lt;/li&gt;</span><span class="error">`</span> <i class="conum" data-value="5"></i><b>(5)</b>
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Each time a user clicks on the button 'say something' defined in the HTML, this method is called.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Reads the value of the input for getting the message.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Reads the value of the input for getting the number of times to display the message.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Calls <code>saySomething</code> <em>cloud function</em> with parameters. Note that as second parameter is a number, we have to convert the string from
+the input to a number using <code>parseInt</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Add a new list item in the HTML page containing the repeated messages</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now everything is ready to run our application.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When you call a <em>cloud function</em> from the client, the result is always a Promise even if the <em>custom cloud function</em> is synchronous
+because everything goes through the network.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_run_application_2"><a class="anchor" href="#_run_application_2"></a><a class="link" href="#_run_application_2">Run application</a></h6>
+<div class="paragraph">
+<p>You have now defined a <em>custom cloud service</em> with one or several <em>cloud function(s)</em>. You
+have also exposed your <em>custom cloud service</em>. So it is ready to be called from a client.
+Your client is also ready to call the <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>The next step is to start the project (both front and worker) using the ZetaPush <em>CLI</em>
+on your computer.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Npm script aliases</div>
+<div class="paragraph">
+<p>Npm provides a handy feature
+to run scripts provided by dependencies without needing to change your computer settings or
+install the tool. ZetaPush defines npm <a href="https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378" target="_blank" rel="noopener">script aliases</a>
+to run the ZetaPush <em>CLI</em> through npm.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#_using_cli">for more information about the ways of using the CLI</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To start your worker and you front using the ZetaPush <em>CLI</em> through npm, you simply run:</p>
+</div>
+<div class="listingblock">
+<div class="title">Start application (front and custom cloud services)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ npm run start -- --serve-front</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>npm run start</code> is a script alias defined in the <code>package.json</code> file.
+The command that is executed under the hood is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta run --serve-front</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Run only the worker</div>
+<div class="paragraph">
+<p>It is also possible to <a href="#run_worker_only">run only your worker</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Automatic injection of ZetaPush information in your front</div>
+<div class="paragraph">
+<p>If you look closely to the code we have written, there is no information about your application at all in this sample code (the <code>appName</code> defined in <code>.zetarc</code> is neither in HTML nor in JavaScript).
+However, in order to interact with your application through the ZetaPush cloud, you need to provide the <code>appName</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ZetaPush <em>CLI</em> automatically injects the <code>appName</code> from <code>.zetarc</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you run your project locally, the local HTTP server that exposes the HTML page is lightly modified to include the <code>appName</code>.
+This information is then automatically read by the ZetaPush client.</p>
+</div>
+<div class="paragraph">
+<p>When your project is run in the cloud, the same principle is applied.</p>
+</div>
+<div class="paragraph">
+<p>This way, you just use <code>.zetarc</code> file for your credentials and <code>appName</code> and avoid having to write them twice. This also avoids conflicts when you work
+in team if you want different ZetaPush <code>appName</code> per developer.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Now when we click the "hello" button, "Hello World" is displayed on the page.</strong></p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="call-zetapush-cloud-service.png" alt="call zetapush cloud service" width="739" height="431">
+</div>
+<div class="title">Figure 16. How it works ?</div>
+</div>
+<div class="paragraph">
+<p>When you start your project locally, the first thing that happens is that your worker connects himself automatically to the ZetaPush cloud <span class="sequence-step">1</span> <span class="sequence-step">2</span>.</p>
+</div>
+<div class="paragraph">
+<p>Then when you open your web browser, the connection from the client is established between the web page and the ZetaPush cloud <span class="sequence-step">3</span> <span class="sequence-step">4</span>.</p>
+</div>
+<div class="paragraph">
+<p>When you click on the button, a message is sent through the opened connection in order to tell ZetaPush cloud to execute some
+remote code <span class="sequence-step">5</span>. ZetaPush cloud routes the message to your worker <span class="sequence-step">6</span> (that is running on your machine here). The worker receives the message
+and calls the <code>hello</code> <em>cloud function</em> <span class="sequence-step">7</span>.</p>
+</div>
+<div class="paragraph">
+<p>The <em>cloud function</em> generates a result <span class="sequence-step">8</span>. The worker picks this result and transform it to a message <span class="sequence-step">9</span>. This message is then sent
+to the ZetaPush cloud <span class="sequence-step">10</span>. The ZetaPush cloud routes the response message to the calling client <span class="sequence-step">11</span>. The client receives the message
+and the response is parsed <span class="sequence-step">12</span> and available in your JavaScript.</p>
+</div>
+<div class="paragraph">
+<p><strong>You can also try to enter a message and a number of repetitions and hit the "say something" button.</strong></p>
+</div>
+<div class="paragraph">
+<p>The behavior is exactly the same. This time a message is sent to call the <em>cloud function</em> with also the parameters.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Serialization/deserailization between client and <em>custom cloud service</em></div>
+<div class="paragraph">
+<p>When you call a <em>cloud function</em> from the client, under the hood, the values are serialized in JSON.
+This is understandable because everything goes through the network.</p>
+</div>
+<div class="paragraph">
+<p>On the worker side, everything is deserialized by the worker and your <em>custom cloud service</em>
+receives the values as they were written in the front side.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_compose_cloud_services_2"><a class="anchor" href="#_compose_cloud_services_2"></a><a class="link" href="#_compose_cloud_services_2">Compose cloud services</a></h6>
+<div class="paragraph">
+<p>You can compose <em>cloud services</em> either by using <em>built-in cloud services</em> provided by ZetaPush or
+by using another of your <em>custom cloud services</em>.</p>
+</div>
+<div class="sect6">
+<h7 id="_dependency_injection_2"><a class="anchor" href="#_dependency_injection_2"></a><a class="link" href="#_dependency_injection_2">Dependency injection</a></h7>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency injection</a> is a powerful software technique that is
+totally managed by the worker.</p>
+</div>
+<div class="paragraph">
+<p>You don&#8217;t need to manage the creation of neither <em>built-in cloud services</em> nor your <em>custom cloud services</em>.
+You just indicate in your code that you need a dependency and ZetaPush instantiates it
+for you. The instantiated dependency is then injected everywhere the dependency is needed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The dependency injection of ZetaPush uses Angular <a href="https://github.com/mgechev/injection-js" target="_blank" rel="noopener">injection-js</a> library.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To mark a <em>custom cloud service</em> injectable (meaning that can be automatically created by ZetaPush
+and then injected everywhere the dependency is aksed),
+you need to import the package <code>@zetapush/core</code> in order to use <code>Injectable</code> decorator.</p>
+</div>
+<div class="listingblock">
+<div class="title">Install @zetapush/core using npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/core</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the npm package is installed, you can import <code>Injectable</code> decorator and place it on your <em>custom cloud service</em>:</p>
+</div>
+<div class="listingblock highlight-lines:1,3">
+<div class="title">Use @Injectable on a <em>custom cloud service</em></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;            <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()                                           <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldAsCustomCloudService {
+  constructor() {}
+
+  helloWorld() {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>;
+  }
+
+  saySomething(message: string, <span class="key">times</span>: number) {
+      let fullMessage = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>;
+      <span class="keyword">for</span>(let i=<span class="integer">0</span> ; i&lt;times ; i++) {
+          fullMessage += <span class="error">`</span><span class="predefined">$</span>{message}<span class="error">\</span>n<span class="error">`</span>
+      }
+      <span class="keyword">return</span> fullMessage
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Import the ZetaPush module that contains core features for <em>custom cloud services</em> such as <code>injectable</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Mark you <em>custom cloud service</em> candidate for dependency injection</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here we just indicate that this <em>custom cloud service</em> can have dependencies that
+will be automatically injected and also that this <em>custom cloud service</em> can be injected
+anywhere it is needed.</p>
+</div>
+<div class="paragraph">
+<p>In the next sections, we will see in concrete terms how to use it to reuse either a <em>built-in cloud service</em>
+or one of your <em>custom cloud services</em>.</p>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_use_built_in_em_cloud_service_em_2"><a class="anchor" href="#_use_built_in_em_cloud_service_em_2"></a><a class="link" href="#_use_built_in_em_cloud_service_em_2">Use built-in <em>cloud service</em></a></h7>
+<div class="paragraph">
+<p>ZetaPush <em>built-in cloud services</em> are available in <code>@zetapush/platform-legacy</code> module.
+Add this module to your <code>package.json</code> by running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Install @zetapush/platform-legacy using npm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>$ npm install --save @zetapush/platform-legacy</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">List of <em>cloud services</em> provided by ZetaPush</div>
+<div class="paragraph">
+<p>As a reminder, here is the <a href="#builtin_cloud_services">list of <em>built-in cloud services</em></a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the following example, we will use the <code>Stack</code> <em>cloud service</em> provided by ZetaPush.
+In our use-case, we want to put some data associated with the current timestamp and be able to list all stored data.</p>
+</div>
+<div class="paragraph">
+<p>To do this, the <code>Stack</code> service already provides some methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>push({ <em>stack</em>: string, <em>data</em>: object });</code></p>
+</li>
+<li>
+<p><code>list({ <em>stack</em>: string });</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">MyStorageService</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Stack } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;  <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> MyStorageService {
+  <span class="reserved">private</span> stackName = <span class="string"><span class="delimiter">'</span><span class="content">stack-example</span><span class="delimiter">'</span></span>;
+
+  constructor(<span class="reserved">private</span> stack: Stack) {}              <i class="conum" data-value="2"></i><b>(2)</b>
+
+  <span class="comment">/**
+   *  Store data with associated timestamp
+   */</span>
+  storeWithTimestamp(value: any) {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.push({                        <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">stack</span>: <span class="local-variable">this</span>.stackName,
+      <span class="key">data</span>: {
+        value,
+        <span class="key">timestamp</span>: Date.now()
+      }
+    });
+  }
+
+  <span class="comment">/**
+   * List all stored data
+   */</span>
+  getAllData() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.stack.list({                        <i class="conum" data-value="4"></i><b>(4)</b>
+      <span class="key">stack</span>: <span class="local-variable">this</span>.stackName
+    });
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We import the <code>Stack</code> service so that TypeScript knows it</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We ask ZetaPush to inject a dependency of type <code>Stack</code> (<code>stack</code> is an instance of <code>Stack</code>).
+Here we use the <a href="https://kendaleiv.com/typescript-constructor-assignment-public-and-private-keywords/" target="_blank" rel="noopener">shorthand syntax</a> for declaring a constructor parameter as well as a property.
+So the property <code>this.stack</code> is defined and is initialized with <code>stack</code> parameter.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Calls the <code>Stack</code> service to store data (method <code>push</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Calls the <code>Stack</code> service to list data (method <code>list</code>)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The example defines a <em>custom cloud service</em> named <code>MyStorageService</code> that provides two <em>cloud functions</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>storeWithTimestamp</code> that receives a value from a client and calls the <code>Stack</code> service to
+store received value (<code>value</code> parameter) as well as the current timestamp (using <code>Date.now()</code>)</p>
+</li>
+<li>
+<p><code>getAllData</code> that has no parameters and calls <code>Stack</code> service to get all previsouly stored
+pairs of <code>&lt;value, timestamp&gt;</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The most important part to understand is in the <code>constructor</code>. As described before,
+the example uses dependency injection. You simply tell ZetaPush that you need a dependency of type <code>Stack</code>.
+You don&#8217;t create it in your <em>custom cloud service</em> because it is not the responsibility of
+your <em>custom cloud service</em> to create the <code>Stack</code> service. Instead, you let ZetaPush
+handle the creation. Thanks to <code>@Injectable</code> decorator, ZetaPush detects that you have
+a <em>custom cloud services</em> with needed dependencies. ZetaPush understands that you need a <code>Stack</code>
+instance so it instantiates it before instantiating your <em>custom cloud service</em>. Then
+ZetaPush instantiates your <em>custom cloud service</em> by providing, as the first argument of your
+constructor here, the instance of <code>Stack</code>.</p>
+</div>
+<div class="paragraph">
+<p>This behavior avoids you to have complex code to instantiate <em>built-in cloud services</em>. Moreover,
+if you have several <em>custom cloud services</em> that are using the <code>Stack</code> service, thanks to
+dependency injection, there will be only one instance shared between your <em>custom cloud services</em>.</p>
+</div>
+</div>
+<div class="sect6">
+<h7 id="_use_another_em_custom_cloud_service_em_2"><a class="anchor" href="#_use_another_em_custom_cloud_service_em_2"></a><a class="link" href="#_use_another_em_custom_cloud_service_em_2">Use another <em>custom cloud service</em></a></h7>
+<div class="paragraph">
+<p>In this example, we will have 2 <em>custom cloud services</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Calendar</code>: Utils function to return the current date</p>
+</li>
+<li>
+<p><code>HelloWorldService</code>: Basic example using <code>Calendar</code> <em>cloud function</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first <em>custom cloud service</em> (<code>Calendar</code>) is defined in the file <code>worker/calendar.js</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">worker/calendar.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="reserved">export</span> <span class="reserved">class</span> Calendar {
+  getNow() { <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="keyword">return</span> <span class="keyword">new</span> Date().toLocalDateString(<span class="string"><span class="delimiter">'</span><span class="content">fr-FR</span><span class="delimiter">'</span></span>);
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The only <em>cloud function</em> of the <code>Calendar</code> service</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Then, we have the <code>HelloWorldWithDateService</code> that use our <code>Calendar</code> service. It is defined in the file <code>worker/index.ts</code>.</p>
+</div>
+<div class="listingblock highlight-lines:7,13">
+<div class="title">worker/index.ts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { Calendar } from <span class="string"><span class="delimiter">'</span><span class="content">./calendar</span><span class="delimiter">'</span></span>;        <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> HelloWorldWithDateService {
+  constructor(                                <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="reserved">private</span> calendar: Calendar
+  ) {}
+  <span class="comment">/**
+   * Return 'Hello World' with current date
+   */</span>
+  helloWorldWithDate() {
+    <span class="keyword">return</span> <span class="error">`</span>Hello world at <span class="predefined">$</span>{<span class="local-variable">this</span>.calendar.getNow()}<span class="error">`</span>;
+ }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We import the <code>Calendar</code> service from the <code>worker/calendar.ts</code> file</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>calendar</code> is an instance of <code>Calendar</code> and <code>this.calendar</code> is initialized with <code>calendar</code> value</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As for <em>built-in cloud services</em>, dependency injection works for your <em>custom cloud services</em>.
+Here it was an example</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Private <em>custom cloud service</em></div>
+<div class="paragraph">
+<p>In this example, we still have only one <em>custom cloud service</em> exposed.</p>
+</div>
+<div class="paragraph">
+<p>One <code>HelloWorldWithDateService</code> is exposed and delegates some work to <code>Calendar</code>.
+<code>Calendar</code> is not exposed and can&#8217;t be directly called from a client. So it can be considered
+as a private <em>custom cloud service</em>.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes you may want to <a href="#expose_several_cloud_services">expose several <em>custom cloud services</em></a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Shared module of <em>custom cloud services</em></div>
+<div class="paragraph">
+<p>As you can see, a <em>custom cloud service</em> is no more than just a standard class with methods written
+in TypeScript. If you want to develop reusable <em>custom cloud services</em> that could be
+used in different applications, you can do it easily by following standards.
+Actually, you can <a href="#shared_module">just create a npm module</a> and import it like we do with <code>@zetapush/core</code> or
+<code>@zetapush/platform-legacy</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also import any existing library that is available in the community.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="onapplicationbootstrap"><a class="anchor" href="#onapplicationbootstrap"></a><a class="link" href="#onapplicationbootstrap">Add initialization code</a></h6>
+<div class="paragraph">
+<p>ZetaPush manages scalability and redundancy of your <em>workers</em>. So there may have several workers that start at the same time. And if you initialize some data or configure some cloud services at the same time, it may have conflicts or duplicated data. To avoid that ZetaPush provides a way to initialize code that will ensure that is executed by only one worker.</p>
+</div>
+<div class="paragraph">
+<p>For this, ZetaPush provides the <em>bootstrap</em> feature. To use it you need to implement the method <code>onApplicationBootstrap()</code> in your <em>custom cloud service</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Bad practice for initialization code</div>
+<div class="paragraph">
+<p>You may want to put your initialization code in the constructor but this is a bad practice.
+Indeed, even if in the most cases, a <em>custom cloud service</em> is a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>, it may have several instances of your <em>custom cloud service</em> and your initialization code will be called many times. An other drawback is that the constructor is synchronous and the <code>onApplicationBootstrap</code> method is asynchronous (You can also put synchronous code in your <code>onApplicationBootstrap</code> with the <code>await</code> keyword).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the following example we will create a worker to store data in a database. The initialization code let you create a table in our database. Then we will create methods to add and list our data.</p>
+</div>
+<div class="listingblock">
+<div class="title">Initialization code</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Bootstrappable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { GdaConfigurer, Gda, GdaDataType } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
+
+const NAME_TABLE = <span class="string"><span class="delimiter">'</span><span class="content">table</span><span class="delimiter">'</span></span>;
+const NAME_COLUMN = <span class="string"><span class="delimiter">'</span><span class="content">column</span><span class="delimiter">'</span></span>;
+
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> <span class="reserved">implements</span> Bootstrappable {                              <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(<span class="reserved">private</span> gdaConfigurer: GdaConfigurer, <span class="reserved">private</span> gda: Gda) {}
+
+  async onApplicationBootstrap() {                                            <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.gdaConfigurer.createTable({                                          <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">name</span>: NAME_TABLE,
+      <span class="key">columns</span>: [{
+        <span class="key">name</span>: NAME_COLUMN,
+        <span class="key">type</span>: GdaDataType.STRING
+      }]
+    });
+  }
+
+  async addData(data: string) {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.put({
+      <span class="key">table</span>: NAME_TABLE,
+      <span class="key">column</span>: NAME_COLUMN,
+      data,
+      <span class="key">key</span>: Date.now().toString()
+    });
+  }
+
+  async getData() {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.list({
+      <span class="key">table</span>: NAME_TABLE
+    });
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We implement the <code>Bootstrappable</code> interface. This is optional (see below)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>onApplicationBootstrap()</code> method is always <em>asynchronous</em>, the <code>async</code> keyword is optional</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In our initialization code we create a table in our database</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Bootstrappable interface</div>
+<div class="paragraph">
+<p>The implementation of the <code>Bootstrappable</code> interface is optional but it is a best practice, you just need to implement a method named <code>onApplicationBootstrap()</code>.
+Indeed, implementing it avoids you to write wrong implementation of <code>onApplicationBootstrap()</code> method. It also indicates to other developers that you really wanted to add initialization code to your <em>cloud service</em> on purpose and it also provides documentation about <code>onApplicationBootstrap</code> method directly in code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can implement the <code>onApplicationBootstrap()</code> method in several <em>custom cloud services</em>.
+A dependency tree will be created to execute all <code>onApplicationBootstrap()</code> methods in the proper order (regarding of the needed dependencies).</p>
+</div>
+<div class="paragraph">
+<p>For example in the following scheme, we have 2 exposed API named <em>Dashboard</em> and <em>Mobile</em>.
+For the case of the <em>Dashboard</em> API, it uses another service named <em>Admin</em>, that uses <em>User Management</em> and <em>Stock Management</em> services and so on.</p>
+</div>
+<div class="paragraph">
+<p>So the services are initialized in a specific order :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Utils</p>
+</li>
+<li>
+<p>User Data / Stock Data</p>
+</li>
+<li>
+<p>User Management / Stock Management / Stock Market</p>
+</li>
+<li>
+<p>Admin / Client API / Guest Access</p>
+</li>
+<li>
+<p>Dashboard / Mobile</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="./images//schemas/bootstrap_order.png" alt="bootstrap order">
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_advanced_usage_of_cloud_services"><a class="anchor" href="#_advanced_usage_of_cloud_services"></a><a class="link" href="#_advanced_usage_of_cloud_services">21.4. Advanced usage of cloud services</a></h3>
@@ -10851,6 +13279,14 @@ client
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_standard_user_workflow"><a class="anchor" href="#_standard_user_workflow"></a><a class="link" href="#_standard_user_workflow">22.1. Standard User Workflow</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Some information will soon be added about utilization of <em>Standard User Workflow</em>.
+For now, you can follow the <a href="#integrate_user_management">dedicated developer manual section</a>.</p>
+</div>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_usage"><a class="anchor" href="#_usage"></a><a class="link" href="#_usage">22.1.1. Usage</a></h4>
 
@@ -13433,6 +15869,14 @@ export default class Api {
 <div class="sect1">
 <h2 id="cli"><a class="anchor" href="#cli"></a><a class="link" href="#cli">23. Command Line Interface</a></h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Some details about the command line interface will soon be added.
+For now, you can use the <code>zeta -h</code> command to get some information.</p>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_config"><a class="anchor" href="#_config"></a><a class="link" href="#_config">23.1. Config</a></h3>
 
@@ -13460,9 +15904,15 @@ export default class Api {
 <div class="sect2">
 <h3 id="_account_configuration"><a class="anchor" href="#_account_configuration"></a><a class="link" href="#_account_configuration">24.1. Account configuration</a></h3>
 <div class="paragraph">
-<p>To use ZetaPush Celtia, you need to have an account and an optional application.
-You specify this properties in the <code>.zetarc</code> file.
-Here is the list of them:</p>
+<p>To use <code>ZetaPush</code>, you need to have a <em>ZetaPush account</em> and a <em>ZetaPush application</em>.
+If you don&#8217;t have any of them, you can <a href="https://www.zetapush.com/sign-up-for-a-free-trial/">signup for a free trial</a> or <a href="https://www.zetapush.com/contact">contact us for more suitable account</a>.</p>
+</div>
+<div class="paragraph">
+<p>Then, you can set your account configuration in the <code>.zetarc</code> file.
+This file is present at the root of your application folder.</p>
+</div>
+<div class="paragraph">
+<p>Here is the list of properties that can be used. For each of them, you also have the associated <a href="#cli">cli flag</a> and environment variable.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 4. Account variables</caption>
@@ -13485,37 +15935,28 @@ Here is the list of them:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">Developer login</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">This login is the email used by the developer when logging in to the ZetaPush console. It <strong>does not concern</strong> the applications developed by the developer. It is only used to identify the developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">This login is the email used by the developer when logging in to the <a href="https://console-celtia.zetapush.com">ZetaPush console</a>. It <strong>does not concern</strong> the applications developed by the developer. It is only used to identify the <em>developer account</em>.</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_LOGIN</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-login &lt;login&gt;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">Developer password</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Like the property <em>--developer-login</em>, this password is only used for the ZetaPush developer account. It <strong>does not concern</strong> the applications developed by the developer.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">Like the property <code>--developer-login</code>, this password is only used for the <em>ZetaPush developer account</em>. It <strong>does not concern</strong> the applications developed by the developer.</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_DEVELOPER_PASSWORD</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">developerLogin</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">--developer-password &lt;password&gt;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">Application name</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">A developer can develop many applications. Hence the need to identify each of them. The <em>appName</em> property is the unique name of an application on a ZetaPush developer account.</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">A developer can develop many applications. Hence he needs to identify each of them. The <code>appName</code> property is the unique name of an application on a <em>ZetaPush developer account</em>.</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_APP_NAME</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">appName</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">--app-name &lt;name&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">Environment name</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">An application created by a developer can have many environments.
-The default environment is <em>prod</em> but you can create your own (<em>dev</em>, <em>preprod</em>, &#8230;&#8203;).
-An environment is one stage in the development of the application.</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_ENV_NAME</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">envName</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">--env-name &lt;env&gt;</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">Platform URL</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">By default, the developer uses the <em>production environment of ZetaPush</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>This property if useful when another (on premise, or dedicated) ZetaPush platform is to be used.</strong></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">By default, the developer uses the <em>public ZetaPush cloud</em> to develop and deploy its applications. In most cases, the developer doesn&#8217;t need to set this property. <strong>This property if useful when another (on premise, or dedicated) <em>ZetaPush cloud</em> is to be used.</strong></p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">ZP_PLATFORM_URL</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">platformUrl</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">--platform-url &lt;platform&gt;</p></td>
@@ -13526,123 +15967,582 @@ An environment is one stage in the development of the application.</p></td>
 <div class="sect2">
 <h3 id="_code_structure_configuration"><a class="anchor" href="#_code_structure_configuration"></a><a class="link" href="#_code_structure_configuration">24.2. Code structure configuration</a></h3>
 <div class="paragraph">
-<p>You can configure your applications with several variables. Here is the list of them:</p>
+<p>It is possible to configure the structure of your application.
+In this part, we list the different possibilities.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. Application variables</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-middle">Name of the property</th>
-<th class="tableblock halign-center valign-middle">Definition</th>
-<th class="tableblock halign-center valign-middle"><em>package.json</em></th>
-<th class="tableblock halign-center valign-middle">CLI parameter</th>
-<th class="tableblock halign-center valign-middle">Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>Front code</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>In an application, you need to define where you put your front end part of your application.
-ZetaPush uses this property to host and expose it.</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
+<div class="sect3">
+<h4 id="change-worker-entry-point"><a class="anchor" href="#change-worker-entry-point"></a><a class="link" href="#change-worker-entry-point">24.2.1. Entry point for worker</a></h4>
+<div class="paragraph">
+<p>By default, the entry point of your worker code is the file <code>./worker/index.ts</code>.
+You can configure the entry point of the worker setting the <code>main</code> property of the <code>package.json</code> file.</p>
+</div>
+<div class="paragraph">
+<p>For example if you want to use the file <code>./worker/main.ts</code> as entry point you need to have the following <code>package.json</code> content :</p>
+</div>
+<div class="listingblock">
+<div class="title">Custom worker entry point</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 2
 3
+4
+5
+6
 </pre></td>
-  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">front</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/front</span><span class="delimiter">&quot;</span></span>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">myApp</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.0</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">worker/main.ts</span><span class="delimiter">&quot;</span></span>,       <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="error">/</span><span class="error">/</span> <span class="error">O</span><span class="error">t</span><span class="error">h</span><span class="error">e</span><span class="error">r</span> <span class="error">p</span><span class="error">r</span><span class="error">o</span><span class="error">p</span><span class="error">e</span><span class="error">r</span><span class="error">t</span><span class="error">i</span><span class="error">e</span><span class="error">s</span><span class="error">.</span><span class="error">.</span><span class="error">.</span>
 }</pre></td>
 </tr></table></code></pre>
 </div>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>--front &lt;path&gt;</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p><code>./front/</code></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>Worker code</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>When you create your business logic in <em>custom cloud services</em>, ZetaPush need to know his location to deploy it.</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-</pre></td>
-  <td class="code"><pre><span class="key"><span class="delimiter">&quot;</span><span class="content">zetapush</span><span class="delimiter">&quot;</span></span>: {
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/worker</span><span class="delimiter">&quot;</span></span>
-}</pre></td>
-</tr></table></code></pre>
 </div>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>--worker &lt;path&gt;</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p><code>./worker/</code></p>
-</div></div></td>
-</tr>
+<div class="colist arabic">
+<table>
 <tr>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>Worker entry point</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p>To use your <em>custom cloud services</em> from the front part you need to export them. So the exportation of services need to be in only one file.</p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"><span class="key"><span class="delimiter">&quot;</span><span class="content">main</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">./path/of/entry</span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p><em>None</em></p>
-</div></div></td>
-<td class="tableblock halign-center valign-middle"><div><div class="paragraph">
-<p><code>./worker/index.ts</code></p>
-</div></div></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Path of the file used as entry point</td>
 </tr>
-</tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="configuration_properties"><a class="anchor" href="#configuration_properties"></a><a class="link" href="#configuration_properties">24.3. Configuration properties</a></h3>
-
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Detail about path of entry point</div>
+<div class="paragraph">
+<p>For now, the entry point of your worker need to be in the <code>worker</code> folder.
+This will soon be possible to put your entry point anywhere, when the <a href="#different_directory_structures">custom directory structure</a> will be released.</p>
 </div>
-<div class="sect2">
-<h3 id="_customize_cloud_services"><a class="anchor" href="#_customize_cloud_services"></a><a class="link" href="#_customize_cloud_services">24.4. Customize cloud services</a></h3>
+</td>
+</tr>
+</table>
+</div>
+</div>
 <div class="sect3">
-<h4 id="_user_management_2"><a class="anchor" href="#_user_management_2"></a><a class="link" href="#_user_management_2">24.4.1. User Management</a></h4>
+<h4 id="different_directory_structures"><a class="anchor" href="#different_directory_structures"></a><a class="link" href="#different_directory_structures">24.2.2. Custom directory structure</a></h4>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Update this section to match new plan</p>
+<p>This section will be useful if you want to change the structure of your application.
+The most common case is when you want to use framework (Angular, React, VueJS for example).
+This documentation will soon be ready.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_script_alias"><a class="anchor" href="#_script_alias"></a><a class="link" href="#_script_alias">24.2.3. Script alias</a></h4>
+<div class="paragraph">
+<p>Npm provides a handy feature to run scripts provided by dependencies without needing to change your computer settings or install the tool. ZetaPush defines npm <a href="https://medium.com/@mxstbr/npm-scripts-explained-f125e85eb378" target="_blank" rel="noopener">script aliases</a> to run the ZetaPush <em>CLI</em> through npm.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://github.com/zetapush/documentation/issues/61" class="bare">https://github.com/zetapush/documentation/issues/61</a></p>
+<p>See <a href="#_using_cli">for more information about the ways of using the CLI</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration_properties"><a class="anchor" href="#configuration_properties"></a><a class="link" href="#configuration_properties">24.3. Configuration properties</a></h3>
+<div class="paragraph">
+<p>ZetaPush provides the <code>application.json</code> file to let you configure the behavior of your application.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in reference.adoc - include::/var/lib/jenkins/workspace/Github_documentation_master-IOSGDW42Y6L7PFABZDVKWIMQ7U5ZFS2WPFP2G4YQ6QQOVPTQ7Y4A/src/docs/asciidoc/common/cloud-services/user-management.adoc[leveloffset=+2]</p>
+<p>For now, the <code>application.json</code> file is mainly used for the <a href="#integrate_user_management">Standard User Workflow</a> but you can also <a href="#configuration_properties ">configure your own properties for your application</a>.
+The list of available properties for the <a href="#integrate_user_management">Standard User Workflow</a> are listed in <a href="#customize_standard_user_workflow">this section</a>.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">New properties will added</div>
+<div class="paragraph">
+<p>New <em>Cloud Services</em> will be developed (to handle data, security, etc&#8230;&#8203;).
+With them, some properties may be added and configurable through the application.json file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Future features</div>
+<div class="paragraph">
+<p>New features about <code>application.json</code> file will be soon released :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support of multi one <code>application.json</code> file per worker (when the multi-worker will be released)</p>
+</li>
+<li>
+<p>Support of one shared <code>application.json</code> between workers</p>
+</li>
+<li>
+<p>Support of one shared <code>application.json</code> for the whole application (worker and front)</p>
+</li>
+<li>
+<p>Support of <code>application.json</code> file per environment like <code>application-&lt;env&gt;.json</code> for example. (When the multi-environment will be released)</p>
+</li>
+<li>
+<p>Autocompletion of properties in VSCode (and other IDE)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>You will soon can add your own configuration property source. For example download properties from an external service or from a Git repository. (You will also be able to configure the priority of the source).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_override"><a class="anchor" href="#_configuration_override"></a><a class="link" href="#_configuration_override">24.4. Configuration override</a></h3>
+<div class="paragraph">
+<p>You can put many properties in several locations (environment variables, CLI&#8230;&#8203;).
+ZetaPush includes and overrides this properties in a specific order:</p>
+</div>
+<div class="sect3">
+<h4 id="_account_properties"><a class="anchor" href="#_account_properties"></a><a class="link" href="#_account_properties">24.4.1. Account properties</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Environment variables</p>
+</li>
+<li>
+<p>.zetarc file</p>
+</li>
+<li>
+<p>CLI parameters</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_application_properties"><a class="anchor" href="#_application_properties"></a><a class="link" href="#_application_properties">24.4.2. Application properties</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Default values (if exists)</p>
+</li>
+<li>
+<p><code>application.json</code> file</p>
+</li>
+<li>
+<p>CLI parameters</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>So if you use the same property in several locations, the default value is overwritten by the <code>application.json</code> property and this last value is overwritten by the CLI parameter.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customize_cloud_services"><a class="anchor" href="#_customize_cloud_services"></a><a class="link" href="#_customize_cloud_services">24.5. Customize cloud services</a></h3>
+<div class="sect3">
+<h4 id="customize_standard_user_workflow"><a class="anchor" href="#customize_standard_user_workflow"></a><a class="link" href="#customize_standard_user_workflow">24.5.1. User Management</a></h4>
+<div class="paragraph">
+<p>Some properties are available in the <code>application.json</code> file to configure the <em>Standard User Workflow</em>. We will list all of them in this section:</p>
+</div>
+<div class="sect4">
+<h5 id="_organization"><a class="anchor" href="#_organization"></a><a class="link" href="#_organization">24.5.1.1. Organization</a></h5>
+<div id="configure_organization_name" class="paragraph">
+<div class="title">Organization name</div>
+<p>Name of your organization. It is used in the default email sender (<code>noreply@${organizationName}.com</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">organization</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ZetaPush</span><span class="delimiter">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Optional property</div>
+<div class="paragraph">
+<p>This property is optional. If it is not configured, you need to <a href="#configure_email_sender">configure an email sender</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_email"><a class="anchor" href="#_email"></a><a class="link" href="#_email">24.5.1.2. Email</a></h5>
+<div id="configure_email_sender" class="paragraph">
+<div class="title">Email sender</div>
+<p>Let you configure the sender of the different emails used in your application. For example for account registration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Default email sender</div>
+<div class="paragraph">
+<p>The default email sender is <code>noreply@${organizationName}.com</code>.
+So If this property is not set, you need to configure the <a href="#configure_organization_name">organization name</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This property support the standard notation for email (<code>name &lt;<a href="mailto:email@domain.com">email@domain.com</a>&gt;</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">sender</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Sender Name &lt;sender@my-domain.com&gt;</span><span class="delimiter">&quot;</span></span>  <i class="conum" data-value="1"></i><b>(1)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You can also only type the email (ex: "<a href="mailto:sender@my-domain.com">sender@my-domain.com</a>")</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_account_registration"><a class="anchor" href="#_account_registration"></a><a class="link" href="#_account_registration">24.5.1.3. Account registration</a></h5>
+<div class="sect5">
+<h6 id="_account_confirmation"><a class="anchor" href="#_account_confirmation"></a><a class="link" href="#_account_confirmation">Account confirmation</a></h6>
+<div class="paragraph">
+<p>During the account creation workflow of the <em>StandardUserWorkflow</em>, an email is sent to ask the end-user to confirm his email. You can configure many properties about this.</p>
+</div>
+<div class="paragraph">
+<div class="title">Email subject</div>
+<p>You can set the email subject of the confirmation account creation like below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">registration</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">confirmation</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">subject</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Please confirm your account registration</span><span class="delimiter">&quot;</span></span>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mandatory property</div>
+<div class="paragraph">
+<p>For now, this is a mandatory property. In a future version, the subject could be extracted from the email template. This allows you to define a single source of information about the sent email and moreover, it simplifies internationalization of your email.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">URL Redirection</div>
+<p>When an end-user validates his account, he is redirected to a specific URL of your application. There are 2 cases, if the confirmation is OK or if it failed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">registration</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">confirmation</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">success-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">https://my-app-url/#login</span><span class="delimiter">&quot;</span></span>,                   <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">failure-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">https://my-app-url/#confirmation-failed</span><span class="delimiter">&quot;</span></span>      <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The end-user is redirected to this URL when the confirmation is OK</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The end-user is redirected to this URL when the confirmation failed</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also only set the path of your urls. The base url will be automatically provided by ZetaPush:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">registration</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">confirmation</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">success-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#login</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">failure-url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#confirmation-failed</span><span class="delimiter">&quot;</span></span>
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mandatory property</div>
+<div class="paragraph">
+<p>This property is mandatory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_reset_password_workflow"><a class="anchor" href="#_reset_password_workflow"></a><a class="link" href="#_reset_password_workflow">24.5.1.4. Reset password workflow</a></h5>
+<div class="paragraph">
+<div class="title">URL to ask to change password</div>
+<p>It is possible to configure the path of your application where the end-user will be able to choose his new password.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">reset-password</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ask</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:3000/reset-password#${token}</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The token is sent through the URL. To use it you need to put <code>${token}</code> in your URL.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also only set the path of your url. The base url will be automatically provided by ZetaPush:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">reset-password</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ask</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/reset-password#${token}</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mandatory property</div>
+<div class="paragraph">
+<p>This property is mandatory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<div class="title">Email subject</div>
+<p>You can configure the subject of the sent email to reset the password:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">reset-password</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ask</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">subject</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Please choose a new password</span><span class="delimiter">&quot;</span></span>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mandatory property</div>
+<div class="paragraph">
+<p>For now, this is a mandatory property. In a future version, the subject could be extracted from the email template. This allows you to define a single source of information about the sent email and moreover, it simplifies internationalization of your email.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_email_provider_configuration"><a class="anchor" href="#_email_provider_configuration"></a><a class="link" href="#_email_provider_configuration">24.5.1.5. Email provider configuration</a></h5>
+<div class="paragraph">
+<p>To use the <em>StandardUserWorkflow</em> you need to configure an email provider.
+Today, you can use two possibilities: <em>Mailjet</em> or <em>SMTP</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Future implementations</div>
+<div class="paragraph">
+<p>In future versions, other implementatins will be provided as-is. Moreover, you will be able to replace email sending by SMS or anything else.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Mandatory property</div>
+<div class="paragraph">
+<p>You need to set at least one email provider configuration and you need to have only one email provider configuration enabled.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect5">
+<h6 id="_mailjet_configuration"><a class="anchor" href="#_mailjet_configuration"></a><a class="link" href="#_mailjet_configuration">Mailjet configuration</a></h6>
+<div class="paragraph">
+<p>To use the <em>Mailjet</em> configuration you need to configure the <code>application.json</code> file like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">mailjet</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">apikey-public</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-mailjet-apikey-public</span><span class="delimiter">&quot;</span></span>,      <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">apikey-private</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-mailjet-apikey-private</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enable</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>,                                 <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">https://api.mailjet.com/v3.1/send</span><span class="delimiter">&quot;</span></span>        <i class="conum" data-value="3"></i><b>(3)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>apikey-public</code> and <code>apikey-private</code> are provided by <em>Mailjet</em> and you can find them in your <em>Mailjet</em> account information.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Optional property to define that we use this email provider configuration. (The default value is <code>true</code> if you have configured <code>apikey-public</code> and <code>apikey-private</code>)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Optional property to define the URL to use for your <em>Mailjet</em> email provider. By default the used URL is <code><a href="https://api.mailjet.com/v3.1/send" class="bare">https://api.mailjet.com/v3.1/send</a></code>.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_smtp_configuration"><a class="anchor" href="#_smtp_configuration"></a><a class="link" href="#_smtp_configuration">SMTP configuration</a></h6>
+<div class="paragraph">
+<p>To use the <em>SMTP</em> configuration you need to configure the <code>application.json</code> file like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">smtp</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-smtp-host</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">465</span><span class="delimiter">&quot;</span></span>,                      <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-smtp-username</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">my-smtp-password</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ssl</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,                        <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">starttls</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,                   <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enable</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>                      <i class="conum" data-value="3"></i><b>(3)</b>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Optional, deducted from SSL and starttls</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Optional, default to <code>true</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Optional property to define that we use this email provider configuration. (The default value is <code>true</code> if you have configured at least host and port)</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="auto_implementation_selection"><a class="anchor" href="#auto_implementation_selection"></a><a class="link" href="#auto_implementation_selection">24.5.1.6. Auto implementation about properties</a></h5>
+<div class="paragraph">
+<p>The implementation of the <em>StandardUserWorkflow</em> can change about the presence or not of particular properties.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you <a href="#configure_email_sender">configure an email sender</a>, the default email sender using the organization name will be overriden.</p>
+</div>
+<div class="paragraph">
+<p>A most common case is for email provider configuration. If you change your <em>STMP</em> configuration to a <em>Mailjet</em> configuration (for example), the implementation will be automatically changed.</p>
 </div>
 </div>
 </div>
@@ -13652,43 +16552,349 @@ ZetaPush uses this property to host and expose it.</p>
 <div class="sect1">
 <h2 id="_logs_2"><a class="anchor" href="#_logs_2"></a><a class="link" href="#_logs_2">25. Logs</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>To configure the log level of your application you use the <a href="#cli">CLI</a> or from the <a href="https://console-celtia.zetapush.com">web console</a> (Not ready yet).</p>
+</div>
+<div class="paragraph">
+<p>To do this via the <a href="#cli">CLI</a>, you need to launch the <code>zeta config</code> command (See more details in <a href="#verbosity_level">this section</a>).</p>
+</div>
+<div class="listingblock">
+<div class="title">Get the current log level</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta config --get</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Today, there are only two available log levels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>verbose</p>
+</li>
+<li>
+<p>default</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want leaner log level, you can <a href="https://www.zetapush.com/contact">contact us</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Set the log level</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta config --logs verbose
+$ zeta config --logs default</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Default verbose level</div>
+<div class="paragraph">
+<p>The default verbose level traces only errors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_console_log"><a class="anchor" href="#_console_log"></a><a class="link" href="#_console_log">25.1. Console.log</a></h3>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>It will soon be possible to see your <code>console.log()</code> in the <a href="https://console-celtia.zetapush.com">web console</a>.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="local_logger"><a class="anchor" href="#local_logger"></a><a class="link" href="#local_logger">25.2. Utility methods provided by @zetapush/common</a></h3>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The utility methods from <code>@zetapush/common</code> for <em>Logs</em> will soon be documented.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="log_service"><a class="anchor" href="#log_service"></a><a class="link" href="#log_service">25.3. Built-in log cloud service</a></h3>
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>ZetaPush</em> provides a <em>Log</em> service.
+For now, you can use the <a href="#log_with_requestcontext"><em>requestContext</em></a> object for more convenience.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_logs_using_requestcontext"><a class="anchor" href="#_logs_using_requestcontext"></a><a class="link" href="#_logs_using_requestcontext">Logs using requestContext</a></h3>
+<h3 id="log_with_requestcontext"><a class="anchor" href="#log_with_requestcontext"></a><a class="link" href="#log_with_requestcontext">25.4. Logs using requestContext</a></h3>
+<div class="paragraph">
+<p>The <em>requestContext</em> object is an abstraction of the <a href="#logs">logs service</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#developer_manual_logs">dedicated section</a> explains what is the <em>requestContext</em> and how to use it. So in this section we will see a practical utilization of <em>requestContext</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Set correct log level</div>
+<div class="paragraph">
+<p>To be sure to see all logs, you can put the log level to <code>verbose</code> via the <em>CLI</em> : <code>zeta config --logs verbose</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Practical example of requestContext</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> {
+  Injectable,
+  RequestContext,
+  RequestContextAware,
+  Bootstrappable
+} from <span class="string"><span class="delimiter">&quot;</span><span class="content">@zetapush/core</span><span class="delimiter">&quot;</span></span>;
+<span class="reserved">import</span> { Gda, GdaConfigurer, GdaDataType } from <span class="string"><span class="delimiter">&quot;</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">&quot;</span></span>;
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api <span class="reserved">implements</span> RequestContextAware, Bootstrappable {           <i class="conum" data-value="1"></i><b>(1)</b>
+  requestContext!: RequestContext;                                                  <i class="conum" data-value="2"></i><b>(2)</b>
+
+  constructor(<span class="reserved">private</span> gda: Gda, <span class="reserved">private</span> gdaConfigurer: GdaConfigurer) {}
+
+  async onApplicationBootstrap() {                                                  <i class="conum" data-value="3"></i><b>(3)</b>
+    await <span class="local-variable">this</span>.gdaConfigurer.createTable({
+      <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>,
+      <span class="key">columns</span>: [
+        {
+          <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">column</span><span class="delimiter">&quot;</span></span>,
+          <span class="key">type</span>: GdaDataType.STRING
+        }
+      ]
+    });
+  }
+
+  async addToDatabase(data: string) {
+    <span class="local-variable">this</span>.requestContext.logger.info(<span class="error">`</span>[addToDatabase] - Add <span class="predefined">$</span>{data} info<span class="error">`</span>);          <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.put({
+      <span class="key">key</span>: Date.now().toString(),
+      <span class="key">table</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>,
+      <span class="key">column</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">column</span><span class="delimiter">&quot;</span></span>,
+      data
+    });
+  }
+
+  async getAllData() {
+    <span class="local-variable">this</span>.requestContext.logger.info(<span class="error">`</span>[getAllData] - Get all data<span class="error">`</span>);                 <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="keyword">try</span> {
+      const { <span class="key">result</span>: resultFromDataBase } = await <span class="local-variable">this</span>.gda.list({
+        <span class="key">table</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">table</span><span class="delimiter">&quot;</span></span>
+      });
+      <span class="keyword">if</span> (resultFromDataBase &amp;&amp; resultFromDataBase.content) {
+        <span class="local-variable">this</span>.requestContext.logger.info(                                            <i class="conum" data-value="6"></i><b>(6)</b>
+          <span class="error">`</span>[getAllData] - content : <span class="predefined">$</span>{resultFromDataBase.content}<span class="error">`</span>
+        );
+        <span class="keyword">return</span> resultFromDataBase.content;
+      } <span class="keyword">else</span> {
+        <span class="local-variable">this</span>.requestContext.logger.warn(                                            <i class="conum" data-value="7"></i><b>(7)</b>
+          <span class="string"><span class="delimiter">&quot;</span><span class="content">[getAllData] - No content in database</span><span class="delimiter">&quot;</span></span>
+        );
+      }
+    } <span class="keyword">catch</span> (err) {
+      <span class="local-variable">this</span>.requestContext.logger.error(                                             <i class="conum" data-value="8"></i><b>(8)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">[getAllData] - Failed to access to database</span><span class="delimiter">&quot;</span></span>
+      );
+    }
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Optional implementation of <em>RequestContextAware</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Injected property of <code>requestContext</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Creation of table for database</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Log in <code>info</code> when we add info in database</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Log in <code>info</code> when we try to get data</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Log in <code>info</code> if content exists</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Log in <code>warn</code> if no content in database</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Log in <code>error</code> if it failed to access to database</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The result in the database if the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images//logs/console-log-traces.png" alt="console log traces">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">More Log levels</div>
+<div class="paragraph">
+<p>If you need to have more log levels, you can <a href="https://www.zetapush.com/contact">contact us</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_use_another_logging_library"><a class="anchor" href="#_use_another_logging_library"></a><a class="link" href="#_use_another_logging_library">25.4. Use another logging library</a></h3>
-
+<h3 id="_use_another_logging_library"><a class="anchor" href="#_use_another_logging_library"></a><a class="link" href="#_use_another_logging_library">25.5. Use another logging library</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>It will soon possible to use another logging library.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="logs_in_web_console"><a class="anchor" href="#logs_in_web_console"></a><a class="link" href="#logs_in_web_console">25.5. View logs in web console</a></h3>
-
+<h3 id="logs_in_web_console"><a class="anchor" href="#logs_in_web_console"></a><a class="link" href="#logs_in_web_console">25.6. View logs in web console</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The utilization of logs in the <a href="https://console-celtia.zetapush.com">web console</a> will soon be documented.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_persist_logs"><a class="anchor" href="#_persist_logs"></a><a class="link" href="#_persist_logs">25.6. Persist logs</a></h3>
-
+<h3 id="_persist_logs"><a class="anchor" href="#_persist_logs"></a><a class="link" href="#_persist_logs">25.7. Persist logs</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The persistence of logs will soon be documented.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_external_log_visualization"><a class="anchor" href="#_external_log_visualization"></a><a class="link" href="#_external_log_visualization">25.7. External log visualization</a></h3>
-
+<h3 id="_external_log_visualization"><a class="anchor" href="#_external_log_visualization"></a><a class="link" href="#_external_log_visualization">25.8. External log visualization</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>It will soon possible to use external log visualization</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_tests"><a class="anchor" href="#_tests"></a><a class="link" href="#_tests">26. Tests</a></h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>For now, you can use any testing library in your <em>ZetaPush application</em>.
+More documentation will soon be added.</p>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_test_your_custom_cloud_services"><a class="anchor" href="#_test_your_custom_cloud_services"></a><a class="link" href="#_test_your_custom_cloud_services">26.1. Test your custom cloud services</a></h3>
 <div class="sect3">
@@ -13735,6 +16941,13 @@ ZetaPush uses this property to host and expose it.</p>
 <div class="sect1">
 <h2 id="_advanced_run_of_your_application"><a class="anchor" href="#_advanced_run_of_your_application"></a><a class="link" href="#_advanced_run_of_your_application">27. Advanced run of your application</a></h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Documentation about advanced run of your application will soon be available.</p>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="run_worker_only"><a class="anchor" href="#run_worker_only"></a><a class="link" href="#run_worker_only">27.1. Run cloud services only</a></h3>
 
@@ -13748,6 +16961,13 @@ ZetaPush uses this property to host and expose it.</p>
 <div class="sect1">
 <h2 id="_advanced_deployment_of_your_application"><a class="anchor" href="#_advanced_deployment_of_your_application"></a><a class="link" href="#_advanced_deployment_of_your_application">28. Advanced deployment of your application</a></h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Documentation about advanced deployment of your application will soon be available.</p>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="partial_deployment"><a class="anchor" href="#partial_deployment"></a><a class="link" href="#partial_deployment">28.1. Partial deployment</a></h3>
 
@@ -13765,20 +16985,156 @@ ZetaPush uses this property to host and expose it.</p>
 <div class="sect1">
 <h2 id="http_server"><a class="anchor" href="#http_server"></a><a class="link" href="#http_server">29. HTTP server</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>ZetaPush provides you the possibility to add a <em>HTTP server</em> in your application to handle <em>HTTP</em> requests.
+A <em>HTTP server</em> is already used in one <em>Cloud Service</em>, the <em>Standard User Workflow</em> (To handle confirmation account registration for example).</p>
+</div>
+<div class="paragraph">
+<p>You have two possibilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#internal_http_server">Use the provided HTTP server</a></p>
+</li>
+<li>
+<p><a href="#custom_http_server">Create your own HTTP server</a></p>
+</li>
+</ul>
+</div>
 <div class="sect2">
 <h3 id="internal_http_server"><a class="anchor" href="#internal_http_server"></a><a class="link" href="#internal_http_server">29.1. HTTP server provided by ZetaPush</a></h3>
 
 </div>
 <div class="sect2">
 <h3 id="custom_http_server"><a class="anchor" href="#custom_http_server"></a><a class="link" href="#custom_http_server">29.2. Custom HTTP server</a></h3>
+<div class="paragraph">
+<p>ZetaPush provides you the possibility to create your own <em>HTTP server</em>.
+Here is an example using the <code>express</code> library:</p>
+</div>
+<div class="listingblock">
+<div class="title">Custom HTTP server</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> express from <span class="string"><span class="delimiter">'</span><span class="content">express</span><span class="delimiter">'</span></span>;                              <i class="conum" data-value="1"></i><b>(1)</b>
 
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  onApplicationBootstrap() {                                <i class="conum" data-value="2"></i><b>(2)</b>
+    const app = express();
+
+    const port = process.env.HTTP_PORT || <span class="integer">3001</span>;             <i class="conum" data-value="3"></i><b>(3)</b>
+
+    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>, (req: any, <span class="key">res</span>: any) =&gt; {                  <i class="conum" data-value="4"></i><b>(4)</b>
+      res.send(<span class="error">`</span>Hello World from <span class="predefined">$</span>{port}<span class="error">`</span>);
+    });
+
+    app.listen(port, () =&gt; {                                <i class="conum" data-value="5"></i><b>(5)</b>
+      console.log(<span class="error">`</span>HTTP server is listening on <span class="predefined">$</span>{port}<span class="error">`</span>);
+    });
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In this case we use the <code>express</code> library</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>To initialize our application we use the <a href="#onapplicationbootstrap"><code>onApplicationBootstrap()</code> method</a></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>HTTP_PORT</code> environment variable is provided to use a custom HTTP server when the application is running on the <em>ZetaPush cloud</em>. Locally we use the port 3001 (in this case, you can use any port).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We handle the request</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>We launch the <em>HTTP server</em></td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">HTTP_PORT environment variable</div>
+<div class="paragraph">
+<p>The <code>HTTP_PORT</code> environment variable is provided to let you use a custom <em>HTTP server</em> when your application is running on the <em>ZetaPush cloud</em>.
+Indeed, the <code>HTTP_PORT</code> environment variable is a reverved port number that is redirected to a specfic URL (provided at the end of a deployment or via the <a href="https://console-celtia.zetapush.com">web console</a>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When your application is running on the <em>ZetaPush cloud</em>, you can access to <em>HTTP server</em> via the URL given at the end of the deployment:</p>
+</div>
+<div class="listingblock">
+<div class="title">Deployment details</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">[INFO] Bundle your application components  ‌
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Prepare environment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish web application
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Preparing custom cloud services for deployment
+[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish custom cloud service on worker instance
+[INFO] Web application front is available at http://front-1ceugbp7ci.celtia.zetapush.app:80/  ‌
+[INFO] Worker application queue_0 is available at http://queuea0-1ceugbp7ci.test.zetapush.app  ‌    <i class="conum" data-value="1"></i><b>(1)</b>
+[INFO] Worker applications works only if you listen process.env.HTTP_PORT  ‌</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>URL of your <em>HTTP server</em></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use your <em>http server library</em> like you would do without <em>ZetaPush</em>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_extend_a_cloud_service"><a class="anchor" href="#_extend_a_cloud_service"></a><a class="link" href="#_extend_a_cloud_service">30. Extend a cloud service</a></h2>
 <div class="sectionbody">
-
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Documentation about extention of any <em>Cloud service</em> will soon be added.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

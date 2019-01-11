@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Access to application.json properties</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -82,15 +82,128 @@
   </nav>
 </header>
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_access_to_application_json_properties">Access to application.json properties</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This object contains the content of your <code>application.json</code> file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_access_to_application_json_properties"><a class="anchor" href="#_access_to_application_json_properties"></a>Access to application.json properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To interact with your <code>application.json</code> file, you can use these provided methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>get()</code>: Get a property value via his name, returns <code>undefined</code> if doesn&#8217;t exists</p>
+</li>
+<li>
+<p><code>getOrThrow()</code>: Get a property value via his name, returns <code>API_ERROR</code> exception if doesn&#8217;t exists</p>
+</li>
+<li>
+<p><code>has()</code>: Check if a property exists in the <code>application.json</code> file (returns boolean)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the case of we have the following <code>application.json</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">application.json content</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">organization</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ZetaPush</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">my-name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">MyName</span><span class="delimiter">&quot;</span></span>,
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can get properties like this :</p>
+</div>
+<div class="listingblock">
+<div class="title">Get application.json properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, ConfigurationProperties } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;     <i class="conum" data-value="1"></i><b>(1)</b>
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
+  constructor(<span class="reserved">private</span> properties: ConfigurationProperties) {}             <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getUserInfo() {
+    <span class="keyword">return</span> {
+      <span class="key">name</span>: <span class="local-variable">this</span>.properties.get(<span class="string"><span class="delimiter">'</span><span class="content">my-name</span><span class="delimiter">'</span></span>),                               <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">orga</span>: <span class="local-variable">this</span>.properties.get(<span class="string"><span class="delimiter">'</span><span class="content">organization.name</span><span class="delimiter">'</span></span>)                      <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <em>ConfigurationProperties</em> class is in the <code>@zetapush/core</code> package.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The dependency injection provides us a <em>ConfigurationProperties</em> instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We read the <code>application.json</code> property via a <em>getter</em></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We read the <code>application.json</code> nested property via a <em>getter</em></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2019-01-11 19:47:14 UTC
 </div>
 </div>
 </body>

@@ -86,11 +86,54 @@
 <div id="header">
 </div>
 <div id="content">
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you develop your <em>cloud services</em>, you may want to use the current context.
+The most important thing about this is that it depends of your runtime environment.
+Indeed, the properties will be not the same when your worker is running locally
+or when your worker is running on the <em>ZetaPush cloud</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Different contexts</div>
+<div class="paragraph">
+<p>The context is not the same between locally and in the <em>ZetaPush cloud</em> because in the first
+case the context is provided by the <a href="../../reference.html#cli">CLI</a> and in the second case the context is provided
+by the <em>ZetaPush platform</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To handle this, ZetaPush provides some util functions to get the current context.
+There are 3 classes to manage the context :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../reference.html#context_environment">Environment</a></p>
+</li>
+<li>
+<p><a href="../../reference.html#configuration_properties">ConfigurationProperties</a></p>
+</li>
+<li>
+<p><a href="../../reference.html#zetapush_context">ZetaPushContext</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2019-01-11 19:47:14 UTC
 </div>
 </div>
 </body>

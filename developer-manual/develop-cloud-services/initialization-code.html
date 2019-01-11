@@ -89,11 +89,32 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>ZetaPush provides you the possibility to create your own <em>HTTP server</em>.
-Here is an example using the <code>express</code> library:</p>
+<p>ZetaPush manages scalability and redundancy of your <em>workers</em>. So there may have several workers that start at the same time. And if you initialize some data or configure some cloud services at the same time, it may have conflicts or duplicated data. To avoid that ZetaPush provides a way to initialize code that will ensure that is executed by only one worker.</p>
+</div>
+<div class="paragraph">
+<p>For this, ZetaPush provides the <em>bootstrap</em> feature. To use it you need to implement the method <code>onApplicationBootstrap()</code> in your <em>custom cloud service</em>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Bad practice for initialization code</div>
+<div class="paragraph">
+<p>You may want to put your initialization code in the constructor but this is a bad practice.
+Indeed, even if in the most cases, a <em>custom cloud service</em> is a <a href="https://en.wikipedia.org/wiki/Singleton_pattern">singleton</a>, it may have several instances of your <em>custom cloud service</em> and your initialization code will be called many times. An other drawback is that the constructor is synchronous and the <code>onApplicationBootstrap</code> method is asynchronous (You can also put synchronous code in your <code>onApplicationBootstrap</code> with the <code>await</code> keyword).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the following example we will create a worker to store data in a database. The initialization code let you create a table in our database. Then we will create methods to add and list our data.</p>
 </div>
 <div class="listingblock">
-<div class="title">Custom HTTP server</div>
+<div class="title">Initialization code</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
@@ -113,21 +134,57 @@ Here is an example using the <code>express</code> library:</p>
 15
 16
 17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
 </pre></td>
-  <td class="code"><pre><span class="reserved">import</span> express from <span class="string"><span class="delimiter">'</span><span class="content">express</span><span class="delimiter">'</span></span>;                              <i class="conum" data-value="1"></i><b>(1)</b>
+  <td class="code"><pre><span class="reserved">import</span> { Injectable, Bootstrappable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;
+<span class="reserved">import</span> { GdaConfigurer, Gda, GdaDataType } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/platform-legacy</span><span class="delimiter">'</span></span>;
 
-<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> {
-  onApplicationBootstrap() {                                <i class="conum" data-value="2"></i><b>(2)</b>
-    const app = express();
+const NAME_TABLE = <span class="string"><span class="delimiter">'</span><span class="content">table</span><span class="delimiter">'</span></span>;
+const NAME_COLUMN = <span class="string"><span class="delimiter">'</span><span class="content">column</span><span class="delimiter">'</span></span>;
 
-    const port = process.env.HTTP_PORT || <span class="integer">3001</span>;             <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> <span class="reserved">implements</span> Bootstrappable {                              <i class="conum" data-value="1"></i><b>(1)</b>
+  constructor(<span class="reserved">private</span> gdaConfigurer: GdaConfigurer, <span class="reserved">private</span> gda: Gda) {}
 
-    app.get(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>, (req: any, <span class="key">res</span>: any) =&gt; {                  <i class="conum" data-value="4"></i><b>(4)</b>
-      res.send(<span class="error">`</span>Hello World from <span class="predefined">$</span>{port}<span class="error">`</span>);
+  async onApplicationBootstrap() {                                            <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="local-variable">this</span>.gdaConfigurer.createTable({                                          <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">name</span>: NAME_TABLE,
+      <span class="key">columns</span>: [{
+        <span class="key">name</span>: NAME_COLUMN,
+        <span class="key">type</span>: GdaDataType.STRING
+      }]
     });
+  }
 
-    app.listen(port, () =&gt; {                                <i class="conum" data-value="5"></i><b>(5)</b>
-      console.log(<span class="error">`</span>HTTP server is listening on <span class="predefined">$</span>{port}<span class="error">`</span>);
+  async addData(data: string) {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.put({
+      <span class="key">table</span>: NAME_TABLE,
+      <span class="key">column</span>: NAME_COLUMN,
+      data,
+      <span class="key">key</span>: Date.now().toString()
+    });
+  }
+
+  async getData() {
+    <span class="keyword">return</span> await <span class="local-variable">this</span>.gda.list({
+      <span class="key">table</span>: NAME_TABLE
     });
   }
 }</pre></td>
@@ -138,69 +195,68 @@ Here is an example using the <code>express</code> library:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In this case we use the <code>express</code> library</td>
+<td>We implement the <code>Bootstrappable</code> interface. This is optional (see below)</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>To initialize our application we use the <a href="../../reference.html#onapplicationbootstrap"><code>onApplicationBootstrap()</code> method</a></td>
+<td>The <code>onApplicationBootstrap()</code> method is always <em>asynchronous</em>, the <code>async</code> keyword is optional</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <code>HTTP_PORT</code> environment variable is provided to use a custom HTTP server when the application is running on the <em>ZetaPush cloud</em>. Locally we use the port 3001 (in this case, you can use any port).</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>We handle the request</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>We launch the <em>HTTP server</em></td>
+<td>In our initialization code we create a table in our database</td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="title">HTTP_PORT environment variable</div>
+<div class="title">Bootstrappable interface</div>
 <div class="paragraph">
-<p>The <code>HTTP_PORT</code> environment variable is provided to let you use a custom <em>HTTP server</em> when your application is running on the <em>ZetaPush cloud</em>.
-Indeed, the <code>HTTP_PORT</code> environment variable is a reverved port number that is redirected to a specfic URL (provided at the end of a deployment or via the <a href="https://console-celtia.zetapush.com">web console</a>).</p>
+<p>The implementation of the <code>Bootstrappable</code> interface is optional but it is a best practice, you just need to implement a method named <code>onApplicationBootstrap()</code>.
+Indeed, implementing it avoids you to write wrong implementation of <code>onApplicationBootstrap()</code> method. It also indicates to other developers that you really wanted to add initialization code to your <em>cloud service</em> on purpose and it also provides documentation about <code>onApplicationBootstrap</code> method directly in code.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>When your application is running on the <em>ZetaPush cloud</em>, you can access to <em>HTTP server</em> via the URL given at the end of the deployment:</p>
-</div>
-<div class="listingblock">
-<div class="title">Deployment details</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="console">[INFO] Bundle your application components  ‌
-[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Upload code
-[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Prepare environment
-[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish web application
-[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Preparing custom cloud services for deployment
-[INFO] ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ Publish custom cloud service on worker instance
-[INFO] Web application front is available at http://front-1ceugbp7ci.celtia.zetapush.app:80/  ‌
-[INFO] Worker application queue_0 is available at http://queuea0-1ceugbp7ci.test.zetapush.app  ‌    <i class="conum" data-value="1"></i><b>(1)</b>
-[INFO] Worker applications works only if you listen process.env.HTTP_PORT  ‌</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>URL of your <em>HTTP server</em></td>
-</tr>
-</table>
+<p>You can implement the <code>onApplicationBootstrap()</code> method in several <em>custom cloud services</em>.
+A dependency tree will be created to execute all <code>onApplicationBootstrap()</code> methods in the proper order (regarding of the needed dependencies).</p>
 </div>
 <div class="paragraph">
-<p>You can use your <em>http server library</em> like you would do without <em>ZetaPush</em>.</p>
+<p>For example in the following scheme, we have 2 exposed API named <em>Dashboard</em> and <em>Mobile</em>.
+For the case of the <em>Dashboard</em> API, it uses another service named <em>Admin</em>, that uses <em>User Management</em> and <em>Stock Management</em> services and so on.</p>
+</div>
+<div class="paragraph">
+<p>So the services are initialized in a specific order :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Utils</p>
+</li>
+<li>
+<p>User Data / Stock Data</p>
+</li>
+<li>
+<p>User Management / Stock Management / Stock Market</p>
+</li>
+<li>
+<p>Admin / Client API / Guest Access</p>
+</li>
+<li>
+<p>Dashboard / Mobile</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../images//schemas/bootstrap_order.png" alt="bootstrap order">
+</div>
 </div>
 </div>
 </div>

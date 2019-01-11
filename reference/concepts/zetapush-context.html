@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Untitled</title>
+<title>Use ZetaPushContext</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -82,15 +82,130 @@
   </nav>
 </header>
 </head>
-<body class="book">
+<body class="book toc2 toc-left">
 <div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_use_zetapushcontext">Use ZetaPushContext</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This last object contains (amongst others) the URL of your worker and your front (deployed on the <em>ZetaPush cloud</em> or running locally).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_use_zetapushcontext"><a class="anchor" href="#_use_zetapushcontext"></a>Use ZetaPushContext</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>ZetaPushContext</code> provides you some methods to interact with it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>getAppName()</code>: Returns the <em>appName</em> of your application</p>
+</li>
+<li>
+<p><code>getPlatformUrl()</code>: Returns the <em>platformUrl</em> of your application</p>
+</li>
+<li>
+<p><code>getFrontUrl()</code>: Returns the url of the used front part of your application</p>
+</li>
+<li>
+<p><code>getWorkerUrl()</code>: Returns the url of the used worker</p>
+</li>
+<li>
+<p><code>getLocalZetaPushHttpPort()</code>: Returns the port used on <a href="../../reference.html#http_server"><em>HTTP server</em></a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Role of URL</div>
+<div class="paragraph">
+<p><code>getFrontUrl()</code> and <code>getWorkerUrl()</code> provide you the URL used in your application, depending of your context
+(Locally or running on <em>ZetaPush cloud</em>). For example, the <code>getFrontUrl()</code> can be used for a redirection in your
+application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ZetaPushContext</code> can be used like below:</p>
+</div>
+<div class="listingblock">
+<div class="title">Use ZetaPushContext</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+  <td class="code"><pre><span class="reserved">import</span> { ZetaPushContext, Injectable } from <span class="string"><span class="delimiter">'</span><span class="content">@zetapush/core</span><span class="delimiter">'</span></span>;       <i class="conum" data-value="1"></i><b>(1)</b>
 
+<span class="error">@</span>Injectable()
+<span class="reserved">export</span> <span class="keyword">default</span> <span class="reserved">class</span> Api {
+  constructor(<span class="reserved">private</span> context: ZetaPushContext) {}                  <i class="conum" data-value="2"></i><b>(2)</b>
+
+  getContext() {
+    <span class="keyword">return</span> {
+      <span class="key">front</span>: <span class="local-variable">this</span>.context.getFrontUrl(),                            <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="key">worker</span>: <span class="local-variable">this</span>.context.getWorkerUrl(),
+      <span class="key">zetapushPort</span>: <span class="local-variable">this</span>.context.getLocalZetaPushHttpPort(),
+      <span class="key">appName</span>: <span class="local-variable">this</span>.context.getAppName(),
+      <span class="key">platformUrl</span>: <span class="local-variable">this</span>.context.getPlatformUrl()
+    };
+  }
+}</pre></td>
+</tr></table></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ZetaPushContext</code> is provided by the <em>@zetapush/core</em> module</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We ask the <em>Dependency Injection</em> to provide an instance of <code>ZetaPushContext</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We use all methods provided by the <code>ZetaPushContext</code></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2019-01-11 19:47:14 UTC
 </div>
 </div>
 </body>

@@ -86,11 +86,64 @@
 <div id="header">
 </div>
 <div id="content">
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>To configure the log level of your application you use the <a href="../../reference.html#cli">CLI</a> or from the <a href="https://console-celtia.zetapush.com">web console</a> (Not ready yet).</p>
+</div>
+<div class="paragraph">
+<p>To do this via the <a href="../../reference.html#cli">CLI</a>, you need to launch the <code>zeta config</code> command (See more details in <a href="../../reference.html#verbosity_level">this section</a>).</p>
+</div>
+<div class="listingblock">
+<div class="title">Get the current log level</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta config --get</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Today, there are only two available log levels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>verbose</p>
+</li>
+<li>
+<p>default</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want leaner log level, you can <a href="https://www.zetapush.com/contact">contact us</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Set the log level</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="console">$ zeta config --logs verbose
+$ zeta config --logs default</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Default verbose level</div>
+<div class="paragraph">
+<p>The default verbose level traces only errors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-18 09:26:37 UTC
+Last updated 2019-01-11 19:47:14 UTC
 </div>
 </div>
 </body>

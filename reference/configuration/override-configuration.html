@@ -104,10 +104,18 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 <div class="sect1">
 <h2 id="_account_properties"><a class="anchor" href="#_account_properties"></a>Account properties</h2>
 <div class="sectionbody">
-<div class="imageblock center">
-<div class="content">
-<img src="override-account-properties.png" alt="override account properties" width="182" height="241">
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Environment variables</p>
+</li>
+<li>
+<p>.zetarc file</p>
+</li>
+<li>
+<p>CLI parameters</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>So if you use the same property in several locations, the environment variable is overwritten by the <code>.zetarc</code> value and this last value is overwritten by the CLI parameter.</p>
@@ -117,13 +125,21 @@ ZetaPush includes and overrides this properties in a specific order:</p>
 <div class="sect1">
 <h2 id="_application_properties"><a class="anchor" href="#_application_properties"></a>Application properties</h2>
 <div class="sectionbody">
-<div class="imageblock center">
-<div class="content">
-<img src="override-application-properties.png" alt="override application properties" width="154" height="241">
-</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Default values (if exists)</p>
+</li>
+<li>
+<p><code>application.json</code> file</p>
+</li>
+<li>
+<p>CLI parameters</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>So if you use the same property in several locations, the default value is overwritten by the <code>package.json</code> value and this last value is overwritten by the CLI parameter.</p>
+<p>So if you use the same property in several locations, the default value is overwritten by the <code>application.json</code> property and this last value is overwritten by the CLI parameter.</p>
 </div>
 </div>
 </div>
