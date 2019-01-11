@@ -1,2 +1,34 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+_ZetaPush_ provides _Load-balancing_ feature between workers.
+Indeed, if an application has many workers (The back part of your application), the _ZetaPush cloud_ will automatically spread incoming requests between each of them.
+
+[#mix_local_and_remote]
+== Running local and pushed worker on same application
+
+In the case of you have already deployed your application in the _ZetaPush cloud_, a worker is running on it.
+Then, if you run your application locally, a second worker is running on your computer.
+
+In this case, the _load-balancing_ is always effective, the incoming requests will be spread between each worker.
+
+If you want to grab all traffic in your local worker, you need to use the flag `--grab-all-trafic` of the <<reference#cli, CLI>>.
+For example:
+
+.Grab all traffic in local worker
+[source, console]
+----
+$ zeta run --grab-all-trafic
+----
+
+With this option, all requests will be redirected to your local worker.
+
+[WARNING]
+====
+You *do not* use this option in production because all of your client's requests will be redirected on your local worker.
+====
+
+[NOTE]
+====
+The possibility to grab traffic for a specific user (for debug for example) will be possible in a next version.
+====
