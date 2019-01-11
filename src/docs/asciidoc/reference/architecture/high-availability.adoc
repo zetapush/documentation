@@ -1,2 +1,9 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+_ZetaPush_ ensures a high-availability of your appplications.
+
+Indeed, all systems on the _ZetaPush cloud_ (servers, database, ...) are redundant.
+This will also be the case for <<reference#scalability, workers in next versions.>>
+
+If a server goes down, another takes over.

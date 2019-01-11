@@ -1,2 +1,16 @@
 :relative-path: ../../
 include::{docdir}/variables.adoc[]
+
+_ZetaPush_ provides the scalability of yours workers.
+
+For example, if you have deployed an application on the _ZetaPush cloud_,
+it is possible to increase the number of worker to scale the application.
+
+[NOTE]
+====
+For now, to scale your application, you need to link:{contact-url}[contact us]. 
+But in the next versions, the scalability will be automatic.
+
+Another feature that will be available in the next versions is the possibility to scale up your application
+on a short period to absorb peak loads without extra cost.
+====
