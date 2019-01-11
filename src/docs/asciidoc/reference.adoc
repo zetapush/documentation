@@ -64,6 +64,7 @@ include::{docdir}/reference/architecture/high-availability.adoc[leveloffset=+3]
 ==== Load-balancing
 include::{docdir}/reference/architecture/load-balancing.adoc[leveloffset=+3]
 
+[#scalability]
 ==== Scalability
 include::{docdir}/reference/architecture/scalability.adoc[leveloffset=+3]
 
