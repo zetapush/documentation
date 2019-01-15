@@ -42,3 +42,12 @@ image::{images-dir}/schemas/standarduserworkflow-login.png[]
 ====
 If the user tries to log into the application before he confirmed his account, an error will be returned to explain that the account needs to be confirmed via the link in the confirmation email.
 ====
+
+
+**Manage a forgotten password**
+
+image::{images-dir}/schemas/standarduserworkflow-resetpassword.png[]
+<1> The user can ask to reset his password. The _login_ of this user is required.
+<2> An email is sent to the user (which ask to reset his password) with an URL to reset his password. The template of this email is configurable by the developer.
+<3> The user can click on the link provided in the email. He is redirected to a page (specified by the developer) where he can choose his new password.
+<4> Once the user validates his new password, the change is effective. The user can log in with the new credentials.
