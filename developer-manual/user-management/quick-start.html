@@ -375,6 +375,11 @@ To configure those properties, you need to create a file named <code>application
 11
 12
 13
+14
+15
+16
+17
+18
 </pre></td>
   <td class="code"><pre>{
   <span class="key"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span>: {
@@ -387,6 +392,11 @@ To configure those properties, you need to create a file named <code>application
     <span class="key"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,                                 <i class="conum" data-value="5"></i><b>(5)</b>
     <span class="key"><span class="delimiter">&quot;</span><span class="content">ssl</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,                                   <i class="conum" data-value="6"></i><b>(6)</b>
     <span class="key"><span class="delimiter">&quot;</span><span class="content">starttls</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>                               <i class="conum" data-value="7"></i><b>(7)</b>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">reset-password</span><span class="delimiter">&quot;</span></span>: {                               <i class="conum" data-value="8"></i><b>(8)</b>
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">ask</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/#${token}</span><span class="delimiter">&quot;</span></span>                           <i class="conum" data-value="9"></i><b>(9)</b>
+    }
   }
 }</pre></td>
 </tr></table></code></pre>
@@ -425,6 +435,14 @@ any email address as email sender (see tip about Mailtrap below).</td>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>Set to true if your SMTP server requires TLS</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Configure the reset pasword feature (optional)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Specify the URL where the user will choose his new password (a token will be passed on the URL)</td>
 </tr>
 </table>
 </div>
@@ -552,14 +570,47 @@ be useful to document some properties.</p>
 53
 54
 55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
 </pre></td>
-  <td class="code"><pre><span class="comment">// Create the ZetaPush API</span>
-const client = <span class="keyword">new</span> ZetaPushClient.SmartClient();
-const userApi = client.createProxyTaskService({                               <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span>
+  <td class="code"><pre><span class="comment">/// Create the ZetaPush API</span>
+const client = <span class="keyword">new</span> ZetaPushClient.SmartClient();                                <i class="conum" data-value="1"></i><b>(1)</b>
+const userApi = client.createProxyTaskService({
+  <span class="key">namespace</span>: <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span>,
 });
 
-async <span class="keyword">function</span> <span class="function">signUpUser</span>(form) {                                             <i class="conum" data-value="2"></i><b>(2)</b>
+async <span class="keyword">function</span> <span class="function">signUpUser</span>(form) {                                               <i class="conum" data-value="2"></i><b>(2)</b>
   const login = form[<span class="integer">0</span>].value;
   const password = form[<span class="integer">1</span>].value;
   const email = form[<span class="integer">2</span>].value;
@@ -571,11 +622,11 @@ async <span class="keyword">function</span> <span class="function">signUpUser</s
     await userApi.signup({
       <span class="key">credentials</span>: {
         login,
-        password
+        password,
       },
       <span class="key">profile</span>: {
-        email
-      }
+        email,
+      },
     });
     console.log(<span class="string"><span class="delimiter">'</span><span class="content">User account created</span><span class="delimiter">'</span></span>);
   } <span class="keyword">catch</span> (err) {
@@ -586,7 +637,7 @@ async <span class="keyword">function</span> <span class="function">signUpUser</s
 <span class="comment">/**
  * Connection of a user
  */</span>
-async <span class="keyword">function</span> <span class="function">loginUser</span>(form) {                                              <i class="conum" data-value="3"></i><b>(3)</b>
+async <span class="keyword">function</span> <span class="function">loginUser</span>(form) {                                                <i class="conum" data-value="3"></i><b>(3)</b>
   const login = form[<span class="integer">0</span>].value;
   const password = form[<span class="integer">1</span>].value;
 
@@ -602,9 +653,42 @@ async <span class="keyword">function</span> <span class="function">loginUser</sp
 }
 
 <span class="comment">/**
+ * Ask reset password
+ */</span>
+async <span class="keyword">function</span> <span class="function">askResetPassword</span>(form) {                                         <i class="conum" data-value="4"></i><b>(4)</b>
+  await client.connect();
+  const login = form[<span class="integer">0</span>].value;
+  userApi
+    .askResetPassword({
+      login,
+    })
+    .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">Ask reset password</span><span class="delimiter">'</span></span>))
+    .<span class="keyword">catch</span>(err =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">Failed to ask reset password</span><span class="delimiter">'</span></span>, err));
+}
+
+<span class="comment">/**
+ * Confirm reset password
+ */</span>
+async <span class="keyword">function</span> <span class="function">confirmResetPassword</span>(form) {                                     <i class="conum" data-value="5"></i><b>(5)</b>
+  const token = form[<span class="integer">0</span>].value;
+  const firstPassword = form[<span class="integer">1</span>].value;
+  const secondPassword = form[<span class="integer">1</span>].value;
+
+  await client.connect();
+  userApi
+    .confirmResetPassword({
+      token,
+      firstPassword,
+      secondPassword,
+    })
+    .then(() =&gt; console.log(<span class="string"><span class="delimiter">'</span><span class="content">Confirm reset password</span><span class="delimiter">'</span></span>))
+    .<span class="keyword">catch</span>(err =&gt; console.error(<span class="string"><span class="delimiter">'</span><span class="content">Failed to confirm reset password</span><span class="delimiter">'</span></span>, err));
+}
+
+<span class="comment">/**
  * Disconnection of a user
  */</span>
-async <span class="keyword">function</span> <span class="function">logoutUser</span>() {                                                 <i class="conum" data-value="4"></i><b>(4)</b>
+async <span class="keyword">function</span> <span class="function">logoutUser</span>() {                                                   <i class="conum" data-value="6"></i><b>(6)</b>
   await client.disconnect();
   console.log(<span class="string"><span class="delimiter">'</span><span class="content">User disconnected</span><span class="delimiter">'</span></span>);
 }</pre></td>
@@ -629,6 +713,14 @@ Remember the <code>expose</code> option on <code>@Module</code> configuration an
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Function to ask to reset the password.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Function to confirm the reset of the password.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>Function to disconnect a user.</td>
 </tr>
 </table>
@@ -673,36 +765,56 @@ Remember the <code>expose</code> option on <code>@Module</code> configuration an
 28
 29
 30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 </pre></td>
   <td class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Standard User Workflow<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
 
-<span class="tag">&lt;head&gt;</span>
-  <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-  <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-  <span class="tag">&lt;title&gt;</span>Standard User Workflow<span class="tag">&lt;/title&gt;</span>
-<span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Signup<span class="tag">&lt;/h1&gt;</span>                                                               <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); signUpUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> Password:
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> Email:
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Sign up<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/form&gt;</span>
 
-<span class="tag">&lt;body&gt;</span>
-  <span class="tag">&lt;h1&gt;</span>Signup<span class="tag">&lt;/h1&gt;</span>
-  <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); signUpUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>   <i class="conum" data-value="1"></i><b>(1)</b>
-    Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-    Password: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-    Email: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">email</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-    <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Sign up<span class="tag">&lt;/button&gt;</span>
-  <span class="tag">&lt;/form&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Login<span class="tag">&lt;/h1&gt;</span>                                                                <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); loginUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> Password:
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Login<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/form&gt;</span>
 
-  <span class="tag">&lt;h1&gt;</span>Login<span class="tag">&lt;/h1&gt;</span>
-  <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); loginUser(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>    <i class="conum" data-value="2"></i><b>(2)</b>
-    Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-    Password: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
-    <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Login<span class="tag">&lt;/button&gt;</span>
-  <span class="tag">&lt;/form&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Ask reset password<span class="tag">&lt;/h1&gt;</span>                                                   <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); askResetPassword(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Login: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Ask reset password<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/form&gt;</span>
 
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-<span class="tag">&lt;/body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Confirm Reset password<span class="tag">&lt;/h1&gt;</span>                                               <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="tag">&lt;form</span> <span class="attribute-name">onsubmit</span>=<span class="string"><span class="delimiter">&quot;</span>event.preventDefault(); confirmResetPassword(<span class="local-variable">this</span>);<span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      Token: <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">token</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span> Password:
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Confirm reset password<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/form&gt;</span>
 
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://unpkg.com/@zetapush/client</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+    <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">./index.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
 <span class="tag">&lt;/html&gt;</span></pre></td>
 </tr></table></code></pre>
 </div>
@@ -716,6 +828,14 @@ Remember the <code>expose</code> option on <code>@Module</code> configuration an
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Form to login a user</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Form to ask to reset the password</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Form to choose a new password</td>
 </tr>
 </table>
 </div>
@@ -744,6 +864,12 @@ to see connection messages).</p>
 <p>You can also check that if you try to connect with wrong login or password, it doesn&#8217;t work
 as expected. You can also create a new user but do not click on the link in the email.
 You can check that you are not allowed to login.</p>
+</div>
+<div class="paragraph">
+<p>If you want to test the <em>reset password</em> feature (optional), you need to type the login
+of a created user in the <em>askResetPassword form</em>. Then an email will be sent to the email
+of the user with a link. The link redirect you to your application with a token in the URL.
+To choose a new password, you need to fill the proper form with the token (provided in the URL) and the new password.</p>
 </div>
 <div class="admonitionblock important">
 <table>
